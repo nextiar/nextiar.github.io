@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>쿠버네티스로 구현하는 금융 시스템 고가용성 — NEXTIAR</title>
+  <meta name="description" content="증권사 핵심 시스템에 쿠버네티스를 도입하며 겪은 시행착오와 해결책. 99.99% 가용성을 달성하기 위한 실제 설정값을 공개합니다." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+</head>
+<body data-post-id="kubernetes-finance-ha">
+<div id="progress-bar"></div>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">NEXT<span>IAR</span></a>
+  <div class="nav-links">
+    <a href="../index.html">홈</a>
+    <a href="../blog.html">블로그</a>
+    <a href="../about.html">소개</a>
+    <a href="../blog.html" class="nav-cta">글 보기</a>
+  </div>
+  <button class="nav-menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="../index.html">홈</a>
+  <a href="../blog.html">블로그</a>
+  <a href="../about.html">소개</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="../blog.html" class="back-link">← 블로그로 돌아가기</a>
+    <div class="post-card-tags" style="margin-bottom:1rem;">
+      <span class="tag it">IT 운영</span>
+      <span class="tag system">고가용성</span>
+    </div>
+    <h1>쿠버네티스로 구현하는<br />금융 시스템 고가용성<br /><span style="font-size:0.6em; color:var(--text-muted);">— 실전 운영 가이드</span></h1>
+    <div class="post-header-meta">
+      <span>📅 2025년 4월 28일</span>
+      <span>⏱️ 18분 읽기</span>
+      <span>👤 NEXTIAR</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="post-layout">
+
+    <article class="post-content">
+
+      <p>
+        2022년, 저는 국내 중견 자산운용사의 핵심 IT 시스템을 전통적인 물리 서버 환경에서 Kubernetes 기반 클라우드 네이티브 환경으로 전환하는 프로젝트를 리딩했습니다. 이 글은 그 과정에서 얻은 시행착오와 실전 설정값을 기록합니다.
+      </p>
+
+      <div class="warn-box">
+        <div class="warn-box-title">⚠️ 읽기 전 참고사항</div>
+        <p>이 글의 설정값들은 특정 환경(온프레미스 + AWS 하이브리드, 금융권 컴플라이언스 적용)에서 도출된 것입니다. 환경에 따라 튜닝이 필요합니다.</p>
+      </div>
+
+      <h2 id="why-kubernetes">왜 쿠버네티스였나</h2>
+
+      <p>
+        금융권에서 쿠버네티스는 여전히 조심스러운 선택입니다. 레거시 시스템이 많고, 규제 요건이 엄격하며, "검증된 기술"을 선호하는 문화가 있습니다. 그럼에도 쿠버네티스를 선택한 이유는 명확했습니다.
+      </p>
+
+      <ul>
+        <li><strong>배포 자동화</strong>: 기존에는 배포 하나에 2~3명이 붙어 반나절을 소모했습니다. Helm + ArgoCD로 15분으로 단축</li>
+        <li><strong>자가 복구</strong>: Pod 장애 시 자동 재시작. 주문 처리 시스템의 가용성이 크게 향상</li>
+        <li><strong>리소스 효율화</strong>: 서버 利用率이 20%대에서 60%대로 향상. 인프라 비용 절감</li>
+        <li><strong>수평 확장</strong>: 시장 개장 전후 트래픽 스파이크 대응을 자동화</li>
+      </ul>
+
+      <h2 id="architecture">아키텍처 설계</h2>
+
+      <p>
+        금융 시스템의 가장 큰 제약은 <strong>데이터 주권</strong>과 <strong>지연 시간(latency)</strong>입니다. 주문 처리 시스템의 경우 1ms 지연도 민감한 문제가 됩니다.
+      </p>
+
+      <h3 id="cluster-design">클러스터 설계</h3>
+
+      <p>저희는 다음과 같은 세 개의 클러스터를 운영합니다.</p>
+
+      <pre><code># 클러스터 구성
+production-cluster   # 온프레미스, 핵심 거래 시스템
+staging-cluster      # AWS, 배포 전 검증
+dr-cluster           # AWS, 재해 복구용</code></pre>
+
+      <h3 id="node-pools">노드 풀 구성</h3>
+
+      <p>
+        금융 시스템의 특성상 워크로드를 격리해야 합니다. 주문 처리 시스템과 리포팅 시스템이 같은 노드를 공유하면 안 됩니다.
+      </p>
+
+      <pre><code># node-pool 구성 예시
+apiVersion: v1
+kind: Node
+metadata:
+  labels:
+    workload-type: critical-trading   # 주문 체결용
+    workload-type: batch-reporting    # 배치 리포팅용
+    workload-type: api-gateway        # API 서버용</code></pre>
+
+      <h2 id="ha-settings">고가용성 핵심 설정</h2>
+
+      <p>
+        99.99% 가용성(연간 다운타임 52분 이하)을 목표로 설정한 핵심 파라미터들입니다.
+      </p>
+
+      <h3 id="pod-disruption">PodDisruptionBudget</h3>
+
+      <pre><code>apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: order-system-pdb
+spec:
+  minAvailable: 2          # 최소 2개 Pod 항상 유지
+  selector:
+    matchLabels:
+      app: order-system</code></pre>
+
+      <h3 id="resource-limits">리소스 제한</h3>
+
+      <p>
+        금융 시스템에서 OOMKilled는 치명적입니다. 리소스 설정을 과하다 싶을 정도로 보수적으로 잡으세요.
+      </p>
+
+      <pre><code>resources:
+  requests:
+    memory: "2Gi"
+    cpu: "1000m"
+  limits:
+    memory: "4Gi"      # requests의 2배가 안전선
+    cpu: "2000m"</code></pre>
+
+      <h3 id="hpa-settings">HPA 설정</h3>
+
+      <pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: order-system-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: order-system
+  minReplicas: 3          # 최소 3개 (가용존 분산)
+  maxReplicas: 20
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60    # 60% CPU 초과 시 스케일아웃
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30   # 빠른 확장
+    scaleDown:
+      stabilizationWindowSeconds: 300  # 느린 축소 (장중 보수적 접근)</code></pre>
+
+      <h2 id="lessons-learned">삽질 기록 — 실패에서 배운 것들</h2>
+
+      <p>
+        이 섹션이 가장 솔직한 부분입니다. 교과서에 없는 실패들을 기록합니다.
+      </p>
+
+      <p>
+        <strong>실패 1: 장 개시 직전 스케일아웃 타이밍 문제.</strong> HPA가 트래픽이 몰리는 오전 8시 50분에 반응하기 시작했는데, Pod 기동 시간(Cold Start)이 30초~1분 걸려서 결국 9시 장 개시 직후 응답 지연이 발생했습니다. 해결책: CronJob으로 8시 40분에 미리 스케일아웃.
+      </p>
+
+      <p>
+        <strong>실패 2: etcd 디스크 I/O 병목.</strong> 온프레미스 환경에서 etcd를 일반 HDD에 올렸더니 클러스터 전체가 불안정해졌습니다. NVMe SSD로 교체 후 안정화. <em>etcd는 반드시 SSD에 올리세요.</em>
+      </p>
+
+      <p>
+        <strong>실패 3: 네트워크 정책 미설정으로 인한 컴플라이언스 지적.</strong> 금융감독원 감사에서 Pod 간 통신이 무제한으로 허용된 것이 지적됐습니다. NetworkPolicy로 최소 권한 통신을 적용하는 데 2주가 걸렸습니다.
+      </p>
+
+      <h2 id="results">결과</h2>
+
+      <p>
+        전환 후 6개월간의 결과입니다:
+      </p>
+
+      <ul>
+        <li>가용성: 99.2% → 99.97% 향상</li>
+        <li>배포 시간: 4시간 → 15분 단축</li>
+        <li>인프라 비용: 약 28% 절감</li>
+        <li>장애 복구 시간(MTTR): 평균 45분 → 8분 단축</li>
+      </ul>
+
+      <!-- Like Section -->
+      <div class="like-section">
+        <p>이 글이 도움이 되었나요?</p>
+        <button class="like-btn" aria-label="좋아요">
+          <span class="like-icon">❤️</span>
+          <span class="like-text">좋아요</span>
+        </button>
+        <div class="like-count-display">첫 번째로 좋아요를 눌러보세요</div>
+      </div>
+
+      <!-- Share -->
+      <div class="share-section">
+        <h4>공유하기</h4>
+        <div class="share-btns">
+          <button class="share-btn" data-share="copy">🔗 링크 복사</button>
+          <button class="share-btn" data-share="twitter">🐦 트위터</button>
+          <button class="share-btn" data-share="linkedin">💼 링크드인</button>
+        </div>
+      </div>
+
+      <!-- Related Posts -->
+      <div class="related-posts">
+        <h3>관련 글</h3>
+        <div class="related-grid">
+          <a href="observability-financial-system.html" class="related-card">
+            <div class="tag it" style="display:inline-flex;">IT 운영</div>
+            <h4>금융 시스템 옵저버빌리티 구축</h4>
+          </a>
+          <a href="legacy-modernization.html" class="related-card">
+            <div class="tag system" style="display:inline-flex;">시스템 구축</div>
+            <h4>금융 레거시 시스템 현대화</h4>
+          </a>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1.5rem;">
+          GitHub 계정으로 댓글을 남길 수 있습니다.
+        </p>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="nextiar/nextiar.github.io"
+          issue-term="pathname"
+          label="blog-comment"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+
+    </article>
+
+    <aside class="post-toc">
+      <h4>목차</h4>
+      <ul>
+        <li><a href="#why-kubernetes">왜 쿠버네티스였나</a></li>
+        <li><a href="#architecture">아키텍처 설계</a></li>
+        <li class="toc-h3"><a href="#cluster-design" class="toc-h3">클러스터 설계</a></li>
+        <li class="toc-h3"><a href="#node-pools" class="toc-h3">노드 풀 구성</a></li>
+        <li><a href="#ha-settings">고가용성 핵심 설정</a></li>
+        <li class="toc-h3"><a href="#pod-disruption" class="toc-h3">PodDisruptionBudget</a></li>
+        <li class="toc-h3"><a href="#resource-limits" class="toc-h3">리소스 제한</a></li>
+        <li class="toc-h3"><a href="#hpa-settings" class="toc-h3">HPA 설정</a></li>
+        <li><a href="#lessons-learned">삽질 기록</a></li>
+        <li><a href="#results">결과</a></li>
+      </ul>
+    </aside>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="font-size:1.1rem; font-weight:700; letter-spacing:0.05em; margin-bottom:0.75rem;">NEXT<span style="color:var(--accent)">IAR</span></div>
+        <p style="font-size:0.85rem; color:var(--text-muted);">금융투자 지식과 IT 운영 노하우를<br />솔직하게 공유하는 공간입니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">홈</a>
+        <a href="../blog.html">블로그</a>
+        <a href="../about.html">소개</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NEXTIAR. All rights reserved.</span>
+      <span>www.nextiar.net</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

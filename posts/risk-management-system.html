@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>금융사 리스크 관리 시스템 구축기 — NEXTIAR</title>
+  <meta name="description" content="실시간 포지션 모니터링과 한도 관리를 위한 리스크 시스템을 어떻게 설계하고 구축했는지 상세히 기록합니다." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+</head>
+<body data-post-id="risk-management-system">
+<div id="progress-bar"></div>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">NEXT<span>IAR</span></a>
+  <div class="nav-links">
+    <a href="../index.html">홈</a>
+    <a href="../blog.html">블로그</a>
+    <a href="../about.html">소개</a>
+    <a href="../blog.html" class="nav-cta">글 보기</a>
+  </div>
+  <button class="nav-menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="../index.html">홈</a>
+  <a href="../blog.html">블로그</a>
+  <a href="../about.html">소개</a>
+</div>
+
+<div class="post-header">
+  <div class="container">
+    <a href="../blog.html" class="back-link">← 블로그로 돌아가기</a>
+    <div class="post-card-tags" style="margin-bottom:1rem;">
+      <span class="tag finance">금융투자</span>
+      <span class="tag risk">리스크 관리</span>
+      <span class="tag system">시스템 구축</span>
+    </div>
+    <h1>금융사 리스크 관리 시스템 구축기<br /><span style="font-size:0.6em; color:var(--text-muted);">— 설계부터 운영까지</span></h1>
+    <div class="post-header-meta">
+      <span>📅 2025년 4월 15일</span>
+      <span>⏱️ 22분 읽기</span>
+      <span>👤 NEXTIAR</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="post-layout">
+
+    <article class="post-content">
+
+      <p>
+        자산운용사 IT 팀장으로 일하던 2019년, 우리 회사는 리스크 관리 시스템(RMS)을 전면 재구축하기로 결정했습니다. 기존 시스템은 엑셀 기반의 반수동 프로세스로, 포지션이 한도를 초과해도 5분 이상 지나야 알 수 있는 구조였습니다. 금융감독원 검사에서 지적을 받기 전에 먼저 고쳐야 했습니다.
+      </p>
+
+      <blockquote>
+        "리스크 관리 시스템은 문제가 없을 때는 아무도 주목하지 않지만, 문제가 생기면 모든 것을 설명해야 합니다."
+      </blockquote>
+
+      <h2 id="requirements">요구사항 분석</h2>
+
+      <p>
+        리스크 관리 시스템의 요구사항은 크게 세 가지였습니다.
+      </p>
+
+      <h3 id="realtime-position">실시간 포지션 집계</h3>
+
+      <p>
+        여러 자산군(주식, 채권, 파생상품, 외환)에 걸친 포지션을 실시간으로 집계해야 합니다. 기존에는 시스템 간 인터페이스가 배치(batch) 기반이라 딜레이가 발생했습니다.
+      </p>
+
+      <div class="info-box">
+        <div class="info-box-title">📋 핵심 요구사항</div>
+        <ul>
+          <li>포지션 업데이트 지연: 1초 이내</li>
+          <li>한도 초과 시 즉시 알림 (이메일 + SMS + 시스템 팝업)</li>
+          <li>감사 추적(Audit Trail): 모든 한도 변경 이력 보관</li>
+          <li>규제 보고서 자동 생성 (금융감독원 양식)</li>
+        </ul>
+      </div>
+
+      <h3 id="limit-management">한도 관리</h3>
+
+      <p>
+        한도는 다층 구조입니다. 회사 전체 → 본부 → 팀 → 펀드 → 트레이더 순으로 계층화되며, 상위 한도를 초과할 수 없습니다.
+      </p>
+
+      <h2 id="architecture">시스템 아키텍처</h2>
+
+      <p>
+        이벤트 드리븐 아키텍처를 채택했습니다. 핵심 선택은 Apache Kafka를 이벤트 버스로 사용하는 것이었습니다.
+      </p>
+
+      <pre><code># 시스템 구성
+[OMS] → [Kafka: trade-events] → [Position Aggregator]
+[FMS] → [Kafka: fund-events]  →          ↓
+[FX]  → [Kafka: fx-events]   → [Risk Engine] → [Alert Service]
+                                      ↓
+                               [Limit DB (Redis)]
+                                      ↓
+                               [Reporting Service]</code></pre>
+
+      <h3 id="kafka-design">Kafka 토픽 설계</h3>
+
+      <p>
+        토픽 설계에서 가장 중요한 결정은 파티션 수였습니다. 파티션은 나중에 줄일 수 없으므로 충분히 크게 잡아야 합니다.
+      </p>
+
+      <pre><code># 토픽 생성 (실제 운영 설정)
+kafka-topics.sh --create \
+  --topic trade-events \
+  --partitions 12 \        # 소비자 수의 3배
+  --replication-factor 3 \ # 금융권 최소 복제본 수
+  --config retention.ms=604800000 \  # 7일 보관
+  --config min.insync.replicas=2</code></pre>
+
+      <h3 id="position-calc">포지션 계산 엔진</h3>
+
+      <p>
+        포지션 집계는 간단해 보이지만 실제로는 복잡합니다. 환율 변환, 파생상품 델타 계산, 펀드 간 넷팅 처리 등이 필요합니다.
+      </p>
+
+      <pre><code># 포지션 계산 로직 (Python 의사코드)
+def calculate_position(trade_event):
+    base_position = get_current_position(trade_event.fund_id,
+                                         trade_event.asset_id)
+
+    # 환율 적용 (기준 통화: KRW)
+    if trade_event.currency != 'KRW':
+        fx_rate = get_realtime_fx(trade_event.currency, 'KRW')
+        base_amount = trade_event.amount * fx_rate
+    else:
+        base_amount = trade_event.amount
+
+    # 파생상품은 델타 기준
+    if trade_event.asset_type == 'DERIVATIVE':
+        delta = get_delta(trade_event.asset_id)
+        adjusted_amount = base_amount * delta
+    else:
+        adjusted_amount = base_amount
+
+    new_position = base_position + adjusted_amount
+
+    # 한도 체크
+    check_limits(trade_event.fund_id, new_position)
+
+    return new_position</code></pre>
+
+      <h2 id="limit-check">한도 체크 성능 최적화</h2>
+
+      <p>
+        한도 체크는 모든 트레이드마다 실행됩니다. 하루 수십만 건의 체결이 발생하는 환경에서 이 연산이 병목이 되면 안 됩니다.
+      </p>
+
+      <p>
+        초기에는 PostgreSQL에 바로 조회했는데, 피크 타임에 응답 시간이 100ms를 넘었습니다. <strong>Redis를 L1 캐시로 추가</strong>하고 PostgreSQL은 영구 저장소로만 사용하도록 아키텍처를 수정했습니다.
+      </p>
+
+      <pre><code># Redis 한도 저장 구조
+HSET limit:fund:{fund_id} \
+  equity_limit 1000000000 \   # 주식 한도 10억
+  bond_limit   5000000000 \   # 채권 한도 50억
+  fx_limit     500000000  \   # 외환 한도 5억
+  total_limit  6000000000     # 전체 한도 60억
+
+# 포지션 저장
+HSET position:fund:{fund_id} \
+  equity   850000000 \
+  bond     2300000000 \
+  fx       120000000
+
+# 한도 체크 (Lua 스크립트로 원자성 보장)
+local position = redis.call('HGET', KEYS[1], ARGV[1])
+local limit = redis.call('HGET', KEYS[2], ARGV[1])
+if tonumber(position) > tonumber(limit) then
+  return 1  -- 한도 초과
+end
+return 0</code></pre>
+
+      <p>
+        Redis 도입 후 한도 체크 응답 시간이 100ms → 0.8ms로 단축되었습니다.
+      </p>
+
+      <h2 id="alerting">알림 시스템</h2>
+
+      <p>
+        한도 초과 알림은 즉각적이어야 하지만, 너무 많은 알림은 알림 피로(Alert Fatigue)를 유발합니다. 다음 규칙으로 알림을 계층화했습니다.
+      </p>
+
+      <ul>
+        <li><strong>한도 80% 도달</strong>: 해당 트레이더에게 이메일 알림</li>
+        <li><strong>한도 90% 도달</strong>: 트레이더 + 팀장에게 이메일 + 시스템 팝업</li>
+        <li><strong>한도 95% 도달</strong>: 전 관련자에게 SMS + 이메일 + 팝업, 추가 주문 발주 경고</li>
+        <li><strong>한도 100% 초과</strong>: 즉시 주문 거부 + CRO(최고리스크관리책임자) 직보</li>
+      </ul>
+
+      <h2 id="lessons">배운 것들</h2>
+
+      <p>
+        이 프로젝트에서 가장 중요하게 배운 것은 <strong>금융 도메인 지식의 중요성</strong>입니다. 아무리 뛰어난 엔지니어도 "레그(leg)"가 뭔지, "넷팅(netting)"이 어떻게 작동하는지 모르면 제대로 된 시스템을 만들 수 없습니다.
+      </p>
+
+      <p>
+        두 번째는 <strong>규제 요건을 처음부터 설계에 반영</strong>하는 것입니다. 나중에 감사 기능을 추가하는 것은 처음부터 설계하는 것의 3배 비용이 들었습니다.
+      </p>
+
+      <!-- Like Section -->
+      <div class="like-section">
+        <p>이 글이 도움이 되었나요?</p>
+        <button class="like-btn" aria-label="좋아요">
+          <span class="like-icon">❤️</span>
+          <span class="like-text">좋아요</span>
+        </button>
+        <div class="like-count-display">첫 번째로 좋아요를 눌러보세요</div>
+      </div>
+
+      <!-- Share -->
+      <div class="share-section">
+        <h4>공유하기</h4>
+        <div class="share-btns">
+          <button class="share-btn" data-share="copy">🔗 링크 복사</button>
+          <button class="share-btn" data-share="twitter">🐦 트위터</button>
+          <button class="share-btn" data-share="linkedin">💼 링크드인</button>
+        </div>
+      </div>
+
+      <!-- Related Posts -->
+      <div class="related-posts">
+        <h3>관련 글</h3>
+        <div class="related-grid">
+          <a href="etf-portfolio-strategy.html" class="related-card">
+            <div class="tag finance" style="display:inline-flex;">금융투자</div>
+            <h4>ETF 포트폴리오 전략</h4>
+          </a>
+          <a href="legacy-modernization.html" class="related-card">
+            <div class="tag system" style="display:inline-flex;">시스템 구축</div>
+            <h4>금융 레거시 시스템 현대화</h4>
+          </a>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="comments-section">
+        <h3>댓글</h3>
+        <p style="color:var(--text-muted); font-size:0.875rem; margin-bottom:1.5rem;">
+          GitHub 계정으로 댓글을 남길 수 있습니다.
+        </p>
+        <script
+          src="https://utteranc.es/client.js"
+          repo="nextiar/nextiar.github.io"
+          issue-term="pathname"
+          label="blog-comment"
+          theme="github-dark"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+
+    </article>
+
+    <aside class="post-toc">
+      <h4>목차</h4>
+      <ul>
+        <li><a href="#requirements">요구사항 분석</a></li>
+        <li class="toc-h3"><a href="#realtime-position" class="toc-h3">실시간 포지션 집계</a></li>
+        <li class="toc-h3"><a href="#limit-management" class="toc-h3">한도 관리</a></li>
+        <li><a href="#architecture">시스템 아키텍처</a></li>
+        <li class="toc-h3"><a href="#kafka-design" class="toc-h3">Kafka 토픽 설계</a></li>
+        <li class="toc-h3"><a href="#position-calc" class="toc-h3">포지션 계산 엔진</a></li>
+        <li><a href="#limit-check">한도 체크 성능 최적화</a></li>
+        <li><a href="#alerting">알림 시스템</a></li>
+        <li><a href="#lessons">배운 것들</a></li>
+      </ul>
+    </aside>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="font-size:1.1rem; font-weight:700; letter-spacing:0.05em; margin-bottom:0.75rem;">NEXT<span style="color:var(--accent)">IAR</span></div>
+        <p style="font-size:0.85rem; color:var(--text-muted);">금융투자 지식과 IT 운영 노하우를<br />솔직하게 공유하는 공간입니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">홈</a>
+        <a href="../blog.html">블로그</a>
+        <a href="../about.html">소개</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NEXTIAR. All rights reserved.</span>
+      <span>www.nextiar.net</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
