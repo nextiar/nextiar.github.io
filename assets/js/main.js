@@ -47,43 +47,58 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-/* ─── Like System ──────────────────────────── */
+/* ─── Like System (실제 공유 카운터) ──────── */
+const LIKE_API = 'https://api.counterapi.dev/v1/nextiar-blog';
+
+async function fetchCount(postId) {
+  try {
+    const r = await fetch(`${LIKE_API}/${postId}/get`);
+    if (!r.ok) return 0;
+    return (await r.json()).count || 0;
+  } catch { return 0; }
+}
+
+async function incrementCount(postId) {
+  try {
+    const r = await fetch(`${LIKE_API}/${postId}/up`);
+    if (!r.ok) return null;
+    return (await r.json()).count || null;
+  } catch { return null; }
+}
+
 function initLikeSystem() {
   const likeBtn = document.querySelector('.like-btn');
   if (!likeBtn) return;
 
   const postId = document.body.dataset.postId;
+  if (!postId) return;
   const storageKey = `liked_${postId}`;
-  const countKey = `likes_${postId}`;
 
-  let count = parseInt(localStorage.getItem(countKey) || '0');
-  const liked = localStorage.getItem(storageKey) === 'true';
+  if (localStorage.getItem(storageKey) === 'true') likeBtn.classList.add('liked');
 
-  if (liked) likeBtn.classList.add('liked');
-  updateLikeDisplay(count);
+  fetchCount(postId).then(updateLikeDisplay);
 
-  likeBtn.addEventListener('click', () => {
+  likeBtn.addEventListener('click', async () => {
     const wasLiked = likeBtn.classList.contains('liked');
     likeBtn.classList.toggle('liked');
+
     if (wasLiked) {
-      count = Math.max(0, count - 1);
       localStorage.removeItem(storageKey);
+      updateLikeDisplay(await fetchCount(postId));
+      showToast('좋아요를 취소했습니다');
     } else {
-      count++;
       localStorage.setItem(storageKey, 'true');
       likeBtn.querySelector('.like-icon').style.transform = 'scale(1.5)';
-      setTimeout(() => {
-        likeBtn.querySelector('.like-icon').style.transform = '';
-      }, 300);
+      setTimeout(() => { likeBtn.querySelector('.like-icon').style.transform = ''; }, 300);
+      const n = await incrementCount(postId);
+      if (n !== null) updateLikeDisplay(n);
+      showToast('좋아요를 눌렀습니다 ❤️');
     }
-    localStorage.setItem(countKey, count);
-    updateLikeDisplay(count);
-    showToast(wasLiked ? '좋아요를 취소했습니다' : '좋아요를 눌렀습니다 ❤️');
   });
 
   function updateLikeDisplay(n) {
-    const display = document.querySelector('.like-count-display');
-    if (display) display.textContent = n > 0 ? `${n}명이 좋아합니다` : '첫 번째로 좋아요를 눌러보세요';
+    const el = document.querySelector('.like-count-display');
+    if (el) el.textContent = n > 0 ? `${n}명이 좋아합니다` : '첫 번째로 좋아요를 눌러보세요';
   }
 }
 
