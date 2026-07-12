@@ -1,241 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEXTIAR — 금융 IT 전문가의 인사이트</title>
-  <meta name="description" content="10년 이상의 금융 IT 전문가가 전하는 금융투자 지식과 IT 운영 노하우" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nextiar Research — 개인 투자 리서치 발간</title>
+<meta name="description" content="데이터와 공시로 검증하는 개인 투자 리서치. 종목발굴·밸류에이션 리포트를 발간합니다. 매매 권유가 아닙니다.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔎</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --up: #d03b3b; --down: #2a78d6;
+  --border: rgba(11,11,11,0.10);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --up: #e66767; --down: #3987e5;
+    --border: rgba(255,255,255,0.10);
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 72px; display: flex; flex-direction: column; gap: 40px; }
+.eyebrow { font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted); font-weight: 650; }
+.hero h1 { font-size: 34px; line-height: 1.25; margin: 10px 0 12px; letter-spacing: -0.015em; text-wrap: balance; }
+.hero .sub { color: var(--ink-2); font-size: 15px; margin: 0; max-width: 62ch; }
+.hero .sub strong { color: var(--ink); }
+.principles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.principles span { font-size: 12px; color: var(--ink-2); border: 1px solid var(--border);
+  background: var(--card); border-radius: 99px; padding: 3px 12px; }
+section h2 { font-size: 19px; margin: 0 0 4px; letter-spacing: -0.005em; }
+section .sec-desc { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
+.report-list { display: flex; flex-direction: column; gap: 12px; }
+a.report-card { display: block; text-decoration: none; color: inherit; background: var(--card);
+  border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px 16px;
+  transition: border-color 0.15s ease; }
+a.report-card:hover { border-color: var(--accent); }
+.rc-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.rc-date { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rc-tags { display: inline-flex; gap: 6px; }
+.rc-tags span { font-size: 10.5px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 0 8px; line-height: 1.7; }
+.rc-title { font-size: 16px; font-weight: 650; margin: 6px 0 4px; line-height: 1.45; letter-spacing: -0.005em; }
+.rc-sum { font-size: 13px; color: var(--ink-2); margin: 0; max-width: 70ch; }
+.rc-empty { border: 1px dashed var(--axis); border-radius: 12px; padding: 22px 20px;
+  color: var(--muted); font-size: 13px; text-align: center; }
+footer { color: var(--muted); font-size: 12.5px; line-height: 1.8; border-top: 1px solid var(--grid); padding-top: 20px; }
+footer strong { color: var(--ink-2); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 12px; }
+</style>
 </head>
 <body>
-<div id="progress-bar"></div>
+<div class="wrap">
 
-<!-- ─── Navbar ─────────────────────────────── -->
-<nav class="nav">
-  <a href="index.html" class="nav-logo">NEXT<span>IAR</span></a>
-  <div class="nav-links">
-    <a href="index.html">홈</a>
-    <a href="blog.html">블로그</a>
-    <a href="about.html">소개</a>
-    <a href="blog.html" class="nav-cta">글 보기</a>
-    <a href="write.html" class="nav-write">✏️ 글쓰기</a>
-  </div>
-  <button class="nav-menu-btn" aria-label="메뉴">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-menu">
-  <a href="index.html">홈</a>
-  <a href="blog.html">블로그</a>
-  <a href="about.html">소개</a>
+  <header class="hero">
+    <div class="eyebrow">NEXTIAR RESEARCH</div>
+    <h1>데이터와 공시로 검증하는<br>개인 투자 리서치</h1>
+    <p class="sub">토스증권 Open API·DART·SEC 데이터를 기반으로 종목을 발굴하고 밸류에이션을 분석합니다.
+    <strong>모든 분석 의견에는 근거 자료 팝업과 원문 링크가 붙습니다.</strong></p>
+    <div class="principles">
+      <span>근거 없는 의견 없음 — 전 의견 출처 링크</span>
+      <span>추정치는 반드시 추정으로 표기</span>
+      <span>반대 논리(리스크) 필수 수록</span>
+      <span>매매 권유 아님</span>
+    </div>
+  </header>
+
+  <section id="discovery">
+    <h2>종목발굴 리포트</h2>
+    <p class="sec-desc">랭킹·기술적 스크리닝 → 공시·재무 검증 → PQC·Growth Sustainability·PE 밴드 심층 분석의 깔때기를 통과한 종목 기록</p>
+    <div class="report-list">
+      <!-- REPORTS:discovery:BEGIN -->
+      <div class="rc-empty" data-empty="discovery">아직 발간된 리포트가 없습니다.</div>
+      <!-- REPORTS:discovery:END -->
+    </div>
+  </section>
+
+  <section id="valuation">
+    <h2>밸류에이션 리포트</h2>
+    <p class="sec-desc">Forward P/E 밴드 방법론으로 "지금 몇 배를 내고 사는 것인가"를 분석한 종목별 보고서</p>
+    <div class="report-list">
+      <!-- REPORTS:valuation:BEGIN -->
+      <div class="rc-empty" data-empty="valuation">아직 발간된 리포트가 없습니다.</div>
+      <!-- REPORTS:valuation:END -->
+    </div>
+  </section>
+
+  <footer>
+    <strong>고지</strong> — 이 사이트의 모든 리포트는 정보 제공 목적의 개인 리서치이며 매매 권유가 아닙니다.
+    투자 판단과 책임은 투자자 본인에게 있습니다. 추정으로 표기된 수치는 공개 자료 기반 근사 모델의 산출값입니다.<br>
+    데이터: 토스증권 Open API · DART 전자공시 · SEC EDGAR · 공개 보도 — 각 리포트의 근거 팝업에 원문 링크 명시.
+  </footer>
+
 </div>
-
-<!-- ─── Hero ───────────────────────────────── -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">금융 IT 전문가의 인사이트</div>
-      <h1>금융과 기술의<br /><em>교차점</em>에서<br />인사이트를 전합니다</h1>
-      <p class="hero-sub">
-        10년 이상 금융 IT 현장에서 쌓은 투자 전략, 시스템 운영 노하우,
-        그리고 실전 경험을 솔직하게 공유합니다.
-      </p>
-      <div class="hero-actions">
-        <a href="blog.html" class="btn-primary">
-          <span>📖</span> 글 읽기
-        </a>
-        <a href="about.html" class="btn-secondary">
-          <span>👤</span> 소개 보기
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">금융 IT 경력 (년)</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">50+</span>
-          <span class="stat-label">발행된 아티클</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">2개</span>
-          <span class="stat-label">전문 분야</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Ticker ──────────────────────────────── -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <div class="ticker-item"><span class="ticker-name">KOSPI</span><span class="ticker-price">2,748.32</span><span class="ticker-change up">▲ 1.2%</span></div>
-    <div class="ticker-item"><span class="ticker-name">KOSDAQ</span><span class="ticker-price">876.54</span><span class="ticker-change up">▲ 0.8%</span></div>
-    <div class="ticker-item"><span class="ticker-name">S&amp;P500</span><span class="ticker-price">5,308.13</span><span class="ticker-change up">▲ 0.5%</span></div>
-    <div class="ticker-item"><span class="ticker-name">NASDAQ</span><span class="ticker-price">16,742.39</span><span class="ticker-change up">▲ 0.7%</span></div>
-    <div class="ticker-item"><span class="ticker-name">BTC/USD</span><span class="ticker-price">67,432</span><span class="ticker-change down">▼ 1.3%</span></div>
-    <div class="ticker-item"><span class="ticker-name">USD/KRW</span><span class="ticker-price">1,342.50</span><span class="ticker-change down">▼ 0.2%</span></div>
-    <div class="ticker-item"><span class="ticker-name">국고채 10Y</span><span class="ticker-price">3.42%</span><span class="ticker-change up">▲ 0.05</span></div>
-    <div class="ticker-item"><span class="ticker-name">WTI</span><span class="ticker-price">78.34</span><span class="ticker-change down">▼ 0.4%</span></div>
-    <div class="ticker-item"><span class="ticker-name">KOSPI</span><span class="ticker-price">2,748.32</span><span class="ticker-change up">▲ 1.2%</span></div>
-    <div class="ticker-item"><span class="ticker-name">KOSDAQ</span><span class="ticker-price">876.54</span><span class="ticker-change up">▲ 0.8%</span></div>
-    <div class="ticker-item"><span class="ticker-name">S&amp;P500</span><span class="ticker-price">5,308.13</span><span class="ticker-change up">▲ 0.5%</span></div>
-    <div class="ticker-item"><span class="ticker-name">NASDAQ</span><span class="ticker-price">16,742.39</span><span class="ticker-change up">▲ 0.7%</span></div>
-    <div class="ticker-item"><span class="ticker-name">BTC/USD</span><span class="ticker-price">67,432</span><span class="ticker-change down">▼ 1.3%</span></div>
-    <div class="ticker-item"><span class="ticker-name">USD/KRW</span><span class="ticker-price">1,342.50</span><span class="ticker-change down">▼ 0.2%</span></div>
-    <div class="ticker-item"><span class="ticker-name">국고채 10Y</span><span class="ticker-price">3.42%</span><span class="ticker-change up">▲ 0.05</span></div>
-    <div class="ticker-item"><span class="ticker-name">WTI</span><span class="ticker-price">78.34</span><span class="ticker-change down">▼ 0.4%</span></div>
-  </div>
-</div>
-
-<!-- ─── Categories ──────────────────────────── -->
-<section class="section" style="background: var(--bg2); border-bottom: 1px solid var(--border);">
-  <div class="container">
-    <div class="section-header fade-up">
-      <div class="section-eyebrow">전문 분야</div>
-      <h2 class="section-title">두 가지 관점에서 바라보는<br />금융과 기술</h2>
-    </div>
-    <div class="category-grid">
-      <a href="blog.html?filter=finance" class="category-card finance fade-up" style="transition-delay:0.1s">
-        <div class="category-icon">📈</div>
-        <h3>금융투자</h3>
-        <p>ETF·채권·주식 포트폴리오 전략부터 퀀트 투자, 리스크 관리까지. 금융 현장에서 검증된 투자 인사이트를 공유합니다.</p>
-        <div class="category-count">📝 18개 아티클</div>
-      </a>
-      <a href="blog.html?filter=it" class="category-card it fade-up" style="transition-delay:0.2s">
-        <div class="category-icon">⚙️</div>
-        <h3>IT 운영</h3>
-        <p>대형 금융사 시스템 운영 경험을 바탕으로 한 인프라 구축, DevOps, 클라우드 전환 노하우를 나눕니다.</p>
-        <div class="category-count">📝 22개 아티클</div>
-      </a>
-      <a href="blog.html?filter=system" class="category-card system fade-up" style="transition-delay:0.3s">
-        <div class="category-icon">🏗️</div>
-        <h3>시스템 구축</h3>
-        <p>핵심 금융 시스템 도입부터 레거시 현대화까지. 프로젝트 관리와 아키텍처 설계 경험을 공유합니다.</p>
-        <div class="category-count">📝 12개 아티클</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Recent Posts ─────────────────────────── -->
-<section class="section">
-  <div class="container">
-    <div class="section-header fade-up" style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
-      <div>
-        <div class="section-eyebrow">최근 글</div>
-        <h2 class="section-title">새로 발행된 인사이트</h2>
-      </div>
-      <a href="blog.html" class="btn-secondary" style="font-size:0.85rem; padding:0.5rem 1.25rem;">전체 글 보기 →</a>
-    </div>
-    <div class="posts-grid">
-
-      <a href="posts/etf-portfolio-strategy.html" class="post-card fade-up" style="transition-delay:0.1s">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background: linear-gradient(135deg,#1a1a2e,#16213e);">📊</div>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-tags">
-            <span class="tag finance">금융투자</span>
-            <span class="tag quant">ETF</span>
-          </div>
-          <h3>ETF 포트폴리오 전략: 금융 IT 전문가의 실전 배분법</h3>
-          <p>국내외 ETF를 활용한 자산 배분 전략. 변동성을 줄이면서 안정적인 수익을 추구하는 포트폴리오 구성 방법론을 공유합니다.</p>
-          <div class="post-card-footer">
-            <div class="post-meta">
-              <span class="post-date">2025.05.10</span>
-              <span class="post-read-time">· 12분 읽기</span>
-            </div>
-            <div class="post-likes">❤️ 47</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="posts/kubernetes-finance-ha.html" class="post-card fade-up" style="transition-delay:0.2s">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background: linear-gradient(135deg,#0d1b2a,#1b263b);">⚙️</div>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-tags">
-            <span class="tag it">IT 운영</span>
-            <span class="tag system">고가용성</span>
-          </div>
-          <h3>쿠버네티스로 구현하는 금융 시스템 고가용성 — 실전 운영 가이드</h3>
-          <p>증권사 핵심 시스템에 쿠버네티스를 도입하며 겪은 시행착오와 해결책. 99.99% 가용성을 달성하기 위한 실제 설정값을 공개합니다.</p>
-          <div class="post-card-footer">
-            <div class="post-meta">
-              <span class="post-date">2025.04.28</span>
-              <span class="post-read-time">· 18분 읽기</span>
-            </div>
-            <div class="post-likes">❤️ 63</div>
-          </div>
-        </div>
-      </a>
-
-      <a href="posts/risk-management-system.html" class="post-card fade-up" style="transition-delay:0.3s">
-        <div class="post-card-img">
-          <div class="post-card-img-placeholder" style="background: linear-gradient(135deg,#1a0a2e,#2d1b69);">🛡️</div>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-tags">
-            <span class="tag finance">금융투자</span>
-            <span class="tag risk">리스크 관리</span>
-          </div>
-          <h3>금융사 리스크 관리 시스템 구축기 — 설계부터 운영까지</h3>
-          <p>실시간 포지션 모니터링과 한도 관리를 위한 리스크 시스템을 어떻게 설계하고 구축했는지 상세히 기록합니다.</p>
-          <div class="post-card-footer">
-            <div class="post-meta">
-              <span class="post-date">2025.04.15</span>
-              <span class="post-read-time">· 22분 읽기</span>
-            </div>
-            <div class="post-likes">❤️ 81</div>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── CTA ─────────────────────────────────── -->
-<section style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container" style="padding: 4rem 1.5rem; text-align:center;">
-    <div class="fade-up">
-      <div class="section-eyebrow" style="text-align:center;">소개</div>
-      <h2 style="font-size:1.8rem; font-weight:700; margin-bottom:1rem;">10년을 현장에서 보낸<br />금융 IT 전문가</h2>
-      <p style="color:var(--text-muted); max-width:480px; margin:0 auto 2rem; line-height:1.8;">
-        증권사, 자산운용사, 핀테크를 넘나들며 쌓은 경험을 바탕으로
-        투자와 기술 양쪽에서 실질적인 인사이트를 전달합니다.
-      </p>
-      <a href="about.html" class="btn-secondary">더 알아보기 →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Footer ──────────────────────────────── -->
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="nav-logo" style="margin-bottom:0.75rem;">NEXT<span style="color:var(--accent)">IAR</span></div>
-        <p style="font-size:0.85rem; color:var(--text-muted);">금융투자 지식과 IT 운영 노하우를<br />솔직하게 공유하는 공간입니다.</p>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">홈</a>
-        <a href="blog.html">블로그</a>
-        <a href="about.html">소개</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 NEXTIAR. All rights reserved.</span>
-      <span>www.nextiar.net</span>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js"></script>
 </body>
 </html>
