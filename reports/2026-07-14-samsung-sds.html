@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>삼성에스디에스(018260) 종목 분석 — 리레이팅 서사와 밸류에이션 위치</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔎</text></svg>">
+<style>
+:root{
+  --page:#f9f9f7; --card:#fcfcfb; --ink:#0b0b0b; --ink-2:#52514e;
+  --muted:#898781; --grid:#e1e0d9; --axis:#c3c2b7; --accent:#2a78d6;
+  --hot:#d03b3b; --hot-bg:rgba(208,59,59,0.09);
+  --border:rgba(11,11,11,0.10); --tip-bg:rgba(252,252,251,0.97);
+  --up:#d03b3b; --down:#2a78d6;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --page:#0d0d0d; --card:#1a1a19; --ink:#ffffff; --ink-2:#c3c2b7;
+    --muted:#898781; --grid:#2c2c2a; --axis:#383835; --accent:#3987e5;
+    --hot:#e66767; --hot-bg:rgba(230,103,103,0.13);
+    --border:rgba(255,255,255,0.10); --tip-bg:rgba(26,26,25,0.97);
+    --up:#e66767; --down:#3987e5;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:920px;margin:0 auto;padding:40px 20px 80px;}
+.eyebrow{font-size:11px;letter-spacing:0.14em;color:var(--muted);font-weight:600;text-transform:uppercase;}
+h1{font-size:26px;margin:8px 0 6px;line-height:1.25;}
+header .sub{color:var(--ink-2);font-size:14px;margin:0;}
+h2{font-size:19px;margin:40px 0 14px;padding-top:8px;border-top:1px solid var(--border);}
+h3{font-size:15px;margin:22px 0 8px;}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 8px;}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px 12px;}
+.tile .lbl{font-size:11.5px;color:var(--muted);}
+.tile .val{font-size:20px;font-weight:700;margin-top:3px;font-variant-numeric:tabular-nums;}
+.tile .val small{font-size:13px;font-weight:600;color:var(--ink-2);}
+.tile .delta{font-size:12px;color:var(--ink-2);margin-top:2px;font-variant-numeric:tabular-nums;}
+.tile .val.up,.tile .delta.up{color:var(--up);}
+.tile .val.down,.tile .delta.down{color:var(--down);}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--hot-bg);color:var(--hot);
+  border-radius:99px;padding:2px 10px;font-size:11.5px;font-weight:600;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px 14px;margin:14px 0;}
+.prose p{margin:0 0 12px;color:var(--ink-2);}
+.prose strong{color:var(--ink);}
+.note{border-left:3px solid var(--hot);background:var(--hot-bg);border-radius:0 8px 8px 0;
+  padding:10px 14px;font-size:12.5px;color:var(--ink-2);margin:0 0 16px;}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px;}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+th{color:var(--muted);font-weight:600;font-size:12px;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+.verdict{font-weight:700;}
+.verdict.ok{color:var(--up);}
+.verdict.no{color:var(--down);}
+.verdict.mid{color:var(--muted);}
+.desc{font-size:12.5px;color:var(--muted);margin:0 0 14px;}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);}
+.spark{display:block;width:100%;height:60px;}
+.spark path.pl{fill:none;stroke:var(--accent);stroke-width:1.6;}
+.spark path.pf{fill:var(--accent);opacity:0.09;}
+
+/* ===== [1] WIDGETS CSS ===== */
+.up{color:var(--up,#d03b3b);font-weight:600;}
+.down{color:var(--down,#2a78d6);font-weight:600;}
+.evd{display:inline-block;line-height:1;vertical-align:baseline;}
+.evd>button{all:unset;cursor:pointer;font-size:10px;font-weight:650;color:var(--accent);
+  border:1px solid var(--border);border-radius:99px;padding:1px 7px;line-height:1.4;
+  background:var(--card);white-space:nowrap;}
+.evd>button:hover,.evd.on>button{border-color:var(--accent);}
+.evd-pop{display:none;position:fixed;z-index:30;width:min(340px,calc(100vw - 24px));
+  background:var(--tip-bg);border:1px solid var(--border);border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.18);padding:12px 14px;font-size:12.5px;line-height:1.6;
+  text-align:left;font-weight:400;font-variant-numeric:normal;letter-spacing:normal;}
+.evd.on .evd-pop{display:block;}
+.evd-pop .evd-src{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;}
+.evd-pop .evd-sum{display:block;color:var(--ink-2);margin-bottom:8px;}
+.evd-pop .evd-sum strong{color:var(--ink);}
+.evd-pop a{color:var(--accent);font-weight:650;font-size:12px;text-decoration:none;}
+.evd-pop a:hover{text-decoration:underline;}
+.evd-pop .evd-nolink{font-size:11px;color:var(--muted);}
+details.pe-embed{border:1px solid var(--border);border-radius:12px;background:var(--card);margin:14px 0;}
+details.pe-embed summary{cursor:pointer;padding:14px 20px;list-style:none;
+  display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;}
+details.pe-embed summary::-webkit-details-marker{display:none;}
+details.pe-embed summary::before{content:"▸";color:var(--muted);font-size:13px;}
+details.pe-embed[open] summary::before{content:"▾";}
+details.pe-embed .peb-t{font-weight:650;font-size:14px;}
+details.pe-embed .peb-s{font-size:12px;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums;}
+details.pe-embed .inner{padding:0 20px 18px;}
+.chart-box{position:relative;}
+.chart-box svg{display:block;width:100%;height:auto;}
+.gridline{stroke:var(--grid);stroke-width:1;}
+.axisline{stroke:var(--axis);stroke-width:1;}
+.ticktext{font-size:10.5px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+.bandline{stroke:var(--axis);stroke-width:1;fill:none;}
+.bandlbl{font-size:10.5px;fill:var(--muted);font-variant-numeric:tabular-nums;}
+.bandfill{fill:var(--accent);}
+.price-line{stroke:var(--accent);stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round;}
+.area-wash{fill:var(--accent);opacity:0.10;}
+.end-dot{fill:var(--accent);stroke:var(--card);stroke-width:2;}
+.peak-dot{fill:var(--hot);stroke:var(--card);stroke-width:2;}
+.anno{font-size:11px;fill:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums;}
+.anno.hot{fill:var(--hot);}
+.avgline{stroke:var(--muted);stroke-width:1;}
+.crosshair{stroke:var(--axis);stroke-width:1;visibility:hidden;}
+.hoverdot{fill:var(--accent);stroke:var(--card);stroke-width:2;visibility:hidden;}
+.tooltip{position:absolute;pointer-events:none;visibility:hidden;background:var(--tip-bg);
+  border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12px;min-width:150px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.10);z-index:5;}
+.tooltip .tdate{color:var(--muted);font-size:11px;margin-bottom:3px;font-variant-numeric:tabular-nums;}
+.tooltip .trow{display:flex;align-items:center;gap:7px;line-height:1.5;}
+.tooltip .tkey{width:12px;height:0;border-top:2px solid var(--accent);flex:none;}
+.tooltip .tkey.none{border-top-color:transparent;}
+.tooltip .tval{font-weight:650;font-variant-numeric:tabular-nums;}
+.tooltip .tlbl{color:var(--ink-2);font-size:11.5px;}
+@media (max-width:720px){
+  .tiles{grid-template-columns:repeat(2,1fr);}
+  .chart-box{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .chart-box svg{min-width:720px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">종목 심층 분석 · KR</div>
+  <h1>삼성에스디에스(018260) — 'SI 기업'에서 'AI 플랫폼'으로, 리레이팅 서사와 그 값</h1>
+  <p class="sub">테마 급등 후 고점 대비 약 −47% 조정. 그런데 밸류에이션은 여전히 1년 평균 위(88 백분위). 서사는 강하지만 실적이 아직 따라오지 못한 구간. · 기준일 2026-07-14</p>
+</header>
+
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">현재가 (7/14)</div>
+    <div class="val">195,600<small> 원</small></div>
+    <div class="delta down">3M +28.4% · 1M −20.3%</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Forward P/E (NTM 추정)</div>
+    <div class="val">18.8<small> 배</small></div>
+    <div class="delta">1년 평균 17.1배 · 백분위 88</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">고점 대비 (종가 6/1)</div>
+    <div class="val down">−47%</div>
+    <div class="delta down">369,500 → 195,600</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">6M 평균 목표주가</div>
+    <div class="val">211,300<small> 원</small></div>
+    <div class="delta up">현재가 대비 +8%</div>
+  </div>
+</div>
+<p class="desc">시장 KOSPI · 유형 보통주 · 매수 유의사항 없음(토스 조회). 발행주식수 7,737.8만주. 등락 색은 한국 관례(상승·증가 <span class="up">빨강</span> / 하락·감소 <span class="down">파랑</span>).</p>
+
+<!-- ============ 분석 범위 요약 (깔때기 대체) ============ -->
+<h2>이 리포트의 범위</h2>
+<div class="card prose">
+  <p>이번 분석은 <strong>종목이 이미 지정된 단일 종목 심층 분석</strong>입니다. 넓은 후보 스크리닝(랭킹 수십 개 → 압축) 단계는 생략하고, 삼성에스디에스 한 종목에 대해 <strong>① 왜 지금 주목받았나 → ② 실제 시세·실적 수치 → ③ PQC 분석 → ④ 성장 지속성 6항목 → ⑤ 반대 논리 → ⑥ 다음 확인 이벤트 → ⑦ 밸류에이션 위치(P/E 밴드)</strong> 순으로 검증했습니다.</p>
+  <div class="note"><strong>한 줄 결론:</strong> KKR 투자·두나무 지분·10조 AI 로드맵으로 'SI 회사 → AI/디지털자산 플랫폼' 리레이팅 서사가 강하게 붙었고, 5월 말~6월 초 주가가 2배 이상 급등했다가 −47% 되돌렸다. 다만 <strong>1분기 실적은 부진</strong>(일회성 제외해도 물류 마진 악화)했고, 조정 후에도 <strong>Forward P/E는 1년 평균 위·88 백분위</strong>라 '싸다'고 보긴 어렵다. 서사는 유효하나 값은 이미 상당 부분 선반영 — 실적 확인(2Q26)이 다음 분수령.</div>
+</div>
+
+<!-- ============ ① 왜 지금인가 ============ -->
+<h2>① 왜 지금인가 — 트리거</h2>
+<div class="card prose">
+  <p>2026년 5월 말, 삼성에스디에스는 <strong>두나무 지분 4% 취득 공시</strong>를 계기로 시장이 정체성을 'IT서비스(SI)'에서 'AI 클라우드 + Web3.0/디지털자산 플랫폼'으로 다시 평가하기 시작했다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성SDS 두나무 지분 인수 (2026.06.01)</span><span class="evd-sum">삼성SDS는 삼성증권·삼성카드와 함께 카카오 계열로부터 두나무 지분 4%를 <strong>6,128억원</strong>에 취득(삼성SDS 몫 약 1,532억원). 원화 스테이블코인·토큰증권(STO) 제도화 시 거래소 사업 확장을 겨냥한 포석으로 해석됐다.</span><a href="https://news.nate.com/view/20260601n01992" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 여기에 <strong>글로벌 PEF KKR로부터 1.2조원 투자 유치</strong>와 <strong>2031년까지 10조원 AI·클라우드 투자 로드맵</strong>이 겹치며 성장주 내러티브가 완성됐다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성SDS 10조 투자·KKR (2026.05~06)</span><span class="evd-sum">AI 인프라 5조(구미 AI 데이터센터 등)+플랫폼·솔루션 1조+M&A 4조 = <strong>10조원</strong>. KKR은 6년 양도제한 조건으로 1.2조원을 투자. 목표 ROE 2028년 10%, 2030년 12%. 엔비디아 <strong>B300 기반 GPUaaS</strong> 출시, 데이터센터 수용능력 약 120MW를 2029년 2배 이상으로 확대 계획.</span><a href="https://www.sedaily.com/article/20036415" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p>정책 배경도 우호적이다. 국회가 <strong>디지털자산기본법</strong>을 심의하며 원화 스테이블코인 발행의 법적 근거가 논의되고, 삼성SDS는 블록체인 플랫폼 '넥스레저'와 한국예탁결제원 STO 플랫폼 수주 이력을 근거로 <strong>차세대 디지털금융 인프라</strong> 수혜주로 거론됐다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 한국 원화 스테이블코인 제도화 (2026)</span><span class="evd-sum">국내 8개 은행이 원화 스테이블코인 공동 발행 JV 설립을 추진하고, 디지털자산기본법으로 민간 발행 근거가 마련되는 국면. 삼성SDS의 엔터프라이즈 블록체인(넥스레저) 인프라가 잠재 수혜로 지목됐다. <strong>다만 수익 기여는 제도화·상용화 이후의 이야기</strong>다.</span><a href="https://www.kedglobal.com/cryptocurrencies/newsView/ked202607010013" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- ============ ② 시세/실적 수치 ============ -->
+<h2>② 시세와 실적 — 재현 가능한 수치</h2>
+<div class="card">
+  <h3 style="margin-top:4px;">최근 1년 주가 추이</h3>
+  <svg class="spark" id="spark" viewBox="0 0 900 60" preserveAspectRatio="none" aria-label="주가 스파크라인"></svg>
+  <p class="desc" style="margin-top:8px;">2025-06 ~ 2026-07 종가. 4월 중순부터 상승 시동 → 5/27~6/1 <span class="up">폭등</span>(종가 261,500 → 369,500) → 6월 중순 이후 <span class="down">되돌림</span>. 변동성이 극심했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구간</th><th class="num">등락률</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>1주일 (7/7→7/14)</td><td class="num down">−4.6%</td><td>205,000 → 195,600</td></tr>
+      <tr><td>1개월 (6/15→7/14)</td><td class="num down">−20.3%</td><td>245,500 → 195,600 · 조정 국면</td></tr>
+      <tr><td>3개월 (4/14→7/14)</td><td class="num up">+28.4%</td><td>152,300 → 195,600 · 리레이팅 반영</td></tr>
+      <tr><td>52주 고가(종가) 대비</td><td class="num down">−47.1%</td><td>고점 369,500(6/1)</td></tr>
+      <tr><td>52주 저가(종가) 대비</td><td class="num up">+34.3%</td><td>저점 145,600(’25/9/2)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:8px;">거래 특징: 5/27 +30%·5/29 +25%·6/1 +20% 등 <strong>연속 급등</strong> 후 6월 초 −20%대 급락. 하루 등락폭이 20%를 넘나든 <strong>테마성 변동</strong>이었다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 캔들 (2026.07.14 조회)</span><span class="evd-sum">종가 기준 5/27 261,500(전일 201,500 대비 +29.8%), 5/29 307,000, 6/1 <strong>369,500</strong>(장중 고가 388,500). 이후 6/2 287,000, 6/10 216,000으로 급락. 거래량도 5/27~6/1 일 400만~780만주로 평소의 5~10배.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+
+  <h3>1분기(2026) 실적 — 서사와 엇갈린 숫자</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">1Q26</th><th class="num">1Q25</th><th class="num">YoY</th></tr></thead>
+    <tbody>
+      <tr><td>매출액</td><td class="num">3조 3,529억</td><td class="num">3조 4,898억</td><td class="num down">−3.9%</td></tr>
+      <tr><td>영업이익</td><td class="num">783억</td><td class="num">2,685억</td><td class="num down">−70.8%</td></tr>
+      <tr><td>· 클라우드 매출</td><td class="num">6,909억</td><td class="num">6,530억</td><td class="num up">+5.8%</td></tr>
+      <tr><td>· 물류 매출</td><td class="num">1조 7,424억</td><td class="num">1조 8,900억</td><td class="num down">−7.8%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:10px;">영업이익 급감은 <strong>퇴직급여 산정기준 변경에 따른 일회성 충당 약 1,120억원</strong>이 일시 반영된 영향이 크다 — 이를 제외해도 영업이익은 전년 대비 감소지만 낙폭은 완화된다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">삼성SDS · 1Q26 잠정실적 (2026.04.23)</span><span class="evd-sum">매출 3조 3,529억(−3.9%), 영업이익 <strong>783억(−70.8%)</strong>. 퇴직금 산정기준 변경에 따른 퇴직급여비용 <strong>1,120억원</strong>을 일시 반영. 클라우드 매출 6,909억(+5.8%)으로 ITO를 넘어 IT서비스 내 최대 비중, SCP 기반 CSP는 GPUaaS·공공 AX 수요로 +12%.</span><a href="https://www.samsungsds.com/kr/news/ss-260423.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 반면 <strong>물류 수익성은 구조적으로 악화</strong>: 물류 영업이익률이 2024년 1Q 3.3% → 2025년 1Q 2.3% → <strong>2026년 1Q 0.9%</strong>로 하락했다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성SDS 1Q26 물류 (2026.04.23)</span><span class="evd-sum">물류 매출 1조 7,424억(−7.8%, 물동량 감소·운임 하락). 물류 영업이익 153억, <strong>영업이익률 0.9%</strong>(’24 3.3% → ’25 2.3% → ’26 0.9%). 첼로스퀘어 매출은 +30% 이상 성장했으나 전체 물류 물량·운임 약세를 상쇄하지 못했다.</span><a href="https://www.viva100.com/article/20260423500270" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- ============ ③ PQC ============ -->
+<h2>③ PQC 분석 — 가격·물량·비용</h2>
+<div class="card">
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th style="width:60px;">축</th><th>진단</th><th style="width:70px;">방향</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>P</strong><br>가격</td>
+        <td>IT서비스는 <strong>프리미엄 판가</strong> 여지가 커졌다 — 엔비디아 최상위 B300 기반 GPUaaS는 고단가 구독형이고, 공공 AX·금융향 SCP 단가도 상승 여력. 반면 <strong>물류는 운임 하락</strong>으로 판가가 눌린다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · GPUaaS/B300 (2026)</span><span class="evd-sum">B300은 B200 대비 연산성능 9→15 페타플롭스로 향상된 최상위 칩. GPUaaS는 구독형 고단가 서비스로 P(판가)에 우호적. 물류는 첼로스퀘어 성장에도 <strong>운임 하락</strong>이 판가를 압박.</span><a href="https://www.sedaily.com/article/20036415" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+        <td><span class="verdict mid">혼조</span></td>
+      </tr>
+      <tr>
+        <td><strong>Q</strong><br>물량</td>
+        <td>IT서비스 물량은 <strong>증가</strong>: 클라우드 매출 <span class="up">+5.8%</span>, SCP 기반 CSP <span class="up">+12%</span>(GPUaaS·공공 AX), 첼로스퀘어 <span class="up">+30%</span>. 그러나 물류 전체는 <strong>물동량 감소</strong>로 매출 <span class="down">−7.8%</span>. 성장 물량과 감소 물량이 공존.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">삼성SDS · 1Q26 부문 실적 (2026.04.23)</span><span class="evd-sum">클라우드 6,909억(+5.8%), CSP +12%. 첼로스퀘어 +30%↑. 물류 전체는 물동량 감소로 −7.8%. 즉 <strong>고성장 신사업(클라우드·GPUaaS) 물량 ↑ vs 레거시 물류 물량 ↓</strong> 구조.</span><a href="https://www.samsungsds.com/kr/news/ss-260423.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+        <td><span class="verdict ok">개선</span></td>
+      </tr>
+      <tr>
+        <td><strong>C</strong><br>비용</td>
+        <td>비용 효율은 <strong>악화</strong> 국면. 전사 영업이익률이 일회성(퇴직급여)으로 눌렸고, 그와 별개로 <strong>물류 OPM이 3.3%→2.3%→0.9%로 추세 하락</strong>. 게다가 10조 CAPEX 초입이라 감가상각 부담이 앞으로 커진다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성SDS 마진 추이 (2026.04.23)</span><span class="evd-sum">1Q26 전사 영업이익률 약 2.3%로 급락(일회성 1,120억 포함). 물류 OPM 0.9%로 <strong>2년 연속 하락</strong>. AI 인프라 5조 등 대규모 투자로 향후 감가상각비 증가 예상 — 단기 비용구조에 부담.</span><a href="https://www.viva100.com/article/20260423500270" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+        <td><span class="verdict no">악화</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:10px;">요약: <strong>물량(Q)은 신사업 중심으로 개선, 가격(P)은 혼조, 비용(C)은 투자·마진 압박으로 악화.</strong> 성장의 질은 '신사업이 레거시 부진을 얼마나 빨리 넘어서느냐'에 달렸다.</p>
+</div>
+
+<!-- ============ ④ Growth Sustainability ============ -->
+<h2>④ 성장 지속성 6항목 판정</h2>
+<div class="note">삼성SDS는 제조업이 아니라 IT서비스·물류 기업이다. '공장 가동률'류 항목은 <strong>데이터센터 가동률/설비 투자</strong>로 치환해 판정했다. ✓=충족 / △=부분·확인제한 / ✗=미충족.</div>
+<div class="card">
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th style="width:34px;">#</th><th>항목</th><th style="width:52px;">판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출 증가와 함께 (공장)가동률 상승</td><td><span class="verdict mid">△</span></td>
+        <td>데이터센터로 치환. 클라우드·GPUaaS 수요는 늘지만 신규 B300 데이터센터는 <strong>가동 초기</strong>라 가동률 상승을 수치로 확인하기 이르다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 데이터센터 확장 (2026)</span><span class="evd-sum">현 수용능력 약 120MW를 2029년 2배 이상 확대 계획. GPUaaS 수요는 확인되나 <strong>신규 설비 가동률 지표는 미공개</strong>라 상승 추세를 단정하기 어려움.</span><a href="https://www.sedaily.com/article/20036415" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률이 올라오는가</td><td><span class="verdict mid">△</span></td>
+        <td>10조 로드맵은 <strong>이제 집행 초입</strong>. GPUaaS 매출이 붙기 시작했으나 대규모 CAPEX의 회수(가동률→이익) 확인은 앞으로의 과제.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 10조 투자 로드맵 (2026)</span><span class="evd-sum">2031년까지 AI 인프라 5조 등 총 10조 투자. 아직 초기라 <strong>투자→가동률→수익</strong> 사이클이 검증 전. CSP +12%는 긍정 신호지만 CAPEX 대비 회수 판단은 시기상조.</span><a href="https://www.hankyung.com/article/202604294137i" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>3</td><td>수주가 매출보다 빠르게 증가</td><td><span class="verdict mid">△</span></td>
+        <td>클라우드·공공 AX 수요 확대는 뚜렷하나 수주잔고 YoY를 매출 YoY와 직접 비교할 공개 수치가 제한적. 2Q 이후 공공 GPUaaS·금융 매출 상승 <strong>전망</strong>은 긍정적.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">삼성SDS · 2Q 전망 (2026.04.23)</span><span class="evd-sum">회사는 2Q에 공공 GPUaaS 증가·금융 매출 상승·범정부 AI 서비스 확산으로 클라우드 확대를 전망. 다만 <strong>수주잔고 세부 수치는 미공개</strong>라 '수주>매출' 여부를 정량 확정하기 어려움.</span><a href="https://www.samsungsds.com/kr/news/ss-260423.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>4</td><td>미국향(대미 수출) 매출인가</td><td><span class="verdict no">✗</span></td>
+        <td>매출 대부분이 <strong>국내·삼성 계열 및 글로벌 물류</strong>. 미국 시장을 직접 겨냥한 매출 비중이 성장 동력의 핵심은 아니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">사업 구조 · 삼성SDS (2026)</span><span class="evd-sum">IT서비스는 삼성 계열·국내 공공·금융 중심, 물류는 글로벌이나 특정 대미 수출 수혜 구조가 아님. <strong>미국향 매출 테마와는 무관</strong>.</span><span class="evd-nolink">공개 사업구조 기반 정성 판단 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>5</td><td>밸류에이션 체계 전환(PBR→PER 리레이팅)</td><td><span class="verdict ok">✓</span></td>
+        <td>'단순 SI(자산·현금 기반 저PER)' → 'AI 플랫폼(성장주 PER)'로 <strong>리레이팅 서사가 명확</strong>. 다만 아래 P/E 밴드에서 보듯 이미 <strong>88 백분위</strong>로 상당 부분 선반영됐다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">스크립트 계산 · P/E 밴드 (2026.07.14)</span><span class="evd-sum">현재 Forward P/E <strong>18.8배</strong> = 1년 평균 17.1배 위, 백분위 <strong>88</strong>, 고점 36.6배(6/1). 증권사 논조도 '10조 투자·ROE 개선 → 밸류 재평가'로 이동. 리레이팅은 진행 중이나 <strong>값은 이미 프리미엄</strong>.</span><span class="evd-nolink">build_series.py 계산값 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td><span class="verdict ok">✓</span></td>
+        <td>AI 인프라·GPUaaS·클라우드·디지털자산(STO·스테이블코인) 등 <strong>노출된 시장 자체가 커지는</strong> 국면. 구조적 수혜 각은 분명하다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · AI/디지털자산 TAM (2026)</span><span class="evd-sum">AI 데이터센터·GPU 구독·공공 AX·원화 스테이블코인/STO 제도화 등 삼성SDS가 노출된 시장이 동시 확장. <strong>TAM 확대 수혜</strong>는 유효하나 점유·수익화 속도가 관건.</span><a href="https://www.kedglobal.com/cryptocurrencies/newsView/ked202607010013" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:10px;">종합: <strong>✓ 2 / △ 3 / ✗ 1.</strong> '시장 확대(TAM)와 밸류 리레이팅' 축은 통과하지만, '설비 가동률·수주>매출' 같은 <strong>실제 실적 지표는 아직 검증 전(△)</strong>. 서사 &gt; 실적인 현재 상태를 그대로 보여준다.</p>
+</div>
+
+<!-- ============ ⑤ 반대 논리 ============ -->
+<h2>⑤ 반대 논리 — 리스크</h2>
+<div class="card prose">
+  <p><strong>1) 밸류에이션이 싸지 않다.</strong> 고점 대비 −47% 조정에도 Forward P/E 18.8배는 1년 평균(17.1배) 위, 백분위 88이다. '조정 = 저가 매수'라는 직관과 달리 <strong>테마 프리미엄이 여전히 상당 부분 남아</strong> 있다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">스크립트 계산 · P/E 밴드 (2026.07.14)</span><span class="evd-sum">현재 18.8배(백분위 88). 지난 1년 대부분은 14~17배에서 거래됐고, 급등기(5~6월)에 36.6배까지 치솟았다가 되돌림. 현재 레벨은 <strong>역사적 밴드 상단부</strong>.</span><span class="evd-nolink">build_series.py 계산값 — 원문 링크 없음</span></span></span></p>
+  <p><strong>2) 실적이 서사를 아직 못 따라온다.</strong> 1Q26 영업이익 −70.8%(일회성 제외해도 감소), 물류 OPM 0.9%로 추세 하락. 컨센서스도 2026 영업이익 −12.4%(OPM 6.0%)를 본다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">증권사 컨센서스 (2026)</span><span class="evd-sum">2026 매출 14.09조(+1.1%), 영업이익 <strong>8,387억(−12.4%, OPM 6.0%)</strong> 전망. 순이익 약 7,570억, EPS 약 9,783원. 즉 <strong>올해는 이익 역성장</strong>을 컨센서스가 반영 중.</span><a href="https://kbthink.com/securities-view.html?docId=20260423155420613K" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>3) 디지털자산 수혜는 '옵션'에 가깝다.</strong> 두나무 지분은 4% 소수지분으로 직접 실적 기여가 제한적이고, 원화 스테이블코인·STO는 <strong>제도화·상용화·수익화까지 시간</strong>이 걸린다. 내러티브 의존도가 높다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 두나무 지분 (2026.06.01)</span><span class="evd-sum">삼성SDS 몫 약 1,532억원의 <strong>4% 지분</strong>은 지분법·평가 이익 성격이 크고 본업 실적 직접 기여는 제한적. 스테이블코인은 법제화 진행 단계로 <strong>매출 인식 시점 불확실</strong>.</span><a href="https://v.daum.net/v/20260601060233382?f=p" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>4) 대규모 CAPEX = ROE 희석 리스크.</strong> 10조 투자는 중장기 성장을 끌어올릴 수 있지만, 선행 감가상각·자본 투입으로 <strong>단기 ROE·이익률을 누른다</strong>. 회수(가동률·수익화)가 지연되면 리레이팅 논리가 흔들린다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 10조 로드맵 리스크 (2026.04)</span><span class="evd-sum">회사 목표는 ROE 2028년 10%·2030년 12%지만 현재는 그 이하. 대규모 AI 인프라 투자와 M&A 4조가 <strong>성과로 연결되는 시점의 가시성</strong>이 관건이라는 지적.</span><a href="https://www.hankyung.com/article/202604294137i" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>5) 변동성 그 자체가 리스크.</strong> 하루 ±20~25%를 오간 테마성 급등락은 진입 시점에 따라 손익이 크게 갈린다.</p>
+</div>
+
+<!-- ============ ⑥ 다음 이벤트 ============ -->
+<h2>⑥ 다음 확인 이벤트</h2>
+<div class="card">
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>왜 중요한가</th></tr></thead>
+    <tbody>
+      <tr><td>7월 말~8월</td><td>2Q26 실적 발표(결산실적공시예고 접수)</td><td>일회성 제거 후 <strong>본업 이익 회복·클라우드 가속</strong> 여부 확인 — 서사↔실적 간극의 첫 검증<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 결산실적공시예고(안내공시) (2026.07.06)</span><span class="evd-sum">삼성에스디에스가 실적 발표 일정을 예고하는 안내공시를 접수. 함께 <strong>IR 개최 안내공시</strong>도 제출돼 2Q 실적·투자 로드맵 진척이 공유될 전망.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800608" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>7월~</td><td>기업설명회(IR)</td><td>10조 투자·GPUaaS 가동률·M&A 진척에 대한 회사 가이던스 업데이트<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 기업설명회(IR)개최 안내공시 (2026.07.06)</span><span class="evd-sum">삼성에스디에스 IR 개최 안내공시. 투자 로드맵 집행 상황과 AI·클라우드 수주 파이프라인에 대한 시장 소통 창구.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260706800616" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>진행 중</td><td>디지털자산기본법·원화 스테이블코인 입법</td><td>넥스레저·STO 수혜의 <strong>제도화 타임라인</strong>이 내러티브의 실체화 여부를 좌우</td></tr>
+      <tr><td>하반기</td><td>B300 GPUaaS 가동률·신규 수주</td><td>CAPEX 회수 사이클(설비→가동→이익)의 첫 신호</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- ============ ⑦ 밸류에이션 위치 + PE 밴드 ============ -->
+<h2>⑦ 밸류에이션 위치 — Forward P/E 밴드</h2>
+<div class="card prose" style="margin-bottom:8px;">
+  <p>핵심은 <strong>'조정했지만 싸진 않다'</strong>는 것. 고점(6/1) 36.6배에서 현재 18.8배로 내려왔지만, 이는 지난 1년 밴드의 <strong>88 백분위</strong>이자 평균(17.1배) 위다. 증권사 6개월 평균 목표주가 211,300원(현재가 +8%)도 대략 <strong>20배 안팎</strong>을 함의한다 — 즉 시장은 이미 '평균보다 비싼' 밸류를 <strong>공정가</strong>로 보고 있다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">증권사 목표주가 (2026)</span><span class="evd-sum">6개월 평균 목표주가 <strong>211,300원</strong>. KB 230,000원(Buy), 하나 220,000원(Buy). 2027 EPS 추정 약 11,244원 기준으로도 목표주가는 성장 회복을 전제로 한 프리미엄.</span><a href="https://news.nate.com/view/20260424n06279" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- ===== [3] PE 밴드 드롭다운 ===== -->
+<details class="pe-embed" data-peb="018260" open>
+  <summary>
+    <span class="peb-t">📊 삼성에스디에스 — Forward P/E 밴드 분석</span>
+    <span class="peb-s">현재 18.8배 · 기간 평균 17.1배 · 백분위 88</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc">밴드 = 각 시점의 추정 NTM EPS × 배수(14·19·25·32). 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균(17.1배).</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM EPS 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows"></tbody>
+      </table>
+    </div>
+    <p class="desc peb-foot" style="margin-top:12px;">환산 가정: NTM EPS 직접 입력(원), 발행주식수 7,737.8만주, 앵커 간 선형 보간. 앵커는 2026 EPS 약 9,783원·2027 약 11,244원 컨센서스와 실적 이벤트를 반영한 추정.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스:</strong> 토스 Open API(시세·종목정보·일봉), DART 전자공시(실적·공시), 삼성SDS IR·언론 보도, 증권사 리포트(하나·KB·교보 등). 생성일 2026-07-14(기준 시세 직전 거래일 포함).</p>
+  <p><strong>추정치 표기:</strong> NTM EPS·Forward P/E 밴드는 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>이며 실제 컨센서스 집계와 다를 수 있습니다. 시가총액·환산주가는 근사치입니다.</p>
+  <p>본 자료는 <strong>정보 제공 목적</strong>이며 특정 종목의 매수·매도를 권유하지 않습니다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있습니다.</p>
+</footer>
+
+</div>
+
+<!-- ===== [4] WIDGETS JS ===== -->
+<script>
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].c) - 11, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    DATA.anchors.forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {
+  "018260": {"rows": [{"d": "2025-06-23", "c": 191800.0, "eps": 10800, "pe": 17.8}, {"d": "2025-06-24", "c": 191000.0, "eps": 10797.0, "pe": 17.7}, {"d": "2025-06-25", "c": 178800.0, "eps": 10794.0, "pe": 16.6}, {"d": "2025-06-26", "c": 173100.0, "eps": 10791.0, "pe": 16.0}, {"d": "2025-06-27", "c": 172500.0, "eps": 10788.0, "pe": 16.0}, {"d": "2025-06-30", "c": 169300.0, "eps": 10779.0, "pe": 15.7}, {"d": "2025-07-01", "c": 168800.0, "eps": 10776.0, "pe": 15.7}, {"d": "2025-07-02", "c": 165000.0, "eps": 10773.0, "pe": 15.3}, {"d": "2025-07-03", "c": 165700.0, "eps": 10770.0, "pe": 15.4}, {"d": "2025-07-04", "c": 164000.0, "eps": 10767.0, "pe": 15.2}, {"d": "2025-07-07", "c": 166000.0, "eps": 10758.0, "pe": 15.4}, {"d": "2025-07-08", "c": 165100.0, "eps": 10755.0, "pe": 15.4}, {"d": "2025-07-09", "c": 167300.0, "eps": 10752.0, "pe": 15.6}, {"d": "2025-07-10", "c": 177200.0, "eps": 10748.0, "pe": 16.5}, {"d": "2025-07-11", "c": 182900.0, "eps": 10745.0, "pe": 17.0}, {"d": "2025-07-14", "c": 183900.0, "eps": 10736.0, "pe": 17.1}, {"d": "2025-07-15", "c": 183900.0, "eps": 10733.0, "pe": 17.1}, {"d": "2025-07-16", "c": 186900.0, "eps": 10730.0, "pe": 17.4}, {"d": "2025-07-17", "c": 185800.0, "eps": 10727.0, "pe": 17.3}, {"d": "2025-07-18", "c": 186300.0, "eps": 10724.0, "pe": 17.4}, {"d": "2025-07-21", "c": 183000.0, "eps": 10715.0, "pe": 17.1}, {"d": "2025-07-22", "c": 177100.0, "eps": 10712.0, "pe": 16.5}, {"d": "2025-07-23", "c": 173600.0, "eps": 10709.0, "pe": 16.2}, {"d": "2025-07-24", "c": 161700.0, "eps": 10706.0, "pe": 15.1}, {"d": "2025-07-25", "c": 159800.0, "eps": 10703.0, "pe": 14.9}, {"d": "2025-07-28", "c": 157100.0, "eps": 10694.0, "pe": 14.7}, {"d": "2025-07-29", "c": 157900.0, "eps": 10691.0, "pe": 14.8}, {"d": "2025-07-30", "c": 159600.0, "eps": 10688.0, "pe": 14.9}, {"d": "2025-07-31", "c": 159800.0, "eps": 10685.0, "pe": 15.0}, {"d": "2025-08-01", "c": 152300.0, "eps": 10682.0, "pe": 14.3}, {"d": "2025-08-04", "c": 154500.0, "eps": 10673.0, "pe": 14.5}, {"d": "2025-08-05", "c": 154700.0, "eps": 10670.0, "pe": 14.5}, {"d": "2025-08-06", "c": 154100.0, "eps": 10667.0, "pe": 14.4}, {"d": "2025-08-07", "c": 155600.0, "eps": 10664.0, "pe": 14.6}, {"d": "2025-08-08", "c": 154600.0, "eps": 10661.0, "pe": 14.5}, {"d": "2025-08-11", "c": 153900.0, "eps": 10652.0, "pe": 14.4}, {"d": "2025-08-12", "c": 152100.0, "eps": 10648.0, "pe": 14.3}, {"d": "2025-08-13", "c": 151800.0, "eps": 10645.0, "pe": 14.3}, {"d": "2025-08-14", "c": 152000.0, "eps": 10642.0, "pe": 14.3}, {"d": "2025-08-18", "c": 150700.0, "eps": 10630.0, "pe": 14.2}, {"d": "2025-08-19", "c": 148800.0, "eps": 10627.0, "pe": 14.0}, {"d": "2025-08-20", "c": 147900.0, "eps": 10624.0, "pe": 13.9}, {"d": "2025-08-21", "c": 146900.0, "eps": 10621.0, "pe": 13.8}, {"d": "2025-08-22", "c": 147700.0, "eps": 10618.0, "pe": 13.9}, {"d": "2025-08-25", "c": 149800.0, "eps": 10609.0, "pe": 14.1}, {"d": "2025-08-26", "c": 147400.0, "eps": 10606.0, "pe": 13.9}, {"d": "2025-08-27", "c": 146300.0, "eps": 10603.0, "pe": 13.8}, {"d": "2025-08-28", "c": 147300.0, "eps": 10600.0, "pe": 13.9}, {"d": "2025-08-29", "c": 147400.0, "eps": 10597.0, "pe": 13.9}, {"d": "2025-09-01", "c": 146600.0, "eps": 10588.0, "pe": 13.8}, {"d": "2025-09-02", "c": 145600.0, "eps": 10585.0, "pe": 13.8}, {"d": "2025-09-03", "c": 146500.0, "eps": 10582.0, "pe": 13.8}, {"d": "2025-09-04", "c": 150900.0, "eps": 10579.0, "pe": 14.3}, {"d": "2025-09-05", "c": 151900.0, "eps": 10576.0, "pe": 14.4}, {"d": "2025-09-08", "c": 154800.0, "eps": 10567.0, "pe": 14.6}, {"d": "2025-09-09", "c": 160800.0, "eps": 10564.0, "pe": 15.2}, {"d": "2025-09-10", "c": 162000.0, "eps": 10561.0, "pe": 15.3}, {"d": "2025-09-11", "c": 163800.0, "eps": 10558.0, "pe": 15.5}, {"d": "2025-09-12", "c": 167600.0, "eps": 10555.0, "pe": 15.9}, {"d": "2025-09-15", "c": 167600.0, "eps": 10545.0, "pe": 15.9}, {"d": "2025-09-16", "c": 166900.0, "eps": 10542.0, "pe": 15.8}, {"d": "2025-09-17", "c": 163500.0, "eps": 10539.0, "pe": 15.5}, {"d": "2025-09-18", "c": 166000.0, "eps": 10536.0, "pe": 15.8}, {"d": "2025-09-19", "c": 163600.0, "eps": 10533.0, "pe": 15.5}, {"d": "2025-09-22", "c": 164500.0, "eps": 10524.0, "pe": 15.6}, {"d": "2025-09-23", "c": 168000.0, "eps": 10521.0, "pe": 16.0}, {"d": "2025-09-24", "c": 164700.0, "eps": 10518.0, "pe": 15.7}, {"d": "2025-09-25", "c": 165200.0, "eps": 10515.0, "pe": 15.7}, {"d": "2025-09-26", "c": 161400.0, "eps": 10512.0, "pe": 15.4}, {"d": "2025-09-29", "c": 167600.0, "eps": 10503.0, "pe": 16.0}, {"d": "2025-09-30", "c": 164300.0, "eps": 10500.0, "pe": 15.6}, {"d": "2025-10-01", "c": 180500.0, "eps": 10497.0, "pe": 17.2}, {"d": "2025-10-02", "c": 166800.0, "eps": 10495.0, "pe": 15.9}, {"d": "2025-10-10", "c": 170200.0, "eps": 10474.0, "pe": 16.2}, {"d": "2025-10-13", "c": 167200.0, "eps": 10466.0, "pe": 16.0}, {"d": "2025-10-14", "c": 163000.0, "eps": 10463.0, "pe": 15.6}, {"d": "2025-10-15", "c": 165900.0, "eps": 10461.0, "pe": 15.9}, {"d": "2025-10-16", "c": 168300.0, "eps": 10458.0, "pe": 16.1}, {"d": "2025-10-17", "c": 164900.0, "eps": 10456.0, "pe": 15.8}, {"d": "2025-10-20", "c": 170500.0, "eps": 10448.0, "pe": 16.3}, {"d": "2025-10-21", "c": 167000.0, "eps": 10445.0, "pe": 16.0}, {"d": "2025-10-22", "c": 168100.0, "eps": 10443.0, "pe": 16.1}, {"d": "2025-10-23", "c": 164100.0, "eps": 10440.0, "pe": 15.7}, {"d": "2025-10-24", "c": 167500.0, "eps": 10437.0, "pe": 16.0}, {"d": "2025-10-27", "c": 173600.0, "eps": 10430.0, "pe": 16.6}, {"d": "2025-10-28", "c": 170000.0, "eps": 10427.0, "pe": 16.3}, {"d": "2025-10-29", "c": 179300.0, "eps": 10424.0, "pe": 17.2}, {"d": "2025-10-30", "c": 168600.0, "eps": 10422.0, "pe": 16.2}, {"d": "2025-10-31", "c": 183100.0, "eps": 10419.0, "pe": 17.6}, {"d": "2025-11-03", "c": 183800.0, "eps": 10411.0, "pe": 17.7}, {"d": "2025-11-04", "c": 185400.0, "eps": 10409.0, "pe": 17.8}, {"d": "2025-11-05", "c": 177400.0, "eps": 10406.0, "pe": 17.0}, {"d": "2025-11-06", "c": 172700.0, "eps": 10403.0, "pe": 16.6}, {"d": "2025-11-07", "c": 167700.0, "eps": 10401.0, "pe": 16.1}, {"d": "2025-11-10", "c": 175500.0, "eps": 10393.0, "pe": 16.9}, {"d": "2025-11-11", "c": 173600.0, "eps": 10390.0, "pe": 16.7}, {"d": "2025-11-12", "c": 175900.0, "eps": 10388.0, "pe": 16.9}, {"d": "2025-11-13", "c": 173100.0, "eps": 10385.0, "pe": 16.7}, {"d": "2025-11-14", "c": 167300.0, "eps": 10383.0, "pe": 16.1}, {"d": "2025-11-17", "c": 168300.0, "eps": 10375.0, "pe": 16.2}, {"d": "2025-11-18", "c": 163600.0, "eps": 10372.0, "pe": 15.8}, {"d": "2025-11-19", "c": 165000.0, "eps": 10370.0, "pe": 15.9}, {"d": "2025-11-20", "c": 168800.0, "eps": 10367.0, "pe": 16.3}, {"d": "2025-11-21", "c": 167600.0, "eps": 10364.0, "pe": 16.2}, {"d": "2025-11-24", "c": 167200.0, "eps": 10357.0, "pe": 16.1}, {"d": "2025-11-25", "c": 168000.0, "eps": 10354.0, "pe": 16.2}, {"d": "2025-11-26", "c": 169400.0, "eps": 10351.0, "pe": 16.4}, {"d": "2025-11-27", "c": 169200.0, "eps": 10349.0, "pe": 16.3}, {"d": "2025-11-28", "c": 168200.0, "eps": 10346.0, "pe": 16.3}, {"d": "2025-12-01", "c": 169500.0, "eps": 10338.0, "pe": 16.4}, {"d": "2025-12-02", "c": 171400.0, "eps": 10336.0, "pe": 16.6}, {"d": "2025-12-03", "c": 172500.0, "eps": 10333.0, "pe": 16.7}, {"d": "2025-12-04", "c": 178100.0, "eps": 10330.0, "pe": 17.2}, {"d": "2025-12-05", "c": 175700.0, "eps": 10328.0, "pe": 17.0}, {"d": "2025-12-08", "c": 175100.0, "eps": 10320.0, "pe": 17.0}, {"d": "2025-12-09", "c": 176500.0, "eps": 10317.0, "pe": 17.1}, {"d": "2025-12-10", "c": 173200.0, "eps": 10315.0, "pe": 16.8}, {"d": "2025-12-11", "c": 173600.0, "eps": 10312.0, "pe": 16.8}, {"d": "2025-12-12", "c": 175300.0, "eps": 10310.0, "pe": 17.0}, {"d": "2025-12-15", "c": 174800.0, "eps": 10302.0, "pe": 17.0}, {"d": "2025-12-16", "c": 172700.0, "eps": 10299.0, "pe": 16.8}, {"d": "2025-12-17", "c": 172300.0, "eps": 10297.0, "pe": 16.7}, {"d": "2025-12-18", "c": 170200.0, "eps": 10294.0, "pe": 16.5}, {"d": "2025-12-19", "c": 171400.0, "eps": 10291.0, "pe": 16.7}, {"d": "2025-12-22", "c": 169800.0, "eps": 10283.0, "pe": 16.5}, {"d": "2025-12-23", "c": 169700.0, "eps": 10281.0, "pe": 16.5}, {"d": "2025-12-24", "c": 169100.0, "eps": 10278.0, "pe": 16.5}, {"d": "2025-12-26", "c": 170000.0, "eps": 10273.0, "pe": 16.5}, {"d": "2025-12-29", "c": 171200.0, "eps": 10265.0, "pe": 16.7}, {"d": "2025-12-30", "c": 170800.0, "eps": 10263.0, "pe": 16.6}, {"d": "2026-01-02", "c": 175600.0, "eps": 10255.0, "pe": 17.1}, {"d": "2026-01-05", "c": 177000.0, "eps": 10247.0, "pe": 17.3}, {"d": "2026-01-06", "c": 180500.0, "eps": 10244.0, "pe": 17.6}, {"d": "2026-01-07", "c": 178000.0, "eps": 10242.0, "pe": 17.4}, {"d": "2026-01-08", "c": 175200.0, "eps": 10239.0, "pe": 17.1}, {"d": "2026-01-09", "c": 172500.0, "eps": 10237.0, "pe": 16.9}, {"d": "2026-01-12", "c": 174800.0, "eps": 10229.0, "pe": 17.1}, {"d": "2026-01-13", "c": 182600.0, "eps": 10226.0, "pe": 17.9}, {"d": "2026-01-14", "c": 180500.0, "eps": 10223.0, "pe": 17.7}, {"d": "2026-01-15", "c": 175900.0, "eps": 10221.0, "pe": 17.2}, {"d": "2026-01-16", "c": 180500.0, "eps": 10218.0, "pe": 17.7}, {"d": "2026-01-19", "c": 183400.0, "eps": 10210.0, "pe": 18.0}, {"d": "2026-01-20", "c": 177300.0, "eps": 10208.0, "pe": 17.4}, {"d": "2026-01-21", "c": 177700.0, "eps": 10205.0, "pe": 17.4}, {"d": "2026-01-22", "c": 170700.0, "eps": 10203.0, "pe": 16.7}, {"d": "2026-01-23", "c": 174100.0, "eps": 10200.0, "pe": 17.1}, {"d": "2026-01-26", "c": 173000.0, "eps": 10187.0, "pe": 17.0}, {"d": "2026-01-27", "c": 177500.0, "eps": 10182.0, "pe": 17.4}, {"d": "2026-01-28", "c": 176600.0, "eps": 10178.0, "pe": 17.4}, {"d": "2026-01-29", "c": 176800.0, "eps": 10174.0, "pe": 17.4}, {"d": "2026-01-30", "c": 173300.0, "eps": 10169.0, "pe": 17.0}, {"d": "2026-02-02", "c": 167400.0, "eps": 10156.0, "pe": 16.5}, {"d": "2026-02-03", "c": 172100.0, "eps": 10152.0, "pe": 17.0}, {"d": "2026-02-04", "c": 173000.0, "eps": 10147.0, "pe": 17.0}, {"d": "2026-02-05", "c": 169000.0, "eps": 10143.0, "pe": 16.7}, {"d": "2026-02-06", "c": 166500.0, "eps": 10138.0, "pe": 16.4}, {"d": "2026-02-09", "c": 167800.0, "eps": 10125.0, "pe": 16.6}, {"d": "2026-02-10", "c": 170100.0, "eps": 10121.0, "pe": 16.8}, {"d": "2026-02-11", "c": 171600.0, "eps": 10116.0, "pe": 17.0}, {"d": "2026-02-12", "c": 172800.0, "eps": 10112.0, "pe": 17.1}, {"d": "2026-02-13", "c": 170500.0, "eps": 10108.0, "pe": 16.9}, {"d": "2026-02-19", "c": 171700.0, "eps": 10081.0, "pe": 17.0}, {"d": "2026-02-20", "c": 172900.0, "eps": 10077.0, "pe": 17.2}, {"d": "2026-02-23", "c": 175700.0, "eps": 10064.0, "pe": 17.5}, {"d": "2026-02-24", "c": 175100.0, "eps": 10059.0, "pe": 17.4}, {"d": "2026-02-25", "c": 178900.0, "eps": 10055.0, "pe": 17.8}, {"d": "2026-02-26", "c": 191400.0, "eps": 10051.0, "pe": 19.0}, {"d": "2026-02-27", "c": 194900.0, "eps": 10046.0, "pe": 19.4}, {"d": "2026-03-03", "c": 173000.0, "eps": 10029.0, "pe": 17.3}, {"d": "2026-03-04", "c": 161900.0, "eps": 10024.0, "pe": 16.2}, {"d": "2026-03-05", "c": 167600.0, "eps": 10020.0, "pe": 16.7}, {"d": "2026-03-06", "c": 164000.0, "eps": 10015.0, "pe": 16.4}, {"d": "2026-03-09", "c": 159400.0, "eps": 10002.0, "pe": 15.9}, {"d": "2026-03-10", "c": 164400.0, "eps": 9998.0, "pe": 16.4}, {"d": "2026-03-11", "c": 164200.0, "eps": 9993.0, "pe": 16.4}, {"d": "2026-03-12", "c": 162900.0, "eps": 9989.0, "pe": 16.3}, {"d": "2026-03-13", "c": 161400.0, "eps": 9985.0, "pe": 16.2}, {"d": "2026-03-16", "c": 160100.0, "eps": 9971.0, "pe": 16.1}, {"d": "2026-03-17", "c": 164200.0, "eps": 9967.0, "pe": 16.5}, {"d": "2026-03-18", "c": 168000.0, "eps": 9963.0, "pe": 16.9}, {"d": "2026-03-19", "c": 161300.0, "eps": 9958.0, "pe": 16.2}, {"d": "2026-03-20", "c": 162000.0, "eps": 9954.0, "pe": 16.3}, {"d": "2026-03-23", "c": 150700.0, "eps": 9941.0, "pe": 15.2}, {"d": "2026-03-24", "c": 158000.0, "eps": 9936.0, "pe": 15.9}, {"d": "2026-03-25", "c": 159900.0, "eps": 9932.0, "pe": 16.1}, {"d": "2026-03-26", "c": 155300.0, "eps": 9927.0, "pe": 15.6}, {"d": "2026-03-27", "c": 154800.0, "eps": 9923.0, "pe": 15.6}, {"d": "2026-03-30", "c": 153800.0, "eps": 9910.0, "pe": 15.5}, {"d": "2026-03-31", "c": 150500.0, "eps": 9905.0, "pe": 15.2}, {"d": "2026-04-01", "c": 155900.0, "eps": 9901.0, "pe": 15.7}, {"d": "2026-04-02", "c": 149700.0, "eps": 9897.0, "pe": 15.1}, {"d": "2026-04-03", "c": 152300.0, "eps": 9892.0, "pe": 15.4}, {"d": "2026-04-06", "c": 153200.0, "eps": 9879.0, "pe": 15.5}, {"d": "2026-04-07", "c": 150700.0, "eps": 9875.0, "pe": 15.3}, {"d": "2026-04-08", "c": 154600.0, "eps": 9870.0, "pe": 15.7}, {"d": "2026-04-09", "c": 149100.0, "eps": 9866.0, "pe": 15.1}, {"d": "2026-04-10", "c": 149100.0, "eps": 9862.0, "pe": 15.1}, {"d": "2026-04-13", "c": 148400.0, "eps": 9848.0, "pe": 15.1}, {"d": "2026-04-14", "c": 152300.0, "eps": 9844.0, "pe": 15.5}, {"d": "2026-04-15", "c": 189500.0, "eps": 9840.0, "pe": 19.3}, {"d": "2026-04-16", "c": 188000.0, "eps": 9835.0, "pe": 19.1}, {"d": "2026-04-17", "c": 183600.0, "eps": 9831.0, "pe": 18.7}, {"d": "2026-04-20", "c": 179600.0, "eps": 9818.0, "pe": 18.3}, {"d": "2026-04-21", "c": 181100.0, "eps": 9813.0, "pe": 18.5}, {"d": "2026-04-22", "c": 180400.0, "eps": 9809.0, "pe": 18.4}, {"d": "2026-04-23", "c": 176900.0, "eps": 9804.0, "pe": 18.0}, {"d": "2026-04-24", "c": 170600.0, "eps": 9800.0, "pe": 17.4}, {"d": "2026-04-27", "c": 170900.0, "eps": 9823.0, "pe": 17.4}, {"d": "2026-04-28", "c": 171800.0, "eps": 9831.0, "pe": 17.5}, {"d": "2026-04-29", "c": 170700.0, "eps": 9838.0, "pe": 17.4}, {"d": "2026-04-30", "c": 167800.0, "eps": 9846.0, "pe": 17.0}, {"d": "2026-05-04", "c": 167100.0, "eps": 9877.0, "pe": 16.9}, {"d": "2026-05-06", "c": 171400.0, "eps": 9892.0, "pe": 17.3}, {"d": "2026-05-07", "c": 177400.0, "eps": 9900.0, "pe": 17.9}, {"d": "2026-05-08", "c": 175900.0, "eps": 9908.0, "pe": 17.8}, {"d": "2026-05-11", "c": 198100.0, "eps": 9931.0, "pe": 19.9}, {"d": "2026-05-12", "c": 175300.0, "eps": 9938.0, "pe": 17.6}, {"d": "2026-05-13", "c": 177700.0, "eps": 9946.0, "pe": 17.9}, {"d": "2026-05-14", "c": 183800.0, "eps": 9954.0, "pe": 18.5}, {"d": "2026-05-15", "c": 190500.0, "eps": 9962.0, "pe": 19.1}, {"d": "2026-05-18", "c": 180400.0, "eps": 9985.0, "pe": 18.1}, {"d": "2026-05-19", "c": 168600.0, "eps": 9992.0, "pe": 16.9}, {"d": "2026-05-20", "c": 165500.0, "eps": 10000.0, "pe": 16.6}, {"d": "2026-05-21", "c": 183300.0, "eps": 10008.0, "pe": 18.3}, {"d": "2026-05-22", "c": 194000.0, "eps": 10015.0, "pe": 19.4}, {"d": "2026-05-26", "c": 201500.0, "eps": 10046.0, "pe": 20.1}, {"d": "2026-05-27", "c": 261500.0, "eps": 10054.0, "pe": 26.0}, {"d": "2026-05-28", "c": 244500.0, "eps": 10062.0, "pe": 24.3}, {"d": "2026-05-29", "c": 307000.0, "eps": 10069.0, "pe": 30.5}, {"d": "2026-06-01", "c": 369500.0, "eps": 10092.0, "pe": 36.6}, {"d": "2026-06-02", "c": 287000.0, "eps": 10100.0, "pe": 28.4}, {"d": "2026-06-04", "c": 252000.0, "eps": 10115.0, "pe": 24.9}, {"d": "2026-06-05", "c": 252000.0, "eps": 10123.0, "pe": 24.9}, {"d": "2026-06-08", "c": 266500.0, "eps": 10146.0, "pe": 26.3}, {"d": "2026-06-09", "c": 246000.0, "eps": 10154.0, "pe": 24.2}, {"d": "2026-06-10", "c": 216000.0, "eps": 10162.0, "pe": 21.3}, {"d": "2026-06-11", "c": 231000.0, "eps": 10169.0, "pe": 22.7}, {"d": "2026-06-12", "c": 235000.0, "eps": 10177.0, "pe": 23.1}, {"d": "2026-06-15", "c": 245500.0, "eps": 10200.0, "pe": 24.1}, {"d": "2026-06-16", "c": 237500.0, "eps": 10207.0, "pe": 23.3}, {"d": "2026-06-17", "c": 230500.0, "eps": 10214.0, "pe": 22.6}, {"d": "2026-06-18", "c": 220000.0, "eps": 10221.0, "pe": 21.5}, {"d": "2026-06-19", "c": 210000.0, "eps": 10228.0, "pe": 20.5}, {"d": "2026-06-22", "c": 208500.0, "eps": 10248.0, "pe": 20.3}, {"d": "2026-06-23", "c": 190000.0, "eps": 10255.0, "pe": 18.5}, {"d": "2026-06-24", "c": 190000.0, "eps": 10262.0, "pe": 18.5}, {"d": "2026-06-25", "c": 190500.0, "eps": 10269.0, "pe": 18.6}, {"d": "2026-06-26", "c": 190800.0, "eps": 10276.0, "pe": 18.6}, {"d": "2026-06-29", "c": 198900.0, "eps": 10297.0, "pe": 19.3}, {"d": "2026-06-30", "c": 191500.0, "eps": 10303.0, "pe": 18.6}, {"d": "2026-07-01", "c": 203500.0, "eps": 10310.0, "pe": 19.7}, {"d": "2026-07-02", "c": 200500.0, "eps": 10317.0, "pe": 19.4}, {"d": "2026-07-03", "c": 196200.0, "eps": 10324.0, "pe": 19.0}, {"d": "2026-07-06", "c": 191800.0, "eps": 10345.0, "pe": 18.5}, {"d": "2026-07-07", "c": 205000.0, "eps": 10352.0, "pe": 19.8}, {"d": "2026-07-08", "c": 187800.0, "eps": 10359.0, "pe": 18.1}, {"d": "2026-07-09", "c": 189500.0, "eps": 10366.0, "pe": 18.3}, {"d": "2026-07-10", "c": 200000.0, "eps": 10372.0, "pe": 19.3}, {"d": "2026-07-13", "c": 192000.0, "eps": 10393.0, "pe": 18.5}, {"d": "2026-07-14", "c": 195800.0, "eps": 10400, "pe": 18.8}], "stats": {"avg": 17.1, "min": 13.8, "max": 36.6, "min_day": "2025-08-21", "max_day": "2026-06-01", "cur": 18.8, "cur_eps": 10400, "cur_price": 195800.0, "percentile": 88}, "cfg": {"currency": "KRW", "multiples": [14, 19, 25, 32], "priceMax": 400000, "priceTick": 80000, "peMax": 50, "peTick": 10, "epsMax": 12500.0, "epsTick": 2500.0}, "anchors": [{"d": "2025-06-23", "val": "10,800원", "eps": 10800, "why": "2025~2026 실적 블렌드 NTM 추정(2025 지배순이익 약 9천억원대). 리레이팅 이벤트 이전 기준"}, {"d": "2025-09-30", "val": "10,500원", "eps": 10500, "why": "물류 운임 약세·ITO 둔화 반영, NTM 추정 소폭 하향"}, {"d": "2026-01-23", "val": "10,200원", "eps": 10200, "why": "하나증권 '2026년 상저하고' 리뷰 — 2026 순이익 회복 지연 반영(EPS 약 9,783원 추정)"}, {"d": "2026-04-24", "val": "9,800원", "eps": 9800, "why": "1Q26 어닝쇼크(퇴직급여 일회성 1,120억 등) 후 2026 NTM 하향"}, {"d": "2026-06-15", "val": "10,200원", "eps": 10200, "why": "AI·클라우드 10조 투자 로드맵·2027 회복 추정(EPS 약 11,244원) 롤포워드 반영"}, {"d": "2026-07-14", "val": "10,400원", "eps": 10400, "why": "2026 EPS 약 9,783원 + 2027 약 11,244원 블렌드 NTM 추정"}], "meta": {"symbol": "018260", "name": "삼성에스디에스", "shares": 77377800, "mode": "eps", "conv": null, "range": ["2025-06-23", "2026-07-14"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  if (data) renderPeBand(d, data);
+});
+
+/* 주가 스파크라인 */
+(function(){
+  const svg=document.getElementById("spark"); if(!svg||!PE_DATA["018260"])return;
+  const rows=PE_DATA["018260"].rows, W=900,H=60,N=rows.length;
+  const cs=rows.map(r=>r.c), mn=Math.min(...cs), mx=Math.max(...cs);
+  const x=i=>i/(N-1)*W, y=v=>H-4-(v-mn)/(mx-mn)*(H-8);
+  let d="M"+x(0).toFixed(1)+" "+y(cs[0]).toFixed(1);
+  for(let i=1;i<N;i++)d+="L"+x(i).toFixed(1)+" "+y(cs[i]).toFixed(1);
+  const NS="http://www.w3.org/2000/svg";
+  const pf=document.createElementNS(NS,"path");
+  pf.setAttribute("class","pf"); pf.setAttribute("d",d+"L"+W+" "+H+"L0 "+H+"Z");
+  const pl=document.createElementNS(NS,"path"); pl.setAttribute("class","pl"); pl.setAttribute("d",d);
+  svg.appendChild(pf); svg.appendChild(pl);
+})();
+</script>
+</body>
+</html>
