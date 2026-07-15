@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="7/12 발굴 리포트 후속 점검: 실적은 더 나빠졌고(2개 분기 연속 영업적자) 주가는 더 올랐다(3개월 +231%). P/E 미정의 구간 — 이 가격을 정당화할 유일한 지표는 ALG 후속 수주다.">
+<meta property="og:title" content="주성엔지니어링 — 적자 분기에 시총 9.7조, ALG 기대의 가격표">
+<meta property="og:description" content="7/12 발굴 리포트 후속 점검: 실적은 더 나빠졌고(2개 분기 연속 영업적자) 주가는 더 올랐다(3개월 +231%). P/E 미정의 구간 — 이 가격을 정당화할 유일한 지표는 ALG 후속 수주다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nextiar.github.io/reports/2026-07-16-jusung-engineering-update.html">
+<link rel="canonical" href="https://nextiar.github.io/reports/2026-07-16-jusung-engineering-update.html">
+<title>주성엔지니어링 업데이트 — 적자 분기에 시총 9.7조 (2026.07)</title>
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --up: #d03b3b; --down: #2a78d6;
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --up: #e66767; --down: #3987e5;
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+  --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+  --up: #e66767; --down: #3987e5;
+  --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+}
+:root[data-theme="light"] {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --up: #d03b3b; --down: #2a78d6;
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 6px 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px 14px; }
+.tile .lbl { font-size: 12px; color: var(--muted); }
+.tile .val { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 1px; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 16px; }
+.card h2 { font-size: 16.5px; margin: 0 0 2px; letter-spacing: -0.005em; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+/* 이벤트 주석·구간 음영 (차트 중심 강화 — 2026-07-15) */
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up); }
+.evtlbl.down { fill: var(--down); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up); }
+.evtdot.down { stroke: var(--down); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+/* 히어로 차트 — 첫 밴드 차트를 페이지의 주인공으로 */
+.card.chart-hero { padding: 26px 26px 18px; }
+.card.chart-hero h2 { font-size: 18.5px; }
+.card.chart-hero .price-line { stroke-width: 2.5; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 6px 10px; }
+td { border-bottom: 1px solid var(--grid); padding: 6.5px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; color: var(--muted); }
+details[open] summary::before { content: "▾ "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+
+p { color: var(--ink-2); margin: 0 0 12px; }
+.card h3 { font-size: 14px; margin: 18px 0 6px; color: var(--ink); }
+ul { color: var(--ink-2); font-size: 13px; margin: 6px 0; padding-left: 18px; } li { margin: 4px 0; }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up); } .g-part { color: var(--accent); } .g-none { color: var(--down); }
+.g-na { color: var(--muted); } .g-unk { color: var(--muted); font-style: italic; }
+.up { color: var(--up); font-weight: 600; } .down { color: var(--down); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+/* ---- 등락 색 (KR 관례: 상승 빨강 / 하락 파랑) ----
+   타일·표의 증감 숫자(수익률·YoY·전기 대비 등)에 필수 적용. 본문 문장은 강조 필요 시만.
+   리포트 :root 토큰 블록에 --up/--down 을 추가할 것:
+     라이트: --up: #d03b3b; --down: #2a78d6;  /  다크: --up: #e66767; --down: #3987e5;
+   경고·리스크 라벨(note·chip)은 방향이 아니라 상태이므로 기존 --hot 을 유지한다.
+   주의: .tile .delta 처럼 더 구체적인 셀렉터가 색을 정의하는 자리에서는 이 클래스가
+   지므로, 리포트 CSS 에 `.tile .val.up, .tile .delta.up { color: var(--up); }` 식의
+   같은 자리 오버라이드를 함께 추가할 것. */
+.up { color: var(--up, #d03b3b); font-weight: 600; }
+.down { color: var(--down, #2a78d6); font-weight: 600; }
+
+/* ---- 근거 팝업 (evidence popup) ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+
+</style>
+
+<meta name="report-symbols" content="036930">
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NEXTIAR RESEARCH · 발굴 후속 점검 · 2026-07-16</div>
+    <h1>주성엔지니어링 — 적자 분기에 시총 9.7조, ALG 기대의 가격표</h1>
+    <p class="sub">7/12 발굴 리포트(<a href="2026-07-12-jusung-engineering.html">「ALG가 만든 1년 6배 랠리, 실적은 아직 그 뒤에 있다」</a>)의
+    후속 점검. 실적은 더 나빠졌고(2개 분기 연속 영업적자), 주가는 더 올랐다 — 이 종목의 가격은
+    현재 이익이 아니라 <strong>ALG 후속 수주</strong> 하나에 걸려 있다.</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><div class="lbl">현재가 (2026-07-15 종가)</div><div class="val">20.95<small>만원</small></div>
+      <div class="delta down">52주 고가 대비 −26%</div></div>
+    <div class="tile"><div class="lbl">3개월 수익률</div><div class="val up">+231<small>%</small></div>
+      <div class="delta">1주 +30.9% · 1개월 −7.5%</div></div>
+    <div class="tile"><div class="lbl">최근 분기 영업이익</div><div class="val down">적자</div>
+      <div class="delta">4Q25·1Q26 연속 — 3Q24 522억이 피크</div></div>
+    <div class="tile"><div class="lbl">Forward P/E</div><div class="val">—</div>
+      <div class="delta"><span class="chip">미정의</span> 이익 기반 밸류 불가 구간</div></div>
+  </div>
+  <div><span class="chip">정보용 · 매매 권유 아님 · 추정치 포함</span></div>
+
+  <div class="card">
+    <h2>1. 무엇이 올렸나 — 그리고 실적은 왜 반대인가</h2>
+    <p>랠리의 동력은 5월 18일 <strong>세계 최초 ALG 장비 공급</strong> 발표다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">네이트뉴스·특징주 (2026.05.18)</span><span class="evd-sum">세계 최초 <strong>ALG(원자층박막성장)</strong> 장비를 글로벌 반도체 기업에 공급 — 당일 20%대 급등(상한가 포함 5거래일 +46.5%). 400도 저온 공정이라 유리기판 상용화에 유리하다는 평가.</span><a href="https://news.nate.com/view/20260518n09841" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    반면 손익은 반대 방향이다 — 기존 주력(반도체 ALD·디스플레이) 장비 매출 공백으로 2개 분기 연속
+    영업적자에 들어갔다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART 재무제표 실측 · financials.py (2026.07.15)</span><span class="evd-sum">분기 영업이익: 3Q24 <strong>522억</strong> → 1Q25 339억 → 2Q25 66억 → 3Q25 34억 → <strong>4Q25·1Q26 영업적자</strong>. 흑자 분기 전환율(지배주주NI/OP) 실측 0.98.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span> 즉 지금 시총 9.7조는 <strong>미래 수주의 현재가치를 선반영한
+    가격</strong>이고, 회사의 투자 체력이 그 기대를 버티는 구조다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">EBN·소부장 시리즈 (2026)</span><span class="evd-sum">「적자에도 투자 체력은 탄탄」 — 실적 부진 속에서도 R&D·설비 투자 여력은 유지되고 있다는 진단.</span><a href="https://kr.investing.com/news/stock-market-news/article-1968361" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>분기</th><th class="num">영업이익</th><th class="num">지배주주 순이익</th></tr></thead>
+      <tbody><tr><td><strong>1Q26</strong></td><td class="num"><span class="down">-70억</span></td><td class="num">-12억</td></tr><tr><td><strong>4Q25</strong></td><td class="num"><span class="down">-126억</span></td><td class="num">-47억</td></tr><tr><td><strong>3Q25</strong></td><td class="num"><span class="">34억</span></td><td class="num">76억</td></tr><tr><td><strong>2Q25</strong></td><td class="num"><span class="">66억</span></td><td class="num">50억</td></tr><tr><td><strong>1Q25</strong></td><td class="num"><span class="">339억</span></td><td class="num">277억</td></tr><tr><td><strong>4Q24</strong></td><td class="num"><span class="">19억</span></td><td class="num">221억</td></tr><tr><td><strong>3Q24</strong></td><td class="num"><span class="">522억</span></td><td class="num">356억</td></tr><tr><td><strong>2Q24</strong></td><td class="num"><span class="">361억</span></td><td class="num">331억</td></tr></tbody>
+    </table></div>
+    <p class="desc">YoY 는 전년동기 대비로 읽을 것 (예: 1Q26 vs 1Q25). 출처: DART 분기 재무제표 실측.</p>
+  </div>
+
+  <div class="card">
+    <h2>2. 밸류에이션 — P/E 가 성립하지 않는 구간</h2>
+    <p>TTM 영업이익이 0 부근이라 <strong>Forward P/E 밴드를 적용하지 않는다</strong>(적자·이익 바닥
+    구간에 P/E 미정의 — 방법론 원칙). 참고 좌표만 두면: 과거 피크 이익(2024년 연 1,300억대) 기준으로도
+    현 시총은 70배 수준이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산 (2026.07.15 종가)</span><span class="evd-sum">3개월 <strong>+231%</strong> · 1주 +30.9% · 1개월 −7.5%, 52주 고가 대비 −26%. MA20>MA60 유지, 최근 거래대금 일 4,616억(직전 대비 배수 0.7x). 시총 근사 9.7조.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span> 이 가격이 정당화되는 경로는 ALG 가 단발 공급이 아니라
+    <strong>반복 수주</strong>로 이어지는 것뿐이며, 그 전까지 주가는 뉴스 민감도가 극단적으로 높은
+    상태가 유지될 가능성이 크다.</p>
+    <h3>판정 (간이)</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td>모멘텀·추세</td><td class="grade g-part">◐ 부분 충족</td>
+          <td>MA20>60 유지·3개월 +231%, 다만 거래대금 배수 0.7x 로 열기 둔화 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산 (2026.07.15 종가)</span><span class="evd-sum">3개월 <strong>+231%</strong> · 1주 +30.9% · 1개월 −7.5%, 52주 고가 대비 −26%. MA20>MA60 유지, 최근 거래대금 일 4,616억(직전 대비 배수 0.7x). 시총 근사 9.7조.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></td></tr>
+        <tr><td>실적 뒷받침</td><td class="grade g-none">○ 미충족</td>
+          <td>2개 분기 연속 영업적자 — 랠리와 정반대 방향 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART 재무제표 실측 · financials.py (2026.07.15)</span><span class="evd-sum">분기 영업이익: 3Q24 <strong>522억</strong> → 1Q25 339억 → 2Q25 66억 → 3Q25 34억 → <strong>4Q25·1Q26 영업적자</strong>. 흑자 분기 전환율(지배주주NI/OP) 실측 0.98.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></td></tr>
+        <tr><td>수주(핵심 변수)</td><td class="grade g-unk">? 확인불가</td>
+          <td>ALG 후속 수주 공시 아직 없음 — 8월 반기보고서 수주잔고 표가 1차 확인점</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>3. 확인 포인트 · 리스크</h2>
+    <ul>
+      <li><strong>ALG 후속 수주 공시</strong> — 단발이냐 반복이냐가 이 종목의 전부</li>
+      <li><strong>대량보유 보고 2건(7/6·7/7)의 방향</strong> — 기관 매집인지 처분인지 원문 확인 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART 공시 목록 (2026.07.06~07)</span><span class="evd-sum">주식등의 대량보유상황보고서(약식) 2건 접수 — 5%룰 지분 변동. 방향(매집/처분)은 원문 확인 필요.</span><a href="https://dart.fss.or.kr/dsab007/main.do?option=corp&textCrpNm=036930" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+      <li><strong>8월 반기보고서</strong> — ALG 매출 인식 시작 여부·수주잔고 표</li>
+      <li><strong>거래대금 둔화(0.7x)</strong> — 눌림목인지 모멘텀 소진인지</li>
+    </ul>
+    <div class="note"><strong>리스크:</strong> 이익이 없는 기대주는 수주 지연·경쟁 진입 뉴스 하나로
+    급락 여지가 크다. 최근 한 달 −7.5%·고점 대비 −26% 조정이 그 변동성의 예고편이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산 (2026.07.15 종가)</span><span class="evd-sum">3개월 <strong>+231%</strong> · 1주 +30.9% · 1개월 −7.5%, 52주 고가 대비 −26%. MA20>MA60 유지, 최근 거래대금 일 4,616억(직전 대비 배수 0.7x). 시총 근사 9.7조.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></div>
+  </div>
+
+  <footer>
+    <p>데이터: 토스증권 Open API(시세) · DART 전자공시(분기 재무 실측·공시 목록) · 공개 보도(근거 팝업에 원문 링크) ·
+    생성 2026-07-16 (시세는 2026-07-15 종가 기준).</p>
+    <p>산출 방법론·판정 등급 정의: <a href="https://nextiar.github.io/methodology.html">방법론 페이지</a> ·
+    발간 후 성과는 <a href="https://nextiar.github.io/track-record.html">트랙레코드</a>에서 자동 추적됩니다.</p>
+    <p><strong>본 자료는 정보 제공 목적이며 특정 종목의 매매를 권유하지 않습니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</strong></p>
+  <p style="margin-top:8px;">이해상충 공시: 작성자는 이 리포트의 분석 대상 종목 중 일부를 발간 시점에 보유하고 있습니다. 수량·평가액은 공개하지 않으며, 본 리포트는 무료 정보 제공 목적으로 작성되었습니다.</p></footer>
+</div>
+
+<script>
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
