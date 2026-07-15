@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="AAPL">
+<title>애플(AAPL) 심층 — 실적은 사상 최고인데 밸류는 3년 최정점: 서비스가 이끄는 프리미엄의 값</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 26px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+section { margin-top: 40px; }
+h2 { font-size: 18px; margin: 0 0 6px; letter-spacing: -0.01em; }
+h2 .idx { color: var(--muted); font-weight: 700; margin-right: 8px; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 0 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.pref { font-weight: 800; letter-spacing: -0.01em; }
+.pref-over { color: var(--up); } .pref-under { color: var(--down); } .pref-neutral { color: var(--muted); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up); } .g-part { color: var(--accent); } .g-none { color: var(--down); }
+.g-na { color: var(--muted); } .g-unk { color: var(--muted); font-style: italic; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.band { display:grid; grid-template-columns: 1fr; gap:0; margin-top:6px; }
+.band-row { display:grid; grid-template-columns: 84px 1fr 96px; align-items:center; gap:10px; padding:5px 0; border-bottom:1px solid var(--grid); font-size:13px; }
+.band-row .mult { font-variant-numeric:tabular-nums; color:var(--ink-2); }
+.bar { height:9px; border-radius:5px; background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 100%); opacity:0.20; }
+.bar.cur { opacity:0.55; }
+.band-row .px { text-align:right; font-variant-numeric:tabular-nums; font-weight:650; color:var(--ink); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+sup a { color: var(--accent); text-decoration: none; font-size: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="font-size:13px;margin:0 0 -8px;"><a href="/" style="color:var(--accent);text-decoration:none;">← Nextiar Research 홈</a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 미국 심층 (US Deep Dive)</div>
+  <h1>애플(AAPL) — 실적은 사상 최고인데 밸류는 3년 최정점: 서비스가 이끄는 프리미엄의 값</h1>
+  <p class="sub">2026년 7월 15일 종가 <strong>$327.50</strong> 기준. 서비스가 아이폰을 제치고 이익 1위로 올라선 구조 개선은 분명하다. 그러나 Forward P/E <strong>36.8배</strong>는 3년 밴드의 <strong>정확히 최정점(백분위 100%)</strong>이고, 월가 평균 목표주가($313~324)마저 현재가를 밑돈다. <strong>정보용이며 매매 권유가 아니다. 추정치 포함.</strong></p>
+</header>
+
+<div class="note cool" style="margin-top:18px">
+  <strong>하우스 매크로 가정 (2026-07-16 상속).</strong> 미 국채 10년물 <strong>4.58%</strong> · 달러지수 120.5 · 원/달러 1,492원. 금리가 4.5%대에서 안정된다는 전제 하의 밸류에이션이다 — 장기금리가 재차 튀면 고멀티플 성장주의 할인율 부담이 커진다. <a href="https://nextiar.github.io/reports/2026-07-16-kospi-morning-2026-07-16.html">당일 브리핑</a>
+</div>
+
+<section>
+  <h2><span class="idx">①</span>콜 요약 <span class="chip">비중축소</span></h2>
+  <p class="lead">선호도 등급은 <strong>P/E 밴드 백분위와 Base 시나리오 상승여력을 정해진 공식</strong>으로 결합해 낸 방향성이며 <strong>목표주가가 아니다</strong>. 아래 두 신호가 동시에 하방을 가리킨다.</p>
+  <div class="grid tiles">
+    <div class="tile">
+      <div class="lbl">선호도 (NTM)</div>
+      <div class="val"><span class="pref pref-under">비중축소</span></div>
+      <div class="delta">P/E 100%ile(과열) · Base −2.2%(상방 소진)</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">현재가 · P/E 위치</div>
+      <div class="val">$327.50</div>
+      <div class="delta">P/E 36.8배 (3년 평균 30.5) · 백분위 <span class="down">100% · 과열</span></div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Base 상승여력</div>
+      <div class="val down">−2.2%</div>
+      <div class="delta">Bull <span class="up">+21.8%</span> / Bear <span class="down">−29.9%</span></div>
+    </div>
+    <div class="tile">
+      <div class="lbl">시간지평</div>
+      <div class="val">NTM<small> · 12개월</small></div>
+      <div class="delta">다음 이벤트: 7월말~8월초 FY26 3분기(6월 분기) 실적</div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>한 문장.</strong> 애플의 <strong>사업 질(서비스 믹스·마진)</strong>은 개선되고 있으나, 시장은 이미 그 개선을 <strong>3년 최고 멀티플(36.8배)</strong>로 선반영했다. 사업이 나빠서가 아니라 <strong>값이 비싸서</strong> 비중축소다 — 현재가는 월가 평균 목표주가($313~324)<sup><a href="#s3">[3]</a></sup>보다도 위에 있다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">②</span>왜 지금 — 서비스가 이익 1위로 올라선 구조 개선</h2>
+  <p class="lead">FY2025(2025년 9월 종료) 애플은 매출 <strong>$416B(+6.4%)</strong>, 순이익 기준 EPS <strong>$7.46(+22.7%)</strong>로 사상 최고를 경신했다.<sup><a href="#s1">[1]</a></sup> 성장의 질은 하드웨어가 아니라 <strong>서비스</strong>에서 나온다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표 (FY2025)</th><th class="num">금액</th><th class="num">YoY</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>총매출</strong></td><td class="num">$416.0B</td><td class="num"><span class="up">+6.4%</span></td><td>사상 최고</td></tr>
+      <tr><td><strong>서비스</strong></td><td class="num">$109.2B</td><td class="num"><span class="up">+13.5%</span></td><td>GM ~75% · <strong>이익 1위로 등극</strong></td></tr>
+      <tr><td>아이폰</td><td class="num">$209.6B</td><td class="num"><span class="up">+4.2%</span></td><td>매출의 50.4%</td></tr>
+      <tr><td>총이익률(GM)</td><td class="num">46.9%</td><td class="num"><span class="up">↑</span></td><td>$195.2B (FY24 $180.7B)</td></tr>
+      <tr><td>EPS(희석)</td><td class="num">$7.46</td><td class="num"><span class="up">+22.7%</span></td><td>FY24 $6.08 → 반등</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 서비스가 <span class="up">+13.5%</span> 성장하며 <strong>처음으로 아이폰을 제치고 이익 기여 1위</strong>가 됐다.<sup><a href="#s4">[4]</a></sup> 서비스는 총이익률 약 75%로 하드웨어(30%대)보다 훨씬 높아, 매출 믹스가 서비스로 기울수록 전사 마진이 구조적으로 올라간다(FY25 GM 46.9%). FY2026 1분기(2025년 12월)엔 아이폰17 효과로 매출 <strong>$144B(+16%)</strong>, 서비스 ~$30B를 기록하며 강하게 출발했다.<sup><a href="#s5">[5]</a></sup> <strong>사업의 방향은 옳다</strong> — 문제는 값이다(④·⑤).</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">③</span>PQC 분석 — 가격 결정력은 최상, 물량은 성숙</h2>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:6px">
+    <div class="card"><h3>P (가격) <span class="grade g-full">● 충족</span></h3><div class="prose">
+      <p>생태계 락인에 기반한 <strong>가격 결정력은 세계 최상위</strong>. 아이폰 프리미엄 ASP 유지 + 서비스(앱스토어·구독) 가격 인상 여력. 서비스 GM ~75%가 가격력을 방증한다.<sup><a href="#s4">[4]</a></sup></p>
+    </div></div>
+    <div class="card"><h3>Q (물량) <span class="grade g-part">◐ 부분 충족</span></h3><div class="prose">
+      <p>설치기반 <strong>23억+ 디바이스</strong>로 확장 여지는 있으나 아이폰 <span class="up">+4.2%</span>는 <strong>성숙 단계</strong>. 물량보다 교체주기·업셀에 의존. 신흥국·웨어러블이 증분 동력.</p>
+    </div></div>
+    <div class="card"><h3>C (비용) <span class="grade g-full">● 충족</span></h3><div class="prose">
+      <p>믹스 개선으로 <strong>총이익률이 구조적으로 상승</strong>(FY24 46.2% → FY25 46.9%). 자체 실리콘(M·A 시리즈)으로 원가 통제력도 강함. 마진 방향은 우상향.</p>
+    </div></div>
+  </div>
+  <div class="note" style="margin-top:14px"><strong>PQC 종합.</strong> 긍정 2 · 부분 1 · 부정 0. 가격·비용은 최상급, 물량만 성숙. <strong>질적으로는 최고 수준의 사업</strong>이라는 점이 역설적으로 높은 밸류를 정당화해 왔다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">④</span>Growth Sustainability — 플랫폼 프레임 (제조 지표는 해당없음)</h2>
+  <p class="lead">애플은 제조 위탁 구조라 가동률·수주 지표는 성립하지 않는다(<span class="grade g-na">— 해당없음</span>). 플랫폼·소비재 변형 프레임으로 판정한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>공장 가동률·설비투자·수주(제조 지표)</td><td><span class="grade g-na">— 해당없음</span></td><td>위탁생산(폭스콘 등) — 지표 미성립</td></tr>
+      <tr><td>서비스·구독 성장(플랫폼 핵심)</td><td><span class="grade g-full">● 충족</span></td><td>서비스 +13.5%, 이익 1위 등극<sup><a href="#s4">[4]</a></sup></td></tr>
+      <tr><td>설치기반·생태계 락인</td><td><span class="grade g-full">● 충족</span></td><td>23억+ 디바이스, 교체·업셀 반복 매출</td></tr>
+      <tr><td>미국·선진국 매출 비중</td><td><span class="grade g-part">◐ 부분</span></td><td>미주 ~43%, 중국 노출이 리스크(⑤)</td></tr>
+      <tr><td>밸류에이션 리레이팅(PBR→PER→성장주)</td><td><span class="grade g-none">○ 미충족</span></td><td><strong>이미 리레이팅 완료</strong> — 36.8배는 추가 여력 소진 신호</td></tr>
+      <tr><td>TAM 확대(AI·서비스)</td><td><span class="grade g-part">◐ 부분</span></td><td>애플 인텔리전스 방향성은 있으나 수익화 초기</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px"><strong>GS 종합.</strong> 긍정 2 · 부분 2 · 부정 1 (해당없음 1 제외). 성장 지속성은 <strong>서비스·생태계에서 견고</strong>하나, <strong>밸류에이션 리레이팅은 이미 끝났다</strong>는 점이 핵심 — 앞으로의 상승은 멀티플이 아니라 이익으로만 벌어야 한다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">⑤</span>어닝 모델 · 컨센서스 델타 · 다년 추정</h2>
+  <p class="lead">FY26은 Q1 <strong>+16%</strong> 스타트가 강했다. 서비스 두 자릿수 + 아이폰 저성장을 결합하면 우리 추정은 컨센서스와 <strong>큰 차이가 없다</strong> — 즉 실적이 아니라 밸류가 논점이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">우리 추정 (FY26E)</th><th class="num">컨센서스</th><th class="num">델타</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td><strong>매출</strong></td><td class="num">~$450B</td><td class="num"><span class="grade g-unk">? 확인불가</span></td><td class="num">—</td><td>Q1 $144B(+16%) 연장·서비스 +13%<sup><a href="#s5">[5]</a></sup></td></tr>
+      <tr><td><strong>EPS (FY26E)</strong></td><td class="num">$8.80</td><td class="num">$8.74</td><td class="num"><span class="up">+0.7%</span></td><td>서비스 고마진 믹스<sup><a href="#s2">[2]</a></sup></td></tr>
+      <tr><td>EPS (FY27E)</td><td class="num">$9.20</td><td class="num">$9.08</td><td class="num"><span class="up">+1.3%</span></td><td>AI·서비스 지속(KeyCorp $9.08)<sup><a href="#s2">[2]</a></sup></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-scroll" style="margin-top:14px">
+  <table>
+    <thead><tr><th>다년 추정</th><th class="num">FY25A</th><th class="num">FY26E</th><th class="num">FY27E</th></tr></thead>
+    <tbody>
+      <tr><td>매출</td><td class="num">$416B</td><td class="num">~$450B</td><td class="num">~$475B</td></tr>
+      <tr><td>매출성장</td><td class="num"><span class="up">+6.4%</span></td><td class="num"><span class="up">~+8%</span></td><td class="num"><span class="up">~+6%</span></td></tr>
+      <tr><td>EPS (희석)</td><td class="num">$7.46</td><td class="num">$8.74<small>(컨센)</small></td><td class="num">$9.08<small>(컨센)</small></td></tr>
+      <tr><td>EPS 성장</td><td class="num"><span class="up">+22.7%</span></td><td class="num"><span class="up">~+17%</span></td><td class="num"><span class="up">~+4%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="lead" style="margin-top:8px">E = 추정치. FY26E/FY27E EPS는 시장 컨센서스, 매출은 우리 추정(추정임을 명시). 컨센 EPS 성장이 FY27 +4%로 둔화한다는 점은 <strong>고멀티플을 방어하기 어려운 지점</strong>이다.</p>
+</section>
+
+<section>
+  <h2><span class="idx">⑥</span>밸류에이션 — Forward P/E 밴드 · 2차 지표</h2>
+  <p class="lead">현재 Forward P/E <strong>36.8배</strong>는 3년 밴드(23.6~36.8배, 평균 30.5)의 <strong>정확히 꼭대기</strong>다. NTM EPS ~$8.9 기준 밴드별 환산 주가:</p>
+  <div class="band">
+    <div class="band-row"><span class="mult">26배</span><span class="bar" style="width:63%"></span><span class="px">$231</span></div>
+    <div class="band-row"><span class="mult">30.5배(평균)</span><span class="bar" style="width:74%"></span><span class="px">$271</span></div>
+    <div class="band-row"><span class="mult">31배</span><span class="bar" style="width:76%"></span><span class="px">$276</span></div>
+    <div class="band-row"><span class="mult">36배</span><span class="bar" style="width:88%"></span><span class="px">$320</span></div>
+    <div class="band-row"><span class="mult" style="color:var(--hot);font-weight:700">36.8배(현재)</span><span class="bar cur" style="width:100%"></span><span class="px" style="color:var(--hot)">$327.50</span></div>
+    <div class="band-row"><span class="mult">41배</span><span class="bar" style="width:100%"></span><span class="px">$365</span></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>1차 — Forward P/E 밴드.</strong> 현재가는 밴드 최상단이며 <strong>평균(30.5배)으로만 회귀해도 $271(−17%)</strong>이다. NTM EPS는 앵커 보간 추정 모델이며 실제 컨센 히스토리가 아님을 밝힌다(방법론 참조).</p>
+    <p><strong>2차 — 성장 대비 밸류(교차검증).</strong> 컨센 EPS 성장이 FY26 +17% → FY27 +4%로 둔화하는데 36.8배를 지불하는 것은 <strong>PEG 관점에서 부담</strong>이다(성장 둔화 국면의 고멀티플). 서비스 고마진이 이를 일부 방어하나, 배당수익률 ~0.4%·자사주 매입을 감안해도 <strong>현재가에 내재된 요구수익률은 낮다</strong>. 애플 같은 안정 현금창출주는 P/E 밴드 상단에서 사면 <strong>멀티플 축소 리스크</strong>가 이익 성장을 상쇄하기 쉽다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">⑦</span>시나리오 · 민감도 (조건부 환산 — 목표주가 아님)</h2>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">멀티플 × NTM EPS</th><th class="num">환산 주가</th><th class="num">현재가 대비</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">42배 × $9.5</td><td class="num">$399</td><td class="num"><span class="up">+21.8%</span></td><td>AI·서비스 재가속, 멀티플 유지 (Wedbush $400 방향)<sup><a href="#s3">[3]</a></sup></td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">36배 × $8.9</td><td class="num">$320</td><td class="num"><span class="down">−2.2%</span></td><td>월가 평균 목표($313~324)로 수렴 — 완전가치</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">28배 × $8.2</td><td class="num">$230</td><td class="num"><span class="down">−29.9%</span></td><td>중국·하드웨어 둔화 + 멀티플 정상화</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-scroll" style="margin-top:12px">
+  <table>
+    <thead><tr><th>민감도 (36배 고정, NTM EPS 변동)</th><th class="num">−10% ($8.0)</th><th class="num">기준 ($8.9)</th><th class="num">+10% ($9.8)</th></tr></thead>
+    <tbody>
+      <tr><td>환산 주가 (현재가 대비)</td><td class="num"><span class="down">$288 (−12.1%)</span></td><td class="num">$320 (−2.2%)</td><td class="num"><span class="up">$353 (+7.7%)</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:12px">시나리오 가치는 전제가 실현될 때의 <strong>조건부 환산 범위이며 목표주가·예측이 아니다</strong>. 비대칭에 주목: Base가 소폭 마이너스인데 Bear의 하방(−30%)이 Bull의 상방(+22%)보다 크다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">⑧</span>반대 논리(리스크) · "우리 뷰를 바꿀 것"</h2>
+  <div class="note"><strong>이 조건이 나오면 콜을 올린다(what would change our mind).</strong> ① 서비스 성장 재가속(+15% 이상 지속)으로 EPS 컨센이 FY27 두 자릿수로 상향, ② Forward P/E가 <strong>30배(3년 평균) 이하</strong>로 조정, ③ AI 수익화(앱 매출·구독)의 <strong>정량 증거</strong> 등장 — 셋 중 둘 이상이면 비중확대로 상향.</div>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>리스크(우리 뷰의 약점)</th><th>연결 시나리오</th></tr></thead>
+    <tbody>
+      <tr><td><strong>강세론:</strong> AI 슈퍼사이클이 오면 멀티플이 정당화될 수 있다(Wedbush $400)</td><td>→ <span class="up">Bull +21.8%</span> 현실화</td></tr>
+      <tr><td>서비스 고마진 지속으로 이익이 컨센을 상회하면 고멀티플 유지</td><td>→ Base 상단~Bull</td></tr>
+      <tr><td><strong>약세 트리거:</strong> 중국 수요·규제, 아이폰 교체주기 둔화</td><td>→ <span class="down">Bear −29.9%</span> 트리거</td></tr>
+      <tr><td>미 장기금리 재상승(4.58%→5%대) → 고멀티플 할인율 부담</td><td>→ 멀티플 정상화(Bear)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>균형.</strong> 이 리포트는 애플을 <strong>나쁜 회사로 보지 않는다</strong> — 오히려 사업 질은 세계 최고 수준이다. 다만 <strong>백분위 100%의 밸류</strong>에서 Base 상승여력이 마이너스이고 하방이 상방보다 크다는 <strong>비대칭</strong> 때문에 비중축소다. 강세 시나리오(AI 재가속)가 현실화되면 언제든 상향할 준비가 돼 있으며, 그 판단 기준은 위 박스에 미리 못 박았다.</p>
+  </div></div>
+</section>
+
+<footer id="src">
+  <strong>출처.</strong>
+  <span id="s1">[1] Apple FY2025 실적: 매출 $416B·GM·EPS $7.46 — <a href="https://www.macrotrends.net/stocks/charts/AAPL/apple/eps-earnings-per-share-diluted">MacroTrends</a>, <a href="https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm">Apple 10-K FY2025(SEC)</a>.</span>
+  <span id="s2">[2] FY26E EPS ~$8.74·FY27E $9.08 컨센/KeyCorp — <a href="https://www.marketbeat.com/stocks/NASDAQ/AAPL/forecast/">MarketBeat</a>.</span>
+  <span id="s3">[3] 목표주가 평균 $313~324·고 $400(Wedbush)·저 $200~250·Citi $365 — <a href="https://stockanalysis.com/stocks/aapl/forecast/">StockAnalysis</a>, <a href="https://www.marketscreener.com/quote/stock/APPLE-INC-4849/consensus/">MarketScreener</a>.</span>
+  <span id="s4">[4] 서비스 $109.2B(+13.5%)·이익 1위 등극·GM ~75% — <a href="https://www.fool.com/investing/2026/05/01/apple-earnings-this-important-high-margin-segment/">Motley Fool</a>, <a href="https://bullfincher.io/companies/apple/revenue-by-segment">Bullfincher</a>.</span>
+  <span id="s5">[5] Q1 FY26 매출 $144B(+16%)·서비스 ~$30B — <a href="https://variety.com/2026/digital/news/apple-earnings-q1-2026-iphone-sales-services-1236644631/">Variety</a>.</span>
+  <br>주가·발행주식수: 토스증권 Open API(2026-07-15 종가 $327.50, 14.69억주). Forward P/E 밴드의 NTM EPS는 리포트·실적 시점 앵커를 선형 보간한 <strong>추정 모델</strong>이며 실제 컨센서스 히스토리가 아니다. 선호도 등급은 P/E 밴드 백분위(100%)와 Base 시나리오 상승여력(−2.2%)을 정해진 공식으로 결합한 방향성이며 목표주가가 아니다. 생성일 2026-07-16.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p></footer>
+
+</div>
+</body>
+</html>
