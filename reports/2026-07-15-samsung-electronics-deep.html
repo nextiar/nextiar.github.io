@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="2Q26 잠정 영업이익 89.4조(엔비디아·애플 추월)에도 발표날 −7%. Forward P/E 5.7배는 3년 백분위 1% — 어닝 모델(3Q26E 96~100조)·시나리오(+77%/−56%)·피어 TTM·수급까지, 이익 정점 논쟁을 표준 세트로 점검.">
+<meta property="og:title" content="삼성전자 심층 — 89조 어닝 서프라이즈에 주가는 왜 −25%인가">
+<meta property="og:description" content="2Q26 잠정 영업이익 89.4조(엔비디아·애플 추월)에도 발표날 −7%. Forward P/E 5.7배는 3년 백분위 1% — 어닝 모델(3Q26E 96~100조)·시나리오(+77%/−56%)·피어 TTM·수급까지, 이익 정점 논쟁을 표준 세트로 점검.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://nextiar.github.io/reports/2026-07-15-samsung-electronics-deep.html">
+<link rel="canonical" href="https://nextiar.github.io/reports/2026-07-15-samsung-electronics-deep.html">
+<title>삼성전자 심층 — 89조 어닝 서프라이즈와 −25% 조정 (2026.07)</title>
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+  --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+  --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+}
+:root[data-theme="light"] {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 6px 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px 14px; }
+.tile .lbl { font-size: 12px; color: var(--muted); }
+.tile .val { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 1px; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 16px; }
+.card h2 { font-size: 16.5px; margin: 0 0 2px; letter-spacing: -0.005em; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 6px 10px; }
+td { border-bottom: 1px solid var(--grid); padding: 6.5px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; color: var(--muted); }
+details[open] summary::before { content: "▾ "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+
+:root { --up: #d03b3b; --down: #2a78d6; }
+@media (prefers-color-scheme: dark) { :root { --up: #e66767; --down: #3987e5; } }
+:root[data-theme="dark"] { --up: #e66767; --down: #3987e5; }
+:root[data-theme="light"] { --up: #d03b3b; --down: #2a78d6; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up); } .g-part { color: var(--accent); } .g-none { color: var(--down); }
+.g-na { color: var(--muted); } .g-unk { color: var(--muted); font-style: italic; }
+p { color: var(--ink-2); margin: 0 0 12px; }
+.card h3 { font-size: 14px; margin: 18px 0 6px; color: var(--ink); }
+ul { color: var(--ink-2); font-size: 13px; margin: 6px 0; padding-left: 18px; }
+li { margin: 4px 0; }
+/* ---- 등락 색 (KR 관례: 상승 빨강 / 하락 파랑) ----
+   타일·표의 증감 숫자(수익률·YoY·전기 대비 등)에 필수 적용. 본문 문장은 강조 필요 시만.
+   리포트 :root 토큰 블록에 --up/--down 을 추가할 것:
+     라이트: --up: #d03b3b; --down: #2a78d6;  /  다크: --up: #e66767; --down: #3987e5;
+   경고·리스크 라벨(note·chip)은 방향이 아니라 상태이므로 기존 --hot 을 유지한다.
+   주의: .tile .delta 처럼 더 구체적인 셀렉터가 색을 정의하는 자리에서는 이 클래스가
+   지므로, 리포트 CSS 에 `.tile .val.up, .tile .delta.up { color: var(--up); }` 식의
+   같은 자리 오버라이드를 함께 추가할 것. */
+.up { color: var(--up, #d03b3b); font-weight: 600; }
+.down { color: var(--down, #2a78d6); font-weight: 600; }
+
+/* ---- 근거 팝업 (evidence popup) ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+
+/* ---- 모바일: 차트는 통째로 축소하지 않고 가로 스크롤 (라벨 가독성 유지) ----
+   전제: 페이지에 viewport meta 가 있어야 한다 — 아티팩트는 래퍼가, GitHub Pages 는
+   publish.py 가 자동 보강한다. */
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NEXTIAR RESEARCH · 심층 분석 (표준 세트) · 2026-07-15</div>
+    <h1>삼성전자 심층 — 89조 어닝 서프라이즈에 주가는 왜 −25%인가</h1>
+    <p class="sub">2Q26 잠정 영업이익 89.4조원으로 엔비디아·애플을 제쳤는데, 발표날 주가는 −7%,
+    고점 대비 −25%다. 현재 Forward P/E 5.7배는 3년 백분위 <strong>1%</strong> — 시장은 지금
+    "사상 최대 실적"이 아니라 <strong>"이익 정점 이후"</strong>를 가격에 넣고 있다.
+    업종 매크로 → 실측 → 어닝 모델 → 시나리오 → 피어 → 수급 순서로 그 논쟁을 점검한다.</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><div class="lbl">현재가 (2026-07-15 종가)</div><div class="val">27.35<small>만원</small></div>
+      <div class="delta down">고점 36.35만원(6/18) 대비 −24.8%</div></div>
+    <div class="tile"><div class="lbl">2Q26 잠정 영업이익</div><div class="val">89.4<small>조원</small></div>
+      <div class="delta up">+1,810% YoY · 3분기 연속 사상 최대</div></div>
+    <div class="tile"><div class="lbl">Forward P/E (추정)</div><div class="val">5.7<small>배</small></div>
+      <div class="delta">3년 평균 11.7배 · 최근 1년 8.6배</div></div>
+    <div class="tile"><div class="lbl">3년 백분위</div><div class="val">1<small>%</small></div>
+      <div class="delta"><span class="chip">기간 최저 부근</span> 범위 5.4~22.9배</div></div>
+  </div>
+  <div><span class="chip">정보용 · 매매 권유 아님 · 추정치 포함</span></div>
+
+  <div class="card">
+    <h2>0. 업종 매크로 — 판가·수출이 말하는 것</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>지표</th><th class="num">최신값</th><th>읽기</th></tr></thead>
+      <tbody>
+        <tr><td>반도체 수출액 (6월)</td><td class="num"><span class="up">448.2억 달러</span></td>
+          <td>+199.5% YoY, 사상 첫 400억 돌파 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">산업통상자원부 6월 수출입동향 (2026.07)</span><span class="evd-sum">6월 반도체 수출 <strong>448.2억 달러</strong>(+199.5% YoY) — 사상 첫 월 400억 달러 돌파.</span><a href="https://www.korea.kr/briefing/policyBriefingView.do?newsId=156769112" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>HBM(MCP) 수출 (6월)</td><td class="num"><span class="up">+51% MoM</span></td>
+          <td>공급부족 낙수효과 확산 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">전자신문 (2026.06.22)</span><span class="evd-sum">HBM 포함 MCP 수출액 <strong>전월 대비 +51%</strong> — 공급부족 낙수효과가 범용 D램·낸드·SSD 까지 확산.</span><a href="https://www.etnews.com/20260622000299" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>DDR4 8Gb 고정가 (6월)</td><td class="num"><span class="up">$21</span></td>
+          <td>집계 이래 최고 — 3Q 전망 +15~20% <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">엠투데이 · 트렌드포스 집계 인용 (2026.07)</span><span class="evd-sum">6월 DDR4 8Gb 고정가 <strong>21달러</strong>(집계 이래 최고), 3분기 고정가 상승률 전망 <strong>+15~20%</strong>(보도 인용).</span><a href="https://www.autodaily.co.kr/news/articleView.html?idxno=545397" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>D램 현물가 괴리</td><td class="num"><span class="up">고정가 +72%</span></td>
+          <td>고정가 협상 상방 압력 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">이포커스 (2026.07)</span><span class="evd-sum">D램 현물가가 고정가를 <strong>72% 상회</strong> — 다음 분기 고정가 협상의 상방 압력.</span><a href="https://www.e-focus.co.kr/news/articleView.html?idxno=3002499" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="desc">시장 매크로(금리·환율·지수)는 당일 브리핑 참조 — 중복 수록하지 않는다.
+    <a href="https://nextiar.github.io/">브리핑·전체 리포트 →</a></p>
+  </div>
+
+  <div class="card">
+    <h2>1. 실적 실측 — 쇼크에서 신기록까지 6개 분기</h2>
+    <p class="desc">분기 영업이익·지배주주 순이익 (연결, DART 실측). YoY 는 전년동기 대비.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>분기</th><th class="num">영업이익</th><th class="num">지배주주 순이익</th><th class="num">NI/OP</th></tr></thead>
+      <tbody><tr><td><strong>1Q26</strong></td><td class="num">57.2조</td><td class="num">47.1조</td><td class="num">0.82</td></tr><tr><td><strong>4Q25</strong></td><td class="num">20.1조</td><td class="num">19.3조</td><td class="num">0.96</td></tr><tr><td><strong>3Q25</strong></td><td class="num">12.2조</td><td class="num">12.0조</td><td class="num">0.99</td></tr><tr><td><strong>2Q25</strong></td><td class="num">4.7조</td><td class="num">4.9조</td><td class="num">1.06</td></tr><tr><td><strong>1Q25</strong></td><td class="num">6.7조</td><td class="num">8.0조</td><td class="num">1.20</td></tr><tr><td><strong>4Q24</strong></td><td class="num">6.5조</td><td class="num">7.6조</td><td class="num">1.17</td></tr></tbody>
+    </table></div>
+    <p>이 표의 출발점이 중요하다 — 1년 전 2Q25는 <strong>4.7조 어닝쇼크</strong>(재고충당·관세·파운드리 적자)였다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">아시아경제 (2025.07.08)</span><span class="evd-sum">2Q25 영업이익 <strong>4.6조 어닝쇼크</strong>(컨센 6조 하회) — 재고충당·미 관세 직격·파운드리 적자. 1년 뒤 같은 분기 89.4조와 대비되는 저점.</span><a href="https://www.asiae.co.kr/article/2025070808353661113" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    거기서 3Q25 12.2조 → 4Q25 20.1조 → 1Q26 <strong>57.2조(+756% YoY, DS 이익률 66%)</strong> <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">전자신문 · 1Q26 실적 (2026.04.07)</span><span class="evd-sum">1Q26 매출 133.9조, 영업이익 <strong>57.2조</strong>(+756% YoY). DS 부문 매출 81.7조·영업이익 53.7조 — DS 이익률 <strong>66%</strong>.</span><a href="https://www.etnews.com/20260407000181" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    → 2Q26 잠정 <strong>89.4조</strong>까지 4개 분기 만에 19배가 됐다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">YTN · 2Q26 잠정실적 (2026.07.07)</span><span class="evd-sum">2Q26 잠정 매출 <strong>171조원</strong>(+129% YoY), 영업이익 <strong>89조 4천억</strong>(+1,810% YoY) — 분기 영업이익으로 엔비디아·애플을 제치고 글로벌 1위. 3분기 연속 사상 최대.</span><a href="https://www.ytn.co.kr/_ln/0102_202607070934353202" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    전환율(지배주주 순이익/영업이익)은 실측 <strong>0.93</strong> — 모든 EPS 환산에 적용. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART 재무제표 실측 · financials.py (2026.07.15)</span><span class="evd-sum">최근 8개 흑자 분기(2Q24~1Q26) 합산 지배주주 귀속 순이익 ÷ 영업이익 = <strong>0.9323</strong>.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></p>
+    <h3>PQC 판정 (주력: 메모리 — HBM4 포함)</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>축</th><th>현황</th><th>판정</th></tr></thead>
+      <tbody>
+        <tr><td><strong>P · 가격</strong></td><td>DDR4 고정가 사상 최고·3Q +15~20% 전망 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">엠투데이 · 트렌드포스 집계 인용 (2026.07)</span><span class="evd-sum">6월 DDR4 8Gb 고정가 <strong>21달러</strong>(집계 이래 최고), 3분기 고정가 상승률 전망 <strong>+15~20%</strong>(보도 인용).</span><a href="https://www.autodaily.co.kr/news/articleView.html?idxno=545397" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+          <td class="grade g-full">● 충족</td></tr>
+        <tr><td><strong>Q · 물량</strong></td><td>HBM4 세계 최초 양산·전량 솔드아웃·점유율 확대 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">오마이뉴스 · 1Q26 컨퍼런스콜 (2026.04)</span><span class="evd-sum">HBM4 는 2월 <strong>세계 최초 양산 출하</strong> 후 계획대로 램프업. 준비한 생산능력 전량 솔드아웃, 3분기부터 HBM 매출의 절반 초과 전망. 회사측 「내년까지 수요가 밀려들어」.</span><a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003229999" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+          <td class="grade g-full">● 충족</td></tr>
+        <tr><td><strong>C · 비용/이익률</strong></td><td>전사 OPM 6.3%(2Q25) → 52.3%(2Q26 잠정) <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">YTN · 2Q26 잠정실적 (2026.07.07)</span><span class="evd-sum">2Q26 잠정 매출 <strong>171조원</strong>(+129% YoY), 영업이익 <strong>89조 4천억</strong>(+1,810% YoY) — 분기 영업이익으로 엔비디아·애플을 제치고 글로벌 1위. 3분기 연속 사상 최대.</span><a href="https://www.ytn.co.kr/_ln/0102_202607070934353202" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td>
+          <td class="grade g-full">● 충족</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>2. 어닝 모델 — 3Q26 추정 (매출 = 물량 × 판가)</h2>
+    <p class="desc">2Q26 잠정(매출 171조·OP 89.4조)에서 출발한 <strong>추정 모델</strong>. 부문 상세는 7/31 확정 실적 전이라 가정임을 명시한다.</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>부문</th><th class="num">물량 가정</th><th class="num">판가 가정</th><th class="num">매출 추정</th></tr></thead>
+      <tbody>
+        <tr><td>DS (메모리·파운드리)</td><td class="num">+3% QoQ</td><td class="num">+13% QoQ</td><td class="num">약 122조원</td></tr>
+        <tr><td>DX (세트)·기타</td><td class="num">+5% QoQ</td><td class="num">보합</td><td class="num">약 60조원</td></tr>
+        <tr><td><strong>합계</strong></td><td class="num">—</td><td class="num">—</td><td class="num"><strong>약 182조원</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>판가는 3Q 고정가 +15~20% 전망의 하단을 반영했고 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">엠투데이 · 트렌드포스 집계 인용 (2026.07)</span><span class="evd-sum">6월 DDR4 8Gb 고정가 <strong>21달러</strong>(집계 이래 최고), 3분기 고정가 상승률 전망 <strong>+15~20%</strong>(보도 인용).</span><a href="https://www.autodaily.co.kr/news/articleView.html?idxno=545397" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>, HBM4 매출이 3분기부터
+    HBM 전체의 절반을 넘는다는 회사 가이드가 믹스 개선을 더한다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">오마이뉴스 · 1Q26 컨퍼런스콜 (2026.04)</span><span class="evd-sum">HBM4 는 2월 <strong>세계 최초 양산 출하</strong> 후 계획대로 램프업. 준비한 생산능력 전량 솔드아웃, 3분기부터 HBM 매출의 절반 초과 전망. 회사측 「내년까지 수요가 밀려들어」.</span><a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003229999" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    OPM 을 2Q 의 52.3%에서 <strong>54%</strong>로 올려 잡으면 영업이익 <strong>약 96~100조원</strong> —
+    4개 분기 연속 신기록 경로다. 관건은 절대액이 아니라 <strong>증가율의 기울기</strong>다.</p>
+    <h3>다음 분기 체크포인트 (7/31 확정 실적에서 확인)</h3>
+    <ul>
+      <li>DS 부문 이익률 60%대 유지 여부 (1Q26 66%) <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">전자신문 · 1Q26 실적 (2026.04.07)</span><span class="evd-sum">1Q26 매출 133.9조, 영업이익 <strong>57.2조</strong>(+756% YoY). DS 부문 매출 81.7조·영업이익 53.7조 — DS 이익률 <strong>66%</strong>.</span><a href="https://www.etnews.com/20260407000181" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+      <li>HBM 매출 중 HBM4 비중 50% 돌파 확인 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">오마이뉴스 · 1Q26 컨퍼런스콜 (2026.04)</span><span class="evd-sum">HBM4 는 2월 <strong>세계 최초 양산 출하</strong> 후 계획대로 램프업. 준비한 생산능력 전량 솔드아웃, 3분기부터 HBM 매출의 절반 초과 전망. 회사측 「내년까지 수요가 밀려들어」.</span><a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003229999" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+      <li>낸드·파운드리 흑자 폭 — 2Q25 적자 사업의 기여 전환 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">아시아경제 (2025.07.08)</span><span class="evd-sum">2Q25 영업이익 <strong>4.6조 어닝쇼크</strong>(컨센 6조 하회) — 재고충당·미 관세 직격·파운드리 적자. 1년 뒤 같은 분기 89.4조와 대비되는 저점.</span><a href="https://www.asiae.co.kr/article/2025070808353661113" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+      <li>4Q 고정가 협상 방향 — 현물가 괴리(+72%)의 반영 여부 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">이포커스 (2026.07)</span><span class="evd-sum">D램 현물가가 고정가를 <strong>72% 상회</strong> — 다음 분기 고정가 협상의 상방 압력.</span><a href="https://www.e-focus.co.kr/news/articleView.html?idxno=3002499" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>3. Growth Sustainability 6항목</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+      <tbody>
+        <tr><td>1. 매출 증가와 가동률 동반 상승</td><td class="grade g-unk">? 확인불가</td>
+          <td>분기보고서 "생산 및 설비" 가동률 표 미확인 — 8월 반기보고서에서 확인</td></tr>
+        <tr><td>2. 설비투자 후 가동률 회복</td><td class="grade g-part">◐ 부분 충족</td>
+          <td>HBM4 램프업 진행 중 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">오마이뉴스 · 1Q26 컨퍼런스콜 (2026.04)</span><span class="evd-sum">HBM4 는 2월 <strong>세계 최초 양산 출하</strong> 후 계획대로 램프업. 준비한 생산능력 전량 솔드아웃, 3분기부터 HBM 매출의 절반 초과 전망. 회사측 「내년까지 수요가 밀려들어」.</span><a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003229999" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> — 신규 라인 가동률 수치는 미공개</td></tr>
+        <tr><td>3. 수주가 매출보다 빠른 성장</td><td class="grade g-full">● 충족</td>
+          <td>HBM4 생산능력 전량 솔드아웃 + "내년까지 수요" <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">오마이뉴스 · 1Q26 컨퍼런스콜 (2026.04)</span><span class="evd-sum">HBM4 는 2월 <strong>세계 최초 양산 출하</strong> 후 계획대로 램프업. 준비한 생산능력 전량 솔드아웃, 3분기부터 HBM 매출의 절반 초과 전망. 회사측 「내년까지 수요가 밀려들어」.</span><a href="https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003229999" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>4. 미국향 매출 노출</td><td class="grade g-full">● 충족</td>
+          <td>엔비디아·미 빅테크向 HBM·파운드리 — 2Q 실적이 그 증거 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">YTN · 2Q26 잠정실적 (2026.07.07)</span><span class="evd-sum">2Q26 잠정 매출 <strong>171조원</strong>(+129% YoY), 영업이익 <strong>89조 4천억</strong>(+1,810% YoY) — 분기 영업이익으로 엔비디아·애플을 제치고 글로벌 1위. 3분기 연속 사상 최대.</span><a href="https://www.ytn.co.kr/_ln/0102_202607070934353202" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>5. 밸류에이션 체계 전환(리레이팅)</td><td class="grade g-none">○ 미충족</td>
+          <td>3년간 22.9배→5.7배 <strong>디레이팅</strong> — 사이클 종목 취급 지속 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · build_series.py 계산 (2026.07.15)</span><span class="evd-sum">3년 밴드: 현재 Forward P/E <strong>5.7배</strong>, 기간 평균 11.7배, 최근 1년 평균 8.6배, 백분위 <strong>1%</strong>(1년 기준 2%).</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></td></tr>
+        <tr><td>6. 산업 TAM 확대 수혜</td><td class="grade g-full">● 충족</td>
+          <td>반도체 수출 사상 최대 — AI 메모리가 산업 전체 견인 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">산업통상자원부 6월 수출입동향 (2026.07)</span><span class="evd-sum">6월 반도체 수출 <strong>448.2억 달러</strong>(+199.5% YoY) — 사상 첫 월 400억 달러 돌파.</span><a href="https://www.korea.kr/briefing/policyBriefingView.do?newsId=156769112" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      </tbody>
+    </table></div>
+    <p>집계: <strong>긍정 3 · 부분 1 · 부정 1</strong> (확인불가 1 별도). SK하이닉스와 동일한 패턴 —
+    이 업종의 투자 논지는 배수 확장이 아니라 이익 지속에 달려 있다.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. 시나리오 · 민감도 — 조건부 가치 범위</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>시나리오</th><th>전제</th><th class="num">NTM EPS</th><th class="num">배수</th><th class="num">환산 가치</th><th class="num">현재가 대비</th></tr></thead>
+      <tbody><tr><td><strong>Bull</strong></td><td>HBM4 점유율 확대 지속 + 판가 상승 유지 — KB증권 FY26 381조·목표가 60만원 시각. NTM 영업이익 380조, 배수 8배</td><td class="num">60,598원</td><td class="num">8배</td><td class="num"><strong>484,786원</strong></td><td class="num"><span class="up">+77.3%</span></td></tr><tr><td><strong>Base</strong></td><td>FY26 컨센서스 중앙(170~260조대) 실현 + 27H1 소폭 증익 — NTM 300조, 현 구간 배수 6배</td><td class="num">47,841원</td><td class="num">6배</td><td class="num"><strong>287,044원</strong></td><td class="num"><span class="up">+5.0%</span></td></tr><tr><td><strong>Bear</strong></td><td>메모리 판가 피크아웃 + HBM 경쟁 심화로 2027 감익 — 키움 목표가 39만 하향 시각의 하방. NTM 150조, 배수 5배</td><td class="num">23,920원</td><td class="num">5배</td><td class="num"><strong>119,602원</strong></td><td class="num"><span class="down">-56.3%</span></td></tr></tbody>
+    </table></div>
+    <h3>민감도 — 메모리 판가(ASP) (기준 배수 6배 고정)</h3>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>메모리 판가(ASP)</th><th class="num">NTM EPS</th><th class="num">환산 가치</th><th class="num">현재가 대비</th></tr></thead>
+      <tbody><tr><td>-15%</td><td class="num">35,881원</td><td class="num">215,283원</td><td class="num"><span class="down">-21.3%</span></td></tr><tr><td>기준</td><td class="num">47,841원</td><td class="num">287,044원</td><td class="num"><span class="up">+5.0%</span></td></tr><tr><td>+15%</td><td class="num">59,801원</td><td class="num">358,805원</td><td class="num"><span class="up">+31.2%</span></td></tr></tbody>
+    </table></div>
+    <div class="note"><strong>고지:</strong> 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다.
+    Bull/Bear 전제는 증권가 목표주가 분화(39만~60만)의 양 끝 시각을 그대로 옮긴 것이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">머니투데이 (2026.07.09)</span><span class="evd-sum">증권가 목표주가 <strong>39만~60만원으로 분화</strong> — KB 60만(FY26 OP 381조 가정) vs 키움 39만 하향. HBM 경쟁력·판가 하락 시점 가정 차이.</span><a href="https://www.mt.co.kr/stock/2026/07/09/2026070820090625196" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">알파경제·각사 리포트 (2026)</span><span class="evd-sum">FY26 영업이익 추정: 흥국 <strong>176.3조</strong>(+304% YoY)·KB 170조→381조 상향 등 — 추정 편차가 2배를 넘는 극단 분화 국면.</span><a href="https://kr.investing.com/news/stock-market-news/article-1806792" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+  </div>
+
+  <div class="card">
+    <h2>5. 글로벌 피어 비교 — TTM 실측</h2>
+    <p class="desc">최근 4개 분기 합산. 절대액은 각자 통화, 비교는 배수로만. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART·SEC EDGAR TTM 실측 · peer_table.py (2026.07.15)</span><span class="evd-sum">TTM 기준 — 삼성전자 시총/OP <strong>17.0배</strong>(3사 최저), OPM 24.2%(세트 포함 전사). SK하이닉스 18.6배·58.6%, 마이크론 18.6배·65.4%.</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>기업</th><th class="num">시가총액</th><th class="num">TTM 매출</th><th class="num">TTM 영업이익</th><th class="num">OPM</th><th class="num">P/E(TTM)</th><th class="num">시총/OP</th></tr></thead>
+      <tbody><tr><td><strong>삼성전자</strong></td><td class="num">1,599조원</td><td class="num">388.3조원</td><td class="num">94.1조원</td><td class="num">24.2%</td><td class="num">19.2</td><td class="num">17.0</td></tr><tr><td><strong>SK하이닉스</strong></td><td class="num">1,441조원</td><td class="num">132.1조원</td><td class="num">77.4조원</td><td class="num">58.6%</td><td class="num">19.2</td><td class="num">18.6</td></tr><tr><td><strong>마이크론 테크놀로지</strong></td><td class="num">$1,077B</td><td class="num">$88.3B</td><td class="num">$57.8B</td><td class="num">65.4%</td><td class="num">21.9</td><td class="num">18.6</td></tr></tbody>
+    </table></div>
+    <p>삼성의 전사 OPM(24.2%)이 낮은 것은 세트(DX)·파운드리를 포함한 구조 때문이고 — DS 만 보면
+    1Q26 이익률 66%로 순수 메모리사와 대등하다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">전자신문 · 1Q26 실적 (2026.04.07)</span><span class="evd-sum">1Q26 매출 133.9조, 영업이익 <strong>57.2조</strong>(+756% YoY). DS 부문 매출 81.7조·영업이익 53.7조 — DS 이익률 <strong>66%</strong>.</span><a href="https://www.etnews.com/20260407000181" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 시총/영업이익 배수는 <strong>17.0배로
+    3사 중 최저</strong>인데, TTM 에 2Q25 쇼크 분기가 아직 들어 있어 분모가 과소평가된 착시도 있다 —
+    2Q26 확정치가 반영되는 다음 분기에 이 표의 배수들은 크게 내려간다.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. 수급</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>항목</th><th>판정</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>외국인/기관 순매수 (KRX)</td><td class="grade g-unk">? 확인불가</td>
+          <td>KRX 정보데이터시스템 연결 대기 — 연결 후 20·60일 누적으로 보완 예정</td></tr>
+        <tr><td>단기 수급 (보도 보완)</td><td class="grade g-none">○ 부담</td>
+          <td>7/2 −9% 급락에 외국인·기관 동반 매도 집중 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">아주경제 (2026.07.02)</span><span class="evd-sum">7/2 삼성전자 <strong>-9% 급락</strong> 마감 — 외국인·기관 동반 매도 집중. 코스피 급등 후 포트폴리오 리밸런싱 성격.</span><a href="https://m.fortune.ajunews.com/bbs/view/news/S1N11/5459424" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>, 실적 발표일(7/7)에도 셀온 −7% <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com (2026.07)</span><span class="evd-sum">역대급 실적 발표일(7/7)에 주가 <strong>-7%대 급락</strong> — 12개월 급등 뒤 셀온·차익실현, 단일종목 레버리지 ETF 가 매도 압력을 증폭했다는 분석.</span><a href="https://kr.investing.com/news/stock-market-news/article-93CH-2013075" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td>변동성 구조</td><td class="grade g-part">◐ 주의</td>
+          <td>단일종목 레버리지 ETF 가 하락 시 매도 압력을 증폭하는 구조 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com (2026.07)</span><span class="evd-sum">역대급 실적 발표일(7/7)에 주가 <strong>-7%대 급락</strong> — 12개월 급등 뒤 셀온·차익실현, 단일종목 레버리지 ETF 가 매도 압력을 증폭했다는 분석.</span><a href="https://kr.investing.com/news/stock-market-news/article-93CH-2013075" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h2>7. 반대 논리 (리스크)</h2>
+    <div class="note"><strong>이 종목의 핵심 논쟁:</strong> 백분위 1%의 저P/E 는 "싸다"의 증거가 아니라
+    시장이 <strong>이익 정점을 가격에 넣기 시작했다</strong>는 신호일 수 있다. 89.4조 발표일의 −7%가
+    그 실증이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com (2026.07)</span><span class="evd-sum">역대급 실적 발표일(7/7)에 주가 <strong>-7%대 급락</strong> — 12개월 급등 뒤 셀온·차익실현, 단일종목 레버리지 ETF 가 매도 압력을 증폭했다는 분석.</span><a href="https://kr.investing.com/news/stock-market-news/article-93CH-2013075" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · build_series.py 계산 (2026.07.15)</span><span class="evd-sum">3년 밴드: 현재 Forward P/E <strong>5.7배</strong>, 기간 평균 11.7배, 최근 1년 평균 8.6배, 백분위 <strong>1%</strong>(1년 기준 2%).</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></div>
+    <ul>
+      <li><strong>목표가 분화 = 확신 부재:</strong> 39만(키움)~60만(KB) — FY26 추정이 176조~381조로
+        2배 이상 벌어져 있다. 어느 쪽이 맞느냐가 곧 주가 방향이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">머니투데이 (2026.07.09)</span><span class="evd-sum">증권가 목표주가 <strong>39만~60만원으로 분화</strong> — KB 60만(FY26 OP 381조 가정) vs 키움 39만 하향. HBM 경쟁력·판가 하락 시점 가정 차이.</span><a href="https://www.mt.co.kr/stock/2026/07/09/2026070820090625196" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">알파경제·각사 리포트 (2026)</span><span class="evd-sum">FY26 영업이익 추정: 흥국 <strong>176.3조</strong>(+304% YoY)·KB 170조→381조 상향 등 — 추정 편차가 2배를 넘는 극단 분화 국면.</span><a href="https://kr.investing.com/news/stock-market-news/article-1806792" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+      <li><strong>판가 피크아웃:</strong> 민감도 표 기준 ASP −15% 만으로 −21%. 2027 감익 전환 시
+        Bear(−56%)가 하방 참조점이다.</li>
+      <li><strong>HBM 경쟁 역전 리스크:</strong> SK하이닉스의 HBM4E 반격·마이크론 증설 — 점유율 확대
+        서사가 꺾이면 프리미엄 근거가 사라진다.</li>
+      <li><strong>세트(DX)·관세 리스크:</strong> 2Q25 쇼크의 원인이었던 관세·수요 변수는 여전히 살아 있다
+        — 메모리 호황이 가리고 있을 뿐이다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">아시아경제 (2025.07.08)</span><span class="evd-sum">2Q25 영업이익 <strong>4.6조 어닝쇼크</strong>(컨센 6조 하회) — 재고충당·미 관세 직격·파운드리 적자. 1년 뒤 같은 분기 89.4조와 대비되는 저점.</span><a href="https://www.asiae.co.kr/article/2025070808353661113" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>8. 밸류에이션 위치 + PE 밴드</h2>
+    <p>3년 밴드에서 현재 <strong>5.7배</strong>는 백분위 1% — 이익 바닥이던 2023년(22.9배)의 정확히
+    반대편 끝이다. 평균(11.7배)까지의 거리는 크지만, 사이클 종목의 평균 회귀는 이익 추정이 유지될 때만
+    의미가 있다. 밴드 환산: 5배 23.9만 / 8배 38.3만 / 11배 52.6만 / 14배 67.0만. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · build_series.py 계산 (2026.07.15)</span><span class="evd-sum">3년 밴드: 현재 Forward P/E <strong>5.7배</strong>, 기간 평균 11.7배, 최근 1년 평균 8.6배, 백분위 <strong>1%</strong>(1년 기준 2%).</span><span class="evd-nolink">토스 Open API·DART·스크립트 계산값 — 원문 링크 없음</span></span></span></p>
+    <details class="pe-embed" data-peb="005930" open>
+      <summary>
+        <span class="peb-t">📊 삼성전자 — Forward P/E 밴드 (3년)</span>
+        <span class="peb-s">현재 5.7배 · 기간 평균 11.7배 · 백분위 1%</span>
+      </summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+        <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a">
+          <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+          <div class="tooltip"></div>
+        </div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b">
+          <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+          <div class="tooltip"></div>
+        </div>
+        <div class="tbl-scroll" style="margin-top:16px;">
+          <table>
+            <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+            <tbody class="peb-anchor-rows"><tr><td>'23.5.2</td><td class="num">18.0조원</td><td class="num">2,870원</td><td>반도체(DS) 부문 분기 적자기 — FY23 전사 컨센서스 8조 안팎, 2024 회복 기대를 더한 NTM 18조 추정. 당시 삼성전자는 이익 바닥에서 PER 20배대 (트로프 멀티플)</td></tr><tr><td>'23.10.31</td><td class="num">30.0조원</td><td class="num">4,784원</td><td>3Q23 실적 발표 — 메모리 감산 효과 가시화, FY24 컨센서스 33조 안팎 형성기</td></tr><tr><td>'24.1.31</td><td class="num">35.0조원</td><td class="num">5,581원</td><td>FY23 영업이익 6.57조 확정 발표 — FY24 컨센서스 35조로 회복 기대</td></tr><tr><td>'24.7.31</td><td class="num">44.0조원</td><td class="num">7,017원</td><td>2Q24 영업이익 10.4조(DART 실측) — FY24 기대 정점 44조 안팎</td></tr><tr><td>'25.1.31</td><td class="num">33.0조원</td><td class="num">5,262원</td><td>4Q24 영업이익 6.5조 어닝쇼크·FY24 32.7조(DART 실측) — HBM 경쟁 지연 우려로 FY25 컨센서스 33조로 하향</td></tr><tr><td>'25.7.31</td><td class="num">35.0조원</td><td class="num">5,581원</td><td>2Q25 영업이익 4.7조 어닝쇼크(컨센 6조 하회 — 재고충당·관세·파운드리 적자, 아시아경제 2025.07) — FY25 하향에도 26년 HBM4 회복 기대로 NTM 35조 유지</td></tr><tr><td>'25.10.30</td><td class="num">55.0조원</td><td class="num">8,771원</td><td>3Q25 영업이익 12.2조 회복(DART 실측) — HBM4 양산 가시화로 FY26 전망 60조 안팎으로 상향 시작</td></tr><tr><td>'26.1.29</td><td class="num">130.0조원</td><td class="num">20,731원</td><td>FY25 43.6조 확정·4Q25 20.1조 — FY26 컨센서스 급상향 국면 (키움 1/30 리포트 목표가 20만원)</td></tr><tr><td>'26.4.7</td><td class="num">200.0조원</td><td class="num">31,894원</td><td>1Q26 잠정 영업이익 57.2조(+756% YoY, DS 이익률 66%) — 흥국 FY26 176.3조 등 컨센서스 170~180조</td></tr><tr><td>'26.7.7</td><td class="num">300.0조원</td><td class="num">47,841원</td><td>2Q26 잠정 89.4조(매출 171조 — 엔비디아·애플 추월, YTN 7/7) — FY26 추정 176~381조(KB)로 분화, 컨센서스 중앙값 기준 NTM(26H2+27H1) 300조 추정</td></tr></tbody>
+          </table>
+        </div>
+        <p class="desc peb-foot" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) × 전환율 0.9323(DART 실측: 2Q24~1Q26 흑자 8개 분기) ÷ 5,846,278,608주(토스 API). 앵커 사이 선형 보간. 상세 산출식·한계: https://nextiar.github.io/methodology.html</p>
+      </div>
+    </details>
+    <p class="desc" style="margin-top:12px;">다음 확인 이벤트: <strong>7/31 2Q26 확정 실적</strong>(부문별 상세·컨콜),
+    3분기 HBM4 매출 비중 50% 돌파 여부, 4Q 고정가 협상.</p>
+  </div>
+
+  <footer>
+    <p>데이터: 토스증권 Open API(시세·발행주식수) · DART 전자공시(재무 실측) · SEC EDGAR companyfacts(피어 TTM) ·
+    산업통상자원부/관세청 수출입동향 · 삼성전자 뉴스룸·YTN·전자신문·아시아경제·머니투데이 등 공개 보도 (각 의견의 근거 팝업에 원문 링크).
+    생성 2026-07-15.</p>
+    <p>추정으로 표기된 수치(NTM EPS·어닝 모델·시나리오)는 공개 자료 기반 근사 모델의 산출값이며 실제 컨센서스 집계가 아닙니다.
+    산출 방법론·판정 등급 정의: <a href="https://nextiar.github.io/methodology.html">방법론 페이지</a>.</p>
+    <p><strong>본 자료는 정보 제공 목적이며 특정 종목의 매매를 권유하지 않습니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</strong></p>
+  <p style="margin-top:8px;">이해상충 공시: 작성자는 이 리포트의 분석 대상 종목 중 일부를 발간 시점에 보유하고 있습니다. 수량·평가액은 공개하지 않으며, 본 리포트는 무료 정보 제공 목적으로 작성되었습니다.</p></footer>
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러: create-pe-chart template.html 차트 A·B 의 다종목판 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].c) - 11, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+/* ---- 부트스트랩: PE_DATA 의 키 = <details data-peb> 값 ----
+   데이터 누락은 조용히 넘기지 않고 드롭다운 안에 안내를 띄운다 (빈 차트 방지).
+   임베드 하나가 실패해도 나머지는 계속 렌더한다. */
+const PE_DATA = {
+  "005930": {"rows": [{"d": "2023-05-02", "c": 65700.0, "eps": 2870.0, "pe": 22.9}, {"d": "2023-05-03", "c": 65400.0, "eps": 2881.0, "pe": 22.7}, {"d": "2023-05-04", "c": 65100.0, "eps": 2891.0, "pe": 22.5}, {"d": "2023-05-08", "c": 65900.0, "eps": 2934.0, "pe": 22.5}, {"d": "2023-05-09", "c": 65300.0, "eps": 2944.0, "pe": 22.2}, {"d": "2023-05-10", "c": 64600.0, "eps": 2955.0, "pe": 21.9}, {"d": "2023-05-11", "c": 64200.0, "eps": 2965.0, "pe": 21.7}, {"d": "2023-05-12", "c": 64100.0, "eps": 2976.0, "pe": 21.5}, {"d": "2023-05-15", "c": 64500.0, "eps": 3007.0, "pe": 21.4}, {"d": "2023-05-16", "c": 65400.0, "eps": 3018.0, "pe": 21.7}, {"d": "2023-05-17", "c": 65000.0, "eps": 3028.0, "pe": 21.5}, {"d": "2023-05-18", "c": 66200.0, "eps": 3039.0, "pe": 21.8}, {"d": "2023-05-19", "c": 68400.0, "eps": 3049.0, "pe": 22.4}, {"d": "2023-05-22", "c": 68500.0, "eps": 3081.0, "pe": 22.2}, {"d": "2023-05-23", "c": 68400.0, "eps": 3091.0, "pe": 22.1}, {"d": "2023-05-24", "c": 68500.0, "eps": 3102.0, "pe": 22.1}, {"d": "2023-05-25", "c": 68800.0, "eps": 3112.0, "pe": 22.1}, {"d": "2023-05-26", "c": 70300.0, "eps": 3123.0, "pe": 22.5}, {"d": "2023-05-30", "c": 72300.0, "eps": 3165.0, "pe": 22.8}, {"d": "2023-05-31", "c": 71400.0, "eps": 3175.0, "pe": 22.5}, {"d": "2023-06-01", "c": 70900.0, "eps": 3186.0, "pe": 22.3}, {"d": "2023-06-02", "c": 72200.0, "eps": 3196.0, "pe": 22.6}, {"d": "2023-06-05", "c": 71700.0, "eps": 3228.0, "pe": 22.2}, {"d": "2023-06-07", "c": 71000.0, "eps": 3249.0, "pe": 21.9}, {"d": "2023-06-08", "c": 70900.0, "eps": 3259.0, "pe": 21.8}, {"d": "2023-06-09", "c": 72000.0, "eps": 3270.0, "pe": 22.0}, {"d": "2023-06-12", "c": 71000.0, "eps": 3302.0, "pe": 21.5}, {"d": "2023-06-13", "c": 72000.0, "eps": 3312.0, "pe": 21.7}, {"d": "2023-06-14", "c": 71900.0, "eps": 3323.0, "pe": 21.6}, {"d": "2023-06-15", "c": 71500.0, "eps": 3333.0, "pe": 21.5}, {"d": "2023-06-16", "c": 71800.0, "eps": 3344.0, "pe": 21.5}, {"d": "2023-06-19", "c": 71200.0, "eps": 3375.0, "pe": 21.1}, {"d": "2023-06-20", "c": 71400.0, "eps": 3386.0, "pe": 21.1}, {"d": "2023-06-21", "c": 70500.0, "eps": 3396.0, "pe": 20.8}, {"d": "2023-06-22", "c": 71300.0, "eps": 3407.0, "pe": 20.9}, {"d": "2023-06-23", "c": 71600.0, "eps": 3417.0, "pe": 21.0}, {"d": "2023-06-26", "c": 72400.0, "eps": 3449.0, "pe": 21.0}, {"d": "2023-06-27", "c": 72600.0, "eps": 3459.0, "pe": 21.0}, {"d": "2023-06-28", "c": 72700.0, "eps": 3470.0, "pe": 21.0}, {"d": "2023-06-29", "c": 72400.0, "eps": 3480.0, "pe": 20.8}, {"d": "2023-06-30", "c": 72200.0, "eps": 3491.0, "pe": 20.7}, {"d": "2023-07-03", "c": 73000.0, "eps": 3522.0, "pe": 20.7}, {"d": "2023-07-04", "c": 73000.0, "eps": 3533.0, "pe": 20.7}, {"d": "2023-07-05", "c": 72000.0, "eps": 3543.0, "pe": 20.3}, {"d": "2023-07-06", "c": 71600.0, "eps": 3554.0, "pe": 20.1}, {"d": "2023-07-07", "c": 69900.0, "eps": 3564.0, "pe": 19.6}, {"d": "2023-07-10", "c": 69500.0, "eps": 3596.0, "pe": 19.3}, {"d": "2023-07-11", "c": 71500.0, "eps": 3606.0, "pe": 19.8}, {"d": "2023-07-12", "c": 71900.0, "eps": 3617.0, "pe": 19.9}, {"d": "2023-07-13", "c": 71900.0, "eps": 3627.0, "pe": 19.8}, {"d": "2023-07-14", "c": 73400.0, "eps": 3638.0, "pe": 20.2}, {"d": "2023-07-17", "c": 73300.0, "eps": 3670.0, "pe": 20.0}, {"d": "2023-07-18", "c": 72000.0, "eps": 3680.0, "pe": 19.6}, {"d": "2023-07-19", "c": 71700.0, "eps": 3691.0, "pe": 19.4}, {"d": "2023-07-20", "c": 71000.0, "eps": 3701.0, "pe": 19.2}, {"d": "2023-07-21", "c": 70300.0, "eps": 3712.0, "pe": 18.9}, {"d": "2023-07-24", "c": 70400.0, "eps": 3743.0, "pe": 18.8}, {"d": "2023-07-25", "c": 70000.0, "eps": 3754.0, "pe": 18.6}, {"d": "2023-07-26", "c": 69800.0, "eps": 3764.0, "pe": 18.5}, {"d": "2023-07-27", "c": 71700.0, "eps": 3775.0, "pe": 19.0}, {"d": "2023-07-28", "c": 70600.0, "eps": 3785.0, "pe": 18.7}, {"d": "2023-07-31", "c": 69800.0, "eps": 3817.0, "pe": 18.3}, {"d": "2023-08-01", "c": 71100.0, "eps": 3827.0, "pe": 18.6}, {"d": "2023-08-02", "c": 69900.0, "eps": 3838.0, "pe": 18.2}, {"d": "2023-08-03", "c": 68800.0, "eps": 3848.0, "pe": 17.9}, {"d": "2023-08-04", "c": 68300.0, "eps": 3859.0, "pe": 17.7}, {"d": "2023-08-07", "c": 68500.0, "eps": 3890.0, "pe": 17.6}, {"d": "2023-08-08", "c": 67600.0, "eps": 3901.0, "pe": 17.3}, {"d": "2023-08-09", "c": 68900.0, "eps": 3911.0, "pe": 17.6}, {"d": "2023-08-10", "c": 68000.0, "eps": 3922.0, "pe": 17.3}, {"d": "2023-08-11", "c": 67500.0, "eps": 3932.0, "pe": 17.2}, {"d": "2023-08-14", "c": 67300.0, "eps": 3964.0, "pe": 17.0}, {"d": "2023-08-16", "c": 67000.0, "eps": 3985.0, "pe": 16.8}, {"d": "2023-08-17", "c": 66700.0, "eps": 3995.0, "pe": 16.7}, {"d": "2023-08-18", "c": 66300.0, "eps": 4006.0, "pe": 16.6}, {"d": "2023-08-21", "c": 66600.0, "eps": 4038.0, "pe": 16.5}, {"d": "2023-08-22", "c": 66600.0, "eps": 4048.0, "pe": 16.5}, {"d": "2023-08-23", "c": 67100.0, "eps": 4059.0, "pe": 16.5}, {"d": "2023-08-24", "c": 68200.0, "eps": 4069.0, "pe": 16.8}, {"d": "2023-08-25", "c": 67100.0, "eps": 4080.0, "pe": 16.4}, {"d": "2023-08-28", "c": 66800.0, "eps": 4111.0, "pe": 16.2}, {"d": "2023-08-29", "c": 66800.0, "eps": 4122.0, "pe": 16.2}, {"d": "2023-08-30", "c": 67100.0, "eps": 4132.0, "pe": 16.2}, {"d": "2023-08-31", "c": 66900.0, "eps": 4143.0, "pe": 16.1}, {"d": "2023-09-01", "c": 71000.0, "eps": 4153.0, "pe": 17.1}, {"d": "2023-09-04", "c": 71200.0, "eps": 4185.0, "pe": 17.0}, {"d": "2023-09-05", "c": 70700.0, "eps": 4195.0, "pe": 16.9}, {"d": "2023-09-06", "c": 70000.0, "eps": 4206.0, "pe": 16.6}, {"d": "2023-09-07", "c": 70400.0, "eps": 4216.0, "pe": 16.7}, {"d": "2023-09-08", "c": 70300.0, "eps": 4227.0, "pe": 16.6}, {"d": "2023-09-11", "c": 70800.0, "eps": 4258.0, "pe": 16.6}, {"d": "2023-09-12", "c": 70500.0, "eps": 4269.0, "pe": 16.5}, {"d": "2023-09-13", "c": 70900.0, "eps": 4279.0, "pe": 16.6}, {"d": "2023-09-14", "c": 71700.0, "eps": 4290.0, "pe": 16.7}, {"d": "2023-09-15", "c": 72000.0, "eps": 4300.0, "pe": 16.7}, {"d": "2023-09-18", "c": 70200.0, "eps": 4332.0, "pe": 16.2}, {"d": "2023-09-19", "c": 69800.0, "eps": 4342.0, "pe": 16.1}, {"d": "2023-09-20", "c": 69600.0, "eps": 4353.0, "pe": 16.0}, {"d": "2023-09-21", "c": 68900.0, "eps": 4363.0, "pe": 15.8}, {"d": "2023-09-22", "c": 68800.0, "eps": 4374.0, "pe": 15.7}, {"d": "2023-09-25", "c": 69400.0, "eps": 4406.0, "pe": 15.8}, {"d": "2023-09-26", "c": 68600.0, "eps": 4416.0, "pe": 15.5}, {"d": "2023-09-27", "c": 68400.0, "eps": 4427.0, "pe": 15.5}, {"d": "2023-10-04", "c": 67500.0, "eps": 4500.0, "pe": 15.0}, {"d": "2023-10-05", "c": 66700.0, "eps": 4511.0, "pe": 14.8}, {"d": "2023-10-06", "c": 66000.0, "eps": 4521.0, "pe": 14.6}, {"d": "2023-10-10", "c": 66400.0, "eps": 4563.0, "pe": 14.6}, {"d": "2023-10-11", "c": 68200.0, "eps": 4574.0, "pe": 14.9}, {"d": "2023-10-12", "c": 68900.0, "eps": 4584.0, "pe": 15.0}, {"d": "2023-10-13", "c": 68000.0, "eps": 4595.0, "pe": 14.8}, {"d": "2023-10-16", "c": 67300.0, "eps": 4626.0, "pe": 14.5}, {"d": "2023-10-17", "c": 69400.0, "eps": 4637.0, "pe": 15.0}, {"d": "2023-10-18", "c": 70500.0, "eps": 4647.0, "pe": 15.2}, {"d": "2023-10-19", "c": 69500.0, "eps": 4658.0, "pe": 14.9}, {"d": "2023-10-20", "c": 68800.0, "eps": 4668.0, "pe": 14.7}, {"d": "2023-10-23", "c": 68400.0, "eps": 4700.0, "pe": 14.6}, {"d": "2023-10-24", "c": 68500.0, "eps": 4710.0, "pe": 14.5}, {"d": "2023-10-25", "c": 68000.0, "eps": 4721.0, "pe": 14.4}, {"d": "2023-10-26", "c": 66700.0, "eps": 4731.0, "pe": 14.1}, {"d": "2023-10-27", "c": 67300.0, "eps": 4742.0, "pe": 14.2}, {"d": "2023-10-30", "c": 67300.0, "eps": 4774.0, "pe": 14.1}, {"d": "2023-10-31", "c": 66900.0, "eps": 4784.0, "pe": 14.0}, {"d": "2023-11-01", "c": 68600.0, "eps": 4793.0, "pe": 14.3}, {"d": "2023-11-02", "c": 69700.0, "eps": 4801.0, "pe": 14.5}, {"d": "2023-11-03", "c": 69600.0, "eps": 4810.0, "pe": 14.5}, {"d": "2023-11-06", "c": 70900.0, "eps": 4836.0, "pe": 14.7}, {"d": "2023-11-07", "c": 70900.0, "eps": 4845.0, "pe": 14.6}, {"d": "2023-11-08", "c": 69900.0, "eps": 4853.0, "pe": 14.4}, {"d": "2023-11-09", "c": 70300.0, "eps": 4862.0, "pe": 14.5}, {"d": "2023-11-10", "c": 70500.0, "eps": 4871.0, "pe": 14.5}, {"d": "2023-11-13", "c": 70400.0, "eps": 4897.0, "pe": 14.4}, {"d": "2023-11-14", "c": 70800.0, "eps": 4905.0, "pe": 14.4}, {"d": "2023-11-15", "c": 72200.0, "eps": 4914.0, "pe": 14.7}, {"d": "2023-11-16", "c": 72800.0, "eps": 4923.0, "pe": 14.8}, {"d": "2023-11-17", "c": 72500.0, "eps": 4931.0, "pe": 14.7}, {"d": "2023-11-20", "c": 72700.0, "eps": 4957.0, "pe": 14.7}, {"d": "2023-11-21", "c": 72800.0, "eps": 4966.0, "pe": 14.7}, {"d": "2023-11-22", "c": 72800.0, "eps": 4975.0, "pe": 14.6}, {"d": "2023-11-23", "c": 72400.0, "eps": 4983.0, "pe": 14.5}, {"d": "2023-11-24", "c": 71700.0, "eps": 4992.0, "pe": 14.4}, {"d": "2023-11-27", "c": 71300.0, "eps": 5018.0, "pe": 14.2}, {"d": "2023-11-28", "c": 72700.0, "eps": 5027.0, "pe": 14.5}, {"d": "2023-11-29", "c": 72700.0, "eps": 5035.0, "pe": 14.4}, {"d": "2023-11-30", "c": 72800.0, "eps": 5044.0, "pe": 14.4}, {"d": "2023-12-01", "c": 72000.0, "eps": 5053.0, "pe": 14.2}, {"d": "2023-12-04", "c": 72600.0, "eps": 5079.0, "pe": 14.3}, {"d": "2023-12-05", "c": 71200.0, "eps": 5087.0, "pe": 14.0}, {"d": "2023-12-06", "c": 71700.0, "eps": 5096.0, "pe": 14.1}, {"d": "2023-12-07", "c": 71500.0, "eps": 5105.0, "pe": 14.0}, {"d": "2023-12-08", "c": 72600.0, "eps": 5113.0, "pe": 14.2}, {"d": "2023-12-11", "c": 73000.0, "eps": 5139.0, "pe": 14.2}, {"d": "2023-12-12", "c": 73500.0, "eps": 5148.0, "pe": 14.3}, {"d": "2023-12-13", "c": 72800.0, "eps": 5157.0, "pe": 14.1}, {"d": "2023-12-14", "c": 73100.0, "eps": 5165.0, "pe": 14.2}, {"d": "2023-12-15", "c": 73300.0, "eps": 5174.0, "pe": 14.2}, {"d": "2023-12-18", "c": 72900.0, "eps": 5200.0, "pe": 14.0}, {"d": "2023-12-19", "c": 73400.0, "eps": 5209.0, "pe": 14.1}, {"d": "2023-12-20", "c": 74800.0, "eps": 5217.0, "pe": 14.3}, {"d": "2023-12-21", "c": 75000.0, "eps": 5226.0, "pe": 14.4}, {"d": "2023-12-22", "c": 75900.0, "eps": 5235.0, "pe": 14.5}, {"d": "2023-12-26", "c": 76600.0, "eps": 5269.0, "pe": 14.5}, {"d": "2023-12-27", "c": 78000.0, "eps": 5278.0, "pe": 14.8}, {"d": "2023-12-28", "c": 78500.0, "eps": 5287.0, "pe": 14.8}, {"d": "2024-01-02", "c": 79600.0, "eps": 5330.0, "pe": 14.9}, {"d": "2024-01-03", "c": 77000.0, "eps": 5339.0, "pe": 14.4}, {"d": "2024-01-04", "c": 76600.0, "eps": 5347.0, "pe": 14.3}, {"d": "2024-01-05", "c": 76600.0, "eps": 5356.0, "pe": 14.3}, {"d": "2024-01-08", "c": 76500.0, "eps": 5382.0, "pe": 14.2}, {"d": "2024-01-09", "c": 74700.0, "eps": 5391.0, "pe": 13.9}, {"d": "2024-01-10", "c": 73600.0, "eps": 5399.0, "pe": 13.6}, {"d": "2024-01-11", "c": 73200.0, "eps": 5408.0, "pe": 13.5}, {"d": "2024-01-12", "c": 73100.0, "eps": 5417.0, "pe": 13.5}, {"d": "2024-01-15", "c": 73900.0, "eps": 5443.0, "pe": 13.6}, {"d": "2024-01-16", "c": 72600.0, "eps": 5451.0, "pe": 13.3}, {"d": "2024-01-17", "c": 71000.0, "eps": 5460.0, "pe": 13.0}, {"d": "2024-01-18", "c": 71700.0, "eps": 5469.0, "pe": 13.1}, {"d": "2024-01-19", "c": 74700.0, "eps": 5477.0, "pe": 13.6}, {"d": "2024-01-22", "c": 75100.0, "eps": 5503.0, "pe": 13.6}, {"d": "2024-01-23", "c": 75200.0, "eps": 5512.0, "pe": 13.6}, {"d": "2024-01-24", "c": 74000.0, "eps": 5521.0, "pe": 13.4}, {"d": "2024-01-25", "c": 74100.0, "eps": 5529.0, "pe": 13.4}, {"d": "2024-01-26", "c": 73400.0, "eps": 5538.0, "pe": 13.3}, {"d": "2024-01-29", "c": 74400.0, "eps": 5564.0, "pe": 13.4}, {"d": "2024-01-30", "c": 74300.0, "eps": 5573.0, "pe": 13.3}, {"d": "2024-01-31", "c": 72700.0, "eps": 5581.0, "pe": 13.0}, {"d": "2024-02-01", "c": 73600.0, "eps": 5589.0, "pe": 13.2}, {"d": "2024-02-02", "c": 75200.0, "eps": 5597.0, "pe": 13.4}, {"d": "2024-02-05", "c": 74300.0, "eps": 5621.0, "pe": 13.2}, {"d": "2024-02-06", "c": 74400.0, "eps": 5629.0, "pe": 13.2}, {"d": "2024-02-07", "c": 75000.0, "eps": 5637.0, "pe": 13.3}, {"d": "2024-02-08", "c": 74100.0, "eps": 5645.0, "pe": 13.1}, {"d": "2024-02-13", "c": 75200.0, "eps": 5684.0, "pe": 13.2}, {"d": "2024-02-14", "c": 74000.0, "eps": 5692.0, "pe": 13.0}, {"d": "2024-02-15", "c": 73000.0, "eps": 5700.0, "pe": 12.8}, {"d": "2024-02-16", "c": 72800.0, "eps": 5708.0, "pe": 12.8}, {"d": "2024-02-19", "c": 73800.0, "eps": 5731.0, "pe": 12.9}, {"d": "2024-02-20", "c": 73300.0, "eps": 5739.0, "pe": 12.8}, {"d": "2024-02-21", "c": 73000.0, "eps": 5747.0, "pe": 12.7}, {"d": "2024-02-22", "c": 73100.0, "eps": 5755.0, "pe": 12.7}, {"d": "2024-02-23", "c": 72900.0, "eps": 5763.0, "pe": 12.7}, {"d": "2024-02-26", "c": 72800.0, "eps": 5786.0, "pe": 12.6}, {"d": "2024-02-27", "c": 72900.0, "eps": 5794.0, "pe": 12.6}, {"d": "2024-02-28", "c": 73200.0, "eps": 5802.0, "pe": 12.6}, {"d": "2024-02-29", "c": 73400.0, "eps": 5810.0, "pe": 12.6}, {"d": "2024-03-04", "c": 74900.0, "eps": 5842.0, "pe": 12.8}, {"d": "2024-03-05", "c": 73700.0, "eps": 5850.0, "pe": 12.6}, {"d": "2024-03-06", "c": 72900.0, "eps": 5857.0, "pe": 12.4}, {"d": "2024-03-07", "c": 72200.0, "eps": 5865.0, "pe": 12.3}, {"d": "2024-03-08", "c": 73300.0, "eps": 5873.0, "pe": 12.5}, {"d": "2024-03-11", "c": 72400.0, "eps": 5897.0, "pe": 12.3}, {"d": "2024-03-12", "c": 73300.0, "eps": 5905.0, "pe": 12.4}, {"d": "2024-03-13", "c": 74100.0, "eps": 5913.0, "pe": 12.5}, {"d": "2024-03-14", "c": 74300.0, "eps": 5921.0, "pe": 12.5}, {"d": "2024-03-15", "c": 72300.0, "eps": 5928.0, "pe": 12.2}, {"d": "2024-03-18", "c": 72800.0, "eps": 5952.0, "pe": 12.2}, {"d": "2024-03-19", "c": 72800.0, "eps": 5960.0, "pe": 12.2}, {"d": "2024-03-20", "c": 76900.0, "eps": 5968.0, "pe": 12.9}, {"d": "2024-03-21", "c": 79300.0, "eps": 5976.0, "pe": 13.3}, {"d": "2024-03-22", "c": 78900.0, "eps": 5984.0, "pe": 13.2}, {"d": "2024-03-25", "c": 78200.0, "eps": 6007.0, "pe": 13.0}, {"d": "2024-03-26", "c": 79900.0, "eps": 6015.0, "pe": 13.3}, {"d": "2024-03-27", "c": 79800.0, "eps": 6023.0, "pe": 13.2}, {"d": "2024-03-28", "c": 80800.0, "eps": 6031.0, "pe": 13.4}, {"d": "2024-03-29", "c": 82400.0, "eps": 6039.0, "pe": 13.6}, {"d": "2024-04-01", "c": 82000.0, "eps": 6062.0, "pe": 13.5}, {"d": "2024-04-02", "c": 85000.0, "eps": 6070.0, "pe": 14.0}, {"d": "2024-04-03", "c": 84100.0, "eps": 6078.0, "pe": 13.8}, {"d": "2024-04-04", "c": 85300.0, "eps": 6086.0, "pe": 14.0}, {"d": "2024-04-05", "c": 84500.0, "eps": 6094.0, "pe": 13.9}, {"d": "2024-04-08", "c": 84500.0, "eps": 6118.0, "pe": 13.8}, {"d": "2024-04-09", "c": 83600.0, "eps": 6126.0, "pe": 13.6}, {"d": "2024-04-11", "c": 84100.0, "eps": 6141.0, "pe": 13.7}, {"d": "2024-04-12", "c": 83700.0, "eps": 6149.0, "pe": 13.6}, {"d": "2024-04-15", "c": 82200.0, "eps": 6173.0, "pe": 13.3}, {"d": "2024-04-16", "c": 80000.0, "eps": 6181.0, "pe": 12.9}, {"d": "2024-04-17", "c": 78900.0, "eps": 6189.0, "pe": 12.7}, {"d": "2024-04-18", "c": 79600.0, "eps": 6197.0, "pe": 12.8}, {"d": "2024-04-19", "c": 77600.0, "eps": 6204.0, "pe": 12.5}, {"d": "2024-04-22", "c": 76100.0, "eps": 6228.0, "pe": 12.2}, {"d": "2024-04-23", "c": 75500.0, "eps": 6236.0, "pe": 12.1}, {"d": "2024-04-24", "c": 78600.0, "eps": 6244.0, "pe": 12.6}, {"d": "2024-04-25", "c": 76300.0, "eps": 6252.0, "pe": 12.2}, {"d": "2024-04-26", "c": 76700.0, "eps": 6260.0, "pe": 12.3}, {"d": "2024-04-29", "c": 76700.0, "eps": 6283.0, "pe": 12.2}, {"d": "2024-04-30", "c": 77500.0, "eps": 6291.0, "pe": 12.3}, {"d": "2024-05-02", "c": 78000.0, "eps": 6307.0, "pe": 12.4}, {"d": "2024-05-03", "c": 77600.0, "eps": 6315.0, "pe": 12.3}, {"d": "2024-05-07", "c": 81300.0, "eps": 6346.0, "pe": 12.8}, {"d": "2024-05-08", "c": 81300.0, "eps": 6354.0, "pe": 12.8}, {"d": "2024-05-09", "c": 79700.0, "eps": 6362.0, "pe": 12.5}, {"d": "2024-05-10", "c": 79200.0, "eps": 6370.0, "pe": 12.4}, {"d": "2024-05-13", "c": 78400.0, "eps": 6394.0, "pe": 12.3}, {"d": "2024-05-14", "c": 78300.0, "eps": 6402.0, "pe": 12.2}, {"d": "2024-05-16", "c": 78200.0, "eps": 6417.0, "pe": 12.2}, {"d": "2024-05-17", "c": 77400.0, "eps": 6425.0, "pe": 12.0}, {"d": "2024-05-20", "c": 78900.0, "eps": 6449.0, "pe": 12.2}, {"d": "2024-05-21", "c": 78400.0, "eps": 6457.0, "pe": 12.1}, {"d": "2024-05-22", "c": 77700.0, "eps": 6465.0, "pe": 12.0}, {"d": "2024-05-23", "c": 78300.0, "eps": 6473.0, "pe": 12.1}, {"d": "2024-05-24", "c": 75900.0, "eps": 6480.0, "pe": 11.7}, {"d": "2024-05-27", "c": 77200.0, "eps": 6504.0, "pe": 11.9}, {"d": "2024-05-28", "c": 77600.0, "eps": 6512.0, "pe": 11.9}, {"d": "2024-05-29", "c": 75200.0, "eps": 6520.0, "pe": 11.5}, {"d": "2024-05-30", "c": 73500.0, "eps": 6528.0, "pe": 11.3}, {"d": "2024-05-31", "c": 73500.0, "eps": 6536.0, "pe": 11.2}, {"d": "2024-06-03", "c": 75700.0, "eps": 6559.0, "pe": 11.5}, {"d": "2024-06-04", "c": 75300.0, "eps": 6567.0, "pe": 11.5}, {"d": "2024-06-05", "c": 77400.0, "eps": 6575.0, "pe": 11.8}, {"d": "2024-06-07", "c": 77300.0, "eps": 6591.0, "pe": 11.7}, {"d": "2024-06-10", "c": 75700.0, "eps": 6614.0, "pe": 11.4}, {"d": "2024-06-11", "c": 75200.0, "eps": 6622.0, "pe": 11.4}, {"d": "2024-06-12", "c": 76500.0, "eps": 6630.0, "pe": 11.5}, {"d": "2024-06-13", "c": 78600.0, "eps": 6638.0, "pe": 11.8}, {"d": "2024-06-14", "c": 79600.0, "eps": 6646.0, "pe": 12.0}, {"d": "2024-06-17", "c": 78100.0, "eps": 6670.0, "pe": 11.7}, {"d": "2024-06-18", "c": 79800.0, "eps": 6678.0, "pe": 12.0}, {"d": "2024-06-19", "c": 81200.0, "eps": 6685.0, "pe": 12.1}, {"d": "2024-06-20", "c": 81600.0, "eps": 6693.0, "pe": 12.2}, {"d": "2024-06-21", "c": 80000.0, "eps": 6701.0, "pe": 11.9}, {"d": "2024-06-24", "c": 80600.0, "eps": 6725.0, "pe": 12.0}, {"d": "2024-06-25", "c": 80800.0, "eps": 6733.0, "pe": 12.0}, {"d": "2024-06-26", "c": 81300.0, "eps": 6741.0, "pe": 12.1}, {"d": "2024-06-27", "c": 81600.0, "eps": 6749.0, "pe": 12.1}, {"d": "2024-06-28", "c": 81500.0, "eps": 6756.0, "pe": 12.1}, {"d": "2024-07-01", "c": 81800.0, "eps": 6780.0, "pe": 12.1}, {"d": "2024-07-02", "c": 81800.0, "eps": 6788.0, "pe": 12.1}, {"d": "2024-07-03", "c": 81800.0, "eps": 6796.0, "pe": 12.0}, {"d": "2024-07-04", "c": 84600.0, "eps": 6804.0, "pe": 12.4}, {"d": "2024-07-05", "c": 87100.0, "eps": 6812.0, "pe": 12.8}, {"d": "2024-07-08", "c": 87400.0, "eps": 6835.0, "pe": 12.8}, {"d": "2024-07-09", "c": 87800.0, "eps": 6843.0, "pe": 12.8}, {"d": "2024-07-10", "c": 87800.0, "eps": 6851.0, "pe": 12.8}, {"d": "2024-07-11", "c": 87600.0, "eps": 6859.0, "pe": 12.8}, {"d": "2024-07-12", "c": 84400.0, "eps": 6867.0, "pe": 12.3}, {"d": "2024-07-15", "c": 86700.0, "eps": 6890.0, "pe": 12.6}, {"d": "2024-07-16", "c": 87700.0, "eps": 6898.0, "pe": 12.7}, {"d": "2024-07-17", "c": 86700.0, "eps": 6906.0, "pe": 12.6}, {"d": "2024-07-18", "c": 86900.0, "eps": 6914.0, "pe": 12.6}, {"d": "2024-07-19", "c": 84400.0, "eps": 6922.0, "pe": 12.2}, {"d": "2024-07-22", "c": 83000.0, "eps": 6946.0, "pe": 11.9}, {"d": "2024-07-23", "c": 83900.0, "eps": 6954.0, "pe": 12.1}, {"d": "2024-07-24", "c": 82000.0, "eps": 6961.0, "pe": 11.8}, {"d": "2024-07-25", "c": 80400.0, "eps": 6969.0, "pe": 11.5}, {"d": "2024-07-26", "c": 80900.0, "eps": 6977.0, "pe": 11.6}, {"d": "2024-07-29", "c": 81200.0, "eps": 7001.0, "pe": 11.6}, {"d": "2024-07-30", "c": 81000.0, "eps": 7009.0, "pe": 11.6}, {"d": "2024-07-31", "c": 83900.0, "eps": 7017.0, "pe": 12.0}, {"d": "2024-08-01", "c": 83100.0, "eps": 7007.0, "pe": 11.9}, {"d": "2024-08-02", "c": 79600.0, "eps": 6998.0, "pe": 11.4}, {"d": "2024-08-05", "c": 71400.0, "eps": 6969.0, "pe": 10.2}, {"d": "2024-08-06", "c": 72500.0, "eps": 6959.0, "pe": 10.4}, {"d": "2024-08-07", "c": 74700.0, "eps": 6950.0, "pe": 10.7}, {"d": "2024-08-08", "c": 73400.0, "eps": 6940.0, "pe": 10.6}, {"d": "2024-08-09", "c": 74700.0, "eps": 6931.0, "pe": 10.8}, {"d": "2024-08-12", "c": 75500.0, "eps": 6902.0, "pe": 10.9}, {"d": "2024-08-13", "c": 76100.0, "eps": 6893.0, "pe": 11.0}, {"d": "2024-08-14", "c": 77200.0, "eps": 6883.0, "pe": 11.2}, {"d": "2024-08-16", "c": 80200.0, "eps": 6864.0, "pe": 11.7}, {"d": "2024-08-19", "c": 78300.0, "eps": 6835.0, "pe": 11.5}, {"d": "2024-08-20", "c": 78900.0, "eps": 6826.0, "pe": 11.6}, {"d": "2024-08-21", "c": 78300.0, "eps": 6816.0, "pe": 11.5}, {"d": "2024-08-22", "c": 78300.0, "eps": 6807.0, "pe": 11.5}, {"d": "2024-08-23", "c": 77700.0, "eps": 6797.0, "pe": 11.4}, {"d": "2024-08-26", "c": 76100.0, "eps": 6769.0, "pe": 11.2}, {"d": "2024-08-27", "c": 75800.0, "eps": 6759.0, "pe": 11.2}, {"d": "2024-08-28", "c": 76400.0, "eps": 6750.0, "pe": 11.3}, {"d": "2024-08-29", "c": 74000.0, "eps": 6740.0, "pe": 11.0}, {"d": "2024-08-30", "c": 74300.0, "eps": 6731.0, "pe": 11.0}, {"d": "2024-09-02", "c": 74400.0, "eps": 6702.0, "pe": 11.1}, {"d": "2024-09-03", "c": 72500.0, "eps": 6692.0, "pe": 10.8}, {"d": "2024-09-04", "c": 70000.0, "eps": 6683.0, "pe": 10.5}, {"d": "2024-09-05", "c": 69000.0, "eps": 6673.0, "pe": 10.3}, {"d": "2024-09-06", "c": 68900.0, "eps": 6664.0, "pe": 10.3}, {"d": "2024-09-09", "c": 67500.0, "eps": 6635.0, "pe": 10.2}, {"d": "2024-09-10", "c": 66200.0, "eps": 6626.0, "pe": 10.0}, {"d": "2024-09-11", "c": 64900.0, "eps": 6616.0, "pe": 9.8}, {"d": "2024-09-12", "c": 66300.0, "eps": 6607.0, "pe": 10.0}, {"d": "2024-09-13", "c": 64400.0, "eps": 6597.0, "pe": 9.8}, {"d": "2024-09-19", "c": 63100.0, "eps": 6540.0, "pe": 9.6}, {"d": "2024-09-20", "c": 63000.0, "eps": 6530.0, "pe": 9.6}, {"d": "2024-09-23", "c": 62600.0, "eps": 6502.0, "pe": 9.6}, {"d": "2024-09-24", "c": 63200.0, "eps": 6492.0, "pe": 9.7}, {"d": "2024-09-25", "c": 62200.0, "eps": 6483.0, "pe": 9.6}, {"d": "2024-09-26", "c": 64700.0, "eps": 6473.0, "pe": 10.0}, {"d": "2024-09-27", "c": 64200.0, "eps": 6464.0, "pe": 9.9}, {"d": "2024-09-30", "c": 61500.0, "eps": 6435.0, "pe": 9.6}, {"d": "2024-10-02", "c": 61300.0, "eps": 6416.0, "pe": 9.6}, {"d": "2024-10-04", "c": 60600.0, "eps": 6397.0, "pe": 9.5}, {"d": "2024-10-07", "c": 61000.0, "eps": 6368.0, "pe": 9.6}, {"d": "2024-10-08", "c": 60300.0, "eps": 6359.0, "pe": 9.5}, {"d": "2024-10-10", "c": 58900.0, "eps": 6340.0, "pe": 9.3}, {"d": "2024-10-11", "c": 59300.0, "eps": 6330.0, "pe": 9.4}, {"d": "2024-10-14", "c": 60800.0, "eps": 6302.0, "pe": 9.6}, {"d": "2024-10-15", "c": 61000.0, "eps": 6292.0, "pe": 9.7}, {"d": "2024-10-16", "c": 59500.0, "eps": 6283.0, "pe": 9.5}, {"d": "2024-10-17", "c": 59700.0, "eps": 6273.0, "pe": 9.5}, {"d": "2024-10-18", "c": 59200.0, "eps": 6263.0, "pe": 9.5}, {"d": "2024-10-21", "c": 59000.0, "eps": 6235.0, "pe": 9.5}, {"d": "2024-10-22", "c": 57700.0, "eps": 6225.0, "pe": 9.3}, {"d": "2024-10-23", "c": 59100.0, "eps": 6216.0, "pe": 9.5}, {"d": "2024-10-24", "c": 56600.0, "eps": 6206.0, "pe": 9.1}, {"d": "2024-10-25", "c": 55900.0, "eps": 6197.0, "pe": 9.0}, {"d": "2024-10-28", "c": 58100.0, "eps": 6168.0, "pe": 9.4}, {"d": "2024-10-29", "c": 59600.0, "eps": 6159.0, "pe": 9.7}, {"d": "2024-10-30", "c": 59100.0, "eps": 6149.0, "pe": 9.6}, {"d": "2024-10-31", "c": 59200.0, "eps": 6140.0, "pe": 9.6}, {"d": "2024-11-01", "c": 58300.0, "eps": 6130.0, "pe": 9.5}, {"d": "2024-11-04", "c": 58700.0, "eps": 6101.0, "pe": 9.6}, {"d": "2024-11-05", "c": 57600.0, "eps": 6092.0, "pe": 9.5}, {"d": "2024-11-06", "c": 57300.0, "eps": 6082.0, "pe": 9.4}, {"d": "2024-11-07", "c": 57500.0, "eps": 6073.0, "pe": 9.5}, {"d": "2024-11-08", "c": 57000.0, "eps": 6063.0, "pe": 9.4}, {"d": "2024-11-11", "c": 55000.0, "eps": 6035.0, "pe": 9.1}, {"d": "2024-11-12", "c": 53000.0, "eps": 6025.0, "pe": 8.8}, {"d": "2024-11-13", "c": 50600.0, "eps": 6016.0, "pe": 8.4}, {"d": "2024-11-14", "c": 49900.0, "eps": 6006.0, "pe": 8.3}, {"d": "2024-11-15", "c": 53500.0, "eps": 5997.0, "pe": 8.9}, {"d": "2024-11-18", "c": 56700.0, "eps": 5968.0, "pe": 9.5}, {"d": "2024-11-19", "c": 56300.0, "eps": 5958.0, "pe": 9.4}, {"d": "2024-11-20", "c": 55300.0, "eps": 5949.0, "pe": 9.3}, {"d": "2024-11-21", "c": 56400.0, "eps": 5939.0, "pe": 9.5}, {"d": "2024-11-22", "c": 56000.0, "eps": 5930.0, "pe": 9.4}, {"d": "2024-11-25", "c": 57900.0, "eps": 5901.0, "pe": 9.8}, {"d": "2024-11-26", "c": 58300.0, "eps": 5892.0, "pe": 9.9}, {"d": "2024-11-27", "c": 56300.0, "eps": 5882.0, "pe": 9.6}, {"d": "2024-11-28", "c": 55500.0, "eps": 5873.0, "pe": 9.5}, {"d": "2024-11-29", "c": 54200.0, "eps": 5863.0, "pe": 9.2}, {"d": "2024-12-02", "c": 53600.0, "eps": 5834.0, "pe": 9.2}, {"d": "2024-12-03", "c": 53600.0, "eps": 5825.0, "pe": 9.2}, {"d": "2024-12-04", "c": 53100.0, "eps": 5815.0, "pe": 9.1}, {"d": "2024-12-05", "c": 53700.0, "eps": 5806.0, "pe": 9.2}, {"d": "2024-12-06", "c": 54100.0, "eps": 5796.0, "pe": 9.3}, {"d": "2024-12-09", "c": 53400.0, "eps": 5768.0, "pe": 9.3}, {"d": "2024-12-10", "c": 54000.0, "eps": 5758.0, "pe": 9.4}, {"d": "2024-12-11", "c": 54000.0, "eps": 5749.0, "pe": 9.4}, {"d": "2024-12-12", "c": 55900.0, "eps": 5739.0, "pe": 9.7}, {"d": "2024-12-13", "c": 56100.0, "eps": 5730.0, "pe": 9.8}, {"d": "2024-12-16", "c": 55600.0, "eps": 5701.0, "pe": 9.8}, {"d": "2024-12-17", "c": 54200.0, "eps": 5691.0, "pe": 9.5}, {"d": "2024-12-18", "c": 54900.0, "eps": 5682.0, "pe": 9.7}, {"d": "2024-12-19", "c": 53100.0, "eps": 5672.0, "pe": 9.4}, {"d": "2024-12-20", "c": 53000.0, "eps": 5663.0, "pe": 9.4}, {"d": "2024-12-23", "c": 53500.0, "eps": 5634.0, "pe": 9.5}, {"d": "2024-12-24", "c": 54400.0, "eps": 5625.0, "pe": 9.7}, {"d": "2024-12-26", "c": 53600.0, "eps": 5606.0, "pe": 9.6}, {"d": "2024-12-27", "c": 53700.0, "eps": 5596.0, "pe": 9.6}, {"d": "2024-12-30", "c": 53200.0, "eps": 5568.0, "pe": 9.6}, {"d": "2025-01-02", "c": 53400.0, "eps": 5539.0, "pe": 9.6}, {"d": "2025-01-03", "c": 54400.0, "eps": 5529.0, "pe": 9.8}, {"d": "2025-01-06", "c": 55900.0, "eps": 5501.0, "pe": 10.2}, {"d": "2025-01-07", "c": 55400.0, "eps": 5491.0, "pe": 10.1}, {"d": "2025-01-08", "c": 57300.0, "eps": 5482.0, "pe": 10.5}, {"d": "2025-01-09", "c": 56100.0, "eps": 5472.0, "pe": 10.3}, {"d": "2025-01-10", "c": 55300.0, "eps": 5463.0, "pe": 10.1}, {"d": "2025-01-13", "c": 54100.0, "eps": 5434.0, "pe": 10.0}, {"d": "2025-01-14", "c": 53900.0, "eps": 5425.0, "pe": 9.9}, {"d": "2025-01-15", "c": 53700.0, "eps": 5415.0, "pe": 9.9}, {"d": "2025-01-16", "c": 54300.0, "eps": 5405.0, "pe": 10.0}, {"d": "2025-01-17", "c": 53700.0, "eps": 5396.0, "pe": 10.0}, {"d": "2025-01-20", "c": 53400.0, "eps": 5367.0, "pe": 9.9}, {"d": "2025-01-21", "c": 53500.0, "eps": 5358.0, "pe": 10.0}, {"d": "2025-01-22", "c": 54300.0, "eps": 5348.0, "pe": 10.2}, {"d": "2025-01-23", "c": 53700.0, "eps": 5339.0, "pe": 10.1}, {"d": "2025-01-24", "c": 53700.0, "eps": 5329.0, "pe": 10.1}, {"d": "2025-01-31", "c": 52400.0, "eps": 5262.0, "pe": 10.0}, {"d": "2025-02-03", "c": 51000.0, "eps": 5268.0, "pe": 9.7}, {"d": "2025-02-04", "c": 52700.0, "eps": 5270.0, "pe": 10.0}, {"d": "2025-02-05", "c": 52900.0, "eps": 5271.0, "pe": 10.0}, {"d": "2025-02-06", "c": 54000.0, "eps": 5273.0, "pe": 10.2}, {"d": "2025-02-07", "c": 53700.0, "eps": 5275.0, "pe": 10.2}, {"d": "2025-02-10", "c": 55600.0, "eps": 5280.0, "pe": 10.5}, {"d": "2025-02-11", "c": 55700.0, "eps": 5282.0, "pe": 10.5}, {"d": "2025-02-12", "c": 55800.0, "eps": 5284.0, "pe": 10.6}, {"d": "2025-02-13", "c": 55800.0, "eps": 5285.0, "pe": 10.6}, {"d": "2025-02-14", "c": 56000.0, "eps": 5287.0, "pe": 10.6}, {"d": "2025-02-17", "c": 56000.0, "eps": 5292.0, "pe": 10.6}, {"d": "2025-02-18", "c": 56900.0, "eps": 5294.0, "pe": 10.7}, {"d": "2025-02-19", "c": 58700.0, "eps": 5296.0, "pe": 11.1}, {"d": "2025-02-20", "c": 58400.0, "eps": 5298.0, "pe": 11.0}, {"d": "2025-02-21", "c": 58200.0, "eps": 5299.0, "pe": 11.0}, {"d": "2025-02-24", "c": 57300.0, "eps": 5305.0, "pe": 10.8}, {"d": "2025-02-25", "c": 57200.0, "eps": 5307.0, "pe": 10.8}, {"d": "2025-02-26", "c": 56600.0, "eps": 5308.0, "pe": 10.7}, {"d": "2025-02-27", "c": 56300.0, "eps": 5310.0, "pe": 10.6}, {"d": "2025-02-28", "c": 54500.0, "eps": 5312.0, "pe": 10.3}, {"d": "2025-03-04", "c": 54500.0, "eps": 5319.0, "pe": 10.2}, {"d": "2025-03-05", "c": 54000.0, "eps": 5321.0, "pe": 10.1}, {"d": "2025-03-06", "c": 54300.0, "eps": 5322.0, "pe": 10.2}, {"d": "2025-03-07", "c": 53700.0, "eps": 5324.0, "pe": 10.1}, {"d": "2025-03-10", "c": 53700.0, "eps": 5329.0, "pe": 10.1}, {"d": "2025-03-11", "c": 53600.0, "eps": 5331.0, "pe": 10.1}, {"d": "2025-03-12", "c": 54900.0, "eps": 5333.0, "pe": 10.3}, {"d": "2025-03-13", "c": 54700.0, "eps": 5335.0, "pe": 10.3}, {"d": "2025-03-14", "c": 54700.0, "eps": 5336.0, "pe": 10.3}, {"d": "2025-03-17", "c": 57600.0, "eps": 5342.0, "pe": 10.8}, {"d": "2025-03-18", "c": 57600.0, "eps": 5344.0, "pe": 10.8}, {"d": "2025-03-19", "c": 58500.0, "eps": 5345.0, "pe": 10.9}, {"d": "2025-03-20", "c": 60200.0, "eps": 5347.0, "pe": 11.3}, {"d": "2025-03-21", "c": 61700.0, "eps": 5349.0, "pe": 11.5}, {"d": "2025-03-24", "c": 60800.0, "eps": 5354.0, "pe": 11.4}, {"d": "2025-03-25", "c": 59800.0, "eps": 5356.0, "pe": 11.2}, {"d": "2025-03-26", "c": 61200.0, "eps": 5358.0, "pe": 11.4}, {"d": "2025-03-27", "c": 61600.0, "eps": 5359.0, "pe": 11.5}, {"d": "2025-03-28", "c": 60200.0, "eps": 5361.0, "pe": 11.2}, {"d": "2025-03-31", "c": 57800.0, "eps": 5366.0, "pe": 10.8}, {"d": "2025-04-01", "c": 59100.0, "eps": 5368.0, "pe": 11.0}, {"d": "2025-04-02", "c": 58900.0, "eps": 5370.0, "pe": 11.0}, {"d": "2025-04-03", "c": 57600.0, "eps": 5372.0, "pe": 10.7}, {"d": "2025-04-04", "c": 55700.0, "eps": 5373.0, "pe": 10.4}, {"d": "2025-04-07", "c": 53900.0, "eps": 5379.0, "pe": 10.0}, {"d": "2025-04-08", "c": 53900.0, "eps": 5381.0, "pe": 10.0}, {"d": "2025-04-09", "c": 53700.0, "eps": 5382.0, "pe": 10.0}, {"d": "2025-04-10", "c": 55900.0, "eps": 5384.0, "pe": 10.4}, {"d": "2025-04-11", "c": 55400.0, "eps": 5386.0, "pe": 10.3}, {"d": "2025-04-14", "c": 56300.0, "eps": 5391.0, "pe": 10.4}, {"d": "2025-04-15", "c": 56800.0, "eps": 5393.0, "pe": 10.5}, {"d": "2025-04-16", "c": 54900.0, "eps": 5395.0, "pe": 10.2}, {"d": "2025-04-17", "c": 55200.0, "eps": 5396.0, "pe": 10.2}, {"d": "2025-04-18", "c": 55400.0, "eps": 5398.0, "pe": 10.3}, {"d": "2025-04-21", "c": 55200.0, "eps": 5403.0, "pe": 10.2}, {"d": "2025-04-22", "c": 55300.0, "eps": 5405.0, "pe": 10.2}, {"d": "2025-04-23", "c": 56000.0, "eps": 5407.0, "pe": 10.4}, {"d": "2025-04-24", "c": 55700.0, "eps": 5409.0, "pe": 10.3}, {"d": "2025-04-25", "c": 55700.0, "eps": 5410.0, "pe": 10.3}, {"d": "2025-04-28", "c": 55800.0, "eps": 5416.0, "pe": 10.3}, {"d": "2025-04-29", "c": 55900.0, "eps": 5418.0, "pe": 10.3}, {"d": "2025-04-30", "c": 55500.0, "eps": 5419.0, "pe": 10.2}, {"d": "2025-05-02", "c": 54500.0, "eps": 5423.0, "pe": 10.1}, {"d": "2025-05-07", "c": 54600.0, "eps": 5432.0, "pe": 10.1}, {"d": "2025-05-08", "c": 54900.0, "eps": 5433.0, "pe": 10.1}, {"d": "2025-05-09", "c": 54900.0, "eps": 5435.0, "pe": 10.1}, {"d": "2025-05-12", "c": 58200.0, "eps": 5440.0, "pe": 10.7}, {"d": "2025-05-13", "c": 57000.0, "eps": 5442.0, "pe": 10.5}, {"d": "2025-05-14", "c": 57400.0, "eps": 5444.0, "pe": 10.5}, {"d": "2025-05-15", "c": 57300.0, "eps": 5446.0, "pe": 10.5}, {"d": "2025-05-16", "c": 57000.0, "eps": 5447.0, "pe": 10.5}, {"d": "2025-05-19", "c": 55700.0, "eps": 5453.0, "pe": 10.2}, {"d": "2025-05-20", "c": 56000.0, "eps": 5455.0, "pe": 10.3}, {"d": "2025-05-21", "c": 55800.0, "eps": 5456.0, "pe": 10.2}, {"d": "2025-05-22", "c": 54900.0, "eps": 5458.0, "pe": 10.1}, {"d": "2025-05-23", "c": 54500.0, "eps": 5460.0, "pe": 10.0}, {"d": "2025-05-26", "c": 54600.0, "eps": 5465.0, "pe": 10.0}, {"d": "2025-05-27", "c": 54200.0, "eps": 5467.0, "pe": 9.9}, {"d": "2025-05-28", "c": 56000.0, "eps": 5469.0, "pe": 10.2}, {"d": "2025-05-29", "c": 56200.0, "eps": 5470.0, "pe": 10.3}, {"d": "2025-05-30", "c": 56300.0, "eps": 5472.0, "pe": 10.3}, {"d": "2025-06-02", "c": 56900.0, "eps": 5477.0, "pe": 10.4}, {"d": "2025-06-04", "c": 57800.0, "eps": 5481.0, "pe": 10.5}, {"d": "2025-06-05", "c": 59200.0, "eps": 5483.0, "pe": 10.8}, {"d": "2025-06-09", "c": 60000.0, "eps": 5490.0, "pe": 10.9}, {"d": "2025-06-10", "c": 59200.0, "eps": 5492.0, "pe": 10.8}, {"d": "2025-06-11", "c": 59900.0, "eps": 5493.0, "pe": 10.9}, {"d": "2025-06-12", "c": 59500.0, "eps": 5495.0, "pe": 10.8}, {"d": "2025-06-13", "c": 57900.0, "eps": 5497.0, "pe": 10.5}, {"d": "2025-06-16", "c": 57400.0, "eps": 5502.0, "pe": 10.4}, {"d": "2025-06-17", "c": 58200.0, "eps": 5504.0, "pe": 10.6}, {"d": "2025-06-18", "c": 59700.0, "eps": 5506.0, "pe": 10.8}, {"d": "2025-06-19", "c": 59200.0, "eps": 5507.0, "pe": 10.7}, {"d": "2025-06-20", "c": 59600.0, "eps": 5509.0, "pe": 10.8}, {"d": "2025-06-23", "c": 58300.0, "eps": 5514.0, "pe": 10.6}, {"d": "2025-06-24", "c": 60500.0, "eps": 5516.0, "pe": 11.0}, {"d": "2025-06-25", "c": 61300.0, "eps": 5518.0, "pe": 11.1}, {"d": "2025-06-26", "c": 60300.0, "eps": 5520.0, "pe": 10.9}, {"d": "2025-06-27", "c": 60800.0, "eps": 5522.0, "pe": 11.0}, {"d": "2025-06-30", "c": 60100.0, "eps": 5527.0, "pe": 10.9}, {"d": "2025-07-01", "c": 60600.0, "eps": 5529.0, "pe": 11.0}, {"d": "2025-07-02", "c": 60700.0, "eps": 5530.0, "pe": 11.0}, {"d": "2025-07-03", "c": 64100.0, "eps": 5532.0, "pe": 11.6}, {"d": "2025-07-04", "c": 63200.0, "eps": 5534.0, "pe": 11.4}, {"d": "2025-07-07", "c": 62000.0, "eps": 5539.0, "pe": 11.2}, {"d": "2025-07-08", "c": 61600.0, "eps": 5541.0, "pe": 11.1}, {"d": "2025-07-09", "c": 60600.0, "eps": 5543.0, "pe": 10.9}, {"d": "2025-07-10", "c": 61200.0, "eps": 5544.0, "pe": 11.0}, {"d": "2025-07-11", "c": 62400.0, "eps": 5546.0, "pe": 11.3}, {"d": "2025-07-14", "c": 62400.0, "eps": 5551.0, "pe": 11.2}, {"d": "2025-07-15", "c": 63700.0, "eps": 5553.0, "pe": 11.5}, {"d": "2025-07-16", "c": 64600.0, "eps": 5555.0, "pe": 11.6}, {"d": "2025-07-17", "c": 66700.0, "eps": 5557.0, "pe": 12.0}, {"d": "2025-07-18", "c": 66900.0, "eps": 5559.0, "pe": 12.0}, {"d": "2025-07-21", "c": 68000.0, "eps": 5564.0, "pe": 12.2}, {"d": "2025-07-22", "c": 65900.0, "eps": 5566.0, "pe": 11.8}, {"d": "2025-07-23", "c": 66200.0, "eps": 5567.0, "pe": 11.9}, {"d": "2025-07-24", "c": 66000.0, "eps": 5569.0, "pe": 11.9}, {"d": "2025-07-25", "c": 65900.0, "eps": 5571.0, "pe": 11.8}, {"d": "2025-07-28", "c": 70300.0, "eps": 5576.0, "pe": 12.6}, {"d": "2025-07-29", "c": 70600.0, "eps": 5578.0, "pe": 12.7}, {"d": "2025-07-30", "c": 72600.0, "eps": 5580.0, "pe": 13.0}, {"d": "2025-07-31", "c": 71100.0, "eps": 5581.0, "pe": 12.7}, {"d": "2025-08-01", "c": 69000.0, "eps": 5616.0, "pe": 12.3}, {"d": "2025-08-04", "c": 69900.0, "eps": 5722.0, "pe": 12.2}, {"d": "2025-08-05", "c": 69900.0, "eps": 5757.0, "pe": 12.1}, {"d": "2025-08-06", "c": 68900.0, "eps": 5792.0, "pe": 11.9}, {"d": "2025-08-07", "c": 70600.0, "eps": 5827.0, "pe": 12.1}, {"d": "2025-08-08", "c": 71800.0, "eps": 5862.0, "pe": 12.2}, {"d": "2025-08-11", "c": 71000.0, "eps": 5967.0, "pe": 11.9}, {"d": "2025-08-12", "c": 71400.0, "eps": 6002.0, "pe": 11.9}, {"d": "2025-08-13", "c": 71800.0, "eps": 6037.0, "pe": 11.9}, {"d": "2025-08-14", "c": 71700.0, "eps": 6072.0, "pe": 11.8}, {"d": "2025-08-18", "c": 70200.0, "eps": 6212.0, "pe": 11.3}, {"d": "2025-08-19", "c": 70100.0, "eps": 6247.0, "pe": 11.2}, {"d": "2025-08-20", "c": 71200.0, "eps": 6282.0, "pe": 11.3}, {"d": "2025-08-21", "c": 70900.0, "eps": 6317.0, "pe": 11.2}, {"d": "2025-08-22", "c": 71300.0, "eps": 6352.0, "pe": 11.2}, {"d": "2025-08-25", "c": 71300.0, "eps": 6458.0, "pe": 11.0}, {"d": "2025-08-26", "c": 70500.0, "eps": 6493.0, "pe": 10.9}, {"d": "2025-08-27", "c": 70700.0, "eps": 6528.0, "pe": 10.8}, {"d": "2025-08-28", "c": 69800.0, "eps": 6563.0, "pe": 10.6}, {"d": "2025-08-29", "c": 69800.0, "eps": 6598.0, "pe": 10.6}, {"d": "2025-09-01", "c": 67800.0, "eps": 6703.0, "pe": 10.1}, {"d": "2025-09-02", "c": 68800.0, "eps": 6738.0, "pe": 10.2}, {"d": "2025-09-03", "c": 69900.0, "eps": 6773.0, "pe": 10.3}, {"d": "2025-09-04", "c": 70000.0, "eps": 6808.0, "pe": 10.3}, {"d": "2025-09-05", "c": 69600.0, "eps": 6843.0, "pe": 10.2}, {"d": "2025-09-08", "c": 70100.0, "eps": 6948.0, "pe": 10.1}, {"d": "2025-09-09", "c": 71400.0, "eps": 6983.0, "pe": 10.2}, {"d": "2025-09-10", "c": 72500.0, "eps": 7018.0, "pe": 10.3}, {"d": "2025-09-11", "c": 73000.0, "eps": 7053.0, "pe": 10.3}, {"d": "2025-09-12", "c": 75300.0, "eps": 7088.0, "pe": 10.6}, {"d": "2025-09-15", "c": 76300.0, "eps": 7194.0, "pe": 10.6}, {"d": "2025-09-16", "c": 79600.0, "eps": 7229.0, "pe": 11.0}, {"d": "2025-09-17", "c": 78400.0, "eps": 7264.0, "pe": 10.8}, {"d": "2025-09-18", "c": 80600.0, "eps": 7299.0, "pe": 11.0}, {"d": "2025-09-19", "c": 79900.0, "eps": 7334.0, "pe": 10.9}, {"d": "2025-09-22", "c": 83500.0, "eps": 7439.0, "pe": 11.2}, {"d": "2025-09-23", "c": 85100.0, "eps": 7474.0, "pe": 11.4}, {"d": "2025-09-24", "c": 85400.0, "eps": 7509.0, "pe": 11.4}, {"d": "2025-09-25", "c": 85700.0, "eps": 7544.0, "pe": 11.4}, {"d": "2025-09-26", "c": 82900.0, "eps": 7579.0, "pe": 10.9}, {"d": "2025-09-29", "c": 84500.0, "eps": 7684.0, "pe": 11.0}, {"d": "2025-09-30", "c": 83900.0, "eps": 7719.0, "pe": 10.9}, {"d": "2025-10-01", "c": 86400.0, "eps": 7754.0, "pe": 11.1}, {"d": "2025-10-02", "c": 89300.0, "eps": 7789.0, "pe": 11.5}, {"d": "2025-10-10", "c": 94500.0, "eps": 8070.0, "pe": 11.7}, {"d": "2025-10-13", "c": 94600.0, "eps": 8175.0, "pe": 11.6}, {"d": "2025-10-14", "c": 91000.0, "eps": 8210.0, "pe": 11.1}, {"d": "2025-10-15", "c": 95500.0, "eps": 8245.0, "pe": 11.6}, {"d": "2025-10-16", "c": 97700.0, "eps": 8280.0, "pe": 11.8}, {"d": "2025-10-17", "c": 96300.0, "eps": 8315.0, "pe": 11.6}, {"d": "2025-10-20", "c": 98100.0, "eps": 8420.0, "pe": 11.7}, {"d": "2025-10-21", "c": 97900.0, "eps": 8455.0, "pe": 11.6}, {"d": "2025-10-22", "c": 98300.0, "eps": 8490.0, "pe": 11.6}, {"d": "2025-10-23", "c": 96400.0, "eps": 8525.0, "pe": 11.3}, {"d": "2025-10-24", "c": 98900.0, "eps": 8561.0, "pe": 11.6}, {"d": "2025-10-27", "c": 101700.0, "eps": 8666.0, "pe": 11.7}, {"d": "2025-10-28", "c": 99500.0, "eps": 8701.0, "pe": 11.4}, {"d": "2025-10-29", "c": 101700.0, "eps": 8736.0, "pe": 11.6}, {"d": "2025-10-30", "c": 104300.0, "eps": 8771.0, "pe": 11.9}, {"d": "2025-10-31", "c": 107700.0, "eps": 8902.0, "pe": 12.1}, {"d": "2025-11-03", "c": 111300.0, "eps": 9297.0, "pe": 12.0}, {"d": "2025-11-04", "c": 104200.0, "eps": 9428.0, "pe": 11.1}, {"d": "2025-11-05", "c": 100300.0, "eps": 9559.0, "pe": 10.5}, {"d": "2025-11-06", "c": 99600.0, "eps": 9691.0, "pe": 10.3}, {"d": "2025-11-07", "c": 97500.0, "eps": 9822.0, "pe": 9.9}, {"d": "2025-11-10", "c": 101300.0, "eps": 10217.0, "pe": 9.9}, {"d": "2025-11-11", "c": 104100.0, "eps": 10348.0, "pe": 10.1}, {"d": "2025-11-12", "c": 103900.0, "eps": 10479.0, "pe": 9.9}, {"d": "2025-11-13", "c": 102600.0, "eps": 10611.0, "pe": 9.7}, {"d": "2025-11-14", "c": 97500.0, "eps": 10742.0, "pe": 9.1}, {"d": "2025-11-17", "c": 100200.0, "eps": 11137.0, "pe": 9.0}, {"d": "2025-11-18", "c": 98100.0, "eps": 11268.0, "pe": 8.7}, {"d": "2025-11-19", "c": 97700.0, "eps": 11399.0, "pe": 8.6}, {"d": "2025-11-20", "c": 101400.0, "eps": 11531.0, "pe": 8.8}, {"d": "2025-11-21", "c": 94400.0, "eps": 11662.0, "pe": 8.1}, {"d": "2025-11-24", "c": 97000.0, "eps": 12057.0, "pe": 8.0}, {"d": "2025-11-25", "c": 98700.0, "eps": 12188.0, "pe": 8.1}, {"d": "2025-11-26", "c": 103100.0, "eps": 12319.0, "pe": 8.4}, {"d": "2025-11-27", "c": 103400.0, "eps": 12451.0, "pe": 8.3}, {"d": "2025-11-28", "c": 101500.0, "eps": 12582.0, "pe": 8.1}, {"d": "2025-12-01", "c": 100600.0, "eps": 12977.0, "pe": 7.8}, {"d": "2025-12-02", "c": 104000.0, "eps": 13108.0, "pe": 7.9}, {"d": "2025-12-03", "c": 104700.0, "eps": 13239.0, "pe": 7.9}, {"d": "2025-12-04", "c": 104900.0, "eps": 13371.0, "pe": 7.8}, {"d": "2025-12-05", "c": 108200.0, "eps": 13502.0, "pe": 8.0}, {"d": "2025-12-08", "c": 109500.0, "eps": 13897.0, "pe": 7.9}, {"d": "2025-12-09", "c": 108400.0, "eps": 14028.0, "pe": 7.7}, {"d": "2025-12-10", "c": 108500.0, "eps": 14159.0, "pe": 7.7}, {"d": "2025-12-11", "c": 107700.0, "eps": 14291.0, "pe": 7.5}, {"d": "2025-12-12", "c": 108500.0, "eps": 14422.0, "pe": 7.5}, {"d": "2025-12-15", "c": 105600.0, "eps": 14817.0, "pe": 7.1}, {"d": "2025-12-16", "c": 103400.0, "eps": 14948.0, "pe": 6.9}, {"d": "2025-12-17", "c": 108100.0, "eps": 15079.0, "pe": 7.2}, {"d": "2025-12-18", "c": 108100.0, "eps": 15211.0, "pe": 7.1}, {"d": "2025-12-19", "c": 106600.0, "eps": 15342.0, "pe": 6.9}, {"d": "2025-12-22", "c": 110700.0, "eps": 15737.0, "pe": 7.0}, {"d": "2025-12-23", "c": 111500.0, "eps": 15868.0, "pe": 7.0}, {"d": "2025-12-24", "c": 111300.0, "eps": 15999.0, "pe": 7.0}, {"d": "2025-12-26", "c": 117000.0, "eps": 16262.0, "pe": 7.2}, {"d": "2025-12-29", "c": 118800.0, "eps": 16657.0, "pe": 7.1}, {"d": "2025-12-30", "c": 120400.0, "eps": 16788.0, "pe": 7.2}, {"d": "2026-01-02", "c": 129300.0, "eps": 17182.0, "pe": 7.5}, {"d": "2026-01-05", "c": 139700.0, "eps": 17577.0, "pe": 7.9}, {"d": "2026-01-06", "c": 136900.0, "eps": 17708.0, "pe": 7.7}, {"d": "2026-01-07", "c": 141500.0, "eps": 17839.0, "pe": 7.9}, {"d": "2026-01-08", "c": 139600.0, "eps": 17971.0, "pe": 7.8}, {"d": "2026-01-09", "c": 139700.0, "eps": 18102.0, "pe": 7.7}, {"d": "2026-01-12", "c": 138000.0, "eps": 18497.0, "pe": 7.5}, {"d": "2026-01-13", "c": 138100.0, "eps": 18628.0, "pe": 7.4}, {"d": "2026-01-14", "c": 139500.0, "eps": 18760.0, "pe": 7.4}, {"d": "2026-01-15", "c": 145000.0, "eps": 18891.0, "pe": 7.7}, {"d": "2026-01-16", "c": 149500.0, "eps": 19022.0, "pe": 7.9}, {"d": "2026-01-19", "c": 148200.0, "eps": 19417.0, "pe": 7.6}, {"d": "2026-01-20", "c": 142500.0, "eps": 19548.0, "pe": 7.3}, {"d": "2026-01-21", "c": 149700.0, "eps": 19680.0, "pe": 7.6}, {"d": "2026-01-22", "c": 154100.0, "eps": 19811.0, "pe": 7.8}, {"d": "2026-01-23", "c": 151700.0, "eps": 19942.0, "pe": 7.6}, {"d": "2026-01-26", "c": 152400.0, "eps": 20337.0, "pe": 7.5}, {"d": "2026-01-27", "c": 159900.0, "eps": 20468.0, "pe": 7.8}, {"d": "2026-01-28", "c": 164300.0, "eps": 20600.0, "pe": 8.0}, {"d": "2026-01-29", "c": 161100.0, "eps": 20731.0, "pe": 7.8}, {"d": "2026-01-30", "c": 160800.0, "eps": 20895.0, "pe": 7.7}, {"d": "2026-02-02", "c": 151200.0, "eps": 21388.0, "pe": 7.1}, {"d": "2026-02-03", "c": 167500.0, "eps": 21552.0, "pe": 7.8}, {"d": "2026-02-04", "c": 168100.0, "eps": 21716.0, "pe": 7.7}, {"d": "2026-02-05", "c": 161100.0, "eps": 21880.0, "pe": 7.4}, {"d": "2026-02-06", "c": 161000.0, "eps": 22044.0, "pe": 7.3}, {"d": "2026-02-09", "c": 163500.0, "eps": 22537.0, "pe": 7.3}, {"d": "2026-02-10", "c": 166500.0, "eps": 22701.0, "pe": 7.3}, {"d": "2026-02-11", "c": 166800.0, "eps": 22865.0, "pe": 7.3}, {"d": "2026-02-12", "c": 179900.0, "eps": 23029.0, "pe": 7.8}, {"d": "2026-02-13", "c": 182400.0, "eps": 23193.0, "pe": 7.9}, {"d": "2026-02-19", "c": 188900.0, "eps": 24178.0, "pe": 7.8}, {"d": "2026-02-20", "c": 190300.0, "eps": 24342.0, "pe": 7.8}, {"d": "2026-02-23", "c": 194200.0, "eps": 24835.0, "pe": 7.8}, {"d": "2026-02-24", "c": 201000.0, "eps": 24999.0, "pe": 8.0}, {"d": "2026-02-25", "c": 205500.0, "eps": 25163.0, "pe": 8.2}, {"d": "2026-02-26", "c": 223000.0, "eps": 25327.0, "pe": 8.8}, {"d": "2026-02-27", "c": 217500.0, "eps": 25492.0, "pe": 8.5}, {"d": "2026-03-03", "c": 186000.0, "eps": 26148.0, "pe": 7.1}, {"d": "2026-03-04", "c": 181600.0, "eps": 26312.0, "pe": 6.9}, {"d": "2026-03-05", "c": 193500.0, "eps": 26477.0, "pe": 7.3}, {"d": "2026-03-06", "c": 185800.0, "eps": 26641.0, "pe": 7.0}, {"d": "2026-03-09", "c": 171500.0, "eps": 27133.0, "pe": 6.3}, {"d": "2026-03-10", "c": 189700.0, "eps": 27297.0, "pe": 6.9}, {"d": "2026-03-11", "c": 189200.0, "eps": 27461.0, "pe": 6.9}, {"d": "2026-03-12", "c": 188400.0, "eps": 27626.0, "pe": 6.8}, {"d": "2026-03-13", "c": 184000.0, "eps": 27790.0, "pe": 6.6}, {"d": "2026-03-16", "c": 191000.0, "eps": 28282.0, "pe": 6.8}, {"d": "2026-03-17", "c": 194800.0, "eps": 28446.0, "pe": 6.8}, {"d": "2026-03-18", "c": 209500.0, "eps": 28611.0, "pe": 7.3}, {"d": "2026-03-19", "c": 198700.0, "eps": 28775.0, "pe": 6.9}, {"d": "2026-03-20", "c": 199800.0, "eps": 28939.0, "pe": 6.9}, {"d": "2026-03-23", "c": 185300.0, "eps": 29431.0, "pe": 6.3}, {"d": "2026-03-24", "c": 190700.0, "eps": 29596.0, "pe": 6.4}, {"d": "2026-03-25", "c": 191700.0, "eps": 29760.0, "pe": 6.4}, {"d": "2026-03-26", "c": 180200.0, "eps": 29924.0, "pe": 6.0}, {"d": "2026-03-27", "c": 176800.0, "eps": 30088.0, "pe": 5.9}, {"d": "2026-03-30", "c": 177000.0, "eps": 30581.0, "pe": 5.8}, {"d": "2026-03-31", "c": 166700.0, "eps": 30745.0, "pe": 5.4}, {"d": "2026-04-01", "c": 188100.0, "eps": 30909.0, "pe": 6.1}, {"d": "2026-04-02", "c": 175600.0, "eps": 31073.0, "pe": 5.7}, {"d": "2026-04-03", "c": 185800.0, "eps": 31237.0, "pe": 5.9}, {"d": "2026-04-06", "c": 196800.0, "eps": 31730.0, "pe": 6.2}, {"d": "2026-04-07", "c": 192700.0, "eps": 31894.0, "pe": 6.0}, {"d": "2026-04-08", "c": 213000.0, "eps": 32069.0, "pe": 6.6}, {"d": "2026-04-09", "c": 203000.0, "eps": 32244.0, "pe": 6.3}, {"d": "2026-04-10", "c": 207000.0, "eps": 32420.0, "pe": 6.4}, {"d": "2026-04-13", "c": 200500.0, "eps": 32945.0, "pe": 6.1}, {"d": "2026-04-14", "c": 209000.0, "eps": 33120.0, "pe": 6.3}, {"d": "2026-04-15", "c": 212000.0, "eps": 33296.0, "pe": 6.4}, {"d": "2026-04-16", "c": 217500.0, "eps": 33471.0, "pe": 6.5}, {"d": "2026-04-17", "c": 218000.0, "eps": 33646.0, "pe": 6.5}, {"d": "2026-04-20", "c": 215500.0, "eps": 34172.0, "pe": 6.3}, {"d": "2026-04-21", "c": 221000.0, "eps": 34347.0, "pe": 6.4}, {"d": "2026-04-22", "c": 217500.0, "eps": 34522.0, "pe": 6.3}, {"d": "2026-04-23", "c": 222500.0, "eps": 34698.0, "pe": 6.4}, {"d": "2026-04-24", "c": 219000.0, "eps": 34873.0, "pe": 6.3}, {"d": "2026-04-27", "c": 225000.0, "eps": 35399.0, "pe": 6.4}, {"d": "2026-04-28", "c": 220000.0, "eps": 35574.0, "pe": 6.2}, {"d": "2026-04-29", "c": 226500.0, "eps": 35749.0, "pe": 6.3}, {"d": "2026-04-30", "c": 222500.0, "eps": 35924.0, "pe": 6.2}, {"d": "2026-05-04", "c": 230000.0, "eps": 36625.0, "pe": 6.3}, {"d": "2026-05-06", "c": 274000.0, "eps": 36976.0, "pe": 7.4}, {"d": "2026-05-07", "c": 270500.0, "eps": 37151.0, "pe": 7.3}, {"d": "2026-05-08", "c": 276500.0, "eps": 37326.0, "pe": 7.4}, {"d": "2026-05-11", "c": 285500.0, "eps": 37852.0, "pe": 7.5}, {"d": "2026-05-12", "c": 272500.0, "eps": 38027.0, "pe": 7.2}, {"d": "2026-05-13", "c": 286500.0, "eps": 38202.0, "pe": 7.5}, {"d": "2026-05-14", "c": 293000.0, "eps": 38378.0, "pe": 7.6}, {"d": "2026-05-15", "c": 273500.0, "eps": 38553.0, "pe": 7.1}, {"d": "2026-05-18", "c": 281500.0, "eps": 39079.0, "pe": 7.2}, {"d": "2026-05-19", "c": 273500.0, "eps": 39254.0, "pe": 7.0}, {"d": "2026-05-20", "c": 280500.0, "eps": 39429.0, "pe": 7.1}, {"d": "2026-05-21", "c": 295000.0, "eps": 39604.0, "pe": 7.4}, {"d": "2026-05-22", "c": 293000.0, "eps": 39780.0, "pe": 7.4}, {"d": "2026-05-26", "c": 302500.0, "eps": 40481.0, "pe": 7.5}, {"d": "2026-05-27", "c": 313500.0, "eps": 40656.0, "pe": 7.7}, {"d": "2026-05-28", "c": 295500.0, "eps": 40831.0, "pe": 7.2}, {"d": "2026-05-29", "c": 318500.0, "eps": 41006.0, "pe": 7.8}, {"d": "2026-06-01", "c": 355000.0, "eps": 41532.0, "pe": 8.5}, {"d": "2026-06-02", "c": 362500.0, "eps": 41707.0, "pe": 8.7}, {"d": "2026-06-04", "c": 342000.0, "eps": 42058.0, "pe": 8.1}, {"d": "2026-06-05", "c": 329000.0, "eps": 42233.0, "pe": 7.8}, {"d": "2026-06-08", "c": 303000.0, "eps": 42759.0, "pe": 7.1}, {"d": "2026-06-09", "c": 327000.0, "eps": 42934.0, "pe": 7.6}, {"d": "2026-06-10", "c": 297500.0, "eps": 43109.0, "pe": 6.9}, {"d": "2026-06-11", "c": 306000.0, "eps": 43284.0, "pe": 7.1}, {"d": "2026-06-12", "c": 324500.0, "eps": 43460.0, "pe": 7.5}, {"d": "2026-06-15", "c": 341500.0, "eps": 43985.0, "pe": 7.8}, {"d": "2026-06-16", "c": 343000.0, "eps": 44161.0, "pe": 7.8}, {"d": "2026-06-17", "c": 343000.0, "eps": 44336.0, "pe": 7.7}, {"d": "2026-06-18", "c": 363500.0, "eps": 44511.0, "pe": 8.2}, {"d": "2026-06-19", "c": 350500.0, "eps": 44686.0, "pe": 7.8}, {"d": "2026-06-22", "c": 356500.0, "eps": 45212.0, "pe": 7.9}, {"d": "2026-06-23", "c": 310500.0, "eps": 45387.0, "pe": 6.8}, {"d": "2026-06-24", "c": 339500.0, "eps": 45563.0, "pe": 7.5}, {"d": "2026-06-25", "c": 359500.0, "eps": 45738.0, "pe": 7.9}, {"d": "2026-06-26", "c": 339000.0, "eps": 45913.0, "pe": 7.4}, {"d": "2026-06-29", "c": 325000.0, "eps": 46439.0, "pe": 7.0}, {"d": "2026-06-30", "c": 333000.0, "eps": 46614.0, "pe": 7.1}, {"d": "2026-07-01", "c": 316000.0, "eps": 46789.0, "pe": 6.8}, {"d": "2026-07-02", "c": 290500.0, "eps": 46964.0, "pe": 6.2}, {"d": "2026-07-03", "c": 314500.0, "eps": 47140.0, "pe": 6.7}, {"d": "2026-07-06", "c": 320000.0, "eps": 47665.0, "pe": 6.7}, {"d": "2026-07-07", "c": 291000.0, "eps": 47841.0, "pe": 6.1}, {"d": "2026-07-08", "c": 267000.0, "eps": 47841.0, "pe": 5.6}, {"d": "2026-07-09", "c": 282500.0, "eps": 47841.0, "pe": 5.9}, {"d": "2026-07-10", "c": 286500.0, "eps": 47841.0, "pe": 6.0}, {"d": "2026-07-13", "c": 257500.0, "eps": 47841.0, "pe": 5.4}, {"d": "2026-07-14", "c": 268000.0, "eps": 47841.0, "pe": 5.6}, {"d": "2026-07-15", "c": 273500.0, "eps": 47841.0, "pe": 5.7}], "stats": {"avg": 11.7, "min": 5.4, "max": 22.9, "min_day": "2026-03-31", "max_day": "2023-05-02", "cur": 5.7, "cur_eps": 47841.0, "cur_price": 273500.0, "percentile": 1}, "stats_1y": {"avg": 8.6, "min": 5.4, "max": 13.0, "min_day": "2026-03-31", "max_day": "2025-07-30", "cur": 5.7, "cur_eps": 47841.0, "cur_price": 273500.0, "percentile": 2}, "cfg": {"currency": "KRW", "multiples": [5, 8, 11, 14], "priceMax": 750000.0, "priceTick": 150000.0, "peMax": 30, "peTick": 6, "epsMax": 75000.0, "epsTick": 15000.0}, "anchors": [{"d": "2023-05-02", "val": "18.0조원", "eps": 2870.44, "why": "반도체(DS) 부문 분기 적자기 — FY23 전사 컨센서스 8조 안팎, 2024 회복 기대를 더한 NTM 18조 추정. 당시 삼성전자는 이익 바닥에서 PER 20배대 (트로프 멀티플)"}, {"d": "2023-10-31", "val": "30.0조원", "eps": 4784.07, "why": "3Q23 실적 발표 — 메모리 감산 효과 가시화, FY24 컨센서스 33조 안팎 형성기"}, {"d": "2024-01-31", "val": "35.0조원", "eps": 5581.41, "why": "FY23 영업이익 6.57조 확정 발표 — FY24 컨센서스 35조로 회복 기대"}, {"d": "2024-07-31", "val": "44.0조원", "eps": 7016.63, "why": "2Q24 영업이익 10.4조(DART 실측) — FY24 기대 정점 44조 안팎"}, {"d": "2025-01-31", "val": "33.0조원", "eps": 5262.48, "why": "4Q24 영업이익 6.5조 어닝쇼크·FY24 32.7조(DART 실측) — HBM 경쟁 지연 우려로 FY25 컨센서스 33조로 하향"}, {"d": "2025-07-31", "val": "35.0조원", "eps": 5581.41, "why": "2Q25 영업이익 4.7조 어닝쇼크(컨센 6조 하회 — 재고충당·관세·파운드리 적자, 아시아경제 2025.07) — FY25 하향에도 26년 HBM4 회복 기대로 NTM 35조 유지"}, {"d": "2025-10-30", "val": "55.0조원", "eps": 8770.79, "why": "3Q25 영업이익 12.2조 회복(DART 실측) — HBM4 양산 가시화로 FY26 전망 60조 안팎으로 상향 시작"}, {"d": "2026-01-29", "val": "130.0조원", "eps": 20730.97, "why": "FY25 43.6조 확정·4Q25 20.1조 — FY26 컨센서스 급상향 국면 (키움 1/30 리포트 목표가 20만원)"}, {"d": "2026-04-07", "val": "200.0조원", "eps": 31893.79, "why": "1Q26 잠정 영업이익 57.2조(+756% YoY, DS 이익률 66%) — 흥국 FY26 176.3조 등 컨센서스 170~180조"}, {"d": "2026-07-07", "val": "300.0조원", "eps": 47840.69, "why": "2Q26 잠정 89.4조(매출 171조 — 엔비디아·애플 추월, YTN 7/7) — FY26 추정 176~381조(KB)로 분화, 컨센서스 중앙값 기준 NTM(26H2+27H1) 300조 추정"}], "meta": {"symbol": "005930", "name": "삼성전자", "shares": 5846278608, "mode": "op_krw", "conv": 0.9323, "conv_basis": "최근 8개 흑자 분기 합산 (2Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 0.9323 (DART 실측, 2026-07-15)", "range": ["2023-05-02", "2026-07-15"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+
+</script>
