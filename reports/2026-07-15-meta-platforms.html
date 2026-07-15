@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔎</text></svg>">
+<title>메타(META): 이익은 사상 최대인데 왜 Forward P/E는 20배인가</title>
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+  --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+  --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+  --up: #e66767; --down: #3987e5;
+}
+:root[data-theme="light"] {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 6px 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px 14px; }
+.tile .lbl { font-size: 12px; color: var(--muted); }
+.tile .val { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 1px; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.up { color: var(--up); font-weight: 600; }
+.tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 16px; }
+.card h2 { font-size: 16.5px; margin: 0 0 2px; letter-spacing: -0.005em; }
+.card .kicker { font-size: 11px; letter-spacing: 0.12em; color: var(--accent); font-weight: 700; margin: 0 0 6px; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 6px 10px; }
+td { border-bottom: 1px solid var(--grid); padding: 6.5px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+.verdict { font-weight: 700; }
+.verdict.ok { color: var(--up); }
+.verdict.no { color: var(--muted); }
+.verdict.mid { color: var(--accent); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer a { color: var(--muted); }
+
+/* ---- 근거 팝업 ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+details.pe-embed .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+
+/* ---- 차트 공통 ---- */
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">TOSS-AGENT RESEARCH · 종목 심층 분석 · 2026-07-15</div>
+    <h1>메타(META): 이익은 사상 최대인데 왜 Forward P/E는 20배인가</h1>
+    <p class="sub">주가는 1년간 조정(고점 $790 → 저점 $525)됐지만 이익 추정치는 오히려 +13% 올랐다. AI capex 공포가 걷히며 3주 만에 +21% 반등한 지금, 압축된 밸류에이션을 점검한다. (미국 증시 기준, 데이터 2026-07-15)</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile">
+      <div class="lbl">현재가 (NASDAQ)</div>
+      <div class="val">$660.72</div>
+      <div class="delta down">52주 고점 $790 대비 −16.4%</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">추정 NTM EPS</div>
+      <div class="val">$32.8 <small>추정</small></div>
+      <div class="delta up">1년 전 추정 $29.0 대비 +13.1%</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Forward P/E</div>
+      <div class="val">20.1배</div>
+      <div class="delta down">기간 평균 21.5배 대비 −1.4배</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">밸류에이션 위치</div>
+      <div class="val">34<small> 백분위</small></div>
+      <div class="delta"><span class="chip cool">최근 1년 중 하위 34% · 평균 이하</span></div>
+    </div>
+  </div>
+
+  <!-- 발굴 요약 -->
+  <div class="card prose">
+    <p class="kicker">분석 대상</p>
+    <h2>왜 메타 한 종목만 깊게 보는가</h2>
+    <p style="margin-top:12px;">이번 리포트는 넓은 스크리닝으로 후보를 발굴하는 대신 <strong>메타 플랫폼스(META)를 지정 심층 분석</strong>한다. 그럼에도 발굴 기준(모멘텀·실적 성장·저평가·수급)을 그대로 적용해, 아래 표처럼 "지금 볼 이유"를 점검했다.</p>
+    <div class="tbl-scroll" style="margin-top:6px;">
+      <table>
+        <thead><tr><th>발굴 관점</th><th>메타 현황</th><th>판정</th></tr></thead>
+        <tbody>
+          <tr><td>모멘텀 (주가·거래)</td><td>6월 저점 $542.87 이후 3주 만에 <span class="up">+21.7%</span> 급반등, 현재가가 20일선(약 $597)보다 <span class="up">+10.7%</span> 위</td><td><span class="verdict ok">✓ 반등 트리거</span></td></tr>
+          <tr><td>실적 성장</td><td>Q1'26 매출 $56.3B(<span class="up">YoY +33%</span>), 언더라잉 EPS $7.31로 컨센 <span class="up">+9.6%</span> 상회</td><td><span class="verdict ok">✓ 가속</span></td></tr>
+          <tr><td>저평가 (밸류)</td><td>Forward P/E 20.1배 — 1년 평균 21.5배·백분위 34%로 <span class="down">평균 이하</span></td><td><span class="verdict ok">✓ 압축</span></td></tr>
+          <tr><td>내러티브 (테마)</td><td>AI capex 공포 완화 + 외부 AI 수익화(Muse API·Meta Compute) 서사 등장</td><td><span class="verdict mid">✓ 전환 초기</span></td></tr>
+          <tr><td>리스크 공시</td><td>최근 90일 유상증자·소송·감사의견 등 악재 공시 없음. 내부자 매도(Form 4·144)만 다수</td><td><span class="verdict no">△ 통상 매도</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ① 왜 지금인가 -->
+  <div class="card prose">
+    <p class="kicker">① 왜 지금인가 — 트리거</p>
+    <h2>capex 공포가 걷히자 3주 만에 +21% 되돌림</h2>
+    <p style="margin-top:12px;">메타 주가는 2025년 8월 <strong>$790</strong> 고점 이후 두 번의 실적 발표(2025-10-30, 2026-04-30)에서 <strong>AI capex 상향</strong>에 각각 급락하며 2026년 3월 <strong>$525.72</strong>까지 밀렸다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 종가 (2025-07 ~ 2026-07)</span><span class="evd-sum">52주 고점 <strong>$790.00</strong>(2025-08-12), 저점 <strong>$525.72</strong>(2026-03-27). 실적일 급락: 2025-10-30 −11.3%(Q3 capex 상향), 2026-04-30 −8.5%(Q1 capex 재상향).</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span> 그러나 6월 말 $542.87을 저점으로 <strong>3주 만에 <span class="up">+21.7%</span></strong> 반등하며 다시 $660선을 회복했다.</p>
+    <p>반등의 방아쇠는 "인프라 투자 발표"에서 "실제 제품·매출"로의 전환이다. 메타가 자체 AI 모델 <strong>Muse Spark 1.1</strong>과 API(경쟁사 대비 약 25% 가격), 그리고 <strong>Meta Compute</strong> 클라우드 사업을 공개하자 하루 <span class="up">+8.7~10%</span> 급등이 나왔고, JPMorgan은 "AI 제품 사이클과 외부 수익화 신호"를 반등 근거로 제시했다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Yahoo Finance / Benzinga · 2026.07 반등 분석</span><span class="evd-sum">6/25 $542.87 → 7/10 약 $669로 급반등. 촉매: Muse Spark 1.1 모델·API(경쟁사 25% 가격), Meta Compute 클라우드 출시(인트라데이 +8.7~10%), 인도 핀테크 Cred에 $900M 지분·Kunal Shah의 WhatsApp 총괄. JPMorgan Doug Anmuth: "AI 전략·외부 수익화·AI 제품 사이클에 대한 센티먼트 개선".</span><a href="https://finance.yahoo.com/markets/stocks/article/why-meta-stock-suddenly-broke-out-after-a-long-slide-182755052.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    <p>즉 <strong>이익 추정치는 내내 상향(NTM EPS $29.0 → $32.8, <span class="up">+13%</span>)됐는데 주가만 빠진</strong> 구간이었고, 지금은 그 괴리가 좁혀지기 시작한 초입이다. 이것이 "움직이기 시작했고(모멘텀) 그 움직임을 실적이 뒷받침하는(성장)" 셋업의 조건에 부합한다.</p>
+  </div>
+
+  <!-- ② 스크리닝 수치 -->
+  <div class="card prose">
+    <p class="kicker">② 스크리닝 수치 (재현 가능)</p>
+    <h2>기술적 · 밸류에이션 지표</h2>
+    <div class="tbl-scroll" style="margin-top:12px;">
+      <table>
+        <thead><tr><th>지표</th><th class="num">값</th><th>해석</th></tr></thead>
+        <tbody>
+          <tr><td>저점 대비 반등 (6/25→현재)</td><td class="num"><span class="up">+21.7%</span></td><td>단기 강한 상방 스러스트</td></tr>
+          <tr><td>1개월 수익률 (6/12→7/15)</td><td class="num"><span class="up">+16.5%</span></td><td>모멘텀 트리거(+15% 기준) 충족</td></tr>
+          <tr><td>52주 고점 대비</td><td class="num"><span class="down">−16.4%</span></td><td>신고가권(−25% 이내) 진입</td></tr>
+          <tr><td>52주 저점 대비</td><td class="num"><span class="up">+25.7%</span></td><td>급락 후 반등형 턴어라운드</td></tr>
+          <tr><td>현재가 vs 20일 이동평균</td><td class="num"><span class="up">+10.7%</span></td><td>단기선 상향 이격 확대</td></tr>
+          <tr><td>Forward P/E (현재)</td><td class="num">20.1배</td><td>1년 평균 21.5배 아래</td></tr>
+          <tr><td>Forward P/E 백분위</td><td class="num">34%</td><td>최근 1년 중 하위 구간</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="desc" style="margin-top:12px;">수익률·이동평균은 토스 Open API 일봉 종가로 계산. Forward P/E는 아래 ⑦의 추정 NTM EPS 모델 기준. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen 계산 (2026-07-15)</span><span class="evd-sum">20일 이동평균 <strong>약 $597.1</strong>, 현재가 $660.72 → <strong>+10.7%</strong> 이격. 1개월 전(6/12) $566.98 → +16.5%. 60일선은 최근 급반등으로 아직 20일선과 근접, 골든크로스는 형성 초기 단계.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+  </div>
+
+  <!-- ③ PQC 분석 -->
+  <div class="card prose">
+    <p class="kicker">③ PQC 분석 — 가격 · 물량 · 비용</p>
+    <h2>비싸게(P), 많이(Q), 효율적으로(C) 팔고 있는가</h2>
+    <p style="margin-top:12px;"><strong>P (가격) — 광고 단가·ROI 상승, 신규 AI는 침투가격.</strong> 메타의 핵심 제품은 "광고 노출"이다. AI 타게팅 도구(Lattice·GEM)가 Q1'26에 광고 전환율을 <span class="up">+6%</span> 이상 끌어올려 광고주 ROI를 높였고, 이는 광고 단가 결정력으로 이어진다. 반면 신규 <strong>Muse API</strong>는 경쟁사(OpenAI·Anthropic) 대비 약 25% 가격으로 책정 — 점유율 우선의 공격적 침투 전략이다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Meta Q1 2026 실적 / TIKR · 2026.04.29</span><span class="evd-sum">AI 광고 도구(Lattice·GEM)가 광고 전환율을 <strong>6% 이상</strong> 개선 — 광고 성과를 구체 수치로 처음 공시. Muse API는 경쟁사 대비 <strong>약 25% 가격</strong>으로 개발자 채택을 노림.</span><a href="https://www.tikr.com/blog/meta-platforms-q1-2026-33-revenue-growth-as-ai-investment-hits-145b" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    <p><strong>Q (물량) — 매출 +33%가 곧 물량 확대.</strong> Q1'26 매출은 <strong>$56.3B</strong>로 <span class="up">YoY +33%</span>. Reels·WhatsApp·Threads 등 신규 지면과 30억 명대의 일간 사용자 기반이 광고 노출량을 키운다. 인도 핀테크 Cred에 $900M 지분 투자와 WhatsApp 수익화 총괄 선임은 신흥국 물량 확장 신호다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Meta 8-K Q1 2026 · CoinDCX/StockTitan 요약</span><span class="evd-sum">Q1'26 매출 <strong>$56.31B</strong>(컨센 $55.52B 상회), <strong>YoY +33%</strong>. Q2'26 매출 가이던스 $58~61B. 인도 Cred $900M 지분·Kunal Shah WhatsApp 총괄로 신흥국 수익화 가속.</span><a href="https://www.stocktitan.net/sec-filings/META/8-k-meta-platforms-inc-reports-material-event-a1f8567f3401.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    <p><strong>C (비용) — 이익률은 지켰지만 capex 감가상각이 그림자.</strong> 비용이 <span class="up">YoY +35%</span> 늘었는데도 Q1'26 영업이익률은 <strong>41%</strong>로 유지돼(Q3'25 40%) 운영 레버리지가 살아있다. 다만 2026년 capex 가이던스가 <strong>$125~145B</strong>로 상향되며, 향후 급증할 <span class="down">감가상각비가 이익률을 압박</span>할 최대 변수다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Meta 8-K Q1 2026 / Yahoo Finance · 2026.04.29</span><span class="evd-sum">영업이익률 <strong>41%</strong>(비용 +35% YoY에도 유지). 2026 capex 가이던스 <strong>$125~145B</strong>(직전 $115~135B에서 상향, 부품가·데이터센터 비용 반영). Q1 capex $19.8B. FY26 총비용 가이던스 $162~169B.</span><a href="https://finance.yahoo.com/sectors/technology/article/meta-stock-sinks-after-q1-earnings-as-company-raises-2026-ai-spending-forecast-to-125-billion-145-billion-160136308.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    <p class="desc"><strong>경쟁사 비교:</strong> 구글(알파벳)과 함께 디지털 광고 듀오폴리를 형성한다. 메타의 매출 성장률(+33%)은 대형 플랫폼 평균을 상회하지만 Forward P/E 20배는 자기 역사 평균과 성장률 대비 낮은 편 — 성장 프리미엄이 아직 반영되지 않은 상태다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">stockanalysis.com / Simply Wall St · 2026.07</span><span class="evd-sum">63인 애널리스트 컨센서스 "Strong Buy", 평균 목표주가 <strong>$826</strong>(현재가 대비 +25%). FY26 EPS $32.81, FY27 $35.17(<strong>+19% YoY</strong>).</span><a href="https://stockanalysis.com/stocks/meta/forecast/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  </div>
+
+  <!-- ④ Growth Sustainability -->
+  <div class="card prose">
+    <p class="kicker">④ Growth Sustainability — 6항목 판정</p>
+    <h2>성장의 지속 가능성 점검</h2>
+    <p class="desc" style="margin-top:6px;">메타는 제조업이 아니라 플랫폼/광고 기업이므로 "공장 가동률·수주" 지표는 데이터센터·AI 인프라 관점으로 대응해 판정한다.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th style="width:34%;">항목</th><th style="width:12%;">판정</th><th>근거</th></tr></thead>
+        <tbody>
+          <tr><td>1. 매출↑과 함께 가동률↑ (제조 지표)</td><td><span class="verdict no">해당없음</span></td><td>제조업 아님. 대체로 보면 광고 노출·엔게이지먼트가 매출 +33%와 함께 확대되나 "가동률" 개념은 부적합.</td></tr>
+          <tr><td>2. 설비투자 후 가동률(회수)↑</td><td><span class="verdict mid">△ 초기</span></td><td>capex가 $70B→$125~145B로 급증. AI 광고 전환율 +6%, Meta Compute·Muse API 매출화 시작이 회수 신호이나 아직 초기·미검증.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Meta 8-K FY2025 / Q1 2026</span><span class="evd-sum">FY25 capex $70~72B → FY26 가이던스 <strong>$125~145B</strong>. 회수 초기 신호: 광고 전환율 +6%, Meta Compute 클라우드·Muse API 출시. 투자 대비 매출 기여는 아직 본격화 전.</span><a href="https://www.sec.gov/Archives/edgar/data/1326801/000162828025047114/meta-09302025xexhibit991.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+          <tr><td>3. 수주가 매출보다 빠르게↑</td><td><span class="verdict no">해당없음</span></td><td>광고는 수주잔고 개념이 약함. 신규 Meta Compute는 수주형 사업이나 공개 초기라 잔고 데이터 없음.</td></tr>
+          <tr><td>4. 미국(북미)향 매출인가</td><td><span class="verdict ok">✓ 예</span></td><td>북미가 최대 시장(광고매출의 약 40%대)으로 미국 광고 예산에 강하게 노출. 미국 경기·광고 사이클 수혜/리스크 양방향.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Meta 지역별 매출 구조 (일반)</span><span class="evd-sum">메타 광고매출은 북미(미국·캐나다) 비중이 가장 크며 통상 <strong>40%대</strong> 수준. 미국이 단일 최대 시장으로, 미국 광고 지출 사이클에 직접 연동. (구체 분기 비중은 추정)</span><span class="evd-nolink">일반적으로 알려진 매출 구조 — 분기별 정확 비중은 추정</span></span></span></td></tr>
+          <tr><td>5. 밸류에이션 체계 전환 조짐</td><td><span class="verdict ok">✓ 뚜렷</span></td><td>"순수 광고주 PER"에서 AI 인프라/클라우드(Meta Compute)·외부 AI 수익화(Muse API)로 리레이팅 서사 등장. P/E 백분위 34%의 저평가 해소 가능성.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">JPMorgan 노트 / Benzinga · 2026.07</span><span class="evd-sum">시장이 14GW 용량 목표를 "패닉"이 아니라 "인프라 수익화 경로"로 재해석 시작. JPMorgan: AI 제품 사이클·외부 수익화가 센티먼트 개선 견인. 광고 밸류에서 AI 플랫폼 밸류로의 전환 조짐.</span><a href="https://www.benzinga.com/markets/equities/26/07/60435862/meta-stock-surged-in-3-weeks-shay-boloor-calls-its-markets-latest-darling" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+          <tr><td>6. 산업 TAM 확대 수혜</td><td><span class="verdict ok">✓ 예</span></td><td>디지털 광고 + 생성형 AI 두 시장이 동시 확대. 메타는 광고(수익 기반)와 AI 인프라·수익화(신성장) 양쪽에 노출.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="desc" style="margin-top:12px;">종합: 제조업 지표(1·3)는 부적합하나, <span class="up">미국 매출 노출(4)·밸류 리레이팅(5)·TAM 확대(6)</span>가 뚜렷하고, capex 회수(2)가 지속성의 핵심 변수다.</p>
+  </div>
+
+  <!-- ⑤ 반대 논리 -->
+  <div class="card prose">
+    <p class="kicker">⑤ 반대 논리 — 리스크</p>
+    <h2>이 시나리오가 틀릴 수 있는 이유</h2>
+    <div class="note"><strong>핵심 리스크:</strong> 반등 서사의 전제는 "capex가 결국 매출로 회수된다"는 것이다. 이 전제가 흔들리면 밸류에이션 재평가가 아니라 이익 추정 하향으로 방향이 바뀐다.</div>
+    <p><strong>1) capex 폭증과 실적일 급락 패턴.</strong> 2026 capex 가이던스 $125~145B는 FCF와 향후 감가상각을 크게 압박한다. 실제로 최근 두 번의 실적일(2025-10-30 <span class="down">−11.3%</span>, 2026-04-30 <span class="down">−8.5%</span>) 모두 capex 상향에 급락했다 — 다음 분기에도 재현될 수 있다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 실적일 종가</span><span class="evd-sum">2025-10-30 종가 −11.3%(Q3 capex 상향), 2026-04-30 −8.5%(Q1 capex 재상향). capex 서프라이즈에 반복적으로 민감.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+    <p><strong>2) 추정 EPS의 하향 위험.</strong> 본 리포트의 NTM EPS는 컨센서스 히스토리가 아니라 앵커 보간 <strong>추정치</strong>다. capex發 감가상각이 본격 반영되면 컨센이 하향돼, 지금의 "20배 = 저평가"가 재계산될 수 있다.</p>
+    <p><strong>3) 규제·AI 경쟁.</strong> 반독점·개인정보 규제 리스크가 상존하고, 외부 AI 수익화(Muse·Meta Compute)는 OpenAI·구글·앤트로픽과의 정면 경쟁이라 성공이 보장되지 않는다.</p>
+    <p><strong>4) 내부자 매도 지속.</strong> 최근 90일 Form 4·144(내부자 매도) 공시가 다수다 — 통상적 계획 매도(10b5-1)일 가능성이 높지만 신규 대량 매집(강세 수급) 신호는 확인되지 않았다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">SEC EDGAR · Form 4/144 (2026.06~07)</span><span class="evd-sum">최근 다수의 Form 4(내부자 거래)·144(제한주식 매도 통지) 접수. 유상증자·소송·감사의견 등 <strong>악재성 공시는 없음</strong>. 매도는 통상적 계획 매도로 추정.</span><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001326801&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  </div>
+
+  <!-- ⑥ 다음 확인 이벤트 -->
+  <div class="card prose">
+    <p class="kicker">⑥ 다음 확인 이벤트</p>
+    <h2>무엇을 지켜봐야 하는가</h2>
+    <div class="tbl-scroll" style="margin-top:12px;">
+      <table>
+        <thead><tr><th>이벤트</th><th>시점(예상)</th><th>체크 포인트</th></tr></thead>
+        <tbody>
+          <tr><td>Q2 2026 실적 발표</td><td>2026년 7월 말~8월 초</td><td>매출 가이던스($58~61B) 달성 여부, capex 가이던스 재상향 여부, 실적일 주가 반응</td></tr>
+          <tr><td>Meta Compute · Muse API 매출 기여</td><td>Q2~Q3 2026</td><td>외부 AI 수익화의 첫 매출 수치 공개 여부 = 리레이팅의 핵심</td></tr>
+          <tr><td>2026 capex 최종 레인지</td><td>연내</td><td>$145B 상단 고정/상향 시 감가상각 부담 재점화</td></tr>
+          <tr><td>애널 컨센 방향</td><td>상시</td><td>목표주가 평균 $826·EPS 추정의 상향/하향 반전</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ⑦ 밸류에이션 위치 + PE 밴드 -->
+  <div class="card prose">
+    <p class="kicker">⑦ 밸류에이션 위치</p>
+    <h2>주가는 빠졌는데 이익은 올라 — P/E가 압축됐다</h2>
+    <p style="margin-top:12px;">지난 1년간 주가는 $713 → $660으로 <span class="down">−7%</span> 빠졌지만, 추정 NTM EPS는 $29.0 → $32.8로 <span class="up">+13%</span> 올랐다. 그 결과 Forward P/E는 고점 <strong>26.8배</strong>(2025-08)에서 저점 <strong>16.5배</strong>(2026-03)까지 압축됐고, 현재는 <strong>20.1배</strong>로 기간 평균(21.5배)을 소폭 밑도는 <strong>백분위 34%</strong> 구간이다.</p>
+    <p>현재 추정 EPS 기준 밴드별 환산 주가는 <strong>15배 $492 · 20배 $656 · 25배 $820</strong>이다. 현재가 $660은 20배 밴드 부근이며, 기간 평균 21.5배를 적용하면 <strong>약 $705(+7%)</strong>, 애널 컨센 목표가 <strong>$826</strong>은 25배 밴드에 해당한다. 즉 시장이 메타를 "광고 성숙주(20배 이하)"로 볼지 "AI 성장주(25배 이상)"로 리레이팅할지의 갈림길에 있다.</p>
+    <div class="note"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·실적 시점 앵커 5개를 선형 보간한 <strong>추정치</strong>다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓴다.</div>
+  </div>
+
+  <details class="pe-embed" data-peb="META" open>
+    <summary>
+      <span class="peb-t">📊 메타(META) — Forward P/E 밴드 분석</span>
+      <span class="peb-s">현재 20.1배 · 기간 평균 21.5배 · 백분위 34%</span>
+    </summary>
+    <div class="inner">
+      <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+      <p class="desc">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+      <div class="chart-box peb-a">
+        <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+        <div class="tooltip"></div>
+      </div>
+      <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+      <div class="chart-box peb-b">
+        <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+        <div class="tooltip"></div>
+      </div>
+      <div class="tbl-scroll" style="margin-top:16px;">
+        <table>
+          <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+          <tbody class="peb-anchor-rows"></tbody>
+        </table>
+      </div>
+      <p class="desc peb-foot" style="margin-top:12px;">환산 가정: US 종목이므로 NTM EPS(달러)를 직접 입력, 앵커 5개(2025-07 ~ 2026-07)를 선형 보간. 발행주식수 25.4억주. 밴드 배수 15·20·25·30배.</p>
+    </div>
+  </details>
+
+  <footer>
+    <p><strong>데이터 소스:</strong> 주가·시세 — 토스증권 Open API(일봉 종가, 2025-07-02 ~ 2026-07-15). 실적·공시 — SEC EDGAR(Meta 8-K/Form 4/144), Meta 투자자 보도자료. 컨센서스·목표주가 — Simply Wall St, stockanalysis.com, Yahoo Finance, TIKR, Benzinga(2026.07 시점).</p>
+    <p><strong>추정 표기:</strong> NTM EPS·Forward P/E·밴드 환산 주가는 앵커 보간에 기반한 <strong>추정 모델</strong>이며 실제 컨센서스 집계와 다를 수 있습니다. 시가총액·지역 매출 비중 등 일부 수치는 근사·추정치입니다.</p>
+    <p>생성일 2026-07-15 · 본 리포트는 <strong>정보 제공 목적</strong>이며 특정 종목의 매수·매도를 권유하지 않습니다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있습니다.</p>
+  </footer>
+</div>
+
+<script>
+/* ---- 근거 팝업 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  /* 차트 A */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].c) - 11, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    DATA.anchors.forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {
+  "META": {"rows": [{"d": "2025-07-02", "c": 713.57, "eps": 29.0, "pe": 24.6}, {"d": "2025-07-03", "c": 719.01, "eps": 29.01, "pe": 24.8}, {"d": "2025-07-07", "c": 718.35, "eps": 29.06, "pe": 24.7}, {"d": "2025-07-08", "c": 720.67, "eps": 29.08, "pe": 24.8}, {"d": "2025-07-09", "c": 732.78, "eps": 29.09, "pe": 25.2}, {"d": "2025-07-10", "c": 727.24, "eps": 29.1, "pe": 25.0}, {"d": "2025-07-11", "c": 717.51, "eps": 29.11, "pe": 24.6}, {"d": "2025-07-14", "c": 720.92, "eps": 29.15, "pe": 24.7}, {"d": "2025-07-15", "c": 710.39, "eps": 29.16, "pe": 24.4}, {"d": "2025-07-16", "c": 702.91, "eps": 29.18, "pe": 24.1}, {"d": "2025-07-17", "c": 701.41, "eps": 29.19, "pe": 24.0}, {"d": "2025-07-18", "c": 704.28, "eps": 29.2, "pe": 24.1}, {"d": "2025-07-21", "c": 712.965, "eps": 29.24, "pe": 24.4}, {"d": "2025-07-22", "c": 704.81, "eps": 29.25, "pe": 24.1}, {"d": "2025-07-23", "c": 713.58, "eps": 29.26, "pe": 24.4}, {"d": "2025-07-24", "c": 714.8, "eps": 29.28, "pe": 24.4}, {"d": "2025-07-25", "c": 712.68, "eps": 29.29, "pe": 24.3}, {"d": "2025-07-28", "c": 717.63, "eps": 29.33, "pe": 24.5}, {"d": "2025-07-29", "c": 700.0, "eps": 29.34, "pe": 23.9}, {"d": "2025-07-30", "c": 695.21, "eps": 29.35, "pe": 23.7}, {"d": "2025-07-31", "c": 773.44, "eps": 29.37, "pe": 26.3}, {"d": "2025-08-01", "c": 750.01, "eps": 29.38, "pe": 25.5}, {"d": "2025-08-04", "c": 776.37, "eps": 29.42, "pe": 26.4}, {"d": "2025-08-05", "c": 763.46, "eps": 29.43, "pe": 25.9}, {"d": "2025-08-06", "c": 771.99, "eps": 29.44, "pe": 26.2}, {"d": "2025-08-07", "c": 761.83, "eps": 29.45, "pe": 25.9}, {"d": "2025-08-08", "c": 769.3, "eps": 29.47, "pe": 26.1}, {"d": "2025-08-11", "c": 765.87, "eps": 29.5, "pe": 26.0}, {"d": "2025-08-12", "c": 790.0, "eps": 29.52, "pe": 26.8}, {"d": "2025-08-13", "c": 780.08, "eps": 29.53, "pe": 26.4}, {"d": "2025-08-14", "c": 782.13, "eps": 29.54, "pe": 26.5}, {"d": "2025-08-15", "c": 785.23, "eps": 29.55, "pe": 26.6}, {"d": "2025-08-18", "c": 767.37, "eps": 29.59, "pe": 25.9}, {"d": "2025-08-19", "c": 751.48, "eps": 29.61, "pe": 25.4}, {"d": "2025-08-20", "c": 747.72, "eps": 29.62, "pe": 25.2}, {"d": "2025-08-21", "c": 739.1, "eps": 29.63, "pe": 24.9}, {"d": "2025-08-22", "c": 754.79, "eps": 29.64, "pe": 25.5}, {"d": "2025-08-25", "c": 753.3, "eps": 29.68, "pe": 25.4}, {"d": "2025-08-26", "c": 754.1, "eps": 29.69, "pe": 25.4}, {"d": "2025-08-27", "c": 747.38, "eps": 29.71, "pe": 25.2}, {"d": "2025-08-28", "c": 751.11, "eps": 29.72, "pe": 25.3}, {"d": "2025-08-29", "c": 738.7, "eps": 29.73, "pe": 24.8}, {"d": "2025-09-02", "c": 735.11, "eps": 29.78, "pe": 24.7}, {"d": "2025-09-03", "c": 737.05, "eps": 29.79, "pe": 24.7}, {"d": "2025-09-04", "c": 748.65, "eps": 29.81, "pe": 25.1}, {"d": "2025-09-05", "c": 752.45, "eps": 29.82, "pe": 25.2}, {"d": "2025-09-08", "c": 752.3, "eps": 29.86, "pe": 25.2}, {"d": "2025-09-09", "c": 765.7, "eps": 29.87, "pe": 25.6}, {"d": "2025-09-10", "c": 751.98, "eps": 29.88, "pe": 25.2}, {"d": "2025-09-11", "c": 750.9, "eps": 29.89, "pe": 25.1}, {"d": "2025-09-12", "c": 755.59, "eps": 29.91, "pe": 25.3}, {"d": "2025-09-15", "c": 764.7, "eps": 29.95, "pe": 25.5}, {"d": "2025-09-16", "c": 779.0, "eps": 29.96, "pe": 26.0}, {"d": "2025-09-17", "c": 775.715, "eps": 29.97, "pe": 25.9}, {"d": "2025-09-18", "c": 780.25, "eps": 29.98, "pe": 26.0}, {"d": "2025-09-19", "c": 778.38, "eps": 30.0, "pe": 25.9}, {"d": "2025-09-22", "c": 765.16, "eps": 30.03, "pe": 25.5}, {"d": "2025-09-23", "c": 755.4, "eps": 30.05, "pe": 25.1}, {"d": "2025-09-24", "c": 760.66, "eps": 30.06, "pe": 25.3}, {"d": "2025-09-25", "c": 748.91, "eps": 30.07, "pe": 24.9}, {"d": "2025-09-26", "c": 743.75, "eps": 30.08, "pe": 24.7}, {"d": "2025-09-29", "c": 743.4, "eps": 30.12, "pe": 24.7}, {"d": "2025-09-30", "c": 734.38, "eps": 30.13, "pe": 24.4}, {"d": "2025-10-01", "c": 717.34, "eps": 30.15, "pe": 23.8}, {"d": "2025-10-02", "c": 727.05, "eps": 30.16, "pe": 24.1}, {"d": "2025-10-03", "c": 710.56, "eps": 30.17, "pe": 23.6}, {"d": "2025-10-06", "c": 715.66, "eps": 30.21, "pe": 23.7}, {"d": "2025-10-07", "c": 713.08, "eps": 30.22, "pe": 23.6}, {"d": "2025-10-08", "c": 717.84, "eps": 30.24, "pe": 23.7}, {"d": "2025-10-09", "c": 733.51, "eps": 30.25, "pe": 24.2}, {"d": "2025-10-10", "c": 705.3, "eps": 30.26, "pe": 23.3}, {"d": "2025-10-13", "c": 715.7, "eps": 30.3, "pe": 23.6}, {"d": "2025-10-14", "c": 708.65, "eps": 30.31, "pe": 23.4}, {"d": "2025-10-15", "c": 717.55, "eps": 30.32, "pe": 23.7}, {"d": "2025-10-16", "c": 712.07, "eps": 30.34, "pe": 23.5}, {"d": "2025-10-17", "c": 716.915, "eps": 30.35, "pe": 23.6}, {"d": "2025-10-20", "c": 732.17, "eps": 30.39, "pe": 24.1}, {"d": "2025-10-21", "c": 733.27, "eps": 30.4, "pe": 24.1}, {"d": "2025-10-22", "c": 733.41, "eps": 30.41, "pe": 24.1}, {"d": "2025-10-23", "c": 734.0, "eps": 30.42, "pe": 24.1}, {"d": "2025-10-24", "c": 738.36, "eps": 30.44, "pe": 24.3}, {"d": "2025-10-27", "c": 750.82, "eps": 30.47, "pe": 24.6}, {"d": "2025-10-28", "c": 751.44, "eps": 30.49, "pe": 24.6}, {"d": "2025-10-29", "c": 751.67, "eps": 30.5, "pe": 24.6}, {"d": "2025-10-30", "c": 666.47, "eps": 30.51, "pe": 21.8}, {"d": "2025-10-31", "c": 648.35, "eps": 30.52, "pe": 21.2}, {"d": "2025-11-03", "c": 637.71, "eps": 30.55, "pe": 20.9}, {"d": "2025-11-04", "c": 627.32, "eps": 30.57, "pe": 20.5}, {"d": "2025-11-05", "c": 635.95, "eps": 30.58, "pe": 20.8}, {"d": "2025-11-06", "c": 618.94, "eps": 30.59, "pe": 20.2}, {"d": "2025-11-07", "c": 621.71, "eps": 30.6, "pe": 20.3}, {"d": "2025-11-10", "c": 631.76, "eps": 30.63, "pe": 20.6}, {"d": "2025-11-11", "c": 627.08, "eps": 30.64, "pe": 20.5}, {"d": "2025-11-12", "c": 609.01, "eps": 30.65, "pe": 19.9}, {"d": "2025-11-13", "c": 609.89, "eps": 30.66, "pe": 19.9}, {"d": "2025-11-14", "c": 609.46, "eps": 30.68, "pe": 19.9}, {"d": "2025-11-17", "c": 602.01, "eps": 30.71, "pe": 19.6}, {"d": "2025-11-18", "c": 597.69, "eps": 30.72, "pe": 19.5}, {"d": "2025-11-19", "c": 590.32, "eps": 30.73, "pe": 19.2}, {"d": "2025-11-20", "c": 589.15, "eps": 30.74, "pe": 19.2}, {"d": "2025-11-21", "c": 594.25, "eps": 30.75, "pe": 19.3}, {"d": "2025-11-24", "c": 613.05, "eps": 30.79, "pe": 19.9}, {"d": "2025-11-25", "c": 636.22, "eps": 30.8, "pe": 20.7}, {"d": "2025-11-26", "c": 633.61, "eps": 30.81, "pe": 20.6}, {"d": "2025-11-28", "c": 647.95, "eps": 30.83, "pe": 21.0}, {"d": "2025-12-01", "c": 640.87, "eps": 30.86, "pe": 20.8}, {"d": "2025-12-02", "c": 647.1, "eps": 30.87, "pe": 21.0}, {"d": "2025-12-03", "c": 639.6, "eps": 30.88, "pe": 20.7}, {"d": "2025-12-04", "c": 661.53, "eps": 30.9, "pe": 21.4}, {"d": "2025-12-05", "c": 673.42, "eps": 30.91, "pe": 21.8}, {"d": "2025-12-08", "c": 666.8, "eps": 30.94, "pe": 21.6}, {"d": "2025-12-09", "c": 656.96, "eps": 30.95, "pe": 21.2}, {"d": "2025-12-10", "c": 650.13, "eps": 30.96, "pe": 21.0}, {"d": "2025-12-11", "c": 652.71, "eps": 30.97, "pe": 21.1}, {"d": "2025-12-12", "c": 644.23, "eps": 30.98, "pe": 20.8}, {"d": "2025-12-15", "c": 647.51, "eps": 31.02, "pe": 20.9}, {"d": "2025-12-16", "c": 657.15, "eps": 31.03, "pe": 21.2}, {"d": "2025-12-17", "c": 649.5, "eps": 31.04, "pe": 20.9}, {"d": "2025-12-18", "c": 664.45, "eps": 31.05, "pe": 21.4}, {"d": "2025-12-19", "c": 658.77, "eps": 31.06, "pe": 21.2}, {"d": "2025-12-22", "c": 661.5, "eps": 31.09, "pe": 21.3}, {"d": "2025-12-23", "c": 664.94, "eps": 31.1, "pe": 21.4}, {"d": "2025-12-24", "c": 667.55, "eps": 31.12, "pe": 21.5}, {"d": "2025-12-26", "c": 663.29, "eps": 31.14, "pe": 21.3}, {"d": "2025-12-29", "c": 658.69, "eps": 31.17, "pe": 21.1}, {"d": "2025-12-30", "c": 665.95, "eps": 31.18, "pe": 21.4}, {"d": "2025-12-31", "c": 660.09, "eps": 31.19, "pe": 21.2}, {"d": "2026-01-02", "c": 650.41, "eps": 31.21, "pe": 20.8}, {"d": "2026-01-05", "c": 658.79, "eps": 31.25, "pe": 21.1}, {"d": "2026-01-06", "c": 660.62, "eps": 31.26, "pe": 21.1}, {"d": "2026-01-07", "c": 648.69, "eps": 31.27, "pe": 20.7}, {"d": "2026-01-08", "c": 646.06, "eps": 31.28, "pe": 20.7}, {"d": "2026-01-09", "c": 653.06, "eps": 31.29, "pe": 20.9}, {"d": "2026-01-12", "c": 641.97, "eps": 31.32, "pe": 20.5}, {"d": "2026-01-13", "c": 631.09, "eps": 31.34, "pe": 20.1}, {"d": "2026-01-14", "c": 615.52, "eps": 31.35, "pe": 19.6}, {"d": "2026-01-15", "c": 620.8, "eps": 31.36, "pe": 19.8}, {"d": "2026-01-16", "c": 620.25, "eps": 31.37, "pe": 19.8}, {"d": "2026-01-20", "c": 604.12, "eps": 31.41, "pe": 19.2}, {"d": "2026-01-21", "c": 612.96, "eps": 31.42, "pe": 19.5}, {"d": "2026-01-22", "c": 647.63, "eps": 31.43, "pe": 20.6}, {"d": "2026-01-23", "c": 658.76, "eps": 31.45, "pe": 20.9}, {"d": "2026-01-26", "c": 672.36, "eps": 31.48, "pe": 21.4}, {"d": "2026-01-27", "c": 672.97, "eps": 31.49, "pe": 21.4}, {"d": "2026-01-28", "c": 668.73, "eps": 31.5, "pe": 21.2}, {"d": "2026-01-29", "c": 738.31, "eps": 31.51, "pe": 23.4}, {"d": "2026-01-30", "c": 716.5, "eps": 31.52, "pe": 22.7}, {"d": "2026-02-02", "c": 706.41, "eps": 31.54, "pe": 22.4}, {"d": "2026-02-03", "c": 691.7, "eps": 31.55, "pe": 21.9}, {"d": "2026-02-04", "c": 668.99, "eps": 31.55, "pe": 21.2}, {"d": "2026-02-05", "c": 670.21, "eps": 31.56, "pe": 21.2}, {"d": "2026-02-06", "c": 661.46, "eps": 31.57, "pe": 21.0}, {"d": "2026-02-09", "c": 677.22, "eps": 31.59, "pe": 21.4}, {"d": "2026-02-10", "c": 670.72, "eps": 31.6, "pe": 21.2}, {"d": "2026-02-11", "c": 668.69, "eps": 31.61, "pe": 21.2}, {"d": "2026-02-12", "c": 649.81, "eps": 31.62, "pe": 20.6}, {"d": "2026-02-13", "c": 639.77, "eps": 31.62, "pe": 20.2}, {"d": "2026-02-17", "c": 639.29, "eps": 31.65, "pe": 20.2}, {"d": "2026-02-18", "c": 643.22, "eps": 31.66, "pe": 20.3}, {"d": "2026-02-19", "c": 644.78, "eps": 31.67, "pe": 20.4}, {"d": "2026-02-20", "c": 655.66, "eps": 31.68, "pe": 20.7}, {"d": "2026-02-23", "c": 637.25, "eps": 31.7, "pe": 20.1}, {"d": "2026-02-24", "c": 639.3, "eps": 31.71, "pe": 20.2}, {"d": "2026-02-25", "c": 653.69, "eps": 31.72, "pe": 20.6}, {"d": "2026-02-26", "c": 657.01, "eps": 31.72, "pe": 20.7}, {"d": "2026-02-27", "c": 648.18, "eps": 31.73, "pe": 20.4}, {"d": "2026-03-02", "c": 653.56, "eps": 31.75, "pe": 20.6}, {"d": "2026-03-03", "c": 655.08, "eps": 31.76, "pe": 20.6}, {"d": "2026-03-04", "c": 667.73, "eps": 31.77, "pe": 21.0}, {"d": "2026-03-05", "c": 660.57, "eps": 31.78, "pe": 20.8}, {"d": "2026-03-06", "c": 644.86, "eps": 31.78, "pe": 20.3}, {"d": "2026-03-09", "c": 647.39, "eps": 31.81, "pe": 20.4}, {"d": "2026-03-10", "c": 654.07, "eps": 31.82, "pe": 20.6}, {"d": "2026-03-11", "c": 654.86, "eps": 31.82, "pe": 20.6}, {"d": "2026-03-12", "c": 638.18, "eps": 31.83, "pe": 20.0}, {"d": "2026-03-13", "c": 613.71, "eps": 31.84, "pe": 19.3}, {"d": "2026-03-16", "c": 627.45, "eps": 31.86, "pe": 19.7}, {"d": "2026-03-17", "c": 622.66, "eps": 31.87, "pe": 19.5}, {"d": "2026-03-18", "c": 615.68, "eps": 31.88, "pe": 19.3}, {"d": "2026-03-19", "c": 606.7, "eps": 31.88, "pe": 19.0}, {"d": "2026-03-20", "c": 593.66, "eps": 31.89, "pe": 18.6}, {"d": "2026-03-23", "c": 604.06, "eps": 31.92, "pe": 18.9}, {"d": "2026-03-24", "c": 592.92, "eps": 31.92, "pe": 18.6}, {"d": "2026-03-25", "c": 594.89, "eps": 31.93, "pe": 18.6}, {"d": "2026-03-26", "c": 547.54, "eps": 31.94, "pe": 17.1}, {"d": "2026-03-27", "c": 525.72, "eps": 31.95, "pe": 16.5}, {"d": "2026-03-30", "c": 536.38, "eps": 31.97, "pe": 16.8}, {"d": "2026-03-31", "c": 572.13, "eps": 31.98, "pe": 17.9}, {"d": "2026-04-01", "c": 579.23, "eps": 31.98, "pe": 18.1}, {"d": "2026-04-02", "c": 574.46, "eps": 31.99, "pe": 18.0}, {"d": "2026-04-06", "c": 573.02, "eps": 32.02, "pe": 17.9}, {"d": "2026-04-07", "c": 575.05, "eps": 32.03, "pe": 18.0}, {"d": "2026-04-08", "c": 612.42, "eps": 32.04, "pe": 19.1}, {"d": "2026-04-09", "c": 628.39, "eps": 32.05, "pe": 19.6}, {"d": "2026-04-10", "c": 629.86, "eps": 32.05, "pe": 19.7}, {"d": "2026-04-13", "c": 634.53, "eps": 32.08, "pe": 19.8}, {"d": "2026-04-14", "c": 662.49, "eps": 32.08, "pe": 20.6}, {"d": "2026-04-15", "c": 671.58, "eps": 32.09, "pe": 20.9}, {"d": "2026-04-16", "c": 676.87, "eps": 32.1, "pe": 21.1}, {"d": "2026-04-17", "c": 688.55, "eps": 32.11, "pe": 21.4}, {"d": "2026-04-20", "c": 670.91, "eps": 32.13, "pe": 20.9}, {"d": "2026-04-21", "c": 668.84, "eps": 32.14, "pe": 20.8}, {"d": "2026-04-22", "c": 674.72, "eps": 32.15, "pe": 21.0}, {"d": "2026-04-23", "c": 659.15, "eps": 32.15, "pe": 20.5}, {"d": "2026-04-24", "c": 675.03, "eps": 32.16, "pe": 21.0}, {"d": "2026-04-27", "c": 678.62, "eps": 32.18, "pe": 21.1}, {"d": "2026-04-28", "c": 671.34, "eps": 32.19, "pe": 20.9}, {"d": "2026-04-29", "c": 669.12, "eps": 32.2, "pe": 20.8}, {"d": "2026-04-30", "c": 611.91, "eps": 32.21, "pe": 19.0}, {"d": "2026-05-01", "c": 608.745, "eps": 32.22, "pe": 18.9}, {"d": "2026-05-04", "c": 610.41, "eps": 32.24, "pe": 18.9}, {"d": "2026-05-05", "c": 604.96, "eps": 32.25, "pe": 18.8}, {"d": "2026-05-06", "c": 612.88, "eps": 32.25, "pe": 19.0}, {"d": "2026-05-07", "c": 616.81, "eps": 32.26, "pe": 19.1}, {"d": "2026-05-08", "c": 609.63, "eps": 32.27, "pe": 18.9}, {"d": "2026-05-11", "c": 598.86, "eps": 32.29, "pe": 18.5}, {"d": "2026-05-12", "c": 603.0, "eps": 32.3, "pe": 18.7}, {"d": "2026-05-13", "c": 616.63, "eps": 32.31, "pe": 19.1}, {"d": "2026-05-14", "c": 618.43, "eps": 32.32, "pe": 19.1}, {"d": "2026-05-15", "c": 614.23, "eps": 32.32, "pe": 19.0}, {"d": "2026-05-18", "c": 611.21, "eps": 32.35, "pe": 18.9}, {"d": "2026-05-19", "c": 602.61, "eps": 32.36, "pe": 18.6}, {"d": "2026-05-20", "c": 605.06, "eps": 32.36, "pe": 18.7}, {"d": "2026-05-21", "c": 607.38, "eps": 32.37, "pe": 18.8}, {"d": "2026-05-22", "c": 610.26, "eps": 32.38, "pe": 18.8}, {"d": "2026-05-26", "c": 612.34, "eps": 32.41, "pe": 18.9}, {"d": "2026-05-27", "c": 635.255, "eps": 32.42, "pe": 19.6}, {"d": "2026-05-28", "c": 635.29, "eps": 32.43, "pe": 19.6}, {"d": "2026-05-29", "c": 632.51, "eps": 32.43, "pe": 19.5}, {"d": "2026-06-01", "c": 600.47, "eps": 32.46, "pe": 18.5}, {"d": "2026-06-02", "c": 597.63, "eps": 32.46, "pe": 18.4}, {"d": "2026-06-03", "c": 622.98, "eps": 32.47, "pe": 19.2}, {"d": "2026-06-04", "c": 627.57, "eps": 32.48, "pe": 19.3}, {"d": "2026-06-05", "c": 593.0, "eps": 32.49, "pe": 18.3}, {"d": "2026-06-08", "c": 585.39, "eps": 32.51, "pe": 18.0}, {"d": "2026-06-09", "c": 584.59, "eps": 32.52, "pe": 18.0}, {"d": "2026-06-10", "c": 570.98, "eps": 32.53, "pe": 17.6}, {"d": "2026-06-11", "c": 568.43, "eps": 32.54, "pe": 17.5}, {"d": "2026-06-12", "c": 566.98, "eps": 32.54, "pe": 17.4}, {"d": "2026-06-15", "c": 593.48, "eps": 32.57, "pe": 18.2}, {"d": "2026-06-16", "c": 600.21, "eps": 32.57, "pe": 18.4}, {"d": "2026-06-17", "c": 567.58, "eps": 32.58, "pe": 17.4}, {"d": "2026-06-18", "c": 577.22, "eps": 32.59, "pe": 17.7}, {"d": "2026-06-22", "c": 563.85, "eps": 32.62, "pe": 17.3}, {"d": "2026-06-23", "c": 562.2, "eps": 32.63, "pe": 17.2}, {"d": "2026-06-24", "c": 557.67, "eps": 32.64, "pe": 17.1}, {"d": "2026-06-25", "c": 542.87, "eps": 32.64, "pe": 16.6}, {"d": "2026-06-26", "c": 550.25, "eps": 32.65, "pe": 16.9}, {"d": "2026-06-29", "c": 562.6, "eps": 32.68, "pe": 17.2}, {"d": "2026-06-30", "c": 563.29, "eps": 32.68, "pe": 17.2}, {"d": "2026-07-01", "c": 612.91, "eps": 32.69, "pe": 18.7}, {"d": "2026-07-02", "c": 582.9, "eps": 32.7, "pe": 17.8}, {"d": "2026-07-06", "c": 600.29, "eps": 32.73, "pe": 18.3}, {"d": "2026-07-07", "c": 615.58, "eps": 32.74, "pe": 18.8}, {"d": "2026-07-08", "c": 603.12, "eps": 32.75, "pe": 18.4}, {"d": "2026-07-09", "c": 631.48, "eps": 32.75, "pe": 19.3}, {"d": "2026-07-10", "c": 669.21, "eps": 32.76, "pe": 20.4}, {"d": "2026-07-13", "c": 656.73, "eps": 32.78, "pe": 20.0}, {"d": "2026-07-14", "c": 661.04, "eps": 32.79, "pe": 20.2}, {"d": "2026-07-15", "c": 660.72, "eps": 32.8, "pe": 20.1}], "stats": {"avg": 21.5, "min": 16.5, "max": 26.8, "min_day": "2026-03-27", "max_day": "2025-08-12", "cur": 20.1, "cur_eps": 32.8, "cur_price": 660.72, "percentile": 34}, "cfg": {"currency": "USD", "multiples": [15, 20, 25, 30], "priceMax": 1250.0, "priceTick": 250.0, "peMax": 30, "peTick": 6, "epsMax": 40, "epsTick": 8}, "anchors": [{"d": "2025-07-02", "val": "$29.00", "eps": 29.0, "why": "2025 중반 NTM(H2'25~H1'26) 추정. FY26 컨센 형성 초기, 광고 호조 반영"}, {"d": "2025-10-29", "val": "$30.50", "eps": 30.5, "why": "Q3'25 정상화 EPS $7.25로 컨센 $6.67 상회(매출 +26%). FY25 capex $70~72B 상향"}, {"d": "2026-01-28", "val": "$31.50", "eps": 31.5, "why": "Q4'25/FY25 실적 후 FY26 컨센 상향. 광고 성장 지속"}, {"d": "2026-04-29", "val": "$32.20", "eps": 32.2, "why": "Q1'26 언더라잉 EPS $7.31로 컨센 $6.66 상회(매출 $56.3B, +33%). 영업이익률 41%"}, {"d": "2026-07-15", "val": "$32.80", "eps": 32.8, "why": "FY26 컨센 EPS $32.81, FY27 $35.17. 63인 애널 평균 목표가 $826"}], "meta": {"symbol": "META", "name": "메타", "shares": 2538423304, "mode": "eps", "conv": null, "range": ["2025-07-02", "2026-07-15"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  if (data) renderPeBand(d, data);
+});
+</script>
+</body>
+</html>
