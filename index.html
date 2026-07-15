@@ -37,6 +37,14 @@ body {
 .principles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .principles span { font-size: 12px; color: var(--ink-2); border: 1px solid var(--border);
   background: var(--card); border-radius: 99px; padding: 3px 12px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; align-items: center; }
+.filters input { flex: 1 1 200px; max-width: 280px; background: var(--card); color: var(--ink);
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 13px; font-family: inherit; }
+.filters input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.filters button { background: var(--card); color: var(--ink-2); border: 1px solid var(--border);
+  border-radius: 99px; padding: 4px 14px; font-size: 12px; font-weight: 650; cursor: pointer; font-family: inherit; }
+.filters button.on { border-color: var(--accent); color: var(--accent); }
+.report-card.hide, section.hide { display: none; }
 section h2 { font-size: 19px; margin: 0 0 4px; letter-spacing: -0.005em; }
 section .sec-desc { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
 .report-list { display: flex; flex-direction: column; gap: 12px; }
@@ -73,6 +81,16 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
       <span>매매 권유 아님</span>
       <span><a href="methodology.html" style="color:var(--accent);text-decoration:none;">방법론 공개 →</a></span>
       <span><a href="track-record.html" style="color:var(--accent);text-decoration:none;">트랙레코드 →</a></span>
+      <span><a href="feed.xml" style="color:var(--accent);text-decoration:none;">RSS</a></span>
+    </div>
+    <div class="filters" id="filters">
+      <input type="search" id="q" placeholder="종목·키워드 검색" aria-label="리포트 검색">
+      <button type="button" data-tag="" class="on">전체</button>
+      <button type="button" data-tag="KR">KR</button>
+      <button type="button" data-tag="US">US</button>
+      <button type="button" data-tag="심층">심층</button>
+      <button type="button" data-tag="발굴">발굴</button>
+      <button type="button" data-tag="PE밴드">PE밴드</button>
     </div>
   </header>
 
@@ -141,11 +159,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
         <div class="rc-title">KOSPI 발굴 — AI 반도체·전자 밸류체인 5선, 조정 국면의 눌림목</div>
         <p class="rc-sum">반도체 조정 국면의 눌림목에서 삼성전자·SK하이닉스·LG전자·SK스퀘어·삼성전기 등 AI 반도체·전자 밸류체인 5종목을 발굴한다.</p>
       </a>
-      <a class="report-card" href="reports/2026-07-14-kospi-discovery-5-2026-07-14.html">
-        <div class="rc-top"><span class="rc-date">2026.07.14</span><span class="rc-tags"><span>KR</span><span>발굴</span></span></div>
-        <div class="rc-title">KOSPI 발굴 — AI 반도체·전자 밸류체인 5선, 조정 국면의 눌림목</div>
-        <p class="rc-sum">거래대금·등락률 랭킹 40여 후보에서 추린 KOSPI 5종목(SK하이닉스·삼성전자·삼성전기·SK스퀘어·LG전자) — 1년 대세상승 후 조정 중이며 실적(1Q OP 전 종목 YoY 플러스)이 뒷받침하는 눌림목 국면을 PQC·GS·PE밴드로 분석</p>
-      </a>
       <a class="report-card" href="reports/2026-07-14-samsung-sds.html">
         <div class="rc-top"><span class="rc-date">2026.07.14</span><span class="rc-tags"><span>KR</span><span>발굴</span></span></div>
         <div class="rc-title">삼성에스디에스(018260) — &#x27;SI 기업&#x27;에서 &#x27;AI 플랫폼&#x27;으로, 리레이팅 서사와 그 값</div>
@@ -184,9 +197,44 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
     <strong>고지</strong> — 이 사이트의 모든 리포트는 정보 제공 목적의 개인 리서치이며 매매 권유가 아닙니다.
     투자 판단과 책임은 투자자 본인에게 있습니다. 추정으로 표기된 수치는 공개 자료 기반 근사 모델의 산출값입니다.<br>
     데이터: 토스증권 Open API · DART 전자공시 · SEC EDGAR · 공개 보도 — 각 리포트의 근거 팝업에 원문 링크 명시.<br>
-    산출 방식·판정 등급·추정 모델의 한계는 <a href="methodology.html" style="color:var(--accent);">방법론 페이지</a>에 공개되어 있습니다.
+    산출 방식·판정 등급·추정 모델의 한계는 <a href="methodology.html" style="color:var(--accent);">방법론 페이지</a>에 공개되어 있습니다.<br>
+    <a href="about.html" style="color:var(--accent);">소개</a> ·
+    <a href="track-record.html" style="color:var(--accent);">트랙레코드</a> ·
+    <a href="contact.html" style="color:var(--accent);">연락처</a> ·
+    <a href="privacy.html" style="color:var(--accent);">개인정보처리방침</a> ·
+    <a href="feed.xml" style="color:var(--accent);">RSS</a>
   </footer>
 
 </div>
+<script>
+/* 카드 필터·검색 (5-4) — 태그 버튼 + 텍스트 검색, 서버 불필요 */
+(function () {
+  const q = document.getElementById("q");
+  const buttons = document.querySelectorAll("#filters button");
+  let tag = "";
+  function apply() {
+    const needle = (q.value || "").trim().toLowerCase();
+    document.querySelectorAll("a.report-card").forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const tags = Array.from(card.querySelectorAll(".rc-tags span")).map(s => s.textContent);
+      const okTag = !tag || tags.includes(tag);
+      const okText = !needle || text.includes(needle);
+      card.classList.toggle("hide", !(okTag && okText));
+    });
+    document.querySelectorAll("section").forEach(sec => {
+      const cards = sec.querySelectorAll("a.report-card");
+      if (!cards.length) return;
+      sec.classList.toggle("hide", sec.querySelectorAll("a.report-card:not(.hide)").length === 0);
+    });
+  }
+  buttons.forEach(b => b.addEventListener("click", () => {
+    buttons.forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    tag = b.dataset.tag;
+    apply();
+  }));
+  q.addEventListener("input", apply);
+})();
+</script>
 </body>
 </html>
