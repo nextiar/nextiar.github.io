@@ -1,0 +1,515 @@
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>IBM 실적 경고 급락 후 심층 리포트</title><style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+  --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+  --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+}
+:root[data-theme="light"] {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 6px 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px 14px; }
+.tile .lbl { font-size: 12px; color: var(--muted); }
+.tile .val { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 1px; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 16px; }
+.card h2 { font-size: 16.5px; margin: 0 0 2px; letter-spacing: -0.005em; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 6px 10px; }
+td { border-bottom: 1px solid var(--grid); padding: 6.5px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; color: var(--muted); }
+details[open] summary::before { content: "▾ "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+</style><style> 에 한 번만 추가 (create-pe-chart 의
+                         :root 토큰에 의존하므로 토큰 블록이 먼저 있어야 함)
+  [2] 근거 팝업 마크업  — 분석 의견 문장마다 붙이는 패턴 (내용만 교체)
+  [3] PE 밴드 드롭다운  — 최종 종목마다 하나씩 넣는 <details> 패턴
+  [4] WIDGETS JS       — </body> 직전에 한 번만 추가. PE_DATA 채우는 법 포함
+
+의존성: create-pe-chart/template.html 의 :root 라이트/다크 토큰 블록.
+PE_DATA 값은 create-pe-chart/scripts/build_series.py 의 out.json 그대로.
+============================================================================
+-->
+
+<!-- ===================== [1] WIDGETS CSS ===================== -->
+<style>
+/* ---- 등락 색 (KR 관례: 상승 빨강 / 하락 파랑) ----
+   타일·표의 증감 숫자(수익률·YoY·전기 대비 등)에 필수 적용. 본문 문장은 강조 필요 시만.
+   리포트 :root 토큰 블록에 --up/--down 을 추가할 것:
+     라이트: --up: #d03b3b; --down: #2a78d6;  /  다크: --up: #e66767; --down: #3987e5;
+   경고·리스크 라벨(note·chip)은 방향이 아니라 상태이므로 기존 --hot 을 유지한다.
+   주의: .tile .delta 처럼 더 구체적인 셀렉터가 색을 정의하는 자리에서는 이 클래스가
+   지므로, 리포트 CSS 에 `.tile .val.up, .tile .delta.up { color: var(--up); }` 식의
+   같은 자리 오버라이드를 함께 추가할 것. */
+.up { color: var(--up, #d03b3b); font-weight: 600; }
+.down { color: var(--down, #2a78d6); font-weight: 600; }
+
+/* ---- 근거 팝업 (evidence popup) ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+/* ---- 차트 공통 (create-pe-chart 와 동일 — 리포트에 이미 있으면 중복 추가 금지) ---- */
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+/* ---- 모바일: 차트는 통째로 축소하지 않고 가로 스크롤 (라벨 가독성 유지) ----
+   전제: 페이지에 viewport meta 가 있어야 한다 — 아티팩트는 래퍼가, GitHub Pages 는
+   publish.py 가 자동 보강한다. */
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+}
+</style><style>.v-ok{color:var(--up,#d03b3b);}.v-no{color:var(--down,#2a78d6);}.v-na{color:var(--muted);}.v-mid{color:var(--accent);}.verdict{font-weight:700;}.up{color:var(--up,#d03b3b);font-weight:600;}.down{color:var(--down,#2a78d6);font-weight:600;}.tile .val.up{color:var(--up,#d03b3b);}.tile .val.down{color:var(--down,#2a78d6);}p{color:var(--ink-2);margin:0 0 12px;}h2{font-size:18px;margin:6px 0 4px;}.card h3{font-size:14px;margin:18px 0 6px;color:var(--ink);}ul{color:var(--ink-2);font-size:12.5px;margin:6px 0;padding-left:18px;}li{margin:4px 0;}</style></head><body><div class="wrap"><header><div class="eyebrow">이벤트 드리븐 심층 리서치 · 미국 (NYSE)</div><h1>IBM — 실적 경고 급락 후, 밸류 리셋인가 밸류 트랩인가</h1><p class="sub">2026년 7월 14일 예비 2분기 실적 경고로 하루 <strong>-25%</strong> 급락(사상 최대 낙폭). 12개월 최저 밸류에 도달했지만 이익 추정의 하향 방향은 아직 꺾이지 않았다. 진짜 반등 여부는 <strong>7월 22일</strong> 정식 실적·가이던스 이후에나 확인된다.</p></header><div class="tiles"><div class="tile"><div class="lbl">현재가 (2026-07-15)</div><div class="val ">217.80달러</div><div class="delta">직전 거래일 기준</div></div><div class="tile"><div class="lbl">전일 등락 (07-14)</div><div class="val down">-25%</div><div class="delta">사상 최대 낙폭</div></div><div class="tile"><div class="lbl">Forward P/E</div><div class="val ">17.9배</div><div class="delta">12개월 2 백분위</div></div><div class="tile"><div class="lbl">52주 고가 대비</div><div class="val down">-33.8%</div><div class="delta">고가 329달러</div></div></div><div><span class="chip">정보용 · 매매 권유 아님 · 추정치 포함</span></div><div class="card"><h2>1. 이 리포트가 나온 경로</h2><p>사용자가 <strong>IBM 단일 종목</strong>을 지정했으므로 광범위한 후보 스크리닝은 생략하고, 최근 이벤트를 검증한 뒤 곧바로 심층 분석으로 들어갔다.</p><div class="tbl-scroll"><table><thead><tr><th>단계</th><th>내용</th><th>결과</th></tr></thead><tbody><tr><td>지정 종목</td><td>사용자가 IBM 1종목 지정</td><td>넓은 랭킹 스크리닝 생략</td></tr><tr><td>이벤트 스캔</td><td>SEC 공시 + 뉴스 확인 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">SEC · IBM Form 8-K (2026.07.14)</span><span class="evd-sum">IBM은 예비 수치만 공개하고 연간 가이던스는 <strong>7월 22일</strong> 정기 실적 콜로 이연. 정식 세그먼트·전망은 그때 확인.</span><a href="https://www.sec.gov/Archives/edgar/data/51143/000005114326000070/ibm-20260714.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>07-14 실적 경고·-25% 급락 포착</td></tr><tr><td>기술적 필터</td><td>일봉 90개(재현 가능) <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 90개 계산</span><span class="evd-sum">최근 종가 217.80달러 기준 1주 -27.9%, 1개월 -18.9%, 3개월 -11.0%. 대부분 7/14 하루 급락에서 발생.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td><td>모멘텀 하락 · 밸류만 최저</td></tr><tr><td>심층 대상</td><td>IBM 1종목</td><td>이벤트 드리븐 심층 분석</td></tr></tbody></table></div><div class="note"><strong>성격 명시: </strong>이 종목은 상승 모멘텀을 실적이 뒷받침하는 전형적 발굴 케이스가 아니다. 실적 악화로 급락한 턴어라운드·밸류 관찰 대상이며, 반등 확인 전이라 결론은 매수 추천이 아니라 조건부 관망이다.</div></div><div class="card"><h2>2. IBM 심층 분석</h2><h3>① 왜 지금 보나 — 트리거는 밸류 리셋(급락)</h3><p>트리거는 주가 상승이 아니라 <strong>밸류에이션 리셋</strong>이다. 2026-07-14 IBM은 예비 2분기 실적 경고로 하루 -25% 급락하며 1987년 블랙먼데이를 넘어선 사상 최악의 하루를 기록했다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">CNBC (2026.07.14)</span><span class="evd-sum">IBM은 예비 2분기 실적 경고로 하루 <strong>-25%</strong> 급락, 1987년 블랙먼데이(-23.7%)를 넘어선 사상 최악의 하루. 약 <strong>650억 달러</strong> 시가총액이 하루 만에 증발.</span><a href="https://www.cnbc.com/2026/07/14/ibm-warns-second-quarter-earnings-fell-short-of-expectations.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 예비 조정 EPS는 2.93달러(컨센서스 3.01달러), 매출은 172억 달러(컨센서스 178.6억 달러)로 매출이 약 6.6억 달러 미달했다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">CNBC (2026.07.14)</span><span class="evd-sum">예비 조정 EPS <strong>2.93달러</strong> (컨센서스 3.01달러), 매출 <strong>172억 달러</strong> (컨센서스 178.6억 달러). 매출 약 6.6억 달러 미달.</span><a href="https://www.cnbc.com/2026/07/14/ibm-warns-second-quarter-earnings-fell-short-of-expectations.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p><p>원인은 <strong>capex 로테이션</strong>이다. 6월 말 고객들이 가격 인상 전 서버·스토리지·메모리를 선구매하면서 유한한 분기 IT 예산 안에서 소프트웨어 딜이 뒤로 밀렸다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">BestStocks 리서치 (2026.07)</span><span class="evd-sum">6월 말 수 주간 고객들이 분기 예산을 서버·스토리지·메모리 선구매로 이동, 유한한 분기 IT 예산에서 소프트웨어 딜이 밀림. 일시적 타이밍인지 구조적 전가인지 아직 불분명.</span><a href="https://beststocks.com/research/ibm-stock-drop-preliminary-q2-warning-capex-rotation" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 이것이 일시적 타이밍인지, AI 인프라 투자가 소프트웨어 예산을 구조적으로 잠식하는 신호인지가 핵심 갈림길이다.</p><h3>② 기술적 스크리닝 수치 (재현 가능)</h3><div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>해석</th></tr></thead><tbody><tr><td>1주 수익률</td><td class="num"><span class="down">-27.9%</span></td><td>급락 반영 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 90개 계산</span><span class="evd-sum">최근 종가 217.80달러 기준 1주 -27.9%, 1개월 -18.9%, 3개월 -11.0%. 대부분 7/14 하루 급락에서 발생.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr><tr><td>1개월 수익률</td><td class="num"><span class="down">-18.9%</span></td><td>고점 대비 되돌림</td></tr><tr><td>3개월 수익률</td><td class="num"><span class="down">-11.0%</span></td><td>중기도 마이너스</td></tr><tr><td>52주 고가 대비</td><td class="num"><span class="down">-33.8%</span></td><td>신고가 근접 조건 <strong>불충족</strong> <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 90개 계산</span><span class="evd-sum">최근 1년 최고 종가 329달러(6/2), 최저 215달러(5/13). 현재가는 최저 부근, 52주 고가 대비 -33.8%.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr><tr><td>20일선 대비</td><td class="num"><span class="down">-20.0%</span></td><td>이동평균 하단 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 90개 계산</span><span class="evd-sum">20일 이동평균 272달러, 60일 이동평균 258달러. 현재가는 두 이동평균 모두 아래(각각 -20.0%, -15.6%)로 단기 추세 하락 전환.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr><tr><td>60일선 대비</td><td class="num"><span class="down">-15.6%</span></td><td>단기 추세 하락 전환</td></tr><tr><td>07-14 거래량</td><td class="num">6744만주</td><td>평소 대비 약 10배 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · 일봉 (2026.07.14)</span><span class="evd-sum">7/14 거래량 <strong>6744만주</strong>로 평소(약 500~700만주) 대비 약 10배 급증. 급락과 함께 대량 거래가 터진 이벤트 캔들.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr></tbody></table></div><p>표준 모멘텀 필터(신고가 근접·이동평균 상단·거래대금 급증 동반 상승) 기준으로 IBM은 <strong>매수 신호가 아니라 하락 신호</strong>에 가깝다. 유일하게 매력이 생긴 축은 밸류에이션 하나뿐이며, 이는 급락 후 반등형 예외 후보이나 아직 반등이 시작되지 않았다(7/15 +0.3%).</p><h3>③ PQC 분석 (주력: 소프트웨어 · 인프라)</h3><div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황</th><th>판정</th></tr></thead><tbody><tr><td><strong>P · 가격</strong></td><td>소프트웨어는 구독·ARR 기반 미션크리티컬 미들웨어(Red Hat 포함)로 가격결정력 유지. z17 메인프레임도 프리미엄 가격대. 이번 미스는 판가 하락이 아니라 물량·믹스 문제. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com · IBM 예비 Q2 (2026.07.14)</span><span class="evd-sum">세그먼트: 소프트웨어 <strong>+5%</strong> (두 자릿수 목표 대비 둔화), 컨설팅 +1%(불변환율), 인프라 <strong>-7%</strong>. 전사 매출 YoY +1%.</span><a href="https://www.investing.com/news/company-news/ibm-reports-preliminary-q2-revenue-of-172-billion-up-1-93CH-4790479" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td class="verdict v-mid">중립(양호)</td></tr><tr><td><strong>Q · 물량</strong></td><td>소프트웨어 성장률이 두 자릿수 목표에서 +5%로 둔화, 인프라(z17) 물량은 -7%로 급감. 단기 물량 모멘텀이 명확히 꺾임. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com · IBM 예비 Q2 (2026.07.14)</span><span class="evd-sum">인프라 -7%는 Z 메인프레임(z17)과 트랜잭션 프로세싱 소프트웨어 둔화 때문. 경영진은 z17 출시 후 소프트닝을 예상했으나 감소 폭이 예상보다 컸다고 언급.</span><a href="https://www.investing.com/news/company-news/ibm-reports-preliminary-q2-revenue-of-172-billion-up-1-93CH-4790479" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td class="verdict v-no">단기 악화</td></tr><tr><td><strong>C · 비용/효율</strong></td><td>조정 EPS는 여전히 YoY +5%(2.93달러), 연초 이후 잉여현금흐름 48억 달러로 이익·현금 창출력 방어. 마진 붕괴가 아니라 톱라인 둔화가 문제. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com · IBM 예비 Q2 (2026.07.14)</span><span class="evd-sum">연초 이후 영업활동 현금흐름 <strong>78억 달러</strong>, 잉여현금흐름 <strong>48억 달러</strong>. 이익·현금 창출력은 유지.</span><a href="https://www.investing.com/news/company-news/ibm-reports-preliminary-q2-revenue-of-172-billion-up-1-93CH-4790479" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td class="verdict v-ok">견조</td></tr></tbody></table></div><p class="desc">경쟁 구도: 수요가 IBM 소프트웨어에서 메모리·서버(하드웨어)로 이동 — 같은 자금이 서버·메모리 업체로 흘러간다. IBM은 이 사이클에서 상대적 피해자 위치.</p><h3>④ Growth Sustainability 6항목 판정</h3><div class="tbl-scroll"><table><thead><tr><th>항목</th><th>판정</th><th>근거</th></tr></thead><tbody><tr><td>1. 매출 증가와 공장 가동률 동반 상승</td><td class="verdict v-na">해당없음</td><td>IBM은 소프트웨어·서비스 중심, 제조 가동률 개념 부적합</td></tr><tr><td>2. 설비투자 후 가동률 상승</td><td class="verdict v-na">해당없음</td><td>제조 설비 기반 기업 아님</td></tr><tr><td>3. 수주가 매출보다 빠르게 증가</td><td class="verdict v-no">약함</td><td>기대되던 z17 백로그가 인프라 -7%로 롤오버, 소프트웨어 딜도 이연 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com · IBM 예비 Q2 (2026.07.14)</span><span class="evd-sum">인프라 -7%는 Z 메인프레임(z17)과 트랜잭션 프로세싱 소프트웨어 둔화 때문. 경영진은 z17 출시 후 소프트닝을 예상했으나 감소 폭이 예상보다 컸다고 언급.</span><a href="https://www.investing.com/news/company-news/ibm-reports-preliminary-q2-revenue-of-172-billion-up-1-93CH-4790479" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr><tr><td>4. 미국(미주) 매출 노출</td><td class="verdict v-ok">예</td><td>미주가 최대 매출 지역, 미국 엔터프라이즈 IT에 크게 노출 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">일반 공개 정보 (정밀 수치는 10-K 확인 필요)</span><span class="evd-sum">IBM은 미주(Americas)가 최대 매출 지역인 미국 중심 기업. 미국 엔터프라이즈 IT 수요에 크게 노출, 이번 미스도 미국 고객의 하드웨어 선구매 이동이 배경.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr><tr><td>5. 밸류에이션 체계 리레이팅</td><td class="verdict v-no">역방향</td><td>2025년 AI·SW 내러티브로 PER 확장됐다가 지금은 오히려 디레이팅 진행 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">build_series.py 계산 (앵커 기반 추정)</span><span class="evd-sum">현재 Forward P/E <strong>17.9배</strong>, 12개월 평균 22.7배, 백분위 2(사실상 최저). 단, 추정 NTM EPS가 하향되면 P/E는 다시 상승.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></td></tr><tr><td>6. 산업 TAM 확대 수혜</td><td class="verdict v-mid">혼재</td><td>AI·하이브리드클라우드 TAM은 확대되나 이번 분기는 AI 인프라 선구매가 SW 예산을 잠식 <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">BestStocks 리서치 (2026.07)</span><span class="evd-sum">AI·하이브리드클라우드 소프트웨어 TAM은 확대되나 이번 분기는 AI 인프라(메모리·서버) 선구매가 소프트웨어 예산을 잠식하는 역설. 확대 수혜와 잠식이 공존.</span><a href="https://beststocks.com/research/ibm-stock-drop-preliminary-q2-warning-capex-rotation" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr></tbody></table></div><p>제조업 특화 2개는 해당없음, 나머지에서 <strong>긍정 1(미국 노출) · 부정 3</strong>으로 성장 지속성 신호는 현재 부정 우위다.</p><h3>⑤ 반대 논리 (리스크)</h3><div class="note"><strong>밸류 트랩 위험: </strong>현재 저평가는 오래된 EPS 추정 위에서 계산된 것이다. 소프트웨어 가이던스가 7/22에 하향되면 분모(EPS)가 낮아져 밸류 매력이 사라질 수 있다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">build_series.py 계산 (앵커 기반 추정)</span><span class="evd-sum">현재 Forward P/E <strong>17.9배</strong>, 12개월 평균 22.7배, 백분위 2(사실상 최저). 단, 추정 NTM EPS가 하향되면 P/E는 다시 상승.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span></div><ul><li><strong>가이던스 공백: </strong>정식 실적·연간 전망이 7/22로 이연되어 그 전까지 불확실성이 크다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">SEC · IBM Form 8-K (2026.07.14)</span><span class="evd-sum">IBM은 예비 수치만 공개하고 연간 가이던스는 <strong>7월 22일</strong> 정기 실적 콜로 이연. 정식 세그먼트·전망은 그때 확인.</span><a href="https://www.sec.gov/Archives/edgar/data/51143/000005114326000070/ibm-20260714.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li><li><strong>구조적 잠식: </strong>capex 로테이션이 일시적 타이밍이 아니라 AI 인프라가 SW 예산을 지속 잠식하는 추세라면 소프트웨어 둔화가 이어질 수 있다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">BestStocks 리서치 (2026.07)</span><span class="evd-sum">6월 말 수 주간 고객들이 분기 예산을 서버·스토리지·메모리 선구매로 이동, 유한한 분기 IT 예산에서 소프트웨어 딜이 밀림. 일시적 타이밍인지 구조적 전가인지 아직 불분명.</span><a href="https://beststocks.com/research/ibm-stock-drop-preliminary-q2-warning-capex-rotation" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li><li><strong>인프라 사이클: </strong>z17 출시 효과 소진으로 인프라 -7%, 하드웨어 사이클 하강 국면. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">Investing.com · IBM 예비 Q2 (2026.07.14)</span><span class="evd-sum">인프라 -7%는 Z 메인프레임(z17)과 트랜잭션 프로세싱 소프트웨어 둔화 때문. 경영진은 z17 출시 후 소프트닝을 예상했으나 감소 폭이 예상보다 컸다고 언급.</span><a href="https://www.investing.com/news/company-news/ibm-reports-preliminary-q2-revenue-of-172-billion-up-1-93CH-4790479" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li><li><strong>컨센서스 하향 여지: </strong>HSBC는 이미 Reduce·목표 191달러로 하향. 다른 하우스의 추정 하향이 뒤따를 수 있다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">MarketScreener · HSBC (2026.07)</span><span class="evd-sum">HSBC는 IBM을 Hold에서 <strong>Reduce</strong>로 하향, 목표주가 231달러에서 <strong>191달러</strong>로. 다만 경고 하루 전(7/13) 밸류에이션 근거의 하향이라 미스 반응은 아님.</span><a href="https://www.marketscreener.com/news/hsbc-downgrades-ibm-to-reduce-from-hold-adjusts-price-target-to-191-from-231-ce7f5edcd18af42c" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li></ul><h3>⑥ 다음 확인 이벤트</h3><ul><li><strong>2026-07-22</strong> — 정식 2분기 실적 및 연간 가이던스 콜. 소프트웨어 성장률·가이던스 방향이 최대 관전 포인트. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">SEC · IBM Form 8-K (2026.07.14)</span><span class="evd-sum">IBM은 예비 수치만 공개하고 연간 가이던스는 <strong>7월 22일</strong> 정기 실적 콜로 이연. 정식 세그먼트·전망은 그때 확인.</span><a href="https://www.sec.gov/Archives/edgar/data/51143/000005114326000070/ibm-20260714.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li><li>capex 로테이션이 다음 분기 소프트웨어 딜 회복으로 이어지는지(일시적 근거) 확인.</li></ul><h3>⑦ 밸류에이션 위치</h3><p>현재 Forward P/E는 <strong>17.9배</strong>로 12개월 평균 22.7배를 크게 밑돌며 분포상 <strong>2 백분위</strong>(사실상 최저)다. <span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">build_series.py 계산 (앵커 기반 추정)</span><span class="evd-sum">현재 Forward P/E <strong>17.9배</strong>, 12개월 평균 22.7배, 백분위 2(사실상 최저). 단, 추정 NTM EPS가 하향되면 P/E는 다시 상승.</span><span class="evd-nolink">토스 Open API 조회값 · 원문 링크 없음</span></span></span> 추정 NTM EPS 12.2달러 기준 밴드 환산 주가는 16배 195달러 · 19배 232달러 · 22배 268달러 · 평균 22.7배 277달러 수준이다. 이익 추정만 지켜진다면 평균 회귀 여지는 크지만, 그 이익 추정이 지금 흔들린다는 점이 문제이며 7/22 가이던스가 밴드의 분모를 다시 그릴 것이다.</p></div><details> 패턴
+  [4] WIDGETS JS       — </body> 직전에 한 번만 추가. PE_DATA 채우는 법 포함
+
+의존성: create-pe-chart/template.html 의 :root 라이트/다크 토큰 블록.
+PE_DATA 값은 create-pe-chart/scripts/build_series.py 의 out.json 그대로.
+============================================================================
+-->
+
+<!-- ===================== [1] WIDGETS CSS ===================== -->
+<style>
+/* ---- 등락 색 (KR 관례: 상승 빨강 / 하락 파랑) ----
+   타일·표의 증감 숫자(수익률·YoY·전기 대비 등)에 필수 적용. 본문 문장은 강조 필요 시만.
+   리포트 :root 토큰 블록에 --up/--down 을 추가할 것:
+     라이트: --up: #d03b3b; --down: #2a78d6;  /  다크: --up: #e66767; --down: #3987e5;
+   경고·리스크 라벨(note·chip)은 방향이 아니라 상태이므로 기존 --hot 을 유지한다.
+   주의: .tile .delta 처럼 더 구체적인 셀렉터가 색을 정의하는 자리에서는 이 클래스가
+   지므로, 리포트 CSS 에 `.tile .val.up, .tile .delta.up { color: var(--up); }` 식의
+   같은 자리 오버라이드를 함께 추가할 것. */
+.up { color: var(--up, #d03b3b); font-weight: 600; }
+.down { color: var(--down, #2a78d6); font-weight: 600; }
+
+/* ---- 근거 팝업 (evidence popup) ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+/* ---- 차트 공통 (create-pe-chart 와 동일 — 리포트에 이미 있으면 중복 추가 금지) ---- */
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+/* ---- 모바일: 차트는 통째로 축소하지 않고 가로 스크롤 (라벨 가독성 유지) ----
+   전제: 페이지에 viewport meta 가 있어야 한다 — 아티팩트는 래퍼가, GitHub Pages 는
+   publish.py 가 자동 보강한다. */
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+}
+</style>
+
+<!-- ===================== [2] 근거 팝업 마크업 패턴 =====================
+분석 의견이 담긴 문장 끝(마침표 뒤)에 인라인으로 붙인다.
+- .evd-src : 출처 라벨 — "소스 · 문서명 (날짜)" 형식
+- .evd-sum : 근거자료 요약 2~3문장. 의견이 아니라 자료의 내용을 요약할 것
+- <a>      : 원문 URL. 반드시 실제로 확인한 URL 만 (DART rcpNo 는 disclosures
+             결과의 접수번호, SEC 는 파일링 index URL, 뉴스는 기사 URL).
+             원문이 없는 경우(토스 API 조회값, 스크립트 계산값)는 <a> 대신
+             <span class="evd-nolink">…</span> 를 쓴다.
+-->
+<p class="prose-example">
+  …4분기 영업이익이 컨센서스를 23% 상회하며 이익 추정치가 상향 사이클에 진입했다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · ○○전자 잠정실적 공시 (2026.04.28)</span><span class="evd-sum">2026년 1분기 잠정 영업이익 <strong>1조 2,400억원</strong>(YoY +41%), 매출 8조 1천억원(YoY +18%). 컨센서스 1조 80억원 대비 +23% 상회.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=REAL_RCPNO" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+</p>
+<!-- 원문 링크가 없는 계산값의 예 -->
+<p class="prose-example">
+  …최근 5일 거래대금이 이전 20일 평균의 2.8배로 급증했다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산 (2026.07.12)</span><span class="evd-sum">최근 5거래일 평균 거래대금 842억원 vs 이전 20거래일 평균 301억원 = <strong>2.8배</strong>. 일봉 캔들 25개 기준 계산.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span>
+</p>
+
+<!-- ===================== [3] PE 밴드 드롭다운 패턴 =====================
+최종 종목마다 하나씩. data-peb 는 PE_DATA 의 키와 일치해야 한다.
+기본 열림(open) — 사용자가 접을 수 있다. summary 의 .peb-s 에는 build_series
+출력의 현재 P/E·평균·백분위를 채워 접었을 때도 결론이 보이게 한다.
+-->
+<details class="pe-embed" data-peb="IBM" open>
+  <summary>
+    <span class="peb-t">📊 IBM — Forward P/E 밴드 분석</span>
+    <span class="peb-s">현재 17.9배 · 기간 평균 22.7배 · 백분위 2%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows"></tbody>
+      </table>
+    </div>
+    <p class="desc peb-foot" style="margin-top:12px;">환산 가정: NTM EPS 직접 입력(추정 앵커 5개 선형 보간) × 배수. 발행주식수 9.40억주, 통화 USD. 앵커는 실제 집계가 아닌 추정치.</p>
+  </div>
+</details><footer><p>데이터 소스: 토스증권 Open API(시세·일봉), SEC EDGAR(공시), CNBC·Investing.com·MarketScreener·BestStocks(뉴스·컨센서스). 생성일 2026-07-15. 주말·휴장 영향 시 수치는 직전 거래일 기준.</p><p>Forward P/E 밴드의 NTM EPS는 리포트·뉴스 시점 앵커를 선형 보간한 추정치이며 실제 컨센서스 집계가 아니다. 밴드 환산 주가류 수치는 모두 추정.</p><p><strong>본 자료는 정보 제공 목적이며 특정 종목의 매매를 권유하지 않는다. 투자 판단과 책임은 투자자 본인에게 있다.</strong></p></footer></div><script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러: create-pe-chart template.html 차트 A·B 의 다종목판 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].c) - 11, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    DATA.anchors.forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+/* ---- 부트스트랩: PE_DATA 의 키 = <details data-peb> 값 ---- */
+const PE_DATA = {
+  "IBM": {"rows": [{"d": "2025-07-02", "c": 287.65, "eps": 11.35, "pe": 25.3}, {"d": "2025-07-03", "c": 291.97, "eps": 11.35, "pe": 25.7}, {"d": "2025-07-07", "c": 292.47, "eps": 11.35, "pe": 25.8}, {"d": "2025-07-08", "c": 290.42, "eps": 11.35, "pe": 25.6}, {"d": "2025-07-09", "c": 290.14, "eps": 11.35, "pe": 25.6}, {"d": "2025-07-10", "c": 287.43, "eps": 11.35, "pe": 25.3}, {"d": "2025-07-11", "c": 283.59, "eps": 11.35, "pe": 25.0}, {"d": "2025-07-14", "c": 283.79, "eps": 11.35, "pe": 25.0}, {"d": "2025-07-15", "c": 282.7, "eps": 11.35, "pe": 24.9}, {"d": "2025-07-16", "c": 281.92, "eps": 11.35, "pe": 24.8}, {"d": "2025-07-17", "c": 282.0, "eps": 11.36, "pe": 24.8}, {"d": "2025-07-18", "c": 285.87, "eps": 11.36, "pe": 25.2}, {"d": "2025-07-21", "c": 284.71, "eps": 11.37, "pe": 25.0}, {"d": "2025-07-22", "c": 281.96, "eps": 11.37, "pe": 24.8}, {"d": "2025-07-23", "c": 282.01, "eps": 11.38, "pe": 24.8}, {"d": "2025-07-24", "c": 260.51, "eps": 11.38, "pe": 22.9}, {"d": "2025-07-25", "c": 259.72, "eps": 11.39, "pe": 22.8}, {"d": "2025-07-28", "c": 263.21, "eps": 11.4, "pe": 23.1}, {"d": "2025-07-29", "c": 262.41, "eps": 11.4, "pe": 23.0}, {"d": "2025-07-30", "c": 260.26, "eps": 11.4, "pe": 22.8}, {"d": "2025-07-31", "c": 253.15, "eps": 11.41, "pe": 22.2}, {"d": "2025-08-01", "c": 250.05, "eps": 11.41, "pe": 21.9}, {"d": "2025-08-04", "c": 251.98, "eps": 11.42, "pe": 22.1}, {"d": "2025-08-05", "c": 250.67, "eps": 11.42, "pe": 21.9}, {"d": "2025-08-06", "c": 252.28, "eps": 11.43, "pe": 22.1}, {"d": "2025-08-07", "c": 250.16, "eps": 11.43, "pe": 21.9}, {"d": "2025-08-08", "c": 242.27, "eps": 11.43, "pe": 21.2}, {"d": "2025-08-11", "c": 236.3, "eps": 11.45, "pe": 20.6}, {"d": "2025-08-12", "c": 234.77, "eps": 11.45, "pe": 20.5}, {"d": "2025-08-13", "c": 240.07, "eps": 11.45, "pe": 21.0}, {"d": "2025-08-14", "c": 237.11, "eps": 11.46, "pe": 20.7}, {"d": "2025-08-15", "c": 239.72, "eps": 11.46, "pe": 20.9}, {"d": "2025-08-18", "c": 239.45, "eps": 11.47, "pe": 20.9}, {"d": "2025-08-19", "c": 241.28, "eps": 11.47, "pe": 21.0}, {"d": "2025-08-20", "c": 242.55, "eps": 11.48, "pe": 21.1}, {"d": "2025-08-21", "c": 239.4, "eps": 11.48, "pe": 20.9}, {"d": "2025-08-22", "c": 242.09, "eps": 11.48, "pe": 21.1}, {"d": "2025-08-25", "c": 239.43, "eps": 11.49, "pe": 20.8}, {"d": "2025-08-26", "c": 242.63, "eps": 11.5, "pe": 21.1}, {"d": "2025-08-27", "c": 244.84, "eps": 11.5, "pe": 21.3}, {"d": "2025-08-28", "c": 245.73, "eps": 11.51, "pe": 21.4}, {"d": "2025-08-29", "c": 243.49, "eps": 11.51, "pe": 21.2}, {"d": "2025-09-02", "c": 241.5, "eps": 11.52, "pe": 21.0}, {"d": "2025-09-03", "c": 244.1, "eps": 11.53, "pe": 21.2}, {"d": "2025-09-04", "c": 247.18, "eps": 11.53, "pe": 21.4}, {"d": "2025-09-05", "c": 248.53, "eps": 11.53, "pe": 21.5}, {"d": "2025-09-08", "c": 256.09, "eps": 11.54, "pe": 22.2}, {"d": "2025-09-09", "c": 259.11, "eps": 11.55, "pe": 22.4}, {"d": "2025-09-10", "c": 256.88, "eps": 11.55, "pe": 22.2}, {"d": "2025-09-11", "c": 257.01, "eps": 11.56, "pe": 22.2}, {"d": "2025-09-12", "c": 253.44, "eps": 11.56, "pe": 21.9}, {"d": "2025-09-15", "c": 256.24, "eps": 11.57, "pe": 22.1}, {"d": "2025-09-16", "c": 257.52, "eps": 11.57, "pe": 22.3}, {"d": "2025-09-17", "c": 259.08, "eps": 11.58, "pe": 22.4}, {"d": "2025-09-18", "c": 265.0, "eps": 11.58, "pe": 22.9}, {"d": "2025-09-19", "c": 266.4, "eps": 11.58, "pe": 23.0}, {"d": "2025-09-22", "c": 271.37, "eps": 11.59, "pe": 23.4}, {"d": "2025-09-23", "c": 272.24, "eps": 11.6, "pe": 23.5}, {"d": "2025-09-24", "c": 267.53, "eps": 11.6, "pe": 23.1}, {"d": "2025-09-25", "c": 281.44, "eps": 11.6, "pe": 24.3}, {"d": "2025-09-26", "c": 284.31, "eps": 11.61, "pe": 24.5}, {"d": "2025-09-29", "c": 279.8, "eps": 11.62, "pe": 24.1}, {"d": "2025-09-30", "c": 282.16, "eps": 11.62, "pe": 24.3}, {"d": "2025-10-01", "c": 286.49, "eps": 11.63, "pe": 24.6}, {"d": "2025-10-02", "c": 286.72, "eps": 11.63, "pe": 24.7}, {"d": "2025-10-03", "c": 288.37, "eps": 11.63, "pe": 24.8}, {"d": "2025-10-06", "c": 289.42, "eps": 11.64, "pe": 24.9}, {"d": "2025-10-07", "c": 293.87, "eps": 11.65, "pe": 25.2}, {"d": "2025-10-08", "c": 289.46, "eps": 11.65, "pe": 24.8}, {"d": "2025-10-09", "c": 288.23, "eps": 11.65, "pe": 24.7}, {"d": "2025-10-10", "c": 277.82, "eps": 11.66, "pe": 23.8}, {"d": "2025-10-13", "c": 277.22, "eps": 11.67, "pe": 23.8}, {"d": "2025-10-14", "c": 276.15, "eps": 11.67, "pe": 23.7}, {"d": "2025-10-15", "c": 280.75, "eps": 11.68, "pe": 24.0}, {"d": "2025-10-16", "c": 275.97, "eps": 11.68, "pe": 23.6}, {"d": "2025-10-17", "c": 281.28, "eps": 11.68, "pe": 24.1}, {"d": "2025-10-20", "c": 283.65, "eps": 11.69, "pe": 24.3}, {"d": "2025-10-21", "c": 282.05, "eps": 11.7, "pe": 24.1}, {"d": "2025-10-22", "c": 287.51, "eps": 11.7, "pe": 24.6}, {"d": "2025-10-23", "c": 285.0, "eps": 11.7, "pe": 24.4}, {"d": "2025-10-24", "c": 307.46, "eps": 11.71, "pe": 26.3}, {"d": "2025-10-27", "c": 313.09, "eps": 11.72, "pe": 26.7}, {"d": "2025-10-28", "c": 312.57, "eps": 11.72, "pe": 26.7}, {"d": "2025-10-29", "c": 308.21, "eps": 11.73, "pe": 26.3}, {"d": "2025-10-30", "c": 310.06, "eps": 11.73, "pe": 26.4}, {"d": "2025-10-31", "c": 307.41, "eps": 11.74, "pe": 26.2}, {"d": "2025-11-03", "c": 304.73, "eps": 11.75, "pe": 25.9}, {"d": "2025-11-04", "c": 300.85, "eps": 11.75, "pe": 25.6}, {"d": "2025-11-05", "c": 306.77, "eps": 11.76, "pe": 26.1}, {"d": "2025-11-06", "c": 312.42, "eps": 11.76, "pe": 26.6}, {"d": "2025-11-07", "c": 306.38, "eps": 11.77, "pe": 26.0}, {"d": "2025-11-10", "c": 309.13, "eps": 11.78, "pe": 26.2}, {"d": "2025-11-11", "c": 313.72, "eps": 11.78, "pe": 26.6}, {"d": "2025-11-12", "c": 314.98, "eps": 11.79, "pe": 26.7}, {"d": "2025-11-13", "c": 304.86, "eps": 11.79, "pe": 25.9}, {"d": "2025-11-14", "c": 305.69, "eps": 11.79, "pe": 25.9}, {"d": "2025-11-17", "c": 297.17, "eps": 11.81, "pe": 25.2}, {"d": "2025-11-18", "c": 289.95, "eps": 11.81, "pe": 24.6}, {"d": "2025-11-19", "c": 288.53, "eps": 11.81, "pe": 24.4}, {"d": "2025-11-20", "c": 290.4, "eps": 11.82, "pe": 24.6}, {"d": "2025-11-21", "c": 297.44, "eps": 11.82, "pe": 25.2}, {"d": "2025-11-24", "c": 304.12, "eps": 11.83, "pe": 25.7}, {"d": "2025-11-25", "c": 304.48, "eps": 11.84, "pe": 25.7}, {"d": "2025-11-26", "c": 303.21, "eps": 11.84, "pe": 25.6}, {"d": "2025-11-28", "c": 308.58, "eps": 11.85, "pe": 26.0}, {"d": "2025-12-01", "c": 305.67, "eps": 11.86, "pe": 25.8}, {"d": "2025-12-02", "c": 301.78, "eps": 11.87, "pe": 25.4}, {"d": "2025-12-03", "c": 302.62, "eps": 11.87, "pe": 25.5}, {"d": "2025-12-04", "c": 307.99, "eps": 11.88, "pe": 25.9}, {"d": "2025-12-05", "c": 307.94, "eps": 11.88, "pe": 25.9}, {"d": "2025-12-08", "c": 309.18, "eps": 11.89, "pe": 26.0}, {"d": "2025-12-09", "c": 310.48, "eps": 11.9, "pe": 26.1}, {"d": "2025-12-10", "c": 312.67, "eps": 11.9, "pe": 26.3}, {"d": "2025-12-11", "c": 310.74, "eps": 11.9, "pe": 26.1}, {"d": "2025-12-12", "c": 309.24, "eps": 11.91, "pe": 26.0}, {"d": "2025-12-15", "c": 308.66, "eps": 11.92, "pe": 25.9}, {"d": "2025-12-16", "c": 303.18, "eps": 11.92, "pe": 25.4}, {"d": "2025-12-17", "c": 303.32, "eps": 11.93, "pe": 25.4}, {"d": "2025-12-18", "c": 300.45, "eps": 11.93, "pe": 25.2}, {"d": "2025-12-19", "c": 300.98, "eps": 11.94, "pe": 25.2}, {"d": "2025-12-22", "c": 302.79, "eps": 11.95, "pe": 25.3}, {"d": "2025-12-23", "c": 303.78, "eps": 11.95, "pe": 25.4}, {"d": "2025-12-24", "c": 304.56, "eps": 11.96, "pe": 25.5}, {"d": "2025-12-26", "c": 305.09, "eps": 11.97, "pe": 25.5}, {"d": "2025-12-29", "c": 305.74, "eps": 11.98, "pe": 25.5}, {"d": "2025-12-30", "c": 302.05, "eps": 11.98, "pe": 25.2}, {"d": "2025-12-31", "c": 296.21, "eps": 11.99, "pe": 24.7}, {"d": "2026-01-02", "c": 291.5, "eps": 11.99, "pe": 24.3}, {"d": "2026-01-05", "c": 294.97, "eps": 12.01, "pe": 24.6}, {"d": "2026-01-06", "c": 302.47, "eps": 12.01, "pe": 25.2}, {"d": "2026-01-07", "c": 296.73, "eps": 12.01, "pe": 24.7}, {"d": "2026-01-08", "c": 302.72, "eps": 12.02, "pe": 25.2}, {"d": "2026-01-09", "c": 304.22, "eps": 12.02, "pe": 25.3}, {"d": "2026-01-12", "c": 312.18, "eps": 12.03, "pe": 25.9}, {"d": "2026-01-13", "c": 303.16, "eps": 12.04, "pe": 25.2}, {"d": "2026-01-14", "c": 309.03, "eps": 12.04, "pe": 25.7}, {"d": "2026-01-15", "c": 297.95, "eps": 12.05, "pe": 24.7}, {"d": "2026-01-16", "c": 305.67, "eps": 12.05, "pe": 25.4}, {"d": "2026-01-20", "c": 291.35, "eps": 12.07, "pe": 24.1}, {"d": "2026-01-21", "c": 297.54, "eps": 12.07, "pe": 24.6}, {"d": "2026-01-22", "c": 294.67, "eps": 12.08, "pe": 24.4}, {"d": "2026-01-23", "c": 292.44, "eps": 12.08, "pe": 24.2}, {"d": "2026-01-26", "c": 296.33, "eps": 12.09, "pe": 24.5}, {"d": "2026-01-27", "c": 293.86, "eps": 12.1, "pe": 24.3}, {"d": "2026-01-28", "c": 294.16, "eps": 12.1, "pe": 24.3}, {"d": "2026-01-29", "c": 309.24, "eps": 12.1, "pe": 25.5}, {"d": "2026-01-30", "c": 306.7, "eps": 12.11, "pe": 25.3}, {"d": "2026-02-02", "c": 314.73, "eps": 12.12, "pe": 26.0}, {"d": "2026-02-03", "c": 294.31, "eps": 12.12, "pe": 24.3}, {"d": "2026-02-04", "c": 289.05, "eps": 12.13, "pe": 23.8}, {"d": "2026-02-05", "c": 289.89, "eps": 12.13, "pe": 23.9}, {"d": "2026-02-06", "c": 298.93, "eps": 12.14, "pe": 24.6}, {"d": "2026-02-09", "c": 296.34, "eps": 12.15, "pe": 24.4}, {"d": "2026-02-10", "c": 291.76, "eps": 12.15, "pe": 24.0}, {"d": "2026-02-11", "c": 272.81, "eps": 12.16, "pe": 22.4}, {"d": "2026-02-12", "c": 259.52, "eps": 12.16, "pe": 21.3}, {"d": "2026-02-13", "c": 262.38, "eps": 12.17, "pe": 21.6}, {"d": "2026-02-17", "c": 258.31, "eps": 12.18, "pe": 21.2}, {"d": "2026-02-18", "c": 260.79, "eps": 12.19, "pe": 21.4}, {"d": "2026-02-19", "c": 256.28, "eps": 12.19, "pe": 21.0}, {"d": "2026-02-20", "c": 257.16, "eps": 12.2, "pe": 21.1}, {"d": "2026-02-23", "c": 223.35, "eps": 12.21, "pe": 18.3}, {"d": "2026-02-24", "c": 229.32, "eps": 12.21, "pe": 18.8}, {"d": "2026-02-25", "c": 237.54, "eps": 12.22, "pe": 19.4}, {"d": "2026-02-26", "c": 242.01, "eps": 12.22, "pe": 19.8}, {"d": "2026-02-27", "c": 240.21, "eps": 12.22, "pe": 19.6}, {"d": "2026-03-02", "c": 239.37, "eps": 12.24, "pe": 19.6}, {"d": "2026-03-03", "c": 245.28, "eps": 12.24, "pe": 20.0}, {"d": "2026-03-04", "c": 250.06, "eps": 12.25, "pe": 20.4}, {"d": "2026-03-05", "c": 256.55, "eps": 12.25, "pe": 20.9}, {"d": "2026-03-06", "c": 258.85, "eps": 12.25, "pe": 21.1}, {"d": "2026-03-09", "c": 253.33, "eps": 12.27, "pe": 20.7}, {"d": "2026-03-10", "c": 250.2, "eps": 12.27, "pe": 20.4}, {"d": "2026-03-11", "c": 248.87, "eps": 12.27, "pe": 20.3}, {"d": "2026-03-12", "c": 247.68, "eps": 12.28, "pe": 20.2}, {"d": "2026-03-13", "c": 246.28, "eps": 12.28, "pe": 20.0}, {"d": "2026-03-16", "c": 249.25, "eps": 12.3, "pe": 20.3}, {"d": "2026-03-17", "c": 256.11, "eps": 12.3, "pe": 20.8}, {"d": "2026-03-18", "c": 251.6, "eps": 12.3, "pe": 20.4}, {"d": "2026-03-19", "c": 250.37, "eps": 12.31, "pe": 20.3}, {"d": "2026-03-20", "c": 241.77, "eps": 12.31, "pe": 19.6}, {"d": "2026-03-23", "c": 248.44, "eps": 12.32, "pe": 20.2}, {"d": "2026-03-24", "c": 240.59, "eps": 12.33, "pe": 19.5}, {"d": "2026-03-25", "c": 241.39, "eps": 12.33, "pe": 19.6}, {"d": "2026-03-26", "c": 241.67, "eps": 12.34, "pe": 19.6}, {"d": "2026-03-27", "c": 236.34, "eps": 12.34, "pe": 19.1}, {"d": "2026-03-30", "c": 237.25, "eps": 12.35, "pe": 19.2}, {"d": "2026-03-31", "c": 242.39, "eps": 12.36, "pe": 19.6}, {"d": "2026-04-01", "c": 243.14, "eps": 12.36, "pe": 19.7}, {"d": "2026-04-02", "c": 248.16, "eps": 12.37, "pe": 20.1}, {"d": "2026-04-06", "c": 246.74, "eps": 12.38, "pe": 19.9}, {"d": "2026-04-07", "c": 245.07, "eps": 12.39, "pe": 19.8}, {"d": "2026-04-08", "c": 241.74, "eps": 12.39, "pe": 19.5}, {"d": "2026-04-09", "c": 237.18, "eps": 12.4, "pe": 19.1}, {"d": "2026-04-10", "c": 230.76, "eps": 12.4, "pe": 18.6}, {"d": "2026-04-13", "c": 237.82, "eps": 12.41, "pe": 19.2}, {"d": "2026-04-14", "c": 240.27, "eps": 12.42, "pe": 19.4}, {"d": "2026-04-15", "c": 244.8, "eps": 12.42, "pe": 19.7}, {"d": "2026-04-16", "c": 251.0, "eps": 12.42, "pe": 20.2}, {"d": "2026-04-17", "c": 253.47, "eps": 12.43, "pe": 20.4}, {"d": "2026-04-20", "c": 253.71, "eps": 12.44, "pe": 20.4}, {"d": "2026-04-21", "c": 255.68, "eps": 12.45, "pe": 20.5}, {"d": "2026-04-22", "c": 251.86, "eps": 12.45, "pe": 20.2}, {"d": "2026-04-23", "c": 231.08, "eps": 12.45, "pe": 18.6}, {"d": "2026-04-24", "c": 231.98, "eps": 12.44, "pe": 18.6}, {"d": "2026-04-27", "c": 228.05, "eps": 12.43, "pe": 18.3}, {"d": "2026-04-28", "c": 233.04, "eps": 12.43, "pe": 18.7}, {"d": "2026-04-29", "c": 227.1, "eps": 12.43, "pe": 18.3}, {"d": "2026-04-30", "c": 230.98, "eps": 12.43, "pe": 18.6}, {"d": "2026-05-01", "c": 232.2, "eps": 12.42, "pe": 18.7}, {"d": "2026-05-04", "c": 229.48, "eps": 12.41, "pe": 18.5}, {"d": "2026-05-05", "c": 229.03, "eps": 12.41, "pe": 18.5}, {"d": "2026-05-06", "c": 225.74, "eps": 12.41, "pe": 18.2}, {"d": "2026-05-07", "c": 231.31, "eps": 12.4, "pe": 18.6}, {"d": "2026-05-08", "c": 229.76, "eps": 12.4, "pe": 18.5}, {"d": "2026-05-11", "c": 223.55, "eps": 12.39, "pe": 18.0}, {"d": "2026-05-12", "c": 219.22, "eps": 12.39, "pe": 17.7}, {"d": "2026-05-13", "c": 214.64, "eps": 12.39, "pe": 17.3}, {"d": "2026-05-14", "c": 218.37, "eps": 12.38, "pe": 17.6}, {"d": "2026-05-15", "c": 219.3, "eps": 12.38, "pe": 17.7}, {"d": "2026-05-18", "c": 222.75, "eps": 12.37, "pe": 18.0}, {"d": "2026-05-19", "c": 222.33, "eps": 12.37, "pe": 18.0}, {"d": "2026-05-20", "c": 225.0, "eps": 12.37, "pe": 18.2}, {"d": "2026-05-21", "c": 252.97, "eps": 12.36, "pe": 20.5}, {"d": "2026-05-22", "c": 253.84, "eps": 12.36, "pe": 20.5}, {"d": "2026-05-26", "c": 250.69, "eps": 12.35, "pe": 20.3}, {"d": "2026-05-27", "c": 255.2, "eps": 12.34, "pe": 20.7}, {"d": "2026-05-28", "c": 264.22, "eps": 12.34, "pe": 21.4}, {"d": "2026-05-29", "c": 297.8, "eps": 12.34, "pe": 24.1}, {"d": "2026-06-01", "c": 320.42, "eps": 12.33, "pe": 26.0}, {"d": "2026-06-02", "c": 329.23, "eps": 12.33, "pe": 26.7}, {"d": "2026-06-03", "c": 305.63, "eps": 12.32, "pe": 24.8}, {"d": "2026-06-04", "c": 301.77, "eps": 12.32, "pe": 24.5}, {"d": "2026-06-05", "c": 284.84, "eps": 12.32, "pe": 23.1}, {"d": "2026-06-08", "c": 280.82, "eps": 12.31, "pe": 22.8}, {"d": "2026-06-09", "c": 277.49, "eps": 12.31, "pe": 22.6}, {"d": "2026-06-10", "c": 272.36, "eps": 12.3, "pe": 22.1}, {"d": "2026-06-11", "c": 274.85, "eps": 12.3, "pe": 22.3}, {"d": "2026-06-12", "c": 272.24, "eps": 12.3, "pe": 22.1}, {"d": "2026-06-15", "c": 268.71, "eps": 12.29, "pe": 21.9}, {"d": "2026-06-16", "c": 270.81, "eps": 12.28, "pe": 22.0}, {"d": "2026-06-17", "c": 262.35, "eps": 12.28, "pe": 21.4}, {"d": "2026-06-18", "c": 249.1, "eps": 12.28, "pe": 20.3}, {"d": "2026-06-22", "c": 252.22, "eps": 12.27, "pe": 20.6}, {"d": "2026-06-23", "c": 264.94, "eps": 12.26, "pe": 21.6}, {"d": "2026-06-24", "c": 262.96, "eps": 12.26, "pe": 21.4}, {"d": "2026-06-25", "c": 258.27, "eps": 12.26, "pe": 21.1}, {"d": "2026-06-26", "c": 271.63, "eps": 12.25, "pe": 22.2}, {"d": "2026-06-29", "c": 278.0, "eps": 12.25, "pe": 22.7}, {"d": "2026-06-30", "c": 281.21, "eps": 12.24, "pe": 23.0}, {"d": "2026-07-01", "c": 286.25, "eps": 12.24, "pe": 23.4}, {"d": "2026-07-02", "c": 289.52, "eps": 12.24, "pe": 23.7}, {"d": "2026-07-06", "c": 299.52, "eps": 12.22, "pe": 24.5}, {"d": "2026-07-07", "c": 306.13, "eps": 12.22, "pe": 25.0}, {"d": "2026-07-08", "c": 302.05, "eps": 12.22, "pe": 24.7}, {"d": "2026-07-09", "c": 295.3, "eps": 12.22, "pe": 24.2}, {"d": "2026-07-10", "c": 287.56, "eps": 12.21, "pe": 23.5}, {"d": "2026-07-13", "c": 290.23, "eps": 12.2, "pe": 23.8}, {"d": "2026-07-14", "c": 217.07, "eps": 12.2, "pe": 17.8}, {"d": "2026-07-15", "c": 217.8, "eps": 12.2, "pe": 17.9}], "stats": {"avg": 22.7, "min": 17.3, "max": 26.7, "min_day": "2026-05-13", "max_day": "2025-10-27", "cur": 17.9, "cur_eps": 12.2, "cur_price": 217.8, "percentile": 2}, "cfg": {"currency": "USD", "multiples": [16, 19, 22, 25], "priceMax": 400, "priceTick": 80, "peMax": 30, "peTick": 6, "epsMax": 15, "epsTick": 3}, "anchors": [{"d": "2025-07-15", "val": "$11.35", "eps": 11.35, "why": "2025\ub144 \uc911\ubc18 FY25 \ube44GAAP EPS \uac00\uc774\ub358\uc2a4 ~$10.9~11.0 \uae30\uc900, NTM\uc740 FY26 \ucd94\uc815\uc73c\ub85c \ube14\ub80c\ub529 (\ucd94\uc815)"}, {"d": "2025-10-22", "val": "$11.70", "eps": 11.7, "why": "Q3 2025 \uc2e4\uc801 \ud6c4 \uc18c\ud504\ud2b8\uc6e8\uc5b4 \ubaa8\uba58\ud140 \ubc18\uc601, \ucee8\uc13c\uc11c\uc2a4 \uc0c1\ud5a5 (\ucd94\uc815)"}, {"d": "2026-01-28", "val": "$12.10", "eps": 12.1, "why": "Q4 2025/FY26 \ucd08\uae30 \uac00\uc774\ub358\uc2a4 - \uc18c\ud504\ud2b8\uc6e8\uc5b4 \ub450 \uc790\ub9bf\uc218 \uc131\uc7a5 \ubaa9\ud45c \ubc18\uc601 (\ucd94\uc815)"}, {"d": "2026-04-22", "val": "$12.45", "eps": 12.45, "why": "Q1 2026 \uc2e4\uc801 \ud6c4 FY26 \ucee8\uc13c\uc11c\uc2a4 EPS ~$12.4 \uc218\ub834 (\ucd94\uc815)"}, {"d": "2026-07-14", "val": "$12.20", "eps": 12.2, "why": "\uc608\ube44 Q2 \uacbd\uace0 \ud6c4 - \uc18c\ud504\ud2b8\uc6e8\uc5b4 \ub454\ud654(+5%)/\uc778\ud504\ub77c -7% \ubc18\uc601 \uc18c\ud3ed \ud558\ud5a5, \uc815\uc2dd \uac00\uc774\ub358\uc2a4 7/22 \uc774\uc5f0 (\ucd94\uc815)"}], "meta": {"symbol": "IBM", "name": "IBM", "shares": 939885280, "mode": "eps", "conv": null, "range": ["2025-07-02", "2026-07-15"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  if (data) renderPeBand(d, data);
+});
+</script></body></html>
