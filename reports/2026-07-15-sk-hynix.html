@@ -184,8 +184,13 @@ footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px
     </div>
     <div class="tbl-scroll">
     <table>
-      <thead><tr><th>앵커 시점</th><th class="num" id="anchorValHead">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
-      <tbody id="anchorRows"></tbody>
+      <thead><tr><th>앵커 시점</th><th class="num" id="anchorValHead">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody id="anchorRows"><tr><td>&#x27;25.6.24</td><td class="num">38.0조원</td><td class="num">42,655원</td><td>1Q25 영업이익 7.4조 확인 후 FY25 컨센서스 33~35조 시기. 당시 통용 forward P/E 6~7배와 주가 27.7만원에서 역산한 근사치</td></tr>
+        <tr><td>&#x27;25.7.24</td><td class="num">44.0조원</td><td class="num">49,389원</td><td>2Q25 사상 최대 실적(매출 22.2조·영업이익 9.2조) 발표 — FY25 컨센서스 38조 안팎으로 상향 (SK하이닉스 뉴스룸 2Q25)</td></tr>
+        <tr><td>&#x27;25.10.29</td><td class="num">70.0조원</td><td class="num">78,574원</td><td>3Q25 영업이익 11.4조(사상 첫 10조 돌파) + &#x27;2026년 공급 물량 완판&#x27; 발표 (CNBC 10/29) — FY26 전망 70조대로 점프</td></tr>
+        <tr><td>&#x27;26.1.28</td><td class="num">130.0조원</td><td class="num">145,923원</td><td>4Q25 영업이익 19.2조 서프라이즈, FY25 47.2조로 삼성전자 첫 추월 — FY26 컨센서스 급상향 국면 (키움 3/3 리포트 FY26E 170조·목표가 130만원)</td></tr>
+        <tr><td>&#x27;26.4.23</td><td class="num">230.0조원</td><td class="num">258,172원</td><td>1Q26 영업이익 37.6조·마진 72% 발표 — 삼성증권 228조·한투 251조 등 FY26 컨센서스 230조 안팎으로 줄상향</td></tr>
+        <tr><td>&#x27;26.7.15</td><td class="num">280.0조원</td><td class="num">314,297원</td><td>FY26 컨센서스 250~270조(신한 266.9조·KB 270조), 메모리 공급부족 2027년 지속 전망 — NTM(26H2+27H1)은 이를 소폭 상회하는 280조로 추정</td></tr></tbody>
     </table>
     </div>
     <p class="desc" style="margin-top:12px;">환산 가정 — NTM 영업이익(억원) × 순이익 전환율 0.80 ÷ 발행주식수 712,702,365주(토스 API). 전환율 0.80은 FY2025 실측 0.91, 최근 분기 실측 0.76~0.80 범위를 감안한 보수적 값. 발행주식수는 2026-07-15 유상증자 신주 1,779만주 반영 전 기준이며, 반영 시 EPS는 약 2.4% 낮아진다. 앵커 사이 구간은 선형 보간.</p>
@@ -380,18 +385,9 @@ function hover(svg, boxId, tipId, W, plotB, rowsFn, yFn) {
   hit.addEventListener("pointerleave", hide);
 }
 
-/* ---------- tables ---------- */
+/* ---------- tables ----------
+   앵커 테이블은 빌드 시(fill_template.py) 정적으로 채워진다 — JS 는 월별 테이블만 담당. */
 (function tables() {
-  document.getElementById("anchorValHead").textContent = DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
-  const ab = document.getElementById("anchorRows");
-  DATA.anchors.forEach(a => {
-    const tr = document.createElement("tr");
-    [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
-      const td = document.createElement("td"); if (num) td.className = "num";
-      td.textContent = txt; tr.appendChild(td);
-    });
-    ab.appendChild(tr);
-  });
   const mb = document.getElementById("monthlyRows");
   mIdx.concat([N - 1]).forEach(i => {
     const r = rows[i], tr = document.createElement("tr");
