@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SK하이닉스 Forward P/E 밴드 분석 (2026.07)</title>
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+  --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+  --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+}
+:root[data-theme="light"] {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 20px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 6px 0 4px; letter-spacing: -0.01em; text-wrap: balance; }
+header .sub { color: var(--ink-2); font-size: 14px; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px 14px; }
+.tile .lbl { font-size: 12px; color: var(--muted); }
+.tile .val { font-size: 26px; font-weight: 650; letter-spacing: -0.01em; margin: 2px 0 1px; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--ink-2); }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px 22px 16px; }
+.card h2 { font-size: 16.5px; margin: 0 0 2px; letter-spacing: -0.005em; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 6px 10px; }
+td { border-bottom: 1px solid var(--grid); padding: 6.5px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▸ "; color: var(--muted); }
+details[open] summary::before { content: "▾ "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">TOSS-AGENT RESEARCH · 밸류에이션 분석 · 2026-07-15</div>
+    <h1>SK하이닉스, 주가 7.3배 랠리에 리레이팅은 없었다</h1>
+    <p class="sub">2025.06 – 2026.07 · 주가 상승분은 사실상 전부 이익 전망 상향(7.4배)이 설명한다 — Forward P/E는 6.5배에서 6.4배. 고점 대비 32% 조정에도 배수는 아직 기간 평균 위다.</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile">
+      <div class="lbl">현재가 (2026-07-15 종가)</div>
+      <div class="val">202.2<small>만원</small></div>
+      <div class="delta hot">고점 295.9만원(6/22) 대비 −31.7%</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">추정 NTM EPS</div>
+      <div class="val">31.4<small>만원</small></div>
+      <div class="delta">1년 전 4.3만원의 <strong>7.4배</strong></div>
+    </div>
+    <div class="tile">
+      <div class="lbl">Forward P/E (추정)</div>
+      <div class="val">6.4<small>배</small></div>
+      <div class="delta">기간 평균 5.7배 대비 +12%</div>
+    </div>
+    <div class="tile">
+      <div class="lbl">기간 내 백분위</div>
+      <div class="val">75<small>%</small></div>
+      <div class="delta"><span class="chip">평균 상회</span> 기간 범위 3.5~9.9배</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>주가 vs Forward P/E 밴드</h2>
+    <p class="desc" id="bandDesc">밴드 = 각 시점의 추정 NTM EPS × 배수 — 이익 전망이 오르면 밴드도 함께 올라갑니다. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box" id="boxA">
+      <svg id="chartA" viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip" id="tipA"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Forward P/E 추이 — 3.5배에서 9.9배, 그리고 6.4배</h2>
+    <p class="desc">주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균입니다.</p>
+    <div class="chart-box" id="boxB">
+      <svg id="chartB" viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip" id="tipB"></div>
+    </div>
+  </div>
+
+  <div class="card prose">
+    <h2>랠리의 해부 — 이익이 다 했고, 배수는 제자리</h2>
+    <div style="max-width:68ch;">
+<p>13개월 동안 주가는 27만 7천원에서 202만 2천원으로 <strong>7.30배</strong>가 됐다.
+같은 기간 추정 NTM EPS는 4만 3천원에서 31만 4천원으로 <strong>7.37배</strong>.
+둘을 나눈 리레이팅 배수는 0.99 — <strong>배수 확장은 사실상 없었다</strong>.
+분기 영업이익이 7.4조 → 9.2조 → 11.4조 → 19.2조 → 37.6조원으로 다섯 분기 연속
+사상 최대를 갈아치운 이익 폭발이 이 랠리의 전부를 설명한다.</p>
+<p>역사적 위치를 보면, 기간 평균은 5.7배다. 최저는 3.5배(2026-03-31, 1분기 실적 발표를
+앞둔 조정 국면), 최고는 9.9배(2026-06-22)였다. 9.9배 고점은 나스닥 ADR 상장·45조원
+조달 발표를 전후한 과열 구간으로, 주가 295만 9천원의 사상 최고가와 겹친다. 이후 한 달 만에
+주가가 32% 조정되며 현재 6.4배(백분위 75%)로 내려왔다. 절대 수치는 낮아 보이지만,
+메모리 사이클에서는 <strong>이익 정점에 가까울수록 P/E가 가장 낮아 보이는 착시</strong>가
+생긴다는 점을 함께 봐야 한다.</p>
+<p>현재 추정 NTM EPS 기준 밴드별 환산 주가는 4배 126만원 / 6배 189만원 / 8배 251만원 /
+10배 314만원, 기간 평균 5.7배는 179만원이다. 현재가 202만원은 6.4배 자리다. 증권가 평균
+목표주가 318만원은 사실상 <strong>10배 밴드 상단</strong>을 가정하는 수치이고, 이번 유상증자
+신주 발행가 224만 9,751원과 비교하면 현재가가 오히려 10% 낮다.</p>
+<p>결국 지금 가격의 질문은 "배수가 싼가"가 아니라 <strong>"FY2026 영업이익 컨센서스
+250~270조원과 2027년까지 이어진다는 공급부족 전망이 실현되는가"</strong>다. 실현되면 이익
+전망과 함께 밴드 하단이 계속 올라와 가격을 받치지만, 사이클이 꺾이면 EPS와 밴드가 동시에
+내려앉는 구조라 저P/E 자체는 방어막이 아니다. 다음 확인 이벤트는 2분기 실적 발표(7월 말
+예정)와 7월 29일 나스닥 ADR 신주 상장(40조원 조달, 신주 1,779만주 ≈ 발행주식수의 약
+2.5% 희석)이다.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>추정 방법론 — NTM EPS는 이렇게 만들었습니다</h2>
+    <p class="desc">컨센서스 히스토리 원본(FnGuide·IBES 등)은 확보할 수 없어, 공개된 리포트·뉴스 시점을 앵커로 한 추정 모델입니다.</p>
+    <div class="note"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 앵커 시점 사이를 선형 보간한 <strong>추정치</strong>입니다. 앵커 값 자체도 리포트에 나온 목표주가·분기 추정으로부터 역산한 근사치이므로, 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <div class="chart-box" id="boxC" style="margin-bottom:16px;">
+      <svg id="chartC" viewBox="0 0 980 200" role="img" aria-label="추정 NTM EPS 경로 차트"></svg>
+      <div class="tooltip" id="tipC"></div>
+    </div>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>앵커 시점</th><th class="num" id="anchorValHead">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody id="anchorRows"></tbody>
+    </table>
+    </div>
+    <p class="desc" style="margin-top:12px;">환산 가정 — NTM 영업이익(억원) × 순이익 전환율 0.80 ÷ 발행주식수 712,702,365주(토스 API). 전환율 0.80은 FY2025 실측 0.91, 최근 분기 실측 0.76~0.80 범위를 감안한 보수적 값. 발행주식수는 2026-07-15 유상증자 신주 1,779만주 반영 전 기준이며, 반영 시 EPS는 약 2.4% 낮아진다. 앵커 사이 구간은 선형 보간.</p>
+  </div>
+
+  <details>
+    <summary>데이터 테이블 (월별 샘플)</summary>
+    <div class="inner tbl-scroll">
+      <table>
+        <thead><tr><th>날짜</th><th class="num">종가</th><th class="num">추정 NTM EPS</th><th class="num">Forward P/E</th></tr></thead>
+        <tbody id="monthlyRows"></tbody>
+      </table>
+    </div>
+  </details>
+
+  <footer>데이터: 토스증권 Open API(주가·발행주식수) · DART 전자공시(유상증자·해외상장 공시, 2026.06~07) · SK하이닉스 뉴스룸/CNBC/국내 언론의 실적·컨센서스 보도(2025.07~2026.07, 앵커 근거 표 참조) · 생성 2026-07-15 · 이 보고서의 NTM EPS는 실제 컨센서스 집계가 아니라 공개 보도 시점을 앵커로 한 추정 모델입니다. 정보 제공 목적으로 작성되었으며, 특정 종목의 매수·매도 권유가 아닙니다.</footer>
+</div>
+
+<script>
+const DATA = {"rows": [{"d": "2025-06-24", "c": 277000.0, "eps": 42655.0, "pe": 6.5}, {"d": "2025-06-25", "c": 288500.0, "eps": 42879.0, "pe": 6.7}, {"d": "2025-06-26", "c": 296500.0, "eps": 43104.0, "pe": 6.9}, {"d": "2025-06-27", "c": 283500.0, "eps": 43328.0, "pe": 6.5}, {"d": "2025-06-30", "c": 293000.0, "eps": 44002.0, "pe": 6.7}, {"d": "2025-07-01", "c": 287000.0, "eps": 44226.0, "pe": 6.5}, {"d": "2025-07-02", "c": 278000.0, "eps": 44451.0, "pe": 6.3}, {"d": "2025-07-03", "c": 279000.0, "eps": 44675.0, "pe": 6.2}, {"d": "2025-07-04", "c": 270500.0, "eps": 44900.0, "pe": 6.0}, {"d": "2025-07-07", "c": 271500.0, "eps": 45573.0, "pe": 6.0}, {"d": "2025-07-08", "c": 283500.0, "eps": 45798.0, "pe": 6.2}, {"d": "2025-07-09", "c": 281500.0, "eps": 46022.0, "pe": 6.1}, {"d": "2025-07-10", "c": 296500.0, "eps": 46247.0, "pe": 6.4}, {"d": "2025-07-11", "c": 292500.0, "eps": 46471.0, "pe": 6.3}, {"d": "2025-07-14", "c": 299500.0, "eps": 47145.0, "pe": 6.4}, {"d": "2025-07-15", "c": 301000.0, "eps": 47369.0, "pe": 6.4}, {"d": "2025-07-16", "c": 295000.0, "eps": 47593.0, "pe": 6.2}, {"d": "2025-07-17", "c": 268500.0, "eps": 47818.0, "pe": 5.6}, {"d": "2025-07-18", "c": 269500.0, "eps": 48042.0, "pe": 5.6}, {"d": "2025-07-21", "c": 273000.0, "eps": 48716.0, "pe": 5.6}, {"d": "2025-07-22", "c": 268000.0, "eps": 48940.0, "pe": 5.5}, {"d": "2025-07-23", "c": 270500.0, "eps": 49165.0, "pe": 5.5}, {"d": "2025-07-24", "c": 269500.0, "eps": 49389.0, "pe": 5.5}, {"d": "2025-07-25", "c": 266500.0, "eps": 49690.0, "pe": 5.4}, {"d": "2025-07-28", "c": 261500.0, "eps": 50593.0, "pe": 5.2}, {"d": "2025-07-29", "c": 263500.0, "eps": 50894.0, "pe": 5.2}, {"d": "2025-07-30", "c": 264000.0, "eps": 51195.0, "pe": 5.2}, {"d": "2025-07-31", "c": 273500.0, "eps": 51496.0, "pe": 5.3}, {"d": "2025-08-01", "c": 257500.0, "eps": 51796.0, "pe": 5.0}, {"d": "2025-08-04", "c": 259500.0, "eps": 52699.0, "pe": 4.9}, {"d": "2025-08-05", "c": 263000.0, "eps": 53000.0, "pe": 5.0}, {"d": "2025-08-06", "c": 259000.0, "eps": 53301.0, "pe": 4.9}, {"d": "2025-08-07", "c": 262500.0, "eps": 53602.0, "pe": 4.9}, {"d": "2025-08-08", "c": 257000.0, "eps": 53903.0, "pe": 4.8}, {"d": "2025-08-11", "c": 265500.0, "eps": 54805.0, "pe": 4.8}, {"d": "2025-08-12", "c": 269500.0, "eps": 55106.0, "pe": 4.9}, {"d": "2025-08-13", "c": 278000.0, "eps": 55407.0, "pe": 5.0}, {"d": "2025-08-14", "c": 275000.0, "eps": 55708.0, "pe": 4.9}, {"d": "2025-08-18", "c": 268000.0, "eps": 56911.0, "pe": 4.7}, {"d": "2025-08-19", "c": 263500.0, "eps": 57212.0, "pe": 4.6}, {"d": "2025-08-20", "c": 256000.0, "eps": 57513.0, "pe": 4.5}, {"d": "2025-08-21", "c": 246000.0, "eps": 57814.0, "pe": 4.3}, {"d": "2025-08-22", "c": 250500.0, "eps": 58115.0, "pe": 4.3}, {"d": "2025-08-25", "c": 259000.0, "eps": 59017.0, "pe": 4.4}, {"d": "2025-08-26", "c": 261000.0, "eps": 59318.0, "pe": 4.4}, {"d": "2025-08-27", "c": 260500.0, "eps": 59619.0, "pe": 4.4}, {"d": "2025-08-28", "c": 267500.0, "eps": 59920.0, "pe": 4.5}, {"d": "2025-08-29", "c": 267500.0, "eps": 60221.0, "pe": 4.4}, {"d": "2025-09-01", "c": 256500.0, "eps": 61124.0, "pe": 4.2}, {"d": "2025-09-02", "c": 258000.0, "eps": 61424.0, "pe": 4.2}, {"d": "2025-09-03", "c": 264500.0, "eps": 61725.0, "pe": 4.3}, {"d": "2025-09-04", "c": 266500.0, "eps": 62026.0, "pe": 4.3}, {"d": "2025-09-05", "c": 273500.0, "eps": 62327.0, "pe": 4.4}, {"d": "2025-09-08", "c": 277500.0, "eps": 63230.0, "pe": 4.4}, {"d": "2025-09-09", "c": 287500.0, "eps": 63531.0, "pe": 4.5}, {"d": "2025-09-10", "c": 304500.0, "eps": 63831.0, "pe": 4.8}, {"d": "2025-09-11", "c": 306500.0, "eps": 64132.0, "pe": 4.8}, {"d": "2025-09-12", "c": 330000.0, "eps": 64433.0, "pe": 5.1}, {"d": "2025-09-15", "c": 328000.0, "eps": 65336.0, "pe": 5.0}, {"d": "2025-09-16", "c": 351000.0, "eps": 65637.0, "pe": 5.3}, {"d": "2025-09-17", "c": 334500.0, "eps": 65938.0, "pe": 5.1}, {"d": "2025-09-18", "c": 357000.0, "eps": 66238.0, "pe": 5.4}, {"d": "2025-09-19", "c": 353000.0, "eps": 66539.0, "pe": 5.3}, {"d": "2025-09-22", "c": 352000.0, "eps": 67442.0, "pe": 5.2}, {"d": "2025-09-23", "c": 362500.0, "eps": 67743.0, "pe": 5.4}, {"d": "2025-09-24", "c": 357500.0, "eps": 68044.0, "pe": 5.3}, {"d": "2025-09-25", "c": 354500.0, "eps": 68344.0, "pe": 5.2}, {"d": "2025-09-26", "c": 335500.0, "eps": 68645.0, "pe": 4.9}, {"d": "2025-09-29", "c": 351000.0, "eps": 69548.0, "pe": 5.0}, {"d": "2025-09-30", "c": 348000.0, "eps": 69849.0, "pe": 5.0}, {"d": "2025-10-01", "c": 364000.0, "eps": 70150.0, "pe": 5.2}, {"d": "2025-10-02", "c": 397500.0, "eps": 70451.0, "pe": 5.6}, {"d": "2025-10-10", "c": 426000.0, "eps": 72858.0, "pe": 5.8}, {"d": "2025-10-13", "c": 423500.0, "eps": 73760.0, "pe": 5.7}, {"d": "2025-10-14", "c": 403500.0, "eps": 74061.0, "pe": 5.4}, {"d": "2025-10-15", "c": 425500.0, "eps": 74362.0, "pe": 5.7}, {"d": "2025-10-16", "c": 455000.0, "eps": 74663.0, "pe": 6.1}, {"d": "2025-10-17", "c": 454500.0, "eps": 74964.0, "pe": 6.1}, {"d": "2025-10-20", "c": 490000.0, "eps": 75866.0, "pe": 6.5}, {"d": "2025-10-21", "c": 486000.0, "eps": 76167.0, "pe": 6.4}, {"d": "2025-10-22", "c": 481000.0, "eps": 76468.0, "pe": 6.3}, {"d": "2025-10-23", "c": 477000.0, "eps": 76769.0, "pe": 6.2}, {"d": "2025-10-24", "c": 513000.0, "eps": 77070.0, "pe": 6.7}, {"d": "2025-10-27", "c": 553000.0, "eps": 77972.0, "pe": 7.1}, {"d": "2025-10-28", "c": 519000.0, "eps": 78273.0, "pe": 6.6}, {"d": "2025-10-29", "c": 568000.0, "eps": 78574.0, "pe": 7.2}, {"d": "2025-10-30", "c": 565000.0, "eps": 79314.0, "pe": 7.1}, {"d": "2025-10-31", "c": 560000.0, "eps": 80054.0, "pe": 7.0}, {"d": "2025-11-03", "c": 629000.0, "eps": 82275.0, "pe": 7.6}, {"d": "2025-11-04", "c": 585000.0, "eps": 83015.0, "pe": 7.0}, {"d": "2025-11-05", "c": 580000.0, "eps": 83755.0, "pe": 6.9}, {"d": "2025-11-06", "c": 596000.0, "eps": 84495.0, "pe": 7.1}, {"d": "2025-11-07", "c": 572000.0, "eps": 85235.0, "pe": 6.7}, {"d": "2025-11-10", "c": 612000.0, "eps": 87455.0, "pe": 7.0}, {"d": "2025-11-11", "c": 612000.0, "eps": 88196.0, "pe": 6.9}, {"d": "2025-11-12", "c": 620000.0, "eps": 88936.0, "pe": 7.0}, {"d": "2025-11-13", "c": 609000.0, "eps": 89676.0, "pe": 6.8}, {"d": "2025-11-14", "c": 564000.0, "eps": 90416.0, "pe": 6.2}, {"d": "2025-11-17", "c": 597000.0, "eps": 92636.0, "pe": 6.4}, {"d": "2025-11-18", "c": 577000.0, "eps": 93376.0, "pe": 6.2}, {"d": "2025-11-19", "c": 573000.0, "eps": 94116.0, "pe": 6.1}, {"d": "2025-11-20", "c": 568000.0, "eps": 94856.0, "pe": 6.0}, {"d": "2025-11-21", "c": 516000.0, "eps": 95597.0, "pe": 5.4}, {"d": "2025-11-24", "c": 520000.0, "eps": 97817.0, "pe": 5.3}, {"d": "2025-11-25", "c": 514000.0, "eps": 98557.0, "pe": 5.2}, {"d": "2025-11-26", "c": 527000.0, "eps": 99297.0, "pe": 5.3}, {"d": "2025-11-27", "c": 546000.0, "eps": 100037.0, "pe": 5.5}, {"d": "2025-11-28", "c": 537000.0, "eps": 100777.0, "pe": 5.3}, {"d": "2025-12-01", "c": 538000.0, "eps": 102998.0, "pe": 5.2}, {"d": "2025-12-02", "c": 563000.0, "eps": 103738.0, "pe": 5.4}, {"d": "2025-12-03", "c": 552000.0, "eps": 104478.0, "pe": 5.3}, {"d": "2025-12-04", "c": 538000.0, "eps": 105218.0, "pe": 5.1}, {"d": "2025-12-05", "c": 543000.0, "eps": 105958.0, "pe": 5.1}, {"d": "2025-12-08", "c": 574000.0, "eps": 108178.0, "pe": 5.3}, {"d": "2025-12-09", "c": 571000.0, "eps": 108918.0, "pe": 5.2}, {"d": "2025-12-10", "c": 587000.0, "eps": 109658.0, "pe": 5.4}, {"d": "2025-12-11", "c": 565000.0, "eps": 110399.0, "pe": 5.1}, {"d": "2025-12-12", "c": 571000.0, "eps": 111139.0, "pe": 5.1}, {"d": "2025-12-15", "c": 554000.0, "eps": 113359.0, "pe": 4.9}, {"d": "2025-12-16", "c": 530000.0, "eps": 114099.0, "pe": 4.6}, {"d": "2025-12-17", "c": 551000.0, "eps": 114839.0, "pe": 4.8}, {"d": "2025-12-18", "c": 552000.0, "eps": 115579.0, "pe": 4.8}, {"d": "2025-12-19", "c": 547000.0, "eps": 116319.0, "pe": 4.7}, {"d": "2025-12-22", "c": 580000.0, "eps": 118540.0, "pe": 4.9}, {"d": "2025-12-23", "c": 584000.0, "eps": 119280.0, "pe": 4.9}, {"d": "2025-12-24", "c": 588000.0, "eps": 120020.0, "pe": 4.9}, {"d": "2025-12-26", "c": 599000.0, "eps": 121500.0, "pe": 4.9}, {"d": "2025-12-29", "c": 635000.0, "eps": 123720.0, "pe": 5.1}, {"d": "2025-12-30", "c": 652000.0, "eps": 124461.0, "pe": 5.2}, {"d": "2026-01-02", "c": 678000.0, "eps": 126681.0, "pe": 5.4}, {"d": "2026-01-05", "c": 700000.0, "eps": 128901.0, "pe": 5.4}, {"d": "2026-01-06", "c": 714000.0, "eps": 129641.0, "pe": 5.5}, {"d": "2026-01-07", "c": 741000.0, "eps": 130381.0, "pe": 5.7}, {"d": "2026-01-08", "c": 763000.0, "eps": 131121.0, "pe": 5.8}, {"d": "2026-01-09", "c": 746000.0, "eps": 131862.0, "pe": 5.7}, {"d": "2026-01-12", "c": 745000.0, "eps": 134082.0, "pe": 5.6}, {"d": "2026-01-13", "c": 739000.0, "eps": 134822.0, "pe": 5.5}, {"d": "2026-01-14", "c": 736000.0, "eps": 135562.0, "pe": 5.4}, {"d": "2026-01-15", "c": 756000.0, "eps": 136302.0, "pe": 5.5}, {"d": "2026-01-16", "c": 758000.0, "eps": 137042.0, "pe": 5.5}, {"d": "2026-01-19", "c": 757000.0, "eps": 139263.0, "pe": 5.4}, {"d": "2026-01-20", "c": 730000.0, "eps": 140003.0, "pe": 5.2}, {"d": "2026-01-21", "c": 745000.0, "eps": 140743.0, "pe": 5.3}, {"d": "2026-01-22", "c": 760000.0, "eps": 141483.0, "pe": 5.4}, {"d": "2026-01-23", "c": 764000.0, "eps": 142223.0, "pe": 5.4}, {"d": "2026-01-26", "c": 740000.0, "eps": 144443.0, "pe": 5.1}, {"d": "2026-01-27", "c": 805000.0, "eps": 145183.0, "pe": 5.5}, {"d": "2026-01-28", "c": 862000.0, "eps": 145923.0, "pe": 5.9}, {"d": "2026-01-29", "c": 855000.0, "eps": 147244.0, "pe": 5.8}, {"d": "2026-01-30", "c": 904000.0, "eps": 148565.0, "pe": 6.1}, {"d": "2026-02-02", "c": 840000.0, "eps": 152526.0, "pe": 5.5}, {"d": "2026-02-03", "c": 912000.0, "eps": 153847.0, "pe": 5.9}, {"d": "2026-02-04", "c": 899000.0, "eps": 155167.0, "pe": 5.8}, {"d": "2026-02-05", "c": 854000.0, "eps": 156488.0, "pe": 5.5}, {"d": "2026-02-06", "c": 858000.0, "eps": 157809.0, "pe": 5.4}, {"d": "2026-02-09", "c": 869000.0, "eps": 161770.0, "pe": 5.4}, {"d": "2026-02-10", "c": 881000.0, "eps": 163091.0, "pe": 5.4}, {"d": "2026-02-11", "c": 860000.0, "eps": 164412.0, "pe": 5.2}, {"d": "2026-02-12", "c": 894000.0, "eps": 165732.0, "pe": 5.4}, {"d": "2026-02-13", "c": 886000.0, "eps": 167053.0, "pe": 5.3}, {"d": "2026-02-19", "c": 890000.0, "eps": 174976.0, "pe": 5.1}, {"d": "2026-02-20", "c": 943000.0, "eps": 176297.0, "pe": 5.3}, {"d": "2026-02-23", "c": 956000.0, "eps": 180258.0, "pe": 5.3}, {"d": "2026-02-24", "c": 1009000.0, "eps": 181579.0, "pe": 5.6}, {"d": "2026-02-25", "c": 1031000.0, "eps": 182900.0, "pe": 5.6}, {"d": "2026-02-26", "c": 1109000.0, "eps": 184220.0, "pe": 6.0}, {"d": "2026-02-27", "c": 1063000.0, "eps": 185541.0, "pe": 5.7}, {"d": "2026-03-03", "c": 897000.0, "eps": 190823.0, "pe": 4.7}, {"d": "2026-03-04", "c": 900000.0, "eps": 192144.0, "pe": 4.7}, {"d": "2026-03-05", "c": 953000.0, "eps": 193464.0, "pe": 4.9}, {"d": "2026-03-06", "c": 914000.0, "eps": 194785.0, "pe": 4.7}, {"d": "2026-03-09", "c": 831000.0, "eps": 198746.0, "pe": 4.2}, {"d": "2026-03-10", "c": 939000.0, "eps": 200067.0, "pe": 4.7}, {"d": "2026-03-11", "c": 950000.0, "eps": 201388.0, "pe": 4.7}, {"d": "2026-03-12", "c": 935000.0, "eps": 202708.0, "pe": 4.6}, {"d": "2026-03-13", "c": 915000.0, "eps": 204029.0, "pe": 4.5}, {"d": "2026-03-16", "c": 977000.0, "eps": 207990.0, "pe": 4.7}, {"d": "2026-03-17", "c": 976000.0, "eps": 209311.0, "pe": 4.7}, {"d": "2026-03-18", "c": 1060000.0, "eps": 210632.0, "pe": 5.0}, {"d": "2026-03-19", "c": 1001000.0, "eps": 211952.0, "pe": 4.7}, {"d": "2026-03-20", "c": 1006000.0, "eps": 213273.0, "pe": 4.7}, {"d": "2026-03-23", "c": 933000.0, "eps": 217234.0, "pe": 4.3}, {"d": "2026-03-24", "c": 987000.0, "eps": 218555.0, "pe": 4.5}, {"d": "2026-03-25", "c": 1004000.0, "eps": 219876.0, "pe": 4.6}, {"d": "2026-03-26", "c": 935000.0, "eps": 221196.0, "pe": 4.2}, {"d": "2026-03-27", "c": 906000.0, "eps": 222517.0, "pe": 4.1}, {"d": "2026-03-30", "c": 877000.0, "eps": 226479.0, "pe": 3.9}, {"d": "2026-03-31", "c": 806000.0, "eps": 227799.0, "pe": 3.5}, {"d": "2026-04-01", "c": 890000.0, "eps": 229120.0, "pe": 3.9}, {"d": "2026-04-02", "c": 823000.0, "eps": 230440.0, "pe": 3.6}, {"d": "2026-04-03", "c": 875000.0, "eps": 231761.0, "pe": 3.8}, {"d": "2026-04-06", "c": 900000.0, "eps": 235723.0, "pe": 3.8}, {"d": "2026-04-07", "c": 895000.0, "eps": 237043.0, "pe": 3.8}, {"d": "2026-04-08", "c": 1043000.0, "eps": 238364.0, "pe": 4.4}, {"d": "2026-04-09", "c": 995000.0, "eps": 239684.0, "pe": 4.2}, {"d": "2026-04-10", "c": 1026000.0, "eps": 241005.0, "pe": 4.3}, {"d": "2026-04-13", "c": 1032000.0, "eps": 244967.0, "pe": 4.2}, {"d": "2026-04-14", "c": 1117000.0, "eps": 246287.0, "pe": 4.5}, {"d": "2026-04-15", "c": 1138000.0, "eps": 247608.0, "pe": 4.6}, {"d": "2026-04-16", "c": 1148000.0, "eps": 248928.0, "pe": 4.6}, {"d": "2026-04-17", "c": 1144000.0, "eps": 250249.0, "pe": 4.6}, {"d": "2026-04-20", "c": 1170000.0, "eps": 254211.0, "pe": 4.6}, {"d": "2026-04-21", "c": 1247000.0, "eps": 255531.0, "pe": 4.9}, {"d": "2026-04-22", "c": 1220000.0, "eps": 256852.0, "pe": 4.7}, {"d": "2026-04-23", "c": 1219000.0, "eps": 258172.0, "pe": 4.7}, {"d": "2026-04-24", "c": 1227000.0, "eps": 258848.0, "pe": 4.7}, {"d": "2026-04-27", "c": 1301000.0, "eps": 260877.0, "pe": 5.0}, {"d": "2026-04-28", "c": 1288000.0, "eps": 261553.0, "pe": 4.9}, {"d": "2026-04-29", "c": 1300000.0, "eps": 262229.0, "pe": 5.0}, {"d": "2026-04-30", "c": 1294000.0, "eps": 262906.0, "pe": 4.9}, {"d": "2026-05-04", "c": 1438000.0, "eps": 265610.0, "pe": 5.4}, {"d": "2026-05-06", "c": 1650000.0, "eps": 266963.0, "pe": 6.2}, {"d": "2026-05-07", "c": 1646000.0, "eps": 267639.0, "pe": 6.2}, {"d": "2026-05-08", "c": 1681000.0, "eps": 268315.0, "pe": 6.3}, {"d": "2026-05-11", "c": 1908000.0, "eps": 270344.0, "pe": 7.1}, {"d": "2026-05-12", "c": 1813000.0, "eps": 271020.0, "pe": 6.7}, {"d": "2026-05-13", "c": 1992000.0, "eps": 271696.0, "pe": 7.3}, {"d": "2026-05-14", "c": 1964000.0, "eps": 272372.0, "pe": 7.2}, {"d": "2026-05-15", "c": 1848000.0, "eps": 273049.0, "pe": 6.8}, {"d": "2026-05-18", "c": 1840000.0, "eps": 275077.0, "pe": 6.7}, {"d": "2026-05-19", "c": 1719000.0, "eps": 275753.0, "pe": 6.2}, {"d": "2026-05-20", "c": 1786000.0, "eps": 276430.0, "pe": 6.5}, {"d": "2026-05-21", "c": 1903000.0, "eps": 277106.0, "pe": 6.9}, {"d": "2026-05-22", "c": 1941000.0, "eps": 277782.0, "pe": 7.0}, {"d": "2026-05-26", "c": 2090000.0, "eps": 280487.0, "pe": 7.5}, {"d": "2026-05-27", "c": 2317000.0, "eps": 281163.0, "pe": 8.2}, {"d": "2026-05-28", "c": 2253000.0, "eps": 281839.0, "pe": 8.0}, {"d": "2026-05-29", "c": 2350000.0, "eps": 282515.0, "pe": 8.3}, {"d": "2026-06-01", "c": 2378000.0, "eps": 284544.0, "pe": 8.4}, {"d": "2026-06-02", "c": 2324000.0, "eps": 285220.0, "pe": 8.1}, {"d": "2026-06-04", "c": 2206000.0, "eps": 286573.0, "pe": 7.7}, {"d": "2026-06-05", "c": 2072000.0, "eps": 287249.0, "pe": 7.2}, {"d": "2026-06-08", "c": 1978000.0, "eps": 289277.0, "pe": 6.8}, {"d": "2026-06-09", "c": 2236000.0, "eps": 289954.0, "pe": 7.7}, {"d": "2026-06-10", "c": 2015000.0, "eps": 290630.0, "pe": 6.9}, {"d": "2026-06-11", "c": 2138000.0, "eps": 291306.0, "pe": 7.3}, {"d": "2026-06-12", "c": 2162000.0, "eps": 291982.0, "pe": 7.4}, {"d": "2026-06-15", "c": 2320000.0, "eps": 294011.0, "pe": 7.9}, {"d": "2026-06-16", "c": 2418000.0, "eps": 294687.0, "pe": 8.2}, {"d": "2026-06-17", "c": 2502000.0, "eps": 295363.0, "pe": 8.5}, {"d": "2026-06-18", "c": 2699000.0, "eps": 296039.0, "pe": 9.1}, {"d": "2026-06-19", "c": 2755000.0, "eps": 296716.0, "pe": 9.3}, {"d": "2026-06-22", "c": 2959000.0, "eps": 298744.0, "pe": 9.9}, {"d": "2026-06-23", "c": 2569000.0, "eps": 299420.0, "pe": 8.6}, {"d": "2026-06-24", "c": 2653000.0, "eps": 300097.0, "pe": 8.8}, {"d": "2026-06-25", "c": 2939000.0, "eps": 300773.0, "pe": 9.8}, {"d": "2026-06-26", "c": 2700000.0, "eps": 301449.0, "pe": 9.0}, {"d": "2026-06-29", "c": 2622000.0, "eps": 303478.0, "pe": 8.6}, {"d": "2026-06-30", "c": 2640000.0, "eps": 304154.0, "pe": 8.7}, {"d": "2026-07-01", "c": 2551000.0, "eps": 304830.0, "pe": 8.4}, {"d": "2026-07-02", "c": 2229000.0, "eps": 305506.0, "pe": 7.3}, {"d": "2026-07-03", "c": 2424000.0, "eps": 306182.0, "pe": 7.9}, {"d": "2026-07-06", "c": 2347000.0, "eps": 308211.0, "pe": 7.6}, {"d": "2026-07-07", "c": 2167000.0, "eps": 308887.0, "pe": 7.0}, {"d": "2026-07-08", "c": 2025000.0, "eps": 309563.0, "pe": 6.5}, {"d": "2026-07-09", "c": 2253000.0, "eps": 310240.0, "pe": 7.3}, {"d": "2026-07-10", "c": 2201000.0, "eps": 310916.0, "pe": 7.1}, {"d": "2026-07-13", "c": 1828000.0, "eps": 312944.0, "pe": 5.8}, {"d": "2026-07-14", "c": 1941000.0, "eps": 313621.0, "pe": 6.2}, {"d": "2026-07-15", "c": 2022000.0, "eps": 314297.0, "pe": 6.4}], "stats": {"avg": 5.7, "min": 3.5, "max": 9.9, "min_day": "2026-03-31", "max_day": "2026-06-22", "cur": 6.4, "cur_eps": 314297.0, "cur_price": 2022000.0, "percentile": 75}, "cfg": {"currency": "KRW", "multiples": [4, 6, 8, 10], "priceMax": 4000000, "priceTick": 800000, "peMax": 12.5, "peTick": 2.5, "epsMax": 400000, "epsTick": 80000}, "anchors": [{"d": "2025-06-24", "val": "38.0조원", "eps": 42654.55, "why": "1Q25 영업이익 7.4조 확인 후 FY25 컨센서스 33~35조 시기. 당시 통용 forward P/E 6~7배와 주가 27.7만원에서 역산한 근사치"}, {"d": "2025-07-24", "val": "44.0조원", "eps": 49389.48, "why": "2Q25 사상 최대 실적(매출 22.2조·영업이익 9.2조) 발표 — FY25 컨센서스 38조 안팎으로 상향 (SK하이닉스 뉴스룸 2Q25)"}, {"d": "2025-10-29", "val": "70.0조원", "eps": 78574.17, "why": "3Q25 영업이익 11.4조(사상 첫 10조 돌파) + '2026년 공급 물량 완판' 발표 (CNBC 10/29) — FY26 전망 70조대로 점프"}, {"d": "2026-01-28", "val": "130.0조원", "eps": 145923.47, "why": "4Q25 영업이익 19.2조 서프라이즈, FY25 47.2조로 삼성전자 첫 추월 — FY26 컨센서스 급상향 국면 (키움 3/3 리포트 FY26E 170조·목표가 130만원)"}, {"d": "2026-04-23", "val": "230.0조원", "eps": 258172.29, "why": "1Q26 영업이익 37.6조·마진 72% 발표 — 삼성증권 228조·한투 251조 등 FY26 컨센서스 230조 안팎으로 줄상향"}, {"d": "2026-07-15", "val": "280.0조원", "eps": 314296.7, "why": "FY26 컨센서스 250~270조(신한 266.9조·KB 270조), 메모리 공급부족 2027년 지속 전망 — NTM(26H2+27H1)은 이를 소폭 상회하는 280조로 추정"}], "meta": {"symbol": "000660", "name": "SK하이닉스", "shares": 712702365, "mode": "op_krw", "conv": 0.8, "range": ["2025-06-24", "2026-07-15"]}};
+const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+
+const fmtP = v => KRW
+  ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+  : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+const fmtE = v => KRW
+  ? Math.round(v).toLocaleString("ko-KR") + "원"
+  : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+const fmtTickE = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+const rows = DATA.rows, N = rows.length;
+const PAD = {l: 56, r: 46, t: 14, b: 30};
+document.getElementById("bandDesc").textContent =
+  "밴드 = 각 시점의 추정 NTM EPS × " + CFG.multiples.join("·") + "배 — 이익 전망이 오르면 밴드도 함께 올라갑니다. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.";
+
+function xScale(i, W) { return PAD.l + (W - PAD.l - PAD.r) * i / (N - 1); }
+function monthFirstIdx() {
+  const idx = []; let prev = "";
+  rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+  return idx;
+}
+const mIdx = monthFirstIdx();
+
+function el(tag, attrs, parent, text) {
+  const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  parent.appendChild(e); return e;
+}
+function linePath(vals, W, y) {
+  return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+}
+function xTicks(svg, W, plotB) {
+  mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+    el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+}
+function yGrid(svg, W, y, yMax, tick, fmt) {
+  for (let v = 0; v <= yMax * 1.0001; v += tick) {
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+    el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+  }
+}
+
+/* ---------- Chart A: price + P/E bands ---------- */
+(function chartA() {
+  const svg = document.getElementById("chartA"), W = 980, H = 400;
+  const plotB = H - PAD.b, yMax = CFG.priceMax;
+  const y = v => plotB - (plotB - PAD.t) * v / yMax;
+  const mults = CFG.multiples;
+
+  for (let b = 0; b < mults.length - 1; b++) {
+    const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+    let dpath = linePath(top, W, y);
+    for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+    el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+  }
+  yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+  xTicks(svg, W, plotB);
+  mults.forEach(m => {
+    el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+    el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+  });
+  el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+
+  let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+  if (peakI !== N - 1) {
+    el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+    el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+      "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+  }
+  el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 4.5, class: "end-dot"}, svg);
+  el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].c) - 11, "text-anchor": "end", class: "anno"}, svg,
+    "현재 " + fmtPFull(rows[N-1].c));
+
+  hover(svg, "boxA", "tipA", W, plotB, i => [
+    ["종가", fmtPFull(rows[i].c), true],
+    ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+    ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+  ], i => y(rows[i].c));
+})();
+
+/* ---------- Chart B: forward P/E line ---------- */
+(function chartB() {
+  const svg = document.getElementById("chartB"), W = 980, H = 260;
+  const plotB = H - PAD.b, yMax = CFG.peMax;
+  const y = v => plotB - (plotB - PAD.t) * v / yMax;
+  yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+  xTicks(svg, W, plotB);
+  let area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+  el("path", {d: area, class: "area-wash"}, svg);
+  el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+  el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+  el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+
+  let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+  if (maxI !== N - 1) {
+    el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+    el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+      rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+  }
+  el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+  el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+
+  hover(svg, "boxB", "tipB", W, plotB, i => [
+    ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+    ["종가", fmtPFull(rows[i].c), false],
+  ], i => y(rows[i].pe));
+})();
+
+/* ---------- Chart C: NTM EPS path with anchors ---------- */
+(function chartC() {
+  const svg = document.getElementById("chartC"), W = 980, H = 200;
+  const plotB = H - PAD.b, yMax = CFG.epsMax;
+  const y = v => plotB - (plotB - PAD.t) * v / yMax;
+  yGrid(svg, W, y, yMax, CFG.epsTick, fmtTickE);
+  xTicks(svg, W, plotB);
+  el("path", {d: linePath(rows.map(r => r.eps), W, y), class: "price-line"}, svg);
+  const dateIdx = {}; rows.forEach((r, i) => dateIdx[r.d] = i);
+  DATA.anchors.forEach(a => {
+    let i = dateIdx[a.d];
+    if (i == null) { i = rows.findIndex(r => r.d >= a.d); if (i < 0) i = N - 1; }
+    el("circle", {cx: xScale(i, W), cy: y(rows[i].eps), r: 4.5, class: "end-dot"}, svg);
+  });
+  el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].eps) - 10, "text-anchor": "end", class: "anno"}, svg, fmtE(rows[N-1].eps));
+
+  hover(svg, "boxC", "tipC", W, plotB, i => [
+    ["NTM EPS(추정)", fmtE(rows[i].eps), true],
+  ], i => y(rows[i].eps));
+})();
+
+/* ---------- shared hover: crosshair + tooltip ---------- */
+function hover(svg, boxId, tipId, W, plotB, rowsFn, yFn) {
+  const box = document.getElementById(boxId), tip = document.getElementById(tipId);
+  const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+  const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+  const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+
+  function show(evt) {
+    const rect = svg.getBoundingClientRect();
+    const px = (evt.clientX - rect.left) * W / rect.width;
+    let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+    i = Math.max(0, Math.min(N - 1, i));
+    const cx = xScale(i, W);
+    cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+    cross.style.visibility = "visible";
+    dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+    dot.style.visibility = "visible";
+    tip.replaceChildren();
+    const td = document.createElement("div"); td.className = "tdate";
+    td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+    rowsFn(i).forEach(([lbl, val, keyed]) => {
+      const tr = document.createElement("div"); tr.className = "trow";
+      const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+      const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+      const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+      tip.appendChild(tr);
+    });
+    tip.style.visibility = "visible";
+    const bw = box.clientWidth, tw = tip.offsetWidth;
+    let left = cx / W * bw + 14;
+    if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+    tip.style.left = left + "px";
+    tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+  }
+  function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+  hit.addEventListener("pointermove", show);
+  hit.addEventListener("pointerleave", hide);
+}
+
+/* ---------- tables ---------- */
+(function tables() {
+  document.getElementById("anchorValHead").textContent = DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+  const ab = document.getElementById("anchorRows");
+  DATA.anchors.forEach(a => {
+    const tr = document.createElement("tr");
+    [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+      const td = document.createElement("td"); if (num) td.className = "num";
+      td.textContent = txt; tr.appendChild(td);
+    });
+    ab.appendChild(tr);
+  });
+  const mb = document.getElementById("monthlyRows");
+  mIdx.concat([N - 1]).forEach(i => {
+    const r = rows[i], tr = document.createElement("tr");
+    const c1 = document.createElement("td"); c1.textContent = r.d; tr.appendChild(c1);
+    [[KRW ? r.c.toLocaleString("ko-KR") + "원" : fmtPFull(r.c), true], [fmtE(r.eps), false], [r.pe.toFixed(1) + "배", true]]
+      .forEach(([txt, strong]) => {
+        const td = document.createElement("td"); td.className = "num";
+        if (strong) { const s = document.createElement("strong"); s.textContent = txt; td.appendChild(s); }
+        else td.textContent = txt;
+        tr.appendChild(td);
+      });
+    mb.appendChild(tr);
+  });
+})();
+</script>
