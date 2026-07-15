@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔎</text></svg>" />
+<title>KOSPI 종목 발굴 — AI 반도체·전자 밸류체인 5선 (조정 국면의 눌림목)</title>
+<style>
+:root{--page:#f9f9f7;--card:#fcfcfb;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--accent:#2a78d6;--hot:#d03b3b;--hot-bg:rgba(208,59,59,.09);--border:rgba(11,11,11,.10);--tip-bg:rgba(252,252,251,.97);--up:#d03b3b;--down:#2a78d6}
+@media (prefers-color-scheme:dark){:root{--page:#0d0d0d;--card:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--accent:#3987e5;--hot:#e66767;--hot-bg:rgba(230,103,103,.13);--border:rgba(255,255,255,.10);--tip-bg:rgba(26,26,25,.97);--up:#e66767;--down:#3987e5}}
+:root[data-theme="dark"]{--page:#0d0d0d;--card:#1a1a19;--ink:#fff;--ink-2:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--axis:#383835;--accent:#3987e5;--hot:#e66767;--hot-bg:rgba(230,103,103,.13);--border:rgba(255,255,255,.10);--tip-bg:rgba(26,26,25,.97);--up:#e66767;--down:#3987e5}
+:root[data-theme="light"]{--page:#f9f9f7;--card:#fcfcfb;--ink:#0b0b0b;--ink-2:#52514e;--muted:#898781;--grid:#e1e0d9;--axis:#c3c2b7;--accent:#2a78d6;--hot:#d03b3b;--hot-bg:rgba(208,59,59,.09);--border:rgba(11,11,11,.10);--tip-bg:rgba(252,252,251,.97);--up:#d03b3b;--down:#2a78d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:-apple-system,system-ui,"Apple SD Gothic Neo",Pretendard,"Noto Sans KR","Malgun Gothic",sans-serif;font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:44px 24px 72px;display:flex;flex-direction:column;gap:20px}
+.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:600}
+header h1{font-size:26px;line-height:1.3;margin:6px 0 6px;letter-spacing:-.01em;text-wrap:balance}
+header .sub{color:var(--ink-2);font-size:14px;margin:0}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px 14px}
+.tile .lbl{font-size:12px;color:var(--muted)}
+.tile .val{font-size:22px;font-weight:650;letter-spacing:-.01em;margin:2px 0 1px}
+.tile .val small{font-size:14px;font-weight:600;color:var(--ink-2)}
+.tile .delta{font-size:12px;color:var(--ink-2)}
+.tile .delta.hot{color:var(--hot);font-weight:600}
+.tile .val.up{color:var(--up)}.tile .val.down{color:var(--down)}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--hot-bg);color:var(--hot);border-radius:99px;padding:1px 9px;font-size:11.5px;font-weight:650}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 22px 18px}
+.card h2{font-size:18px;margin:0 0 2px;letter-spacing:-.005em}
+.card h3{font-size:13.5px;margin:16px 0 6px;letter-spacing:-.005em}
+.card .desc{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.stock-head{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;border-bottom:1px solid var(--grid);padding-bottom:10px;margin-bottom:2px}
+.stock-head .rank{font-size:12px;font-weight:700;color:var(--accent)}
+.stock-head .code{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stock-head .price{margin-left:auto;font-size:14px;font-weight:650;font-variant-numeric:tabular-nums}
+.prose p{margin:0 0 10px;color:var(--ink-2)}
+.prose strong{color:var(--ink)}
+.note{border-left:3px solid var(--hot);background:var(--hot-bg);border-radius:0 8px 8px 0;padding:10px 14px;font-size:12.5px;color:var(--ink-2);margin:0 0 14px}
+.note strong{color:var(--hot)}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th{text-align:left;color:var(--muted);font-weight:600;font-size:11.5px;letter-spacing:.02em;border-bottom:1px solid var(--axis);padding:6px 10px}
+td{border-bottom:1px solid var(--grid);padding:6.5px 10px;font-variant-numeric:tabular-nums;color:var(--ink-2);vertical-align:top}
+td.num,th.num{text-align:right}
+td strong{color:var(--ink);font-weight:650}
+.up{color:var(--up);font-weight:600}.down{color:var(--down);font-weight:600}
+.tbl-scroll{overflow-x:auto}
+.gs-ok{color:var(--up);font-weight:700}.gs-no{color:var(--down);font-weight:700}.gs-na{color:var(--muted);font-weight:700}
+footer{color:var(--muted);font-size:12px;line-height:1.7;border-top:1px solid var(--grid);padding-top:16px}
+footer strong{color:var(--ink-2)}
+.evd{display:inline-block;line-height:1;vertical-align:baseline}
+.evd>button{all:unset;cursor:pointer;font-size:10px;font-weight:650;color:var(--accent);border:1px solid var(--border);border-radius:99px;padding:1px 7px;line-height:1.4;background:var(--card);white-space:nowrap}
+.evd>button:hover,.evd.on>button{border-color:var(--accent)}
+.evd-pop{display:none;position:fixed;z-index:30;width:min(340px,calc(100vw - 24px));background:var(--tip-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:12px 14px;font-size:12.5px;line-height:1.6;text-align:left;font-weight:400}
+.evd.on .evd-pop{display:block}
+.evd-pop .evd-src{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}
+.evd-pop .evd-sum{display:block;color:var(--ink-2);margin-bottom:8px}
+.evd-pop .evd-sum strong{color:var(--ink)}
+.evd-pop a{color:var(--accent);font-weight:650;font-size:12px;text-decoration:none}
+.evd-pop a:hover{text-decoration:underline}
+.evd-pop .evd-nolink{font-size:11px;color:var(--muted)}
+details.pe-embed{border:1px solid var(--border);border-radius:12px;background:var(--card);margin-top:12px}
+details.pe-embed summary{cursor:pointer;padding:14px 20px;list-style:none;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+details.pe-embed summary::-webkit-details-marker{display:none}
+details.pe-embed summary::before{content:"▸";color:var(--muted);font-size:13px}
+details.pe-embed[open] summary::before{content:"▾"}
+details.pe-embed .peb-t{font-weight:650;font-size:14px}
+details.pe-embed .peb-s{font-size:12px;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
+details.pe-embed .inner{padding:0 20px 18px}
+.chart-box{position:relative}
+.chart-box svg{display:block;width:100%;height:auto}
+.gridline{stroke:var(--grid);stroke-width:1}
+.axisline{stroke:var(--axis);stroke-width:1}
+.ticktext{font-size:10.5px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.bandline{stroke:var(--axis);stroke-width:1;fill:none}
+.bandlbl{font-size:10.5px;fill:var(--muted);font-variant-numeric:tabular-nums}
+.bandfill{fill:var(--accent)}
+.price-line{stroke:var(--accent);stroke-width:2;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.area-wash{fill:var(--accent);opacity:.10}
+.end-dot{fill:var(--accent);stroke:var(--card);stroke-width:2}
+.peak-dot{fill:var(--hot);stroke:var(--card);stroke-width:2}
+.anno{font-size:11px;fill:var(--ink-2);font-weight:600;font-variant-numeric:tabular-nums}
+.anno.hot{fill:var(--hot)}
+.avgline{stroke:var(--muted);stroke-width:1}
+.crosshair{stroke:var(--axis);stroke-width:1;visibility:hidden}
+.hoverdot{fill:var(--accent);stroke:var(--card);stroke-width:2;visibility:hidden}
+.tooltip{position:absolute;pointer-events:none;visibility:hidden;background:var(--tip-bg);border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12px;min-width:150px;box-shadow:0 4px 14px rgba(0,0,0,.10);z-index:5}
+.tooltip .tdate{color:var(--muted);font-size:11px;margin-bottom:3px;font-variant-numeric:tabular-nums}
+.tooltip .trow{display:flex;align-items:center;gap:7px;line-height:1.5}
+.tooltip .tkey{width:12px;height:0;border-top:2px solid var(--accent);flex:none}
+.tooltip .tkey.none{border-top-color:transparent}
+.tooltip .tval{font-weight:650;font-variant-numeric:tabular-nums}
+.tooltip .tlbl{color:var(--ink-2);font-size:11.5px}
+@media (max-width:720px){.chart-box{overflow-x:auto;-webkit-overflow-scrolling:touch}.chart-box svg{min-width:720px}.stock-head .price{margin-left:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">TOSS-AGENT RESEARCH · 종목 발굴 · 2026-07-14</div>
+    <h1>KOSPI 발굴 — AI 반도체·전자 밸류체인 5선, 조정 국면의 눌림목</h1>
+    <p class="sub">거래대금·등락률 랭킹 40여 개 후보에서 기술적·재무·공시 검증을 거쳐 KOSPI 5종목을 추렸습니다. 1년간 대세 상승한 반도체·전자 대형주가 최근 1개월 조정 중이며, 그 조정을 <strong>실적(2026 1분기 영업이익 전 종목 YoY 플러스)</strong>이 뒷받침하는지를 종목별로 뜯어봤습니다. 정보 제공용이며 매매 권유가 아닙니다.</p>
+  </header>
+
+  <div class="tiles">
+    <div class="tile"><div class="lbl">발굴 유니버스</div><div class="val">40+ <small>→ 5종목</small></div><div class="delta">랭킹 → 기술·재무·공시 3단 검증</div></div>
+    <div class="tile"><div class="lbl">최고 실적 모멘텀</div><div class="val">삼성전자 <small>OP</small> <span class="up">+756%</span></div><div class="delta">2026 1분기 영업이익 YoY (6.7조→57.2조)</div></div>
+    <div class="tile"><div class="lbl">최고 저평가 신호</div><div class="val">삼성전자 10.0배 <small>&lt;3M평균 12.5배</small></div><div class="delta">3개월 밴드 최저권 (백분위 2)</div></div>
+    <div class="tile"><div class="lbl">최대 헤드라인 리스크</div><div class="val" style="font-size:18px;">하이닉스 45조 유상증자</div><div class="delta hot">신주 상장 7/29 오버행·희석</div></div>
+  </div>
+
+  <div class="card">
+    <h2>발굴 깔때기 — 어떻게 5종목으로 좁혔나</h2>
+    <p class="desc">토스 랭킹으로 후보를 모으고, 스크립트 기반 기술 필터 → 공시·재무 검증 순으로 압축했습니다. 각 단계 탈락 사유를 그대로 남깁니다(재현 가능).</p>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>단계</th><th>대상</th><th class="num">통과</th><th>주요 탈락 / 사유</th></tr></thead>
+      <tbody>
+        <tr><td><strong>① 후보 수집</strong></td><td>거래대금 1주 + 등락률 1개월 랭킹(KR)</td><td class="num">40+</td><td>ETF·ETN·ELW·우선주, KOSDAQ은 이후 단계 제외</td></tr>
+        <tr><td><strong>② 기술 필터</strong></td><td>KOSPI 보통주</td><td class="num">6</td><td>모나미·한성기업 등 <span class="down">거래대금 100~240배</span> 급등 소형 테마주는 실적 뒷받침 없어 제외; 현대차는 3개월 <span class="down">-15%</span>·MA20&lt;60 하락추세로 제외</td></tr>
+        <tr><td><strong>③ 공시·재무</strong></td><td>6종목</td><td class="num">5</td><td>투자유의 1건↑(금호건설·금호전기 등) 원칙 제외; 실적·밸류 매력 최약 종목 정리</td></tr>
+        <tr><td><strong>④ 최종</strong></td><td>심층분석(PQC·GS·PE밴드)</td><td class="num">5</td><td>SK하이닉스 · 삼성전자 · 삼성전기 · SK스퀘어 · LG전자</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note" style="margin-top:14px;"><strong>공통 관전 포인트:</strong> 5종목 모두 최근 3개월 <span class="up">+24~+116%</span> 상승 후 1개월 <span class="down">-20~-39%</span> 조정 중입니다. "이미 크게 오른 뒤의 눌림목"이며, 조정의 성격(차익실현 vs 펀더멘털 훼손)이 종목별로 다릅니다.</div>
+  </div>
+
+  <!-- ① SK하이닉스 -->
+  <div class="card">
+    <div class="stock-head"><span class="rank">발굴 ①</span><h2 style="margin:0;">SK하이닉스</h2><span class="code">000660 · KOSPI</span><span class="price">1,731,000원 <span class="down">(52주고가比 -41.5%)</span></span></div>
+    <h3>① 왜 지금인가 — 유상증자 오버행이 만든 눌림목</h3>
+    <div class="prose"><p>HBM 사실상 과점 사업자로 2026년 메모리 슈퍼사이클 최대 수혜주입니다. 최근 1개월 <span class="down">-24.3%</span> 급락의 방아쇠는 실적 악화가 아니라 <strong>45조 4,534억원 규모 유상증자</strong>입니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 주요사항보고서(유상증자결정) 2026.07.10 / 언론 종합</span><span class="evd-sum">조달자금 <strong>전액 시설자금</strong>: 용인 팹 31조, 청주 패키징 팹 19조, EUV 등 11.9조. HBM 증설·첨단 패키징·미국 인디애나 투자 목적. 신주 납입 7/14, 국내 상장 <strong>7/29</strong>.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260710000008" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> 자금 용처가 <strong>전액 HBM·팹 증설(성장 투자)</strong>이라 재무위기형 증자와 성격이 다르지만, 신주 상장 전까지 오버행과 희석은 분명한 단기 악재입니다.</p></div>
+    <h3>② 스크리닝 수치</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>메모</th></tr></thead><tbody>
+      <tr><td>수익률 1주/1개월/3개월</td><td class="num"><span class="down">-18.9%</span>/<span class="down">-24.3%</span>/<span class="up">+71.2%</span></td><td>3개월 강세 후 조정</td></tr>
+      <tr><td>52주 고가 대비 / MA20 vs 60</td><td class="num"><span class="down">-41.5%</span> / MA20&gt;60</td><td>중기 상승배열 유지</td></tr>
+      <tr><td>2026 1Q 매출 (YoY)</td><td class="num">52.6조 <span class="up">(+198%)</span></td><td>전기 17.6조</td></tr>
+      <tr><td>2026 1Q 영업이익 (YoY)</td><td class="num">37.6조 <span class="up">(+405%)</span></td><td>영업이익률 <strong>71.5%</strong><span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · SK하이닉스 2026 1분기보고서 (kr_financials 집계)</span><span class="evd-sum">매출 <strong>52조 5,763억</strong>(전기 17조 6,391억), 영업이익 <strong>37조 6,103억</strong>(전기 7조 4,405억). OPM 71.5%.</span><span class="evd-nolink">DART 재무제표 조회·계산값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody></table></div>
+    <h3>③ PQC 분석</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황 및 판단</th></tr></thead><tbody>
+      <tr><td><strong>P</strong></td><td>범용 DRAM 가격이 2025년 말 이후 추정 <span class="up">약 3배</span> 상승, HBM ASP도 상승 국면. HBM 과점이라 <strong>판가 결정력 최상위</strong>.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 메모리 슈퍼사이클 (2026.06)</span><span class="evd-sum">BofA는 2026년을 슈퍼사이클로 규정, DRAM 매출 +51%·NAND +45%, ASP +33%·+26% 전망. 범용 DRAM 2025년 말 이후 약 3배 상승 추정.</span><a href="https://www.newspim.com/news/view/20260629000024" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+      <tr><td><strong>Q</strong></td><td>HBM 출하 확대. 용인·청주 증설(45조)은 향후 캐파 확보용이며, 지금은 <strong>캐파 부족이 오히려 가격을 지지</strong>.</td></tr>
+      <tr><td><strong>C</strong></td><td>OPM <span class="up">71.5%</span>로 압도적. 다만 대규모 CAPEX·감가상각·증자 희석이 <strong>주당이익 증가 속도를 둔화</strong>시킬 변수.</td></tr>
+    </tbody></table></div>
+    <h3>④ Growth Sustainability</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>항목</th><th class="num">판정</th><th>근거</th></tr></thead><tbody>
+      <tr><td>1. 매출↑+가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>HBM·DRAM 라인 풀가동, 수요&gt;캐파</td></tr>
+      <tr><td>2. 설비투자 후 가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>45조 증설도 선수요(LTA) 기반</td></tr>
+      <tr><td>3. 수주&gt;매출</td><td class="num"><span class="gs-ok">✓</span></td><td>HBM 장기공급계약(LTA)으로 물량 선계약</td></tr>
+      <tr><td>4. 미국향 매출</td><td class="num"><span class="gs-ok">✓</span></td><td>엔비디아 등 미국 AI 고객, 인디애나 공장</td></tr>
+      <tr><td>5. 밸류 리레이팅</td><td class="num"><span class="gs-ok">✓</span></td><td>컨센 목표가 급상향(노무라 500만·iM 350만)</td></tr>
+      <tr><td>6. 산업 TAM 확대</td><td class="num"><span class="gs-ok">✓</span></td><td>AI 메모리 슈퍼사이클로 HBM TAM 급팽창</td></tr>
+    </tbody></table></div>
+    <h3>⑤ 반대 논리 (리스크)</h3>
+    <div class="prose"><p><strong>① 유상증자 희석·오버행</strong>(신주 7/29 상장). <strong>② 사이클 정점 우려</strong> — OPM 71.5%는 역사적 정점이라 가격 하락 시 이익 감소폭이 큼(고정비 레버리지 역방향). <strong>③ 중대재해 발생 공시</strong>(2026-06-26)<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 중대재해발생 (2026.06.26)</span><span class="evd-sum">SK하이닉스 중대재해발생 공시. 안전·규제 리스크 및 일시적 라인 영향 점검 필요.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260626801398" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> 등 안전·규제 리스크.</p></div>
+    <h3>⑥ 다음 확인 이벤트</h3>
+    <div class="prose"><p>· <strong>2026-07-29</strong> 유상증자 신주 상장(오버행 분기점) · 2026 2분기 실적(HBM ASP·출하) · 나스닥 ADR 상장 진행.</p></div>
+    <h3>⑦ 밸류에이션 위치</h3>
+    <div class="prose"><p>현재 Forward P/E <strong>11.5배</strong>는 최근 3개월 평균 13.8배를 밑도는 <strong>백분위 22</strong>(조정으로 밴드 하단). 경기민감주 특성상 배수보다 <strong>이익 방향(HBM ASP)</strong>이 주가를 좌우합니다.</p></div>
+    <details class="pe-embed" data-peb="000660" open>
+      <summary><span class="peb-t">📊 SK하이닉스 — Forward P/E 밴드 (최근 3개월)</span><span class="peb-s">현재 11.5배 · 기간 평균 13.8배 · 백분위 22%</span></summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> NTM EPS는 리포트·뉴스 앵커를 선형 보간한 <strong>추정치</strong>이며 밴드는 <strong>최근 약 3개월(2026-04~07)</strong> 구간입니다. 절대 레벨보다 추세·상대 위치용. 발행주식수는 조회 시점 기준으로 유상증자 신주(7/29 상장) 희석 반영 전.</div>
+        <p class="desc">밴드 = 각 시점 추정 NTM EPS × 배수. 차트에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a"><svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드"></svg><div class="tooltip"></div></div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b"><svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이"></svg><div class="tooltip"></div></div>
+        <div class="tbl-scroll" style="margin-top:16px;"><table><thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead><tbody class="peb-anchor-rows"></tbody></table></div>
+        <p class="desc" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) × 0.741 ÷ 발행주식수 712,702,365주. 앵커 사이 선형 보간.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ② 삼성전자 -->
+  <div class="card">
+    <div class="stock-head"><span class="rank">발굴 ②</span><h2 style="margin:0;">삼성전자</h2><span class="code">005930 · KOSPI</span><span class="price">253,500원 <span class="down">(52주고가比 -32.4%)</span></span></div>
+    <h3>① 왜 지금인가 — 실적 모멘텀 최고 + 밴드 최저권</h3>
+    <div class="prose"><p>5종목 중 <strong>실적 모멘텀과 저평가 신호가 동시에 가장 강한</strong> 종목입니다. 2026 2분기 잠정실적을 7/7 발표했고, 최근 1개월 <span class="down">-24.7%</span> 조정으로 3개월 P/E 밴드의 <strong>최저 구간(백분위 2)</strong>에 있습니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 연결 영업(잠정)실적 공정공시 (2026.07.07)</span><span class="evd-sum">삼성전자 2026 2분기 잠정실적 공시. 언론 종합 잠정 매출 약 171조, 영업이익 컨센 86~100조대(HBM·범용 메모리 급등). 목표주가 55만~59만원까지 상향.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260707800004" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> HBM4 세계 최초 양산에 이어 HBM4E 샘플 출하까지 진행 중입니다.</p></div>
+    <h3>② 스크리닝 수치</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>메모</th></tr></thead><tbody>
+      <tr><td>수익률 1주/1개월/3개월</td><td class="num"><span class="down">-11.7%</span>/<span class="down">-24.7%</span>/<span class="up">+24.2%</span></td><td>대형주 중 낙폭 가장 작음</td></tr>
+      <tr><td>52주 고가 대비 / MA20 vs 60</td><td class="num"><span class="down">-32.4%</span> / MA20&gt;60</td><td>중기 상승배열 유지</td></tr>
+      <tr><td>2026 1Q 매출 (YoY)</td><td class="num">133.9조 <span class="up">(+69%)</span></td><td>전기 79.1조</td></tr>
+      <tr><td>2026 1Q 영업이익 (YoY)</td><td class="num">57.2조 <span class="up">(+756%)</span></td><td>영업이익률 <strong>42.7%</strong><span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 삼성전자 2026 1분기보고서 (kr_financials 집계)</span><span class="evd-sum">매출 <strong>133조 8,734억</strong>(전기 79조 1,405억), 영업이익 <strong>57조 2,328억</strong>(전기 6조 6,853억). OPM 42.7%.</span><span class="evd-nolink">DART 재무제표 조회·계산값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody></table></div>
+    <h3>③ PQC 분석</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황 및 판단</th></tr></thead><tbody>
+      <tr><td><strong>P</strong></td><td>DRAM ASP <span class="up">+33%</span>·NAND +26% 전망, HBM4 양산으로 고부가 믹스 개선. 다만 HBM 리더십은 하이닉스가 앞서 <strong>가격 프리미엄 열위</strong>.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성전자 목표주가 (2026.07)</span><span class="evd-sum">7개 증권사 목표주가 39만~56만원 분산(상단 대신·유진 56만). HBM4 2월 세계 최초 양산, HBM4E 12단 샘플 출하. DS 부문이 실적 핵심.</span><a href="https://www.topstarnews.net/news/articleView.html?idxno=16129271" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+      <tr><td><strong>Q</strong></td><td>메모리+파운드리+세트로 물량 기반이 가장 넓어 <strong>순수 메모리주 대비 변동성 완충</strong>.</td></tr>
+      <tr><td><strong>C</strong></td><td>OPM <span class="up">42.7%</span>로 급반등. 파운드리 적자·비메모리 비용이 전사 이익률을 희석.</td></tr>
+    </tbody></table></div>
+    <h3>④ Growth Sustainability</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>항목</th><th class="num">판정</th><th>근거</th></tr></thead><tbody>
+      <tr><td>1. 매출↑+가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>메모리 라인 가동률↑, DS 흑자 확대</td></tr>
+      <tr><td>2. 설비투자 후 가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>HBM·선단공정 투자분 가동 확대</td></tr>
+      <tr><td>3. 수주&gt;매출</td><td class="num"><span class="gs-na">△</span></td><td>메모리는 수주 개념 약함, 파운드리만 수주형</td></tr>
+      <tr><td>4. 미국향 매출</td><td class="num"><span class="gs-ok">✓</span></td><td>미국 AI·데이터센터향 메모리, 미국 팹</td></tr>
+      <tr><td>5. 밸류 리레이팅</td><td class="num"><span class="gs-ok">✓</span></td><td>목표주가 55만~59만원 상향</td></tr>
+      <tr><td>6. 산업 TAM 확대</td><td class="num"><span class="gs-ok">✓</span></td><td>AI 메모리·파운드리 동반 확대</td></tr>
+    </tbody></table></div>
+    <h3>⑤ 반대 논리 (리스크)</h3>
+    <div class="prose"><p><strong>① 파운드리 불확실성</strong>(비메모리 적자 희석). <strong>② HBM 경쟁 열위</strong> — 하이닉스에 뒤처지면 프리미엄 축소. <strong>③ 성과급·일회성 비용</strong> 등 분기 변동. <strong>④ 잠정실적 절대 규모</strong>는 언론 인용 편차가 커 확정치 확인 필요.</p></div>
+    <h3>⑥ 다음 확인 이벤트</h3>
+    <div class="prose"><p>· 2026 2분기 <strong>확정 실적·부문별(DS/파운드리)</strong> · HBM4 고객 승인 · 자기주식 처분(2026-07-13 공시) 활용 방향.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 주요사항보고서(자기주식처분결정) (2026.07.13)</span><span class="evd-sum">삼성전자 자기주식 처분 결정 공시. 목적·규모에 따라 수급·주주환원 해석이 갈림.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713000395" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></p></div>
+    <h3>⑦ 밸류에이션 위치</h3>
+    <div class="prose"><p>현재 Forward P/E <strong>10.0배</strong>는 최근 3개월 평균 12.5배를 밑도는 <strong>백분위 2</strong>로, 5종목 중 밴드상 가장 저평가된 위치입니다. 조정 국면에서 상대적 방어 근거가 됩니다.</p></div>
+    <details class="pe-embed" data-peb="005930" open>
+      <summary><span class="peb-t">📊 삼성전자 — Forward P/E 밴드 (최근 3개월)</span><span class="peb-s">현재 10.0배 · 기간 평균 12.5배 · 백분위 2%</span></summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> NTM EPS는 앵커 보간 <strong>추정치</strong>, 밴드는 최근 약 3개월(2026-04~07) 구간입니다. 절대 레벨보다 추세·상대 위치용.</div>
+        <p class="desc">밴드 = 각 시점 추정 NTM EPS × 배수. 차트에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a"><svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드"></svg><div class="tooltip"></div></div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b"><svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이"></svg><div class="tooltip"></div></div>
+        <div class="tbl-scroll" style="margin-top:16px;"><table><thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead><tbody class="peb-anchor-rows"></tbody></table></div>
+        <p class="desc" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) × 0.741 ÷ 발행주식수 5,846,278,608주. 앵커 사이 선형 보간.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ③ 삼성전기 -->
+  <div class="card">
+    <div class="stock-head"><span class="rank">발굴 ③</span><h2 style="margin:0;">삼성전기</h2><span class="code">009150 · KOSPI</span><span class="price">1,191,000원 <span class="down">(52주고가比 -49.8%)</span></span></div>
+    <h3>① 왜 지금인가 — MLCC 슈퍼사이클 기대, 그러나 가장 비싼 값</h3>
+    <div class="prose"><p>AI 서버·전장용 MLCC 수요의 대표 수혜주로, 3개월 <span class="up">+116%</span> 급등 후 1개월 <span class="down">-39.4%</span> 조정 중입니다. 실적은 견조하게 늘지만(2026 1Q OP <span class="up">+40%</span>), <strong>주가 상승 속도가 이익 증가 속도를 크게 앞질러</strong> 밸류에이션이 가장 부담스럽습니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성전기 MLCC/목표주가 (2026.07)</span><span class="evd-sum">MLCC 가격 인상 기대와 서버 수요 동시 형성. 2026 연간 영업이익 전망 <strong>1조 5,895억</strong>(전년 9,133억, +74%). NH 목표가 300만·키움 280만.</span><a href="https://www.ksdaily.co.kr/news/articleView.html?idxno=108704" target="_blank" rel="noopener">기사 ↗</a></span></span></p></div>
+    <h3>② 스크리닝 수치</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>메모</th></tr></thead><tbody>
+      <tr><td>수익률 1주/1개월/3개월</td><td class="num"><span class="down">-25.0%</span>/<span class="down">-39.4%</span>/<span class="up">+116.4%</span></td><td>변동성 최대</td></tr>
+      <tr><td>52주 고가 대비 / MA20 vs 60</td><td class="num"><span class="down">-49.8%</span> / MA20&gt;60</td><td>고점 대비 절반</td></tr>
+      <tr><td>2026 1Q 매출 (YoY)</td><td class="num">3.21조 <span class="up">(+17%)</span></td><td>전기 2.74조</td></tr>
+      <tr><td>2026 1Q 영업이익 (YoY)</td><td class="num">0.28조 <span class="up">(+40%)</span></td><td>영업이익률 <strong>8.7%</strong><span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 삼성전기 2026 1분기보고서 (kr_financials 집계)</span><span class="evd-sum">매출 <strong>3조 2,091억</strong>(전기 2조 7,386억), 영업이익 <strong>2,806억</strong>(전기 2,005억). OPM 8.7%. 이익 규모는 대형주 대비 작음.</span><span class="evd-nolink">DART 재무제표 조회·계산값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody></table></div>
+    <h3>③ PQC 분석</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황 및 판단</th></tr></thead><tbody>
+      <tr><td><strong>P</strong></td><td>MLCC 가격 인상 기대가 2026 2분기부터 형성. AI 가속기 스펙 상향이 <strong>고용량 MLCC 단가·탑재량을 동시 견인</strong>. 전장·산업용은 고마진.</td></tr>
+      <tr><td><strong>Q</strong></td><td>AI 서버·전장 채용 확대. IT 세트(스마트폰) 수요는 성숙 — <strong>믹스 개선이 성장 핵심</strong>.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · 삼성전기 AI 서버 MLCC (2026.07)</span><span class="evd-sum">AI 가속기 스펙 상향이 MLCC 탑재량을 견인. 전기차·ADAS 확산으로 차량 1대당 MLCC 사용량 증가, 산업·자동차용은 IT용보다 수익성 높음.</span><a href="https://www.youthdaily.co.kr/news/article.html?no=221390" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+      <tr><td><strong>C</strong></td><td>OPM <span class="up">8.7%</span>로 대형 반도체주 대비 낮으나 믹스 개선 여지. 원자재·가동률이 마진 변수.</td></tr>
+    </tbody></table></div>
+    <h3>④ Growth Sustainability</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>항목</th><th class="num">판정</th><th>근거</th></tr></thead><tbody>
+      <tr><td>1. 매출↑+가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>서버·전장 수요로 MLCC 가동률↑</td></tr>
+      <tr><td>2. 설비투자 후 가동률↑</td><td class="num"><span class="gs-ok">✓</span></td><td>고부가 MLCC 증설분 가동 확대</td></tr>
+      <tr><td>3. 수주&gt;매출</td><td class="num"><span class="gs-na">△</span></td><td>부품업 특성상 수주잔고 개념 약함(전장 일부)</td></tr>
+      <tr><td>4. 미국향 매출</td><td class="num"><span class="gs-na">△</span></td><td>미국 AI 서버향 간접 수혜(직접 비중 제한적)</td></tr>
+      <tr><td>5. 밸류 리레이팅</td><td class="num"><span class="gs-ok">✓</span></td><td>이미 강하게 리레이팅(양날의 검)</td></tr>
+      <tr><td>6. 산업 TAM 확대</td><td class="num"><span class="gs-ok">✓</span></td><td>AI 서버·전기차 MLCC TAM 확대</td></tr>
+    </tbody></table></div>
+    <h3>⑤ 반대 논리 (리스크)</h3>
+    <div class="prose"><p><strong>① 밸류에이션 부담(최대 리스크)</strong> — 현재 Forward P/E <strong>75.0배</strong>는 절대 수준으로 매우 높아 <strong>MLCC 슈퍼사이클을 상당 부분 선반영</strong>. <strong>② 이익 규모 열위</strong> — 연간 OP 1.6조로 기대만큼 이익이 못 따라오면 조정폭이 큼. <strong>③ IT 세트 수요 둔화</strong> 시 믹스만으로 성장 유지 곤란.</p></div>
+    <h3>⑥ 다음 확인 이벤트</h3>
+    <div class="prose"><p>· 2026 2분기 실적(2026-07-09 결산실적공시예고)<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 결산실적공시예고/IR개최 (2026.07.09)</span><span class="evd-sum">삼성전기 IR 및 결산실적공시예고 안내. MLCC 판가 인상 실현·서버 믹스 확인 이벤트.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260709800242" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> · MLCC 실제 판가 인상 확인 · 국민연금 지분 변동.</p></div>
+    <h3>⑦ 밸류에이션 위치</h3>
+    <div class="prose"><p>현재 Forward P/E <strong>75.0배</strong>. 최근 3개월 밴드 백분위는 40(6월 고점 대비 하락)이지만, <strong>절대 배수 자체가 5종목 중 최고</strong>로 실적 미스에 취약합니다. 밴드는 <strong>상대 위치가 아니라 절대 레벨</strong>에 유의해 읽으세요.</p></div>
+    <details class="pe-embed" data-peb="009150" open>
+      <summary><span class="peb-t">📊 삼성전기 — Forward P/E 밴드 (최근 3개월)</span><span class="peb-s">현재 75.0배 · 기간 평균 97.1배 · 백분위 40%</span></summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> NTM EPS는 앵커 보간 <strong>추정치</strong>, 밴드는 최근 약 3개월(2026-04~07) 구간입니다. 백분위(상대)보다 <strong>절대 배수(75배)</strong>가 높다는 점에 유의하세요.</div>
+        <p class="desc">밴드 = 각 시점 추정 NTM EPS × 배수. 차트에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a"><svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드"></svg><div class="tooltip"></div></div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b"><svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이"></svg><div class="tooltip"></div></div>
+        <div class="tbl-scroll" style="margin-top:16px;"><table><thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead><tbody class="peb-anchor-rows"></tbody></table></div>
+        <p class="desc" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) × 0.741 ÷ 발행주식수 74,693,696주. 앵커 사이 선형 보간.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ④ SK스퀘어 -->
+  <div class="card">
+    <div class="stock-head"><span class="rank">발굴 ④</span><h2 style="margin:0;">SK스퀘어</h2><span class="code">402340 · KOSPI</span><span class="price">1,127,000원 <span class="down">(52주고가比 -51.5%)</span></span></div>
+    <h3>① 왜 지금인가 — 하이닉스 프록시 + NAV 할인 축소</h3>
+    <div class="prose"><p>SK하이닉스 지분 <strong>20.6%</strong>를 가진 투자지주회사로, 사실상 <strong>하이닉스에 할인된 값으로 접근하는 프록시</strong>입니다. NAV 대비 할인율이 과거 평균 66%에서 <strong>43.8%까지 축소</strong>되며 리레이팅 중입니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · SK스퀘어 NAV/목표주가 (2026.06)</span><span class="evd-sum">NAV 할인율 과거 40~77%(평균 66%)→43.8%(2024년 65.1%→2025년 51.3%→현재). 하이닉스 지분 20.6%. 자사주 2026년 400억·2027년 700억. 목표가 145만~270만.</span><a href="https://www.newspim.com/news/view/20260618000069" target="_blank" rel="noopener">기사 ↗</a></span></span> 최근 1개월 <span class="down">-20.4%</span> 조정은 하이닉스 유상증자 이슈의 전이 영향이 큽니다.</p></div>
+    <h3>② 스크리닝 수치</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>메모</th></tr></thead><tbody>
+      <tr><td>수익률 1주/1개월/3개월</td><td class="num"><span class="down">-13.8%</span>/<span class="down">-20.4%</span>/<span class="up">+98.6%</span></td><td>하이닉스와 동조</td></tr>
+      <tr><td>52주 고가 대비 / MA20 vs 60</td><td class="num"><span class="down">-51.5%</span> / MA20&gt;60</td><td>중기 상승배열 유지</td></tr>
+      <tr><td>NAV 할인율</td><td class="num">43.8% <span class="down">(↓)</span></td><td>과거 평균 66% → 축소</td></tr>
+      <tr><td>2026 1Q 영업이익 (YoY, 지분법)</td><td class="num">8.28조 <span class="up">(+400%)</span></td><td>대부분 하이닉스 지분법이익<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · SK스퀘어 2026 1분기보고서 (kr_financials 집계)</span><span class="evd-sum">영업이익 <strong>8조 2,783억</strong>(전기 1조 6,541억). 별도 매출 3,003억으로 작아 이익 대부분이 <strong>지분법이익</strong>임을 시사.</span><span class="evd-nolink">DART 재무제표 조회·계산값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody></table></div>
+    <h3>③ PQC 분석 <span style="font-weight:400;color:var(--muted);font-size:12px;">(홀딩스 — 자산가치 관점)</span></h3>
+    <div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황 및 판단</th></tr></thead><tbody>
+      <tr><td><strong>P</strong></td><td>편입자산의 "가격" = 하이닉스 주가. 하이닉스 이익·주가 상승이 곧 NAV 상승. <strong>메모리 사이클에 직접 연동</strong>.</td></tr>
+      <tr><td><strong>Q</strong></td><td>하이닉스 지분율 20.6% 고정이나 <strong>자사주 매입·소각으로 주당 NAV를 늘리는</strong> 구조.</td></tr>
+      <tr><td><strong>C</strong></td><td>지주 운영비 최소, 배당·자사주 등 <strong>주주환원 확대가 할인율 축소의 핵심 동력</strong>.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 자기주식취득결과보고서 (2026.06.30)</span><span class="evd-sum">SK스퀘어 자기주식 취득 결과 공시. 자사주 매입은 주당 NAV 증가·할인율 축소 요인.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260630000897" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+    </tbody></table></div>
+    <h3>④ Growth Sustainability</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>항목</th><th class="num">판정</th><th>근거</th></tr></thead><tbody>
+      <tr><td>1. 매출↑+가동률↑</td><td class="num"><span class="gs-na">해당없음</span></td><td>투자지주회사 — 자체 제조 없음</td></tr>
+      <tr><td>2. 설비투자 후 가동률↑</td><td class="num"><span class="gs-na">해당없음</span></td><td>동일</td></tr>
+      <tr><td>3. 수주&gt;매출</td><td class="num"><span class="gs-na">해당없음</span></td><td>동일</td></tr>
+      <tr><td>4. 미국향 매출</td><td class="num"><span class="gs-ok">✓</span></td><td>하이닉스(미국 AI 고객) 통한 간접 수혜</td></tr>
+      <tr><td>5. 밸류 리레이팅</td><td class="num"><span class="gs-ok">✓</span></td><td>NAV 할인율 66%→43.8% 축소 = 명백한 리레이팅</td></tr>
+      <tr><td>6. 산업 TAM 확대</td><td class="num"><span class="gs-ok">✓</span></td><td>하이닉스 통한 AI 메모리 TAM 노출</td></tr>
+    </tbody></table></div>
+    <h3>⑤ 반대 논리 (리스크)</h3>
+    <div class="prose"><p><strong>① 하이닉스 종속</strong> — NAV 대부분이 하이닉스라 함께 빠짐(+유상증자 희석도 NAV 전이). <strong>② 지주 할인 재확대</strong> 가능성. <strong>③ 비상장 포트폴리오</strong> 가치 변동. 하이닉스 직접 매수 대비 <strong>한 단계 레버리지·복잡성</strong>이 얹힙니다.</p></div>
+    <h3>⑥ 다음 확인 이벤트</h3>
+    <div class="prose"><p>· 하이닉스 유상증자 신주 상장(7/29)의 NAV 영향 · 추가 자사주 매입·소각 · 비상장 자회사 상장/회수.</p></div>
+    <h3>⑦ 밸류에이션 위치</h3>
+    <div class="prose"><p>홀딩스라 P/E 절대 배수보다 <strong>NAV 할인율(43.8%)</strong>이 핵심입니다. 아래 밴드는 하이닉스 귀속 지분 순이익을 근사한 <strong>참고용</strong>으로, 할인율이 과거 평균(66%)보다 낮아진 리레이팅을 함께 읽어야 합니다.</p></div>
+    <details class="pe-embed" data-peb="402340" open>
+      <summary><span class="peb-t">📊 SK스퀘어 — Forward P/E 밴드 (홀딩스, 참고용)</span><span class="peb-s">현재 6.8배 · 기간 평균 7.6배 · 백분위 32% · NAV 할인 43.8%</span></summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> SK스퀘어는 투자지주회사라 P/E 해석에 한계가 있습니다. 아래 이익은 <strong>하이닉스 귀속 지분 순이익 근사(전환율 1.0)</strong>이며 밴드는 최근 약 3개월 구간, 참고용입니다. 실제 밸류는 <strong>NAV 할인율</strong>로 보세요.</div>
+        <p class="desc">밴드 = 각 시점 추정 NTM 귀속 순이익 × 배수. 차트에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a"><svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드"></svg><div class="tooltip"></div></div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 귀속 순이익 EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b"><svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이"></svg><div class="tooltip"></div></div>
+        <div class="tbl-scroll" style="margin-top:16px;"><table><thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead><tbody class="peb-anchor-rows"></tbody></table></div>
+        <p class="desc" style="margin-top:12px;">환산 가정: NTM 귀속 순이익(억원) × 1.0 ÷ 발행주식수 131,958,386주. 앵커 사이 선형 보간. 홀딩스 특성상 참고용.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ⑤ LG전자 -->
+  <div class="card">
+    <div class="stock-head"><span class="rank">발굴 ⑤</span><h2 style="margin:0;">LG전자</h2><span class="code">066570 · KOSPI</span><span class="price">178,600원 <span class="down">(52주고가比 -61.3%)</span></span></div>
+    <h3>① 왜 지금인가 — 비반도체 실적 턴어라운드·저평가 카드</h3>
+    <div class="prose"><p>5종목 중 유일한 <strong>비(非)반도체 종목</strong>으로 포트폴리오 편중을 덜어줍니다. 2026 2분기 잠정 영업이익이 <span class="up">+147% YoY</span> 급증하며 전망치를 크게 웃돌았고, 증권사들이 <strong>"실적보다 구조 변화"</strong>를 이유로 목표주가를 줄상향했습니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · LG전자 2Q 잠정실적 (2026.07.07)</span><span class="evd-sum">2026 2분기 잠정 매출 <strong>23조 8,297억</strong>, 영업이익 <strong>1조 5,788억</strong>(전년比 +146.9%, 상회). 프리미엄 가전·TV가 견인. 단, 미국 관세 환급 확정분을 <strong>일회성 수익</strong>으로 인식.</span><a href="https://www.newspim.com/news/view/20260707000528" target="_blank" rel="noopener">기사 ↗</a></span></span> 다만 52주 고가 대비 <span class="down">-61.3%</span>·MA20&lt;60으로 <strong>추세가 가장 약한 저평가·턴어라운드형</strong>입니다.</p></div>
+    <h3>② 스크리닝 수치</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>지표</th><th class="num">값</th><th>메모</th></tr></thead><tbody>
+      <tr><td>수익률 1주/1개월/3개월</td><td class="num"><span class="down">-3.9%</span>/<span class="down">-27.0%</span>/<span class="up">+52.4%</span></td><td>1주 낙폭 최소(하방 안정)</td></tr>
+      <tr><td>52주 고가 대비 / MA20 vs 60</td><td class="num"><span class="down">-61.3%</span> / <span class="down">MA20&lt;60</span></td><td>중기 배열 아직 약세</td></tr>
+      <tr><td>2026 1Q 영업이익 (YoY)</td><td class="num">1.67조 <span class="up">(+33%)</span></td><td>전기 1.26조</td></tr>
+      <tr><td>2026 2Q 잠정 영업이익 (YoY)</td><td class="num">1.58조 <span class="up">(+147%)</span></td><td>관세 환급 일회성 포함<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">DART · 연결 영업(잠정)실적 공정공시 (2026.07.07)</span><span class="evd-sum">LG전자 2026 2분기 잠정 매출 23조 8,297억·영업이익 1조 5,788억 공시. 미국 관세 환급 일회성 포함 — 경상 이익력은 별도 확인 필요.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260707800176" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+    </tbody></table></div>
+    <h3>③ PQC 분석</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>축</th><th>현황 및 판단</th></tr></thead><tbody>
+      <tr><td><strong>P</strong></td><td>프리미엄 가전·OLED TV로 <strong>판가·믹스 개선</strong>. 다만 가전은 성숙 시장이라 급격한 판가 상승은 제한적.</td></tr>
+      <tr><td><strong>Q</strong></td><td>프리미엄 가전·TV 판매 확대와 <strong>전장(VS) 수주잔고</strong>가 물량 성장의 두 축. 구독·서비스도 확장.</td></tr>
+      <tr><td><strong>C</strong></td><td>OPM 약 <span class="up">7%</span>대. 2분기 이익 급증에 <strong>관세 환급 일회성</strong>이 포함돼 경상 마진은 이보다 낮게 봐야 함.</td></tr>
+    </tbody></table></div>
+    <h3>④ Growth Sustainability</h3>
+    <div class="tbl-scroll"><table><thead><tr><th>항목</th><th class="num">판정</th><th>근거</th></tr></thead><tbody>
+      <tr><td>1. 매출↑+가동률↑</td><td class="num"><span class="gs-na">△</span></td><td>가전 성숙 — 가동률보다 믹스가 관건</td></tr>
+      <tr><td>2. 설비투자 후 가동률↑</td><td class="num"><span class="gs-na">△</span></td><td>전장 램프업 진행이나 반도체만큼 뚜렷치 않음</td></tr>
+      <tr><td>3. 수주&gt;매출</td><td class="num"><span class="gs-ok">✓</span></td><td>전장(VS) 수주잔고가 매출을 선행</td></tr>
+      <tr><td>4. 미국향 매출</td><td class="num"><span class="gs-ok">✓</span></td><td>미국 매출 비중 큼(관세 환급이 방증) — 관세 양면성</td></tr>
+      <tr><td>5. 밸류 리레이팅</td><td class="num"><span class="gs-na">△</span></td><td>"실적보다 구조 변화" 리레이팅 초기</td></tr>
+      <tr><td>6. 산업 TAM 확대</td><td class="num"><span class="gs-na">△</span></td><td>가전 성숙, 전장·구독에서 성장 여지</td></tr>
+    </tbody></table></div>
+    <h3>⑤ 반대 논리 (리스크)</h3>
+    <div class="prose"><p><strong>① 일회성 이익 착시</strong>(2분기 관세 환급 포함). <strong>② 약한 추세</strong> — MA20&lt;60, 52주 고가比 -61%로 기술적 최약. <strong>③ 관세·환율 양면성</strong>(환급은 일회성, 향후 관세는 부담). <strong>④ 가전 수요 사이클</strong> 둔화 시 전장 과의존.</p></div>
+    <h3>⑥ 다음 확인 이벤트</h3>
+    <div class="prose"><p>· 2026 2분기 <strong>확정 실적·일회성 제외 경상 이익</strong> · 전장(VS) 수주잔고 · 미국 관세 정책 방향.</p></div>
+    <h3>⑦ 밸류에이션 위치</h3>
+    <div class="prose"><p>현재 Forward P/E <strong>7.9배</strong>는 <strong>절대 수준(한 자릿수)이 전통적으로 낮은 편</strong>입니다. 평균 목표주가 약 24.6만원(+37% 여력)이 제시되는 등 실적 확정 시 <strong>저평가 해소 여지</strong>가 있습니다.<span class="evd"><button type="button" aria-expanded="false">근거</button><span class="evd-pop"><span class="evd-src">뉴스 · LG전자 목표주가 상향 (2026.07.09)</span><span class="evd-sum">2Q 잠정 후 국내 7곳 중 6곳 목표주가 상향, 평균 24만 6,400원(+7.5만↑). HSBC 28만·CGSI 27만. "실적보다 구조 변화"에 주목.</span><a href="https://biz.newdaily.co.kr/site/data/html/2026/07/09/2026070900058.amp.html" target="_blank" rel="noopener">기사 ↗</a></span></span></p></div>
+    <details class="pe-embed" data-peb="066570" open>
+      <summary><span class="peb-t">📊 LG전자 — Forward P/E 밴드 (최근 3개월)</span><span class="peb-s">현재 7.9배 · 기간 평균 9.3배 · 백분위 30%</span></summary>
+      <div class="inner">
+        <div class="note" style="margin-top:4px;"><strong>주의:</strong> NTM EPS는 앵커 보간 <strong>추정치</strong>이며 2분기 일회성(관세 환급)이 포함돼 경상 이익력은 다소 낮게 봐야 합니다. 밴드는 최근 약 3개월 구간.</div>
+        <p class="desc">밴드 = 각 시점 추정 NTM EPS × 배수. 차트에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+        <div class="chart-box peb-a"><svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드"></svg><div class="tooltip"></div></div>
+        <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+        <div class="chart-box peb-b"><svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이"></svg><div class="tooltip"></div></div>
+        <div class="tbl-scroll" style="margin-top:16px;"><table><thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead><tbody class="peb-anchor-rows"></tbody></table></div>
+        <p class="desc" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) × 0.741 ÷ 발행주식수 162,884,638주. 앵커 사이 선형 보간.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- 종합 -->
+  <div class="card">
+    <h2>종합 — 한 장 요약</h2>
+    <div class="tbl-scroll"><table>
+      <thead><tr><th>종목</th><th>성격</th><th class="num">3M/1M</th><th class="num">1Q OP(YoY)</th><th class="num">Fwd P/E·백분위(3M)</th><th>핵심 한 줄</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SK하이닉스</strong></td><td>HBM 리더</td><td class="num"><span class="up">+71%</span>/<span class="down">-24%</span></td><td class="num"><span class="up">+405%</span></td><td class="num">11.5배·22</td><td>실적 최강, 유상증자 오버행이 눌림목</td></tr>
+        <tr><td><strong>삼성전자</strong></td><td>메모리+파운드리</td><td class="num"><span class="up">+24%</span>/<span class="down">-25%</span></td><td class="num"><span class="up">+756%</span></td><td class="num">10.0배·<strong>2</strong></td><td>실적·밸류 균형 최고, 밴드 최저권</td></tr>
+        <tr><td><strong>삼성전기</strong></td><td>MLCC</td><td class="num"><span class="up">+116%</span>/<span class="down">-39%</span></td><td class="num"><span class="up">+40%</span></td><td class="num"><strong>75.0배</strong>·40</td><td>성장 스토리 강하나 절대 밸류 부담 최대</td></tr>
+        <tr><td><strong>SK스퀘어</strong></td><td>하이닉스 프록시</td><td class="num"><span class="up">+99%</span>/<span class="down">-20%</span></td><td class="num"><span class="up">+400%</span></td><td class="num">6.8배·32</td><td>NAV 할인 66%→43.8% 리레이팅</td></tr>
+        <tr><td><strong>LG전자</strong></td><td>가전·전장(비반도체)</td><td class="num"><span class="up">+52%</span>/<span class="down">-27%</span></td><td class="num"><span class="up">+33%</span></td><td class="num">7.9배·30</td><td>턴어라운드·저평가, 추세는 가장 약함</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note" style="margin-top:14px;"><strong>주의 — 이 발굴의 한계:</strong> 5종목 중 4종목이 반도체·전자 밸류체인에 몰려 <strong>테마 편중(상관성 높음)</strong>이 큽니다. 메모리 사이클이 꺾이면 동반 하락합니다. 또한 전 종목이 1년간 크게 오른 뒤 조정 중이라 "저점"이 아니라 "고점 대비 눌림목"입니다. 유상증자·일회성 이익 등 종목별 함정을 반드시 확인하세요.</div>
+  </div>
+
+  <footer>
+    <p><strong>데이터 소스</strong> · 토스 Open API(시세·랭킹·발행주식수), DART 전자공시(공시·분기/사업보고서 재무), WebSearch(컨센서스·목표주가·업황, 2026-06~07 기사). 재무는 2026 1분기보고서 누적 기준(YoY는 동일 보고서 당기/전기 비교), 2분기 수치는 잠정실적 공시·언론 인용.</p>
+    <p><strong>추정 표기</strong> · Forward P/E 밴드의 NTM 이익은 실제 컨센서스 집계가 아니라 리포트·뉴스 앵커를 선형 보간한 <strong>추정 모델</strong>이며, 차트 구간은 <strong>최근 약 3개월(2026-04-16~07-14)</strong>입니다. 시가총액·NTM 이익 등은 근사·추정치이며, 앵커·전환율·발행주식수 가정은 각 밴드 하단에 공개했습니다. SK하이닉스 발행주식수에는 유상증자 신주(2026-07-29 상장) 희석이 아직 반영되지 않았습니다.</p>
+    <p><strong>생성일</strong> 2026-07-14 · 정규 거래일 종가 기준. <strong>본 자료는 정보 제공용이며 특정 종목의 매매를 권유하지 않습니다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있습니다.</strong></p>
+  </footer>
+</div>
+
+<script>
+(function(){let open=null;function close(){if(!open)return;open.classList.remove("on");open.querySelector("button").setAttribute("aria-expanded","false");open=null;}
+document.addEventListener("click",function(e){const btn=e.target.closest(".evd > button");if(btn){const host=btn.parentElement;if(open===host){close();return;}close();open=host;host.classList.add("on");btn.setAttribute("aria-expanded","true");const pop=host.querySelector(".evd-pop"),r=btn.getBoundingClientRect();pop.style.left="0px";pop.style.top="0px";const pw=pop.offsetWidth,ph=pop.offsetHeight;const x=Math.min(Math.max(8,r.left),window.innerWidth-pw-8);let y=r.bottom+8;if(y+ph>window.innerHeight-8)y=r.top-ph-8;pop.style.left=x+"px";pop.style.top=Math.max(8,y)+"px";}else if(!e.target.closest(".evd-pop"))close();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+window.addEventListener("scroll",close,true);})();
+
+function renderPeBand(root,DATA){
+  const CFG=DATA.cfg,KRW=CFG.currency==="KRW";
+  const fmtP=v=>KRW?(v>=1e4?(v/1e4).toLocaleString("ko-KR",{maximumFractionDigits:1})+"만":v.toLocaleString("ko-KR")):"$"+v.toLocaleString("en-US",{maximumFractionDigits:2});
+  const fmtPFull=v=>KRW?fmtP(v)+"원":fmtP(v);
+  const fmtE=v=>KRW?Math.round(v).toLocaleString("ko-KR")+"원":"$"+v.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+  const fmtTickP=v=>v===0?"0":(KRW?(v/1e4).toLocaleString("ko-KR",{maximumFractionDigits:1})+"만":"$"+v.toLocaleString("en-US"));
+  const fmtDate=d=>{const[y,m,dd]=d.split("-");return `'${y.slice(2)}.${+m}.${+dd}`;};
+  const shortMD=d=>{const[,m,dd]=d.split("-");return `${+m}/${+dd}`;};
+  const monthTick=d=>{const[y,m]=d.split("-");return `'${y.slice(2)}.${+m}`;};
+  const rows=DATA.rows,N=rows.length;
+  const PAD={l:56,r:46,t:14,b:30};
+  const xScale=(i,W)=>PAD.l+(W-PAD.l-PAD.r)*i/(N-1);
+  const mIdx=(()=>{const idx=[];let prev="";rows.forEach((r,i)=>{const m=r.d.slice(0,7);if(m!==prev){idx.push(i);prev=m;}});return idx;})();
+  function el(tag,attrs,parent,text){const e=document.createElementNS("http://www.w3.org/2000/svg",tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;parent.appendChild(e);return e;}
+  function linePath(vals,W,y){return vals.map((v,i)=>(i?"L":"M")+xScale(i,W).toFixed(1)+" "+y(v).toFixed(1)).join("");}
+  function xTicks(svg,W,plotB){mIdx.forEach(i=>el("text",{x:xScale(i,W),y:plotB+18,"text-anchor":"middle",class:"ticktext"},svg,monthTick(rows[i].d)));}
+  function yGrid(svg,W,y,yMax,tick,fmt){for(let v=0;v<=yMax*1.0001;v+=tick){el("line",{x1:PAD.l,x2:W-PAD.r,y1:y(v),y2:y(v),class:v===0?"axisline":"gridline"},svg);el("text",{x:PAD.l-8,y:y(v)+3.5,"text-anchor":"end",class:"ticktext"},svg,fmt(v));}}
+  function hover(box,W,plotB,rowsFn,yFn){const svg=box.querySelector("svg"),tip=box.querySelector(".tooltip");const cross=el("line",{y1:PAD.t,y2:plotB,class:"crosshair"},svg);const dot=el("circle",{r:5,class:"hoverdot"},svg);const hit=el("rect",{x:PAD.l,y:0,width:W-PAD.l-PAD.r,height:plotB+PAD.b,fill:"transparent"},svg);
+    function show(evt){const rect=svg.getBoundingClientRect();const px=(evt.clientX-rect.left)*W/rect.width;let i=Math.round((px-PAD.l)/(W-PAD.l-PAD.r)*(N-1));i=Math.max(0,Math.min(N-1,i));const cx=xScale(i,W);cross.setAttribute("x1",cx);cross.setAttribute("x2",cx);cross.style.visibility="visible";dot.setAttribute("cx",cx);dot.setAttribute("cy",yFn(i));dot.style.visibility="visible";tip.replaceChildren();const td=document.createElement("div");td.className="tdate";td.textContent=fmtDate(rows[i].d);tip.appendChild(td);rowsFn(i).forEach(([lbl,val,keyed])=>{const tr=document.createElement("div");tr.className="trow";const k=document.createElement("span");k.className="tkey"+(keyed?"":" none");tr.appendChild(k);const v=document.createElement("span");v.className="tval";v.textContent=val;tr.appendChild(v);const l=document.createElement("span");l.className="tlbl";l.textContent=lbl;tr.appendChild(l);tip.appendChild(tr);});tip.style.visibility="visible";const bw=box.clientWidth,tw=tip.offsetWidth;let left=cx/W*bw+14;if(left+tw>bw-4)left=cx/W*bw-tw-14;tip.style.left=left+"px";tip.style.top=Math.max(4,yFn(i)/(plotB+PAD.b)*box.clientHeight-tip.offsetHeight-12)+"px";}
+    function hide(){cross.style.visibility="hidden";dot.style.visibility="hidden";tip.style.visibility="hidden";}
+    hit.addEventListener("pointermove",show);hit.addEventListener("pointerleave",hide);}
+  (function(){const box=root.querySelector(".peb-a"),svg=box.querySelector("svg");const W=980,H=400,plotB=H-PAD.b,yMax=CFG.priceMax;const y=v=>plotB-(plotB-PAD.t)*v/yMax;const mults=CFG.multiples;
+    for(let b=0;b<mults.length-1;b++){const top=rows.map(r=>r.eps*mults[b+1]),bot=rows.map(r=>r.eps*mults[b]);let dpath=linePath(top,W,y);for(let i=N-1;i>=0;i--)dpath+="L"+xScale(i,W).toFixed(1)+" "+y(bot[i]).toFixed(1);el("path",{d:dpath+"Z",class:"bandfill",opacity:0.035+b*0.03},svg);}
+    yGrid(svg,W,y,yMax,CFG.priceTick,fmtTickP);xTicks(svg,W,plotB);
+    mults.forEach(m=>{el("path",{d:linePath(rows.map(r=>r.eps*m),W,y),class:"bandline"},svg);el("text",{x:W-PAD.r+6,y:y(rows[N-1].eps*m)+3.5,class:"bandlbl"},svg,m+"×");});
+    el("path",{d:linePath(rows.map(r=>r.c),W,y),class:"price-line"},svg);
+    let peakI=0;rows.forEach((r,i)=>{if(r.c>rows[peakI].c)peakI=i;});
+    if(peakI!==N-1){el("circle",{cx:xScale(peakI,W),cy:y(rows[peakI].c),r:4.5,class:"peak-dot"},svg);el("text",{x:xScale(peakI,W),y:y(rows[peakI].c)-10,"text-anchor":"middle",class:"anno hot"},svg,"고점 "+fmtPFull(rows[peakI].c)+" ("+shortMD(rows[peakI].d)+")");}
+    el("circle",{cx:xScale(N-1,W),cy:y(rows[N-1].c),r:4.5,class:"end-dot"},svg);el("text",{x:xScale(N-1,W)-8,y:y(rows[N-1].c)-11,"text-anchor":"end",class:"anno"},svg,"현재 "+fmtPFull(rows[N-1].c));
+    hover(box,W,plotB,i=>[["종가",fmtPFull(rows[i].c),true],["NTM EPS(추정)",fmtE(rows[i].eps),false],["Forward P/E",rows[i].pe.toFixed(1)+"배",false]],i=>y(rows[i].c));})();
+  (function(){const box=root.querySelector(".peb-b"),svg=box.querySelector("svg");const W=980,H=260,plotB=H-PAD.b,yMax=CFG.peMax;const y=v=>plotB-(plotB-PAD.t)*v/yMax;
+    yGrid(svg,W,y,yMax,CFG.peTick,v=>v===0?"0배":v+"배");xTicks(svg,W,plotB);
+    const area=linePath(rows.map(r=>r.pe),W,y)+"L"+xScale(N-1,W)+" "+y(0)+"L"+xScale(0,W)+" "+y(0)+"Z";el("path",{d:area,class:"area-wash"},svg);
+    el("line",{x1:PAD.l,x2:W-PAD.r,y1:y(DATA.stats.avg),y2:y(DATA.stats.avg),class:"avgline"},svg);el("text",{x:PAD.l+6,y:y(DATA.stats.avg)-5,class:"anno"},svg,"기간 평균 "+DATA.stats.avg+"배");
+    el("path",{d:linePath(rows.map(r=>r.pe),W,y),class:"price-line"},svg);
+    let maxI=0;rows.forEach((r,i)=>{if(r.pe>rows[maxI].pe)maxI=i;});
+    if(maxI!==N-1){el("circle",{cx:xScale(maxI,W),cy:y(rows[maxI].pe),r:4.5,class:"peak-dot"},svg);el("text",{x:xScale(maxI,W),y:y(rows[maxI].pe)-9,"text-anchor":"middle",class:"anno hot"},svg,rows[maxI].pe.toFixed(1)+"배 ("+shortMD(rows[maxI].d)+")");}
+    el("circle",{cx:xScale(N-1,W),cy:y(rows[N-1].pe),r:4.5,class:"end-dot"},svg);el("text",{x:xScale(N-1,W)-8,y:y(rows[N-1].pe)-10,"text-anchor":"end",class:"anno"},svg,rows[N-1].pe.toFixed(1)+"배");
+    hover(box,W,plotB,i=>[["Forward P/E",rows[i].pe.toFixed(1)+"배",true],["종가",fmtPFull(rows[i].c),false]],i=>y(rows[i].pe));})();
+  (function(){root.querySelector(".peb-anchor-head").textContent=DATA.meta.mode==="op_krw"?"NTM 영업이익 추정":"NTM EPS 추정";const tb=root.querySelector(".peb-anchor-rows");DATA.anchors.forEach(a=>{const tr=document.createElement("tr");[[fmtDate(a.d),false],[a.val,true],[fmtE(a.eps),true],[a.why,false]].forEach(([txt,num])=>{const td=document.createElement("td");if(num)td.className="num";td.textContent=txt;tr.appendChild(td);});tb.appendChild(tr);});})();
+}
+const PE_DATA={
+"000660":{"rows": [{"d": "2026-04-16", "c": 1148000.0, "eps": 136102.0, "pe": 8.4}, {"d": "2026-04-17", "c": 1144000.0, "eps": 136300.0, "pe": 8.4}, {"d": "2026-04-20", "c": 1170000.0, "eps": 136894.0, "pe": 8.5}, {"d": "2026-04-21", "c": 1247000.0, "eps": 137092.0, "pe": 9.1}, {"d": "2026-04-22", "c": 1220000.0, "eps": 137291.0, "pe": 8.9}, {"d": "2026-04-23", "c": 1219000.0, "eps": 137489.0, "pe": 8.9}, {"d": "2026-04-24", "c": 1227000.0, "eps": 137687.0, "pe": 8.9}, {"d": "2026-04-27", "c": 1301000.0, "eps": 138281.0, "pe": 9.4}, {"d": "2026-04-28", "c": 1288000.0, "eps": 138479.0, "pe": 9.3}, {"d": "2026-04-29", "c": 1300000.0, "eps": 138677.0, "pe": 9.4}, {"d": "2026-04-30", "c": 1294000.0, "eps": 138875.0, "pe": 9.3}, {"d": "2026-05-04", "c": 1438000.0, "eps": 139667.0, "pe": 10.3}, {"d": "2026-05-06", "c": 1650000.0, "eps": 140063.0, "pe": 11.8}, {"d": "2026-05-07", "c": 1646000.0, "eps": 140261.0, "pe": 11.7}, {"d": "2026-05-08", "c": 1681000.0, "eps": 140459.0, "pe": 12.0}, {"d": "2026-05-11", "c": 1908000.0, "eps": 141053.0, "pe": 13.5}, {"d": "2026-05-12", "c": 1813000.0, "eps": 141251.0, "pe": 12.8}, {"d": "2026-05-13", "c": 1992000.0, "eps": 141449.0, "pe": 14.1}, {"d": "2026-05-14", "c": 1964000.0, "eps": 141647.0, "pe": 13.9}, {"d": "2026-05-15", "c": 1848000.0, "eps": 141845.0, "pe": 13.0}, {"d": "2026-05-18", "c": 1840000.0, "eps": 142440.0, "pe": 12.9}, {"d": "2026-05-19", "c": 1719000.0, "eps": 142638.0, "pe": 12.1}, {"d": "2026-05-20", "c": 1786000.0, "eps": 142836.0, "pe": 12.5}, {"d": "2026-05-21", "c": 1903000.0, "eps": 143034.0, "pe": 13.3}, {"d": "2026-05-22", "c": 1941000.0, "eps": 143232.0, "pe": 13.6}, {"d": "2026-05-26", "c": 2090000.0, "eps": 144024.0, "pe": 14.5}, {"d": "2026-05-27", "c": 2317000.0, "eps": 144222.0, "pe": 16.1}, {"d": "2026-05-28", "c": 2253000.0, "eps": 144420.0, "pe": 15.6}, {"d": "2026-05-29", "c": 2350000.0, "eps": 144618.0, "pe": 16.2}, {"d": "2026-06-01", "c": 2378000.0, "eps": 145212.0, "pe": 16.4}, {"d": "2026-06-02", "c": 2324000.0, "eps": 145410.0, "pe": 16.0}, {"d": "2026-06-04", "c": 2206000.0, "eps": 145806.0, "pe": 15.1}, {"d": "2026-06-05", "c": 2072000.0, "eps": 146004.0, "pe": 14.2}, {"d": "2026-06-08", "c": 1978000.0, "eps": 146598.0, "pe": 13.5}, {"d": "2026-06-09", "c": 2236000.0, "eps": 146796.0, "pe": 15.2}, {"d": "2026-06-10", "c": 2015000.0, "eps": 146994.0, "pe": 13.7}, {"d": "2026-06-11", "c": 2138000.0, "eps": 147192.0, "pe": 14.5}, {"d": "2026-06-12", "c": 2162000.0, "eps": 147391.0, "pe": 14.7}, {"d": "2026-06-15", "c": 2320000.0, "eps": 147985.0, "pe": 15.7}, {"d": "2026-06-16", "c": 2418000.0, "eps": 148183.0, "pe": 16.3}, {"d": "2026-06-17", "c": 2502000.0, "eps": 148381.0, "pe": 16.9}, {"d": "2026-06-18", "c": 2699000.0, "eps": 148579.0, "pe": 18.2}, {"d": "2026-06-19", "c": 2755000.0, "eps": 148777.0, "pe": 18.5}, {"d": "2026-06-22", "c": 2959000.0, "eps": 149371.0, "pe": 19.8}, {"d": "2026-06-23", "c": 2569000.0, "eps": 149569.0, "pe": 17.2}, {"d": "2026-06-24", "c": 2653000.0, "eps": 149767.0, "pe": 17.7}, {"d": "2026-06-25", "c": 2939000.0, "eps": 149965.0, "pe": 19.6}, {"d": "2026-06-26", "c": 2700000.0, "eps": 150163.0, "pe": 18.0}, {"d": "2026-06-29", "c": 2622000.0, "eps": 150757.0, "pe": 17.4}, {"d": "2026-06-30", "c": 2640000.0, "eps": 150757.0, "pe": 17.5}, {"d": "2026-07-01", "c": 2551000.0, "eps": 150757.0, "pe": 16.9}, {"d": "2026-07-02", "c": 2229000.0, "eps": 150757.0, "pe": 14.8}, {"d": "2026-07-03", "c": 2424000.0, "eps": 150757.0, "pe": 16.1}, {"d": "2026-07-06", "c": 2347000.0, "eps": 150757.0, "pe": 15.6}, {"d": "2026-07-07", "c": 2167000.0, "eps": 150757.0, "pe": 14.4}, {"d": "2026-07-08", "c": 2025000.0, "eps": 150757.0, "pe": 13.4}, {"d": "2026-07-09", "c": 2253000.0, "eps": 150757.0, "pe": 14.9}, {"d": "2026-07-10", "c": 2201000.0, "eps": 150757.0, "pe": 14.6}, {"d": "2026-07-13", "c": 1828000.0, "eps": 150757.0, "pe": 12.1}, {"d": "2026-07-14", "c": 1731000.0, "eps": 150757.0, "pe": 11.5}], "stats": {"avg": 13.8, "min": 8.4, "max": 19.8, "min_day": "2026-04-16", "max_day": "2026-06-22", "cur": 11.5, "cur_eps": 150757.0, "cur_price": 1731000.0, "percentile": 22}, "cfg": {"currency": "KRW", "multiples": [5, 10, 15, 20], "priceMax": 4000000, "priceTick": 800000, "peMax": 25, "peTick": 5, "epsMax": 200000, "epsTick": 40000}, "anchors": [{"d": "2025-06-23", "val": "35.0조원", "eps": 36389.66, "why": "2025년 중반 메모리 업턴 초기 — NTM 영업이익 약 35조원 추정"}, {"d": "2025-09-15", "val": "60.0조원", "eps": 62382.28, "why": "HBM 수요 가속·DRAM 가격 반등 반영 NTM 약 60조원 추정"}, {"d": "2025-12-15", "val": "90.0조원", "eps": 93573.42, "why": "범용 DRAM 가격 급등·AI 서버 투자 확대로 NTM 약 90조원 추정"}, {"d": "2026-03-16", "val": "125.0조원", "eps": 129963.09, "why": "2026 1분기 어닝 서프라이즈(분기 OP 37.6조) 반영 NTM 약 125조원 추정"}, {"d": "2026-06-29", "val": "145.0조원", "eps": 150757.18, "why": "장래사업·경영계획 공정공시(2026-06-29)·슈퍼사이클 컨센 상향 NTM 약 145조원 추정"}, {"d": "2026-07-14", "val": "145.0조원", "eps": 150757.18, "why": "현재 — NTM 약 145조원 유지(추정)"}], "meta": {"symbol": "000660", "name": "SK하이닉스", "shares": 712702365, "mode": "op_krw", "conv": 0.741, "range": ["2026-04-16", "2026-07-14"]}},
+"005930":{"rows": [{"d": "2026-04-16", "c": 217500.0, "eps": 20751.0, "pe": 10.5}, {"d": "2026-04-17", "c": 218000.0, "eps": 20807.0, "pe": 10.5}, {"d": "2026-04-20", "c": 215500.0, "eps": 20975.0, "pe": 10.3}, {"d": "2026-04-21", "c": 221000.0, "eps": 21031.0, "pe": 10.5}, {"d": "2026-04-22", "c": 217500.0, "eps": 21087.0, "pe": 10.3}, {"d": "2026-04-23", "c": 222500.0, "eps": 21143.0, "pe": 10.5}, {"d": "2026-04-24", "c": 219000.0, "eps": 21199.0, "pe": 10.3}, {"d": "2026-04-27", "c": 225000.0, "eps": 21368.0, "pe": 10.5}, {"d": "2026-04-28", "c": 220000.0, "eps": 21424.0, "pe": 10.3}, {"d": "2026-04-29", "c": 226500.0, "eps": 21480.0, "pe": 10.5}, {"d": "2026-04-30", "c": 222500.0, "eps": 21536.0, "pe": 10.3}, {"d": "2026-05-04", "c": 230000.0, "eps": 21760.0, "pe": 10.6}, {"d": "2026-05-06", "c": 274000.0, "eps": 21872.0, "pe": 12.5}, {"d": "2026-05-07", "c": 270500.0, "eps": 21928.0, "pe": 12.3}, {"d": "2026-05-08", "c": 276500.0, "eps": 21984.0, "pe": 12.6}, {"d": "2026-05-11", "c": 285500.0, "eps": 22153.0, "pe": 12.9}, {"d": "2026-05-12", "c": 272500.0, "eps": 22209.0, "pe": 12.3}, {"d": "2026-05-13", "c": 286500.0, "eps": 22265.0, "pe": 12.9}, {"d": "2026-05-14", "c": 293000.0, "eps": 22321.0, "pe": 13.1}, {"d": "2026-05-15", "c": 273500.0, "eps": 22377.0, "pe": 12.2}, {"d": "2026-05-18", "c": 281500.0, "eps": 22545.0, "pe": 12.5}, {"d": "2026-05-19", "c": 273500.0, "eps": 22601.0, "pe": 12.1}, {"d": "2026-05-20", "c": 280500.0, "eps": 22657.0, "pe": 12.4}, {"d": "2026-05-21", "c": 295000.0, "eps": 22714.0, "pe": 13.0}, {"d": "2026-05-22", "c": 293000.0, "eps": 22770.0, "pe": 12.9}, {"d": "2026-05-26", "c": 302500.0, "eps": 22994.0, "pe": 13.2}, {"d": "2026-05-27", "c": 313500.0, "eps": 23050.0, "pe": 13.6}, {"d": "2026-05-28", "c": 295500.0, "eps": 23106.0, "pe": 12.8}, {"d": "2026-05-29", "c": 318500.0, "eps": 23162.0, "pe": 13.8}, {"d": "2026-06-01", "c": 355000.0, "eps": 23330.0, "pe": 15.2}, {"d": "2026-06-02", "c": 362500.0, "eps": 23387.0, "pe": 15.5}, {"d": "2026-06-04", "c": 342000.0, "eps": 23499.0, "pe": 14.6}, {"d": "2026-06-05", "c": 329000.0, "eps": 23555.0, "pe": 14.0}, {"d": "2026-06-08", "c": 303000.0, "eps": 23723.0, "pe": 12.8}, {"d": "2026-06-09", "c": 327000.0, "eps": 23779.0, "pe": 13.8}, {"d": "2026-06-10", "c": 297500.0, "eps": 23835.0, "pe": 12.5}, {"d": "2026-06-11", "c": 306000.0, "eps": 23891.0, "pe": 12.8}, {"d": "2026-06-12", "c": 324500.0, "eps": 23947.0, "pe": 13.6}, {"d": "2026-06-15", "c": 341500.0, "eps": 24116.0, "pe": 14.2}, {"d": "2026-06-16", "c": 343000.0, "eps": 24172.0, "pe": 14.2}, {"d": "2026-06-17", "c": 343000.0, "eps": 24228.0, "pe": 14.2}, {"d": "2026-06-18", "c": 363500.0, "eps": 24284.0, "pe": 15.0}, {"d": "2026-06-19", "c": 350500.0, "eps": 24340.0, "pe": 14.4}, {"d": "2026-06-22", "c": 356500.0, "eps": 24508.0, "pe": 14.5}, {"d": "2026-06-23", "c": 310500.0, "eps": 24564.0, "pe": 12.6}, {"d": "2026-06-24", "c": 339500.0, "eps": 24620.0, "pe": 13.8}, {"d": "2026-06-25", "c": 359500.0, "eps": 24676.0, "pe": 14.6}, {"d": "2026-06-26", "c": 339000.0, "eps": 24733.0, "pe": 13.7}, {"d": "2026-06-29", "c": 325000.0, "eps": 24901.0, "pe": 13.1}, {"d": "2026-06-30", "c": 333000.0, "eps": 24957.0, "pe": 13.3}, {"d": "2026-07-01", "c": 316000.0, "eps": 25013.0, "pe": 12.6}, {"d": "2026-07-02", "c": 290500.0, "eps": 25069.0, "pe": 11.6}, {"d": "2026-07-03", "c": 314500.0, "eps": 25125.0, "pe": 12.5}, {"d": "2026-07-06", "c": 320000.0, "eps": 25293.0, "pe": 12.7}, {"d": "2026-07-07", "c": 291000.0, "eps": 25349.0, "pe": 11.5}, {"d": "2026-07-08", "c": 267000.0, "eps": 25349.0, "pe": 10.5}, {"d": "2026-07-09", "c": 282500.0, "eps": 25349.0, "pe": 11.1}, {"d": "2026-07-10", "c": 286500.0, "eps": 25349.0, "pe": 11.3}, {"d": "2026-07-13", "c": 257500.0, "eps": 25349.0, "pe": 10.2}, {"d": "2026-07-14", "c": 253500.0, "eps": 25349.0, "pe": 10.0}], "stats": {"avg": 12.5, "min": 10.0, "max": 15.5, "min_day": "2026-07-14", "max_day": "2026-06-02", "cur": 10.0, "cur_eps": 25349.0, "cur_price": 253500.0, "percentile": 2}, "cfg": {"currency": "KRW", "multiples": [10, 15, 20, 25], "priceMax": 750000.0, "priceTick": 150000.0, "peMax": 20, "peTick": 4, "epsMax": 30000, "epsTick": 6000}, "anchors": [{"d": "2025-06-23", "val": "30.0조원", "eps": 3802.42, "why": "2025년 중반 반도체 회복 초기 — NTM 영업이익 약 30조원 추정"}, {"d": "2025-09-15", "val": "50.0조원", "eps": 6337.36, "why": "메모리 가격 반등 반영 NTM 약 50조원 추정"}, {"d": "2025-12-15", "val": "90.0조원", "eps": 11407.26, "why": "HBM4 양산 준비·범용 메모리 급등 반영 NTM 약 90조원 추정"}, {"d": "2026-03-16", "val": "150.0조원", "eps": 19012.09, "why": "2026 1분기 OP 57.2조 어닝 서프라이즈 반영 NTM 약 150조원 추정"}, {"d": "2026-07-07", "val": "200.0조원", "eps": 25349.46, "why": "2026 2분기 잠정실적 공시(2026-07-07)·슈퍼사이클 컨센 급상향 NTM 약 200조원 추정"}, {"d": "2026-07-14", "val": "200.0조원", "eps": 25349.46, "why": "현재 — NTM 약 200조원 유지(추정)"}], "meta": {"symbol": "005930", "name": "삼성전자", "shares": 5846278608, "mode": "op_krw", "conv": 0.741, "range": ["2026-04-16", "2026-07-14"]}},
+"009150":{"rows": [{"d": "2026-04-16", "c": 643000.0, "eps": 13699.0, "pe": 46.9}, {"d": "2026-04-17", "c": 690000.0, "eps": 13725.0, "pe": 50.3}, {"d": "2026-04-20", "c": 683000.0, "eps": 13802.0, "pe": 49.5}, {"d": "2026-04-21", "c": 777000.0, "eps": 13828.0, "pe": 56.2}, {"d": "2026-04-22", "c": 827000.0, "eps": 13854.0, "pe": 59.7}, {"d": "2026-04-23", "c": 770000.0, "eps": 13880.0, "pe": 55.5}, {"d": "2026-04-24", "c": 789000.0, "eps": 13906.0, "pe": 56.7}, {"d": "2026-04-27", "c": 800000.0, "eps": 13984.0, "pe": 57.2}, {"d": "2026-04-28", "c": 824000.0, "eps": 14009.0, "pe": 58.8}, {"d": "2026-04-29", "c": 833000.0, "eps": 14035.0, "pe": 59.4}, {"d": "2026-04-30", "c": 833000.0, "eps": 14061.0, "pe": 59.2}, {"d": "2026-05-04", "c": 909000.0, "eps": 14165.0, "pe": 64.2}, {"d": "2026-05-06", "c": 937000.0, "eps": 14217.0, "pe": 65.9}, {"d": "2026-05-07", "c": 914000.0, "eps": 14242.0, "pe": 64.2}, {"d": "2026-05-08", "c": 912000.0, "eps": 14268.0, "pe": 63.9}, {"d": "2026-05-11", "c": 898000.0, "eps": 14346.0, "pe": 62.6}, {"d": "2026-05-12", "c": 928000.0, "eps": 14372.0, "pe": 64.6}, {"d": "2026-05-13", "c": 1034000.0, "eps": 14398.0, "pe": 71.8}, {"d": "2026-05-14", "c": 1019000.0, "eps": 14424.0, "pe": 70.6}, {"d": "2026-05-15", "c": 1036000.0, "eps": 14449.0, "pe": 71.7}, {"d": "2026-05-18", "c": 1044000.0, "eps": 14527.0, "pe": 71.9}, {"d": "2026-05-19", "c": 956000.0, "eps": 14553.0, "pe": 65.7}, {"d": "2026-05-20", "c": 1083000.0, "eps": 14579.0, "pe": 74.3}, {"d": "2026-05-21", "c": 1212000.0, "eps": 14605.0, "pe": 83.0}, {"d": "2026-05-22", "c": 1331000.0, "eps": 14631.0, "pe": 91.0}, {"d": "2026-05-26", "c": 1619000.0, "eps": 14734.0, "pe": 109.9}, {"d": "2026-05-27", "c": 1682000.0, "eps": 14760.0, "pe": 114.0}, {"d": "2026-05-28", "c": 1849000.0, "eps": 14786.0, "pe": 125.1}, {"d": "2026-05-29", "c": 2143000.0, "eps": 14812.0, "pe": 144.7}, {"d": "2026-06-01", "c": 2006000.0, "eps": 14889.0, "pe": 134.7}, {"d": "2026-06-02", "c": 1763000.0, "eps": 14915.0, "pe": 118.2}, {"d": "2026-06-04", "c": 1644000.0, "eps": 14967.0, "pe": 109.8}, {"d": "2026-06-05", "c": 1774000.0, "eps": 14993.0, "pe": 118.3}, {"d": "2026-06-08", "c": 1686000.0, "eps": 15071.0, "pe": 111.9}, {"d": "2026-06-09", "c": 2010000.0, "eps": 15096.0, "pe": 133.1}, {"d": "2026-06-10", "c": 1748000.0, "eps": 15122.0, "pe": 115.6}, {"d": "2026-06-11", "c": 1808000.0, "eps": 15148.0, "pe": 119.4}, {"d": "2026-06-12", "c": 1747000.0, "eps": 15174.0, "pe": 115.1}, {"d": "2026-06-15", "c": 2004000.0, "eps": 15252.0, "pe": 131.4}, {"d": "2026-06-16", "c": 2037000.0, "eps": 15278.0, "pe": 133.3}, {"d": "2026-06-17", "c": 2022000.0, "eps": 15303.0, "pe": 132.1}, {"d": "2026-06-18", "c": 2205000.0, "eps": 15329.0, "pe": 143.8}, {"d": "2026-06-19", "c": 2254000.0, "eps": 15355.0, "pe": 146.8}, {"d": "2026-06-22", "c": 2252000.0, "eps": 15433.0, "pe": 145.9}, {"d": "2026-06-23", "c": 1948000.0, "eps": 15459.0, "pe": 126.0}, {"d": "2026-06-24", "c": 1971000.0, "eps": 15485.0, "pe": 127.3}, {"d": "2026-06-25", "c": 2000000.0, "eps": 15511.0, "pe": 128.9}, {"d": "2026-06-26", "c": 1996000.0, "eps": 15536.0, "pe": 128.5}, {"d": "2026-06-29", "c": 2057000.0, "eps": 15614.0, "pe": 131.7}, {"d": "2026-06-30", "c": 2198000.0, "eps": 15640.0, "pe": 140.5}, {"d": "2026-07-01", "c": 2198000.0, "eps": 15666.0, "pe": 140.3}, {"d": "2026-07-02", "c": 1942000.0, "eps": 15692.0, "pe": 123.8}, {"d": "2026-07-03", "c": 1984000.0, "eps": 15718.0, "pe": 126.2}, {"d": "2026-07-06", "c": 1809000.0, "eps": 15795.0, "pe": 114.5}, {"d": "2026-07-07", "c": 1619000.0, "eps": 15821.0, "pe": 102.3}, {"d": "2026-07-08", "c": 1385000.0, "eps": 15847.0, "pe": 87.4}, {"d": "2026-07-09", "c": 1512000.0, "eps": 15873.0, "pe": 95.3}, {"d": "2026-07-10", "c": 1580000.0, "eps": 15873.0, "pe": 99.5}, {"d": "2026-07-13", "c": 1287000.0, "eps": 15873.0, "pe": 81.1}, {"d": "2026-07-14", "c": 1191000.0, "eps": 15873.0, "pe": 75.0}], "stats": {"avg": 97.1, "min": 46.9, "max": 146.8, "min_day": "2026-04-16", "max_day": "2026-06-19", "cur": 75.0, "cur_eps": 15873.0, "cur_price": 1191000.0, "percentile": 40}, "cfg": {"currency": "KRW", "multiples": [45, 75, 105, 135], "priceMax": 2500000, "priceTick": 500000, "peMax": 200, "peTick": 40, "epsMax": 20000, "epsTick": 4000}, "anchors": [{"d": "2025-06-23", "val": "0.9조원", "eps": 8928.46, "why": "2025년 중반 NTM 영업이익 약 0.9조원 추정"}, {"d": "2025-09-15", "val": "1.0조원", "eps": 9920.52, "why": "AI 서버용 MLCC 수요 형성 반영 NTM 약 1.0조원 추정"}, {"d": "2025-12-15", "val": "1.1조원", "eps": 10912.57, "why": "NTM 약 1.1조원 추정"}, {"d": "2026-03-16", "val": "1.3조원", "eps": 12896.67, "why": "2026 1분기 OP 0.281조(+40% YoY) 반영 NTM 약 1.3조원 추정"}, {"d": "2026-07-09", "val": "1.6조원", "eps": 15872.83, "why": "증권가 2026 연간 OP 컨센 1.59조(+74%) 반영 NTM 약 1.6조원 추정"}, {"d": "2026-07-14", "val": "1.6조원", "eps": 15872.83, "why": "현재 — NTM 약 1.6조원 유지(추정)"}], "meta": {"symbol": "009150", "name": "삼성전기", "shares": 74693696, "mode": "op_krw", "conv": 0.741, "range": ["2026-04-16", "2026-07-14"]}},
+"402340":{"rows": [{"d": "2026-04-16", "c": 690000.0, "eps": 156561.0, "pe": 4.4}, {"d": "2026-04-17", "c": 691000.0, "eps": 156723.0, "pe": 4.4}, {"d": "2026-04-20", "c": 709000.0, "eps": 157206.0, "pe": 4.5}, {"d": "2026-04-21", "c": 724000.0, "eps": 157367.0, "pe": 4.6}, {"d": "2026-04-22", "c": 715000.0, "eps": 157529.0, "pe": 4.5}, {"d": "2026-04-23", "c": 725000.0, "eps": 157690.0, "pe": 4.6}, {"d": "2026-04-24", "c": 727000.0, "eps": 157851.0, "pe": 4.6}, {"d": "2026-04-27", "c": 800000.0, "eps": 158335.0, "pe": 5.1}, {"d": "2026-04-28", "c": 805000.0, "eps": 158496.0, "pe": 5.1}, {"d": "2026-04-29", "c": 839000.0, "eps": 158657.0, "pe": 5.3}, {"d": "2026-04-30", "c": 854000.0, "eps": 158819.0, "pe": 5.4}, {"d": "2026-05-04", "c": 999000.0, "eps": 159464.0, "pe": 6.3}, {"d": "2026-05-06", "c": 1152000.0, "eps": 159786.0, "pe": 7.2}, {"d": "2026-05-07", "c": 1092000.0, "eps": 159947.0, "pe": 6.8}, {"d": "2026-05-08", "c": 1097000.0, "eps": 160109.0, "pe": 6.9}, {"d": "2026-05-11", "c": 1186000.0, "eps": 160592.0, "pe": 7.4}, {"d": "2026-05-12", "c": 1096000.0, "eps": 160753.0, "pe": 6.8}, {"d": "2026-05-13", "c": 1200000.0, "eps": 160915.0, "pe": 7.5}, {"d": "2026-05-14", "c": 1161000.0, "eps": 161076.0, "pe": 7.2}, {"d": "2026-05-15", "c": 1096000.0, "eps": 161237.0, "pe": 6.8}, {"d": "2026-05-18", "c": 1087000.0, "eps": 161721.0, "pe": 6.7}, {"d": "2026-05-19", "c": 1001000.0, "eps": 161882.0, "pe": 6.2}, {"d": "2026-05-20", "c": 1055000.0, "eps": 162043.0, "pe": 6.5}, {"d": "2026-05-21", "c": 1152000.0, "eps": 162205.0, "pe": 7.1}, {"d": "2026-05-22", "c": 1176000.0, "eps": 162366.0, "pe": 7.2}, {"d": "2026-05-26", "c": 1197000.0, "eps": 163011.0, "pe": 7.3}, {"d": "2026-05-27", "c": 1298000.0, "eps": 163172.0, "pe": 8.0}, {"d": "2026-05-28", "c": 1219000.0, "eps": 163333.0, "pe": 7.5}, {"d": "2026-05-29", "c": 1248000.0, "eps": 163494.0, "pe": 7.6}, {"d": "2026-06-01", "c": 1255000.0, "eps": 163978.0, "pe": 7.7}, {"d": "2026-06-02", "c": 1319000.0, "eps": 164139.0, "pe": 8.0}, {"d": "2026-06-04", "c": 1289000.0, "eps": 164462.0, "pe": 7.8}, {"d": "2026-06-05", "c": 1253000.0, "eps": 164623.0, "pe": 7.6}, {"d": "2026-06-08", "c": 1131000.0, "eps": 165107.0, "pe": 6.9}, {"d": "2026-06-09", "c": 1276000.0, "eps": 165268.0, "pe": 7.7}, {"d": "2026-06-10", "c": 1156000.0, "eps": 165429.0, "pe": 7.0}, {"d": "2026-06-11", "c": 1236000.0, "eps": 165591.0, "pe": 7.5}, {"d": "2026-06-12", "c": 1337000.0, "eps": 165752.0, "pe": 8.1}, {"d": "2026-06-15", "c": 1424000.0, "eps": 166236.0, "pe": 8.6}, {"d": "2026-06-16", "c": 1554000.0, "eps": 166397.0, "pe": 9.3}, {"d": "2026-06-17", "c": 1596000.0, "eps": 166558.0, "pe": 9.6}, {"d": "2026-06-18", "c": 1734000.0, "eps": 166719.0, "pe": 10.4}, {"d": "2026-06-19", "c": 1803000.0, "eps": 166719.0, "pe": 10.8}, {"d": "2026-06-22", "c": 2126000.0, "eps": 166719.0, "pe": 12.8}, {"d": "2026-06-23", "c": 1821000.0, "eps": 166719.0, "pe": 10.9}, {"d": "2026-06-24", "c": 1813000.0, "eps": 166719.0, "pe": 10.9}, {"d": "2026-06-25", "c": 1921000.0, "eps": 166719.0, "pe": 11.5}, {"d": "2026-06-26", "c": 1712000.0, "eps": 166719.0, "pe": 10.3}, {"d": "2026-06-29", "c": 1632000.0, "eps": 166719.0, "pe": 9.8}, {"d": "2026-06-30", "c": 1680000.0, "eps": 166719.0, "pe": 10.1}, {"d": "2026-07-01", "c": 1731000.0, "eps": 166719.0, "pe": 10.4}, {"d": "2026-07-02", "c": 1530000.0, "eps": 166719.0, "pe": 9.2}, {"d": "2026-07-03", "c": 1602000.0, "eps": 166719.0, "pe": 9.6}, {"d": "2026-07-06", "c": 1491000.0, "eps": 166719.0, "pe": 8.9}, {"d": "2026-07-07", "c": 1316000.0, "eps": 166719.0, "pe": 7.9}, {"d": "2026-07-08", "c": 1193000.0, "eps": 166719.0, "pe": 7.2}, {"d": "2026-07-09", "c": 1373000.0, "eps": 166719.0, "pe": 8.2}, {"d": "2026-07-10", "c": 1418000.0, "eps": 166719.0, "pe": 8.5}, {"d": "2026-07-13", "c": 1160000.0, "eps": 166719.0, "pe": 7.0}, {"d": "2026-07-14", "c": 1127000.0, "eps": 166719.0, "pe": 6.8}], "stats": {"avg": 7.6, "min": 4.4, "max": 12.8, "min_day": "2026-04-16", "max_day": "2026-06-22", "cur": 6.8, "cur_eps": 166719.0, "cur_price": 1127000.0, "percentile": 32}, "cfg": {"currency": "KRW", "multiples": [5, 10, 15, 20], "priceMax": 4000000, "priceTick": 800000, "peMax": 15, "peTick": 3, "epsMax": 200000, "epsTick": 40000}, "anchors": [{"d": "2025-06-23", "val": "6.0조원", "eps": 45468.88, "why": "지주 순이익 근사 — 하이닉스 지분(20.6%) 지분법이익 기준 NTM 약 6조원 추정"}, {"d": "2025-09-15", "val": "10.0조원", "eps": 75781.47, "why": "하이닉스 이익 급증 반영 NTM 귀속 순이익 약 10조원 추정"}, {"d": "2025-12-15", "val": "15.0조원", "eps": 113672.2, "why": "NTM 귀속 순이익 약 15조원 추정"}, {"d": "2026-03-16", "val": "20.0조원", "eps": 151562.93, "why": "2026 1분기 지분법 OP 8.28조 등 반영 NTM 귀속 순이익 약 20조원 추정"}, {"d": "2026-06-18", "val": "22.0조원", "eps": 166719.23, "why": "하이닉스 배당·자사주 수혜 리포트(2026-06-18) 반영 NTM 귀속 순이익 약 22조원 추정"}, {"d": "2026-07-14", "val": "22.0조원", "eps": 166719.23, "why": "현재 — NTM 귀속 순이익 약 22조원 유지(추정)"}], "meta": {"symbol": "402340", "name": "SK스퀘어", "shares": 131958386, "mode": "op_krw", "conv": 1.0, "range": ["2026-04-16", "2026-07-14"]}},
+"066570":{"rows": [{"d": "2026-04-16", "c": 126200.0, "eps": 20105.0, "pe": 6.3}, {"d": "2026-04-17", "c": 124600.0, "eps": 20137.0, "pe": 6.2}, {"d": "2026-04-20", "c": 124700.0, "eps": 20234.0, "pe": 6.2}, {"d": "2026-04-21", "c": 127400.0, "eps": 20266.0, "pe": 6.3}, {"d": "2026-04-22", "c": 134000.0, "eps": 20298.0, "pe": 6.6}, {"d": "2026-04-23", "c": 128600.0, "eps": 20331.0, "pe": 6.3}, {"d": "2026-04-24", "c": 127800.0, "eps": 20363.0, "pe": 6.3}, {"d": "2026-04-27", "c": 130900.0, "eps": 20459.0, "pe": 6.4}, {"d": "2026-04-28", "c": 138000.0, "eps": 20492.0, "pe": 6.7}, {"d": "2026-04-29", "c": 137400.0, "eps": 20524.0, "pe": 6.7}, {"d": "2026-04-30", "c": 141300.0, "eps": 20556.0, "pe": 6.9}, {"d": "2026-05-04", "c": 142000.0, "eps": 20685.0, "pe": 6.9}, {"d": "2026-05-06", "c": 156400.0, "eps": 20749.0, "pe": 7.5}, {"d": "2026-05-07", "c": 149000.0, "eps": 20782.0, "pe": 7.2}, {"d": "2026-05-08", "c": 154100.0, "eps": 20814.0, "pe": 7.4}, {"d": "2026-05-11", "c": 156300.0, "eps": 20910.0, "pe": 7.5}, {"d": "2026-05-12", "c": 180500.0, "eps": 20943.0, "pe": 8.6}, {"d": "2026-05-13", "c": 192200.0, "eps": 20975.0, "pe": 9.2}, {"d": "2026-05-14", "c": 222500.0, "eps": 21007.0, "pe": 10.6}, {"d": "2026-05-15", "c": 238500.0, "eps": 21039.0, "pe": 11.3}, {"d": "2026-05-18", "c": 212500.0, "eps": 21136.0, "pe": 10.1}, {"d": "2026-05-19", "c": 186100.0, "eps": 21168.0, "pe": 8.8}, {"d": "2026-05-20", "c": 184400.0, "eps": 21200.0, "pe": 8.7}, {"d": "2026-05-21", "c": 232000.0, "eps": 21232.0, "pe": 10.9}, {"d": "2026-05-22", "c": 237000.0, "eps": 21265.0, "pe": 11.1}, {"d": "2026-05-26", "c": 245000.0, "eps": 21393.0, "pe": 11.5}, {"d": "2026-05-27", "c": 236000.0, "eps": 21426.0, "pe": 11.0}, {"d": "2026-05-28", "c": 234000.0, "eps": 21458.0, "pe": 10.9}, {"d": "2026-05-29", "c": 293000.0, "eps": 21490.0, "pe": 13.6}, {"d": "2026-06-01", "c": 380500.0, "eps": 21587.0, "pe": 17.6}, {"d": "2026-06-02", "c": 375000.0, "eps": 21619.0, "pe": 17.3}, {"d": "2026-06-04", "c": 304000.0, "eps": 21683.0, "pe": 14.0}, {"d": "2026-06-05", "c": 297500.0, "eps": 21716.0, "pe": 13.7}, {"d": "2026-06-08", "c": 268000.0, "eps": 21812.0, "pe": 12.3}, {"d": "2026-06-09", "c": 246500.0, "eps": 21844.0, "pe": 11.3}, {"d": "2026-06-10", "c": 214000.0, "eps": 21877.0, "pe": 9.8}, {"d": "2026-06-11", "c": 228500.0, "eps": 21909.0, "pe": 10.4}, {"d": "2026-06-12", "c": 228000.0, "eps": 21941.0, "pe": 10.4}, {"d": "2026-06-15", "c": 248000.0, "eps": 22038.0, "pe": 11.3}, {"d": "2026-06-16", "c": 234000.0, "eps": 22070.0, "pe": 10.6}, {"d": "2026-06-17", "c": 231500.0, "eps": 22102.0, "pe": 10.5}, {"d": "2026-06-18", "c": 229500.0, "eps": 22134.0, "pe": 10.4}, {"d": "2026-06-19", "c": 212000.0, "eps": 22166.0, "pe": 9.6}, {"d": "2026-06-22", "c": 234500.0, "eps": 22263.0, "pe": 10.5}, {"d": "2026-06-23", "c": 194600.0, "eps": 22295.0, "pe": 8.7}, {"d": "2026-06-24", "c": 205500.0, "eps": 22327.0, "pe": 9.2}, {"d": "2026-06-25", "c": 202500.0, "eps": 22360.0, "pe": 9.1}, {"d": "2026-06-26", "c": 196200.0, "eps": 22392.0, "pe": 8.8}, {"d": "2026-06-29", "c": 199300.0, "eps": 22489.0, "pe": 8.9}, {"d": "2026-06-30", "c": 201000.0, "eps": 22521.0, "pe": 8.9}, {"d": "2026-07-01", "c": 192400.0, "eps": 22553.0, "pe": 8.5}, {"d": "2026-07-02", "c": 188800.0, "eps": 22585.0, "pe": 8.4}, {"d": "2026-07-03", "c": 191500.0, "eps": 22617.0, "pe": 8.5}, {"d": "2026-07-06", "c": 184800.0, "eps": 22714.0, "pe": 8.1}, {"d": "2026-07-07", "c": 188500.0, "eps": 22746.0, "pe": 8.3}, {"d": "2026-07-08", "c": 185900.0, "eps": 22746.0, "pe": 8.2}, {"d": "2026-07-09", "c": 179100.0, "eps": 22746.0, "pe": 7.9}, {"d": "2026-07-10", "c": 182700.0, "eps": 22746.0, "pe": 8.0}, {"d": "2026-07-13", "c": 186200.0, "eps": 22746.0, "pe": 8.2}, {"d": "2026-07-14", "c": 178600.0, "eps": 22746.0, "pe": 7.9}], "stats": {"avg": 9.3, "min": 6.2, "max": 17.6, "min_day": "2026-04-17", "max_day": "2026-06-01", "cur": 7.9, "cur_eps": 22746.0, "cur_price": 178600.0, "percentile": 30}, "cfg": {"currency": "KRW", "multiples": [5, 10, 15, 20], "priceMax": 500000, "priceTick": 100000, "peMax": 20, "peTick": 4, "epsMax": 30000, "epsTick": 6000}, "anchors": [{"d": "2025-06-23", "val": "2.8조원", "eps": 12737.85, "why": "2025년 중반 NTM 영업이익 약 2.8조원 추정"}, {"d": "2025-09-15", "val": "2.8조원", "eps": 12737.85, "why": "가전 수요 둔화 국면 NTM 약 2.8조원 추정"}, {"d": "2025-12-15", "val": "3.2조원", "eps": 14557.54, "why": "프리미엄 가전·전장 회복 반영 NTM 약 3.2조원 추정"}, {"d": "2026-03-16", "val": "4.2조원", "eps": 19106.77, "why": "2026 1분기 OP 1.67조(+33% YoY) 반영 NTM 약 4.2조원 추정"}, {"d": "2026-07-07", "val": "5.0조원", "eps": 22746.16, "why": "2026 2분기 잠정 OP 1.58조(+147% YoY, 관세 환급 일회성 포함)·컨센 상향 NTM 약 5조원 추정"}, {"d": "2026-07-14", "val": "5.0조원", "eps": 22746.16, "why": "현재 — NTM 약 5조원 유지(추정)"}], "meta": {"symbol": "066570", "name": "LG전자", "shares": 162884638, "mode": "op_krw", "conv": 0.741, "range": ["2026-04-16", "2026-07-14"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d=>{const data=PE_DATA[d.dataset.peb];if(data)renderPeBand(d,data);});
+</script>
+</body>
+</html>
