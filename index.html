@@ -6,114 +6,604 @@
 <title>Nextiar Research — 개인 투자 리서치 발간</title>
 <meta name="description" content="데이터와 공시로 검증하는 개인 투자 리서치. 종목발굴·밸류에이션 리포트를 발간합니다. 매매 권유가 아닙니다.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔎</text></svg>">
+<script>
+/* 테마 초기화 — FOUC 방지: hash(#light/#dark 프리뷰) > localStorage > 시스템 */
+(function () {
+  var h = location.hash.replace("#", "");
+  var t = (h === "light" || h === "dark") ? h : null;
+  try { t = t || localStorage.getItem("theme"); } catch (e) {}
+  if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+})();
+</script>
 <style>
+/* ── 토큰: 뉴트럴 베이스(C 계열) + 다크는 터미널 온도(A 계열)로 기울임 ──
+   앰버(--accent)는 등급·강조 보조색으로만 사용. 데이터 표기는 모노스페이스(.mono). */
 :root {
-  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
-  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
-  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
-  --up: #d03b3b; --down: #2a78d6;
-  --border: rgba(11,11,11,0.10);
+  color-scheme: light;
+  --page: #f6f6f2; --panel: #fdfdfb; --panel-2: #efefe9; --raise: #ffffff;
+  --ink: #191c21; --ink-2: #4c545f; --muted: #858c96;
+  --border: #e2e1d8; --border-2: #cecdc2;
+  --accent: #a3620e; --accent-ink: #ffffff; --accent-bg: rgba(163,98,14,0.09);
+  --up: #c93b3b; --down: #2668c5;
+  --kr: #2a78d6; --us: #c2632e;
+  --link: #1f66c0; --sel: rgba(163,98,14,0.08);
+  --brief: #8095aa;
+  --shadow: 0 18px 50px rgba(30,30,20,0.18);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
-    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
-    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
-    --up: #e66767; --down: #3987e5;
-    --border: rgba(255,255,255,0.10);
+    color-scheme: dark;
+    --page: #0a0d11; --panel: #0f141b; --panel-2: #121924; --raise: #17202c;
+    --ink: #dfe5ec; --ink-2: #9aa5b1; --muted: #667180;
+    --border: #1d2632; --border-2: #2b3644;
+    --accent: #f0a742; --accent-ink: #0a0d11; --accent-bg: rgba(240,167,66,0.10);
+    --up: #ff7676; --down: #5aa2f7;
+    --kr: #6aa9f5; --us: #e08b4a;
+    --link: #7db4f5; --sel: rgba(240,167,66,0.12);
+    --brief: #5b7896;
+    --shadow: 0 18px 50px rgba(0,0,0,0.55);
   }
 }
+:root[data-theme="light"] {
+  color-scheme: light;
+  --page: #f6f6f2; --panel: #fdfdfb; --panel-2: #efefe9; --raise: #ffffff;
+  --ink: #191c21; --ink-2: #4c545f; --muted: #858c96;
+  --border: #e2e1d8; --border-2: #cecdc2;
+  --accent: #a3620e; --accent-ink: #ffffff; --accent-bg: rgba(163,98,14,0.09);
+  --up: #c93b3b; --down: #2668c5;
+  --kr: #2a78d6; --us: #c2632e;
+  --link: #1f66c0; --sel: rgba(163,98,14,0.08);
+  --brief: #8095aa;
+  --shadow: 0 18px 50px rgba(30,30,20,0.18);
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0a0d11; --panel: #0f141b; --panel-2: #121924; --raise: #17202c;
+  --ink: #dfe5ec; --ink-2: #9aa5b1; --muted: #667180;
+  --border: #1d2632; --border-2: #2b3644;
+  --accent: #f0a742; --accent-ink: #0a0d11; --accent-bg: rgba(240,167,66,0.10);
+  --up: #ff7676; --down: #5aa2f7;
+  --kr: #6aa9f5; --us: #e08b4a;
+  --link: #7db4f5; --sel: rgba(240,167,66,0.12);
+  --brief: #5b7896;
+  --shadow: 0 18px 50px rgba(0,0,0,0.55);
+}
+
 * { box-sizing: border-box; }
+html { scrollbar-gutter: stable; }
 body {
   margin: 0; background: var(--page); color: var(--ink);
   font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
-  font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+  font-size: 13.5px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
 }
-.wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 72px; display: flex; flex-direction: column; gap: 40px; }
-.eyebrow { font-size: 11.5px; letter-spacing: 0.16em; color: var(--muted); font-weight: 650; }
-.hero h1 { font-size: 34px; line-height: 1.25; margin: 10px 0 12px; letter-spacing: -0.015em; text-wrap: balance; }
-.hero .sub { color: var(--ink-2); font-size: 15px; margin: 0; max-width: 62ch; }
-.hero .sub strong { color: var(--ink); }
-.principles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.principles span { font-size: 12px; color: var(--ink-2); border: 1px solid var(--border);
-  background: var(--card); border-radius: 99px; padding: 3px 12px; }
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; align-items: center; }
-.filters input { flex: 1 1 200px; max-width: 280px; background: var(--card); color: var(--ink);
-  border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 13px; font-family: inherit; }
-.filters input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-.filters button { background: var(--card); color: var(--ink-2); border: 1px solid var(--border);
-  border-radius: 99px; padding: 4px 14px; font-size: 12px; font-weight: 650; cursor: pointer; font-family: inherit; }
-.filters button.on { border-color: var(--accent); color: var(--accent); }
-.filters .fgroup-lbl { font-size: 10.5px; font-weight: 650; color: var(--muted); text-transform: uppercase;
-  letter-spacing: 0.08em; margin-left: 6px; align-self: center; }
-.filters .fgroup-lbl:first-of-type { margin-left: 0; }
-.filters .fcount { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; align-self: center; }
-.filters-sub { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--border); }
-.filters-sub[hidden] { display: none; }
-.report-card.hide, section.hide { display: none; }
-section h2 { font-size: 19px; margin: 0 0 4px; letter-spacing: -0.005em; }
-section .sec-desc { font-size: 13px; color: var(--muted); margin: 0 0 16px; }
-.report-list { display: flex; flex-direction: column; gap: 12px; }
-a.report-card { display: block; text-decoration: none; color: inherit; background: var(--card);
-  border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px 16px;
-  transition: border-color 0.15s ease; }
-a.report-card:hover { border-color: var(--accent); }
-.rc-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.rc-date { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.rc-tags { display: inline-flex; gap: 6px; }
-.rc-tags span { font-size: 10.5px; font-weight: 650; color: var(--accent);
-  border: 1px solid var(--border); border-radius: 99px; padding: 0 8px; line-height: 1.7; }
-.rc-title { font-size: 16px; font-weight: 650; margin: 6px 0 4px; line-height: 1.45; letter-spacing: -0.005em; }
-.rc-sum { font-size: 13px; color: var(--ink-2); margin: 0; max-width: 70ch; }
-.rc-empty { border: 1px dashed var(--axis); border-radius: 12px; padding: 22px 20px;
-  color: var(--muted); font-size: 13px; text-align: center; }
-footer { color: var(--muted); font-size: 12.5px; line-height: 1.8; border-top: 1px solid var(--grid); padding-top: 20px; }
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+kbd {
+  font: 600 10.5px/1.5 ui-monospace, Menlo, monospace; color: var(--ink-2); background: var(--panel-2);
+  border: 1px solid var(--border-2); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px;
+}
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, label:focus-within {
+  outline: 2px solid var(--accent); outline-offset: 1px;
+}
+/* 한국어 조판: 제목류는 단어 중간에서 끊지 않는다 (넘칠 때만 예외 허용) */
+.hero h1, section h2, .rc-title, .rail-head h2 { word-break: keep-all; overflow-wrap: anywhere; }
+
+/* ── 상단바 ── */
+.topbar {
+  max-width: 1200px; margin: 0 auto; padding: 16px 20px 0;
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.brand { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 800;
+  font-size: 13.5px; letter-spacing: 0.10em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.brand:hover { text-decoration: none; }
+.brand-mark { color: var(--accent); animation: blink 1.3s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0.15; } }
+.brand-sub { color: var(--muted); font-weight: 650; }
+.topnav { display: flex; gap: 2px; margin-left: 4px; flex-wrap: wrap; }
+.topnav a { color: var(--ink-2); font-size: 12px; font-weight: 650; padding: 4px 9px; border-radius: 6px; }
+.topnav a:hover { color: var(--ink); background: var(--panel-2); text-decoration: none; }
+.top-actions { margin-left: auto; display: flex; gap: 8px; }
+.tbtn {
+  display: inline-flex; align-items: center; gap: 7px;
+  border: 1px solid var(--border-2); background: var(--panel); border-radius: 7px;
+  padding: 5px 11px; font-size: 12px; font-weight: 650; color: var(--ink-2);
+}
+.tbtn:hover { border-color: var(--accent); color: var(--ink); }
+
+/* ── 히어로(다이어트): 태그라인 한 줄(muted 소형) + 원칙·고지 접힘 토글 ── */
+.hero { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; }
+.hero h1 { margin: 0; font-size: 12px; line-height: 1.55; font-weight: 600; color: var(--muted); letter-spacing: 0.01em; }
+.hero h1 .disc { color: var(--ink-2); font-weight: 650; }
+.notice { margin-top: 6px; }
+.notice summary { display: inline-flex; align-items: center; gap: 6px; min-height: 30px;
+  cursor: pointer; list-style: none; font-size: 11px; font-weight: 650; color: var(--muted);
+  border: 1px solid var(--border); border-radius: 99px; padding: 0 12px; }
+.notice summary::-webkit-details-marker { display: none; }
+.notice summary .ni { color: var(--accent); font-weight: 700; }
+.notice summary:hover, .notice[open] summary { color: var(--ink-2); border-color: var(--border-2); }
+.notice-body { margin: 8px 0 0; max-width: 78ch; font-size: 11.5px; line-height: 1.7; color: var(--muted);
+  border-left: 2px solid var(--border); padding-left: 12px; }
+.notice-body p { margin: 0 0 6px; }
+.notice-body p:last-child { margin-bottom: 0; }
+.notice-body ul { margin: 0 0 6px; padding: 0; list-style: none; }
+.notice-body li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+
+/* ── 통계 스트립 (C → 한 줄 압축, 모바일 2×2 타일) ── */
+.stats { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0; }
+.stats-inner { display: flex; align-items: stretch; gap: 0; border: 1px solid var(--border);
+  background: var(--panel); border-radius: 10px; padding: 10px 4px; }
+.stat { flex: 1 1 0; display: flex; flex-direction: column; justify-content: center; gap: 1px;
+  padding: 2px 18px; border-left: 1px solid var(--border); min-width: 0; }
+.stat:first-child { border-left: 0; }
+.stat b { font-size: 21px; font-weight: 750; line-height: 1.25; letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.stat b small { font-size: 11px; font-weight: 650; color: var(--ink-2); margin-left: 1px; }
+.stat .lbl { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.split-bar { display: flex; gap: 2px; height: 8px; margin: 5px 0 4px; }
+.split-bar .seg { border-radius: 3px; min-width: 6px; }
+.split-bar .seg.kr { background: var(--kr); }
+.split-bar .seg.us { background: var(--us); }
+.split-lbl { display: flex; gap: 10px; font-size: 11px; color: var(--ink-2);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: nowrap; }
+.split-lbl b { font-weight: 700; color: var(--ink); font-size: 11px; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 4px; }
+.dot.kr { background: var(--kr); } .dot.us { background: var(--us); }
+
+/* ── 커버리지 레일 (C 변형: 가로 스크롤) ── */
+.rail-sec { max-width: 1200px; margin: 0 auto; padding: 18px 20px 0; }
+.rail-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.rail-head h2 { margin: 0; font-size: 13px; font-weight: 750; letter-spacing: 0.05em; }
+.rail-head h2::before { content: "## "; color: var(--accent); }
+.rail-hint { font-size: 11px; color: var(--muted); }
+.rail { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 6px; scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 34px), transparent); }
+.rail::-webkit-scrollbar { display: none; }
+.rk { flex: 0 0 auto; min-width: 138px; max-width: 200px; min-height: 44px; text-align: left;
+  background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+  padding: 8px 12px 7px; transition: border-color 0.15s ease; }
+.rk:hover { border-color: var(--accent); }
+.rk.on { border-color: var(--accent); background: var(--accent-bg); }
+.rk.hide { display: none; }
+.rk-head { display: flex; align-items: baseline; gap: 6px; }
+.rk-name { font-weight: 700; font-size: 12.5px; line-height: 1.4; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
+.rk-mkt { margin-left: auto; flex: none; font-size: 9px; font-weight: 700; border-radius: 4px;
+  padding: 0 4px; line-height: 1.6; }
+.rk-mkt.kr { color: var(--kr); border: 1px solid color-mix(in srgb, var(--kr) 55%, transparent); }
+.rk-mkt.us { color: var(--us); border: 1px solid color-mix(in srgb, var(--us) 55%, transparent); }
+.rk-sub { font-size: 10.5px; color: var(--muted); margin-top: 2px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+.rk-sub b { color: var(--ink); font-weight: 750; }
+.rail-sec.hide { display: none; }
+
+/* ── 본문 2단: 파셋 사이드바(C) + 밀도 행 리스트(A) ── */
+.layout { max-width: 1200px; margin: 0 auto; padding: 16px 20px 0;
+  display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 24px; align-items: start; }
+.side { position: sticky; top: 14px; }
+#facet-box { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 2px 14px 12px; }
+#facet-box summary { cursor: pointer; list-style: none; font-size: 12.5px; font-weight: 750; padding: 10px 0 4px; }
+#facet-box summary::-webkit-details-marker { display: none; }
+#facet-box summary .hint { font-weight: 500; color: var(--muted); font-size: 11.5px; margin-left: 6px; }
+.fgroup { border-top: 1px dashed var(--border); padding-top: 9px; margin-top: 9px; }
+.fgroup:first-of-type { border-top: 0; margin-top: 2px; }
+.fgroup h3 { font-size: 10px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.09em; margin: 0 0 5px; }
+.fgroup label { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-2);
+  padding: 2.5px 0; cursor: pointer; }
+.fgroup label:hover { color: var(--ink); }
+.fgroup input[type="checkbox"] { accent-color: var(--accent); width: 14px; height: 14px; margin: 0; flex: none; }
+.fgroup .n { margin-left: auto; font-size: 11px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.fgroup .sub { margin: 4px 0 2px 20px; border-left: 2px solid var(--border); padding-left: 10px; }
+#reset-btn { margin-top: 11px; width: 100%; background: none; border: 1px solid var(--border);
+  border-radius: 8px; color: var(--ink-2); font-size: 12px; font-weight: 650; padding: 6px 0; }
+#reset-btn:hover { border-color: var(--accent); color: var(--accent); }
+/* 바텀시트 전용 — 데스크톱 기본 숨김 */
+.sheet-head, #apply-btn, #filter-fab, #fab-badge, #sheet-backdrop { display: none; }
+
+/* ── 툴바: 검색·정렬·카운트 + 활성 필터 칩 ── */
+section h2 { margin: 0; font-size: 13px; font-weight: 750; letter-spacing: 0.05em; }
+section h2::before { content: "## "; color: var(--accent); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 10px; }
+.toolbar input[type="search"] { flex: 1 1 190px; max-width: 280px; background: var(--panel); color: var(--ink);
+  border: 1px solid var(--border-2); border-radius: 8px; padding: 6px 11px; font-size: 12.5px; font-family: inherit; }
+.toolbar input::placeholder { color: var(--muted); }
+.toolbar select { background: var(--panel); color: var(--ink-2); border: 1px solid var(--border-2);
+  border-radius: 8px; padding: 6px 8px; font-size: 12px; font-family: inherit; cursor: pointer; }
+.fcount { margin-left: auto; font-size: 11.5px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.active-chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 10px; }
+.active-chips[hidden] { display: none; }
+.fchip { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 650;
+  color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  border-radius: 99px; padding: 3px 10px 3px 12px; background: var(--accent-bg); max-width: 100%; }
+.fchip .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fchip .x { font-weight: 700; flex: none; }
+
+/* ── 탭: 전체(기본) | 종목 분석 | 시황 — 리스트의 1차 분기, 배지는 필터 적용 후 개수 ── */
+.tabs { display: flex; gap: 2px; margin: 2px 0 10px; border-bottom: 1px solid var(--border); }
+.tab { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 14px;
+  margin-bottom: -1px; border-bottom: 2px solid transparent;
+  font-size: 13px; font-weight: 700; color: var(--muted); }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .tab-n { min-width: 20px; padding: 0 7px; border-radius: 99px; text-align: center;
+  font-size: 11px; font-weight: 700; line-height: 1.8; color: var(--muted); background: var(--panel-2);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.tab[aria-selected="true"] .tab-n { color: var(--accent); background: var(--accent-bg); }
+
+/* ── 밀도 행 리스트 (A): 날짜·태그 | 제목+요약 | 섹터 | 등급 ── */
+.tablewrap { border: 1px solid var(--border); border-radius: 10px; background: var(--panel); }
+.rgrid { display: grid; grid-template-columns: 96px minmax(0, 1fr) 116px 62px; column-gap: 14px; align-items: start; }
+.colhead {
+  position: sticky; top: 0; z-index: 30;
+  padding: 7px 16px; background: var(--panel-2); border-bottom: 1px solid var(--border);
+  border-radius: 9px 9px 0 0;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.report-list { display: flex; flex-direction: column; }
+.report-list > a.report-card {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr) 116px 62px; column-gap: 14px; align-items: start;
+  color: inherit; padding: 12px 16px; border-bottom: 1px solid var(--border);
+  border-left: 2px solid transparent;
+}
+.report-list > a.report-card:hover { background: var(--sel); border-left-color: var(--accent); text-decoration: none; }
+.report-list > a.report-card:last-child { border-bottom: 0; border-radius: 0 0 9px 9px; }
+.report-list > a.report-card:nth-of-type(even) { background: color-mix(in srgb, var(--panel-2) 40%, transparent); }
+.report-list > a.report-card:nth-of-type(even):hover { background: var(--sel); }
+.rc-top { grid-column: 1; grid-row: 1 / span 2; display: flex; flex-direction: column;
+  align-items: flex-start; gap: 5px; padding-top: 2px; }
+.rc-date { font-size: 10.5px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+/* 태그: 칩(테두리·배경) 제거 → 구분점(·) 텍스트 — 메타는 흐리게, 제목만 주인공 */
+.rc-tags { display: flex; flex-wrap: wrap; gap: 0 3px; }
+.rc-tags span { font-size: 10px; font-weight: 600; line-height: 1.6; letter-spacing: 0.02em; color: var(--muted); }
+.rc-tags span + span::before { content: "· "; color: var(--muted); font-weight: 400; }
+.rc-tags span.t-kr { color: var(--kr); }
+.rc-tags span.t-us { color: var(--us); }
+.rc-tags span.t-deep { color: var(--accent); }
+.rc-title { grid-column: 2; grid-row: 1; font-size: 14px; font-weight: 700; line-height: 1.45;
+  letter-spacing: -0.005em; color: var(--ink); }
+.report-list > a.report-card:hover .rc-title { color: var(--accent); }
+.rc-sum { grid-column: 2; grid-row: 2; margin: 2px 0 0; font-size: 11.5px; color: var(--muted);
+  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.rc-meta { display: contents; }
+.rc-sector { grid-column: 3; grid-row: 1 / span 2; font-size: 10.5px; color: var(--muted);
+  padding-top: 3px; overflow-wrap: anywhere; }
+.rc-rating { grid-column: 4; grid-row: 1 / span 2; justify-self: start; margin-top: 3px;
+  font-size: 10.5px; font-weight: 750; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.rc-rating.r-cut, .rc-rating.r-neu { display: inline-flex; align-items: center;
+  border-radius: 5px; padding: 1px 7px; line-height: 1.6; }
+.rc-rating.r-cut { color: var(--down); background: color-mix(in srgb, var(--down) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--down) 40%, transparent); }
+.rc-rating.r-neu { color: var(--accent); background: var(--accent-bg);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+a.report-card.hide { display: none !important; }
+.rc-empty { padding: 22px 20px; color: var(--muted); font-size: 12px; text-align: center; }
+.rc-empty[hidden] { display: none; }
+
+/* ── 시황 단신 행 (.brief): "분석은 문서, 시황은 단신" — 시황·매크로 행은 그리드 해제,
+   한 줄 단신(요약·메타는 DOM 유지·비표시 — 날짜는 시황 탭의 날짜 헤더가 담당),
+   좌측 2px 틱(중립 블루그레이 --brief — 등급·앰버 액센트와 구분되는 결) ── */
+.report-list > a.report-card.brief {
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 16px; min-height: 44px;
+}
+a.report-card.brief::before { content: ""; flex: none; width: 2px; height: 15px;
+  border-radius: 1px; background: var(--brief); }
+a.report-card.brief .rc-top, a.report-card.brief .rc-sum, a.report-card.brief .rc-meta { display: none; }
+a.report-card.brief .rc-title { flex: 1 1 auto; min-width: 0; margin: 0;
+  font-size: 12.5px; font-weight: 600; line-height: 1.5; letter-spacing: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* 전체 탭 전용: 단신 행 `MM.DD ·` 날짜 프리픽스 — 시황 탭에선 날짜 헤더가 담당하므로 숨김 */
+a.report-card.brief .rc-bdate { display: none; flex: none; font-size: 10.5px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+#discovery.tab-all a.report-card.brief .rc-bdate { display: block; }
+
+/* ── 시황 탭 날짜 헤더 (신규): `M/D` 소형 헤더 아래 그날 단신 그룹핑 ── */
+.date-head { padding: 7px 16px 5px; border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel-2) 55%, transparent);
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.date-head.hide { display: none; }
+/* 시황 탭: 컬럼 헤더(날짜·섹터·등급 그리드)는 무의미 → 숨김, 모서리는 클리핑으로 정리 */
+#discovery.tab-market .colhead { display: none; }
+#discovery.tab-market .tablewrap { overflow: hidden; }
+#discovery.tab-market .report-list > a.report-card:nth-of-type(even) { background: none; }
+#discovery.tab-market .report-list > a.report-card:hover { background: var(--sel); }
+.fgroup.hide { display: none; }
+
+/* ── ⌘K 커맨드 팔레트 (A) — 입력은 필터 상태(needle)와 동기화 ── */
+.cmdk { position: fixed; inset: 0; z-index: 100; background: rgba(4,6,9,0.55);
+  backdrop-filter: blur(3px); display: flex; justify-content: center; align-items: flex-start; padding: 12vh 16px 16px; }
+.cmdk[hidden] { display: none; }
+.cmdk-panel { width: min(680px, 100%); background: var(--raise); border: 1px solid var(--border-2);
+  border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.cmdk-inputrow { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+.cmdk-inputrow .prompt { color: var(--accent); font-weight: 800; font-size: 15px;
+  font-family: ui-monospace, Menlo, monospace; }
+.cmdk-inputrow input { flex: 1; background: none; border: 0; color: var(--ink); font: inherit; font-size: 14px; }
+.cmdk-inputrow input:focus { outline: none; }
+.cmdk-list { list-style: none; margin: 0; padding: 6px; max-height: 46vh; overflow-y: auto; }
+.cmdk-item { display: grid; grid-template-columns: 78px 1fr auto; gap: 10px; align-items: baseline;
+  padding: 7px 10px; border-radius: 7px; cursor: pointer; }
+.cmdk-item .ci-date { font-size: 11px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.cmdk-item .ci-title { font-size: 12.5px; font-weight: 600; color: var(--ink); white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+.cmdk-item .ci-tags { font-size: 10px; color: var(--muted);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.cmdk-item.active { background: var(--sel); box-shadow: inset 2px 0 0 var(--accent); }
+.cmdk-item.active .ci-title { color: var(--accent); }
+.cmdk-none { padding: 18px 12px; text-align: center; color: var(--muted); font-size: 12px; }
+.cmdk-foot { display: flex; gap: 14px; padding: 8px 14px; border-top: 1px solid var(--border);
+  font-size: 10.5px; color: var(--muted); }
+.cmdk-foot b { color: var(--ink-2); font-weight: 700; }
+.cmdk-close { display: none; align-items: center; justify-content: center;
+  min-width: 44px; min-height: 44px; margin: -6px -6px -6px 0;
+  color: var(--muted); font-size: 17px; border-radius: 8px; }
+.cmdk-close:active { background: var(--panel-2); color: var(--ink); }
+
+/* ── 모바일 검색 FAB (A v2) — 우하단, 필터 버튼(하단 중앙)과 분리 배치 ── */
+.fab-search { display: none; position: fixed; z-index: 90;
+  right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: 56px; height: 56px; border-radius: 50%;
+  align-items: center; justify-content: center;
+  background: var(--accent); color: var(--accent-ink);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.38); }
+.fab-search svg { width: 22px; height: 22px; display: block; }
+.fab-search:active { transform: scale(0.95); }
+
+/* ── 푸터 ── */
+footer { max-width: 1200px; margin: 26px auto 0; padding: 18px 20px 56px;
+  border-top: 1px solid var(--border); color: var(--muted); font-size: 11.5px; line-height: 1.9; }
 footer strong { color: var(--ink-2); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 12px; }
+footer a { color: var(--link); }
+
+/* ── ~919px: 단일 컬럼 — 사이드바 → 바텀시트(C v2), 필터 버튼 + 검색 FAB ── */
+@media (max-width: 919px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 14px; } /* 0: 단신 행 nowrap 제목의 min-content 전파 차단 */
+  .side { display: contents; position: static; } /* 닫힌 시트가 빈 그리드 행을 만들지 않게 */
+  body { padding-bottom: 96px; } /* 하단 고정 버튼과 콘텐츠 겹침 방지 */
+
+  /* 하단 중앙 필터 버튼 (활성 개수 배지) */
+  #filter-fab { display: flex; align-items: center; justify-content: center; gap: 8px;
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 88;
+    min-height: 48px; padding: 0 26px; border-radius: 99px; border: 1px solid var(--border);
+    background: var(--ink); color: var(--page); font-size: 14px; font-weight: 700;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.28); white-space: nowrap; }
+  #fab-badge.show { display: inline-flex; align-items: center; justify-content: center;
+    min-width: 20px; height: 20px; padding: 0 6px; border-radius: 99px;
+    background: var(--accent); color: var(--accent-ink); font-size: 12px;
+    font-family: ui-monospace, Menlo, monospace; }
+  .fab-search { display: flex; }
+
+  /* 바텀시트 */
+  body.sheet-open { overflow: hidden; }
+  #sheet-backdrop.show { display: block; position: fixed; inset: 0; z-index: 92; background: rgba(0,0,0,0.45); }
+  #facet-box summary { display: none; }
+  #facet-box:not([open]) { display: none; }
+  #facet-box[open] { position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; margin: 0;
+    padding: 0; border-radius: 16px 16px 0 0; border-bottom: 0; background: var(--raise);
+    box-shadow: 0 -10px 44px rgba(0,0,0,0.32); }
+  .sheet-head { display: flex; align-items: center; gap: 8px;
+    padding: 12px 8px 2px 20px; font-size: 15px; font-weight: 700; }
+  #sheet-close { margin-left: auto; width: 44px; height: 44px; border: 0; background: none;
+    color: var(--muted); font-size: 24px; line-height: 1; border-radius: 10px; padding: 0; }
+  .sheet-body { overflow-y: auto; max-height: calc(80dvh - 132px);
+    padding: 0 20px 12px; -webkit-overflow-scrolling: touch; }
+  .sheet-foot { display: flex; gap: 10px; border-top: 1px solid var(--border);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .sheet-foot button { min-height: 48px; margin: 0; border-radius: 10px;
+    font-size: 14.5px; font-weight: 700; }
+  #reset-btn { margin-top: 0; width: auto; flex: 0 0 36%; padding: 6px 0; }
+  #apply-btn { display: flex; align-items: center; justify-content: center; flex: 1;
+    background: var(--accent); border: 1px solid var(--accent); color: var(--accent-ink); }
+  /* 시트 안 체크박스 행: 터치 타겟 ≥44px */
+  #facet-box[open] .fgroup label { min-height: 44px; padding: 0; font-size: 14px; }
+  #facet-box[open] .fgroup input[type="checkbox"] { width: 18px; height: 18px; }
+  #facet-box[open] .fgroup .n { font-size: 12.5px; }
+}
+
+/* ── ~640px: 스택형 행(A v2)·2×2 통계 타일(C)·가독성·터치 타겟 ── */
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  .topbar { padding: 12px 16px 0; gap: 0 10px; }
+  .topnav { order: 3; width: 100%; margin-left: -9px; gap: 0; }
+  .topnav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 9px; font-size: 13px; }
+  .top-actions { margin-left: auto; }
+  .tbtn { min-height: 44px; padding: 0 14px; font-size: 13px; border-radius: 9px; }
+  .tbtn kbd { display: none; }
+
+  .hero { padding: 12px 16px 0; }
+  .hero h1 { font-size: 12.5px; }
+  .notice summary { min-height: 44px; font-size: 12.5px; padding: 0 14px; }
+  .notice-body { font-size: 12.5px; }
+
+  /* 통계: 2×2 타일 — 숫자는 크게(데이터), 라벨은 작게 */
+  .stats { padding: 14px 16px 0; }
+  .stats-inner { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+    border: 0; background: none; padding: 0; border-radius: 0; }
+  .stat { border-left: 0; border: 1px solid var(--border); background: var(--panel);
+    border-radius: 12px; padding: 12px 14px 10px; gap: 2px; }
+  .stat b { font-size: 27px; }
+  .stat .lbl { font-size: 10px; }
+  .split-bar { height: 10px; margin: 8px 0 6px; }
+  .split-lbl { font-size: 12px; }
+
+  .rail-sec { padding: 16px 16px 0; }
+  .rail-hint { display: none; }
+  .rk { min-width: 148px; padding: 10px 13px 9px; }
+  .rk-name { font-size: 13.5px; }
+  .rk-sub { font-size: 11.5px; }
+
+  .layout { padding: 14px 16px 0; }
+  section h2 { font-size: 15px; }
+
+  /* 툴바: 검색은 FAB→팔레트로 대체(입력창 숨김), 정렬+카운트만 */
+  .toolbar input[type="search"] { display: none; }
+  .toolbar select { min-height: 44px; border-radius: 9px; font-size: 13px; }
+  .fcount { font-size: 12px; }
+  .fchip { min-height: 44px; padding: 6px 14px; font-size: 13px; }
+
+  /* 스택형 행: 메타(날짜·태그) 한 줄 흐리게 / 제목이 주인공 / 요약 1줄 보조
+     — 섹터 라벨은 숨김(파셋·칩이 대신), 등급은 판정 있을 때만 표시 */
+  .colhead { display: none; }
+  .report-list > a.report-card { display: block; padding: 16px; }
+  .rc-top { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding-top: 0; }
+  .rc-date { font-size: 11.5px; }
+  .rc-tags { gap: 0 4px; }
+  .rc-tags span { font-size: 11.5px; line-height: 1.6; }
+  .rc-title { font-size: 15.5px; line-height: 1.5; margin-top: 5px; }
+  .rc-sum { -webkit-line-clamp: 1; font-size: 13px; line-height: 1.55; margin-top: 3px; }
+  .rc-meta { display: flex; align-items: center; gap: 12px; margin-top: 7px; }
+  .rc-meta:not(:has(.rc-rating.r-cut, .rc-rating.r-neu)) { display: none; }
+  .rc-sector { display: none; }
+  .rc-rating { margin-left: 0; margin-top: 0; font-size: 12px; }
+
+  /* 시황 단신 행: 모바일도 한 줄 유지 — 분석 행(블록·16px 패딩) 대비 ~60% 세로 밀도, 터치 48px */
+  .report-list > a.report-card.brief { display: flex; align-items: center; gap: 9px;
+    padding: 9px 16px; min-height: 48px; }
+  a.report-card.brief::before { height: 16px; }
+  a.report-card.brief .rc-title { font-size: 13.5px; margin-top: 0; line-height: 1.5; }
+  a.report-card.brief .rc-bdate { font-size: 11.5px; }
+
+  .tabs { gap: 0; }
+  .tab { min-height: 48px; padding: 0 16px; font-size: 14px; }
+  .tab .tab-n { font-size: 12px; }
+  .date-head { padding: 8px 16px 6px; font-size: 11px; }
+
+  footer { font-size: 12.5px; padding: 16px 16px 120px; } /* FAB·필터 버튼에 안 가리게 */
+
+  /* 팔레트: 입력창 상단 고정 + 결과만 스크롤 → 소프트 키보드 위에서 동작 */
+  .cmdk { padding: 8px 8px 16px; align-items: flex-start; }
+  .cmdk-inputrow { padding: 6px 8px 6px 14px; }
+  .cmdk-inputrow input { font-size: 16px; min-height: 44px; } /* 16px: iOS 포커스 확대 방지 */
+  .cmdk-inputrow kbd { display: none; }
+  .cmdk-close { display: inline-flex; }
+  .cmdk-list { max-height: calc(100vh - 200px); max-height: calc(100dvh - 200px); }
+  .cmdk-item { grid-template-columns: 64px 1fr; min-height: 44px; align-items: center; padding: 5px 10px; }
+  .cmdk-item .ci-date { font-size: 12px; }
+  .cmdk-item .ci-title { font-size: 14px; white-space: normal;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .cmdk-item .ci-tags { display: none; }
+  .cmdk-foot { display: none; }
+}
+@media (max-width: 480px) {
+  .stats-inner { gap: 8px; }
+  .stat { padding: 11px 12px 9px; }
+}
+@media (min-width: 920px) {
+  #facet-box summary { pointer-events: none; }
+  #facet-box summary .hint { display: none; }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header class="hero">
-    <div class="eyebrow">NEXTIAR RESEARCH</div>
-    <h1>데이터와 공시로 검증하는<br>개인 투자 리서치</h1>
-    <p class="sub">토스증권 Open API·DART·SEC 데이터를 기반으로 종목을 발굴하고 밸류에이션을 분석합니다.
-    <strong>모든 분석 의견에는 근거 자료 팝업과 원문 링크가 붙습니다.</strong></p>
-    <div class="principles">
-      <span>근거 없는 의견 없음 — 전 의견 출처 링크</span>
-      <span>추정치는 반드시 추정으로 표기</span>
-      <span>반대 논리(리스크) 필수 수록</span>
-      <span>매매 권유 아님</span>
-      <span><a href="methodology.html" style="color:var(--accent);text-decoration:none;">방법론 공개 →</a></span>
-      <span><a href="track-record.html" style="color:var(--accent);text-decoration:none;">트랙레코드 →</a></span>
-      <span><a href="feed.xml" style="color:var(--accent);text-decoration:none;">RSS</a></span>
-    </div>
-    <div class="filters" id="filters">
-      <input type="search" id="q" placeholder="종목·키워드 검색" aria-label="리포트 검색">
-      <button type="button" data-tag="" class="on">전체</button>
-      <span class="fgroup-lbl">시장</span>
-      <button type="button" data-tag="KR">KR</button>
-      <button type="button" data-tag="US">US</button>
-      <span class="fgroup-lbl">유형</span>
-      <button type="button" data-tag="심층">심층</button>
-      <button type="button" data-tag="발굴">발굴</button>
-      <button type="button" data-tag="시황">시황</button>
-      <span class="fgroup-lbl">섹터 (GICS)</span>
-      <span id="sector-chips"></span>
-      <span class="fcount" id="fcount"></span>
-    </div>
-    <div class="filters filters-sub" id="group-row" hidden>
-      <span class="fgroup-lbl">산업그룹</span>
-      <span id="group-chips"></span>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">▮</span>NEXTIAR<span class="brand-sub">/RESEARCH</span></a>
+    <nav class="topnav" aria-label="보조 페이지">
+      <a href="methodology.html">방법론</a>
+      <a href="track-record.html">트랙레코드</a>
+      <a href="feed.xml">RSS</a>
+    </nav>
+    <div class="top-actions">
+      <button class="tbtn" id="cmdk-btn" aria-haspopup="dialog">검색 <kbd>⌘K</kbd></button>
+      <button class="tbtn" id="theme-btn" aria-label="라이트/다크 테마 전환">◐ 테마</button>
     </div>
   </header>
 
-  <section id="discovery">
-    <h2>종목발굴 리포트</h2>
-    <p class="sec-desc">랭킹·기술적 스크리닝 → 공시·재무 검증 → PQC·Growth Sustainability·PE 밴드 심층 분석의 깔때기를 통과한 종목 기록</p>
-    <div class="report-list">
-      <!-- REPORTS:discovery:BEGIN -->
+  <section class="hero">
+    <h1>데이터와 공시로 검증하는 개인 투자 리서치 <span class="disc">· 매매 권유 아님</span></h1>
+    <details class="notice" id="notice-box">
+      <summary><span class="ni" aria-hidden="true">ⓘ</span> 원칙·고지</summary>
+      <div class="notice-body">
+        <p>토스증권 Open API·DART·SEC 데이터를 기반으로 종목을 발굴하고 밸류에이션을 분석합니다.
+        모든 분석 의견에는 근거 자료 팝업과 원문 링크가 붙습니다.</p>
+        <ul>
+          <li>근거 없는 의견 없음 — 전 의견 출처 링크</li>
+          <li>추정치는 반드시 추정으로 표기</li>
+          <li>반대 논리(리스크) 필수 수록</li>
+          <li>매매 권유 아님 — 투자 판단·책임은 투자자 본인에게</li>
+        </ul>
+        <p>리포트 프로세스: 랭킹·기술적 스크리닝 → 공시·재무 검증 → PQC·Growth Sustainability·PE 밴드
+        심층 분석 — 시황·매크로 포함 전체 발간 이력을 아래 리스트에 기록합니다.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="stats" aria-label="발간 통계">
+    <div class="stats-inner">
+      <div class="stat"><b id="st-reports">–</b><span class="lbl">발간 리포트</span></div>
+      <div class="stat"><b id="st-stocks">–</b><span class="lbl">커버 종목</span></div>
+      <div class="stat"><b id="st-deep">–</b><span class="lbl">심층 리포트</span></div>
+      <div class="stat">
+        <div class="split-bar" id="st-bar" aria-hidden="true"><span class="seg kr"></span><span class="seg us"></span></div>
+        <div class="split-lbl"><span><i class="dot kr" aria-hidden="true"></i>KR <b id="st-kr">–</b></span>
+          <span><i class="dot us" aria-hidden="true"></i>US <b id="st-us">–</b></span></div>
+        <span class="lbl">시장 비중 · 리포트 기준</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="rail-sec" id="coverage">
+    <div class="rail-head">
+      <h2>커버리지 종목</h2>
+      <span class="rail-hint">누르면 리스트가 좁혀집니다</span>
+    </div>
+    <div class="rail" id="stock-rail" role="listbox" aria-label="커버리지 종목 필터"></div>
+  </section>
+
+  <div class="layout">
+
+    <aside class="side">
+      <details id="facet-box">
+        <summary>필터<span class="hint">열기/닫기</span></summary>
+        <div class="sheet-head">필터<button id="sheet-close" type="button" aria-label="필터 닫기">×</button></div>
+        <div class="sheet-body">
+          <div class="fgroup" id="fg-market"><h3>시장</h3></div>
+          <div class="fgroup" id="fg-type"><h3>유형</h3></div>
+          <div class="fgroup" id="fg-sector"><h3>섹터 (GICS)</h3></div>
+        </div>
+        <div class="sheet-foot">
+          <button id="reset-btn" type="button">필터 초기화</button>
+          <button id="apply-btn" type="button">결과 보기</button>
+        </div>
+      </details>
+    </aside>
+
+    <div class="content">
+      <section id="discovery">
+        <h2>리포트</h2>
+        <div class="toolbar">
+          <input type="search" id="q" placeholder="종목·키워드 검색  ( / 또는 ⌘K )" aria-label="리포트 검색">
+          <select id="sort" aria-label="정렬">
+            <option value="new">최신순</option>
+            <option value="name">종목명순</option>
+          </select>
+          <span class="fcount" id="fcount"></span>
+        </div>
+        <div class="tabs" role="tablist" aria-label="리포트 구분">
+          <button class="tab" type="button" id="tab-all" role="tab" aria-selected="true" aria-controls="report-list">전체 <span class="tab-n" id="tab-n-all">–</span></button>
+          <button class="tab" type="button" id="tab-analysis" role="tab" aria-selected="false" aria-controls="report-list">종목 분석 <span class="tab-n" id="tab-n-analysis">–</span></button>
+          <button class="tab" type="button" id="tab-market" role="tab" aria-selected="false" aria-controls="report-list">시황 <span class="tab-n" id="tab-n-market">–</span></button>
+        </div>
+        <div class="active-chips" id="active-chips" hidden></div>
+        <div class="tablewrap">
+          <div class="colhead rgrid" aria-hidden="true">
+            <span>날짜 · 태그</span><span>리포트</span><span>섹터 (GICS)</span><span>등급</span>
+          </div>
+          <div class="report-list" id="report-list">
+            <!-- REPORTS:discovery:BEGIN -->
       <a class="report-card" data-sector="시황·매크로" href="reports/2026-07-17-us-close-morning-2026-07-17.html">
         <div class="rc-top"><span class="rc-date">2026.07.17</span><span class="rc-tags"><span>시황</span><span>미국</span><span>매크로</span></span></div>
         <div class="rc-title">US 마감 시황 — 헬스케어가 지수를 떠받쳤지만, TSMC 자본지출 상향에 메모리가 이틀째 급락</div>
@@ -280,35 +770,64 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
         <p class="rc-sum">트리거는 ALG 세계 최초 출하와 기관 매집. 그러나 적자 확대(4Q25·1Q26 연속)로 숫자는 아직 스토리 뒤에 — P/E 미정의 구간, 관건은 ALG 후속 수주. (7/16 후속 점검 통합)</p>
       </a>
       <!-- REPORTS:discovery:END -->
+          </div>
+        </div>
+        <div class="rc-empty" id="lib-empty" hidden>조건에 맞는 리포트가 없습니다 — 필터를 초기화해 보세요.</div>
+      </section>
     </div>
-  </section>
+  </div>
 
   <footer>
     <strong>고지</strong> — 이 사이트의 모든 리포트는 정보 제공 목적의 개인 리서치이며 매매 권유가 아닙니다.
     투자 판단과 책임은 투자자 본인에게 있습니다. 추정으로 표기된 수치는 공개 자료 기반 근사 모델의 산출값입니다.<br>
     데이터: 토스증권 Open API · DART 전자공시 · SEC EDGAR · 공개 보도 — 각 리포트의 근거 팝업에 원문 링크 명시.<br>
-    산출 방식·판정 등급·추정 모델의 한계는 <a href="methodology.html" style="color:var(--accent);">방법론 페이지</a>에 공개되어 있습니다.<br>
-    <a href="about.html" style="color:var(--accent);">소개</a> ·
-    <a href="track-record.html" style="color:var(--accent);">트랙레코드</a> ·
-    <a href="contact.html" style="color:var(--accent);">연락처</a> ·
-    <a href="privacy.html" style="color:var(--accent);">개인정보처리방침</a> ·
-    <a href="feed.xml" style="color:var(--accent);">RSS</a>
+    산출 방식·판정 등급·추정 모델의 한계는 <a href="methodology.html">방법론 페이지</a>에 공개되어 있습니다.<br>
+    <a href="about.html">소개</a> ·
+    <a href="track-record.html">트랙레코드</a> ·
+    <a href="contact.html">연락처</a> ·
+    <a href="privacy.html">개인정보처리방침</a> ·
+    <a href="feed.xml">RSS</a>
   </footer>
 
-</div>
-<script>
-/* 카드 필터·검색 (GICS 2단계, v1.5.0) — 검색 + 시장/유형 태그 + GICS 섹터 → 산업그룹 드릴다운.
-   섹터·산업그룹은 publish.py 가 GICS(공식 표준) 값을 카드 data-sector/data-group 에 심는다.
-   값이 없는 구 카드는 제목 키워드로 추정(폴백). 섹터 칩은 동적 생성하고, 섹터를 고르면
-   그 섹터의 산업그룹 하위 칩이 나타난다(하위가 2개 이상일 때만). */
-(function () {
-  const q = document.getElementById("q");
-  const countEl = document.getElementById("fcount");
-  const sectorHost = document.getElementById("sector-chips");
-  const groupRow = document.getElementById("group-row");
-  const groupHost = document.getElementById("group-chips");
-  let tag = "", sector = "", group = "";
+  <div id="sheet-backdrop"></div>
+  <button id="filter-fab" type="button" aria-controls="facet-box" aria-expanded="false" aria-haspopup="dialog">필터<span id="fab-badge"></span></button>
 
+  <!-- 모바일 검색 FAB — 터치에서 ⌘K 대체 (919px 이하에서만 표시) -->
+  <button class="fab-search" id="fab-search" aria-label="리포트 검색 열기" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+      <circle cx="10.5" cy="10.5" r="6.5"></circle><line x1="15.5" y1="15.5" x2="21" y2="21"></line>
+    </svg>
+  </button>
+
+  <!-- ⌘K 커맨드 팔레트 -->
+  <div class="cmdk" id="cmdk" hidden>
+    <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="리포트 빠른 검색">
+      <div class="cmdk-inputrow">
+        <span class="prompt">›</span>
+        <input id="cmdk-input" type="text" placeholder="리포트·종목·태그 검색…" autocomplete="off"
+               role="combobox" aria-expanded="true" aria-controls="cmdk-list">
+        <kbd>esc</kbd>
+        <button type="button" class="cmdk-close" id="cmdk-close" aria-label="검색 닫기">✕</button>
+      </div>
+      <ul class="cmdk-list" id="cmdk-list" role="listbox" aria-label="검색 결과"></ul>
+      <div class="cmdk-foot"><span><b>↑↓</b> 이동</span><span><b>↵</b> 열기</span><span><b>esc</b> 닫기</span><span style="margin-left:auto">입력은 리스트 필터와 동기화됩니다</span></div>
+    </div>
+  </div>
+
+<script>
+/* 하이브리드 홈 (시안 D = A 터미널 밀도 행 + C 커버리지·파셋) — v4.1: 전체 | 종목 분석 | 시황 탭
+   - REPORTS 마커 블록은 원본 그대로: 통계·레일·섹터/등급 컬럼·탭 배지는 전부 런타임 계산(하드코딩 없음)
+   - 하나의 필터 상태(sel/stockKey/needle)를 파셋·칩·레일·검색창·⌘K 팔레트가 공유
+   - 탭: 전체(기본·해시 없음) | 종목 분석(#stocks) | 시황(#market 딥링크 유지).
+     시황은 .brief 단신 문법(한 줄·좌측 틱). 전체 탭 = 최신순 혼합 스트림 — 단신엔 `MM.DD ·`
+     날짜 프리픽스(시황 탭에선 날짜 헤더가 담당해 숨김). 전체 탭 파셋은 분석 탭과 동일(전부),
+     단 유형·섹터·종목(레일) 필터 활성 시 그 속성이 없는 시황 행은 숨긴다(몰래 0건 함정 방지 —
+     시황 배지가 별도 개수를 유지). 시황 탭 파셋은 시장(KR/US)만 */
+(function () {
+  "use strict";
+  const $ = (s) => document.querySelector(s);
+
+  /* ── GICS 폴백 (A/C 공통 휴리스틱 재사용) ── */
   function sectorFallback(t) {
     if (/시황|매크로|아침 시황/i.test(t)) return "시황·매크로";
     if (/실리콘투/.test(t) && /알테오젠/.test(t)) return "복합";
@@ -332,68 +851,483 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
     return "";
   }
   const cards = Array.from(document.querySelectorAll("a.report-card"));
-  cards.forEach(c => {
+  cards.forEach((c) => {
     const t = (c.querySelector(".rc-title") || c).textContent;
     if (!c.dataset.sector) c.dataset.sector = sectorFallback(t);
     if (!c.dataset.group) { const g = groupFallback(t, c.dataset.sector); if (g) c.dataset.group = g; }
   });
 
-  function chip(host, label, attr, value) {
-    const b = document.createElement("button");
-    b.type = "button"; b.textContent = label; b.dataset[attr] = value;
-    host.appendChild(b); return b;
-  }
-
-  // 섹터 칩 동적 생성 (존재하는 GICS 섹터, 개수 많은 순)
-  const secCount = {};
-  cards.forEach(c => { secCount[c.dataset.sector] = (secCount[c.dataset.sector] || 0) + 1; });
-  Object.keys(secCount).sort((a, b) => secCount[b] - secCount[a])
-    .forEach(s => chip(sectorHost, s, "sector", s));
-
-  function buildGroupRow() {
-    groupHost.innerHTML = "";
-    group = "";
-    const gc = {};
-    if (sector) cards.filter(c => c.dataset.sector === sector && c.dataset.group)
-      .forEach(c => { gc[c.dataset.group] = (gc[c.dataset.group] || 0) + 1; });
-    const groups = Object.keys(gc);
-    if (groups.length < 2) { groupRow.hidden = true; return; }  // 하위 그룹 2개 미만이면 숨김
-    groupRow.hidden = false;
-    chip(groupHost, sector + " 전체", "group", "").classList.add("on");
-    groups.sort((a, b) => gc[b] - gc[a])
-      .forEach(g => chip(groupHost, g + " " + gc[g], "group", g));
-    groupHost.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
-      groupHost.querySelectorAll("button").forEach(x => x.classList.remove("on"));
-      b.classList.add("on"); group = b.dataset.group || ""; apply();
-    }));
-  }
-
-  function apply() {
-    const needle = (q.value || "").trim().toLowerCase();
-    let shown = 0;
-    cards.forEach(card => {
-      const text = card.textContent.toLowerCase();
-      const tags = Array.from(card.querySelectorAll(".rc-tags span")).map(s => s.textContent);
-      const ok = (!tag || tags.includes(tag)) && (!sector || card.dataset.sector === sector)
-        && (!group || card.dataset.group === group) && (!needle || text.includes(needle));
-      card.classList.toggle("hide", !ok);
-      if (ok) shown++;
+  /* ── 시황/매크로 판별 + 종목 추출 (C 휴리스틱 재사용) ── */
+  const isMarket = (title, tags) =>
+    tags.includes("시황") || tags.includes("매크로") || /시황|매크로/.test(title);
+  const NAME_STOP = /시황|발굴|마감|아침|코스피|코스닥|KOSPI|KOSDAQ|바이오|증시|밸류체인|장비주|매크로|브리핑|섹터/i;
+  function extractStocks(title) {
+    const lead = title.split(/\s*(?:—|–|:)\s*/)[0].split(",")[0].trim();
+    const out = [];
+    lead.split(/\s*·\s*/).forEach((p) => {
+      p = p.trim();
+      const m = p.match(/[(（]\s*([0-9]{6}|[A-Z]{1,6})\s*[)）]/);
+      const sym = m ? m[1] : "";
+      let name = p.replace(/[(（][^)）]*[)）]/g, "").replace(/\s*(심층|발굴|리포트)\s*$/, "").trim();
+      if (!name && sym) name = sym;
+      if (!name) return;
+      if (!sym && (name.length > 12 || /\s/.test(name) || NAME_STOP.test(name))) return; // 테마·복수종목 리포트
+      out.push({ sym, name });
     });
-    document.querySelectorAll("section").forEach(sec => {
-      if (!sec.querySelectorAll("a.report-card").length) return;
-      sec.classList.toggle("hide", sec.querySelectorAll("a.report-card:not(.hide)").length === 0);
-    });
-    if (countEl) countEl.textContent = shown + "개";
+    return out;
   }
-  // 상단 버튼(전체·시장·유형·섹터) — 섹터·태그 축은 상호 배타, 누르면 산업그룹 리셋
-  document.querySelectorAll("#filters button").forEach(b => b.addEventListener("click", () => {
-    document.querySelectorAll("#filters button").forEach(x => x.classList.remove("on"));
-    b.classList.add("on");
-    tag = b.dataset.tag || ""; sector = b.dataset.sector || "";
-    buildGroupRow(); apply();
+
+  /* ── 등급 추출 (A 휴리스틱 재사용 — 요약문에 명시된 판정만, 없으면 —) ── */
+  function deriveRating(s) {
+    if (/기준 미달/.test(s)) return { label: "미달", cls: "r-cut" };
+    if (/비중\s?축소/.test(s)) return { label: "축소", cls: "r-cut" };
+    if (/중립/.test(s)) return { label: "중립", cls: "r-neu" };
+    if (/관망/.test(s)) return { label: "관망", cls: "r-neu" };
+    if (/관찰/.test(s)) return { label: "관찰", cls: "r-neu" };
+    return null;
+  }
+
+  const meta = cards.map((c, i) => {
+    const title = (c.querySelector(".rc-title") || c).textContent.trim();
+    const tags = Array.from(c.querySelectorAll(".rc-tags span")).map((s) => s.textContent.trim());
+    const date = ((c.querySelector(".rc-date") || {}).textContent || "").trim();
+    const market = isMarket(title, tags);
+    return { c, i, title, tags, date, market, stocks: market ? [] : extractStocks(title), keys: [], match: true, p1: true };
+  });
+
+  /* ── 섹터·등급 셀 주입 + 태그 색상 (A) — 마커 블록은 소스 그대로, DOM 은 런타임 확장 ──
+     시황·매크로 행은 .brief(단신 문법): `MM.DD · 제목…` 한 줄 — 요약은 DOM 유지, 렌더만 숨김 */
+  meta.forEach((m) => {
+    const c = m.c;
+    const sumEl = c.querySelector(".rc-sum");
+    if (m.market) { // 날짜·태그·요약은 DOM 유지·비표시 — 날짜는 시황 탭 날짜 헤더 / 전체 탭 프리픽스가 담당
+      c.classList.add("brief");
+      const dp = m.date.split(".");
+      const bd = document.createElement("span");
+      bd.className = "rc-bdate";
+      bd.textContent = dp.length === 3 ? dp[1] + "." + dp[2] + " ·" : m.date + " ·";
+      c.insertBefore(bd, c.querySelector(".rc-title"));
+    }
+    const box = document.createElement("div");
+    box.className = "rc-meta";
+    const sec = document.createElement("span");
+    sec.className = "rc-sector"; sec.textContent = c.dataset.sector || "—";
+    box.appendChild(sec);
+    const r = m.market ? null : deriveRating(sumEl ? sumEl.textContent : "");
+    const rt = document.createElement("span");
+    rt.className = "rc-rating" + (r ? " " + r.cls : "");
+    rt.textContent = r ? r.label : "—";
+    box.appendChild(rt);
+    c.appendChild(box);
+    c.querySelectorAll(".rc-tags span").forEach((s) => {
+      const v = s.textContent;
+      if (v === "KR" || v === "국내") s.classList.add("t-kr");
+      else if (v === "US" || v === "미국") s.classList.add("t-us");
+      else if (v === "심층" || v === "PE밴드") s.classList.add("t-deep");
+    });
+    if (sumEl) c.title = sumEl.textContent.trim();
+  });
+
+  /* ── 심볼 병합 + 커버리지 집계 (C) ── */
+  const nameToSym = new Map();
+  meta.forEach((m) => m.stocks.forEach((s) => { if (s.sym && !nameToSym.has(s.name)) nameToSym.set(s.name, s.sym); }));
+  meta.forEach((m) => m.stocks.forEach((s) => { if (!s.sym) s.sym = nameToSym.get(s.name) || ""; }));
+  const cov = new Map();
+  meta.forEach((m) => m.stocks.forEach((s) => {
+    const key = s.sym || s.name;
+    m.keys.push(key);
+    if (!cov.has(key)) cov.set(key, { key, sym: s.sym, names: new Set(), idxs: [], mkt: "" });
+    const e = cov.get(key);
+    e.names.add(s.name);
+    e.idxs.push(m.i);
+    if (!e.mkt) {
+      if (m.tags.includes("KR") || m.tags.includes("국내")) e.mkt = "KR";
+      else if (m.tags.includes("US") || m.tags.includes("미국")) e.mkt = "US";
+      else if (/^[0-9]{6}$/.test(s.sym)) e.mkt = "KR";
+      else if (s.sym) e.mkt = "US";
+    }
   }));
-  q.addEventListener("input", apply);
-  apply();
+  const shortDate = (d) => { const p = d.split("."); return p.length === 3 ? (+p[1]) + "/" + p[2] : d; };
+  cov.forEach((e) => {
+    e.name = Array.from(e.names).sort((a, b) => a.length - b.length)[0];
+    e.latest = e.idxs.map((i) => meta[i].date).sort().pop();
+  });
+
+  /* ── 통계 스트립 (전부 동적) ── */
+  const mktMatch = { KR: ["KR", "국내"], US: ["US", "미국"] };
+  const krN = meta.filter((m) => m.tags.some((t) => mktMatch.KR.includes(t))).length;
+  const usN = meta.filter((m) => m.tags.some((t) => mktMatch.US.includes(t))).length;
+  $("#st-reports").textContent = meta.length;
+  $("#st-stocks").textContent = cov.size;
+  $("#st-deep").textContent = meta.filter((m) => m.tags.includes("심층")).length;
+  $("#st-kr").textContent = krN;
+  $("#st-us").textContent = usN;
+  const segs = $("#st-bar").children;
+  segs[0].style.flex = String(krN); segs[1].style.flex = String(usN);
+
+  /* ── 필터 상태 (단일 공유) + 탭 상태 ── */
+  const sel = { mkt: new Set(), type: new Set(), sector: new Set(), group: new Set() };
+  let needle = "", stockKey = "", sortMode = "new";
+  const hashTab = (h) => (h === "#market" ? "market" : h === "#stocks" ? "analysis" : "all");
+  let tab = hashTab(location.hash); // 전체(기본·해시 없음) | #stocks | #market 딥링크 존중
+  const totalA = meta.filter((m) => !m.market).length;
+  const totalM = meta.length - totalA;
+
+  /* ── 파셋 체크박스 (C) ── */
+  const cnt = (fn) => meta.filter(fn).length;
+  const cbMap = new Map(), nMap = new Map();
+  function facetCheckbox(host, group, value, label, n) {
+    const lab = document.createElement("label");
+    const cb = document.createElement("input");
+    cb.type = "checkbox"; cb.value = value; cb.dataset.facet = group;
+    cbMap.set(group + "|" + value, cb);
+    lab.appendChild(cb);
+    lab.appendChild(document.createTextNode(label));
+    const sp = document.createElement("span"); sp.className = "n"; sp.textContent = n;
+    nMap.set(group + "|" + value, sp);
+    lab.appendChild(sp);
+    host.appendChild(lab);
+    cb.addEventListener("change", () => {
+      const set = sel[group];
+      cb.checked ? set.add(value) : set.delete(value);
+      if (group === "sector") buildGroupSub();
+      apply();
+    });
+    return cb;
+  }
+  ["KR", "US"].forEach((v) =>
+    facetCheckbox($("#fg-market"), "mkt", v, v, cnt((m) => m.tags.some((t) => mktMatch[v].includes(t)))));
+  // 유형: 시황·매크로 항목 없음 — 시황 분기는 탭이 담당, 유형·섹터는 분석 탭 전용
+  ["심층", "발굴", "PE밴드", "테마"].forEach((v) => {
+    const n = cnt((m) => !m.market && m.tags.includes(v));
+    if (n) facetCheckbox($("#fg-type"), "type", v, v, n);
+  });
+  const secCount = {};
+  meta.filter((m) => !m.market).forEach((m) => {
+    const s = m.c.dataset.sector; secCount[s] = (secCount[s] || 0) + 1;
+  });
+  Object.keys(secCount).sort((a, b) => secCount[b] - secCount[a])
+    .forEach((s) => facetCheckbox($("#fg-sector"), "sector", s, s, secCount[s]));
+  const groupSub = document.createElement("div");
+  groupSub.className = "sub"; groupSub.hidden = true;
+  $("#fg-sector").appendChild(groupSub);
+  function buildGroupSub() {
+    groupSub.innerHTML = ""; sel.group.clear();
+    if (sel.sector.size !== 1) { groupSub.hidden = true; return; }
+    const sec = Array.from(sel.sector)[0];
+    const gc = {};
+    cards.filter((c) => c.dataset.sector === sec && c.dataset.group)
+      .forEach((c) => { gc[c.dataset.group] = (gc[c.dataset.group] || 0) + 1; });
+    const gs = Object.keys(gc);
+    if (gs.length < 2) { groupSub.hidden = true; return; }
+    groupSub.hidden = false;
+    gs.sort((a, b) => gc[b] - gc[a]).forEach((g) => facetCheckbox(groupSub, "group", g, g, gc[g]));
+  }
+
+  /* ── 커버리지 레일 (C 그리드 → 가로 스크롤 변형) ── */
+  const rail = $("#stock-rail");
+  const stockEls = new Map();
+  Array.from(cov.values())
+    .sort((a, b) => b.idxs.length - a.idxs.length || (b.latest > a.latest ? 1 : -1))
+    .forEach((e) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "rk"; b.dataset.key = e.key;
+      b.setAttribute("role", "option"); b.setAttribute("aria-selected", "false");
+      const head = document.createElement("div"); head.className = "rk-head";
+      const nm = document.createElement("span"); nm.className = "rk-name"; nm.textContent = e.name;
+      const mk = document.createElement("span"); mk.className = "rk-mkt " + (e.mkt === "US" ? "us" : "kr");
+      mk.textContent = e.mkt || "—";
+      head.append(nm, mk);
+      const sub = document.createElement("div"); sub.className = "rk-sub";
+      const symTxt = (/^[0-9]{6}$/.test(e.sym) || /^[A-Z]+$/.test(e.sym)) ? e.sym + " · " : "";
+      sub.innerHTML = symTxt + "<b class=\"rk-n\"></b>건 · " + shortDate(e.latest);
+      b.append(head, sub);
+      b.addEventListener("click", () => {
+        stockKey = stockKey === e.key ? "" : e.key;
+        apply();
+        if (stockKey) $("#discovery").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      rail.appendChild(b);
+      stockEls.set(e.key, { el: b, entry: e });
+    });
+
+  /* ── 정렬 (C) ── */
+  const listEl = $("#report-list");
+  function resort() {
+    let order = meta.slice();
+    if (sortMode === "name") {
+      order.sort((a, b) => {
+        const an = (!a.market && a.stocks.length) ? 0 : 1;
+        const bn = (!b.market && b.stocks.length) ? 0 : 1;
+        if (an !== bn) return an - bn;
+        if (an === 0) { const c = a.stocks[0].name.localeCompare(b.stocks[0].name, "ko"); if (c) return c; }
+        return a.i - b.i;
+      });
+    }
+    order.forEach((m) => listEl.appendChild(m.c));
+    buildDateHeads();
+  }
+
+  /* ── 시황 탭 날짜 헤더 (신규): `M/D` 소형 헤더 아래 그날 단신 그룹핑 — 접힘 없음 ── */
+  let dateHeads = [];
+  function buildDateHeads() {
+    dateHeads.forEach((h) => h.el.remove());
+    dateHeads = [];
+    const byDate = new Map();
+    meta.filter((m) => m.market).forEach((m) => {
+      if (!byDate.has(m.date)) byDate.set(m.date, []);
+      byDate.get(m.date).push(m);
+    });
+    byDate.forEach((members, date) => {
+      // 현재 DOM 순서 기준 첫 멤버 앞에 헤더 삽입 (분석 행은 시황 탭에서 모두 숨김 → 시각적 연속)
+      members.sort((a, b) =>
+        Array.prototype.indexOf.call(listEl.children, a.c) - Array.prototype.indexOf.call(listEl.children, b.c));
+      const el = document.createElement("div");
+      el.className = "date-head hide";
+      el.textContent = shortDate(date);
+      listEl.insertBefore(el, members[0].c);
+      dateHeads.push({ date, members, el });
+    });
+  }
+
+  /* ── 필터 적용 (단일 apply — 리스트·레일·칩·카운트·접힘·배지 동기화) ── */
+  const chipsBox = $("#active-chips"), fcount = $("#fcount");
+  const facetName = { mkt: "시장", type: "유형", sector: "섹터", group: "산업" };
+  function makeChip(label, onRemove) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "fchip";
+    b.setAttribute("aria-label", label + " 필터 해제");
+    const sp = document.createElement("span"); sp.className = "lbl"; sp.textContent = label;
+    const x = document.createElement("span"); x.className = "x"; x.textContent = "×";
+    b.append(sp, x);
+    b.addEventListener("click", onRemove);
+    chipsBox.appendChild(b);
+  }
+  function renderChips() { // 현재 탭에 적용되는 필터만 칩으로 — 시황 탭은 시장·검색만
+    chipsBox.innerHTML = "";
+    const mkTab = tab === "market";
+    if (!mkTab && stockKey && cov.has(stockKey))
+      makeChip("종목: " + cov.get(stockKey).name, () => { stockKey = ""; apply(); });
+    (mkTab ? ["mkt"] : ["mkt", "type", "sector", "group"]).forEach((g) => {
+      sel[g].forEach((v) => makeChip(facetName[g] + ": " + v, () => {
+        sel[g].delete(v);
+        const cb = cbMap.get(g + "|" + v);
+        if (cb) cb.checked = false;
+        if (g === "sector") buildGroupSub();
+        apply();
+      }));
+    });
+    if (needle) makeChip("검색: " + needle, () => { setNeedle(""); apply(); });
+    chipsBox.hidden = !chipsBox.querySelector(".fchip");
+  }
+  const activeCount = () => (tab === "market"
+    ? sel.mkt.size + (needle ? 1 : 0)
+    : sel.mkt.size + sel.type.size + sel.sector.size + sel.group.size + (stockKey ? 1 : 0) + (needle ? 1 : 0));
+
+  function passFacets(m) { // 분석 행: 종목 필터 제외한 파셋+검색 통과 여부 (레일 카운트용)
+    if (sel.mkt.size && !Array.from(sel.mkt).some((v) => m.tags.some((t) => mktMatch[v].includes(t)))) return false;
+    if (sel.type.size && !Array.from(sel.type).some((v) => m.tags.includes(v))) return false;
+    if (sel.sector.size && !sel.sector.has(m.c.dataset.sector)) return false;
+    if (sel.group.size && !sel.group.has(m.c.dataset.group || "")) return false;
+    if (needle && !m.c.textContent.toLowerCase().includes(needle)) return false;
+    return true;
+  }
+  function passMarket(m) { // 시황 행: 시장(KR/US)+검색만 의미 — 유형·섹터·종목 분기는 탭이 담당
+    if (sel.mkt.size && !Array.from(sel.mkt).some((v) => m.tags.some((t) => mktMatch[v].includes(t)))) return false;
+    if (needle && !m.c.textContent.toLowerCase().includes(needle)) return false;
+    return true;
+  }
+  function apply() {
+    const mkTab = tab === "market";
+    // 전체 탭: 유형·섹터·산업·종목(레일) 필터는 시황 행에 그 속성이 없어 매치 불가 →
+    // 하나라도 활성이면 시황 행은 숨긴다(몰래 0건 함정 방지 — 시황 배지는 별도 개수 유지)
+    const nonMktFilter = sel.type.size || sel.sector.size || sel.group.size || stockKey;
+    let shownA = 0, shownM = 0, shownAll = 0;
+    meta.forEach((m) => {
+      if (m.market) {
+        m.p1 = m.match = passMarket(m);
+        m.all = m.match && !nonMktFilter;
+        if (m.match) shownM++;
+      } else {
+        m.p1 = passFacets(m);
+        m.all = m.match = m.p1 && (!stockKey || m.keys.includes(stockKey));
+        if (m.match) shownA++;
+      }
+      if (m.all) shownAll++;
+      m.c.classList.toggle("hide", tab === "all" ? !m.all : (!m.match || m.market !== mkTab));
+    });
+    // 날짜 헤더: 시황 탭 전용 — 그날 매치가 하나라도 있을 때만 (전체 탭은 행별 날짜 프리픽스)
+    dateHeads.forEach((h) => h.el.classList.toggle("hide", !mkTab || !h.members.some((m) => m.match)));
+    // 탭 배지: 필터 적용 후 개수 — 반대 탭 매치(검색 포함)도 여기서 보인다
+    $("#tab-n-all").textContent = shownAll;
+    $("#tab-n-analysis").textContent = shownA;
+    $("#tab-n-market").textContent = shownM;
+    // 시장 파셋 카운트: 현재 탭 기준 (전체 탭 = 분석+시황 합)
+    ["KR", "US"].forEach((v) => {
+      nMap.get("mkt|" + v).textContent =
+        meta.filter((m) => (tab === "all" || m.market === mkTab) &&
+          m.tags.some((t) => mktMatch[v].includes(t))).length;
+    });
+    // 레일: 전체·분석 탭 — 파셋 통과 리포트 수 반영, 0이면 숨김
+    stockEls.forEach(({ el, entry }) => {
+      const n = entry.idxs.filter((i) => meta[i].p1).length;
+      el.querySelector(".rk-n").textContent = n;
+      el.classList.toggle("hide", n === 0);
+      el.classList.toggle("on", stockKey === entry.key);
+      el.setAttribute("aria-selected", stockKey === entry.key ? "true" : "false");
+    });
+    $("#coverage").classList.toggle("hide", mkTab ||
+      Array.from(stockEls.values()).every(({ el }) => el.classList.contains("hide")));
+    // 카운트·빈 상태·칩·모바일 배지·시트 버튼 — 현재 탭 기준
+    const shown = mkTab ? shownM : tab === "analysis" ? shownA : shownAll;
+    fcount.textContent = shown + "건 / " + (mkTab ? totalM : tab === "analysis" ? totalA : meta.length) + "건";
+    $("#lib-empty").hidden = shown > 0;
+    renderChips();
+    const n = activeCount();
+    const badge = $("#fab-badge");
+    badge.textContent = n || "";
+    badge.classList.toggle("show", n > 0);
+    $("#apply-btn").textContent = "결과 " + shown + "건 보기";
+  }
+
+  /* ── 탭 전환: 즉시 전환, 해시 딥링크(전체=없음 · 분석=#stocks · 시황=#market), 필요 시 리스트 상단으로 ── */
+  const tabBtns = { all: $("#tab-all"), analysis: $("#tab-analysis"), market: $("#tab-market") };
+  const tabHash = { all: "", analysis: "#stocks", market: "#market" };
+  function setTab(t, scroll) {
+    tab = t;
+    const mk = t === "market";
+    Object.keys(tabBtns).forEach((k) =>
+      tabBtns[k].setAttribute("aria-selected", k === t ? "true" : "false"));
+    $("#discovery").classList.toggle("tab-market", mk);
+    $("#discovery").classList.toggle("tab-all", t === "all");
+    $("#fg-type").classList.toggle("hide", mk);   // 시황 탭: 파셋은 시장(KR/US)만
+    $("#fg-sector").classList.toggle("hide", mk);
+    const want = tabHash[t];
+    if (want) { if (location.hash !== want) history.replaceState(null, "", want); }
+    else if (location.hash === "#market" || location.hash === "#stocks")
+      history.replaceState(null, "", location.pathname + location.search); // 테마 프리뷰 해시는 보존
+    apply();
+    if (scroll && $("#discovery").getBoundingClientRect().top < 0)
+      $("#discovery").scrollIntoView({ block: "start" });
+  }
+  Object.keys(tabBtns).forEach((k) => tabBtns[k].addEventListener("click", () => setTab(k, true)));
+  window.addEventListener("hashchange", () => {
+    const t = hashTab(location.hash);
+    if (t !== tab && (tabHash[tab] || t !== "all")) setTab(t); // 탭 해시 변화만 반응(#light/#dark 등 무시)
+  });
+
+  /* ── 검색 needle 동기화: 툴바 입력 ↔ 팔레트 입력 (하나의 상태) ── */
+  const qEl = $("#q"), pInput = $("#cmdk-input");
+  function setNeedle(v, from) {
+    needle = (v || "").trim().toLowerCase();
+    if (from !== "q" && qEl.value !== v) qEl.value = v || "";
+    if (from !== "p" && pInput.value !== v) pInput.value = v || "";
+  }
+  qEl.addEventListener("input", () => { setNeedle(qEl.value, "q"); apply(); });
+  $("#sort").addEventListener("change", (ev) => { sortMode = ev.target.value; resort(); apply(); });
+  $("#reset-btn").addEventListener("click", () => {
+    sel.mkt.clear(); sel.type.clear(); sel.sector.clear(); sel.group.clear();
+    stockKey = ""; setNeedle("");
+    document.querySelectorAll("#facet-box input[type=checkbox]").forEach((cb) => { cb.checked = false; });
+    buildGroupSub(); apply();
+  });
+
+  /* ── 필터 UI: 데스크톱 = 펼침 고정 사이드바 · 모바일 = 하단 버튼 → 바텀시트 (C) ── */
+  const box = $("#facet-box"), fab = $("#filter-fab"), backdrop = $("#sheet-backdrop");
+  const mq = matchMedia("(min-width: 920px)");
+  function openSheet() {
+    box.open = true;
+    backdrop.classList.add("show");
+    document.body.classList.add("sheet-open");
+    fab.setAttribute("aria-expanded", "true");
+  }
+  function closeSheet() {
+    if (!mq.matches) box.open = false; // 데스크톱 사이드바는 항상 펼침 유지
+    backdrop.classList.remove("show");
+    document.body.classList.remove("sheet-open");
+    fab.setAttribute("aria-expanded", "false");
+  }
+  fab.addEventListener("click", openSheet);
+  backdrop.addEventListener("click", closeSheet);
+  $("#sheet-close").addEventListener("click", closeSheet);
+  $("#apply-btn").addEventListener("click", closeSheet);
+  const syncBox = () => { box.open = mq.matches; closeSheet(); };
+  mq.addEventListener ? mq.addEventListener("change", syncBox) : mq.addListener(syncBox);
+  syncBox();
+
+  /* ── ⌘K 팔레트 (A): / 또는 ⌘K 오픈, ↑↓ 이동, ↵ 열기, esc 닫기 — 입력은 needle 과 동기화 ── */
+  const overlay = $("#cmdk"), list = $("#cmdk-list");
+  const items = meta.map((m) => ({
+    href: m.c.getAttribute("href"), date: m.date, title: m.title,
+    tags: m.tags.join(" "), sum: ((m.c.querySelector(".rc-sum") || {}).textContent || ""),
+    sector: m.c.dataset.sector || ""
+  }));
+  let results = [], active = 0;
+  function render() {
+    list.innerHTML = "";
+    if (!results.length) {
+      const li = document.createElement("li");
+      li.className = "cmdk-none"; li.textContent = "결과 없음";
+      list.appendChild(li); return;
+    }
+    results.forEach((it, i) => {
+      const li = document.createElement("li");
+      li.className = "cmdk-item" + (i === active ? " active" : "");
+      li.setAttribute("role", "option");
+      li.setAttribute("aria-selected", i === active ? "true" : "false");
+      const d = document.createElement("span"); d.className = "ci-date"; d.textContent = it.date;
+      const t = document.createElement("span"); t.className = "ci-title"; t.textContent = it.title;
+      const g = document.createElement("span"); g.className = "ci-tags"; g.textContent = "[" + it.tags.split(" ").join("·") + "]";
+      li.append(d, t, g);
+      li.addEventListener("mouseenter", () => { active = i; render(); });
+      li.addEventListener("click", () => { location.href = it.href; });
+      list.appendChild(li);
+    });
+    const el = list.children[active];
+    if (el && el.scrollIntoView) el.scrollIntoView({ block: "nearest" });
+  }
+  function searchPalette() {
+    const n = pInput.value.trim().toLowerCase();
+    results = (n
+      ? items.filter((it) => (it.title + " " + it.tags + " " + it.sum + " " + it.sector).toLowerCase().includes(n))
+      : items.slice()
+    ).slice(0, 12);
+    active = 0; render();
+  }
+  function openPalette() { overlay.hidden = false; pInput.value = qEl.value; searchPalette(); pInput.focus(); }
+  function closePalette() { overlay.hidden = true; }
+  $("#cmdk-btn").addEventListener("click", openPalette);
+  $("#fab-search").addEventListener("click", openPalette); // 모바일 FAB — 터치에서 ⌘K 대체
+  $("#cmdk-close").addEventListener("click", closePalette); // 모바일 닫기 버튼 (esc 없음)
+  overlay.addEventListener("mousedown", (e) => { if (e.target === overlay) closePalette(); });
+  pInput.addEventListener("input", () => { setNeedle(pInput.value, "p"); apply(); searchPalette(); });
+  pInput.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); if (results.length) { active = (active + 1) % results.length; render(); } }
+    else if (e.key === "ArrowUp") { e.preventDefault(); if (results.length) { active = (active - 1 + results.length) % results.length; render(); } }
+    else if (e.key === "Enter") { e.preventDefault(); if (results[active]) location.href = results[active].href; }
+  });
+  document.addEventListener("keydown", (e) => {
+    const inField = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || "")) || e.target.isContentEditable;
+    if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) { e.preventDefault(); overlay.hidden ? openPalette() : closePalette(); return; }
+    if (e.key === "Escape") {
+      if (!overlay.hidden) { closePalette(); return; }
+      if (!mq.matches && box.open) { closeSheet(); return; }
+    }
+    if (e.key === "/" && overlay.hidden && !inField) { e.preventDefault(); openPalette(); }
+  });
+
+  /* ── 테마 토글: [data-theme] 오버라이드 + localStorage 저장 (A) ── */
+  document.getElementById("theme-btn").addEventListener("click", () => {
+    const root = document.documentElement;
+    const sysLight = matchMedia("(prefers-color-scheme: light)").matches;
+    const cur = root.dataset.theme || (sysLight ? "light" : "dark");
+    const next = cur === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  resort();
+  setTab(tab); // 초기 탭(해시 존중) — apply 포함
 })();
 </script>
 </body>
