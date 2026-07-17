@@ -279,12 +279,14 @@ section h2::before { content: "## "; color: var(--accent); }
 .rc-rating { grid-column: 4; grid-row: 1 / span 2; justify-self: start; margin-top: 3px;
   font-size: 10.5px; font-weight: 750; color: var(--muted);
   font-family: ui-monospace, "SF Mono", Menlo, monospace; }
-.rc-rating.r-cut, .rc-rating.r-neu { display: inline-flex; align-items: center;
+.rc-rating.r-cut, .rc-rating.r-neu, .rc-rating.r-add { display: inline-flex; align-items: center;
   border-radius: 5px; padding: 1px 7px; line-height: 1.6; }
 .rc-rating.r-cut { color: var(--down); background: color-mix(in srgb, var(--down) 12%, transparent);
   border: 1px solid color-mix(in srgb, var(--down) 40%, transparent); }
 .rc-rating.r-neu { color: var(--accent); background: var(--accent-bg);
   border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); }
+.rc-rating.r-add { color: var(--up); background: color-mix(in srgb, var(--up) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--up) 40%, transparent); }
 a.report-card.hide { display: none !important; }
 .rc-empty { padding: 22px 20px; color: var(--muted); font-size: 12px; text-align: center; }
 .rc-empty[hidden] { display: none; }
@@ -465,7 +467,7 @@ footer a { color: var(--link); }
   .rc-title { font-size: 15.5px; line-height: 1.5; margin-top: 5px; }
   .rc-sum { -webkit-line-clamp: 1; font-size: 13px; line-height: 1.55; margin-top: 3px; }
   .rc-meta { display: flex; align-items: center; gap: 12px; margin-top: 7px; }
-  .rc-meta:not(:has(.rc-rating.r-cut, .rc-rating.r-neu)) { display: none; }
+  .rc-meta:not(:has(.rc-rating.r-cut, .rc-rating.r-neu, .rc-rating.r-add)) { display: none; }
   .rc-sector { display: none; }
   .rc-rating { margin-left: 0; margin-top: 0; font-size: 12px; }
 
@@ -609,12 +611,12 @@ footer a { color: var(--link); }
         <div class="rc-title">US 마감 시황 — 헬스케어가 지수를 떠받쳤지만, TSMC 자본지출 상향에 메모리가 이틀째 급락</div>
         <p class="rc-sum">간밤 뉴욕은 TSMC 자본지출 상향에 반도체가 이틀째 매도돼 나스닥 -0.9%, 메모리(마이크론 -6.3%·SK하이닉스 ADR -9.1%)가 최전선이었고 헬스케어가 다우를 방어했다 — 오늘 국내 삼성전자·SK하이닉스의 read-through가 핵심.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" href="reports/2026-07-17-samsung-pe-band.html">
+      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" data-symbols="005930" href="reports/2026-07-17-samsung-pe-band.html">
         <div class="rc-top"><span class="rc-date">2026.07.17</span><span class="rc-tags"><span>KR</span><span>심층</span><span>PE밴드</span></span></div>
         <div class="rc-title">삼성전자, 이익이 주가보다 빨랐다 — 지금 4.7배가 말하는 것</div>
         <p class="rc-sum">3년간 주가 3.9배 vs 추정 NTM 이익 17배 — Forward P/E는 20.5배에서 4.7배(3년 백분위 1%)로 오히려 디레이팅. 앵커 14개 밴드로 리레이팅을 분해하고 관세청 수출·수급·글로벌 피어 실측으로 &#x27;이 이익이 언제까지 가느냐&#x27; 논쟁의 좌표를 제시.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" href="reports/2026-07-16-sk-hynix-exports.html">
+      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" data-symbols="000660" data-rating="중립" href="reports/2026-07-16-sk-hynix-exports.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>KR</span><span>반도체</span><span>수출입</span><span>테마</span></span></div>
         <div class="rc-title">SK하이닉스 — 수출입 데이터로 읽는 메모리 슈퍼사이클: 수출은 실적을 한 분기 먼저 말한다</div>
         <p class="rc-sum">관세청 실측: 메모리 수출 6월 $29.0B(YoY +253%) 파라볼릭, 수출↔SKH 매출 5분기째 1:1 동행 — 2Q26 수출 +54% QoQ가 7월 말 실적의 선행 신호. 장비 수입 급증은 2027 공급 경고(중립 상속)</p>
@@ -629,27 +631,27 @@ footer a { color: var(--link); }
         <div class="rc-title">US 마감 시황 — 지수는 PPI 둔화·애플 최고가로 상승, 그 안에서 메모리는 홀로 급락</div>
         <p class="rc-sum">간밤 뉴욕 3대 지수 상승(6월 PPI 둔화·애플 +4% ATH) 속 마이크론 −8% 메모리 다이버전스 — 오늘 삼성·SK하이닉스 read-through 점검</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" href="reports/2026-07-16-samsung-em-009150.html">
+      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" data-symbols="009150" data-rating="비중축소" href="reports/2026-07-16-samsung-em-009150.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>KR</span><span>심층</span></span></div>
         <div class="rc-title">삼성전기(009150) 심층 — 창사 최대 실적의 AI 기판 강자, 그러나 9배 급등이 만든 74배 밸류</div>
         <p class="rc-sum">FY25 매출 11.31조·영업이익 9,133억 창사 최대, FCBGA·MLCC 견인. 그러나 3년 9배 급등으로 Forward P/E 74배(3년 밴드 95%ile)까지 올라 -36% 조정에도 Base 시나리오조차 -26%. P/E 백분위·Base 상방소진 두 신호로 선호도는 비중축소. &#x27;조정=저가&#x27; 앵커링 착시 경계. 콜 furniture·컨센 델타·EV/EBITDA 2차·근거N 팝업·라인차트 심층.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" href="reports/2026-07-16-broadcom-avgo.html">
+      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" data-symbols="AVGO" data-rating="비중축소" href="reports/2026-07-16-broadcom-avgo.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>US</span><span>심층</span></span></div>
         <div class="rc-title">브로드컴(AVGO) 심층 — AI 커스텀 실리콘의 최강자, 그러나 자기 밴드 90%ile의 프리미엄</div>
         <p class="rc-sum">Q2 FY26 AI 매출 $10.8B(2배)·OpenAI 커스텀칩 Jalapeño 공개로 사업은 최상급이나, Forward P/E 55.3배가 자기 3년 밴드 90%ile(과열)이고 Base 상승여력 +12%로 약해 선호도는 비중축소. 컨센 Strong Buy에도 밸류 규율로 축소를 낸 사례. 콜 furniture·컨센 델타·PEG 2차·근거N 팝업·라인차트 심층.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" href="reports/2026-07-16-micron-mu.html">
+      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" data-symbols="MU" data-rating="중립" href="reports/2026-07-16-micron-mu.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>US</span><span>심층</span></span></div>
         <div class="rc-title">마이크론(MU) 심층 — 분기 EPS +998%의 메모리 슈퍼사이클, 그런데 P/E 12배는 정점의 착시</div>
         <p class="rc-sum">Q3 FY26 매출 $35B(+279%)·EPS $20.28(+998%), 2026 HBM 완판. 그러나 Forward P/E 12.3배는 사이클 정점 이익에 붙은 낮은 배수(피크 멀티플 착시)로, 하방(-55%)이 상방만큼 큰 비대칭 때문에 선호도는 중립. SK하이닉스와 동일 구조. 콜 furniture·컨센 델타·P/B-ROE 2차·근거N 팝업·라인차트 심층.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" href="reports/2026-07-16-sk-hynix-deep.html">
+      <a class="report-card" data-sector="정보기술" data-group="반도체·반도체장비" data-symbols="000660" data-rating="중립" href="reports/2026-07-16-sk-hynix-deep.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>KR</span><span>심층</span></span></div>
         <div class="rc-title">SK하이닉스(000660) 심층 — 삼성 제친 47조 영업이익, 그런데 P/E 7.8배가 싸다는 착시</div>
         <p class="rc-sum">FY25 영업이익 47.2조로 사상 최대·삼성 추월, Q1&#x27;26 분기 영업이익 37.6조. 그러나 Forward P/E 7.8배는 사이클 정점 이익에 붙은 낮은 배수(피크 멀티플 착시)로, 하방(-61%)이 상방만큼 큰 비대칭 때문에 선호도는 중립. 콜 furniture·컨센 델타·P/B-ROE 2차·근거N 팝업·라인차트를 담은 심층.</p>
       </a>
-      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" href="reports/2026-07-16-apple-aapl.html">
+      <a class="report-card" data-sector="정보기술" data-group="기술하드웨어·장비" data-symbols="AAPL" data-rating="비중축소" href="reports/2026-07-16-apple-aapl.html">
         <div class="rc-top"><span class="rc-date">2026.07.16</span><span class="rc-tags"><span>US</span><span>심층</span></span></div>
         <div class="rc-title">애플(AAPL) 심층 — 실적은 사상 최고인데 밸류는 3년 최정점: 서비스가 이끄는 프리미엄의 값</div>
         <p class="rc-sum">서비스가 아이폰을 제치고 이익 1위로 올라선 구조 개선은 분명하나, Forward P/E 36.8배가 3년 밴드 최정점(백분위 100%)이고 월가 평균 목표주가마저 현재가를 밑돌아 선호도는 비중축소. 콜 furniture·컨센 델타·2차 밸류에이션·반증 트리거·PE 밴드 라인차트를 담은 심층.</p>
@@ -877,7 +879,12 @@ footer a { color: var(--link); }
     return out;
   }
 
-  /* ── 등급 추출 (A 휴리스틱 재사용 — 요약문에 명시된 판정만, 없으면 —) ── */
+  /* ── 등급: data-rating(publish.py 정식 필드, RATING.md 3단계) 우선, 없으면 A 휴리스틱 폴백 ── */
+  const OFFICIAL_RATING = {
+    "비중확대": { label: "비중확대", cls: "r-add" },
+    "중립": { label: "중립", cls: "r-neu" },
+    "비중축소": { label: "비중축소", cls: "r-cut" },
+  };
   function deriveRating(s) {
     if (/기준 미달/.test(s)) return { label: "미달", cls: "r-cut" };
     if (/비중\s?축소/.test(s)) return { label: "축소", cls: "r-cut" };
@@ -887,12 +894,23 @@ footer a { color: var(--link); }
     return null;
   }
 
+  /* data-symbols(publish.py 정식 필드)가 있으면 그 심볼 목록이 정본 — 이름은 제목 휴리스틱에서 보충 */
+  function stocksFor(c, title) {
+    const heur = extractStocks(title);
+    const ds = (c.dataset.symbols || "").split(",").map((s) => s.trim()).filter(Boolean);
+    if (!ds.length) return heur;
+    return ds.map((sym) => {
+      const h = heur.find((x) => x.sym === sym) || heur.find((x) => !x.sym) || heur[0];
+      return { sym, name: h ? h.name : sym };
+    });
+  }
+
   const meta = cards.map((c, i) => {
     const title = (c.querySelector(".rc-title") || c).textContent.trim();
     const tags = Array.from(c.querySelectorAll(".rc-tags span")).map((s) => s.textContent.trim());
     const date = ((c.querySelector(".rc-date") || {}).textContent || "").trim();
     const market = isMarket(title, tags);
-    return { c, i, title, tags, date, market, stocks: market ? [] : extractStocks(title), keys: [], match: true, p1: true };
+    return { c, i, title, tags, date, market, stocks: market ? [] : stocksFor(c, title), keys: [], match: true, p1: true };
   });
 
   /* ── 섹터·등급 셀 주입 + 태그 색상 (A) — 마커 블록은 소스 그대로, DOM 은 런타임 확장 ──
@@ -913,7 +931,7 @@ footer a { color: var(--link); }
     const sec = document.createElement("span");
     sec.className = "rc-sector"; sec.textContent = c.dataset.sector || "—";
     box.appendChild(sec);
-    const r = m.market ? null : deriveRating(sumEl ? sumEl.textContent : "");
+    const r = m.market ? null : (OFFICIAL_RATING[c.dataset.rating] || deriveRating(sumEl ? sumEl.textContent : ""));
     const rt = document.createElement("span");
     rt.className = "rc-rating" + (r ? " " + r.cls : "");
     rt.textContent = r ? r.label : "—";
