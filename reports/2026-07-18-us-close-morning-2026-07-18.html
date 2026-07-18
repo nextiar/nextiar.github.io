@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 반도체지수 베어마켓 진입, 'Kimi K3 쇼크'가 AI 캐펙스 신뢰를 흔들다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-18-us-close-morning-2026-07-18.html">
+<meta property="og:title" content="US 마감 시황 — 반도체지수 베어마켓 진입, &#x27;Kimi K3 쇼크&#x27;가 AI 캐펙스 신뢰를 흔들다">
+<meta property="og:description" content="간밤 뉴욕 3대 지수는 중국 Moonshot의 오픈웨이트 Kimi K3 공개발 AI 캐펙스 우려로 동반 하락, 필라델피아 반도체지수가 6월 고점 대비 -20%로 베어마켓에 진입했다 — 오늘 국내 장은 이 심리가 삼성전자·SK하이닉스 등 메모리·HBM으로 전이되는지가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-18-us-close-morning-2026-07-18.html">
+<meta name="description" content="간밤 뉴욕 3대 지수는 중국 Moonshot의 오픈웨이트 Kimi K3 공개발 AI 캐펙스 우려로 동반 하락, 필라델피아 반도체지수가 6월 고점 대비 -20%로 베어마켓에 진입했다 — 오늘 국내 장은 이 심리가 삼성전자·SK하이닉스 등 메모리·HBM으로 전이되는지가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-18-us-close-morning-2026-07-18.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 반도체지수가 <span class="down">베어마켓</span>에 진입, '제2 딥시크' <span class="down">Kimi K3 쇼크</span>가 AI 캐펙스 신뢰를 흔들다</h1>
+  <p class="sub">2026년 7월 18일(토) 국내 장 시작 전 기준 · 전일 미 증시(7/17 금 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 하락</strong>했다 — 중국 Moonshot의 오픈웨이트 대형모델 <strong>Kimi K3</strong> 공개가 "AI에 더 많은 연산이 필요하다"는 전제를 흔들며 <strong>필라델피아 반도체지수(SOX)가 6월 고점 대비 −20%로 베어마켓에 진입</strong>했다. 유일하게 오른 섹터는 <strong>에너지</strong>(중동 긴장에 유가 급등)였다. 오늘 국내 장의 핵심은 이 <strong>AI 캐펙스 지속성 우려가 삼성전자·SK하이닉스 등 메모리·HBM 밸류체인으로 어떻게 전이되느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-07-18 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-07-18 오전).</strong> 원/달러 <strong>1,488.8원</strong>(전일 1,492.2 → 소폭 원화 강세) · 미 국채 10년물 <strong>4.55%</strong>(7/17 마감 보도, 약 −2bp) · 한국 기준금리 2.75% · 달러지수 120.5. 간밤 뉴욕은 위험회피가 우세했고, 특히 <strong>반도체 내부가 로직·메모리·장비 전반에서 약했다</strong>. (KOSPI/KOSDAQ 스냅샷은 ETF 프록시 기준으로 오차가 커 본문 지수 수치로는 쓰지 않는다.)</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · 반도체 베어마켓</span></h2>
+  <p class="lead">미 지수·개별주는 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (7/17 마감)</div><div class="val down">리스크 오프</div><div class="delta">3대 지수 동반 하락 · Kimi K3가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,457.69</div><div class="delta down">▼ −1.01% · 주간 −1.6%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">25,520.24</div><div class="delta down">▼ −1.40% · 주간 −2.9%</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">메모리·HBM</div><div class="delta">AI 캐펙스 우려 → 삼성·하이닉스 전이 여부</div></div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>세 줄 요약.</strong> ① 간밤 뉴욕은 <strong>3대 지수 동반 하락</strong> — 중국 Moonshot의 <strong>Kimi K3</strong>(2.8조 파라미터 오픈웨이트) 공개가 "제2의 딥시크 순간"으로 받아들여지며 AI 인프라 과잉투자 우려를 되살렸다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">Kimi K3 · CNN Business (2026-07-17)</span><span class="evd-sum">중국 Moonshot이 <strong>Kimi K3</strong>(2.8조 파라미터, 100만 토큰 컨텍스트 오픈웨이트)를 공개. 저비용 오픈모델이 "더 많은 연산=더 높은 밸류"라는 반도체 프리미엄 논리를 흔들며 나스닥·S&amp;P가 약 1% 하락. 트레이더들은 "새 딥시크 순간"으로 표현.</span><a href="https://www.cnn.com/2026/07/17/investing/us-stocks-asia" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>
+    ② 그 충격이 반도체에 집중돼 <strong>필라델피아 반도체지수(SOX)가 6월 고점 대비 −20%로 베어마켓에 진입</strong>했고, 반도체 ETF(SMH)는 최근 4주 중 3주 하락(주간 약 −9%)했다.
+    ③ 유일한 상승 섹터는 <strong>에너지</strong>(중동 긴장에 유가 급등)였고, 커뮤니케이션서비스·자유소비재가 가장 약했다. 오늘 국내 장은 이 <strong>AI 캐펙스 신뢰 훼손이 메모리·HBM으로 전이되는지</strong>가 방향을 가른다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 지수·지표 요약</h2>
+  <p class="lead">Kimi K3발 AI 트레이드 되돌림이 지수를 눌렀다. 다만 <strong>미시간대 소비자심리는 예상을 크게 웃돌았고</strong>(경기 자체는 견조), 10년물은 소폭 하락해 '성장 둔화'보다는 <strong>AI 밸류에이션 되돌림</strong> 성격이 짙었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">7/17 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,457.69</td><td class="num"><span class="down">−1.01%</span></td><td>에너지만 상승, 통신·소비재 약세</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">25,520.24</td><td class="num"><span class="down">−1.40%</span></td><td>반도체·AI 트레이드 되돌림 주도</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,146.42</td><td class="num"><span class="down">−0.77%</span></td><td>−406.55p</td></tr>
+      <tr><td>필라델피아 반도체(SOX)</td><td class="num"><span class="down">−1.6%</span></td><td class="num">6월 고점 −20%</td><td>베어마켓 진입<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">SOX 베어마켓 · 마감 보도 (2026-07-17)</span><span class="evd-sum">필라델피아 반도체지수가 7/17 <strong>−1.6%</strong> 마감하며 6월 사상 최고 대비 <strong>−20%</strong>로 베어마켓 정의에 진입. 최근 한 달 −13%+. 반도체 ETF SMH는 최근 4주 중 3주 하락(주간 약 −9%). 다만 연초 대비로는 여전히 +약 63%.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-july-17-dow-sp-500-nasdaq-092345307.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.55%</td><td class="num"><span class="down">−2bp</span></td><td>중동 긴장·위험회피에 소폭 하락</td></tr>
+      <tr><td>미시간대 소비자심리(7월 예비)</td><td class="num"><span class="up">54.4</span></td><td class="num">예상 50.5</td><td>큰 폭 상회<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">미시간대 소비자심리 · CNBC (2026-07-17)</span><span class="evd-sum">미시간대 소비자심리 지수가 <strong>54.4</strong>로 다우존스 컨센서스 <strong>50.5</strong>를 상회. 조사 책임자는 "연령·소득·자산·정치성향 전반에서 광범위한 개선"이라 언급. 10년물은 2bp+ 하락한 4.545%.</span><a href="https://www.cnbc.com/amp/2026/07/17/treasury-yields-tumble-as-traders-weigh-domestic-outlook-and-fresh-middle-east-strikes.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>WTI / Brent 원유</td><td class="num"><span class="up">+4.5% / +4.6%</span></td><td class="num">$82.49 / $88.10</td><td>중동 긴장에 급등, 에너지 유일 상승</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이날 하락의 성격은 '경기 둔화'가 아니라 <strong>AI 밸류에이션 되돌림</strong>이다. 미시간대 소비자심리가 예상(50.5)을 크게 웃돈 <span class="up">54.4</span>로 나왔고 10년물은 소폭 하락했는데도, <strong>반도체·AI 대형주에서 자금이 빠져나가며</strong> 지수가 눌렸다. 즉 매크로가 아니라 <strong>테마 신뢰</strong>가 흔들린 하루였다.</p>
+      <p><strong>주도(하락) 요인.</strong> 촉매는 중국 Moonshot의 <strong>Kimi K3</strong>였다. 저비용 오픈웨이트 모델이 최상위 성능을 낸다는 주장은 "더 많은 GPU·더 많은 연산" 논리를 되묻게 했고, 여기에 <strong>TSMC의 예상 상회 캐펙스 가이던스</strong>가 공급망 마진 압박·AI 투자 지속성 우려를 겹쳐 자극했다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">AI 캐펙스 우려 확산 · 마감 보도 (2026-07-17)</span><span class="evd-sum">6/22 이후 글로벌 반도체 시가총액이 약 <strong>$3.3조</strong> 증발. Kimi K3발 "저비용 AI" 우려에 더해 TSMC의 예상 상회 캐펙스 가이던스가 마진 압박·AI 투자 지속성 논쟁을 키움. 에너지는 유가 급등에 유일하게 상승.</span><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-july-17-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 한편 실적 시즌에서 <strong>트래블러스가 <span class="up">+9%</span></strong>(호실적)로 보험주가 강세를 보인 건 예외적 상방이었다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 다이버전스 — 로직 · 메모리 · 장비로 갈라 보기</h2>
+  <p class="lead">이날은 '한 덩어리 반도체 랠리'의 반대편, <strong>세 하위 섹터가 동시에 약한 광범위 리스크 오프</strong>였다. 다만 흔들린 <strong>이유는 층마다 다르다</strong> — 이 결이 오늘 국내 장 read-through를 좌우한다. 개별 종목의 마감 등락률은 매체별 편차가 커, 방향이 일치하는 것만 정성적으로 적고 수치는 지어내지 않는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터</th><th>간밤 방향</th><th>흔들린 이유</th><th>국내 직결(read-through)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>로직 · AI 가속기</strong><br>(엔비디아·AMD·인텔)</td><td class="num"><span class="down">하락</span></td><td>Kimi K3 = 저비용 오픈모델 → "더 많은 연산" 프리미엄 논리 훼손. AI 벨웨더에서 순환매 이탈<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">반도체 순환매·개별주 · 마감 보도 (2026-07-17)</span><span class="evd-sum">엔비디아는 AI 벨웨더에서 자금 이탈로 하락(장중 낙폭을 일부 만회하며 종가 기준으로는 약 −1% 수준으로 보도). AMD·인텔도 반도체 매도세에 동반 하락(장중 낙폭이 더 컸다가 되돌림). <strong>개별 종목의 마감 확정 등락률은 매체별 편차가 있어 수치는 표기하지 않고 방향만 적는다.</strong></span><a href="https://247wallst.com/investing/2026/07/17/amd-falls-5-intel-drops-4-nvidia-slides-3-before-recovering-as-rotation-hits-semiconductor-stocks/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>국내 팹리스·AI 서버 밸류체인 심리 read-through</td></tr>
+      <tr><td><strong>메모리 · HBM</strong><br>(마이크론 → 삼성·SK하이닉스)</td><td class="num"><span class="down">하락</span></td><td>"AI 하이퍼스케일러 투자 축소" 시나리오가 메모리 수요 피크 논쟁을 재점화</td><td><strong>가장 직접</strong> — SK하이닉스 HBM 점유 1위(약 50~55%)·엔비디아향 12단 HBM4 공급 개시. 오늘 삼성·하이닉스 갭이 최대 관건<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">HBM 시장 구조 · 업계 자료 (2026-07 기준)</span><span class="evd-sum">HBM 점유율은 SK하이닉스 약 <strong>50~55%</strong>·삼성 35~40%·마이크론 5~10%. SK하이닉스는 6월 말 엔비디아향 <strong>12단 HBM4</strong> 양산 출하 시작. 삼성·SK하이닉스는 7/2 충청권 HBM 패키징 팹 포함 <strong>392조원</strong> 투자 발표. 구조적 램프는 유효하나, 단기 심리는 AI 캐펙스 논쟁에 민감.</span><a href="https://www.astutegroup.com/news/general/sk-hynix-holds-62-of-hbm-micron-overtakes-samsung-2026-battle-pivots-to-hbm4/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>장비</strong><br>(ASML·램리서치·TSMC 캐펙스)</td><td class="num"><span class="down">하락</span></td><td>캐펙스 삭감 우려에 가장 민감. TSMC 캐펙스 가이던스는 상향됐으나 '마진 압박' 해석으로 역풍</td><td>국내 소부장(장비·부품) 밸류체인 — 메모리 자본지출에 연동</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 지수·SOX·소비자심리·유가는 <strong>공개 마감 보도의 확정·집계치</strong>다. 반면 엔비디아·AMD·인텔·마이크론 등 <strong>개별 종목의 당일 마감 등락률은 매체별로 값이 엇갈려</strong>(장중 낙폭 vs 종가 되돌림), 방향(하락)만 표기하고 수치는 본문에서 제외했다 — 지어내지 않는다. 정확한 개별 등락은 개장 후 토스 실시간 시세로 교차확인이 필요하다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 국내에 중요한가.</strong> 세 층 중 국내와 가장 직결되는 것은 <strong>메모리·HBM</strong>이다. 간밤 논쟁의 핵심인 "AI 하이퍼스케일러가 투자를 줄일 수 있다"는 시나리오는 곧 <strong>HBM 수요 피크 우려</strong>이고, 이는 SK하이닉스·삼성전자의 실적 스토리에 직접 read-through된다. 다만 <strong>구조(펀더멘털)와 심리(밸류에이션)를 분리</strong>해서 봐야 한다 — SK하이닉스의 엔비디아향 12단 HBM4 양산·양사 392조원 투자 발표는 <strong>공급 사이클이 여전히 확장 중</strong>임을 보여주는 반면, 간밤 하락은 그 성장의 '지속성'에 대한 <strong>밸류에이션 재평가</strong>다. "반도체를 한 덩어리로 보지 말라"는 관점이 오늘도 유효하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·유가</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,488.8원</td><td class="num">1,492.2원</td><td>7/18 · ECOS <span class="down">(원화 강세 3.4원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>7월 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED)</strong></td><td class="num">4.57%</td><td class="num">—</td><td>FRED DGS10 (확정은 T+1 시차)</td></tr>
+      <tr><td>미 10년물 (7/17 마감 보도)</td><td class="num">≈4.55%</td><td class="num"><span class="down">−2bp</span></td><td>7/17 · 마감 보도(중동 긴장·위험회피)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">120.50</td><td class="num">—</td><td>FRED DTWEXBGS</td></tr>
+      <tr><td>WTI / Brent 원유</td><td class="num"><span class="up">$82.49 / $88.10</span></td><td class="num"><span class="up">+4.5% / +4.6%</span></td><td>7/17 · 마감 보도(6월 중순 이후 최고)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — FRED 스냅샷(4.57%)과 7/17 마감 보도치(≈4.55%). 시황 해석엔 간밤 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 환율은 원화가 소폭 강세로 외국인 수급에 우호적 방향이나, <strong>유가 급등</strong>(에너지 유일 상승)은 국내 정유·조선에는 상방, 항공·화학에는 비용 부담이라는 양면이 있다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘 국내 장 시사점 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>Kimi K3발 AI 캐펙스 우려로 반도체지수가 베어마켓에 진입</strong>했지만, 이는 경기 둔화가 아니라 <strong>테마 밸류에이션 되돌림</strong>이다 — 오늘 국내 장은 <strong>메모리·HBM(삼성전자·SK하이닉스)이 이 심리를 얼마나 반영하느냐</strong>가 핵심이다.</p>
+      <p><strong>맥락.</strong> 최근 국내 증시를 흔든 것도 같은 <strong>AI·메모리 밸류에이션 논쟁</strong>이다. 간밤 미국에서 로직·메모리·장비가 동시에 약했다는 점은 반등을 시도하던 국내 반도체에 <strong>단기 부담</strong>이다. 다만 <strong>펀더멘털 축</strong>(SK하이닉스 12단 HBM4 양산, 양사 392조원 투자)은 여전히 확장 국면을 가리키므로, 오늘의 관전은 "구조가 꺾였나"가 아니라 <strong>"심리가 어디까지 되돌리나"</strong>다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 SOX 베어마켓·메모리 약세를 개장 갭·거래대금으로 얼마나 반영하는지, ② <strong>Kimi K3 서사</strong>(저비용 AI)가 국내 AI·데이터센터·전력 관련주로 확산되는지 vs 과민반응으로 판명나는지, ③ <strong>유가 급등</strong>이 정유·조선(상방)과 항공·화학(하방)에 갈라 작용하는지, ④ 원/달러 원화 강세에 <strong>외국인 순매수</strong>가 실제로 붙는지, ⑤ 미시간대 소비자심리 호조가 보여준 <strong>'경기는 견조·테마만 조정'</strong> 구도가 국내에서도 방어주/실적주로의 순환매로 나타나는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 매체별 편차가 커 방향만 표기했고, 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 Kimi K3 공개로 나스닥·S&amp;P 약 1% 하락('제2 딥시크') — <a href="https://www.cnn.com/2026/07/17/investing/us-stocks-asia">CNN Business</a></span>
+  <span>근거2 SOX −1.6%·6월 고점 −20% 베어마켓·SMH 주간 −9% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-july-17-dow-sp-500-nasdaq-092345307.html">Yahoo Finance</a></span>
+  <span>근거3 미시간대 소비자심리 54.4(예상 50.5)·10년물 4.545% — <a href="https://www.cnbc.com/amp/2026/07/17/treasury-yields-tumble-as-traders-weigh-domestic-outlook-and-fresh-middle-east-strikes.html">CNBC</a></span>
+  <span>근거4 글로벌 반도체 시총 약 $3.3조 증발·TSMC 캐펙스·에너지 상승 — <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-july-17-2026">TheStreet</a></span>
+  <span>근거5 반도체 순환매(엔비디아·AMD·인텔 하락, 장중 낙폭 되돌림) — <a href="https://247wallst.com/investing/2026/07/17/amd-falls-5-intel-drops-4-nvidia-slides-3-before-recovering-as-rotation-hits-semiconductor-stocks/">24/7 Wall St.</a></span>
+  <span>근거6 HBM 점유(SK하이닉스 약 50~55%)·12단 HBM4 양산·양사 392조원 투자 — <a href="https://www.astutegroup.com/news/general/sk-hynix-holds-62-of-hbm-micron-overtakes-samsung-2026-battle-pivots-to-hbm4/">Astute Group</a></span>
+  </div>
+  데이터 출처: 미 증시 마감 공개 보도(지수·SOX·개별주 방향·유가), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 토스증권 Open API(미 ETF·시세 스냅샷). 2026-07-18 오전 조회 기준(전일 7/17 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. 개별 종목 마감 등락률은 매체별 편차로 방향만 표기했다. <strong>작성·발간: 2026-07-18 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
