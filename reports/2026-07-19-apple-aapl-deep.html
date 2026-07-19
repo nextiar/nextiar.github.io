@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="AAPL">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>애플(AAPL) — AI 셀오프의 피난처로 사상 최고, 그러나 밸류는 자기 밴드 최정점</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.chip.cool { background: var(--accent-bg); color: var(--accent); }
+
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-19-apple-aapl-deep.html">
+<meta property="og:title" content="애플(AAPL) — AI 셀오프의 피난처로 사상 최고, 그러나 밸류는 자기 밴드 최정점">
+<meta property="og:description" content="실적은 강하지만(2분기 매출 +17%) 12개월 선행 P/E 35.1배가 자기 3년 밴드 백분위 99%(최정점)·컨센 목표주가는 현재가를 하회 — 좋은 회사이나 이 가격에 남은 상방이 얇아 비중축소.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-19-apple-aapl-deep.html">
+<meta name="description" content="실적은 강하지만(2분기 매출 +17%) 12개월 선행 P/E 35.1배가 자기 3년 밴드 백분위 99%(최정점)·컨센 목표주가는 현재가를 하회 — 좋은 회사이나 이 가격에 남은 상방이 얇아 비중축소.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-19-apple-aapl-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 2026-07-19 · 가격 기준 7/17(금) 종가 (미 증시 마지막 거래일)</div>
+  <h1>애플(AAPL) — AI 셀오프의 피난처로 사상 최고, 그러나 밸류는 자기 밴드 최정점</h1>
+  <p class="sub">중국 Kimi K3발 AI 캐펙스 회의론으로 반도체(SOX)가 베어마켓에 진입한 7/17, 애플은 저(低)캐펙스·자체 실리콘 방어주로 부각되며 <strong>사상 최고 $333.74</strong>로 마감했다. 실적은 강하지만(2분기 매출 <span class="up">+17%</span>) 12개월 선행 P/E는 <strong>35.1배</strong>로 자기 3년 밴드 백분위 <strong>99%</strong>(최정점)·컨센 목표주가는 현재가를 하회 — 콜은 <strong>비중축소</strong>.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">"좋은 회사인가"가 아니라 "이 가격에 남은 상방이 있는가"에 답하는 리포트다. 실적·서사(방어주 로테이션)와 밸류에이션(밴드 최정점)의 간극이 논지의 중심이다.</p>
+</header>
+
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">P/E 백분위 99% ≥ 75%(고평가) · Base <span class="down">−8.9%</span> ≤ 0%</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">$333.74</div>
+    <div class="delta">Fwd P/E 35.1배 (3년 평균 30.1배) · 백분위 99% <span class="chip">과열</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−8.9%</div>
+    <div class="delta">Bull <span class="up">+14.5%</span> / Bear <span class="down">−29.9%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 7월말~8월초 FY26 3분기(6월 분기) 실적</div>
+  </div>
+</div>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 비중축소.</strong> 애플은 강한 회사이지만 지금은 <strong>비싼 주식</strong>이다. 12개월 선행 P/E <strong>35.1배</strong>는 자기 3년 밴드 백분위 <strong>99%</strong>·최근 1년 백분위 <strong>100%</strong>(둘 다 최정점), 후행 P/E는 <strong>40.9배</strong>로 10년 중앙값(26.8배) 대비 <span class="up">+50%</span>다. 컨센 목표주가 <strong>$315~329</strong>는 현재가($333.74)를 하회 — 상방이 이미 소진된 레벨.</li>
+    <li><strong>이 랠리는 실적이 아니라 로테이션이다.</strong> 7/17 반도체(SOX)가 AI 캐펙스 회의론으로 베어마켓에 빠지는 동안, 애플은 <strong>캐펙스가 매출의 2.5%에 불과한(하이퍼스케일러 ~39% 대비) 저비용·자체 실리콘 방어주</strong>로 자금이 몰리며 사상 최고를 찍고 한때 세계 시총 1위에 올랐다. 좋은 서사지만, 그 프리미엄이 밸류를 밴드 꼭대기로 밀어올렸다.</li>
+    <li><strong>펀더멘털은 진짜 강하다 — 그래서 이미 가격에 있다.</strong> FY26 2분기 매출 <strong>$111.2B(YoY <span class="up">+17%</span>)</strong>, 아이폰 $58.0B(<span class="up">+22%</span>, 3월 분기 최고), 서비스 <strong>$31.0B(<span class="up">+16%</span>, 사상 최대·GM 76%+)</strong>, 매출총이익률 <strong>49.3%</strong>(가이던스 상회), 중국 $20.5B(<span class="up">+28%</span>). 품질은 논점이 아니다 — 논점은 이 좋은 뉴스에 35배를 더 낼 여지다.</li>
+    <li><strong>콜을 바꿀 조건.</strong> ① AI 기능(iOS 27 Siri·중국 애플 인텔리전스)이 <strong>실제 대규모 교체 슈퍼사이클</strong>로 확인되고 서비스가 두 자릿수 재가속하면 멀티플이 밴드 상단에서 유지될 수 있다(Bull +14.5%). ② AI 캐펙스 회의론이 완화돼 자금이 반도체로 되돌아가면 방어주 프리미엄이 풀린다. 첫 판정 지점은 <strong>7월말~8월초 FY26 3분기 실적</strong>이다.</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">분석경로</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-17 미 증시 종가 기준)</strong><br>미 10년물 <strong>4.57%</strong> · 달러지수 120.50 · SPY 743.29$ (<span class="down">−0.99%</span>) — AI 랠리 되돌림 국면<br>SOX(필라델피아 반도체지수) 고점(6/22) 대비 <span class="down">−20.2%</span> → 베어마켓 진입, 주간 <span class="down">−12.5%</span> — 이 자금이 애플 등 저캐펙스 방어주로 로테이션<br>원/달러 1,488.80원 · 한국 기준금리 2.75% (참고 — US 종목이라 밸류 변수는 미 금리) — <a href="https://report.devindgkim.net/" style="color:var(--accent);">당일 브리핑</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>미 10년물 4.57%</strong>(할인율) 가정 위에서 계산했다 (하우스 매크로 가정 상속 — 금리가 크게 오르거나 AI 캐펙스 심리가 반전되면 방어주 프리미엄 전제도 함께 갱신되어야 한다).</p>
+
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — 애플은 "AI를 사는 쪽"이 아니라 "AI를 얹는 쪽"이다</h2>
+  <p class="deck">지금 애플 주가를 움직이는 축은 세 가지 — <strong>AI 캐펙스 심리</strong>(로테이션), <strong>스마트폰 교체 사이클</strong>(아이폰), 그리고 <strong>서비스 믹스</strong>(마진)다. 앞의 하나가 지금 밸류를 밀어올렸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>업종 지표</th><th class="num">최근값</th><th>방향·해석</th></tr></thead>
+    <tbody>
+      <tr><td>애플 캐펙스 / 매출 (2026E) <span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CNBC · HSBC "애플 사상 최고, 아직 여지" (2026.07.17)</span><span class="evd-sum">HSBC: 애플의 2026 추정 캐펙스는 매출의 <strong>약 2.5%</strong>에 불과 — 하이퍼스케일러(AI 인프라 구축)의 약 39%와 대비된다. AI 지출 회의론 국면에서 애플이 "안전한 피난처"로 부각된 근거.</span><a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">약 2.5%</td><td>하이퍼스케일러(~39%)의 1/15 — 저캐펙스 방어주 성격</td></tr>
+      <tr><td>SOX 반도체지수 (고점 대비) <span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">briefing_ref 스냅샷 (2026-07-17 기준)</span><span class="evd-sum">필라델피아 반도체지수(SOX)가 7/17 종가 기준 6/22 사상 최고 대비 <strong>−20.2%</strong>로 베어마켓 진입, 주간 −12.5%. 방아쇠는 중국 Moonshot Kimi K3발 AI 캐펙스 회의론. 이 리스크오프 자금이 애플로 로테이션.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num"><span class="down">−20.2%</span></td><td>베어마켓 진입 — 애플에는 오히려 자금 유입(반작용)</td></tr>
+      <tr><td>서비스 매출 비중 / 총이익 기여 <span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">Variety · 애플 2분기 서비스 사상 최대 (2026.04)</span><span class="evd-sum">FY26 2분기 서비스 매출 <strong>$30.98B</strong>(YoY +16.2%), 총매출의 27.9%. 매출총이익률 76%+로 총이익의 약 <strong>35%</strong>를 차지 — 매출 비중(30% 미만)보다 이익 기여가 큰 마진 엔진.</span><a href="https://variety.com/2026/digital/news/apple-earnings-march-2026-quarter-services-revenue-1236734606/" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">27.9% / ~35%</td><td>고마진 서비스가 믹스 상향 — 마진·멀티플 지지</td></tr>
+      <tr><td>미 10년물 국채금리 (할인율) <span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">briefing_ref 스냅샷 (2026-07-17 기준)</span><span class="evd-sum">미 10년물 <strong>4.57%</strong>·달러지수 120.50·SPY 743.29$(−0.99%). 고금리는 원거리 이익의 현재가치를 눌러 고멀티플 주식에 역풍 — 애플은 이미 밴드 최정점이라 금리 민감도가 높다.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">4.57%</td><td>고금리 지속 — 밴드 최정점 멀티플엔 역풍</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">스마트폰·소비가전은 sector_map.json의 KR 11업종 매핑에 없어, 리서치 가이드(업종 정의)에 따라 심리(AI 캐펙스·SOX)·마진(서비스 믹스)·할인율(미 10년물)으로 직접 정의했다. 핵심 대치: 업황(실적)은 우호적인데, 주가를 여기까지 끌어올린 힘의 상당 부분은 <strong>펀더멘털이 아니라 방어주 로테이션</strong>이라는 점이다.</p>
+</div>
+
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 심층(재출발 기준선)</h2>
+  <p class="deck">이 리포트는 발굴 스크리닝의 산출물이 아니라, 특정 종목을 지목해 모든 소스로 검증한 <strong>지정 심층</strong>이다.</p>
+  <p>애플은 랭킹·스크리닝으로 좁혀 고른 종목이 아니라 사용자가 지목한 단일 종목이다. 미국 상장사이므로 데이터 소스는 국내와 다르다 — 공시는 <strong>SEC EDGAR</strong>(10-K·10-Q·8-K), 재무·컨센서스는 <strong>FMP</strong>(애널리스트 추정·목표주가), 매크로는 미 금리 스냅샷을 썼다. 분석은 <strong>서사(AI 셀오프의 방어주 로테이션)와 공시 숫자(강한 실적 + 밴드 최정점 밸류)를 분리 검증</strong>하고, 그 간극을 논지의 중심으로 삼는 방식으로 진행했다.</p>
+  <p>이 리포트는 리서치 표준 재출발 이후의 <strong>1세대 기준선 리포트</strong>다 — 과거 발간분과의 연계·후속 개정 판정은 하지 않으며, 이후 같은 종목 리포트의 비교 기준점이 된다.</p>
+</div>
+
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 트리거 3개와 경고 1개</h2>
+  <p class="deck">주가를 사상 최고로 끌어올린 힘(로테이션·실적·AI 기대)이 지금 같은 화면 안에 있고, 그 힘이 밸류를 이미 위험한 높이까지 밀어올렸다.</p>
+  <p><strong>트리거 ① AI 셀오프의 피난처 — 사상 최고·한때 세계 1위.</strong> 7/17 SOX가 베어마켓에 진입하는 와중에 애플은 장중 $334.68 사상 최고를 찍고 $333.74로 마감, 한때 세계 시총 1위에 올랐다<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CNBC · HSBC "애플 사상 최고" (2026.07.17)</span><span class="evd-sum">애플 장중 사상 최고 <strong>$334.68</strong>·종가 $333.74. 6월 저점 대비 20% 반등, 7/17 한때 세계 최고 시총. 투자자들이 AI 데이터센터 지출 회수 시점 불확실성에 불안해하며 애플을 "안전한 피난처"로 매수. HSBC는 "아직 상승 여지" 의견.</span><a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 반도체가 무너지는 국면에서 저캐펙스·자체 실리콘 애플이 반사이익을 본 것이다.</p>
+  <p><strong>트리거 ② 실적은 강하다 — 아이폰17·중국·서비스 3박자.</strong> FY26 2분기 매출 <strong>$111.2B(YoY +17%)</strong>로 3월 분기 사상 최대, 아이폰 $58.0B(<span class="up">+22%</span>)·서비스 $31.0B(<span class="up">+16%</span>, 사상 최대)·중국 $20.5B(<span class="up">+28%</span>)를 기록했다<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 2분기 2026 실적 (2026.04.30)</span><span class="evd-sum">FY26 2분기 매출 <strong>$111.2B</strong>(YoY +17%, 3월 분기 최고·직전 최고 $97.3B 경신), 순이익 $29.6B, 아이폰 $57.99B(+22%), 서비스 $30.98B(+16.2%), 매출총이익률 49.3%(가이던스 47~48% 상회).</span><a href="https://www.macrumors.com/2026/04/30/apple-2q-2026-earnings/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 아이폰17은 2026년 1분기 글로벌 판매 1위였다<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">MacRumors · iPhone 17 글로벌 최다 판매 (2026.05)</span><span class="evd-sum">아이폰17이 2026년 1분기 전 세계 스마트폰 판매 1위(단일 모델 점유율 6%), 17 Pro Max·Pro가 2·3위를 차지해 상위 3위 석권. 중국에서도 2분기 출하 YoY +24.4%로 시장 역성장 속 최고 성장 브랜드.</span><a href="https://www.macrumors.com/2026/05/06/iphone-17-best-selling-smartphone-q1-2026/" target="_blank" rel="noopener">원문 ↗</a></span></span>.</p>
+  <p><strong>트리거 ③ AI 촉매의 실체화 — Siri·중국 애플 인텔리전스.</strong> 애플은 구글 Gemini를 채택해 iOS 27 퍼블릭 베타에 개편 Siri를 탑재했고, 중국 당국은 7월 중순 애플의 온디바이스 생성형 AI(애플 인텔리전스)를 승인해 중국 출시 길을 열었다<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 인텔리전스 중국 승인 (2026.07.15)</span><span class="evd-sum">중국 사이버공간관리국(CAC)이 애플의 온디바이스 생성형 AI 서비스를 신규 승인 목록에 등록(7월 중순). 중국 규제 대응은 알리바바·바이두 기술 활용. 다만 Siri AI는 중국·EU에서 아직 보류 — 정확한 활성화 시점 미정.</span><a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">원문 ↗</a></span></span>. HSBC는 "AI 기능과 강한 제품 파이프라인이 대규모 교체 사이클을 촉발할 잠재력"이라 평가했다.</p>
+  <div class="note"><strong>경고 — 좋은 뉴스가 이미 가격에 있다(그리고 그 이상).</strong> 위 세 트리거는 모두 진짜다. 그러나 애플은 그 대가로 12개월 선행 P/E <strong>35.1배(백분위 99%)</strong>·후행 40.9배(10년 중앙값 대비 +50%)를 요구받고 있고, 애널리스트 <strong>컨센 목표주가($315~329)는 현재가를 하회</strong>한다<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">CNBC · KeyBanc "ATH, 매도 권고" (2026.07.14)</span><span class="evd-sum">애플이 사상 최고를 찍자 KeyBanc는 "밸류에이션이 과도하다"며 매도 의견을 냈다. GuruFocus GF Value $268.56 "약간 고평가", 평균 목표주가 $315(FMP 컨센 $329, 중앙값 $330)로 현재가 $333.74를 하회 — 상방이 소진된 레벨.</span><a href="https://www.cnbc.com/2026/07/14/apple-just-hit-an-all-time-high-keybanc-says-investors-should-sell-the-tech-giant.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 이 콜은 "품질"이 아니라 "가격"에 서 있다 — AI 교체 슈퍼사이클이 실제로 오면 콜이 틀릴 수 있고(섹션 11), 그 검증은 7월말 실적과 iOS 27 정식 출시에서 이뤄진다.</p>
+</div>
+
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 재현 가능한 수치</h2>
+  <p class="deck">모멘텀은 최강이다 — 문제는 추세가 아니라 그 추세가 밸류를 밴드 꼭대기까지 끌어올렸다는 데 있다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">수치</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>현재가 (7/17 종가) <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">토스 Open API · stock_info / fetch_prices (2026.07.17)</span><span class="evd-sum">AAPL 7/17 종가 <strong>$333.74</strong>(NASDAQ, 사상 최고 종가). 발행주식수 약 146.9억주 → 시총 약 <strong>$4.90조</strong>. 매수 유의사항 0건.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">$333.74</td><td class="grade g-na">— 시총 약 $4.90조 (사상 최고)</td></tr>
+      <tr><td>2026년 수익률 (6월 저점 대비)</td><td class="num"><span class="up">+20%</span></td><td class="grade g-full">● 강한 모멘텀(방어주 로테이션)</td></tr>
+      <tr><td>3년 주가 (2023.6 → 2026.7)</td><td class="num"><span class="up">+88%</span></td><td class="grade g-full">● 구조적 상승 추세</td></tr>
+      <tr><td>52주 고가 대비</td><td class="num">0% (신고가)</td><td class="grade g-none">○ 되돌림 여지 없음(최고점)</td></tr>
+      <tr><td>Fwd P/E 백분위 (3년 / 1년)</td><td class="num">99% / 100%</td><td class="grade g-none">○ 밴드 최정점(과열)</td></tr>
+      <tr><td>매수 유의사항</td><td class="num">0건</td><td class="grade g-full">● 없음</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">가격 기준일은 2026-07-17(금) 미 증시 마지막 거래일 종가($333.74, 사상 최고 종가). 3년 수익률은 일봉 실측($177.82 → $333.74). 밴드 백분위 99%(3년)·100%(1년)는 밸류에이션 밴드 모델 산출값. 기술 스크리닝의 핵심은 엔비디아(밴드 최하단)와 정반대 — "추세도 밸류도 모두 꼭대기"라는 조합이며, 모멘텀 신호와 밸류 신호가 충돌한다.</p>
+</div>
+
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC 분석 — 가격·물량·비용</h2>
+  <p class="deck">가격(P)·비용(C)은 최상위, 물량(Q)은 아이폰17로 재가속 — 사업의 질은 흠잡을 데가 적다. 논점은 "질"이 아니라 "가격"이다.</p>
+  <h3>P (가격) — <span class="g-full">● 강함</span></h3>
+  <p>애플의 가격결정력은 브랜드·생태계 락인과 프리미엄 믹스에서 나온다. 아이폰17 상위 프리미엄 모델(Pro·Pro Max)이 판매 상위를 석권했고, 중국에서 프리미엄 가격 정책으로 시장 역성장 속에서도 점유율을 끌어올렸다<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">MacRumors · iPhone 17 (2026.05·07)</span><span class="evd-sum">아이폰17 Pro Max·Pro가 글로벌 판매 2·3위. 중국 점유율 13.9%→18.1%로 상승(2위, 화웨이 22.6% 다음). 프리미엄 가격에도 물량 확대 = 가격결정력의 증거.</span><a href="https://www.macrumors.com/2026/07/14/iphone-17-pricing-helped-apple-china-q2-26/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 여기에 서비스(App Store·구독)가 76%+ 매출총이익률로 믹스를 끌어올린다. <strong>P는 문제의 축이 아니다.</strong></p>
+  <h3>Q (물량) — <span class="g-full">● 강함(아이폰17 재가속)</span></h3>
+  <p>아이폰 매출이 2분기 $58.0B(<span class="up">+22%</span>)로 3월 분기 사상 최고, 아이폰17은 2026년 1분기 글로벌 판매 1위였다<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">Yahoo Finance · 애플 2분기 서프라이즈·중국 (2026.04)</span><span class="evd-sum">애플 2분기 실적이 컨센을 상회, 아이폰·중국 매출이 서프라이즈를 견인. 중국 매출 YoY +28%, 아이폰 매출 +22%. 우려됐던 중국이 오히려 성장 동력으로 반전.</span><a href="https://finance.yahoo.com/news/apple-tops-q2-earnings-estimates-on-strong-iphone-china-sales-174442565.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 다만 물량 상방은 스마트폰 시장의 구조적 저성장(한 자릿수)이 제약한다 — 컨센은 FY27 매출 성장을 <strong>+9%</strong>로 본다(FY26 +15% 대비 둔화). <strong>Q는 강하나 사이클 정점 부근이라는 물음이 남는다.</strong></p>
+  <h3>C (비용) — <span class="g-full">● 강함</span></h3>
+  <p>매출총이익률이 2분기 <strong>49.3%</strong>로 전년 47.1%·가이던스(47~48%)를 모두 상회했다<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 2분기 2026 실적 (2026.04.30)</span><span class="evd-sum">매출총이익률 <strong>49.3%</strong>(전년 47.1%), 서비스 믹스 상향과 자체 실리콘 원가 효율이 견인. TTM 영업이익률 32.5%(TTM 실측) — 대형 하드웨어 기업 중 최상위권.</span><a href="https://www.macrumors.com/2026/04/30/apple-2q-2026-earnings/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 자체 실리콘(Apple Silicon) 설계로 핵심 부품 원가를 내재화했고, 고마진 서비스 비중 상승이 구조적으로 마진을 밀어올린다. 리스크는 메모리 등 부품 가격 상승 압력이나, 애플의 협상력·자체 설계가 이를 완충한다. <strong>C도 문제의 축이 아니다.</strong></p>
+  <p class="fine">TTM 실측: 매출 $444.3B·영업이익 $144.5B·OPM 32.5%. 애플은 P·Q·C 세 축이 모두 강한 우량 기업이며, 이 리포트의 콜이 부정적인 이유는 사업의 질이 아니라 <strong>그 질에 지불하는 가격(35배·밴드 99%ile)</strong>이다.</p>
+</div>
+
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 지속가능성 6항목</h2>
+  <p class="deck">미국향·TAM·수주(설치기반)는 강하다. 다만 "밸류에이션 리레이팅"은 이미 최정점이라 <strong>추가 상방이 없는(오히려 되돌림 위험)</strong> 것이 유일하자 결정적 약점이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출 증가 + 자사 공장 가동률</td><td class="grade g-na">— 해당없음</td><td>애플은 팹리스·위탁생산(폭스콘 등) — 자사 팹 가동률 지표가 없다. 대응 축은 공급망 캐파와 아이폰 출하로, 2분기 물량은 강했음(1번 대신 3·6번에서 판정) <span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 2분기 실적 (2026.04)</span><span class="evd-sum">애플은 자체 제조 팹이 없는 위탁생산 구조. "자사 가동률" 지표는 부적합하며, 아이폰 출하(+22%)·서비스가 대리 지표.</span><a href="https://www.macrumors.com/2026/04/30/apple-2q-2026-earnings/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률 정상화</td><td class="grade g-na">— 해당없음</td><td>저캐펙스 모델(매출의 ~2.5%) — 대규모 자사 설비투자 자체가 논점이 아니다. 오히려 저캐펙스가 방어주 프리미엄의 근거(섹션 01) <span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CNBC · HSBC (2026.07.17)</span><span class="evd-sum">애플 캐펙스는 매출의 약 2.5%. 설비투자→가동률 축이 아니라 "저비용 구조"가 특징 — AI 캐펙스 회의론 국면에서 강점.</span><a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>3</td><td>수주(설치기반)가 매출보다 빠르게 확대</td><td class="grade g-part">◐ 부분 충족</td><td>활성 기기 설치기반이 서비스 성장(+16%)의 토대 — 설치기반 &gt; 하드웨어 매출 성장. 다만 하드웨어 자체는 스마트폰 저성장에 수렴 <span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">Variety · 서비스 사상 최대 (2026.04)</span><span class="evd-sum">서비스 매출 +16.2%로 하드웨어보다 빠르게 성장, 활성 기기 설치기반 확대가 구독·App Store 성장의 토대. 설치기반이 미래 서비스 매출의 "수주잔고" 역할.</span><a href="https://variety.com/2026/digital/news/apple-earnings-march-2026-quarter-services-revenue-1236734606/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>4</td><td>미국향 매출 여부</td><td class="grade g-full">● 충족</td><td>본사·매출의 최대 비중이 미주(Americas). 중국(+28%)·글로벌 분산도 양호 — 특정국 편중 리스크는 상대적으로 낮음 <span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">Yahoo Finance · 애플 2분기 (2026.04)</span><span class="evd-sum">애플 매출은 미주가 최대, 유럽·중국·기타로 지역 분산. 2분기 중국 $20.5B(+28%)로 우려 반전. 미국향 매출 축은 충족.</span><a href="https://finance.yahoo.com/news/apple-tops-q2-earnings-estimates-on-strong-iphone-china-sales-174442565.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>5</td><td>밸류에이션 체계 (리레이팅)</td><td class="grade g-none">○ 최정점(추가 상방 없음)</td><td>이미 성장주(PER)로 평가되며 멀티플이 <strong>밴드 최정점(백분위 99%·40.9배 TTM)</strong> — 리레이팅 여지가 아니라 되돌림(디레이팅) 위험이 크다(섹션 13) <span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">GuruFocus · AAPL P/E TTM (2026.07)</span><span class="evd-sum">AAPL TTM P/E <strong>40.4배</strong>, 10년 중앙값 26.8배 대비 +50%. 3년 평균 33.6배·5년 32.4배 대비도 높음. 리레이팅(멀티플 상승) 여지는 소진, 방향은 정상화(하락) 쪽.</span><a href="https://www.gurufocus.com/term/pettm/AAPL" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td class="grade g-part">◐ 부분 충족</td><td>온디바이스 AI·서비스·웨어러블로 TAM은 확장 중이나, 핵심 스마트폰 시장은 성숙(저성장). AI 촉매가 교체 사이클로 이어질지는 미확인 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 인텔리전스 (2026.07)</span><span class="evd-sum">애플 인텔리전스·iOS 27 Siri가 온디바이스 AI TAM 확장 촉매. 다만 스마트폰 시장은 성숙 단계이며, AI 기능이 실제 대규모 교체 슈퍼사이클을 만들지는 아직 확인되지 않음.</span><a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">집계: 긍정 1(4) · 부분 2(3·6) · 부정 1(5) · 해당없음 2(1·2, 팹리스·저캐펙스 특성). 확인불가 없음. 팹리스 구조라 제조 세트 v1의 "자사 가동률" 지표 2개는 부적합해 — 해당없음으로 명시했다. 종합: 성장의 지속성은 견조하나 <strong>5번(밸류에이션이 이미 최정점 → 추가 상방 없음)</strong>이 결정적 약점이며, 이것이 콜을 비중축소로 만든 핵심이다.</p>
+  <div class="callout"><div class="co-num">99%ile · 40.9배</div><div class="co-lbl"><strong>Fwd P/E 3년 밴드 백분위 · TTM P/E</strong> — 실적이 강한 만큼 밸류도 자기 역사상 가장 높은 지점에 있다. GS 6항목 중 5개는 충족/부분이지만, 밸류가 최정점이라는 단 하나가 "이 가격에 남은 상방"을 지운다.</div></div>
+</div>
+
+<div class="card" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 컨센서스 델타</h2>
+  <p class="deck">우리 추정은 컨센(FMP)과 사실상 일치한다 — 논지는 "이익이 얼마냐"가 아니라 "그 이익에 지금 35배(밴드 99%)를 낸다"는 데 있다.</p>
+  <p class="desc">애플 이익 = 아이폰(물량×프리미엄 판가) + 서비스(고마진 구독) − 부품원가. FMP 애널리스트 추정을 컨센으로 삼아 우리 추정과 대조했다(회계연도 9월 결산). FY26 매출은 컨센 $478B(<span class="up">+15%</span>), EPS $8.76(<span class="up">+19%</span>)이나 FY27 성장은 <span class="up">+9~10%</span>로 둔화 경로다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목 (FY26E, ~2026.9 결산)</th><th class="num">우리 추정</th><th class="num">컨센서스(FMP)</th><th class="num">델타</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>매출액</td><td class="num">약 $478B</td><td class="num">$478.2B</td><td class="num">≈ 0%</td><td>2분기 $111.2B 런레이트 + 서비스 두 자릿수 <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">FMP · 애널리스트 추정 (analyst-estimates, 2026.07 조회)</span><span class="evd-sum">FY26E 매출 <strong>$478.2B</strong>·EPS $8.76. FY27E 매출 $520.8B·EPS $9.67. FY28E 매출 $556.8B·EPS $10.74. FY25A 매출 $415.4B·EPS $7.38. 다수 애널리스트 평균.</span><span class="evd-nolink">FMP 실측 추정값 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>EPS</td><td class="num"><strong>약 $8.8</strong></td><td class="num">$8.76</td><td class="num">≈ 0%</td><td>FMP 컨센 부합 — 우리는 별도 상·하향 근거 없음</td></tr>
+      <tr><td>목표주가 컨센</td><td class="num">—</td><td class="num">$329 (중앙값 $330)</td><td class="num"><span class="down">−1.5%</span></td><td>현재가 $333.74를 <strong>하회</strong> — 상방 소진 신호 <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">FMP · 목표주가 컨센서스 (price-target-consensus, 2026.07)</span><span class="evd-sum">목표주가 컨센 <strong>$328.83</strong>(중앙값 $330·최고 $400·최저 $250). 현재가 $333.74 대비 <strong>−1.5%</strong>. Yahoo/GuruFocus 평균 $315.09로 더 낮음. 목표주가가 현재가를 밑도는 것은 상방 소진의 직접 증거.</span><span class="evd-nolink">FMP 실측 추정값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">다년 추정 (컨센, 추정치는 추정임):</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">매출</th><th class="num">YoY</th><th class="num">EPS</th><th class="num">YoY</th></tr></thead>
+    <tbody>
+      <tr><td>FY25A (2025.9)</td><td class="num">$415.4B</td><td class="num">—</td><td class="num">$7.38</td><td class="num">—</td></tr>
+      <tr><td>FY26E (2026.9)</td><td class="num">$478.2B</td><td class="num"><span class="up">+15%</span></td><td class="num">$8.76</td><td class="num"><span class="up">+19%</span></td></tr>
+      <tr><td>FY27E (2027.9)</td><td class="num">$520.8B</td><td class="num"><span class="up">+9%</span></td><td class="num">$9.67</td><td class="num"><span class="up">+10%</span></td></tr>
+      <tr><td>FY28E (2028.9)</td><td class="num">$556.8B</td><td class="num"><span class="up">+7%</span></td><td class="num">$10.74</td><td class="num"><span class="up">+11%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">+9% / 35.1배</div><div class="co-lbl"><strong>FY27E 매출 성장률 vs 현재 Fwd P/E(NTM)</strong> — 성장이 한 자릿수로 둔화되는데 밸류는 밴드 최정점(35배)이다. 성장률로 나눈 PEG는 3~4배로, 성장 대비 가장 비싼 구간이라는 것이 어닝 모델의 결론이다.</div></div>
+  <p class="fine">체크포인트: ① 7월말~8월초 FY26 3분기(6월 분기) 실적에서 서비스 두 자릿수·매출총이익률 49%대가 유지되고 iOS 27 가이던스가 강하면 — 프리미엄 방어. ② 아이폰 성장이 둔화되거나 중국이 재악화되면 — 디레이팅 트리거. 애플 회계연도는 9월 결산이라 NTM은 FY26·FY27의 블렌드(현재 NTM EPS 약 $9.5). FMP 추정은 다수 애널리스트 평균이며 실적으로 갱신된다.</p>
+</div>
+
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>시나리오 — Bull / Base / Bear와 민감도</h2>
+  <p class="deck">이익 추정은 안정적이라 <strong>배수(멀티플)</strong>가 결과를 지배한다 — 관건은 "밴드 최정점 멀티플이 유지되느냐 정상화되느냐"다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">NTM EPS</th><th class="num">배수</th><th class="num">환산가</th><th class="num">현재가 대비</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">$9.8</td><td class="num">39×</td><td class="num">$382</td><td class="num"><span class="up">+14.5%</span></td><td>AI 디바이스 교체 슈퍼사이클 + 서비스 두 자릿수 재가속, 멀티플 밴드 상단(39×) 유지·EPS 상향</td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">$9.5</td><td class="num">32×</td><td class="num">$304</td><td class="num"><span class="down">−8.9%</span></td><td>성장률 한 자릿수 지속으로 멀티플이 3년 평균(30×) 근처로 완만히 정상화 — 컨센 목표 $329도 현재가 하회</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">$9.0</td><td class="num">26×</td><td class="num">$234</td><td class="num"><span class="down">−29.9%</span></td><td>중국·아이폰 하드웨어 둔화 + 밴드 하단(26×)으로 디레이팅, EPS 소폭 하향</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>민감도 — NTM EPS (Base 32× 고정)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">−10% (수요 둔화)</th><th class="num">기준 (컨센)</th><th class="num">+10% (AI 상향)</th></tr></thead>
+    <tbody>
+      <tr><td>환산가</td><td class="num">$274</td><td class="num">$304</td><td class="num">$334</td></tr>
+      <tr><td>현재가 대비</td><td class="num"><span class="down">−18.0%</span></td><td class="num"><span class="down">−8.9%</span></td><td class="num"><span class="up">+0.2%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:14px;"><strong>읽는 법.</strong> Base 배수 32배는 3년 평균 30배를 소폭 <em>상회</em>하는 관대한 값인데도 환산가는 <strong>−8.9%</strong>다. 즉 이익이 컨센대로 나와도 멀티플이 자기 평균 근처로만 돌아가면 하락이다. 심지어 EPS가 <strong>+10% 상향돼도 겨우 +0.2%</strong>(현재가 수준) — 상방이 얼마나 얇은지 보여준다. 반대로 하방은 EPS 둔화와 디레이팅이 겹치면 −30%까지 열려 있다. 엔비디아(상방 비대칭)와 정반대로, <strong>여기서는 하방이 상방보다 넓다</strong>. Bull(+14.5%)은 AI 슈퍼사이클이라는 아직 미확인 전제를 필요로 한다.</p>
+  <p class="fine">시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다. 배수는 임의값이 아니라 관측된 Fwd P/E 밴드(3년 23.6~36.3배, 평균 30.1배)와 피어 실측(MSFT 23.6배·알파벳 14.5배)에서 잡았다 — Base 32배도 피어 대비로는 여전히 높다.</p>
+</div>
+
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>글로벌 피어 비교 (실측)</h2>
+  <p class="deck">애플은 셋 중 <strong>영업이익률이 가장 낮고 성장도 가장 느린데, P/E는 가장 높다</strong> — 자기 역사 대비로도, 피어 대비로도 가장 비싸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">TTM 매출</th><th class="num">OPM</th><th class="num">TTM P/E</th><th class="num">시총/영업이익</th></tr></thead>
+    <tbody>
+      <tr><td><strong>애플 (AAPL)</strong> <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">peer_table.py · TTM 실측 + FMP (2026.07)</span><span class="evd-sum">AAPL 시총 <strong>$4,900.7B</strong>·TTM 매출 $444.3B·영업이익 $144.5B·OPM <strong>32.5%</strong>·TTM P/E <strong>40.9</strong>·시총/영업이익 33.9. 셋 중 OPM 최저·성장 최저인데 배수는 최고.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">$4,900.7B</td><td class="num">$444.3B</td><td class="num"><span class="down">32.5%</span></td><td class="num"><strong><span class="up">40.9</span></strong></td><td class="num"><strong><span class="up">33.9</span></strong></td></tr>
+      <tr><td>마이크로소프트 (MSFT)</td><td class="num">$2,923.2B</td><td class="num">$311.9B</td><td class="num">47.0%</td><td class="num">23.6</td><td class="num">19.9</td></tr>
+      <tr><td>알파벳 (GOOGL)</td><td class="num">$2,317.2B</td><td class="num">$343.8B</td><td class="num">38.6%</td><td class="num">14.5</td><td class="num">17.4</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">데이터 기준일 2026-07-17. 피어는 대형 테크 1군(MSFT·알파벳) TTM 실측(SEC EDGAR companyfacts + 토스 시총). 애플의 OPM(32.5%)은 MSFT(47%)·알파벳(38.6%)보다 낮고 성장(FY27E +9%)도 클라우드·AI를 얹은 두 회사보다 느린데, TTM P/E(40.9)·시총/영업이익(33.9)은 가장 높다. 프리미엄의 근거는 "AI 캐펙스 무관 방어주"라는 서사지만, 마진·성장 어느 지표로도 그 배수를 정당화하기 어렵다 — 피어 비교는 자기 밴드 백분위 결론(과열)과 같은 방향을 가리킨다.</p>
+</div>
+
+<div class="card" id="s10">
+  <h2><span class="idx">10</span>수급 — 내부자는 예약매매 매도, 시장은 로테이션 매수</h2>
+  <p class="deck">KRX 투자자별 수급은 US 종목이라 해당없음 — 관측 가능한 신호는 SEC 내부자 신고(Form 4)와 방어주 로테이션의 성격이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">값</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td>KRX 투자자별 순매수</td><td class="num"><span class="g-na">— 해당없음</span></td><td>US(NASDAQ) 종목 — KRX fund_flows 대상 아님</td></tr>
+      <tr><td>SEC 내부자 신고 (최근 180일) <span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">SEC EDGAR · Apple 최근 공시 (disclosures, 2026.04~06)</span><span class="evd-sum">최근 180일 공시는 Form 4(내부자 신고)·144(매도 예정 신고) 다수 + 13G(기관 지분)·10-Q·8-K. 임원 매도는 통상 10b5-1 예약매매 성격으로 방향성 신호로 해석하지 않는다. 신규 13D(경영권 목적 대량취득)는 목록에 없음.</span><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">Form 4·144 다수</td><td>임원 매도·매도예정은 10b5-1 예약매매 — 방향성 신호 아님</td></tr>
+      <tr><td>시장 수급 (로테이션 성격)</td><td class="num"><span class="up">방어주 유입</span></td><td>반도체 이탈 자금이 저캐펙스 애플로 로테이션 — 개별 호재 아닌 섹터 리스크오프의 반작용</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">이번 사상 최고는 애플 개별 실적 신규 서프라이즈가 아니라 <strong>AI 셀오프의 반작용(방어주 로테이션)</strong>이 상당 부분을 차지한다 — 6월 저점 대비 20% 반등의 방아쇠가 실적이 아니라 심리라는 점이 수급의 취약성이다<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CNBC · HSBC (2026.07.17)</span><span class="evd-sum">투자자들이 AI 데이터센터 지출 회수 시점 불확실성에 불안해하며 애플을 "안전한 피난처"로 매수 — 6월 저점 대비 20% 반등. 심리가 반전(자금이 반도체로 회귀)되면 이 프리미엄은 되돌려질 수 있다.</span><a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 기관 13F 포지션 변화는 이번 회차에 확보하지 못했다(? 확인불가).</p>
+  <p class="fine">판정 가능 조건: 다음 13F 보고서·ETF 자금 흐름으로 이 로테이션이 지속 매집인지 단기 회피인지 확인 가능. 현재 관측은 "방어주 로테이션 매수 + 내부자 매도는 예약성"까지다. Form 4·144 URL은 EDGAR 검색 목록으로 연결.</p>
+</div>
+
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 무엇이 이 콜을 틀리게 하는가</h2>
+  <p class="deck">비중축소 콜의 최대 약점은 "밴드 최정점 밸류가 사실은 다가올 AI 교체 슈퍼사이클을 선반영한 것"일 수 있다는 점이다.</p>
+  <div class="note"><strong>이 조건이 나오면 콜을 올린다 (what would change our mind):</strong><br>
+  ① <strong>AI 기능이 실제 대규모 교체 슈퍼사이클로 확인</strong> — iOS 27 Siri·중국 애플 인텔리전스 정식 출시 후 아이폰 교체 수요·서비스가 두 자릿수로 재가속하면 멀티플이 밴드 상단에서 정당화(Bull +14.5%).<br>
+  ② <strong>서비스가 20%+ 성장으로 재가속</strong> — 마진 믹스가 더 올라 EPS 컨센이 상향되면 "성장 대비 비쌈" 논거가 약해진다.<br>
+  ③ <strong>AI 캐펙스 회의론이 구조화</strong> — 자금이 반도체로 돌아오지 않고 방어주 선호가 장기화되면 프리미엄이 유지될 수 있다.<br>
+  세 조건 모두 날짜·수치로 관측 가능하다 — 7월말 FY26 3분기 실적, iOS 27 정식 출시가 첫 판정 지점이다.</p>
+  <p><strong>반론 1 — "AI 슈퍼사이클이 온다."</strong> 가장 무거운 반론이다. HSBC는 "AI 기능·강한 파이프라인이 대규모 교체 사이클을 촉발할 잠재력"이라 봤다<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CNBC · HSBC (2026.07.17)</span><span class="evd-sum">HSBC 애널리스트: "AI 기능과 강한 제품 파이프라인이 대규모 업그레이드 사이클을 촉발할 잠재력." 아직 상승 여지 의견. 다만 이는 잠재력이며 실적으로 확인되지 않은 전제.</span><a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 그러나 애플의 AI 기능은 자체 개발이 지연돼 <strong>구글 Gemini에 의존</strong>하고 Siri는 중국·EU에서 아직 보류 상태다<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 인텔리전스 (2026.07.15)</span><span class="evd-sum">개편 Siri는 구글 Gemini 기반, 중국 애플 인텔리전스는 알리바바·바이두 기술 활용. Siri AI는 중국·EU에서 여전히 보류 — AI 리더십이 자체 기술이 아니라는 약점.</span><a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 슈퍼사이클 여부는 <strong>아직 미확인</strong>이며, 조건 ①·②가 그 검증이다.</p>
+  <p><strong>반론 2 — "품질 프리미엄은 정당하다."</strong> 애플은 P·Q·C 모두 최상위 우량 기업이 맞다(섹션 05). 그러나 밸류는 절대·상대 어느 기준으로도 최정점이다 — TTM 40.9배는 마진·성장이 더 나은 MSFT(23.6배)·알파벳(14.5배)보다 높고, 자기 10년 중앙값(26.8배) 대비 +50%다(섹션 09·13). 품질이 아무리 좋아도 <strong>지불하는 가격이 미래 수익률을 결정</strong>한다.</p>
+  <p><strong>반론 3 — "$4.9조 시총, 방어주라 안전하다."</strong> 저캐펙스·강한 현금흐름은 하방을 완충한다. 다만 "안전"과 "싸다"는 다르다 — 방어주 프리미엄은 심리(AI 회의론)의 산물이라, 심리가 반전되면(자금이 반도체로 회귀) 가장 먼저 풀리는 프리미엄이다. 컨센 목표주가가 이미 현재가를 밑도는 것이 그 신호다.</p>
+  <p class="fine">각 리스크의 시나리오 연결: 반론 1 현실화(AI 슈퍼사이클) → Bull($382, +14.5%). 반론 2·3 유지(품질·방어) → Base 부근($304, −8.9%). 반대로 성장 둔화·심리 반전이 겹치면 → Bear($234, −29.9%). 콜(비중축소)은 상방이 얇고 하방이 넓은 비대칭을 반영한 것이다.</p>
+</div>
+
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>다음 확인 이벤트</h2>
+  <p class="deck">향후 6주가 콜의 방향을 가른다 — FY26 3분기 실적과 iOS 27·AI 출시가 "슈퍼사이클인지 로테이션인지"를 판정한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>날짜</th><th>이벤트</th><th>무엇을 볼까</th></tr></thead>
+    <tbody>
+      <tr><td><strong>7월말~8월초 (추정)</strong></td><td>애플 FY26 3분기(6월 분기) 실적 <span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">SEC · 애플 실적 일정(과거 패턴 기준 추정)</span><span class="evd-sum">FY26 2분기(4/30 발표) 다음 분기 실적은 통상 7월말~8월초. 서비스 성장률·매출총이익률·아이폰 성장·4분기(홀리데이) 가이던스가 콜의 최대 판정 지점.</span><a href="https://www.macrumors.com/2026/04/30/apple-2q-2026-earnings/" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>서비스 두 자릿수·GM 49%대 유지 여부, 아이폰·중국 경로</td></tr>
+      <tr><td>하반기 (2026 가을)</td><td>iOS 27 정식 출시·아이폰18 발표 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 인텔리전스·iOS 27 (2026.07)</span><span class="evd-sum">iOS 27 퍼블릭 베타에 개편 Siri 탑재, 가을 정식 출시 예정. 신형 아이폰·AI 기능이 교체 슈퍼사이클을 만드는지가 Bull 시나리오의 핵심 검증.</span><a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>AI 기능이 실제 교체 수요를 만드는지 (슈퍼사이클 검증)</td></tr>
+      <tr><td>진행 중</td><td>중국 애플 인텔리전스 활성화 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">MacRumors · 애플 인텔리전스 중국 승인 (2026.07.15)</span><span class="evd-sum">CAC 승인으로 중국 출시 길이 열렸으나 정확한 활성화 시점 미정. 중국 서비스·아이폰 매출에 대한 실제 기여 시점이 변수.</span><a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>중국 활성화 시점·기여도 → 중국 매출 지속성</td></tr>
+      <tr><td>지속 관찰</td><td>AI 캐펙스 심리·SOX 회복 여부 <span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">briefing_ref 스냅샷 (2026-07-17)</span><span class="evd-sum">SOX 베어마켓(−20.2%)이 회복되면 방어주 로테이션 자금이 반도체로 회귀하며 애플 프리미엄이 풀릴 수 있다. 반대로 AI 회의론 장기화면 방어주 선호 지속.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td>자금이 반도체로 돌아오면 방어주 프리미엄 해소</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">가장 가까운 판정 지점은 7월말~8월초 FY26 3분기 실적(서비스·마진·가이던스)이다. 실적일은 과거 패턴 기반 추정이며 회사 공식 발표로 확정된다.</p>
+</div>
+
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 지금 몇 배를 내고 사는 걸까</h2>
+  <p class="deck">이익도 늘었지만, 멀티플이 더 올랐다 — 3년간 EPS는 1.5배 늘었는데 주가는 1.9배 올라, 상승의 상당분이 리레이팅(멀티플 확대)이다.</p>
+  <p>현재 Fwd P/E는 <strong>35.1배(NTM)</strong>다. 3년 평균 30.1배, 백분위 <strong>99%</strong>(밴드 최정점), 최근 1년 평균 30.8배 기준으로도 백분위 <strong>100%</strong>다. 후행 P/E는 <strong>40.9배</strong>로 10년 중앙값 26.8배 대비 +50%, 3년 평균 33.6배·5년 32.4배 대비도 높다<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">GuruFocus · AAPL P/E TTM (2026.07)</span><span class="evd-sum">AAPL TTM P/E <strong>40.4배</strong>, 10년 중앙값 26.8배 대비 +50%, 10년 평균 대비 +53%. GF Value $268.56 "약간 고평가". 자기 역사상 가장 비싼 구간 중 하나.</span><a href="https://www.gurufocus.com/term/pettm/AAPL" target="_blank" rel="noopener">원문 ↗</a></span></span>. 절대·상대·역사 어느 기준으로도 최정점이다.</p>
+  <div class="callout"><div class="co-num">35.1배 · 99%ile</div><div class="co-lbl"><strong>Forward P/E(NTM)와 3년 백분위</strong> — 절대 수준(35배)도 성장 한 자릿수 회사로선 높고, 자기 3년 밴드에선 백분위 99%(최정점). "실적은 강한데 밸류가 역대 최고"가 이 종목의 핵심 대치이며, 엔비디아(백분위 3%)와 정확히 반대편이다.</div></div>
+  <h3>리레이팅 분해 — 주가는 이익 + 멀티플 확대가 함께 끌었다</h3>
+  <p>지난 3년(2023.6→2026.7) 주가는 $177.82→$333.74로 <strong>+88%</strong> 올랐다. 같은 기간 추정 NTM EPS는 약 $6.3→$9.5로 <strong>약 1.5배(+51%)</strong> 늘었다. 즉 주가 상승분의 상당 부분이 <strong>멀티플 확대(28배→35배)</strong>에서 나왔다 — 이익이 밸류를 추월한 엔비디아와 달리, 애플은 <strong>밸류가 이익을 앞서간</strong> 그림이다. 리레이팅(멀티플 상승) 여지는 소진됐고, 방향은 정상화(디레이팅) 쪽으로 열려 있다.</p>
+  <h3>2차 밸류에이션 — 성장주 교차지표(PEG)</h3>
+  <p>단일 P/E 밴드의 절대레벨을 성장 조정 지표로 보완한다. <strong>PEG</strong>(Fwd P/E ÷ EPS 성장률) = 35.1 ÷ 약 10 ≈ <strong>3.5</strong>로, 1을 크게 상회한다(엔비디아 0.25의 14배). 성장이 한 자릿수로 둔화되는 국면에서 이 배수는 성장으로 정당화되지 않는다. 유일한 정당화 논거는 "품질·방어주 프리미엄"이나, 그것은 심리 의존적이며 피어(MSFT PEG·알파벳 PEG)보다도 높다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th>기준·해석</th></tr></thead>
+    <tbody>
+      <tr><td>Fwd P/E (NTM)</td><td class="num">35.1</td><td>3년 평균 30.1·10년 중앙값 26.8 대비 최정점</td></tr>
+      <tr><td>TTM P/E</td><td class="num">40.9</td><td>10년 중앙값 대비 <span class="up">+50%</span></td></tr>
+      <tr><td>PEG (FY27 성장 기준)</td><td class="num"><strong>약 3.5</strong></td><td>1 초과 = 성장 대비 고평가</td></tr>
+      <tr><td>목표주가 컨센 (FMP)</td><td class="num">$329</td><td>현재가 대비 <span class="down">−1.5%</span> (상방 소진)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>결론: 절대 P/E도, 성장 조정 지표(PEG)도, 피어 대비(P/E 최고)도, 컨센 목표주가(현재가 하회)도 모두 <strong>같은 방향(고평가)</strong>을 가리킨다. 애플은 훌륭한 회사이지만, 이 가격에서는 남은 상방이 얇고 하방이 넓다. 콜을 바꾸는 방아쇠는 밸류가 아니라 <strong>AI 교체 슈퍼사이클이 실적으로 확인되는 것</strong>이다(섹션 11).</p>
+  <p class="fine">PEG는 추정 포함 근사치(NTM EPS 성장 약 10% 기준). NTM EPS $9.5는 FY26 $8.76/FY27 $9.67 컨센 블렌드. TTM P/E 40.9는 TTM 실측, 40.4는 GuruFocus — 소수 차이는 EPS 기준일 차이. 목표주가는 애널리스트 컨센이며 이 리포트의 선호도(공식 산출)와 별개다. 데이터 기준일 2026-07-17.</p>
+</div>
+
+<details class="pe-embed" data-peb="AAPL" open>
+  <summary>
+    <span class="peb-t">📊 애플(AAPL) — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 35.1배 · 기간 평균 30.1배 · 백분위 99%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스·FMP 추정 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균(30.1배).</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM EPS 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows"><tr><td>&#x27;23.6.7</td><td class="num">$6.30</td><td class="num">$6.30</td><td>FY23 EPS ~$6.13 확정 + FY24 초기 추정 블렌드 (NTM 재구성, 당시 보도 근사)</td></tr>
+        <tr><td>&#x27;23.12.1</td><td class="num">$6.50</td><td class="num">$6.50</td><td>FY24 컨센 ~$6.5 형성, 아이폰15 사이클 진입 (재구성)</td></tr>
+        <tr><td>&#x27;24.6.10</td><td class="num">$6.70</td><td class="num">$6.70</td><td>WWDC 애플 인텔리전스 발표·FY25 초기 추정 반영 (NTM 재구성)</td></tr>
+        <tr><td>&#x27;24.12.1</td><td class="num">$7.10</td><td class="num">$7.10</td><td>FY25 컨센 상향 ~$7.1, AI 사이클 기대 (재구성)</td></tr>
+        <tr><td>&#x27;25.6.1</td><td class="num">$7.40</td><td class="num">$7.40</td><td>FY25 EPS $7.38 실적 근접 (FMP FY25 실측 $7.38)</td></tr>
+        <tr><td>&#x27;25.12.1</td><td class="num">$8.40</td><td class="num">$8.40</td><td>FY26 컨센 $8.76 형성·NTM(FY26 비중↑) 재구성 (FMP FY26E $8.76)</td></tr>
+        <tr><td>&#x27;26.7.17</td><td class="num">$9.50</td><td class="num">$9.50</td><td>현재 NTM — FMP 컨센 FY26E $8.76·FY27E $9.67 블렌드(FY27 비중↑, 애플 9월 결산)</td></tr></tbody>
+      </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: US 종목이므로 앵커는 NTM EPS(달러)를 직접 입력(전환율 없음). 앵커 사이는 선형 보간, 양 끝은 상수 연장. 발행주식수 약 146.9억주. 최근 1년 기준으로는 평균 30.8배·백분위 100%. 이 모델은 추정이며 실제 컨센서스 히스토리가 아니다 — 과거 앵커는 사후 실적·보도 기반 재구성이며 각 행 근거에 명시.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>SEC · Apple 8-K FY26 2분기 실적 발표 (2026.04.30) — 매출 $111.2B·서비스·마진 (근거1) <a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000011/aapl-20260430.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC · Apple 10-Q FY26 2분기 (2026.03.28 기준) — 세그먼트·지역·중국 (근거2) <a href="https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC EDGAR · Apple 최근 공시 목록 (Form 4·144·13G, 2026.04~06) (근거3) <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener">↗</a></li>
+    <li>CNBC · HSBC "애플 사상 최고, 아직 여지"·캐펙스 2.5% (2026.07.17) (근거4) <a href="https://www.cnbc.com/2026/07/17/apple-just-hit-a-record-high-hsbc-says-it-still-has-room-to-run.html" target="_blank" rel="noopener">↗</a></li>
+    <li>CNBC · KeyBanc "ATH, 매도 권고" (2026.07.14) (근거5) <a href="https://www.cnbc.com/2026/07/14/apple-just-hit-an-all-time-high-keybanc-says-investors-should-sell-the-tech-giant.html" target="_blank" rel="noopener">↗</a></li>
+    <li>MacRumors · 애플 2분기 2026 실적 상세 (2026.04.30) (근거6) <a href="https://www.macrumors.com/2026/04/30/apple-2q-2026-earnings/" target="_blank" rel="noopener">↗</a></li>
+    <li>Variety · 애플 서비스 매출 사상 최대 $31B (2026.04) (근거7) <a href="https://variety.com/2026/digital/news/apple-earnings-march-2026-quarter-services-revenue-1236734606/" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance · 애플 Q2 서프라이즈·중국 매출 (2026.04) (근거8) <a href="https://finance.yahoo.com/news/apple-tops-q2-earnings-estimates-on-strong-iphone-china-sales-174442565.html" target="_blank" rel="noopener">↗</a></li>
+    <li>MacRumors · 애플 인텔리전스 중국 승인·Siri (2026.07.15) (근거9) <a href="https://www.macrumors.com/2026/07/15/apple-intelligence-cleared-to-launch-in-china/" target="_blank" rel="noopener">↗</a></li>
+    <li>MacRumors · iPhone 17 글로벌 최다 판매·중국 (2026.05·07) (근거10) <a href="https://www.macrumors.com/2026/05/06/iphone-17-best-selling-smartphone-q1-2026/" target="_blank" rel="noopener">↗</a></li>
+    <li>GuruFocus · AAPL TTM P/E 40.4·10년 중앙값 대비 +50% (2026.07) (근거11) <a href="https://www.gurufocus.com/term/pettm/AAPL" target="_blank" rel="noopener">↗</a></li>
+    <li>FMP · 애널리스트 추정·목표주가 / peer_table.py·build_series.py 계산값 (2026.07 실행 · 가격 7/17 종가) (근거12) <a href="https://www.macrotrends.net/stocks/charts/AAPL/apple/pe-ratio" target="_blank" rel="noopener">↗</a></li>
+    <li>briefing_ref 스냅샷·매크로 (2026-07-17 기준) (근거13)</li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM EPS는 리포트·뉴스·FMP 추정 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님 — 과거 앵커는 사후 실적·보도 기반 재구성이며 각 앵커 근거에 명시). US 종목이라 EPS(달러)를 직접 입력했다(전환율 없음). 시총·PEG·밴드 환산가는 근사치. 선호도는 정해진 공식(밸류 위치+시나리오)의 산출이며 목표주가가 아니다.</p>
+  <p>생성: 2026-07-19 · 가격 기준일: 2026-07-17(금) 미 증시 마지막 거래일 종가 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-19 21:56 KST</div></footer>
+
+</div>
+
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"AAPL": {"rows": [{"d": "2023-06-07", "c": 177.82, "eps": 6.3, "pe": 28.2}, {"d": "2023-06-08", "c": 180.57, "eps": 6.3, "pe": 28.7}, {"d": "2023-06-09", "c": 180.96, "eps": 6.3, "pe": 28.7}, {"d": "2023-06-12", "c": 183.79, "eps": 6.31, "pe": 29.1}, {"d": "2023-06-13", "c": 183.31, "eps": 6.31, "pe": 29.1}, {"d": "2023-06-14", "c": 183.95, "eps": 6.31, "pe": 29.2}, {"d": "2023-06-15", "c": 186.01, "eps": 6.31, "pe": 29.5}, {"d": "2023-06-16", "c": 184.92, "eps": 6.31, "pe": 29.3}, {"d": "2023-06-20", "c": 185.01, "eps": 6.31, "pe": 29.3}, {"d": "2023-06-21", "c": 183.96, "eps": 6.32, "pe": 29.1}, {"d": "2023-06-22", "c": 187.0, "eps": 6.32, "pe": 29.6}, {"d": "2023-06-23", "c": 186.68, "eps": 6.32, "pe": 29.5}, {"d": "2023-06-26", "c": 185.27, "eps": 6.32, "pe": 29.3}, {"d": "2023-06-27", "c": 188.06, "eps": 6.32, "pe": 29.7}, {"d": "2023-06-28", "c": 189.25, "eps": 6.32, "pe": 29.9}, {"d": "2023-06-29", "c": 189.59, "eps": 6.32, "pe": 30.0}, {"d": "2023-06-30", "c": 193.97, "eps": 6.33, "pe": 30.7}, {"d": "2023-07-03", "c": 192.46, "eps": 6.33, "pe": 30.4}, {"d": "2023-07-05", "c": 191.33, "eps": 6.33, "pe": 30.2}, {"d": "2023-07-06", "c": 191.81, "eps": 6.33, "pe": 30.3}, {"d": "2023-07-07", "c": 190.68, "eps": 6.33, "pe": 30.1}, {"d": "2023-07-10", "c": 188.61, "eps": 6.34, "pe": 29.8}, {"d": "2023-07-11", "c": 188.08, "eps": 6.34, "pe": 29.7}, {"d": "2023-07-12", "c": 189.77, "eps": 6.34, "pe": 29.9}, {"d": "2023-07-13", "c": 190.54, "eps": 6.34, "pe": 30.1}, {"d": "2023-07-14", "c": 190.69, "eps": 6.34, "pe": 30.1}, {"d": "2023-07-17", "c": 193.99, "eps": 6.35, "pe": 30.6}, {"d": "2023-07-18", "c": 193.73, "eps": 6.35, "pe": 30.5}, {"d": "2023-07-19", "c": 195.1, "eps": 6.35, "pe": 30.7}, {"d": "2023-07-20", "c": 193.13, "eps": 6.35, "pe": 30.4}, {"d": "2023-07-21", "c": 191.94, "eps": 6.35, "pe": 30.2}, {"d": "2023-07-24", "c": 192.75, "eps": 6.35, "pe": 30.3}, {"d": "2023-07-25", "c": 193.62, "eps": 6.35, "pe": 30.5}, {"d": "2023-07-26", "c": 194.5, "eps": 6.36, "pe": 30.6}, {"d": "2023-07-27", "c": 193.22, "eps": 6.36, "pe": 30.4}, {"d": "2023-07-28", "c": 195.83, "eps": 6.36, "pe": 30.8}, {"d": "2023-07-31", "c": 196.45, "eps": 6.36, "pe": 30.9}, {"d": "2023-08-01", "c": 195.605, "eps": 6.36, "pe": 30.7}, {"d": "2023-08-02", "c": 192.58, "eps": 6.36, "pe": 30.3}, {"d": "2023-08-03", "c": 191.17, "eps": 6.36, "pe": 30.0}, {"d": "2023-08-04", "c": 181.99, "eps": 6.37, "pe": 28.6}, {"d": "2023-08-07", "c": 178.85, "eps": 6.37, "pe": 28.1}, {"d": "2023-08-08", "c": 179.8, "eps": 6.37, "pe": 28.2}, {"d": "2023-08-09", "c": 178.19, "eps": 6.37, "pe": 28.0}, {"d": "2023-08-10", "c": 177.97, "eps": 6.37, "pe": 27.9}, {"d": "2023-08-11", "c": 177.79, "eps": 6.37, "pe": 27.9}, {"d": "2023-08-14", "c": 179.46, "eps": 6.38, "pe": 28.1}, {"d": "2023-08-15", "c": 177.45, "eps": 6.38, "pe": 27.8}, {"d": "2023-08-16", "c": 176.57, "eps": 6.38, "pe": 27.7}, {"d": "2023-08-17", "c": 174.0, "eps": 6.38, "pe": 27.3}, {"d": "2023-08-18", "c": 174.49, "eps": 6.38, "pe": 27.3}, {"d": "2023-08-21", "c": 175.84, "eps": 6.38, "pe": 27.5}, {"d": "2023-08-22", "c": 177.23, "eps": 6.39, "pe": 27.8}, {"d": "2023-08-23", "c": 181.12, "eps": 6.39, "pe": 28.4}, {"d": "2023-08-24", "c": 176.38, "eps": 6.39, "pe": 27.6}, {"d": "2023-08-25", "c": 178.61, "eps": 6.39, "pe": 28.0}, {"d": "2023-08-28", "c": 180.19, "eps": 6.39, "pe": 28.2}, {"d": "2023-08-29", "c": 184.12, "eps": 6.39, "pe": 28.8}, {"d": "2023-08-30", "c": 187.65, "eps": 6.39, "pe": 29.3}, {"d": "2023-08-31", "c": 187.87, "eps": 6.4, "pe": 29.4}, {"d": "2023-09-01", "c": 189.46, "eps": 6.4, "pe": 29.6}, {"d": "2023-09-05", "c": 189.7, "eps": 6.4, "pe": 29.6}, {"d": "2023-09-06", "c": 182.91, "eps": 6.4, "pe": 28.6}, {"d": "2023-09-07", "c": 177.56, "eps": 6.4, "pe": 27.7}, {"d": "2023-09-08", "c": 178.18, "eps": 6.41, "pe": 27.8}, {"d": "2023-09-11", "c": 179.36, "eps": 6.41, "pe": 28.0}, {"d": "2023-09-12", "c": 176.3, "eps": 6.41, "pe": 27.5}, {"d": "2023-09-13", "c": 174.21, "eps": 6.41, "pe": 27.2}, {"d": "2023-09-14", "c": 175.74, "eps": 6.41, "pe": 27.4}, {"d": "2023-09-15", "c": 175.01, "eps": 6.41, "pe": 27.3}, {"d": "2023-09-18", "c": 177.97, "eps": 6.42, "pe": 27.7}, {"d": "2023-09-19", "c": 179.07, "eps": 6.42, "pe": 27.9}, {"d": "2023-09-20", "c": 175.49, "eps": 6.42, "pe": 27.3}, {"d": "2023-09-21", "c": 173.93, "eps": 6.42, "pe": 27.1}, {"d": "2023-09-22", "c": 174.79, "eps": 6.42, "pe": 27.2}, {"d": "2023-09-25", "c": 176.08, "eps": 6.42, "pe": 27.4}, {"d": "2023-09-26", "c": 171.96, "eps": 6.43, "pe": 26.8}, {"d": "2023-09-27", "c": 170.43, "eps": 6.43, "pe": 26.5}, {"d": "2023-09-28", "c": 170.69, "eps": 6.43, "pe": 26.6}, {"d": "2023-09-29", "c": 171.21, "eps": 6.43, "pe": 26.6}, {"d": "2023-10-02", "c": 173.75, "eps": 6.43, "pe": 27.0}, {"d": "2023-10-03", "c": 172.4, "eps": 6.43, "pe": 26.8}, {"d": "2023-10-04", "c": 173.66, "eps": 6.43, "pe": 27.0}, {"d": "2023-10-05", "c": 174.91, "eps": 6.44, "pe": 27.2}, {"d": "2023-10-06", "c": 177.49, "eps": 6.44, "pe": 27.6}, {"d": "2023-10-09", "c": 178.99, "eps": 6.44, "pe": 27.8}, {"d": "2023-10-10", "c": 178.39, "eps": 6.44, "pe": 27.7}, {"d": "2023-10-11", "c": 179.8, "eps": 6.44, "pe": 27.9}, {"d": "2023-10-12", "c": 180.71, "eps": 6.44, "pe": 28.0}, {"d": "2023-10-13", "c": 178.85, "eps": 6.44, "pe": 27.8}, {"d": "2023-10-16", "c": 178.72, "eps": 6.45, "pe": 27.7}, {"d": "2023-10-17", "c": 177.15, "eps": 6.45, "pe": 27.5}, {"d": "2023-10-18", "c": 175.84, "eps": 6.45, "pe": 27.3}, {"d": "2023-10-19", "c": 175.46, "eps": 6.45, "pe": 27.2}, {"d": "2023-10-20", "c": 172.88, "eps": 6.45, "pe": 26.8}, {"d": "2023-10-23", "c": 173.0, "eps": 6.46, "pe": 26.8}, {"d": "2023-10-24", "c": 173.44, "eps": 6.46, "pe": 26.9}, {"d": "2023-10-25", "c": 171.1, "eps": 6.46, "pe": 26.5}, {"d": "2023-10-26", "c": 166.89, "eps": 6.46, "pe": 25.8}, {"d": "2023-10-27", "c": 168.22, "eps": 6.46, "pe": 26.0}, {"d": "2023-10-30", "c": 170.29, "eps": 6.46, "pe": 26.3}, {"d": "2023-10-31", "c": 170.77, "eps": 6.46, "pe": 26.4}, {"d": "2023-11-01", "c": 173.97, "eps": 6.47, "pe": 26.9}, {"d": "2023-11-02", "c": 177.57, "eps": 6.47, "pe": 27.5}, {"d": "2023-11-03", "c": 176.65, "eps": 6.47, "pe": 27.3}, {"d": "2023-11-06", "c": 179.23, "eps": 6.47, "pe": 27.7}, {"d": "2023-11-07", "c": 181.82, "eps": 6.47, "pe": 28.1}, {"d": "2023-11-08", "c": 182.89, "eps": 6.47, "pe": 28.2}, {"d": "2023-11-09", "c": 182.41, "eps": 6.48, "pe": 28.2}, {"d": "2023-11-10", "c": 186.4, "eps": 6.48, "pe": 28.8}, {"d": "2023-11-13", "c": 184.8, "eps": 6.48, "pe": 28.5}, {"d": "2023-11-14", "c": 187.44, "eps": 6.48, "pe": 28.9}, {"d": "2023-11-15", "c": 188.01, "eps": 6.48, "pe": 29.0}, {"d": "2023-11-16", "c": 189.71, "eps": 6.48, "pe": 29.3}, {"d": "2023-11-17", "c": 189.69, "eps": 6.48, "pe": 29.3}, {"d": "2023-11-20", "c": 191.45, "eps": 6.49, "pe": 29.5}, {"d": "2023-11-21", "c": 190.64, "eps": 6.49, "pe": 29.4}, {"d": "2023-11-22", "c": 191.31, "eps": 6.49, "pe": 29.5}, {"d": "2023-11-24", "c": 189.97, "eps": 6.49, "pe": 29.3}, {"d": "2023-11-27", "c": 189.79, "eps": 6.5, "pe": 29.2}, {"d": "2023-11-28", "c": 190.4, "eps": 6.5, "pe": 29.3}, {"d": "2023-11-29", "c": 189.37, "eps": 6.5, "pe": 29.1}, {"d": "2023-11-30", "c": 189.95, "eps": 6.5, "pe": 29.2}, {"d": "2023-12-01", "c": 191.24, "eps": 6.5, "pe": 29.4}, {"d": "2023-12-04", "c": 189.43, "eps": 6.5, "pe": 29.1}, {"d": "2023-12-05", "c": 193.42, "eps": 6.5, "pe": 29.7}, {"d": "2023-12-06", "c": 192.32, "eps": 6.51, "pe": 29.6}, {"d": "2023-12-07", "c": 194.27, "eps": 6.51, "pe": 29.9}, {"d": "2023-12-08", "c": 195.71, "eps": 6.51, "pe": 30.1}, {"d": "2023-12-11", "c": 193.18, "eps": 6.51, "pe": 29.7}, {"d": "2023-12-12", "c": 194.71, "eps": 6.51, "pe": 29.9}, {"d": "2023-12-13", "c": 197.96, "eps": 6.51, "pe": 30.4}, {"d": "2023-12-14", "c": 198.11, "eps": 6.51, "pe": 30.4}, {"d": "2023-12-15", "c": 197.57, "eps": 6.51, "pe": 30.3}, {"d": "2023-12-18", "c": 195.89, "eps": 6.52, "pe": 30.1}, {"d": "2023-12-19", "c": 196.94, "eps": 6.52, "pe": 30.2}, {"d": "2023-12-20", "c": 194.83, "eps": 6.52, "pe": 29.9}, {"d": "2023-12-21", "c": 194.68, "eps": 6.52, "pe": 29.9}, {"d": "2023-12-22", "c": 193.6, "eps": 6.52, "pe": 29.7}, {"d": "2023-12-26", "c": 193.05, "eps": 6.53, "pe": 29.6}, {"d": "2023-12-27", "c": 193.15, "eps": 6.53, "pe": 29.6}, {"d": "2023-12-28", "c": 193.58, "eps": 6.53, "pe": 29.7}, {"d": "2023-12-29", "c": 192.53, "eps": 6.53, "pe": 29.5}, {"d": "2024-01-02", "c": 185.64, "eps": 6.53, "pe": 28.4}, {"d": "2024-01-03", "c": 184.25, "eps": 6.53, "pe": 28.2}, {"d": "2024-01-04", "c": 181.91, "eps": 6.54, "pe": 27.8}, {"d": "2024-01-05", "c": 181.18, "eps": 6.54, "pe": 27.7}, {"d": "2024-01-08", "c": 185.56, "eps": 6.54, "pe": 28.4}, {"d": "2024-01-09", "c": 185.14, "eps": 6.54, "pe": 28.3}, {"d": "2024-01-10", "c": 186.19, "eps": 6.54, "pe": 28.5}, {"d": "2024-01-11", "c": 185.59, "eps": 6.54, "pe": 28.4}, {"d": "2024-01-12", "c": 185.92, "eps": 6.54, "pe": 28.4}, {"d": "2024-01-16", "c": 183.63, "eps": 6.55, "pe": 28.0}, {"d": "2024-01-17", "c": 182.68, "eps": 6.55, "pe": 27.9}, {"d": "2024-01-18", "c": 188.63, "eps": 6.55, "pe": 28.8}, {"d": "2024-01-19", "c": 191.56, "eps": 6.55, "pe": 29.2}, {"d": "2024-01-22", "c": 193.89, "eps": 6.55, "pe": 29.6}, {"d": "2024-01-23", "c": 195.18, "eps": 6.56, "pe": 29.8}, {"d": "2024-01-24", "c": 194.5, "eps": 6.56, "pe": 29.7}, {"d": "2024-01-25", "c": 194.17, "eps": 6.56, "pe": 29.6}, {"d": "2024-01-26", "c": 192.42, "eps": 6.56, "pe": 29.3}, {"d": "2024-01-29", "c": 191.73, "eps": 6.56, "pe": 29.2}, {"d": "2024-01-30", "c": 188.04, "eps": 6.56, "pe": 28.7}, {"d": "2024-01-31", "c": 184.4, "eps": 6.56, "pe": 28.1}, {"d": "2024-02-01", "c": 186.86, "eps": 6.56, "pe": 28.5}, {"d": "2024-02-02", "c": 185.85, "eps": 6.57, "pe": 28.3}, {"d": "2024-02-05", "c": 187.68, "eps": 6.57, "pe": 28.6}, {"d": "2024-02-06", "c": 189.3, "eps": 6.57, "pe": 28.8}, {"d": "2024-02-07", "c": 189.41, "eps": 6.57, "pe": 28.8}, {"d": "2024-02-08", "c": 188.32, "eps": 6.57, "pe": 28.7}, {"d": "2024-02-09", "c": 188.85, "eps": 6.57, "pe": 28.7}, {"d": "2024-02-12", "c": 187.15, "eps": 6.58, "pe": 28.5}, {"d": "2024-02-13", "c": 185.04, "eps": 6.58, "pe": 28.1}, {"d": "2024-02-14", "c": 184.15, "eps": 6.58, "pe": 28.0}, {"d": "2024-02-15", "c": 183.86, "eps": 6.58, "pe": 27.9}, {"d": "2024-02-16", "c": 182.31, "eps": 6.58, "pe": 27.7}, {"d": "2024-02-20", "c": 181.56, "eps": 6.58, "pe": 27.6}, {"d": "2024-02-21", "c": 182.32, "eps": 6.59, "pe": 27.7}, {"d": "2024-02-22", "c": 184.37, "eps": 6.59, "pe": 28.0}, {"d": "2024-02-23", "c": 182.52, "eps": 6.59, "pe": 27.7}, {"d": "2024-02-26", "c": 181.16, "eps": 6.59, "pe": 27.5}, {"d": "2024-02-27", "c": 182.63, "eps": 6.59, "pe": 27.7}, {"d": "2024-02-28", "c": 181.42, "eps": 6.59, "pe": 27.5}, {"d": "2024-02-29", "c": 180.75, "eps": 6.59, "pe": 27.4}, {"d": "2024-03-01", "c": 179.66, "eps": 6.59, "pe": 27.2}, {"d": "2024-03-04", "c": 175.1, "eps": 6.6, "pe": 26.5}, {"d": "2024-03-05", "c": 170.12, "eps": 6.6, "pe": 25.8}, {"d": "2024-03-06", "c": 169.12, "eps": 6.6, "pe": 25.6}, {"d": "2024-03-07", "c": 169.0, "eps": 6.6, "pe": 25.6}, {"d": "2024-03-08", "c": 170.73, "eps": 6.6, "pe": 25.9}, {"d": "2024-03-11", "c": 172.75, "eps": 6.61, "pe": 26.2}, {"d": "2024-03-12", "c": 173.23, "eps": 6.61, "pe": 26.2}, {"d": "2024-03-13", "c": 171.13, "eps": 6.61, "pe": 25.9}, {"d": "2024-03-14", "c": 173.0, "eps": 6.61, "pe": 26.2}, {"d": "2024-03-15", "c": 172.62, "eps": 6.61, "pe": 26.1}, {"d": "2024-03-18", "c": 173.72, "eps": 6.61, "pe": 26.3}, {"d": "2024-03-19", "c": 176.08, "eps": 6.61, "pe": 26.6}, {"d": "2024-03-20", "c": 178.67, "eps": 6.61, "pe": 27.0}, {"d": "2024-03-21", "c": 171.37, "eps": 6.62, "pe": 25.9}, {"d": "2024-03-22", "c": 172.28, "eps": 6.62, "pe": 26.0}, {"d": "2024-03-25", "c": 170.85, "eps": 6.62, "pe": 25.8}, {"d": "2024-03-26", "c": 169.71, "eps": 6.62, "pe": 25.6}, {"d": "2024-03-27", "c": 173.31, "eps": 6.62, "pe": 26.2}, {"d": "2024-03-28", "c": 171.48, "eps": 6.62, "pe": 25.9}, {"d": "2024-04-01", "c": 170.03, "eps": 6.63, "pe": 25.7}, {"d": "2024-04-02", "c": 168.84, "eps": 6.63, "pe": 25.5}, {"d": "2024-04-03", "c": 169.65, "eps": 6.63, "pe": 25.6}, {"d": "2024-04-04", "c": 168.82, "eps": 6.63, "pe": 25.5}, {"d": "2024-04-05", "c": 169.58, "eps": 6.63, "pe": 25.6}, {"d": "2024-04-08", "c": 168.45, "eps": 6.63, "pe": 25.4}, {"d": "2024-04-09", "c": 169.67, "eps": 6.64, "pe": 25.6}, {"d": "2024-04-10", "c": 167.78, "eps": 6.64, "pe": 25.3}, {"d": "2024-04-11", "c": 175.04, "eps": 6.64, "pe": 26.4}, {"d": "2024-04-12", "c": 176.55, "eps": 6.64, "pe": 26.6}, {"d": "2024-04-15", "c": 172.69, "eps": 6.64, "pe": 26.0}, {"d": "2024-04-16", "c": 169.38, "eps": 6.64, "pe": 25.5}, {"d": "2024-04-17", "c": 168.0, "eps": 6.64, "pe": 25.3}, {"d": "2024-04-18", "c": 167.04, "eps": 6.64, "pe": 25.1}, {"d": "2024-04-19", "c": 165.0, "eps": 6.65, "pe": 24.8}, {"d": "2024-04-22", "c": 165.84, "eps": 6.65, "pe": 24.9}, {"d": "2024-04-23", "c": 166.9, "eps": 6.65, "pe": 25.1}, {"d": "2024-04-24", "c": 169.02, "eps": 6.65, "pe": 25.4}, {"d": "2024-04-25", "c": 169.89, "eps": 6.65, "pe": 25.5}, {"d": "2024-04-26", "c": 169.3, "eps": 6.65, "pe": 25.4}, {"d": "2024-04-29", "c": 173.5, "eps": 6.66, "pe": 26.1}, {"d": "2024-04-30", "c": 170.33, "eps": 6.66, "pe": 25.6}, {"d": "2024-05-01", "c": 169.3, "eps": 6.66, "pe": 25.4}, {"d": "2024-05-02", "c": 173.03, "eps": 6.66, "pe": 26.0}, {"d": "2024-05-03", "c": 183.38, "eps": 6.66, "pe": 27.5}, {"d": "2024-05-06", "c": 181.71, "eps": 6.66, "pe": 27.3}, {"d": "2024-05-07", "c": 182.4, "eps": 6.66, "pe": 27.4}, {"d": "2024-05-08", "c": 182.74, "eps": 6.67, "pe": 27.4}, {"d": "2024-05-09", "c": 184.57, "eps": 6.67, "pe": 27.7}, {"d": "2024-05-10", "c": 183.05, "eps": 6.67, "pe": 27.5}, {"d": "2024-05-13", "c": 186.28, "eps": 6.67, "pe": 27.9}, {"d": "2024-05-14", "c": 187.43, "eps": 6.67, "pe": 28.1}, {"d": "2024-05-15", "c": 189.72, "eps": 6.67, "pe": 28.4}, {"d": "2024-05-16", "c": 189.84, "eps": 6.67, "pe": 28.4}, {"d": "2024-05-17", "c": 189.87, "eps": 6.67, "pe": 28.4}, {"d": "2024-05-20", "c": 191.04, "eps": 6.68, "pe": 28.6}, {"d": "2024-05-21", "c": 192.35, "eps": 6.68, "pe": 28.8}, {"d": "2024-05-22", "c": 190.9, "eps": 6.68, "pe": 28.6}, {"d": "2024-05-23", "c": 186.88, "eps": 6.68, "pe": 28.0}, {"d": "2024-05-24", "c": 189.98, "eps": 6.68, "pe": 28.4}, {"d": "2024-05-28", "c": 189.99, "eps": 6.69, "pe": 28.4}, {"d": "2024-05-29", "c": 190.29, "eps": 6.69, "pe": 28.5}, {"d": "2024-05-30", "c": 191.29, "eps": 6.69, "pe": 28.6}, {"d": "2024-05-31", "c": 192.25, "eps": 6.69, "pe": 28.7}, {"d": "2024-06-03", "c": 194.03, "eps": 6.69, "pe": 29.0}, {"d": "2024-06-04", "c": 194.35, "eps": 6.69, "pe": 29.0}, {"d": "2024-06-05", "c": 195.87, "eps": 6.69, "pe": 29.3}, {"d": "2024-06-06", "c": 194.48, "eps": 6.7, "pe": 29.0}, {"d": "2024-06-07", "c": 196.89, "eps": 6.7, "pe": 29.4}, {"d": "2024-06-10", "c": 193.12, "eps": 6.7, "pe": 28.8}, {"d": "2024-06-11", "c": 207.15, "eps": 6.7, "pe": 30.9}, {"d": "2024-06-12", "c": 213.07, "eps": 6.7, "pe": 31.8}, {"d": "2024-06-13", "c": 214.24, "eps": 6.71, "pe": 31.9}, {"d": "2024-06-14", "c": 212.49, "eps": 6.71, "pe": 31.7}, {"d": "2024-06-17", "c": 216.67, "eps": 6.72, "pe": 32.3}, {"d": "2024-06-18", "c": 214.29, "eps": 6.72, "pe": 31.9}, {"d": "2024-06-20", "c": 209.68, "eps": 6.72, "pe": 31.2}, {"d": "2024-06-21", "c": 207.49, "eps": 6.73, "pe": 30.9}, {"d": "2024-06-24", "c": 208.14, "eps": 6.73, "pe": 30.9}, {"d": "2024-06-25", "c": 209.07, "eps": 6.73, "pe": 31.0}, {"d": "2024-06-26", "c": 213.25, "eps": 6.74, "pe": 31.7}, {"d": "2024-06-27", "c": 214.1, "eps": 6.74, "pe": 31.8}, {"d": "2024-06-28", "c": 210.62, "eps": 6.74, "pe": 31.2}, {"d": "2024-07-01", "c": 216.75, "eps": 6.75, "pe": 32.1}, {"d": "2024-07-02", "c": 220.27, "eps": 6.75, "pe": 32.6}, {"d": "2024-07-03", "c": 221.55, "eps": 6.75, "pe": 32.8}, {"d": "2024-07-05", "c": 226.34, "eps": 6.76, "pe": 33.5}, {"d": "2024-07-08", "c": 227.82, "eps": 6.76, "pe": 33.7}, {"d": "2024-07-09", "c": 228.68, "eps": 6.77, "pe": 33.8}, {"d": "2024-07-10", "c": 232.98, "eps": 6.77, "pe": 34.4}, {"d": "2024-07-11", "c": 227.57, "eps": 6.77, "pe": 33.6}, {"d": "2024-07-12", "c": 230.54, "eps": 6.77, "pe": 34.0}, {"d": "2024-07-15", "c": 234.4, "eps": 6.78, "pe": 34.6}, {"d": "2024-07-16", "c": 234.82, "eps": 6.78, "pe": 34.6}, {"d": "2024-07-17", "c": 228.88, "eps": 6.79, "pe": 33.7}, {"d": "2024-07-18", "c": 224.18, "eps": 6.79, "pe": 33.0}, {"d": "2024-07-19", "c": 224.31, "eps": 6.79, "pe": 33.0}, {"d": "2024-07-22", "c": 223.96, "eps": 6.8, "pe": 33.0}, {"d": "2024-07-23", "c": 225.01, "eps": 6.8, "pe": 33.1}, {"d": "2024-07-24", "c": 218.54, "eps": 6.8, "pe": 32.1}, {"d": "2024-07-25", "c": 217.49, "eps": 6.8, "pe": 32.0}, {"d": "2024-07-26", "c": 217.96, "eps": 6.81, "pe": 32.0}, {"d": "2024-07-29", "c": 218.24, "eps": 6.81, "pe": 32.0}, {"d": "2024-07-30", "c": 218.8, "eps": 6.81, "pe": 32.1}, {"d": "2024-07-31", "c": 222.08, "eps": 6.82, "pe": 32.6}, {"d": "2024-08-01", "c": 218.36, "eps": 6.82, "pe": 32.0}, {"d": "2024-08-02", "c": 219.86, "eps": 6.82, "pe": 32.2}, {"d": "2024-08-05", "c": 209.27, "eps": 6.83, "pe": 30.6}, {"d": "2024-08-06", "c": 207.23, "eps": 6.83, "pe": 30.3}, {"d": "2024-08-07", "c": 209.82, "eps": 6.83, "pe": 30.7}, {"d": "2024-08-08", "c": 213.31, "eps": 6.84, "pe": 31.2}, {"d": "2024-08-09", "c": 216.24, "eps": 6.84, "pe": 31.6}, {"d": "2024-08-12", "c": 217.53, "eps": 6.84, "pe": 31.8}, {"d": "2024-08-13", "c": 221.27, "eps": 6.85, "pe": 32.3}, {"d": "2024-08-14", "c": 221.72, "eps": 6.85, "pe": 32.4}, {"d": "2024-08-15", "c": 224.72, "eps": 6.85, "pe": 32.8}, {"d": "2024-08-16", "c": 226.05, "eps": 6.85, "pe": 33.0}, {"d": "2024-08-19", "c": 225.89, "eps": 6.86, "pe": 32.9}, {"d": "2024-08-20", "c": 226.51, "eps": 6.86, "pe": 33.0}, {"d": "2024-08-21", "c": 226.4, "eps": 6.87, "pe": 33.0}, {"d": "2024-08-22", "c": 224.53, "eps": 6.87, "pe": 32.7}, {"d": "2024-08-23", "c": 226.84, "eps": 6.87, "pe": 33.0}, {"d": "2024-08-26", "c": 227.18, "eps": 6.88, "pe": 33.0}, {"d": "2024-08-27", "c": 228.03, "eps": 6.88, "pe": 33.1}, {"d": "2024-08-28", "c": 226.49, "eps": 6.88, "pe": 32.9}, {"d": "2024-08-29", "c": 229.79, "eps": 6.88, "pe": 33.4}, {"d": "2024-08-30", "c": 229.0, "eps": 6.89, "pe": 33.3}, {"d": "2024-09-03", "c": 222.77, "eps": 6.9, "pe": 32.3}, {"d": "2024-09-04", "c": 220.85, "eps": 6.9, "pe": 32.0}, {"d": "2024-09-05", "c": 222.38, "eps": 6.9, "pe": 32.2}, {"d": "2024-09-06", "c": 220.82, "eps": 6.9, "pe": 32.0}, {"d": "2024-09-09", "c": 220.91, "eps": 6.91, "pe": 32.0}, {"d": "2024-09-10", "c": 220.11, "eps": 6.91, "pe": 31.8}, {"d": "2024-09-11", "c": 222.66, "eps": 6.91, "pe": 32.2}, {"d": "2024-09-12", "c": 222.77, "eps": 6.92, "pe": 32.2}, {"d": "2024-09-13", "c": 222.5, "eps": 6.92, "pe": 32.2}, {"d": "2024-09-16", "c": 216.32, "eps": 6.93, "pe": 31.2}, {"d": "2024-09-17", "c": 216.79, "eps": 6.93, "pe": 31.3}, {"d": "2024-09-18", "c": 220.69, "eps": 6.93, "pe": 31.8}, {"d": "2024-09-19", "c": 228.87, "eps": 6.93, "pe": 33.0}, {"d": "2024-09-20", "c": 228.2, "eps": 6.93, "pe": 32.9}, {"d": "2024-09-23", "c": 226.47, "eps": 6.94, "pe": 32.6}, {"d": "2024-09-24", "c": 227.37, "eps": 6.94, "pe": 32.7}, {"d": "2024-09-25", "c": 226.37, "eps": 6.95, "pe": 32.6}, {"d": "2024-09-26", "c": 227.52, "eps": 6.95, "pe": 32.7}, {"d": "2024-09-27", "c": 227.79, "eps": 6.95, "pe": 32.8}, {"d": "2024-09-30", "c": 233.0, "eps": 6.96, "pe": 33.5}, {"d": "2024-10-01", "c": 226.21, "eps": 6.96, "pe": 32.5}, {"d": "2024-10-02", "c": 226.78, "eps": 6.96, "pe": 32.6}, {"d": "2024-10-03", "c": 225.67, "eps": 6.96, "pe": 32.4}, {"d": "2024-10-04", "c": 226.8, "eps": 6.97, "pe": 32.6}, {"d": "2024-10-07", "c": 221.69, "eps": 6.97, "pe": 31.8}, {"d": "2024-10-08", "c": 225.77, "eps": 6.98, "pe": 32.4}, {"d": "2024-10-09", "c": 229.54, "eps": 6.98, "pe": 32.9}, {"d": "2024-10-10", "c": 229.04, "eps": 6.98, "pe": 32.8}, {"d": "2024-10-11", "c": 227.55, "eps": 6.98, "pe": 32.6}, {"d": "2024-10-14", "c": 231.3, "eps": 6.99, "pe": 33.1}, {"d": "2024-10-15", "c": 233.85, "eps": 6.99, "pe": 33.4}, {"d": "2024-10-16", "c": 231.78, "eps": 6.99, "pe": 33.1}, {"d": "2024-10-17", "c": 232.15, "eps": 7.0, "pe": 33.2}, {"d": "2024-10-18", "c": 235.0, "eps": 7.0, "pe": 33.6}, {"d": "2024-10-21", "c": 236.48, "eps": 7.01, "pe": 33.8}, {"d": "2024-10-22", "c": 235.86, "eps": 7.01, "pe": 33.7}, {"d": "2024-10-23", "c": 230.76, "eps": 7.01, "pe": 32.9}, {"d": "2024-10-24", "c": 230.57, "eps": 7.01, "pe": 32.9}, {"d": "2024-10-25", "c": 231.41, "eps": 7.01, "pe": 33.0}, {"d": "2024-10-28", "c": 233.4, "eps": 7.02, "pe": 33.2}, {"d": "2024-10-29", "c": 233.67, "eps": 7.02, "pe": 33.3}, {"d": "2024-10-30", "c": 230.1, "eps": 7.03, "pe": 32.7}, {"d": "2024-10-31", "c": 225.91, "eps": 7.03, "pe": 32.1}, {"d": "2024-11-01", "c": 222.91, "eps": 7.03, "pe": 31.7}, {"d": "2024-11-04", "c": 222.01, "eps": 7.04, "pe": 31.5}, {"d": "2024-11-05", "c": 223.45, "eps": 7.04, "pe": 31.7}, {"d": "2024-11-06", "c": 222.72, "eps": 7.04, "pe": 31.6}, {"d": "2024-11-07", "c": 227.48, "eps": 7.04, "pe": 32.3}, {"d": "2024-11-08", "c": 226.96, "eps": 7.05, "pe": 32.2}, {"d": "2024-11-11", "c": 224.23, "eps": 7.05, "pe": 31.8}, {"d": "2024-11-12", "c": 224.23, "eps": 7.06, "pe": 31.8}, {"d": "2024-11-13", "c": 225.12, "eps": 7.06, "pe": 31.9}, {"d": "2024-11-14", "c": 228.22, "eps": 7.06, "pe": 32.3}, {"d": "2024-11-15", "c": 225.0, "eps": 7.06, "pe": 31.9}, {"d": "2024-11-18", "c": 228.02, "eps": 7.07, "pe": 32.3}, {"d": "2024-11-19", "c": 228.28, "eps": 7.07, "pe": 32.3}, {"d": "2024-11-20", "c": 229.0, "eps": 7.07, "pe": 32.4}, {"d": "2024-11-21", "c": 228.52, "eps": 7.08, "pe": 32.3}, {"d": "2024-11-22", "c": 229.87, "eps": 7.08, "pe": 32.5}, {"d": "2024-11-25", "c": 232.87, "eps": 7.09, "pe": 32.9}, {"d": "2024-11-26", "c": 235.06, "eps": 7.09, "pe": 33.2}, {"d": "2024-11-27", "c": 234.93, "eps": 7.09, "pe": 33.1}, {"d": "2024-11-29", "c": 237.33, "eps": 7.1, "pe": 33.4}, {"d": "2024-12-02", "c": 239.59, "eps": 7.1, "pe": 33.7}, {"d": "2024-12-03", "c": 242.65, "eps": 7.1, "pe": 34.2}, {"d": "2024-12-04", "c": 243.01, "eps": 7.1, "pe": 34.2}, {"d": "2024-12-05", "c": 243.04, "eps": 7.11, "pe": 34.2}, {"d": "2024-12-06", "c": 242.84, "eps": 7.11, "pe": 34.2}, {"d": "2024-12-09", "c": 246.75, "eps": 7.11, "pe": 34.7}, {"d": "2024-12-10", "c": 247.77, "eps": 7.11, "pe": 34.8}, {"d": "2024-12-11", "c": 246.49, "eps": 7.12, "pe": 34.6}, {"d": "2024-12-12", "c": 247.96, "eps": 7.12, "pe": 34.8}, {"d": "2024-12-13", "c": 248.13, "eps": 7.12, "pe": 34.9}, {"d": "2024-12-16", "c": 251.04, "eps": 7.12, "pe": 35.2}, {"d": "2024-12-17", "c": 253.48, "eps": 7.13, "pe": 35.6}, {"d": "2024-12-18", "c": 248.05, "eps": 7.13, "pe": 34.8}, {"d": "2024-12-19", "c": 249.79, "eps": 7.13, "pe": 35.0}, {"d": "2024-12-20", "c": 254.49, "eps": 7.13, "pe": 35.7}, {"d": "2024-12-23", "c": 255.27, "eps": 7.14, "pe": 35.8}, {"d": "2024-12-24", "c": 258.2, "eps": 7.14, "pe": 36.2}, {"d": "2024-12-26", "c": 259.02, "eps": 7.14, "pe": 36.3}, {"d": "2024-12-27", "c": 255.59, "eps": 7.14, "pe": 35.8}, {"d": "2024-12-30", "c": 252.2, "eps": 7.15, "pe": 35.3}, {"d": "2024-12-31", "c": 250.42, "eps": 7.15, "pe": 35.0}, {"d": "2025-01-02", "c": 243.85, "eps": 7.15, "pe": 34.1}, {"d": "2025-01-03", "c": 243.36, "eps": 7.15, "pe": 34.0}, {"d": "2025-01-06", "c": 245.0, "eps": 7.16, "pe": 34.2}, {"d": "2025-01-07", "c": 242.21, "eps": 7.16, "pe": 33.8}, {"d": "2025-01-08", "c": 242.7, "eps": 7.16, "pe": 33.9}, {"d": "2025-01-10", "c": 236.85, "eps": 7.17, "pe": 33.1}, {"d": "2025-01-13", "c": 234.4, "eps": 7.17, "pe": 32.7}, {"d": "2025-01-14", "c": 233.28, "eps": 7.17, "pe": 32.5}, {"d": "2025-01-15", "c": 237.87, "eps": 7.17, "pe": 33.2}, {"d": "2025-01-16", "c": 228.26, "eps": 7.18, "pe": 31.8}, {"d": "2025-01-17", "c": 229.98, "eps": 7.18, "pe": 32.0}, {"d": "2025-01-21", "c": 222.64, "eps": 7.18, "pe": 31.0}, {"d": "2025-01-22", "c": 223.83, "eps": 7.19, "pe": 31.1}, {"d": "2025-01-23", "c": 223.66, "eps": 7.19, "pe": 31.1}, {"d": "2025-01-24", "c": 222.78, "eps": 7.19, "pe": 31.0}, {"d": "2025-01-27", "c": 229.86, "eps": 7.19, "pe": 32.0}, {"d": "2025-01-28", "c": 238.26, "eps": 7.2, "pe": 33.1}, {"d": "2025-01-29", "c": 239.36, "eps": 7.2, "pe": 33.3}, {"d": "2025-01-30", "c": 237.59, "eps": 7.2, "pe": 33.0}, {"d": "2025-01-31", "c": 236.0, "eps": 7.2, "pe": 32.8}, {"d": "2025-02-03", "c": 228.01, "eps": 7.21, "pe": 31.6}, {"d": "2025-02-04", "c": 232.8, "eps": 7.21, "pe": 32.3}, {"d": "2025-02-05", "c": 232.47, "eps": 7.21, "pe": 32.2}, {"d": "2025-02-06", "c": 233.22, "eps": 7.21, "pe": 32.3}, {"d": "2025-02-07", "c": 227.63, "eps": 7.21, "pe": 31.6}, {"d": "2025-02-10", "c": 227.65, "eps": 7.22, "pe": 31.5}, {"d": "2025-02-11", "c": 232.62, "eps": 7.22, "pe": 32.2}, {"d": "2025-02-12", "c": 236.87, "eps": 7.22, "pe": 32.8}, {"d": "2025-02-13", "c": 241.53, "eps": 7.22, "pe": 33.4}, {"d": "2025-02-14", "c": 244.6, "eps": 7.22, "pe": 33.9}, {"d": "2025-02-18", "c": 244.47, "eps": 7.23, "pe": 33.8}, {"d": "2025-02-19", "c": 244.87, "eps": 7.23, "pe": 33.9}, {"d": "2025-02-20", "c": 245.83, "eps": 7.23, "pe": 34.0}, {"d": "2025-02-21", "c": 245.55, "eps": 7.24, "pe": 33.9}, {"d": "2025-02-24", "c": 247.1, "eps": 7.24, "pe": 34.1}, {"d": "2025-02-25", "c": 247.04, "eps": 7.24, "pe": 34.1}, {"d": "2025-02-26", "c": 240.36, "eps": 7.24, "pe": 33.2}, {"d": "2025-02-27", "c": 237.3, "eps": 7.25, "pe": 32.8}, {"d": "2025-02-28", "c": 241.84, "eps": 7.25, "pe": 33.4}, {"d": "2025-03-03", "c": 238.03, "eps": 7.25, "pe": 32.8}, {"d": "2025-03-04", "c": 235.93, "eps": 7.25, "pe": 32.5}, {"d": "2025-03-05", "c": 235.74, "eps": 7.25, "pe": 32.5}, {"d": "2025-03-06", "c": 235.33, "eps": 7.26, "pe": 32.4}, {"d": "2025-03-07", "c": 239.07, "eps": 7.26, "pe": 32.9}, {"d": "2025-03-10", "c": 227.48, "eps": 7.26, "pe": 31.3}, {"d": "2025-03-11", "c": 220.84, "eps": 7.26, "pe": 30.4}, {"d": "2025-03-12", "c": 216.98, "eps": 7.27, "pe": 29.9}, {"d": "2025-03-13", "c": 209.68, "eps": 7.27, "pe": 28.8}, {"d": "2025-03-14", "c": 213.49, "eps": 7.27, "pe": 29.4}, {"d": "2025-03-17", "c": 214.0, "eps": 7.27, "pe": 29.4}, {"d": "2025-03-18", "c": 212.69, "eps": 7.28, "pe": 29.2}, {"d": "2025-03-19", "c": 215.24, "eps": 7.28, "pe": 29.6}, {"d": "2025-03-20", "c": 214.1, "eps": 7.28, "pe": 29.4}, {"d": "2025-03-21", "c": 218.27, "eps": 7.28, "pe": 30.0}, {"d": "2025-03-24", "c": 220.73, "eps": 7.29, "pe": 30.3}, {"d": "2025-03-25", "c": 223.75, "eps": 7.29, "pe": 30.7}, {"d": "2025-03-26", "c": 221.53, "eps": 7.29, "pe": 30.4}, {"d": "2025-03-27", "c": 223.85, "eps": 7.29, "pe": 30.7}, {"d": "2025-03-28", "c": 217.9, "eps": 7.29, "pe": 29.9}, {"d": "2025-03-31", "c": 222.13, "eps": 7.3, "pe": 30.4}, {"d": "2025-04-01", "c": 223.19, "eps": 7.3, "pe": 30.6}, {"d": "2025-04-02", "c": 223.89, "eps": 7.3, "pe": 30.7}, {"d": "2025-04-03", "c": 203.19, "eps": 7.3, "pe": 27.8}, {"d": "2025-04-04", "c": 188.38, "eps": 7.3, "pe": 25.8}, {"d": "2025-04-07", "c": 181.46, "eps": 7.31, "pe": 24.8}, {"d": "2025-04-08", "c": 172.42, "eps": 7.31, "pe": 23.6}, {"d": "2025-04-09", "c": 198.85, "eps": 7.31, "pe": 27.2}, {"d": "2025-04-10", "c": 190.42, "eps": 7.31, "pe": 26.0}, {"d": "2025-04-11", "c": 198.15, "eps": 7.32, "pe": 27.1}, {"d": "2025-04-14", "c": 202.52, "eps": 7.32, "pe": 27.7}, {"d": "2025-04-15", "c": 202.14, "eps": 7.32, "pe": 27.6}, {"d": "2025-04-16", "c": 194.27, "eps": 7.32, "pe": 26.5}, {"d": "2025-04-17", "c": 196.98, "eps": 7.33, "pe": 26.9}, {"d": "2025-04-21", "c": 193.16, "eps": 7.33, "pe": 26.3}, {"d": "2025-04-22", "c": 199.74, "eps": 7.33, "pe": 27.2}, {"d": "2025-04-23", "c": 204.6, "eps": 7.34, "pe": 27.9}, {"d": "2025-04-24", "c": 208.37, "eps": 7.34, "pe": 28.4}, {"d": "2025-04-25", "c": 209.28, "eps": 7.34, "pe": 28.5}, {"d": "2025-04-28", "c": 210.14, "eps": 7.34, "pe": 28.6}, {"d": "2025-04-29", "c": 211.21, "eps": 7.35, "pe": 28.8}, {"d": "2025-04-30", "c": 212.5, "eps": 7.35, "pe": 28.9}, {"d": "2025-05-01", "c": 213.32, "eps": 7.35, "pe": 29.0}, {"d": "2025-05-02", "c": 205.35, "eps": 7.35, "pe": 27.9}, {"d": "2025-05-05", "c": 198.89, "eps": 7.36, "pe": 27.0}, {"d": "2025-05-06", "c": 198.51, "eps": 7.36, "pe": 27.0}, {"d": "2025-05-07", "c": 196.25, "eps": 7.36, "pe": 26.7}, {"d": "2025-05-08", "c": 197.49, "eps": 7.36, "pe": 26.8}, {"d": "2025-05-09", "c": 198.53, "eps": 7.36, "pe": 27.0}, {"d": "2025-05-12", "c": 210.79, "eps": 7.37, "pe": 28.6}, {"d": "2025-05-13", "c": 212.93, "eps": 7.37, "pe": 28.9}, {"d": "2025-05-14", "c": 212.33, "eps": 7.37, "pe": 28.8}, {"d": "2025-05-15", "c": 211.45, "eps": 7.37, "pe": 28.7}, {"d": "2025-05-16", "c": 211.26, "eps": 7.37, "pe": 28.7}, {"d": "2025-05-19", "c": 208.78, "eps": 7.38, "pe": 28.3}, {"d": "2025-05-20", "c": 206.86, "eps": 7.38, "pe": 28.0}, {"d": "2025-05-21", "c": 202.09, "eps": 7.38, "pe": 27.4}, {"d": "2025-05-22", "c": 201.36, "eps": 7.38, "pe": 27.3}, {"d": "2025-05-23", "c": 195.27, "eps": 7.39, "pe": 26.4}, {"d": "2025-05-27", "c": 200.21, "eps": 7.39, "pe": 27.1}, {"d": "2025-05-28", "c": 200.42, "eps": 7.39, "pe": 27.1}, {"d": "2025-05-29", "c": 199.95, "eps": 7.4, "pe": 27.0}, {"d": "2025-05-30", "c": 200.85, "eps": 7.4, "pe": 27.2}, {"d": "2025-06-02", "c": 201.7, "eps": 7.41, "pe": 27.2}, {"d": "2025-06-03", "c": 203.27, "eps": 7.41, "pe": 27.4}, {"d": "2025-06-04", "c": 202.82, "eps": 7.42, "pe": 27.3}, {"d": "2025-06-05", "c": 200.63, "eps": 7.42, "pe": 27.0}, {"d": "2025-06-06", "c": 203.92, "eps": 7.43, "pe": 27.5}, {"d": "2025-06-09", "c": 201.45, "eps": 7.44, "pe": 27.1}, {"d": "2025-06-10", "c": 202.67, "eps": 7.45, "pe": 27.2}, {"d": "2025-06-11", "c": 198.78, "eps": 7.45, "pe": 26.7}, {"d": "2025-06-12", "c": 199.2, "eps": 7.46, "pe": 26.7}, {"d": "2025-06-13", "c": 196.45, "eps": 7.47, "pe": 26.3}, {"d": "2025-06-16", "c": 198.42, "eps": 7.48, "pe": 26.5}, {"d": "2025-06-17", "c": 195.64, "eps": 7.49, "pe": 26.1}, {"d": "2025-06-18", "c": 196.58, "eps": 7.49, "pe": 26.2}, {"d": "2025-06-20", "c": 201.0, "eps": 7.5, "pe": 26.8}, {"d": "2025-06-23", "c": 201.5, "eps": 7.52, "pe": 26.8}, {"d": "2025-06-24", "c": 200.3, "eps": 7.53, "pe": 26.6}, {"d": "2025-06-25", "c": 201.56, "eps": 7.53, "pe": 26.8}, {"d": "2025-06-26", "c": 201.0, "eps": 7.54, "pe": 26.7}, {"d": "2025-06-27", "c": 201.08, "eps": 7.54, "pe": 26.7}, {"d": "2025-06-30", "c": 205.17, "eps": 7.56, "pe": 27.1}, {"d": "2025-07-01", "c": 207.82, "eps": 7.56, "pe": 27.5}, {"d": "2025-07-02", "c": 212.44, "eps": 7.57, "pe": 28.1}, {"d": "2025-07-03", "c": 213.55, "eps": 7.57, "pe": 28.2}, {"d": "2025-07-07", "c": 209.95, "eps": 7.6, "pe": 27.6}, {"d": "2025-07-08", "c": 210.01, "eps": 7.6, "pe": 27.6}, {"d": "2025-07-09", "c": 211.14, "eps": 7.61, "pe": 27.8}, {"d": "2025-07-10", "c": 212.41, "eps": 7.61, "pe": 27.9}, {"d": "2025-07-11", "c": 211.16, "eps": 7.62, "pe": 27.7}, {"d": "2025-07-14", "c": 208.62, "eps": 7.63, "pe": 27.3}, {"d": "2025-07-15", "c": 209.11, "eps": 7.64, "pe": 27.4}, {"d": "2025-07-16", "c": 210.16, "eps": 7.65, "pe": 27.5}, {"d": "2025-07-17", "c": 210.02, "eps": 7.65, "pe": 27.4}, {"d": "2025-07-18", "c": 211.18, "eps": 7.66, "pe": 27.6}, {"d": "2025-07-21", "c": 212.48, "eps": 7.67, "pe": 27.7}, {"d": "2025-07-22", "c": 214.4, "eps": 7.68, "pe": 27.9}, {"d": "2025-07-23", "c": 214.15, "eps": 7.68, "pe": 27.9}, {"d": "2025-07-24", "c": 213.76, "eps": 7.69, "pe": 27.8}, {"d": "2025-07-25", "c": 213.88, "eps": 7.7, "pe": 27.8}, {"d": "2025-07-28", "c": 214.05, "eps": 7.71, "pe": 27.8}, {"d": "2025-07-29", "c": 211.27, "eps": 7.72, "pe": 27.4}, {"d": "2025-07-30", "c": 209.05, "eps": 7.72, "pe": 27.1}, {"d": "2025-07-31", "c": 207.57, "eps": 7.73, "pe": 26.9}, {"d": "2025-08-01", "c": 202.38, "eps": 7.73, "pe": 26.2}, {"d": "2025-08-04", "c": 203.35, "eps": 7.75, "pe": 26.2}, {"d": "2025-08-05", "c": 202.92, "eps": 7.76, "pe": 26.2}, {"d": "2025-08-06", "c": 213.25, "eps": 7.76, "pe": 27.5}, {"d": "2025-08-07", "c": 220.03, "eps": 7.77, "pe": 28.3}, {"d": "2025-08-08", "c": 229.35, "eps": 7.77, "pe": 29.5}, {"d": "2025-08-11", "c": 227.18, "eps": 7.79, "pe": 29.2}, {"d": "2025-08-12", "c": 229.65, "eps": 7.79, "pe": 29.5}, {"d": "2025-08-13", "c": 233.33, "eps": 7.8, "pe": 29.9}, {"d": "2025-08-14", "c": 232.78, "eps": 7.8, "pe": 29.8}, {"d": "2025-08-15", "c": 231.59, "eps": 7.81, "pe": 29.7}, {"d": "2025-08-18", "c": 230.89, "eps": 7.83, "pe": 29.5}, {"d": "2025-08-19", "c": 230.56, "eps": 7.83, "pe": 29.4}, {"d": "2025-08-20", "c": 226.01, "eps": 7.84, "pe": 28.8}, {"d": "2025-08-21", "c": 224.9, "eps": 7.84, "pe": 28.7}, {"d": "2025-08-22", "c": 227.76, "eps": 7.85, "pe": 29.0}, {"d": "2025-08-25", "c": 227.16, "eps": 7.86, "pe": 28.9}, {"d": "2025-08-26", "c": 229.31, "eps": 7.87, "pe": 29.1}, {"d": "2025-08-27", "c": 230.49, "eps": 7.88, "pe": 29.3}, {"d": "2025-08-28", "c": 232.56, "eps": 7.88, "pe": 29.5}, {"d": "2025-08-29", "c": 232.14, "eps": 7.89, "pe": 29.4}, {"d": "2025-09-02", "c": 229.72, "eps": 7.91, "pe": 29.0}, {"d": "2025-09-03", "c": 238.47, "eps": 7.91, "pe": 30.1}, {"d": "2025-09-04", "c": 239.78, "eps": 7.92, "pe": 30.3}, {"d": "2025-09-05", "c": 239.69, "eps": 7.92, "pe": 30.2}, {"d": "2025-09-08", "c": 237.88, "eps": 7.94, "pe": 30.0}, {"d": "2025-09-09", "c": 234.35, "eps": 7.95, "pe": 29.5}, {"d": "2025-09-10", "c": 226.79, "eps": 7.95, "pe": 28.5}, {"d": "2025-09-11", "c": 230.03, "eps": 7.96, "pe": 28.9}, {"d": "2025-09-12", "c": 234.07, "eps": 7.96, "pe": 29.4}, {"d": "2025-09-15", "c": 236.7, "eps": 7.98, "pe": 29.7}, {"d": "2025-09-16", "c": 238.15, "eps": 7.98, "pe": 29.8}, {"d": "2025-09-17", "c": 238.99, "eps": 7.99, "pe": 29.9}, {"d": "2025-09-18", "c": 237.88, "eps": 8.0, "pe": 29.8}, {"d": "2025-09-19", "c": 245.5, "eps": 8.0, "pe": 30.7}, {"d": "2025-09-22", "c": 256.08, "eps": 8.02, "pe": 31.9}, {"d": "2025-09-23", "c": 254.43, "eps": 8.02, "pe": 31.7}, {"d": "2025-09-24", "c": 252.31, "eps": 8.03, "pe": 31.4}, {"d": "2025-09-25", "c": 256.87, "eps": 8.03, "pe": 32.0}, {"d": "2025-09-26", "c": 255.46, "eps": 8.04, "pe": 31.8}, {"d": "2025-09-29", "c": 254.43, "eps": 8.06, "pe": 31.6}, {"d": "2025-09-30", "c": 254.63, "eps": 8.06, "pe": 31.6}, {"d": "2025-10-01", "c": 255.45, "eps": 8.07, "pe": 31.7}, {"d": "2025-10-02", "c": 257.13, "eps": 8.07, "pe": 31.9}, {"d": "2025-10-03", "c": 258.02, "eps": 8.08, "pe": 31.9}, {"d": "2025-10-06", "c": 256.69, "eps": 8.09, "pe": 31.7}, {"d": "2025-10-07", "c": 256.48, "eps": 8.1, "pe": 31.7}, {"d": "2025-10-08", "c": 258.06, "eps": 8.1, "pe": 31.8}, {"d": "2025-10-09", "c": 254.04, "eps": 8.11, "pe": 31.3}, {"d": "2025-10-10", "c": 245.27, "eps": 8.12, "pe": 30.2}, {"d": "2025-10-13", "c": 247.66, "eps": 8.13, "pe": 30.5}, {"d": "2025-10-14", "c": 247.77, "eps": 8.14, "pe": 30.4}, {"d": "2025-10-15", "c": 249.34, "eps": 8.14, "pe": 30.6}, {"d": "2025-10-16", "c": 247.45, "eps": 8.15, "pe": 30.4}, {"d": "2025-10-17", "c": 252.29, "eps": 8.15, "pe": 30.9}, {"d": "2025-10-20", "c": 262.24, "eps": 8.17, "pe": 32.1}, {"d": "2025-10-21", "c": 262.77, "eps": 8.18, "pe": 32.1}, {"d": "2025-10-22", "c": 258.45, "eps": 8.18, "pe": 31.6}, {"d": "2025-10-23", "c": 259.58, "eps": 8.19, "pe": 31.7}, {"d": "2025-10-24", "c": 262.82, "eps": 8.19, "pe": 32.1}, {"d": "2025-10-27", "c": 268.81, "eps": 8.21, "pe": 32.7}, {"d": "2025-10-28", "c": 269.0, "eps": 8.21, "pe": 32.7}, {"d": "2025-10-29", "c": 269.7, "eps": 8.22, "pe": 32.8}, {"d": "2025-10-30", "c": 271.4, "eps": 8.23, "pe": 33.0}, {"d": "2025-10-31", "c": 270.37, "eps": 8.23, "pe": 32.8}, {"d": "2025-11-03", "c": 269.05, "eps": 8.25, "pe": 32.6}, {"d": "2025-11-04", "c": 270.04, "eps": 8.25, "pe": 32.7}, {"d": "2025-11-05", "c": 270.14, "eps": 8.26, "pe": 32.7}, {"d": "2025-11-06", "c": 269.77, "eps": 8.26, "pe": 32.6}, {"d": "2025-11-07", "c": 268.47, "eps": 8.27, "pe": 32.5}, {"d": "2025-11-10", "c": 269.43, "eps": 8.29, "pe": 32.5}, {"d": "2025-11-11", "c": 275.25, "eps": 8.29, "pe": 33.2}, {"d": "2025-11-12", "c": 273.47, "eps": 8.3, "pe": 33.0}, {"d": "2025-11-13", "c": 272.95, "eps": 8.3, "pe": 32.9}, {"d": "2025-11-14", "c": 272.41, "eps": 8.31, "pe": 32.8}, {"d": "2025-11-17", "c": 267.46, "eps": 8.32, "pe": 32.1}, {"d": "2025-11-18", "c": 267.44, "eps": 8.33, "pe": 32.1}, {"d": "2025-11-19", "c": 268.56, "eps": 8.33, "pe": 32.2}, {"d": "2025-11-20", "c": 266.25, "eps": 8.34, "pe": 31.9}, {"d": "2025-11-21", "c": 271.49, "eps": 8.35, "pe": 32.5}, {"d": "2025-11-24", "c": 275.92, "eps": 8.36, "pe": 33.0}, {"d": "2025-11-25", "c": 276.97, "eps": 8.37, "pe": 33.1}, {"d": "2025-11-26", "c": 277.55, "eps": 8.37, "pe": 33.1}, {"d": "2025-11-28", "c": 278.85, "eps": 8.38, "pe": 33.3}, {"d": "2025-12-01", "c": 283.1, "eps": 8.4, "pe": 33.7}, {"d": "2025-12-02", "c": 286.19, "eps": 8.4, "pe": 34.1}, {"d": "2025-12-03", "c": 284.15, "eps": 8.41, "pe": 33.8}, {"d": "2025-12-04", "c": 280.7, "eps": 8.41, "pe": 33.4}, {"d": "2025-12-05", "c": 278.78, "eps": 8.42, "pe": 33.1}, {"d": "2025-12-08", "c": 277.89, "eps": 8.43, "pe": 32.9}, {"d": "2025-12-09", "c": 277.18, "eps": 8.44, "pe": 32.8}, {"d": "2025-12-10", "c": 278.78, "eps": 8.44, "pe": 33.0}, {"d": "2025-12-11", "c": 278.03, "eps": 8.45, "pe": 32.9}, {"d": "2025-12-12", "c": 278.28, "eps": 8.45, "pe": 32.9}, {"d": "2025-12-15", "c": 274.11, "eps": 8.47, "pe": 32.4}, {"d": "2025-12-16", "c": 274.61, "eps": 8.47, "pe": 32.4}, {"d": "2025-12-17", "c": 271.84, "eps": 8.48, "pe": 32.1}, {"d": "2025-12-18", "c": 272.19, "eps": 8.48, "pe": 32.1}, {"d": "2025-12-19", "c": 273.67, "eps": 8.49, "pe": 32.2}, {"d": "2025-12-22", "c": 270.97, "eps": 8.5, "pe": 31.9}, {"d": "2025-12-23", "c": 272.36, "eps": 8.51, "pe": 32.0}, {"d": "2025-12-24", "c": 273.81, "eps": 8.51, "pe": 32.2}, {"d": "2025-12-26", "c": 273.4, "eps": 8.52, "pe": 32.1}, {"d": "2025-12-29", "c": 273.76, "eps": 8.54, "pe": 32.1}, {"d": "2025-12-30", "c": 273.08, "eps": 8.54, "pe": 32.0}, {"d": "2025-12-31", "c": 271.86, "eps": 8.54, "pe": 31.8}, {"d": "2026-01-02", "c": 271.01, "eps": 8.55, "pe": 31.7}, {"d": "2026-01-05", "c": 267.26, "eps": 8.57, "pe": 31.2}, {"d": "2026-01-06", "c": 262.36, "eps": 8.57, "pe": 30.6}, {"d": "2026-01-07", "c": 260.33, "eps": 8.58, "pe": 30.3}, {"d": "2026-01-08", "c": 259.04, "eps": 8.58, "pe": 30.2}, {"d": "2026-01-09", "c": 259.37, "eps": 8.59, "pe": 30.2}, {"d": "2026-01-12", "c": 260.25, "eps": 8.6, "pe": 30.3}, {"d": "2026-01-13", "c": 261.05, "eps": 8.61, "pe": 30.3}, {"d": "2026-01-14", "c": 259.96, "eps": 8.61, "pe": 30.2}, {"d": "2026-01-15", "c": 258.21, "eps": 8.62, "pe": 30.0}, {"d": "2026-01-16", "c": 255.53, "eps": 8.62, "pe": 29.6}, {"d": "2026-01-20", "c": 246.7, "eps": 8.64, "pe": 28.5}, {"d": "2026-01-21", "c": 247.65, "eps": 8.65, "pe": 28.6}, {"d": "2026-01-22", "c": 248.35, "eps": 8.65, "pe": 28.7}, {"d": "2026-01-23", "c": 248.04, "eps": 8.66, "pe": 28.7}, {"d": "2026-01-26", "c": 255.41, "eps": 8.67, "pe": 29.5}, {"d": "2026-01-27", "c": 258.27, "eps": 8.68, "pe": 29.8}, {"d": "2026-01-28", "c": 256.44, "eps": 8.68, "pe": 29.5}, {"d": "2026-01-29", "c": 258.28, "eps": 8.68, "pe": 29.7}, {"d": "2026-01-30", "c": 259.48, "eps": 8.69, "pe": 29.9}, {"d": "2026-02-02", "c": 270.01, "eps": 8.7, "pe": 31.0}, {"d": "2026-02-03", "c": 269.48, "eps": 8.71, "pe": 30.9}, {"d": "2026-02-04", "c": 276.49, "eps": 8.71, "pe": 31.7}, {"d": "2026-02-05", "c": 275.91, "eps": 8.72, "pe": 31.6}, {"d": "2026-02-06", "c": 278.12, "eps": 8.72, "pe": 31.9}, {"d": "2026-02-09", "c": 274.62, "eps": 8.74, "pe": 31.4}, {"d": "2026-02-10", "c": 273.68, "eps": 8.74, "pe": 31.3}, {"d": "2026-02-11", "c": 275.5, "eps": 8.75, "pe": 31.5}, {"d": "2026-02-12", "c": 261.73, "eps": 8.75, "pe": 29.9}, {"d": "2026-02-13", "c": 255.78, "eps": 8.76, "pe": 29.2}, {"d": "2026-02-17", "c": 263.88, "eps": 8.78, "pe": 30.1}, {"d": "2026-02-18", "c": 264.35, "eps": 8.78, "pe": 30.1}, {"d": "2026-02-19", "c": 260.58, "eps": 8.79, "pe": 29.7}, {"d": "2026-02-20", "c": 264.58, "eps": 8.79, "pe": 30.1}, {"d": "2026-02-23", "c": 266.18, "eps": 8.81, "pe": 30.2}, {"d": "2026-02-24", "c": 272.14, "eps": 8.81, "pe": 30.9}, {"d": "2026-02-25", "c": 274.23, "eps": 8.81, "pe": 31.1}, {"d": "2026-02-26", "c": 272.95, "eps": 8.82, "pe": 30.9}, {"d": "2026-02-27", "c": 264.18, "eps": 8.82, "pe": 29.9}, {"d": "2026-03-02", "c": 264.72, "eps": 8.84, "pe": 29.9}, {"d": "2026-03-03", "c": 263.75, "eps": 8.84, "pe": 29.8}, {"d": "2026-03-04", "c": 262.52, "eps": 8.85, "pe": 29.7}, {"d": "2026-03-05", "c": 260.29, "eps": 8.85, "pe": 29.4}, {"d": "2026-03-06", "c": 257.46, "eps": 8.86, "pe": 29.1}, {"d": "2026-03-09", "c": 259.88, "eps": 8.87, "pe": 29.3}, {"d": "2026-03-10", "c": 260.83, "eps": 8.88, "pe": 29.4}, {"d": "2026-03-11", "c": 260.81, "eps": 8.88, "pe": 29.4}, {"d": "2026-03-12", "c": 255.76, "eps": 8.89, "pe": 28.8}, {"d": "2026-03-13", "c": 250.12, "eps": 8.89, "pe": 28.1}, {"d": "2026-03-16", "c": 252.82, "eps": 8.91, "pe": 28.4}, {"d": "2026-03-17", "c": 254.23, "eps": 8.91, "pe": 28.5}, {"d": "2026-03-18", "c": 249.94, "eps": 8.92, "pe": 28.0}, {"d": "2026-03-19", "c": 248.96, "eps": 8.92, "pe": 27.9}, {"d": "2026-03-20", "c": 247.99, "eps": 8.93, "pe": 27.8}, {"d": "2026-03-23", "c": 251.49, "eps": 8.94, "pe": 28.1}, {"d": "2026-03-24", "c": 251.64, "eps": 8.95, "pe": 28.1}, {"d": "2026-03-25", "c": 252.62, "eps": 8.95, "pe": 28.2}, {"d": "2026-03-26", "c": 252.89, "eps": 8.95, "pe": 28.2}, {"d": "2026-03-27", "c": 248.8, "eps": 8.96, "pe": 27.8}, {"d": "2026-03-30", "c": 246.63, "eps": 8.97, "pe": 27.5}, {"d": "2026-03-31", "c": 253.79, "eps": 8.98, "pe": 28.3}, {"d": "2026-04-01", "c": 255.63, "eps": 8.98, "pe": 28.5}, {"d": "2026-04-02", "c": 255.92, "eps": 8.99, "pe": 28.5}, {"d": "2026-04-06", "c": 258.86, "eps": 9.01, "pe": 28.7}, {"d": "2026-04-07", "c": 253.5, "eps": 9.01, "pe": 28.1}, {"d": "2026-04-08", "c": 258.9, "eps": 9.02, "pe": 28.7}, {"d": "2026-04-09", "c": 260.49, "eps": 9.02, "pe": 28.9}, {"d": "2026-04-10", "c": 260.48, "eps": 9.03, "pe": 28.9}, {"d": "2026-04-13", "c": 259.2, "eps": 9.04, "pe": 28.7}, {"d": "2026-04-14", "c": 258.83, "eps": 9.05, "pe": 28.6}, {"d": "2026-04-15", "c": 266.43, "eps": 9.05, "pe": 29.4}, {"d": "2026-04-16", "c": 263.4, "eps": 9.06, "pe": 29.1}, {"d": "2026-04-17", "c": 270.23, "eps": 9.06, "pe": 29.8}, {"d": "2026-04-20", "c": 273.05, "eps": 9.08, "pe": 30.1}, {"d": "2026-04-21", "c": 266.17, "eps": 9.08, "pe": 29.3}, {"d": "2026-04-22", "c": 273.17, "eps": 9.09, "pe": 30.1}, {"d": "2026-04-23", "c": 273.43, "eps": 9.09, "pe": 30.1}, {"d": "2026-04-24", "c": 271.06, "eps": 9.09, "pe": 29.8}, {"d": "2026-04-27", "c": 267.61, "eps": 9.11, "pe": 29.4}, {"d": "2026-04-28", "c": 270.71, "eps": 9.11, "pe": 29.7}, {"d": "2026-04-29", "c": 270.17, "eps": 9.12, "pe": 29.6}, {"d": "2026-04-30", "c": 271.35, "eps": 9.12, "pe": 29.7}, {"d": "2026-05-01", "c": 280.14, "eps": 9.13, "pe": 30.7}, {"d": "2026-05-04", "c": 276.83, "eps": 9.14, "pe": 30.3}, {"d": "2026-05-05", "c": 284.18, "eps": 9.15, "pe": 31.1}, {"d": "2026-05-06", "c": 287.51, "eps": 9.15, "pe": 31.4}, {"d": "2026-05-07", "c": 287.44, "eps": 9.16, "pe": 31.4}, {"d": "2026-05-08", "c": 293.32, "eps": 9.16, "pe": 32.0}, {"d": "2026-05-11", "c": 292.68, "eps": 9.18, "pe": 31.9}, {"d": "2026-05-12", "c": 294.8, "eps": 9.18, "pe": 32.1}, {"d": "2026-05-13", "c": 298.87, "eps": 9.19, "pe": 32.5}, {"d": "2026-05-14", "c": 298.21, "eps": 9.19, "pe": 32.4}, {"d": "2026-05-15", "c": 300.23, "eps": 9.2, "pe": 32.6}, {"d": "2026-05-18", "c": 297.84, "eps": 9.21, "pe": 32.3}, {"d": "2026-05-19", "c": 298.97, "eps": 9.22, "pe": 32.4}, {"d": "2026-05-20", "c": 302.25, "eps": 9.22, "pe": 32.8}, {"d": "2026-05-21", "c": 304.99, "eps": 9.22, "pe": 33.1}, {"d": "2026-05-22", "c": 308.82, "eps": 9.23, "pe": 33.5}, {"d": "2026-05-26", "c": 308.33, "eps": 9.25, "pe": 33.3}, {"d": "2026-05-27", "c": 310.85, "eps": 9.25, "pe": 33.6}, {"d": "2026-05-28", "c": 312.51, "eps": 9.26, "pe": 33.8}, {"d": "2026-05-29", "c": 312.06, "eps": 9.26, "pe": 33.7}, {"d": "2026-06-01", "c": 306.31, "eps": 9.28, "pe": 33.0}, {"d": "2026-06-02", "c": 315.2, "eps": 9.28, "pe": 34.0}, {"d": "2026-06-03", "c": 310.26, "eps": 9.29, "pe": 33.4}, {"d": "2026-06-04", "c": 311.23, "eps": 9.29, "pe": 33.5}, {"d": "2026-06-05", "c": 307.34, "eps": 9.3, "pe": 33.1}, {"d": "2026-06-08", "c": 301.54, "eps": 9.31, "pe": 32.4}, {"d": "2026-06-09", "c": 290.55, "eps": 9.32, "pe": 31.2}, {"d": "2026-06-10", "c": 291.58, "eps": 9.32, "pe": 31.3}, {"d": "2026-06-11", "c": 295.63, "eps": 9.33, "pe": 31.7}, {"d": "2026-06-12", "c": 291.13, "eps": 9.33, "pe": 31.2}, {"d": "2026-06-15", "c": 296.42, "eps": 9.35, "pe": 31.7}, {"d": "2026-06-16", "c": 299.24, "eps": 9.35, "pe": 32.0}, {"d": "2026-06-17", "c": 295.95, "eps": 9.36, "pe": 31.6}, {"d": "2026-06-18", "c": 298.01, "eps": 9.36, "pe": 31.8}, {"d": "2026-06-22", "c": 297.01, "eps": 9.38, "pe": 31.7}, {"d": "2026-06-23", "c": 294.3, "eps": 9.38, "pe": 31.4}, {"d": "2026-06-24", "c": 293.08, "eps": 9.39, "pe": 31.2}, {"d": "2026-06-25", "c": 275.15, "eps": 9.39, "pe": 29.3}, {"d": "2026-06-26", "c": 283.78, "eps": 9.4, "pe": 30.2}, {"d": "2026-06-29", "c": 281.74, "eps": 9.41, "pe": 29.9}, {"d": "2026-06-30", "c": 289.36, "eps": 9.42, "pe": 30.7}, {"d": "2026-07-01", "c": 294.38, "eps": 9.42, "pe": 31.2}, {"d": "2026-07-02", "c": 308.63, "eps": 9.43, "pe": 32.7}, {"d": "2026-07-06", "c": 312.66, "eps": 9.45, "pe": 33.1}, {"d": "2026-07-07", "c": 310.66, "eps": 9.45, "pe": 32.9}, {"d": "2026-07-08", "c": 313.39, "eps": 9.46, "pe": 33.1}, {"d": "2026-07-09", "c": 316.22, "eps": 9.46, "pe": 33.4}, {"d": "2026-07-10", "c": 315.32, "eps": 9.47, "pe": 33.3}, {"d": "2026-07-13", "c": 317.31, "eps": 9.48, "pe": 33.5}, {"d": "2026-07-14", "c": 314.86, "eps": 9.49, "pe": 33.2}, {"d": "2026-07-15", "c": 327.5, "eps": 9.49, "pe": 34.5}, {"d": "2026-07-16", "c": 333.26, "eps": 9.5, "pe": 35.1}, {"d": "2026-07-17", "c": 333.74, "eps": 9.5, "pe": 35.1}], "stats": {"avg": 30.1, "min": 23.6, "max": 36.3, "min_day": "2025-04-08", "max_day": "2024-12-26", "cur": 35.1, "cur_eps": 9.5, "cur_price": 333.74, "percentile": 99}, "stats_1y": {"avg": 30.8, "min": 26.2, "max": 35.1, "min_day": "2025-08-01", "max_day": "2026-07-16", "cur": 35.1, "cur_eps": 9.5, "cur_price": 333.74, "percentile": 100}, "events": [{"d": "2024-06-10", "label": "애플 인텔리전스 발표", "kind": "up"}, {"d": "2026-07-17", "label": "컨센 목표 $329 (현재가 하회)", "kind": "down"}], "regimes": [], "cfg": {"currency": "USD", "multiples": [26, 31, 36, 41], "priceMax": 500, "priceTick": 100, "peMax": 40, "peTick": 8, "epsMax": 12.5, "epsTick": 2.5}, "anchors": [{"d": "2023-06-07", "val": "$6.30", "eps": 6.3, "why": "FY23 EPS ~$6.13 확정 + FY24 초기 추정 블렌드 (NTM 재구성, 당시 보도 근사)"}, {"d": "2023-12-01", "val": "$6.50", "eps": 6.5, "why": "FY24 컨센 ~$6.5 형성, 아이폰15 사이클 진입 (재구성)"}, {"d": "2024-06-10", "val": "$6.70", "eps": 6.7, "why": "WWDC 애플 인텔리전스 발표·FY25 초기 추정 반영 (NTM 재구성)"}, {"d": "2024-12-01", "val": "$7.10", "eps": 7.1, "why": "FY25 컨센 상향 ~$7.1, AI 사이클 기대 (재구성)"}, {"d": "2025-06-01", "val": "$7.40", "eps": 7.4, "why": "FY25 EPS $7.38 실적 근접 (FMP FY25 실측 $7.38)"}, {"d": "2025-12-01", "val": "$8.40", "eps": 8.4, "why": "FY26 컨센 $8.76 형성·NTM(FY26 비중↑) 재구성 (FMP FY26E $8.76)"}, {"d": "2026-07-17", "val": "$9.50", "eps": 9.5, "why": "현재 NTM — FMP 컨센 FY26E $8.76·FY27E $9.67 블렌드(FY27 비중↑, 애플 9월 결산)"}], "meta": {"symbol": "AAPL", "name": "애플", "shares": 14687356000, "mode": "eps", "conv": null, "conv_basis": null, "range": ["2023-06-07", "2026-07-17"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
