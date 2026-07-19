@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="005380">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>현대차(005380) — 로보틱스가 밀어올린 밸류, 관세·파업이 깎는 이익</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+/* ---- 콜 furniture 타일: 파스텔 4색 틴트 (메인과 동일) ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+
+/* ---- Key Takeaways (30초 요약층) ---- */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+/* ---- 스티키 미니 목차 ---- */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ---- 섹션 카드 + 번호 배지 헤더 (STYLE-GUIDE v1.4.0) ---- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+/* ---- 킬러 스탯 콜아웃 ---- */
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+/* ---- 경고 노트(중요) vs 참고(.fine 가라앉힘) ---- */
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-19-hyundai-motor-deep.html">
+<meta property="og:title" content="현대차(005380) — 로보틱스가 밀어올린 밸류, 관세·파업이 깎는 이익">
+<meta property="og:description" content="관세 완화·밸류업이 하방을 받치지만 이익이 꺾이는 국면에 밸류는 자기 3년 밴드 상단(P/E 백분위 87%)에 있어, NTM 이익 기준 Base 환산가가 현재가 아래(−13.6%)인 비중축소 국면이다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-19-hyundai-motor-deep.html">
+<meta name="description" content="관세 완화·밸류업이 하방을 받치지만 이익이 꺾이는 국면에 밸류는 자기 3년 밴드 상단(P/E 백분위 87%)에 있어, NTM 이익 기준 Base 환산가가 현재가 아래(−13.6%)인 비중축소 국면이다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-19-hyundai-motor-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 2026-07-19 · 가격 기준 7/16 종가 (7/17 제헌절 휴장·주말)</div>
+  <h1>현대차(005380) — 로보틱스가 밀어올린 밸류, 관세·파업이 깎는 이익</h1>
+  <p class="sub">아틀라스 랠리로 76.2만원까지 갔던 주가가 42.2만원으로 −44% 되돌림 — "저P/E 사이클주"라는 통념과 달리, 이익이 꺾이는 국면에 밸류는 자기 3년 밴드의 상단(백분위 87%)에 있다.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">관세 25%→15% 인하와 밸류업(TSR 35%)이 하방을 받치지만, NTM 이익 기준 Base 환산가는 현재가 아래(−13.6%)다. 남은 상방의 성립 조건을 정량으로 검증했다.</p>
+</header>
+
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">P/E 백분위 87% ≥ 75%(고평가) · Base −13.6% ≤ 0%(상방 소진)</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">421,500<small>원</small></div>
+    <div class="delta">Fwd P/E 10.4배 (3년 평균 5.2배) · 백분위 87% <span class="chip">과열</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−13.6%</div>
+    <div class="delta">Bull <span class="up">+42.6%</span> / Bear <span class="down">−49.5%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 7/23 2Q26 실적 발표(컨퍼런스콜)</div>
+  </div>
+</div>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 비중축소.</strong> Fwd P/E 10.4배는 글로벌 완성차(기아 8.2·GM 8.0배)와 엇비슷해 절대 수준은 싸 보이지만, 현대차 <strong>자기 3년 밴드에선 백분위 87%(과열)</strong> — 로보틱스 기대가 밴드를 통째로 위로 밀어올린 결과다. Base 환산가는 현재가 대비 <span class="down">−13.6%</span>.</li>
+    <li><strong>이익은 지금 꺾이고 있다.</strong> 1Q26 영업이익 <strong>2.51조(YoY <span class="down">−30.8%</span>)</strong>, 분기 관세부담 8,600억, OPM 5.5%로 축소. 6월 글로벌 판매도 33.8만대(YoY <span class="down">−5.9%</span>).</li>
+    <li><strong>하방은 세 축이 받친다.</strong> ① 관세 25%→15% 인하(연 +2.4조 개선 보도, 2Q부터 반영) ② 밸류업 TSR 35%·최소배당 1만원 ③ 해외 ASP 상승(승용 80,025천원, YoY 지속). 다만 <span class="down">파업</span>(7/20~22 4시간)·HMGMA 가동률 38%가 맞불이다.</li>
+    <li><strong>콜 전환 조건을 명시했다.</strong> 상향: 2Q26 OPM 회복 + 파업 조기 타결 + 관세 절감 온기 확인. 하향·유지: 파업 장기화 또는 HMGMA 가동률 30%대 고착. <strong>7/23 2Q26 실적</strong>이 첫 판정 지점.</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">분석경로</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-18 기준)</strong><br>KOSPI 109,000 (프록시, <span class="down">−6.63%</span>) · KOSDAQ 13,580 (프록시, <span class="down">−5.33%</span>) — 직전 거래일 7/16(목) 종가, 7/17(금)은 제헌절 휴장<br>원/달러 1,488.80원 (전일 1,492.20) · 기준금리 2.75%<br>미 10년물 4.57% · 달러지수 120.50 · SPY 743.29$ (<span class="down">−0.99%</span>) — <a href="https://report.devindgkim.net/" style="color:var(--accent);">당일 브리핑</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>원/달러 1,488.80원 · 미 10년물 4.57% · 기준금리 2.75%</strong> 가정 위에서 계산했다 (하우스 매크로 가정 상속 — 매크로가 크게 바뀌면 시나리오 전제도 함께 갱신되어야 한다).</p>
+
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — 수출 채산성은 우호, 관세·현지화가 판을 바꾼다</h2>
+  <p class="deck">완성차 업황의 축은 세 가지 — 수출 물량·환율, 그리고 <strong>미국 관세</strong>다. 앞의 둘은 우호, 셋째가 이익의 방향을 정한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>업종 지표</th><th class="num">최근값</th><th>방향·해석</th></tr></thead>
+    <tbody>
+      <tr><td>승용차 수출액(월, HS 8703) <span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">관세청 · 품목별 수출입실적 API (HS 8703 승용차, 2026-06)</span><span class="evd-sum">2026년 6월 승용차(HS 8703) 수출액 <strong>63.6억 달러</strong>, 전월 대비 +16.1%, 전년동월 대비 <strong>+6.1%</strong>. 물량은 둔화되나 달러 수출액은 믹스·환율로 증가 — 완성차 수출 채산성의 최상류 지표.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">63.6억$ ('26.6)</td><td>MoM <span class="up">+16.1%</span> · YoY <span class="up">+6.1%</span> — 달러 수출액 증가(믹스·환율)</td></tr>
+      <tr><td>원/달러 <span class="evd"><button type="button" aria-expanded="false">근거17</button><span class="evd-pop"><span class="evd-src">토스 Open API·briefing_ref 스냅샷 (2026-07-18)</span><span class="evd-sum">원/달러 <strong>1,488.80원</strong>(전일 1,492.20). 원화 약세는 현대차처럼 매출의 62%가 수출인 기업에 채산성 우호 — 다만 관세·현지생산 확대로 환효과의 순영향은 과거보다 희석.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">1,488.8원</td><td>원화 약세 지속 — 수출 채산성 우호(순효과는 현지생산으로 희석)</td></tr>
+      <tr><td>미국 관세율 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">정책브리핑 · 한미 관세협상 타결 (자동차 15%·현금투자 연 200억달러 상한)</span><span class="evd-sum">한미 협상으로 한국산 자동차 관세가 <strong>25%→15%</strong>로 인하(일본·EU와 동일 수준). 대미 금융투자 3,500억 달러(현금 2,000억+조선 1,500억), 연간 투자 상한 200억 달러.</span><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148953418" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">15%</td><td>25%→15% 인하 — 2Q26부터 이익 반영, 연 +2.4조 개선 보도</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">업종 지표 매핑은 sector_map.json '자동차' 정의를 따랐다(승용차 수출·원/달러·미국 관세). 관세는 이익 레벨을 직접 바꾸는 최대 변수라 업황 지표로 승격했다.</p>
+</div>
+
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 심층(재출발 기준선)</h2>
+  <p class="deck">이 리포트는 발굴 스크리닝의 산출물이 아니라, 특정 종목을 지목해 모든 소스로 검증한 <strong>지정 심층</strong>이다.</p>
+  <p>현대차는 랭킹·스크리닝으로 좁혀 고른 종목이 아니라, 사용자가 지목한 단일 종목이다. 분석은 토스 Open API 시세·DART 원문(분기보고서·공정공시·밸류업 이행현황)·관세청 수출 실측·글로벌 피어 재무(EDGAR/FMP)·공개 보도를 총동원해 <strong>서사(로보틱스·관세 완화 기대)와 공시 숫자(꺾이는 이익·파업·가동률)를 분리 검증</strong>하는 방식으로 진행했다.</p>
+  <p>이 리포트는 리서치 표준 재출발 이후의 <strong>1세대 기준선 리포트</strong>다 — 과거 발간분과의 연계·후속 개정 판정은 하지 않으며, 이후 같은 종목 리포트의 비교 기준점이 된다.</p>
+</div>
+
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 트리거 3개와 경고 1개</h2>
+  <p class="deck">주가를 76만원까지 밀어올린 힘과, 42만원으로 되돌린 힘이 지금 같은 화면 안에 있다.</p>
+  <p><strong>트리거 ① 관세 리스크의 정점 통과.</strong> 한국산 자동차 관세가 25%에서 <strong>15%로 인하</strong> 타결됐고<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">정책브리핑 · 한미 관세협상 타결 (자동차 15%·현금투자 연 200억달러 상한)</span><span class="evd-sum">한미 협상으로 한국산 자동차 관세가 <strong>25%→15%</strong>로 인하(일본·EU와 동일 수준). 대미 금융투자 3,500억 달러(현금 2,000억+조선 1,500억), 연간 투자 상한 200억 달러.</span><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148953418" target="_blank" rel="noopener">원문 ↗</a></span></span>, 증권가는 이 효과가 2Q26부터 이익에 반영돼 연간 영업이익을 약 +2.4조 개선시킨다고 본다<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">머니투데이 · 관세 15%로 내리면 현대차·기아 4조 이득 (2025.10.20)</span><span class="evd-sum">관세율 25%→15% 인하 시 2026년 영업이익이 현대차 +2.4조·기아 +1.6조, 합산 4조 증가 추정. 1Q26 분기 관세부담 8,600억이 분기당 수천억 단위로 경감되는 구조.</span><a href="https://v.daum.net/v/20251020153159199" target="_blank" rel="noopener">원문 ↗</a></span></span>. 1Q26의 8,600억 관세부담이 분기마다 가벼워진다.</p>
+  <p><strong>트리거 ② 주주환원(밸류업)의 하방 지지.</strong> '25~'27 TSR 35%·최소배당 1만원 정책을 '25년에 실제로 이행했다<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">DART · 기업가치 제고 계획 이행현황 (2026.05.29, '25년 귀속)</span><span class="evd-sum">'25~'27 밸류업: <strong>총주주환원율(TSR) 35% 이상·주당 최소배당 10,000원</strong>. '25년 이행 실적 — TSR 35.0% 달성(배당 2.6조=성향 27.7%, 자사주 소각 0.5조, 매입 0.2조).</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529802007" target="_blank" rel="noopener">원문 ↗</a></span></span>. FnGuide 기준 2026E 배당수익률 2.52%가 현재가에서 하방을 받친다.</p>
+  <p><strong>트리거 ③ 로보틱스·믹스 개선 옵션.</strong> 아틀라스 랠리<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">헤럴드경제 · '물구나무 선 아틀라스'에 현대차 61만원 돌파 (2026.05.08)</span><span class="evd-sum">보스턴다이내믹스 아틀라스의 체조 동작 영상 공개 후 현대차 주가가 하루 <strong>+6.6%</strong> 급등해 61만원 돌파. 연초 종가 29.85만원 대비 한때 <strong>+138%</strong> — 증권가가 '단순 가치주 → 로보틱스 성장주'로 재평가한 국면.</span><a href="https://biz.heraldcorp.com/article/10733555" target="_blank" rel="noopener">원문 ↗</a></span></span>는 소멸했지만, 하반기 GV80·G80 하이브리드 출시와 펠리세이드 HEV 투입<span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">알파비즈 · 현대차, 하이브리드 강세로 믹스 개선</span><span class="evd-sum">1Q 하이브리드 비중 10.8%, 제네시스·SUV 비중 59.8%. 하반기 제네시스 HEV·신형 펠리세이드 HEV 투입으로 고수익 믹스 개선 여력. 로보틱스는 실적 기여 전 옵션.</span><a href="https://alphabiz.co.kr/news/view/1065579625316350" target="_blank" rel="noopener">원문 ↗</a></span></span>로 믹스 개선 서사는 남아 있다.</p>
+  <div class="note"><strong>경고 — 이익은 지금 꺾인다.</strong> 1Q26 영업이익이 YoY <span class="down">−30.8%</span><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 연결 잠정실적 공정공시 (2026.04.23, 1Q26)</span><span class="evd-sum">1Q26 연결 매출 <strong>45조9,389억</strong>(YoY +3.4%), 영업이익 <strong>2조5,147억</strong>(YoY −30.8%, QoQ +48.3%). 매출은 늘었으나 관세·환율로 이익률이 5.5%로 축소.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800339" target="_blank" rel="noopener">원문 ↗</a></span></span>, 6월 글로벌 판매 <span class="down">−5.9%</span><span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">DART · 6월 판매실적 공정공시 (2026.07.01)</span><span class="evd-sum">'26년 6월 전 세계 33만8,313대 판매(YoY −5.9%). 국내 5만8,232대(−6.2%)·해외 28만81대(−5.8%). 물량 모멘텀이 꺾인 구간.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800788" target="_blank" rel="noopener">원문 ↗</a></span></span>, 그 위에 <strong>파업</strong>이 겹쳤다<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 · 현대차 노조 부분파업 (2026.07.18)</span><span class="evd-sum">노조가 7/13~15 매일 2시간 부분파업(약 5,000대 차질)에 이어 <strong>7/20~22 각 조 4시간 부분파업</strong> 확정. 기본급 14만9,600원 인상·순이익 30% 성과급 요구, 사측 3차안 거부.</span><a href="https://www.fnnews.com/news/202607180801396272" target="_blank" rel="noopener">원문 ↗</a></span></span> — 7/13 생산중단 공시까지 나왔다<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">DART · 생산중단 공시 (2026.07.13)</span><span class="evd-sum">울산공장 등 전 사업장 부분파업에 따른 생산중단 공시. 생산중단 분야 매출액 78.77조로 <strong>최근 매출 대비 42.29%</strong>(별도 기준 전 완성차 사업). 사유: 단체교섭 관련 부분파업.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800350" target="_blank" rel="noopener">원문 ↗</a></span></span>. 관세 완화의 이익 개선분과 파업·판매 둔화가 2Q26에 정면충돌한다.</p>
+</div>
+
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 재현 가능한 수치</h2>
+  <p class="deck">모멘텀은 전면 훼손 상태다 — 되돌림의 크기가 서사 소멸의 크기다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">수치</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>1주 / 1개월 / 3개월 수익률 <span class="evd"><button type="button" aria-expanded="false">근거18</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산값 (2026.07.16 종가 기준)</span><span class="evd-sum">1주 −5.5% / 1개월 −31.9% / 3개월 −15.3%. 52주 고가 대비 −46.4%. MA20 &lt; MA60(정배열 붕괴). 최근 5일 거래대금/이전 20일 배수 0.5배(거래 위축). 시총 근사 86.3조·유의사항 0건.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num"><span class="down">−5.5%</span> / <span class="down">−31.9%</span> / <span class="down">−15.3%</span></td><td class="grade g-none">○ 모멘텀 훼손</td></tr>
+      <tr><td>52주 고가 대비</td><td class="num"><span class="down">−46.4%</span></td><td class="grade g-none">○ 고점 대비 반토막</td></tr>
+      <tr><td>이동평균 배열 (MA20 vs MA60)</td><td class="num">MA20 &lt; MA60</td><td class="grade g-none">○ 정배열 붕괴</td></tr>
+      <tr><td>거래대금 배수 (5일/이전20일)</td><td class="num">0.5×</td><td class="grade g-part">◐ 투매 진정·관망</td></tr>
+      <tr><td>시가총액 (근사)</td><td class="num">86.3조</td><td class="grade g-na">— KOSPI 대형주</td></tr>
+      <tr><td>매수 유의사항</td><td class="num">0건</td><td class="grade g-full">● 없음</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">가격·수급 기준일은 2026-07-16 종가(7/17 제헌절 휴장·7/18~19 주말). 거래대금 배수 0.5배는 급락 후 투매가 진정되며 거래가 위축된 상태로, 방향성 신호로는 중립이다. 시총은 발행주식수 204,757,766주 × 종가로 근사.</p>
+</div>
+
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC 분석 — 가격·물량·비용</h2>
+  <p class="deck">가격(P)은 강하고, 물량(Q)은 꺾이고, 비용(C)은 관세가 지배한다 — 이익 방향은 C가 정한다.</p>
+  <h3>P (가격) — <span class="g-full">● 강함</span></h3>
+  <p>현대차의 실질 가격결정력은 공시 숫자로 확인된다<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 '가격변동' (2026.05.15)</span><span class="evd-sum">제품 평균판매가(천원): 국내 승용 53,978('24)→56,170('25)→<strong>56,436(1Q26)</strong>, 해외 승용 69,005→75,915→<strong>80,025</strong>, 해외 RV 73,876→80,442→<strong>84,296</strong>. 국내외 모두 우상향 — 프리미엄·믹스·환율 반영.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">원문 ↗</a></span></span>. <strong>해외 승용 평균판가가 69,005천원('24)→80,025천원(1Q26)</strong>으로 2년 새 +16% 올랐고, 국내외 전 차종이 우상향이다. 제네시스 프리미엄화·SUV/HEV 믹스 개선<span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">알파비즈 · 현대차, 하이브리드 강세로 믹스 개선</span><span class="evd-sum">1Q 하이브리드 비중 10.8%, 제네시스·SUV 비중 59.8%. 하반기 GV80·G80 하이브리드·펠리세이드 HEV 투입으로 고수익 믹스 개선 여력.</span><a href="https://alphabiz.co.kr/news/view/1065579625316350" target="_blank" rel="noopener">원문 ↗</a></span></span>이 판가를 밀어올린다. 경쟁사 대비: 현대차 OPM 5.5%는 토요타(두 자릿수)보다 낮지만, 관세를 정상화하면 기아(7.2%)와 함께 회복 여지가 있다. <strong>P는 문제의 축이 아니다.</strong></p>
+  <h3>Q (물량) — <span class="g-none">○ 꺾임</span></h3>
+  <p>6월 글로벌 판매가 33.8만대로 YoY <span class="down">−5.9%</span><span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">DART · 6월 판매실적 공정공시 (2026.07.01)</span><span class="evd-sum">6월 전 세계 33만8,313대(YoY −5.9%). 국내 −6.2%·해외 −5.8%. 물량 둔화가 진행 중.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800788" target="_blank" rel="noopener">원문 ↗</a></span></span>, 여기에 파업발 생산차질<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 · 현대차 노조 부분파업 (2026.07.18)</span><span class="evd-sum">노조가 7/13~15 매일 2시간 부분파업(약 5,000대 차질)에 이어 <strong>7/20~22 각 조 4시간 부분파업</strong> 확정. 기본급 14만9,600원 인상·순이익 30% 성과급 요구, 사측 3차안 거부.</span><a href="https://www.fnnews.com/news/202607180801396272" target="_blank" rel="noopener">원문 ↗</a></span></span>이 겹친다. 국내·기존 미국공장은 100%+ 완전가동이지만<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 '생산실적·가동률' (2026.05.15)</span><span class="evd-sum">1Q26 생산대수: HMC 한국 438,903대(가동률 102.0%)·HMMA 미국 96,500대(103.7%)·<strong>HMGMA 미국 9,900대(38.2%)</strong>·HMI 인도 193,150대(80.4%). 국내·기존 미국공장은 완전가동, 신설 메타플랜트만 저가동.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">원문 ↗</a></span></span>, 신설 <strong>메타플랜트(HMGMA) 가동률이 38.2%</strong>에 그친다 — 미 EV 보조금 축소로 현지 EV 수요가 빠진 탓이다. <strong>물량은 하방 리스크의 핵심.</strong></p>
+  <h3>C (비용) — <span class="g-part">◐ 관세가 지배</span></h3>
+  <p>1Q26 OPM이 5.5%로 축소됐다<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 부문별 손익 (2026.05.15)</span><span class="evd-sum">1Q26 차량부문 매출 비중 75.2%·영업이익 비중 71.1%. 연결 OPM 5.5%(1Q26) — 관세 8,600억·부품사 화재·환율의 삼중 압박. FY24 OPM 8.1%에서 하락 추세.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">원문 ↗</a></span></span> — 분기 관세부담 8,600억이 이익률을 직접 깎았다. <strong>관세 25%→15% 인하가 2Q26부터 반영</strong>되면 비용 구조가 개선되지만, 회사가 관세 절감분을 미국 점유율 방어를 위해 가격 인하에 쓸 경우 이익 개선 폭은 절감액보다 작아질 수 있다<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">정책브리핑·머니투데이 종합 (2025.10)</span><span class="evd-sum">관세 15% 인하 시 현대차 연 영업이익 +2.4조 개선 추정. 단 관세 절감분을 미국 시장 가격 경쟁에 재투입하면 이익 반영률은 낮아짐(매출↑, 이익 개선폭 제한).</span><a href="https://www.korea.kr/news/policyNewsView.do?newsId=148953418" target="_blank" rel="noopener">원문 ↗</a></span></span>. 비용의 방향은 우호지만, 반영 강도가 콜의 최대 변수다.</p>
+</div>
+
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 지속가능성 6항목</h2>
+  <p class="deck">가동률·미국향은 양호하나, "수주가 매출보다 빠른가"·"밸류 체계 전환"은 완성차 특성상 성립하지 않는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출 증가 + 가동률 상승</td><td class="grade g-part">◐ 부분</td><td>국내 102%·기존 미국 103.7% 완전가동이나, 신설 HMGMA 38.2%가 전사 가동률을 끌어내림 <span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 '생산실적·가동률' (2026.05.15)</span><span class="evd-sum">1Q26 생산대수: HMC 한국 438,903대(가동률 102.0%)·HMMA 미국 96,500대(103.7%)·<strong>HMGMA 미국 9,900대(38.2%)</strong>·HMI 인도 193,150대(80.4%). 국내·기존 미국공장은 완전가동, 신설 메타플랜트만 저가동.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률 정상화</td><td class="grade g-none">○ 미충족</td><td>HMGMA 가동률이 '25년말 65.3%→1Q26 38.2%로 <span class="down">−27.1%p</span> 급감 <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">서울경제 · 美 EV 캐즘에 메타플랜트 가동률 반토막 (2026)</span><span class="evd-sum">현대차 미국 메타플랜트(HMGMA) 가동률이 '25년말 65.3%→'26년 1분기 38.2%로 급감(-27.1%p). 트럼프 행정부 EV 보조금 축소로 현지 EV 수요 급감. HEV 추가 투입으로 대응 계획.</span><a href="https://www.sedaily.com/article/20047378" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>3</td><td>수주가 매출보다 빠르게 증가</td><td class="grade g-na">— 해당없음</td><td>완성차는 수주잔고 기반 사업이 아님(철도 등 기타부문만 수주잔고 존재). 지표 자체가 본업에 부적합</td></tr>
+      <tr><td>4</td><td>미국향 매출 여부</td><td class="grade g-full">● 충족</td><td>별도기준 수출 비중 61.8%(1Q26), 북미가 최대 시장 + HMMA·HMGMA 현지생산 <span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 매출실적 (2026.05.15)</span><span class="evd-sum">별도기준 1Q26 내수 7.10조·수출 11.46조 → 수출 비중 61.8%. 북미(미국)가 대표 수출·현지생산 시장. 미국 의존은 관세 리스크와 동전의 양면.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>5</td><td>밸류에이션 체계 전환 (PBR→PER)</td><td class="grade g-part">◐ 시도·반납</td><td>로보틱스 기대로 PER·성장주 재평가가 한때 진행(고점 PBR 1.6배)됐으나, 랠리 소멸로 완성차 PBR 밴드로 회귀 중 <span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">헤럴드경제 · '물구나무 선 아틀라스'에 현대차 61만원 돌파 (2026.05.08)</span><span class="evd-sum">보스턴다이내믹스 아틀라스의 체조 동작 영상 공개 후 현대차 주가가 하루 <strong>+6.6%</strong> 급등해 61만원 돌파. 연초 종가 29.85만원 대비 한때 <strong>+138%</strong> — 증권가가 '단순 가치주 → 로보틱스 성장주'로 재평가한 국면.</span><a href="https://biz.heraldcorp.com/article/10733555" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td class="grade g-part">◐ 부분</td><td>완성차 TAM은 정체(6월 판매 −5.9%). 확장축은 로보틱스·SDV·전동화이나 아직 실적 기여 전 옵션 <span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">알파비즈 · 현대차, 하이브리드 강세로 믹스 개선</span><span class="evd-sum">1Q 하이브리드 비중 10.8%, 제네시스·SUV 비중 59.8%. 하반기 GV80·G80 하이브리드·펠리세이드 HEV 투입으로 고수익 믹스 개선 여력.</span><a href="https://alphabiz.co.kr/news/view/1065579625316350" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">집계: 긍정 1(4번) · 부분 4(1·5·6 및 판가 프리미엄) · 부정 1(2번) · 해당없음 1(3번). 완성차는 제조업 세트 v1의 "수주잔고" 지표가 성립하지 않아 — 해당없음으로 명시했다. 종합: 미국향·가격은 견조하나, 성장 지속성의 관건은 <strong>HMGMA 가동률 정상화</strong>와 <strong>로보틱스의 실적화</strong>다 — 둘 다 아직 미확인.</p>
+  <div class="callout"><div class="co-num">38.2%</div><div class="co-lbl"><strong>메타플랜트(HMGMA) 1Q26 가동률</strong> — 관세를 피하려 지은 미국 현지 전진기지가, 정작 미 EV 보조금 축소로 절반도 못 돌린다. 관세 대응 전략과 EV 캐즘이 같은 공장에서 충돌하는 지점이다.</div></div>
+</div>
+
+<div class="card" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 물량×판가와 컨센서스 델타</h2>
+  <p class="deck">우리 추정은 컨센과 큰 차이가 없다 — 논지는 "추정 이익 수준"이 아니라 "그 이익에 지금 몇 배를 내느냐"에 있다.</p>
+  <p class="desc">현대차 이익 = 물량(글로벌 판매) × 판가(ASP) − 관세·비용. 1Q26 실적과 컨센을 물량·판가·관세 축으로 분해하면, 2026E는 관세 완화(+)와 물량 둔화·파업(−)이 상쇄돼 <strong>영업이익 9~10조 초반</strong> 경로다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목 (FY26E)</th><th class="num">우리 추정</th><th class="num">컨센서스</th><th class="num">델타</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>매출액</td><td class="num">약 192조</td><td class="num">약 190조</td><td class="num"><span class="up">+1%</span></td><td>1Q 45.9조×4 + 하반기 믹스 개선 <span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 연결 잠정실적 공정공시 (2026.04.23, 1Q26)</span><span class="evd-sum">1Q26 연결 매출 <strong>45조9,389억</strong>(YoY +3.4%), 영업이익 <strong>2조5,147억</strong>(YoY −30.8%, QoQ +48.3%). 매출은 늘었으나 관세·환율로 이익률이 5.5%로 축소.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800339" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>영업이익</td><td class="num"><strong>9.7조</strong></td><td class="num">9~10조 초반</td><td class="num">≈ 0%</td><td>1H26 관세부담 + 2H 완화, 2Q26E 3.10조 <span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 · 현대차·기아 2Q 매출 80조 영업익 주춤 (2026.07.06)</span><span class="evd-sum">2Q26 현대차 연결 매출 컨센 48조7,137억(YoY +0.9%)·영업이익 <strong>3조1,033억(YoY −13.8%)</strong>. 관세부담이 1Q 대비 완화되나 파업·판매둔화가 상쇄. 7/23 실적 발표 예정.</span><a href="https://www.fnnews.com/news/202607060701315916" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>지배순이익</td><td class="num">약 7.9조</td><td class="num">약 7.9조</td><td class="num">≈ 0%</td><td>전환율 0.8545 역산·FnGuide EPS 38,717 <span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 현대차 (2026.07 조회, 추정 25개사)</span><span class="evd-sum">2026E EPS <strong>38,717원</strong>·PER 10.98배·BPS 475,123원·PBR 0.89배. 목표주가 컨센 789,200원(25개사), 투자의견 3.96. 2026E 배당수익률 2.52%. 지배순익 환산 약 7.9조.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=005380" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>EPS</td><td class="num">약 38,700원</td><td class="num">38,717원</td><td class="num">≈ 0%</td><td>FnGuide 25개사 컨센 <span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 현대차 (2026.07 조회, 추정 25개사)</span><span class="evd-sum">2026E EPS <strong>38,717원</strong>·PER 10.98배·BPS 475,123원·PBR 0.89배. 목표주가 컨센 789,200원(25개사), 투자의견 3.96. 2026E 배당수익률 2.52%. 지배순익 환산 약 7.9조.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=005380" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">다년 추정 (추정치는 추정임):</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">매출</th><th class="num">영업이익</th><th class="num">OPM</th><th class="num">지배순익</th><th class="num">EPS</th></tr></thead>
+    <tbody>
+      <tr><td>FY24A</td><td class="num">175.2조</td><td class="num">14.24조</td><td class="num">8.1%</td><td class="num">약 12.4조</td><td class="num">—</td></tr>
+      <tr><td>FY25A</td><td class="num">186.3조</td><td class="num">11.47조</td><td class="num">6.2%</td><td class="num">9.45조</td><td class="num">—</td></tr>
+      <tr><td>FY26E</td><td class="num">약 192조</td><td class="num">약 9.7조</td><td class="num">약 5.1%</td><td class="num">약 7.9조</td><td class="num">38,717원</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">−30.8%</div><div class="co-lbl"><strong>1Q26 영업이익 YoY (2조5,147억 vs 1Q25 3조6,336억)</strong> — 매출은 +3.4% 늘었는데 이익은 3분의 1이 날아갔다. 관세·환율·부품사 화재의 삼중 압박이 판가 상승분을 삼킨 분기다.</div></div>
+  <p class="fine">체크포인트: ① 2Q26 영업이익이 컨센 3.10조를 상회하면 관세 완화가 실적으로 확인 — 상향 신호. ② 하회하면 파업·판매둔화가 관세 개선을 압도 — 하향 신호. FY24A 지배순익은 FnGuide·실적 보도 기반 근사. FY25 영업이익 11.47조는 DART 사업보고서 확정치, FY24 대비 −19.5%. 분기 DART 수치는 누적 기준(1Q는 단일 분기와 동일).</p>
+</div>
+
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>시나리오 — Bull / Base / Bear와 민감도</h2>
+  <p class="deck">이익 추정의 폭보다 <strong>배수(멀티플)의 폭</strong>이 결과를 지배한다 — 로보틱스 프리미엄이 붙느냐 빠지느냐다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">NTM 영업이익</th><th class="num">배수</th><th class="num">환산가</th><th class="num">현재가 대비</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">12.0조</td><td class="num">12×</td><td class="num">600,944</td><td class="num"><span class="up">+42.6%</span></td><td>관세 15% 온기 반영·파업 조기타결·HEV 믹스 + 로보틱스 리레이팅 재점화</td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">9.7조</td><td class="num">9×</td><td class="num">364,322</td><td class="num"><span class="down">−13.6%</span></td><td>컨센 경로(2Q26E 3.10조 포함)·완성차 밸류에 밸류업/로보틱스 소폭 프리미엄</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">8.5조</td><td class="num">6×</td><td class="num">212,834</td><td class="num"><span class="down">−49.5%</span></td><td>파업 장기화·HMGMA 38% 고착·로보틱스 소멸 → 완성차 본연 밸류(3년 평균 5.2배 근처) 회귀</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>민감도 — NTM 영업이익 (관세 절감·파업 손실 변수, Base 9× 고정)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">−15% (파업 장기화)</th><th class="num">기준 (컨센)</th><th class="num">+15% (관세 절감 온기)</th></tr></thead>
+    <tbody>
+      <tr><td>환산가</td><td class="num">309,674</td><td class="num">364,322</td><td class="num">418,971</td></tr>
+      <tr><td>현재가 대비</td><td class="num"><span class="down">−26.5%</span></td><td class="num"><span class="down">−13.6%</span></td><td class="num"><span class="down">−0.6%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:14px;"><strong>읽는 법.</strong> Base 배수 9배는 최근 1년 평균 Fwd 8.4배·글로벌 완성차 TTM 실측(기아 8.2·GM 8.0배)에 밸류업·로보틱스 옵션의 소폭 프리미엄을 얹은 값이다. <strong>이익이 컨센대로 나와도(민감도 +15%까지) 환산가가 현재가를 넘지 못한다</strong> — 상방은 이익이 아니라 "로보틱스 프리미엄이 다시 붙느냐(Bull 12배)"에서만 나온다. 그 재점화 없이는 하방이 더 넓다.</p>
+  <p class="fine">시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다. 배수는 임의값이 아니라 관측된 Fwd P/E 밴드와 피어 실측에서 잡았다.</p>
+</div>
+
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>글로벌 피어 비교 (TTM 실측)</h2>
+  <p class="deck">현대차의 절대 P/E는 글로벌 완성차와 엇비슷하다 — 이 종목의 밸류 논점은 피어 대비가 아니라 <strong>자기 역사 대비</strong>다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">TTM 매출</th><th class="num">TTM 영업이익</th><th class="num">OPM</th><th class="num">P/E</th></tr></thead>
+    <tbody>
+      <tr><td><strong>현대차</strong> <span class="evd"><button type="button" aria-expanded="false">근거17</button><span class="evd-pop"><span class="evd-src">peer_table.py · DART/EDGAR TTM 실측 (2026.07 실행)</span><span class="evd-sum">TTM 실측 — 현대차 시총 86.3조·매출 187.8조·영업이익 10.3조·OPM 5.5%·P/E 10.0. 기아 P/E 8.2·OPM 7.2%. GM P/E 8.0·OPM 5.7%. 포드 P/E 17.9·OPM 2.6%. 토요타는 companyfacts 분기손익 복원 실패로 미포함.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">86.3조</td><td class="num">187.8조</td><td class="num">10.3조</td><td class="num">5.5%</td><td class="num"><strong>10.0</strong></td></tr>
+      <tr><td>기아 (000270)</td><td class="num">57.6조</td><td class="num">115.6조</td><td class="num">8.3조</td><td class="num"><span class="up">7.2%</span></td><td class="num">8.2</td></tr>
+      <tr><td>제너럴 모터스 (GM)</td><td class="num">68.8B$</td><td class="num">166.3B$</td><td class="num">9.5B$</td><td class="num">5.7%</td><td class="num">8.0</td></tr>
+      <tr><td>포드 (F)</td><td class="num">56.7B$</td><td class="num">184.6B$</td><td class="num">4.7B$</td><td class="num"><span class="down">2.6%</span></td><td class="num">17.9</td></tr>
+      <tr><td>토요타 (TM)</td><td class="num" colspan="4"><span class="g-unk">? 확인불가 — companyfacts 분기손익 복원 실패</span></td><td class="num"><span class="g-unk">?</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">*왜곡 주석: TTM P/E는 후행 12개월 이익 기준이라 현대차 10.0배는 관세 반영 저이익 구간을 담는다(본문의 Fwd P/E 10.4배와 근접). 기아가 OPM·P/E 모두 현대차보다 우위인 것은 미국 비중·SUV 믹스 차이. 토요타는 자동 복원 실패로 판정 보류(? 확인불가) — 공개 IR 기준 토요타 OPM은 두 자릿수로 현대차·GM보다 높다. 데이터 기준일 2026-07-16.</p>
+</div>
+
+<div class="card" id="s10">
+  <h2><span class="idx">10</span>수급 — 지배구조 안정, 시장 수급은 확인불가</h2>
+  <p class="deck">최대주주(현대모비스)는 순환출자로 고정 — 이 종목의 수급 변수는 대주주가 아니라 외국인·기관의 시장 매매다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">값</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td>KRX 투자자별 순매수 <span class="evd"><button type="button" aria-expanded="false">근거17</button><span class="evd-pop"><span class="evd-src">토스 Open API(KRX)·DART 5%룰 · fund_flows (2026.07)</span><span class="evd-sum">KRX 투자자별 순매수는 HTTP 400으로 조회 실패(? 확인불가). DART 대량보유: 현대모비스 30.67%(순환출자 구조상 안정적, 최근 변동 0%p — 자사주 인센티브·특별관계자 조정 성격). 신규 기관 매집·이탈 시그널은 대량보유 공시에 없음.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num"><span class="g-unk">? 확인불가</span></td><td>API 응답 오류(HTTP 400) — 최신 순매수 방향 미확인</td></tr>
+      <tr><td>현대모비스 지분율</td><td class="num">30.67%</td><td>순환출자(모비스→현대차→기아→모비스) 최대주주, 변동 0%p</td></tr>
+      <tr><td>대량보유 신규 매집/이탈</td><td class="num">없음</td><td>최근 5%룰 공시는 특별관계자 조정·자사주 인센티브 — 스마트머니 신호 아님</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">현대모비스의 30.67% 지분율<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">DART · 주식등의대량보유상황보고서 현대모비스 (2026.04.07)</span><span class="evd-sum">현대모비스의 현대차 지분율 30.67%. 변동사유는 자사주 인센티브 지급·특별관계자 조정 등으로 지분율 증감 0%p 수준. 그룹 순환출자 구조의 고정 지분이라 시장 유통물량 수급과 무관.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407002579" target="_blank" rel="noopener">원문 ↗</a></span></span>은 그룹 순환출자의 고정 지분이라 유통 수급과 무관하다. 실제 주가를 움직이는 외국인·기관 순매수 방향은 KRX API 오류로 이번 회차에 확인하지 못했다 — 급락의 성격(패닉 투매 vs 분할 이탈)을 수급으로 판정하려면 이 데이터가 필요하다.</p>
+  <p class="fine">순매수 데이터 확보 시 판정 가능: 외국인 연속 순매도면 하방 지속, 기관 저점 매집이면 바닥 신호. 현재는 거래대금 배수 0.5배(투매 진정)만 관측된다.</p>
+</div>
+
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 무엇이 이 콜을 틀리게 하는가</h2>
+  <p class="deck">비중축소 콜의 최대 약점은 "이 가격이 이미 나쁜 뉴스를 다 담았을 수 있다"는 것이다.</p>
+  <div class="note"><strong>이 조건이 나오면 콜을 올린다 (what would change our mind):</strong><br>
+  ① <strong>7/23 2Q26 영업이익이 컨센 3.10조를 상회</strong> + OPM 반등 → 관세 완화가 실적으로 확인(민감도 +15% 경로, 현재가 −0.6%까지 접근).<br>
+  ② <strong>파업 7월 내 타결</strong> + 하반기 HMGMA에 HEV 투입으로 가동률 50%대 회복 → Bear 트리거 해제.<br>
+  ③ 로보틱스(RMAC 로봇공장·아틀라스 양산) <strong>매출 가시화 공시</strong> → Bull 12배 재평가 근거(+42.6%).<br>
+  세 조건은 모두 날짜·수치로 관측 가능하다.</p>
+  <p><strong>반론 1 — "이미 −44% 빠졌다, 나쁜 건 다 반영됐다."</strong> 타당한 지적이다. 다만 P/E 밴드로 보면 현재가는 여전히 자기 3년 백분위 87%다 — 급락은 로보틱스 <em>버블</em>을 되돌렸을 뿐, 완성차 본연 밸류(3년 평균 5.2배) 대비로는 아직 프리미엄이 남아 있다. 이 프리미엄이 빠지는 게 Bear −49.5%다.</p>
+  <p><strong>반론 2 — "관세 15%가 2Q부터 이익을 밀어올린다."</strong> 방향은 맞다. 그러나 컨센(2Q26E 영업이익 3.10조, YoY <span class="down">−13.8%</span>)은 이미 관세 완화를 반영하고도 <em>감익</em>을 전망한다<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 · 현대차·기아 2Q 매출 80조 영업익 주춤 (2026.07.06)</span><span class="evd-sum">2Q26 현대차 연결 매출 컨센 48조7,137억(YoY +0.9%)·영업이익 <strong>3조1,033억(YoY −13.8%)</strong>. 관세부담이 1Q 대비 완화되나 파업·판매둔화가 상쇄. 7/23 실적 발표 예정.</span><a href="https://www.fnnews.com/news/202607060701315916" target="_blank" rel="noopener">원문 ↗</a></span></span> — 파업·판매둔화가 관세 개선을 상쇄하기 때문이다. 관세 호재는 "추가 상방"이 아니라 "더 나빠지지 않게 하는" 성격에 가깝다.</p>
+  <p><strong>반론 3 — "밸류업·저PBR이 하방을 막는다."</strong> PBR 0.89배·배당수익률 2.52%는 실제 하방 지지다. 하지만 ROE가 FY25 9.7%→FY26E 8.1%로 하락 중이라(섹션 13), 저PBR을 "싸다"로 읽기 어렵다 — 이익이 줄면 정당 PBR도 함께 내려간다.</p>
+  <p class="fine">각 리스크의 시나리오 연결: 반론 2 불발(파업 장기화) → 민감도 −15%(−26.5%)~Bear(−49.5%). 반론 3 불발(ROE 추가 하락) → Bear 배수 6배 회귀. 반대로 반론 1이 맞으면(과매도 반등) 민감도 +15%(−0.6%)까지 복원.</p>
+</div>
+
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>다음 확인 이벤트</h2>
+  <p class="deck">향후 6주가 콜의 방향을 가른다 — 파업 결말과 2Q 실적이 연달아 온다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>날짜</th><th>이벤트</th><th>무엇을 볼까</th></tr></thead>
+    <tbody>
+      <tr><td><strong>7/20~22</strong></td><td>노조 4시간 부분파업 (확정) <span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 · 현대차 노조 부분파업 (2026.07.18)</span><span class="evd-sum">노조가 7/13~15 매일 2시간 부분파업(약 5,000대 차질)에 이어 <strong>7/20~22 각 조 4시간 부분파업</strong> 확정. 기본급 14만9,600원 인상·순이익 30% 성과급 요구, 사측 3차안 거부.</span><a href="https://www.fnnews.com/news/202607180801396272" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>추가 파업·전면파업 전환 여부 → 생산차질 규모</td></tr>
+      <tr><td><strong>7/23 14:10</strong></td><td>2Q26 실적 발표·컨퍼런스콜 <span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">DART · 기업설명회(IR) 개최 안내공시 (2026.07.16)</span><span class="evd-sum">2026-07-23 14:10 기업설명회(IR) 개최 — 2Q26 실적 발표·컨퍼런스콜. 관세 완화 반영도·파업 영향·하반기 가이던스가 확인되는 첫 지점.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260716800634" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>영업이익 컨센(3.10조) 상회 여부·OPM·관세 반영도·하반기 가이던스</td></tr>
+      <tr><td>8월 (추정)</td><td>임단협 타결 여부</td><td>파업 종료 시 Bear 트리거 해제 / 장기화 시 하반기 물량 훼손</td></tr>
+      <tr><td>하반기</td><td>GV80·G80 하이브리드 출시 <span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">알파비즈 · 현대차, 하이브리드 강세로 믹스 개선</span><span class="evd-sum">1Q 하이브리드 비중 10.8%, 제네시스·SUV 비중 59.8%. 하반기 GV80·G80 하이브리드·펠리세이드 HEV 투입으로 고수익 믹스 개선 여력.</span><a href="https://alphabiz.co.kr/news/view/1065579625316350" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td>제네시스 HEV 믹스 개선·HMGMA HEV 투입에 따른 가동률 회복</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">가장 가까운 판정 지점은 7/23 2Q26 실적이다. 파업(7/20~22)이 그 직전에 걸쳐 있어, 실적과 파업 결말이 같은 주에 동시 확인된다. 8월·하반기 항목은 추정 일정.</p>
+</div>
+
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 지금 몇 배를 내고 사는 걸까</h2>
+  <p class="deck">절대 P/E는 싸지만, 현대차 <strong>자기 밴드</strong>에선 상단이다 — 저P/E 사이클주의 착시를 P/B–ROE로 교차확인했다.</p>
+  <p>현재 Fwd P/E는 <strong>10.4배</strong>(3년 평균 5.2배, 백분위 87%)다. 글로벌 완성차(기아 8.2·GM 8.0배)와 비교하면 평범하지만, <strong>현대차 자신의 3년 밴드(2.7~17.7배)에서는 상단부</strong>에 있다. 이유는 명확하다 — 2023~2025년 현대차는 3~6배의 "코리아 디스카운트" 사이클주였고, 로보틱스 기대가 밴드를 통째로 위로 밀어올렸다. 급락은 그 프리미엄의 일부만 되돌렸다.</p>
+  <div class="callout"><div class="co-num">10.4배 · 87%ile</div><div class="co-lbl"><strong>Forward P/E와 3년 백분위</strong> — 절대 수준(10.4배)은 글로벌 피어와 엇비슷하지만, 자기 3년 밴드에선 백분위 87%(과열). "저P/E니까 싸다"는 시장 대비 얘기일 뿐, 현대차 역사 대비로는 이익이 꺾이는데 밸류는 위에 있다.</div></div>
+  <h3>2차 밸류에이션 — P/B–ROE 교차확인 (사이클 착시 보완)</h3>
+  <p>저P/E 사이클주는 이익 정점에서 P/E가 낮아 보이는 착시가 있어, 자본 대비 가치(P/B)와 자본수익률(ROE)로 교차확인한다. 현재 <strong>PBR 0.89배</strong>(2026E BPS 475,123원)<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 현대차 (2026.07 조회, 추정 25개사)</span><span class="evd-sum">2026E EPS <strong>38,717원</strong>·PER 10.98배·BPS 475,123원·PBR 0.89배. 목표주가 컨센 789,200원(25개사), 투자의견 3.96. 2026E 배당수익률 2.52%. 지배순익 환산 약 7.9조.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=005380" target="_blank" rel="noopener">원문 ↗</a></span></span>는 로보틱스 고점의 약 1.6배와 2025년 저점의 약 0.4배 사이 <strong>중상단</strong>이다. 문제는 ROE다 — <strong>FY25 9.7%에서 FY26E 8.1%로 하락</strong> 중이다(지배순익 9.45조→약 7.9조).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">PBR</th><th class="num">ROE</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td>로보틱스 고점 ('26.6.1, 762,000)</td><td class="num">약 1.60배</td><td class="num">—</td><td>성장주 재평가 정점</td></tr>
+      <tr><td><strong>현재 ('26.7.16, 421,500)</strong></td><td class="num"><strong>0.89배</strong></td><td class="num">8.1%(E)</td><td>밴드 중상단 · ROE 하락 국면</td></tr>
+      <tr><td>2025년 저점 (186,200)</td><td class="num">약 0.42배</td><td class="num">9.7%('25)</td><td>코리아 디스카운트 바닥</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>P/B–ROE 교차확인 결과는 <strong>P/E 백분위 87%와 정합적</strong>이다 — ROE가 내려가는데 PBR은 밴드 중상단이라, 자본 대비로도 "지금은 싸지 않다". 저PBR·배당(밸류업)은 하방을 받치지만, 리레이팅의 근거(ROE 반등)는 아직 없다. <strong>리레이팅 분해</strong>: 현 밸류는 완성차 본연(P/E 5~8배)에 로보틱스·SDV 옵션 프리미엄(약 2~5배)이 얹힌 구조다. 그 옵션이 실적으로 확인되면 Bull(12배)로, 소멸하면 Bear(6배)로 간다.</p>
+  <p class="fine">PBR·ROE는 추정 포함 근사치다. ROE = 지배순익 ÷ 지배지분(BPS×발행주식수 약 97.3조). FY25 지배순익 9.45조는 DART 분기 합산(1Q25~4Q25), FY26E 7.93조는 FnGuide EPS×주식수. 고점·저점 PBR은 각 시점 종가 ÷ 2026E BPS로 근사.</p>
+</div>
+
+<details class="pe-embed" data-peb="005380" open>
+  <summary>
+    <span class="peb-t">📊 현대차 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 10.4배 · 기간 평균 5.2배 · 백분위 87%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM 이익은 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균(5.2배).</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows"><tr><td>'23.5.3</td><td class="num">14.8조원</td><td class="num">61,764원</td><td>1Q23 호실적 후 FY23 컨센 상향 국면 — FY23 실적은 15조1,269억으로 확정(뉴스핌 2024-01-25 '첫 영업익 15조'). 당시 NTM 보도 미확보 — 사후 실적 기반 근사</td></tr><tr><td>'24.1.25</td><td class="num">14.9조원</td><td class="num">62,181원</td><td>FY23 15조1,269억 확정 발표(뉴스핌) — FY24 컨센 15조 내외 유지 국면. FY24 실적 14조2,396억(-5.9% YoY) 감안한 근사</td></tr><tr><td>'24.8.28</td><td class="num">14.3조원</td><td class="num">59,677원</td><td>기업가치 제고 계획(밸류업) 발표 — TSR 35%·최소배당 10,000원. 이익 모멘텀은 피크아웃 국면(FY24 14조2,396억) — NTM 컨센 완만 하향 근사</td></tr><tr><td>'25.4.3</td><td class="num">11.8조원</td><td class="num">49,244원</td><td>미국 수입차 관세 25% 발효 — 현대차·기아 연간 부담 수조원 추정 보도, FY25 컨센 일제 하향(FY25 실적 11조4,679억으로 착지, DART 사업보고서). 당시 보도 미확보 구간은 사후 실적 기반 근사</td></tr><tr><td>'25.10.20</td><td class="num">12.6조원</td><td class="num">52,583원</td><td>한미 관세 협상 타결 — 자동차 관세 25%→15%, '15% 인하 시 2026년 영업이익 현대차 +2.4조' 보도(머니투데이 2025-10-20). FY26 회복 기대 반영 근사</td></tr><tr><td>'26.4.23</td><td class="num">10.8조원</td><td class="num">45,071원</td><td>1Q26 잠정실적 쇼크 — 영업이익 2조5,147억(-30.8% YoY, DART 공정공시), 분기 관세 부담 8,600억 보도. FY26 컨센 하향 개시</td></tr><tr><td>'26.7.16</td><td class="num">9.7조원</td><td class="num">40,480원</td><td>FnGuide 2026E EPS 38,717원(추정 25개사) → 지배순익 약 7.9조 → 실측 전환율 0.8545 역산 NTM 영업이익 약 9.3조 + 2Q26E 컨센 3조1,033억(-13.8% YoY) 경로 감안 9.7조 근사</td></tr></tbody>
+      </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 영업이익 앵커 × 지배순이익 전환율 0.8545(DART 실측 — 2Q24~1Q26 흑자 8개 분기 합산 지배순익÷영업이익) ÷ 발행주식수 204,757,766주. 앵커 사이는 선형 보간. 최근 1년 기준으로는 평균 8.4배·백분위 60%. 이 모델은 추정이며 실제 컨센서스 히스토리가 아니다.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>DART · 현대자동차 분기보고서 2026.03 (2026.05.15) — 생산실적·가동률·ASP·내수/수출·부문별 손익 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515002418" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 기업가치 제고 계획(밸류업) 이행현황 (2026.05.29) — TSR 35%·최소배당 1만원 (근거6) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260529802007" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 연결 잠정실적 공정공시 1Q26 (2026.04.23) — 매출 45.94조·영업이익 2.51조 (근거3) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260423800339" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 6월 판매실적 공정공시 (2026.07.01) — 33.8만대 −5.9% (근거4) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701800788" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 생산중단 공시 (2026.07.13) — 파업 생산중단·매출대비 42.29% (근거5) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260713800350" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 주식등의대량보유상황보고서 현대모비스 (2026.04.07) — 지분 30.67% (근거7) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407002579" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 기업설명회(IR) 개최 안내공시 (2026.07.16) — 7/23 2Q26 실적 (근거8) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260716800634" target="_blank" rel="noopener">↗</a></li>
+    <li>정책브리핑 · 한미 관세협상 타결(자동차 15%) (근거9) <a href="https://www.korea.kr/news/policyNewsView.do?newsId=148953418" target="_blank" rel="noopener">↗</a></li>
+    <li>머니투데이 · 관세 15%로 내리면 현대차·기아 4조 이득 (2025.10.20) (근거10) <a href="https://v.daum.net/v/20251020153159199" target="_blank" rel="noopener">↗</a></li>
+    <li>헤럴드경제 · 아틀라스 영상에 현대차 61만원 돌파 (2026.05.08) (근거11) <a href="https://biz.heraldcorp.com/article/10733555" target="_blank" rel="noopener">↗</a></li>
+    <li>서울경제 · 美 EV 캐즘에 메타플랜트 가동률 반토막 (근거12) <a href="https://www.sedaily.com/article/20047378" target="_blank" rel="noopener">↗</a></li>
+    <li>파이낸셜뉴스 · 현대차 노조 부분파업 (2026.07.18) (근거13) <a href="https://www.fnnews.com/news/202607180801396272" target="_blank" rel="noopener">↗</a></li>
+    <li>파이낸셜뉴스 · 현대차·기아 2Q 매출 80조 영업익 주춤 (2026.07.06) (근거14) <a href="https://www.fnnews.com/news/202607060701315916" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 현대차 (2026.07 조회, 추정 25개사) (근거15) <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=005380" target="_blank" rel="noopener">↗</a></li>
+    <li>관세청 · 품목별 수출입실적 API (HS 8703, 2026-06) — 실측 계산값 (근거16)</li>
+    <li>토스 Open API·DART·SEC EDGAR — screen.py / peer_table.py / conversion_rate.py / build_series.py 계산값 (2026.07 실행 · KR 가격 7/16 종가) (근거17·18)</li>
+    <li>알파비즈 · 현대차 하이브리드 강세로 믹스 개선 (근거19) <a href="https://alphabiz.co.kr/news/view/1065579625316350" target="_blank" rel="noopener">↗</a></li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM 이익은 리포트·뉴스·컨센 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님 — 일부 앵커는 사후 실적 기반 근사이며 각 앵커 근거에 명시). 전환율 0.8545는 DART 실측(2Q24~1Q26 흑자 8개 분기). 시총·밴드 환산가·PBR·ROE는 근사치. 선호도는 정해진 공식(밸류 위치+시나리오)의 산출이며 목표주가가 아니다.</p>
+  <p>생성: 2026-07-19 · 가격·수급 기준일: 2026-07-16 종가 (7/17 제헌절 휴장·7/18~19 주말) · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-19 21:19 KST</div></footer>
+
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"005380": {"rows": [{"d": "2023-05-03", "c": 201000.0, "eps": 61764.0, "pe": 3.3}, {"d": "2023-05-04", "c": 199200.0, "eps": 61765.0, "pe": 3.2}, {"d": "2023-05-08", "c": 202500.0, "eps": 61772.0, "pe": 3.3}, {"d": "2023-05-09", "c": 205000.0, "eps": 61773.0, "pe": 3.3}, {"d": "2023-05-10", "c": 210000.0, "eps": 61775.0, "pe": 3.4}, {"d": "2023-05-11", "c": 208000.0, "eps": 61776.0, "pe": 3.4}, {"d": "2023-05-12", "c": 208500.0, "eps": 61778.0, "pe": 3.4}, {"d": "2023-05-15", "c": 208000.0, "eps": 61782.0, "pe": 3.4}, {"d": "2023-05-16", "c": 202500.0, "eps": 61784.0, "pe": 3.3}, {"d": "2023-05-17", "c": 204500.0, "eps": 61786.0, "pe": 3.3}, {"d": "2023-05-18", "c": 206500.0, "eps": 61787.0, "pe": 3.3}, {"d": "2023-05-19", "c": 205500.0, "eps": 61789.0, "pe": 3.3}, {"d": "2023-05-22", "c": 207500.0, "eps": 61793.0, "pe": 3.4}, {"d": "2023-05-23", "c": 207500.0, "eps": 61795.0, "pe": 3.4}, {"d": "2023-05-24", "c": 207500.0, "eps": 61797.0, "pe": 3.4}, {"d": "2023-05-25", "c": 203500.0, "eps": 61798.0, "pe": 3.3}, {"d": "2023-05-26", "c": 205500.0, "eps": 61800.0, "pe": 3.3}, {"d": "2023-05-30", "c": 200500.0, "eps": 61806.0, "pe": 3.2}, {"d": "2023-05-31", "c": 200000.0, "eps": 61807.0, "pe": 3.2}, {"d": "2023-06-01", "c": 197500.0, "eps": 61809.0, "pe": 3.2}, {"d": "2023-06-02", "c": 199500.0, "eps": 61811.0, "pe": 3.2}, {"d": "2023-06-05", "c": 201000.0, "eps": 61815.0, "pe": 3.3}, {"d": "2023-06-07", "c": 196400.0, "eps": 61818.0, "pe": 3.2}, {"d": "2023-06-08", "c": 196700.0, "eps": 61820.0, "pe": 3.2}, {"d": "2023-06-09", "c": 197100.0, "eps": 61822.0, "pe": 3.2}, {"d": "2023-06-12", "c": 196200.0, "eps": 61826.0, "pe": 3.2}, {"d": "2023-06-13", "c": 198000.0, "eps": 61828.0, "pe": 3.2}, {"d": "2023-06-14", "c": 201000.0, "eps": 61829.0, "pe": 3.3}, {"d": "2023-06-15", "c": 199700.0, "eps": 61831.0, "pe": 3.2}, {"d": "2023-06-16", "c": 199400.0, "eps": 61832.0, "pe": 3.2}, {"d": "2023-06-19", "c": 199300.0, "eps": 61837.0, "pe": 3.2}, {"d": "2023-06-20", "c": 197900.0, "eps": 61839.0, "pe": 3.2}, {"d": "2023-06-21", "c": 204000.0, "eps": 61840.0, "pe": 3.3}, {"d": "2023-06-22", "c": 202000.0, "eps": 61842.0, "pe": 3.3}, {"d": "2023-06-23", "c": 199900.0, "eps": 61843.0, "pe": 3.2}, {"d": "2023-06-26", "c": 200500.0, "eps": 61848.0, "pe": 3.2}, {"d": "2023-06-27", "c": 206000.0, "eps": 61850.0, "pe": 3.3}, {"d": "2023-06-28", "c": 206000.0, "eps": 61851.0, "pe": 3.3}, {"d": "2023-06-29", "c": 204500.0, "eps": 61853.0, "pe": 3.3}, {"d": "2023-06-30", "c": 206500.0, "eps": 61854.0, "pe": 3.3}, {"d": "2023-07-03", "c": 208500.0, "eps": 61859.0, "pe": 3.4}, {"d": "2023-07-04", "c": 208000.0, "eps": 61861.0, "pe": 3.4}, {"d": "2023-07-05", "c": 205500.0, "eps": 61862.0, "pe": 3.3}, {"d": "2023-07-06", "c": 206500.0, "eps": 61864.0, "pe": 3.3}, {"d": "2023-07-07", "c": 204000.0, "eps": 61865.0, "pe": 3.3}, {"d": "2023-07-10", "c": 205500.0, "eps": 61870.0, "pe": 3.3}, {"d": "2023-07-11", "c": 207000.0, "eps": 61872.0, "pe": 3.3}, {"d": "2023-07-12", "c": 203500.0, "eps": 61873.0, "pe": 3.3}, {"d": "2023-07-13", "c": 203500.0, "eps": 61875.0, "pe": 3.3}, {"d": "2023-07-14", "c": 208500.0, "eps": 61876.0, "pe": 3.4}, {"d": "2023-07-17", "c": 203500.0, "eps": 61881.0, "pe": 3.3}, {"d": "2023-07-18", "c": 201500.0, "eps": 61883.0, "pe": 3.3}, {"d": "2023-07-19", "c": 202000.0, "eps": 61884.0, "pe": 3.3}, {"d": "2023-07-20", "c": 200500.0, "eps": 61886.0, "pe": 3.2}, {"d": "2023-07-21", "c": 200000.0, "eps": 61887.0, "pe": 3.2}, {"d": "2023-07-24", "c": 199200.0, "eps": 61892.0, "pe": 3.2}, {"d": "2023-07-25", "c": 200500.0, "eps": 61893.0, "pe": 3.2}, {"d": "2023-07-26", "c": 198700.0, "eps": 61895.0, "pe": 3.2}, {"d": "2023-07-27", "c": 197800.0, "eps": 61897.0, "pe": 3.2}, {"d": "2023-07-28", "c": 196800.0, "eps": 61898.0, "pe": 3.2}, {"d": "2023-07-31", "c": 196000.0, "eps": 61903.0, "pe": 3.2}, {"d": "2023-08-01", "c": 199400.0, "eps": 61904.0, "pe": 3.2}, {"d": "2023-08-02", "c": 192500.0, "eps": 61906.0, "pe": 3.1}, {"d": "2023-08-03", "c": 191700.0, "eps": 61908.0, "pe": 3.1}, {"d": "2023-08-04", "c": 192200.0, "eps": 61909.0, "pe": 3.1}, {"d": "2023-08-07", "c": 188000.0, "eps": 61914.0, "pe": 3.0}, {"d": "2023-08-08", "c": 188400.0, "eps": 61915.0, "pe": 3.0}, {"d": "2023-08-09", "c": 189400.0, "eps": 61917.0, "pe": 3.1}, {"d": "2023-08-10", "c": 188400.0, "eps": 61918.0, "pe": 3.0}, {"d": "2023-08-11", "c": 190500.0, "eps": 61920.0, "pe": 3.1}, {"d": "2023-08-14", "c": 188800.0, "eps": 61925.0, "pe": 3.0}, {"d": "2023-08-16", "c": 185800.0, "eps": 61928.0, "pe": 3.0}, {"d": "2023-08-17", "c": 184800.0, "eps": 61929.0, "pe": 3.0}, {"d": "2023-08-18", "c": 186100.0, "eps": 61931.0, "pe": 3.0}, {"d": "2023-08-21", "c": 186100.0, "eps": 61936.0, "pe": 3.0}, {"d": "2023-08-22", "c": 187900.0, "eps": 61937.0, "pe": 3.0}, {"d": "2023-08-23", "c": 187500.0, "eps": 61939.0, "pe": 3.0}, {"d": "2023-08-24", "c": 186400.0, "eps": 61940.0, "pe": 3.0}, {"d": "2023-08-25", "c": 186200.0, "eps": 61942.0, "pe": 3.0}, {"d": "2023-08-28", "c": 185400.0, "eps": 61947.0, "pe": 3.0}, {"d": "2023-08-29", "c": 186700.0, "eps": 61948.0, "pe": 3.0}, {"d": "2023-08-30", "c": 187800.0, "eps": 61950.0, "pe": 3.0}, {"d": "2023-08-31", "c": 189100.0, "eps": 61951.0, "pe": 3.1}, {"d": "2023-09-01", "c": 187400.0, "eps": 61953.0, "pe": 3.0}, {"d": "2023-09-04", "c": 187300.0, "eps": 61958.0, "pe": 3.0}, {"d": "2023-09-05", "c": 186600.0, "eps": 61959.0, "pe": 3.0}, {"d": "2023-09-06", "c": 186700.0, "eps": 61961.0, "pe": 3.0}, {"d": "2023-09-07", "c": 187200.0, "eps": 61962.0, "pe": 3.0}, {"d": "2023-09-08", "c": 185700.0, "eps": 61964.0, "pe": 3.0}, {"d": "2023-09-11", "c": 185500.0, "eps": 61968.0, "pe": 3.0}, {"d": "2023-09-12", "c": 186200.0, "eps": 61970.0, "pe": 3.0}, {"d": "2023-09-13", "c": 189800.0, "eps": 61972.0, "pe": 3.1}, {"d": "2023-09-14", "c": 190700.0, "eps": 61973.0, "pe": 3.1}, {"d": "2023-09-15", "c": 192200.0, "eps": 61975.0, "pe": 3.1}, {"d": "2023-09-18", "c": 191000.0, "eps": 61979.0, "pe": 3.1}, {"d": "2023-09-19", "c": 190000.0, "eps": 61981.0, "pe": 3.1}, {"d": "2023-09-20", "c": 194900.0, "eps": 61983.0, "pe": 3.1}, {"d": "2023-09-21", "c": 191900.0, "eps": 61984.0, "pe": 3.1}, {"d": "2023-09-22", "c": 191500.0, "eps": 61986.0, "pe": 3.1}, {"d": "2023-09-25", "c": 192900.0, "eps": 61990.0, "pe": 3.1}, {"d": "2023-09-26", "c": 190700.0, "eps": 61992.0, "pe": 3.1}, {"d": "2023-09-27", "c": 191100.0, "eps": 61993.0, "pe": 3.1}, {"d": "2023-10-04", "c": 190800.0, "eps": 62004.0, "pe": 3.1}, {"d": "2023-10-05", "c": 190500.0, "eps": 62006.0, "pe": 3.1}, {"d": "2023-10-06", "c": 192200.0, "eps": 62008.0, "pe": 3.1}, {"d": "2023-10-10", "c": 188400.0, "eps": 62014.0, "pe": 3.0}, {"d": "2023-10-11", "c": 189400.0, "eps": 62015.0, "pe": 3.1}, {"d": "2023-10-12", "c": 188000.0, "eps": 62017.0, "pe": 3.0}, {"d": "2023-10-13", "c": 187100.0, "eps": 62018.0, "pe": 3.0}, {"d": "2023-10-16", "c": 186800.0, "eps": 62023.0, "pe": 3.0}, {"d": "2023-10-17", "c": 188500.0, "eps": 62025.0, "pe": 3.0}, {"d": "2023-10-18", "c": 191800.0, "eps": 62026.0, "pe": 3.1}, {"d": "2023-10-19", "c": 188900.0, "eps": 62028.0, "pe": 3.0}, {"d": "2023-10-20", "c": 183500.0, "eps": 62029.0, "pe": 3.0}, {"d": "2023-10-23", "c": 185400.0, "eps": 62034.0, "pe": 3.0}, {"d": "2023-10-24", "c": 182800.0, "eps": 62036.0, "pe": 2.9}, {"d": "2023-10-25", "c": 182000.0, "eps": 62037.0, "pe": 2.9}, {"d": "2023-10-26", "c": 179500.0, "eps": 62039.0, "pe": 2.9}, {"d": "2023-10-27", "c": 175600.0, "eps": 62040.0, "pe": 2.8}, {"d": "2023-10-30", "c": 172500.0, "eps": 62045.0, "pe": 2.8}, {"d": "2023-10-31", "c": 169700.0, "eps": 62047.0, "pe": 2.7}, {"d": "2023-11-01", "c": 170300.0, "eps": 62048.0, "pe": 2.7}, {"d": "2023-11-02", "c": 172000.0, "eps": 62050.0, "pe": 2.8}, {"d": "2023-11-03", "c": 173400.0, "eps": 62051.0, "pe": 2.8}, {"d": "2023-11-06", "c": 177900.0, "eps": 62056.0, "pe": 2.9}, {"d": "2023-11-07", "c": 176100.0, "eps": 62058.0, "pe": 2.8}, {"d": "2023-11-08", "c": 174800.0, "eps": 62059.0, "pe": 2.8}, {"d": "2023-11-09", "c": 174700.0, "eps": 62061.0, "pe": 2.8}, {"d": "2023-11-10", "c": 173700.0, "eps": 62062.0, "pe": 2.8}, {"d": "2023-11-13", "c": 173300.0, "eps": 62067.0, "pe": 2.8}, {"d": "2023-11-14", "c": 175200.0, "eps": 62068.0, "pe": 2.8}, {"d": "2023-11-15", "c": 182500.0, "eps": 62070.0, "pe": 2.9}, {"d": "2023-11-16", "c": 184800.0, "eps": 62072.0, "pe": 3.0}, {"d": "2023-11-17", "c": 184400.0, "eps": 62073.0, "pe": 3.0}, {"d": "2023-11-20", "c": 183600.0, "eps": 62078.0, "pe": 3.0}, {"d": "2023-11-21", "c": 184200.0, "eps": 62079.0, "pe": 3.0}, {"d": "2023-11-22", "c": 183000.0, "eps": 62081.0, "pe": 2.9}, {"d": "2023-11-23", "c": 184800.0, "eps": 62083.0, "pe": 3.0}, {"d": "2023-11-24", "c": 184000.0, "eps": 62084.0, "pe": 3.0}, {"d": "2023-11-27", "c": 184900.0, "eps": 62089.0, "pe": 3.0}, {"d": "2023-11-28", "c": 185700.0, "eps": 62090.0, "pe": 3.0}, {"d": "2023-11-29", "c": 184800.0, "eps": 62092.0, "pe": 3.0}, {"d": "2023-11-30", "c": 184300.0, "eps": 62094.0, "pe": 3.0}, {"d": "2023-12-01", "c": 182800.0, "eps": 62095.0, "pe": 2.9}, {"d": "2023-12-04", "c": 181600.0, "eps": 62100.0, "pe": 2.9}, {"d": "2023-12-05", "c": 181400.0, "eps": 62101.0, "pe": 2.9}, {"d": "2023-12-06", "c": 182900.0, "eps": 62103.0, "pe": 2.9}, {"d": "2023-12-07", "c": 182600.0, "eps": 62104.0, "pe": 2.9}, {"d": "2023-12-08", "c": 185100.0, "eps": 62106.0, "pe": 3.0}, {"d": "2023-12-11", "c": 185400.0, "eps": 62111.0, "pe": 3.0}, {"d": "2023-12-12", "c": 185600.0, "eps": 62112.0, "pe": 3.0}, {"d": "2023-12-13", "c": 185000.0, "eps": 62114.0, "pe": 3.0}, {"d": "2023-12-14", "c": 184800.0, "eps": 62115.0, "pe": 3.0}, {"d": "2023-12-15", "c": 192800.0, "eps": 62117.0, "pe": 3.1}, {"d": "2023-12-18", "c": 192000.0, "eps": 62122.0, "pe": 3.1}, {"d": "2023-12-19", "c": 192200.0, "eps": 62123.0, "pe": 3.1}, {"d": "2023-12-20", "c": 199100.0, "eps": 62125.0, "pe": 3.2}, {"d": "2023-12-21", "c": 198700.0, "eps": 62126.0, "pe": 3.2}, {"d": "2023-12-22", "c": 199000.0, "eps": 62128.0, "pe": 3.2}, {"d": "2023-12-26", "c": 198800.0, "eps": 62134.0, "pe": 3.2}, {"d": "2023-12-27", "c": 198500.0, "eps": 62136.0, "pe": 3.2}, {"d": "2023-12-28", "c": 203500.0, "eps": 62137.0, "pe": 3.3}, {"d": "2024-01-02", "c": 200500.0, "eps": 62145.0, "pe": 3.2}, {"d": "2024-01-03", "c": 193800.0, "eps": 62147.0, "pe": 3.1}, {"d": "2024-01-04", "c": 190000.0, "eps": 62148.0, "pe": 3.1}, {"d": "2024-01-05", "c": 187300.0, "eps": 62150.0, "pe": 3.0}, {"d": "2024-01-08", "c": 185700.0, "eps": 62154.0, "pe": 3.0}, {"d": "2024-01-09", "c": 185600.0, "eps": 62156.0, "pe": 3.0}, {"d": "2024-01-10", "c": 186700.0, "eps": 62158.0, "pe": 3.0}, {"d": "2024-01-11", "c": 187000.0, "eps": 62159.0, "pe": 3.0}, {"d": "2024-01-12", "c": 186000.0, "eps": 62161.0, "pe": 3.0}, {"d": "2024-01-15", "c": 187500.0, "eps": 62165.0, "pe": 3.0}, {"d": "2024-01-16", "c": 186200.0, "eps": 62167.0, "pe": 3.0}, {"d": "2024-01-17", "c": 181800.0, "eps": 62169.0, "pe": 2.9}, {"d": "2024-01-18", "c": 180200.0, "eps": 62170.0, "pe": 2.9}, {"d": "2024-01-19", "c": 181700.0, "eps": 62172.0, "pe": 2.9}, {"d": "2024-01-22", "c": 180100.0, "eps": 62176.0, "pe": 2.9}, {"d": "2024-01-23", "c": 184800.0, "eps": 62178.0, "pe": 3.0}, {"d": "2024-01-24", "c": 185000.0, "eps": 62179.0, "pe": 3.0}, {"d": "2024-01-25", "c": 188700.0, "eps": 62181.0, "pe": 3.0}, {"d": "2024-01-26", "c": 187300.0, "eps": 62169.0, "pe": 3.0}, {"d": "2024-01-29", "c": 195600.0, "eps": 62135.0, "pe": 3.1}, {"d": "2024-01-30", "c": 190000.0, "eps": 62123.0, "pe": 3.1}, {"d": "2024-01-31", "c": 194600.0, "eps": 62111.0, "pe": 3.1}, {"d": "2024-02-01", "c": 208000.0, "eps": 62100.0, "pe": 3.3}, {"d": "2024-02-02", "c": 227000.0, "eps": 62088.0, "pe": 3.7}, {"d": "2024-02-05", "c": 238000.0, "eps": 62054.0, "pe": 3.8}, {"d": "2024-02-06", "c": 235500.0, "eps": 62042.0, "pe": 3.8}, {"d": "2024-02-07", "c": 245000.0, "eps": 62030.0, "pe": 3.9}, {"d": "2024-02-08", "c": 250000.0, "eps": 62019.0, "pe": 4.0}, {"d": "2024-02-13", "c": 249000.0, "eps": 61961.0, "pe": 4.0}, {"d": "2024-02-14", "c": 245500.0, "eps": 61949.0, "pe": 4.0}, {"d": "2024-02-15", "c": 240000.0, "eps": 61938.0, "pe": 3.9}, {"d": "2024-02-16", "c": 252500.0, "eps": 61926.0, "pe": 4.1}, {"d": "2024-02-19", "c": 252500.0, "eps": 61891.0, "pe": 4.1}, {"d": "2024-02-20", "c": 242000.0, "eps": 61880.0, "pe": 3.9}, {"d": "2024-02-21", "c": 239500.0, "eps": 61868.0, "pe": 3.9}, {"d": "2024-02-22", "c": 243500.0, "eps": 61856.0, "pe": 3.9}, {"d": "2024-02-23", "c": 244000.0, "eps": 61845.0, "pe": 3.9}, {"d": "2024-02-26", "c": 239000.0, "eps": 61810.0, "pe": 3.9}, {"d": "2024-02-27", "c": 238500.0, "eps": 61798.0, "pe": 3.9}, {"d": "2024-02-28", "c": 248000.0, "eps": 61787.0, "pe": 4.0}, {"d": "2024-02-29", "c": 250500.0, "eps": 61775.0, "pe": 4.1}, {"d": "2024-03-04", "c": 255500.0, "eps": 61729.0, "pe": 4.1}, {"d": "2024-03-05", "c": 249000.0, "eps": 61717.0, "pe": 4.0}, {"d": "2024-03-06", "c": 251000.0, "eps": 61706.0, "pe": 4.1}, {"d": "2024-03-07", "c": 250000.0, "eps": 61694.0, "pe": 4.1}, {"d": "2024-03-08", "c": 253000.0, "eps": 61683.0, "pe": 4.1}, {"d": "2024-03-11", "c": 243500.0, "eps": 61648.0, "pe": 3.9}, {"d": "2024-03-12", "c": 241500.0, "eps": 61636.0, "pe": 3.9}, {"d": "2024-03-13", "c": 248500.0, "eps": 61625.0, "pe": 4.0}, {"d": "2024-03-14", "c": 251500.0, "eps": 61613.0, "pe": 4.1}, {"d": "2024-03-15", "c": 243500.0, "eps": 61601.0, "pe": 4.0}, {"d": "2024-03-18", "c": 242500.0, "eps": 61567.0, "pe": 3.9}, {"d": "2024-03-19", "c": 237500.0, "eps": 61555.0, "pe": 3.9}, {"d": "2024-03-20", "c": 241000.0, "eps": 61543.0, "pe": 3.9}, {"d": "2024-03-21", "c": 252000.0, "eps": 61532.0, "pe": 4.1}, {"d": "2024-03-22", "c": 243500.0, "eps": 61520.0, "pe": 4.0}, {"d": "2024-03-25", "c": 239500.0, "eps": 61485.0, "pe": 3.9}, {"d": "2024-03-26", "c": 240500.0, "eps": 61474.0, "pe": 3.9}, {"d": "2024-03-27", "c": 244000.0, "eps": 61462.0, "pe": 4.0}, {"d": "2024-03-28", "c": 237000.0, "eps": 61451.0, "pe": 3.9}, {"d": "2024-03-29", "c": 233000.0, "eps": 61439.0, "pe": 3.8}, {"d": "2024-04-01", "c": 227500.0, "eps": 61404.0, "pe": 3.7}, {"d": "2024-04-02", "c": 220000.0, "eps": 61393.0, "pe": 3.6}, {"d": "2024-04-03", "c": 216000.0, "eps": 61381.0, "pe": 3.5}, {"d": "2024-04-04", "c": 226000.0, "eps": 61370.0, "pe": 3.7}, {"d": "2024-04-05", "c": 225500.0, "eps": 61358.0, "pe": 3.7}, {"d": "2024-04-08", "c": 232500.0, "eps": 61323.0, "pe": 3.8}, {"d": "2024-04-09", "c": 228000.0, "eps": 61312.0, "pe": 3.7}, {"d": "2024-04-11", "c": 241000.0, "eps": 61288.0, "pe": 3.9}, {"d": "2024-04-12", "c": 238000.0, "eps": 61277.0, "pe": 3.9}, {"d": "2024-04-15", "c": 241500.0, "eps": 61242.0, "pe": 3.9}, {"d": "2024-04-16", "c": 242000.0, "eps": 61230.0, "pe": 4.0}, {"d": "2024-04-17", "c": 233500.0, "eps": 61219.0, "pe": 3.8}, {"d": "2024-04-18", "c": 231000.0, "eps": 61207.0, "pe": 3.8}, {"d": "2024-04-19", "c": 235000.0, "eps": 61196.0, "pe": 3.8}, {"d": "2024-04-22", "c": 245000.0, "eps": 61161.0, "pe": 4.0}, {"d": "2024-04-23", "c": 249500.0, "eps": 61149.0, "pe": 4.1}, {"d": "2024-04-24", "c": 252500.0, "eps": 61138.0, "pe": 4.1}, {"d": "2024-04-25", "c": 250000.0, "eps": 61126.0, "pe": 4.1}, {"d": "2024-04-26", "c": 249500.0, "eps": 61115.0, "pe": 4.1}, {"d": "2024-04-29", "c": 251500.0, "eps": 61080.0, "pe": 4.1}, {"d": "2024-04-30", "c": 251000.0, "eps": 61068.0, "pe": 4.1}, {"d": "2024-05-02", "c": 249000.0, "eps": 61045.0, "pe": 4.1}, {"d": "2024-05-03", "c": 241000.0, "eps": 61033.0, "pe": 3.9}, {"d": "2024-05-07", "c": 242000.0, "eps": 60987.0, "pe": 4.0}, {"d": "2024-05-08", "c": 242000.0, "eps": 60975.0, "pe": 4.0}, {"d": "2024-05-09", "c": 237000.0, "eps": 60964.0, "pe": 3.9}, {"d": "2024-05-10", "c": 241500.0, "eps": 60952.0, "pe": 4.0}, {"d": "2024-05-13", "c": 245000.0, "eps": 60917.0, "pe": 4.0}, {"d": "2024-05-14", "c": 246500.0, "eps": 60906.0, "pe": 4.0}, {"d": "2024-05-16", "c": 247000.0, "eps": 60883.0, "pe": 4.1}, {"d": "2024-05-17", "c": 244000.0, "eps": 60871.0, "pe": 4.0}, {"d": "2024-05-20", "c": 250500.0, "eps": 60836.0, "pe": 4.1}, {"d": "2024-05-21", "c": 253000.0, "eps": 60825.0, "pe": 4.2}, {"d": "2024-05-22", "c": 277000.0, "eps": 60813.0, "pe": 4.6}, {"d": "2024-05-23", "c": 271500.0, "eps": 60802.0, "pe": 4.5}, {"d": "2024-05-24", "c": 267500.0, "eps": 60790.0, "pe": 4.4}, {"d": "2024-05-27", "c": 265500.0, "eps": 60755.0, "pe": 4.4}, {"d": "2024-05-28", "c": 265000.0, "eps": 60744.0, "pe": 4.4}, {"d": "2024-05-29", "c": 261000.0, "eps": 60732.0, "pe": 4.3}, {"d": "2024-05-30", "c": 257000.0, "eps": 60720.0, "pe": 4.2}, {"d": "2024-05-31", "c": 253000.0, "eps": 60709.0, "pe": 4.2}, {"d": "2024-06-03", "c": 265000.0, "eps": 60674.0, "pe": 4.4}, {"d": "2024-06-04", "c": 259000.0, "eps": 60662.0, "pe": 4.3}, {"d": "2024-06-05", "c": 264000.0, "eps": 60651.0, "pe": 4.4}, {"d": "2024-06-07", "c": 265000.0, "eps": 60628.0, "pe": 4.4}, {"d": "2024-06-10", "c": 267500.0, "eps": 60593.0, "pe": 4.4}, {"d": "2024-06-11", "c": 271000.0, "eps": 60581.0, "pe": 4.5}, {"d": "2024-06-12", "c": 270000.0, "eps": 60570.0, "pe": 4.5}, {"d": "2024-06-13", "c": 269000.0, "eps": 60558.0, "pe": 4.4}, {"d": "2024-06-14", "c": 268000.0, "eps": 60547.0, "pe": 4.4}, {"d": "2024-06-17", "c": 278500.0, "eps": 60512.0, "pe": 4.6}, {"d": "2024-06-18", "c": 283000.0, "eps": 60500.0, "pe": 4.7}, {"d": "2024-06-19", "c": 286500.0, "eps": 60489.0, "pe": 4.7}, {"d": "2024-06-20", "c": 285500.0, "eps": 60477.0, "pe": 4.7}, {"d": "2024-06-21", "c": 280000.0, "eps": 60465.0, "pe": 4.6}, {"d": "2024-06-24", "c": 281000.0, "eps": 60431.0, "pe": 4.6}, {"d": "2024-06-25", "c": 288500.0, "eps": 60419.0, "pe": 4.8}, {"d": "2024-06-26", "c": 289500.0, "eps": 60407.0, "pe": 4.8}, {"d": "2024-06-27", "c": 298000.0, "eps": 60396.0, "pe": 4.9}, {"d": "2024-06-28", "c": 295000.0, "eps": 60384.0, "pe": 4.9}, {"d": "2024-07-01", "c": 286000.0, "eps": 60349.0, "pe": 4.7}, {"d": "2024-07-02", "c": 272500.0, "eps": 60338.0, "pe": 4.5}, {"d": "2024-07-03", "c": 276000.0, "eps": 60326.0, "pe": 4.6}, {"d": "2024-07-04", "c": 277500.0, "eps": 60315.0, "pe": 4.6}, {"d": "2024-07-05", "c": 281000.0, "eps": 60303.0, "pe": 4.7}, {"d": "2024-07-08", "c": 283000.0, "eps": 60268.0, "pe": 4.7}, {"d": "2024-07-09", "c": 274500.0, "eps": 60257.0, "pe": 4.6}, {"d": "2024-07-10", "c": 274500.0, "eps": 60245.0, "pe": 4.6}, {"d": "2024-07-11", "c": 278500.0, "eps": 60234.0, "pe": 4.6}, {"d": "2024-07-12", "c": 271500.0, "eps": 60222.0, "pe": 4.5}, {"d": "2024-07-15", "c": 268500.0, "eps": 60187.0, "pe": 4.5}, {"d": "2024-07-16", "c": 274500.0, "eps": 60176.0, "pe": 4.6}, {"d": "2024-07-17", "c": 268500.0, "eps": 60164.0, "pe": 4.5}, {"d": "2024-07-18", "c": 260500.0, "eps": 60152.0, "pe": 4.3}, {"d": "2024-07-19", "c": 258500.0, "eps": 60141.0, "pe": 4.3}, {"d": "2024-07-22", "c": 255000.0, "eps": 60106.0, "pe": 4.2}, {"d": "2024-07-23", "c": 263500.0, "eps": 60094.0, "pe": 4.4}, {"d": "2024-07-24", "c": 258500.0, "eps": 60083.0, "pe": 4.3}, {"d": "2024-07-25", "c": 251500.0, "eps": 60071.0, "pe": 4.2}, {"d": "2024-07-26", "c": 243500.0, "eps": 60060.0, "pe": 4.1}, {"d": "2024-07-29", "c": 255500.0, "eps": 60025.0, "pe": 4.3}, {"d": "2024-07-30", "c": 250000.0, "eps": 60013.0, "pe": 4.2}, {"d": "2024-07-31", "c": 249000.0, "eps": 60002.0, "pe": 4.1}, {"d": "2024-08-01", "c": 253500.0, "eps": 59990.0, "pe": 4.2}, {"d": "2024-08-02", "c": 244000.0, "eps": 59979.0, "pe": 4.1}, {"d": "2024-08-05", "c": 224000.0, "eps": 59944.0, "pe": 3.7}, {"d": "2024-08-06", "c": 235000.0, "eps": 59932.0, "pe": 3.9}, {"d": "2024-08-07", "c": 236000.0, "eps": 59921.0, "pe": 3.9}, {"d": "2024-08-08", "c": 236500.0, "eps": 59909.0, "pe": 3.9}, {"d": "2024-08-09", "c": 243000.0, "eps": 59897.0, "pe": 4.1}, {"d": "2024-08-12", "c": 243500.0, "eps": 59863.0, "pe": 4.1}, {"d": "2024-08-13", "c": 243000.0, "eps": 59851.0, "pe": 4.1}, {"d": "2024-08-14", "c": 241000.0, "eps": 59839.0, "pe": 4.0}, {"d": "2024-08-16", "c": 255000.0, "eps": 59816.0, "pe": 4.3}, {"d": "2024-08-19", "c": 255000.0, "eps": 59781.0, "pe": 4.3}, {"d": "2024-08-20", "c": 256000.0, "eps": 59770.0, "pe": 4.3}, {"d": "2024-08-21", "c": 252500.0, "eps": 59758.0, "pe": 4.2}, {"d": "2024-08-22", "c": 248000.0, "eps": 59747.0, "pe": 4.2}, {"d": "2024-08-23", "c": 252500.0, "eps": 59735.0, "pe": 4.2}, {"d": "2024-08-26", "c": 249500.0, "eps": 59700.0, "pe": 4.2}, {"d": "2024-08-27", "c": 247500.0, "eps": 59689.0, "pe": 4.1}, {"d": "2024-08-28", "c": 259000.0, "eps": 59677.0, "pe": 4.3}, {"d": "2024-08-29", "c": 258500.0, "eps": 59629.0, "pe": 4.3}, {"d": "2024-08-30", "c": 255500.0, "eps": 59581.0, "pe": 4.3}, {"d": "2024-09-02", "c": 246000.0, "eps": 59438.0, "pe": 4.1}, {"d": "2024-09-03", "c": 237500.0, "eps": 59390.0, "pe": 4.0}, {"d": "2024-09-04", "c": 232500.0, "eps": 59342.0, "pe": 3.9}, {"d": "2024-09-05", "c": 229000.0, "eps": 59294.0, "pe": 3.9}, {"d": "2024-09-06", "c": 227500.0, "eps": 59246.0, "pe": 3.8}, {"d": "2024-09-09", "c": 229500.0, "eps": 59103.0, "pe": 3.9}, {"d": "2024-09-10", "c": 231000.0, "eps": 59055.0, "pe": 3.9}, {"d": "2024-09-11", "c": 223500.0, "eps": 59007.0, "pe": 3.8}, {"d": "2024-09-12", "c": 232000.0, "eps": 58959.0, "pe": 3.9}, {"d": "2024-09-13", "c": 237000.0, "eps": 58911.0, "pe": 4.0}, {"d": "2024-09-19", "c": 246000.0, "eps": 58624.0, "pe": 4.2}, {"d": "2024-09-20", "c": 250500.0, "eps": 58576.0, "pe": 4.3}, {"d": "2024-09-23", "c": 249000.0, "eps": 58433.0, "pe": 4.3}, {"d": "2024-09-24", "c": 253000.0, "eps": 58385.0, "pe": 4.3}, {"d": "2024-09-25", "c": 251500.0, "eps": 58337.0, "pe": 4.3}, {"d": "2024-09-26", "c": 259000.0, "eps": 58289.0, "pe": 4.4}, {"d": "2024-09-27", "c": 254500.0, "eps": 58241.0, "pe": 4.4}, {"d": "2024-09-30", "c": 244000.0, "eps": 58098.0, "pe": 4.2}, {"d": "2024-10-02", "c": 237000.0, "eps": 58002.0, "pe": 4.1}, {"d": "2024-10-04", "c": 239500.0, "eps": 57906.0, "pe": 4.1}, {"d": "2024-10-07", "c": 247000.0, "eps": 57763.0, "pe": 4.3}, {"d": "2024-10-08", "c": 246000.0, "eps": 57715.0, "pe": 4.3}, {"d": "2024-10-10", "c": 246000.0, "eps": 57619.0, "pe": 4.3}, {"d": "2024-10-11", "c": 248500.0, "eps": 57571.0, "pe": 4.3}, {"d": "2024-10-14", "c": 248500.0, "eps": 57428.0, "pe": 4.3}, {"d": "2024-10-15", "c": 246000.0, "eps": 57380.0, "pe": 4.3}, {"d": "2024-10-16", "c": 247000.0, "eps": 57332.0, "pe": 4.3}, {"d": "2024-10-17", "c": 235500.0, "eps": 57284.0, "pe": 4.1}, {"d": "2024-10-18", "c": 234500.0, "eps": 57236.0, "pe": 4.1}, {"d": "2024-10-21", "c": 237000.0, "eps": 57093.0, "pe": 4.2}, {"d": "2024-10-22", "c": 234500.0, "eps": 57045.0, "pe": 4.1}, {"d": "2024-10-23", "c": 241000.0, "eps": 56997.0, "pe": 4.2}, {"d": "2024-10-24", "c": 228500.0, "eps": 56949.0, "pe": 4.0}, {"d": "2024-10-25", "c": 225500.0, "eps": 56901.0, "pe": 4.0}, {"d": "2024-10-28", "c": 226500.0, "eps": 56758.0, "pe": 4.0}, {"d": "2024-10-29", "c": 224000.0, "eps": 56710.0, "pe": 3.9}, {"d": "2024-10-30", "c": 220500.0, "eps": 56662.0, "pe": 3.9}, {"d": "2024-10-31", "c": 215000.0, "eps": 56614.0, "pe": 3.8}, {"d": "2024-11-01", "c": 213500.0, "eps": 56566.0, "pe": 3.8}, {"d": "2024-11-04", "c": 216500.0, "eps": 56423.0, "pe": 3.8}, {"d": "2024-11-05", "c": 215000.0, "eps": 56375.0, "pe": 3.8}, {"d": "2024-11-06", "c": 206500.0, "eps": 56327.0, "pe": 3.7}, {"d": "2024-11-07", "c": 207500.0, "eps": 56279.0, "pe": 3.7}, {"d": "2024-11-08", "c": 203500.0, "eps": 56231.0, "pe": 3.6}, {"d": "2024-11-11", "c": 211000.0, "eps": 56088.0, "pe": 3.8}, {"d": "2024-11-12", "c": 207000.0, "eps": 56040.0, "pe": 3.7}, {"d": "2024-11-13", "c": 199900.0, "eps": 55992.0, "pe": 3.6}, {"d": "2024-11-14", "c": 201500.0, "eps": 55944.0, "pe": 3.6}, {"d": "2024-11-15", "c": 206000.0, "eps": 55896.0, "pe": 3.7}, {"d": "2024-11-18", "c": 217000.0, "eps": 55753.0, "pe": 3.9}, {"d": "2024-11-19", "c": 215500.0, "eps": 55705.0, "pe": 3.9}, {"d": "2024-11-20", "c": 218500.0, "eps": 55657.0, "pe": 3.9}, {"d": "2024-11-21", "c": 215500.0, "eps": 55609.0, "pe": 3.9}, {"d": "2024-11-22", "c": 217000.0, "eps": 55561.0, "pe": 3.9}, {"d": "2024-11-25", "c": 219000.0, "eps": 55418.0, "pe": 4.0}, {"d": "2024-11-26", "c": 223500.0, "eps": 55370.0, "pe": 4.0}, {"d": "2024-11-27", "c": 221000.0, "eps": 55322.0, "pe": 4.0}, {"d": "2024-11-28", "c": 219000.0, "eps": 55274.0, "pe": 4.0}, {"d": "2024-11-29", "c": 218500.0, "eps": 55226.0, "pe": 4.0}, {"d": "2024-12-02", "c": 216000.0, "eps": 55083.0, "pe": 3.9}, {"d": "2024-12-03", "c": 214500.0, "eps": 55035.0, "pe": 3.9}, {"d": "2024-12-04", "c": 209000.0, "eps": 54987.0, "pe": 3.8}, {"d": "2024-12-05", "c": 204500.0, "eps": 54939.0, "pe": 3.7}, {"d": "2024-12-06", "c": 203500.0, "eps": 54891.0, "pe": 3.7}, {"d": "2024-12-09", "c": 201000.0, "eps": 54748.0, "pe": 3.7}, {"d": "2024-12-10", "c": 210500.0, "eps": 54700.0, "pe": 3.8}, {"d": "2024-12-11", "c": 209000.0, "eps": 54652.0, "pe": 3.8}, {"d": "2024-12-12", "c": 211500.0, "eps": 54604.0, "pe": 3.9}, {"d": "2024-12-13", "c": 215000.0, "eps": 54556.0, "pe": 3.9}, {"d": "2024-12-16", "c": 211000.0, "eps": 54413.0, "pe": 3.9}, {"d": "2024-12-17", "c": 206500.0, "eps": 54365.0, "pe": 3.8}, {"d": "2024-12-18", "c": 216500.0, "eps": 54317.0, "pe": 4.0}, {"d": "2024-12-19", "c": 212000.0, "eps": 54269.0, "pe": 3.9}, {"d": "2024-12-20", "c": 210500.0, "eps": 54221.0, "pe": 3.9}, {"d": "2024-12-23", "c": 215000.0, "eps": 54078.0, "pe": 4.0}, {"d": "2024-12-24", "c": 216500.0, "eps": 54030.0, "pe": 4.0}, {"d": "2024-12-26", "c": 217500.0, "eps": 53934.0, "pe": 4.0}, {"d": "2024-12-27", "c": 215000.0, "eps": 53886.0, "pe": 4.0}, {"d": "2024-12-30", "c": 212000.0, "eps": 53743.0, "pe": 3.9}, {"d": "2025-01-02", "c": 211500.0, "eps": 53599.0, "pe": 3.9}, {"d": "2025-01-03", "c": 213000.0, "eps": 53551.0, "pe": 4.0}, {"d": "2025-01-06", "c": 211500.0, "eps": 53408.0, "pe": 4.0}, {"d": "2025-01-07", "c": 211000.0, "eps": 53360.0, "pe": 4.0}, {"d": "2025-01-08", "c": 213500.0, "eps": 53312.0, "pe": 4.0}, {"d": "2025-01-09", "c": 213000.0, "eps": 53264.0, "pe": 4.0}, {"d": "2025-01-10", "c": 226000.0, "eps": 53216.0, "pe": 4.2}, {"d": "2025-01-13", "c": 220000.0, "eps": 53073.0, "pe": 4.1}, {"d": "2025-01-14", "c": 222000.0, "eps": 53025.0, "pe": 4.2}, {"d": "2025-01-15", "c": 220500.0, "eps": 52977.0, "pe": 4.2}, {"d": "2025-01-16", "c": 219000.0, "eps": 52929.0, "pe": 4.1}, {"d": "2025-01-17", "c": 211500.0, "eps": 52881.0, "pe": 4.0}, {"d": "2025-01-20", "c": 208500.0, "eps": 52738.0, "pe": 4.0}, {"d": "2025-01-21", "c": 206500.0, "eps": 52690.0, "pe": 3.9}, {"d": "2025-01-22", "c": 208500.0, "eps": 52642.0, "pe": 4.0}, {"d": "2025-01-23", "c": 209000.0, "eps": 52594.0, "pe": 4.0}, {"d": "2025-01-24", "c": 205000.0, "eps": 52546.0, "pe": 3.9}, {"d": "2025-01-31", "c": 206000.0, "eps": 52211.0, "pe": 3.9}, {"d": "2025-02-03", "c": 202000.0, "eps": 52068.0, "pe": 3.9}, {"d": "2025-02-04", "c": 201000.0, "eps": 52020.0, "pe": 3.9}, {"d": "2025-02-05", "c": 204500.0, "eps": 51972.0, "pe": 3.9}, {"d": "2025-02-06", "c": 203500.0, "eps": 51924.0, "pe": 3.9}, {"d": "2025-02-07", "c": 200500.0, "eps": 51876.0, "pe": 3.9}, {"d": "2025-02-10", "c": 199400.0, "eps": 51733.0, "pe": 3.9}, {"d": "2025-02-11", "c": 199400.0, "eps": 51685.0, "pe": 3.9}, {"d": "2025-02-12", "c": 198100.0, "eps": 51637.0, "pe": 3.8}, {"d": "2025-02-13", "c": 208500.0, "eps": 51589.0, "pe": 4.0}, {"d": "2025-02-14", "c": 206000.0, "eps": 51541.0, "pe": 4.0}, {"d": "2025-02-17", "c": 199800.0, "eps": 51398.0, "pe": 3.9}, {"d": "2025-02-18", "c": 200500.0, "eps": 51350.0, "pe": 3.9}, {"d": "2025-02-19", "c": 204000.0, "eps": 51302.0, "pe": 4.0}, {"d": "2025-02-20", "c": 203000.0, "eps": 51254.0, "pe": 4.0}, {"d": "2025-02-21", "c": 206000.0, "eps": 51206.0, "pe": 4.0}, {"d": "2025-02-24", "c": 207000.0, "eps": 51063.0, "pe": 4.1}, {"d": "2025-02-25", "c": 202500.0, "eps": 51015.0, "pe": 4.0}, {"d": "2025-02-26", "c": 205000.0, "eps": 50967.0, "pe": 4.0}, {"d": "2025-02-27", "c": 200500.0, "eps": 50919.0, "pe": 3.9}, {"d": "2025-02-28", "c": 193000.0, "eps": 50871.0, "pe": 3.8}, {"d": "2025-03-04", "c": 190300.0, "eps": 50680.0, "pe": 3.8}, {"d": "2025-03-05", "c": 194700.0, "eps": 50632.0, "pe": 3.8}, {"d": "2025-03-06", "c": 197600.0, "eps": 50584.0, "pe": 3.9}, {"d": "2025-03-07", "c": 196600.0, "eps": 50536.0, "pe": 3.9}, {"d": "2025-03-10", "c": 197400.0, "eps": 50393.0, "pe": 3.9}, {"d": "2025-03-11", "c": 195600.0, "eps": 50345.0, "pe": 3.9}, {"d": "2025-03-12", "c": 198200.0, "eps": 50297.0, "pe": 3.9}, {"d": "2025-03-13", "c": 201000.0, "eps": 50249.0, "pe": 4.0}, {"d": "2025-03-14", "c": 198500.0, "eps": 50201.0, "pe": 4.0}, {"d": "2025-03-17", "c": 199000.0, "eps": 50058.0, "pe": 4.0}, {"d": "2025-03-18", "c": 200500.0, "eps": 50010.0, "pe": 4.0}, {"d": "2025-03-19", "c": 204000.0, "eps": 49962.0, "pe": 4.1}, {"d": "2025-03-20", "c": 202500.0, "eps": 49914.0, "pe": 4.1}, {"d": "2025-03-21", "c": 205000.0, "eps": 49866.0, "pe": 4.1}, {"d": "2025-03-24", "c": 213500.0, "eps": 49723.0, "pe": 4.3}, {"d": "2025-03-25", "c": 221000.0, "eps": 49675.0, "pe": 4.4}, {"d": "2025-03-26", "c": 223000.0, "eps": 49627.0, "pe": 4.5}, {"d": "2025-03-27", "c": 212000.0, "eps": 49579.0, "pe": 4.3}, {"d": "2025-03-28", "c": 205000.0, "eps": 49531.0, "pe": 4.1}, {"d": "2025-03-31", "c": 196800.0, "eps": 49388.0, "pe": 4.0}, {"d": "2025-04-01", "c": 198700.0, "eps": 49340.0, "pe": 4.0}, {"d": "2025-04-02", "c": 196500.0, "eps": 49292.0, "pe": 4.0}, {"d": "2025-04-03", "c": 193100.0, "eps": 49244.0, "pe": 3.9}, {"d": "2025-04-04", "c": 190100.0, "eps": 49261.0, "pe": 3.9}, {"d": "2025-04-07", "c": 180800.0, "eps": 49311.0, "pe": 3.7}, {"d": "2025-04-08", "c": 179300.0, "eps": 49328.0, "pe": 3.6}, {"d": "2025-04-09", "c": 179100.0, "eps": 49344.0, "pe": 3.6}, {"d": "2025-04-10", "c": 186200.0, "eps": 49361.0, "pe": 3.8}, {"d": "2025-04-11", "c": 177700.0, "eps": 49378.0, "pe": 3.6}, {"d": "2025-04-14", "c": 179600.0, "eps": 49428.0, "pe": 3.6}, {"d": "2025-04-15", "c": 188000.0, "eps": 49444.0, "pe": 3.8}, {"d": "2025-04-16", "c": 182700.0, "eps": 49461.0, "pe": 3.7}, {"d": "2025-04-17", "c": 182300.0, "eps": 49478.0, "pe": 3.7}, {"d": "2025-04-18", "c": 186800.0, "eps": 49494.0, "pe": 3.8}, {"d": "2025-04-21", "c": 186900.0, "eps": 49545.0, "pe": 3.8}, {"d": "2025-04-22", "c": 186300.0, "eps": 49561.0, "pe": 3.8}, {"d": "2025-04-23", "c": 190500.0, "eps": 49578.0, "pe": 3.8}, {"d": "2025-04-24", "c": 188800.0, "eps": 49595.0, "pe": 3.8}, {"d": "2025-04-25", "c": 189000.0, "eps": 49611.0, "pe": 3.8}, {"d": "2025-04-28", "c": 188600.0, "eps": 49661.0, "pe": 3.8}, {"d": "2025-04-29", "c": 192600.0, "eps": 49678.0, "pe": 3.9}, {"d": "2025-04-30", "c": 190500.0, "eps": 49695.0, "pe": 3.8}, {"d": "2025-05-02", "c": 189800.0, "eps": 49728.0, "pe": 3.8}, {"d": "2025-05-07", "c": 187800.0, "eps": 49812.0, "pe": 3.8}, {"d": "2025-05-08", "c": 188200.0, "eps": 49828.0, "pe": 3.8}, {"d": "2025-05-09", "c": 190300.0, "eps": 49845.0, "pe": 3.8}, {"d": "2025-05-12", "c": 197500.0, "eps": 49895.0, "pe": 4.0}, {"d": "2025-05-13", "c": 195800.0, "eps": 49912.0, "pe": 3.9}, {"d": "2025-05-14", "c": 197100.0, "eps": 49928.0, "pe": 3.9}, {"d": "2025-05-15", "c": 193200.0, "eps": 49945.0, "pe": 3.9}, {"d": "2025-05-16", "c": 194100.0, "eps": 49962.0, "pe": 3.9}, {"d": "2025-05-19", "c": 190600.0, "eps": 50012.0, "pe": 3.8}, {"d": "2025-05-20", "c": 190100.0, "eps": 50029.0, "pe": 3.8}, {"d": "2025-05-21", "c": 188600.0, "eps": 50045.0, "pe": 3.8}, {"d": "2025-05-22", "c": 182700.0, "eps": 50062.0, "pe": 3.6}, {"d": "2025-05-23", "c": 180100.0, "eps": 50079.0, "pe": 3.6}, {"d": "2025-05-26", "c": 181700.0, "eps": 50129.0, "pe": 3.6}, {"d": "2025-05-27", "c": 182100.0, "eps": 50145.0, "pe": 3.6}, {"d": "2025-05-28", "c": 185800.0, "eps": 50162.0, "pe": 3.7}, {"d": "2025-05-29", "c": 191000.0, "eps": 50179.0, "pe": 3.8}, {"d": "2025-05-30", "c": 186200.0, "eps": 50196.0, "pe": 3.7}, {"d": "2025-06-02", "c": 184600.0, "eps": 50246.0, "pe": 3.7}, {"d": "2025-06-04", "c": 186400.0, "eps": 50279.0, "pe": 3.7}, {"d": "2025-06-05", "c": 190000.0, "eps": 50296.0, "pe": 3.8}, {"d": "2025-06-09", "c": 198200.0, "eps": 50362.0, "pe": 3.9}, {"d": "2025-06-10", "c": 197200.0, "eps": 50379.0, "pe": 3.9}, {"d": "2025-06-11", "c": 201500.0, "eps": 50396.0, "pe": 4.0}, {"d": "2025-06-12", "c": 201500.0, "eps": 50413.0, "pe": 4.0}, {"d": "2025-06-13", "c": 198000.0, "eps": 50429.0, "pe": 3.9}, {"d": "2025-06-16", "c": 201500.0, "eps": 50479.0, "pe": 4.0}, {"d": "2025-06-17", "c": 204000.0, "eps": 50496.0, "pe": 4.0}, {"d": "2025-06-18", "c": 206000.0, "eps": 50513.0, "pe": 4.1}, {"d": "2025-06-19", "c": 206500.0, "eps": 50529.0, "pe": 4.1}, {"d": "2025-06-20", "c": 209500.0, "eps": 50546.0, "pe": 4.1}, {"d": "2025-06-23", "c": 202500.0, "eps": 50596.0, "pe": 4.0}, {"d": "2025-06-24", "c": 205500.0, "eps": 50613.0, "pe": 4.1}, {"d": "2025-06-25", "c": 218000.0, "eps": 50630.0, "pe": 4.3}, {"d": "2025-06-26", "c": 210500.0, "eps": 50646.0, "pe": 4.2}, {"d": "2025-06-27", "c": 205000.0, "eps": 50663.0, "pe": 4.0}, {"d": "2025-06-30", "c": 204500.0, "eps": 50713.0, "pe": 4.0}, {"d": "2025-07-01", "c": 212500.0, "eps": 50730.0, "pe": 4.2}, {"d": "2025-07-02", "c": 213000.0, "eps": 50746.0, "pe": 4.2}, {"d": "2025-07-03", "c": 215000.0, "eps": 50763.0, "pe": 4.2}, {"d": "2025-07-04", "c": 210000.0, "eps": 50780.0, "pe": 4.1}, {"d": "2025-07-07", "c": 209000.0, "eps": 50830.0, "pe": 4.1}, {"d": "2025-07-08", "c": 210000.0, "eps": 50847.0, "pe": 4.1}, {"d": "2025-07-09", "c": 209000.0, "eps": 50863.0, "pe": 4.1}, {"d": "2025-07-10", "c": 209000.0, "eps": 50880.0, "pe": 4.1}, {"d": "2025-07-11", "c": 208500.0, "eps": 50897.0, "pe": 4.1}, {"d": "2025-07-14", "c": 217000.0, "eps": 50947.0, "pe": 4.3}, {"d": "2025-07-15", "c": 212000.0, "eps": 50963.0, "pe": 4.2}, {"d": "2025-07-16", "c": 208000.0, "eps": 50980.0, "pe": 4.1}, {"d": "2025-07-17", "c": 210000.0, "eps": 50997.0, "pe": 4.1}, {"d": "2025-07-18", "c": 210000.0, "eps": 51013.0, "pe": 4.1}, {"d": "2025-07-21", "c": 209000.0, "eps": 51064.0, "pe": 4.1}, {"d": "2025-07-22", "c": 206500.0, "eps": 51080.0, "pe": 4.0}, {"d": "2025-07-23", "c": 221000.0, "eps": 51097.0, "pe": 4.3}, {"d": "2025-07-24", "c": 216000.0, "eps": 51114.0, "pe": 4.2}, {"d": "2025-07-25", "c": 218000.0, "eps": 51130.0, "pe": 4.3}, {"d": "2025-07-28", "c": 219000.0, "eps": 51180.0, "pe": 4.3}, {"d": "2025-07-29", "c": 218000.0, "eps": 51197.0, "pe": 4.3}, {"d": "2025-07-30", "c": 225000.0, "eps": 51214.0, "pe": 4.4}, {"d": "2025-07-31", "c": 213000.0, "eps": 51230.0, "pe": 4.2}, {"d": "2025-08-01", "c": 210500.0, "eps": 51247.0, "pe": 4.1}, {"d": "2025-08-04", "c": 212000.0, "eps": 51297.0, "pe": 4.1}, {"d": "2025-08-05", "c": 211000.0, "eps": 51314.0, "pe": 4.1}, {"d": "2025-08-06", "c": 211000.0, "eps": 51331.0, "pe": 4.1}, {"d": "2025-08-07", "c": 213500.0, "eps": 51347.0, "pe": 4.2}, {"d": "2025-08-08", "c": 212000.0, "eps": 51364.0, "pe": 4.1}, {"d": "2025-08-11", "c": 213000.0, "eps": 51414.0, "pe": 4.1}, {"d": "2025-08-12", "c": 214000.0, "eps": 51431.0, "pe": 4.2}, {"d": "2025-08-13", "c": 216000.0, "eps": 51448.0, "pe": 4.2}, {"d": "2025-08-14", "c": 217500.0, "eps": 51464.0, "pe": 4.2}, {"d": "2025-08-18", "c": 216000.0, "eps": 51531.0, "pe": 4.2}, {"d": "2025-08-19", "c": 218500.0, "eps": 51548.0, "pe": 4.2}, {"d": "2025-08-20", "c": 220000.0, "eps": 51564.0, "pe": 4.3}, {"d": "2025-08-21", "c": 221000.0, "eps": 51581.0, "pe": 4.3}, {"d": "2025-08-22", "c": 221000.0, "eps": 51598.0, "pe": 4.3}, {"d": "2025-08-25", "c": 220500.0, "eps": 51648.0, "pe": 4.3}, {"d": "2025-08-26", "c": 219500.0, "eps": 51665.0, "pe": 4.2}, {"d": "2025-08-27", "c": 220500.0, "eps": 51681.0, "pe": 4.3}, {"d": "2025-08-28", "c": 222000.0, "eps": 51698.0, "pe": 4.3}, {"d": "2025-08-29", "c": 219500.0, "eps": 51715.0, "pe": 4.2}, {"d": "2025-09-01", "c": 221000.0, "eps": 51765.0, "pe": 4.3}, {"d": "2025-09-02", "c": 219000.0, "eps": 51781.0, "pe": 4.2}, {"d": "2025-09-03", "c": 221500.0, "eps": 51798.0, "pe": 4.3}, {"d": "2025-09-04", "c": 221500.0, "eps": 51815.0, "pe": 4.3}, {"d": "2025-09-05", "c": 220500.0, "eps": 51831.0, "pe": 4.3}, {"d": "2025-09-08", "c": 218500.0, "eps": 51882.0, "pe": 4.2}, {"d": "2025-09-09", "c": 220000.0, "eps": 51898.0, "pe": 4.2}, {"d": "2025-09-10", "c": 221500.0, "eps": 51915.0, "pe": 4.3}, {"d": "2025-09-11", "c": 221500.0, "eps": 51932.0, "pe": 4.3}, {"d": "2025-09-12", "c": 223500.0, "eps": 51948.0, "pe": 4.3}, {"d": "2025-09-15", "c": 215500.0, "eps": 51998.0, "pe": 4.1}, {"d": "2025-09-16", "c": 216000.0, "eps": 52015.0, "pe": 4.2}, {"d": "2025-09-17", "c": 216000.0, "eps": 52032.0, "pe": 4.2}, {"d": "2025-09-18", "c": 218000.0, "eps": 52048.0, "pe": 4.2}, {"d": "2025-09-19", "c": 214500.0, "eps": 52065.0, "pe": 4.1}, {"d": "2025-09-22", "c": 218000.0, "eps": 52115.0, "pe": 4.2}, {"d": "2025-09-23", "c": 219000.0, "eps": 52132.0, "pe": 4.2}, {"d": "2025-09-24", "c": 218000.0, "eps": 52149.0, "pe": 4.2}, {"d": "2025-09-25", "c": 216500.0, "eps": 52165.0, "pe": 4.2}, {"d": "2025-09-26", "c": 214000.0, "eps": 52182.0, "pe": 4.1}, {"d": "2025-09-29", "c": 215500.0, "eps": 52232.0, "pe": 4.1}, {"d": "2025-09-30", "c": 215000.0, "eps": 52249.0, "pe": 4.1}, {"d": "2025-10-01", "c": 216000.0, "eps": 52265.0, "pe": 4.1}, {"d": "2025-10-02", "c": 220000.0, "eps": 52282.0, "pe": 4.2}, {"d": "2025-10-10", "c": 218000.0, "eps": 52416.0, "pe": 4.2}, {"d": "2025-10-13", "c": 218500.0, "eps": 52466.0, "pe": 4.2}, {"d": "2025-10-14", "c": 222000.0, "eps": 52482.0, "pe": 4.2}, {"d": "2025-10-15", "c": 224000.0, "eps": 52499.0, "pe": 4.3}, {"d": "2025-10-16", "c": 244000.0, "eps": 52516.0, "pe": 4.6}, {"d": "2025-10-17", "c": 240500.0, "eps": 52533.0, "pe": 4.6}, {"d": "2025-10-20", "c": 249500.0, "eps": 52583.0, "pe": 4.7}, {"d": "2025-10-21", "c": 260500.0, "eps": 52542.0, "pe": 5.0}, {"d": "2025-10-22", "c": 261000.0, "eps": 52501.0, "pe": 5.0}, {"d": "2025-10-23", "c": 250500.0, "eps": 52461.0, "pe": 4.8}, {"d": "2025-10-24", "c": 253500.0, "eps": 52420.0, "pe": 4.8}, {"d": "2025-10-27", "c": 256000.0, "eps": 52298.0, "pe": 4.9}, {"d": "2025-10-28", "c": 251500.0, "eps": 52258.0, "pe": 4.8}, {"d": "2025-10-29", "c": 285500.0, "eps": 52217.0, "pe": 5.5}, {"d": "2025-10-30", "c": 269000.0, "eps": 52177.0, "pe": 5.2}, {"d": "2025-10-31", "c": 288000.0, "eps": 52136.0, "pe": 5.5}, {"d": "2025-11-03", "c": 291500.0, "eps": 52014.0, "pe": 5.6}, {"d": "2025-11-04", "c": 273500.0, "eps": 51974.0, "pe": 5.3}, {"d": "2025-11-05", "c": 270000.0, "eps": 51933.0, "pe": 5.2}, {"d": "2025-11-06", "c": 268000.0, "eps": 51892.0, "pe": 5.2}, {"d": "2025-11-07", "c": 263000.0, "eps": 51852.0, "pe": 5.1}, {"d": "2025-11-10", "c": 272500.0, "eps": 51730.0, "pe": 5.3}, {"d": "2025-11-11", "c": 270000.0, "eps": 51689.0, "pe": 5.2}, {"d": "2025-11-12", "c": 276500.0, "eps": 51649.0, "pe": 5.4}, {"d": "2025-11-13", "c": 278000.0, "eps": 51608.0, "pe": 5.4}, {"d": "2025-11-14", "c": 273000.0, "eps": 51568.0, "pe": 5.3}, {"d": "2025-11-17", "c": 272500.0, "eps": 51446.0, "pe": 5.3}, {"d": "2025-11-18", "c": 265000.0, "eps": 51405.0, "pe": 5.2}, {"d": "2025-11-19", "c": 265500.0, "eps": 51364.0, "pe": 5.2}, {"d": "2025-11-20", "c": 263500.0, "eps": 51324.0, "pe": 5.1}, {"d": "2025-11-21", "c": 258000.0, "eps": 51283.0, "pe": 5.0}, {"d": "2025-11-24", "c": 258500.0, "eps": 51161.0, "pe": 5.1}, {"d": "2025-11-25", "c": 258000.0, "eps": 51121.0, "pe": 5.0}, {"d": "2025-11-26", "c": 262000.0, "eps": 51080.0, "pe": 5.1}, {"d": "2025-11-27", "c": 262000.0, "eps": 51040.0, "pe": 5.1}, {"d": "2025-11-28", "c": 261000.0, "eps": 50999.0, "pe": 5.1}, {"d": "2025-12-01", "c": 255500.0, "eps": 50877.0, "pe": 5.0}, {"d": "2025-12-02", "c": 267500.0, "eps": 50837.0, "pe": 5.3}, {"d": "2025-12-03", "c": 267000.0, "eps": 50796.0, "pe": 5.3}, {"d": "2025-12-04", "c": 282500.0, "eps": 50755.0, "pe": 5.6}, {"d": "2025-12-05", "c": 314500.0, "eps": 50715.0, "pe": 6.2}, {"d": "2025-12-08", "c": 316000.0, "eps": 50593.0, "pe": 6.2}, {"d": "2025-12-09", "c": 307000.0, "eps": 50552.0, "pe": 6.1}, {"d": "2025-12-10", "c": 302500.0, "eps": 50512.0, "pe": 6.0}, {"d": "2025-12-11", "c": 297000.0, "eps": 50471.0, "pe": 5.9}, {"d": "2025-12-12", "c": 300500.0, "eps": 50431.0, "pe": 6.0}, {"d": "2025-12-15", "c": 295000.0, "eps": 50309.0, "pe": 5.9}, {"d": "2025-12-16", "c": 287000.0, "eps": 50268.0, "pe": 5.7}, {"d": "2025-12-17", "c": 286500.0, "eps": 50228.0, "pe": 5.7}, {"d": "2025-12-18", "c": 283000.0, "eps": 50187.0, "pe": 5.6}, {"d": "2025-12-19", "c": 288000.0, "eps": 50146.0, "pe": 5.7}, {"d": "2025-12-22", "c": 290000.0, "eps": 50025.0, "pe": 5.8}, {"d": "2025-12-23", "c": 288000.0, "eps": 49984.0, "pe": 5.8}, {"d": "2025-12-24", "c": 289000.0, "eps": 49943.0, "pe": 5.8}, {"d": "2025-12-26", "c": 287500.0, "eps": 49862.0, "pe": 5.8}, {"d": "2025-12-29", "c": 292500.0, "eps": 49740.0, "pe": 5.9}, {"d": "2025-12-30", "c": 297000.0, "eps": 49700.0, "pe": 6.0}, {"d": "2026-01-02", "c": 300000.0, "eps": 49578.0, "pe": 6.1}, {"d": "2026-01-05", "c": 306000.0, "eps": 49456.0, "pe": 6.2}, {"d": "2026-01-06", "c": 308500.0, "eps": 49415.0, "pe": 6.2}, {"d": "2026-01-07", "c": 357000.0, "eps": 49375.0, "pe": 7.2}, {"d": "2026-01-08", "c": 342500.0, "eps": 49334.0, "pe": 6.9}, {"d": "2026-01-09", "c": 366000.0, "eps": 49294.0, "pe": 7.4}, {"d": "2026-01-12", "c": 370000.0, "eps": 49172.0, "pe": 7.5}, {"d": "2026-01-13", "c": 406500.0, "eps": 49131.0, "pe": 8.3}, {"d": "2026-01-14", "c": 414000.0, "eps": 49091.0, "pe": 8.4}, {"d": "2026-01-15", "c": 421000.0, "eps": 49050.0, "pe": 8.6}, {"d": "2026-01-16", "c": 416000.0, "eps": 49009.0, "pe": 8.5}, {"d": "2026-01-19", "c": 474000.0, "eps": 48888.0, "pe": 9.7}, {"d": "2026-01-20", "c": 468500.0, "eps": 48847.0, "pe": 9.6}, {"d": "2026-01-21", "c": 558000.0, "eps": 48806.0, "pe": 11.4}, {"d": "2026-01-22", "c": 536000.0, "eps": 48766.0, "pe": 11.0}, {"d": "2026-01-23", "c": 509000.0, "eps": 48725.0, "pe": 10.4}, {"d": "2026-01-26", "c": 489000.0, "eps": 48603.0, "pe": 10.1}, {"d": "2026-01-27", "c": 494000.0, "eps": 48563.0, "pe": 10.2}, {"d": "2026-01-28", "c": 493500.0, "eps": 48522.0, "pe": 10.2}, {"d": "2026-01-29", "c": 529000.0, "eps": 48482.0, "pe": 10.9}, {"d": "2026-01-30", "c": 499500.0, "eps": 48441.0, "pe": 10.3}, {"d": "2026-02-02", "c": 477500.0, "eps": 48319.0, "pe": 9.9}, {"d": "2026-02-03", "c": 494500.0, "eps": 48279.0, "pe": 10.2}, {"d": "2026-02-04", "c": 501000.0, "eps": 48238.0, "pe": 10.4}, {"d": "2026-02-05", "c": 489500.0, "eps": 48197.0, "pe": 10.2}, {"d": "2026-02-06", "c": 472500.0, "eps": 48157.0, "pe": 9.8}, {"d": "2026-02-09", "c": 478000.0, "eps": 48035.0, "pe": 10.0}, {"d": "2026-02-10", "c": 485000.0, "eps": 47994.0, "pe": 10.1}, {"d": "2026-02-11", "c": 508000.0, "eps": 47954.0, "pe": 10.6}, {"d": "2026-02-12", "c": 508000.0, "eps": 47913.0, "pe": 10.6}, {"d": "2026-02-13", "c": 501000.0, "eps": 47873.0, "pe": 10.5}, {"d": "2026-02-19", "c": 512000.0, "eps": 47629.0, "pe": 10.7}, {"d": "2026-02-20", "c": 511000.0, "eps": 47588.0, "pe": 10.7}, {"d": "2026-02-23", "c": 526000.0, "eps": 47466.0, "pe": 11.1}, {"d": "2026-02-24", "c": 525000.0, "eps": 47426.0, "pe": 11.1}, {"d": "2026-02-25", "c": 576000.0, "eps": 47385.0, "pe": 12.2}, {"d": "2026-02-26", "c": 605000.0, "eps": 47345.0, "pe": 12.8}, {"d": "2026-02-27", "c": 672000.0, "eps": 47304.0, "pe": 14.2}, {"d": "2026-03-03", "c": 554000.0, "eps": 47142.0, "pe": 11.8}, {"d": "2026-03-04", "c": 529000.0, "eps": 47101.0, "pe": 11.2}, {"d": "2026-03-05", "c": 559000.0, "eps": 47060.0, "pe": 11.9}, {"d": "2026-03-06", "c": 543000.0, "eps": 47020.0, "pe": 11.5}, {"d": "2026-03-09", "c": 501000.0, "eps": 46898.0, "pe": 10.7}, {"d": "2026-03-10", "c": 532000.0, "eps": 46857.0, "pe": 11.4}, {"d": "2026-03-11", "c": 531000.0, "eps": 46817.0, "pe": 11.3}, {"d": "2026-03-12", "c": 526000.0, "eps": 46776.0, "pe": 11.2}, {"d": "2026-03-13", "c": 519000.0, "eps": 46736.0, "pe": 11.1}, {"d": "2026-03-16", "c": 511000.0, "eps": 46614.0, "pe": 11.0}, {"d": "2026-03-17", "c": 525000.0, "eps": 46573.0, "pe": 11.3}, {"d": "2026-03-18", "c": 550000.0, "eps": 46533.0, "pe": 11.8}, {"d": "2026-03-19", "c": 521000.0, "eps": 46492.0, "pe": 11.2}, {"d": "2026-03-20", "c": 522000.0, "eps": 46451.0, "pe": 11.2}, {"d": "2026-03-23", "c": 483000.0, "eps": 46330.0, "pe": 10.4}, {"d": "2026-03-24", "c": 497000.0, "eps": 46289.0, "pe": 10.7}, {"d": "2026-03-25", "c": 504000.0, "eps": 46248.0, "pe": 10.9}, {"d": "2026-03-26", "c": 488000.0, "eps": 46208.0, "pe": 10.6}, {"d": "2026-03-27", "c": 486500.0, "eps": 46167.0, "pe": 10.5}, {"d": "2026-03-30", "c": 471000.0, "eps": 46045.0, "pe": 10.2}, {"d": "2026-03-31", "c": 441500.0, "eps": 46005.0, "pe": 9.6}, {"d": "2026-04-01", "c": 489500.0, "eps": 45964.0, "pe": 10.6}, {"d": "2026-04-02", "c": 456500.0, "eps": 45924.0, "pe": 9.9}, {"d": "2026-04-03", "c": 472000.0, "eps": 45883.0, "pe": 10.3}, {"d": "2026-04-06", "c": 481500.0, "eps": 45761.0, "pe": 10.5}, {"d": "2026-04-07", "c": 467000.0, "eps": 45720.0, "pe": 10.2}, {"d": "2026-04-08", "c": 517000.0, "eps": 45680.0, "pe": 11.3}, {"d": "2026-04-09", "c": 491000.0, "eps": 45639.0, "pe": 10.8}, {"d": "2026-04-10", "c": 491000.0, "eps": 45599.0, "pe": 10.8}, {"d": "2026-04-13", "c": 480000.0, "eps": 45477.0, "pe": 10.6}, {"d": "2026-04-14", "c": 497500.0, "eps": 45436.0, "pe": 10.9}, {"d": "2026-04-15", "c": 509000.0, "eps": 45396.0, "pe": 11.2}, {"d": "2026-04-16", "c": 539000.0, "eps": 45355.0, "pe": 11.9}, {"d": "2026-04-17", "c": 539000.0, "eps": 45314.0, "pe": 11.9}, {"d": "2026-04-20", "c": 531000.0, "eps": 45193.0, "pe": 11.7}, {"d": "2026-04-21", "c": 550000.0, "eps": 45152.0, "pe": 12.2}, {"d": "2026-04-22", "c": 540000.0, "eps": 45111.0, "pe": 12.0}, {"d": "2026-04-23", "c": 529000.0, "eps": 45071.0, "pe": 11.7}, {"d": "2026-04-24", "c": 517000.0, "eps": 45016.0, "pe": 11.5}, {"d": "2026-04-27", "c": 528000.0, "eps": 44852.0, "pe": 11.8}, {"d": "2026-04-28", "c": 552000.0, "eps": 44798.0, "pe": 12.3}, {"d": "2026-04-29", "c": 555000.0, "eps": 44743.0, "pe": 12.4}, {"d": "2026-04-30", "c": 535000.0, "eps": 44688.0, "pe": 12.0}, {"d": "2026-05-04", "c": 539000.0, "eps": 44470.0, "pe": 12.1}, {"d": "2026-05-06", "c": 558000.0, "eps": 44360.0, "pe": 12.6}, {"d": "2026-05-07", "c": 571000.0, "eps": 44306.0, "pe": 12.9}, {"d": "2026-05-08", "c": 618000.0, "eps": 44251.0, "pe": 14.0}, {"d": "2026-05-11", "c": 646000.0, "eps": 44087.0, "pe": 14.7}, {"d": "2026-05-12", "c": 623000.0, "eps": 44032.0, "pe": 14.1}, {"d": "2026-05-13", "c": 722000.0, "eps": 43978.0, "pe": 16.4}, {"d": "2026-05-14", "c": 715000.0, "eps": 43923.0, "pe": 16.3}, {"d": "2026-05-15", "c": 705000.0, "eps": 43869.0, "pe": 16.1}, {"d": "2026-05-18", "c": 655000.0, "eps": 43705.0, "pe": 15.0}, {"d": "2026-05-19", "c": 589000.0, "eps": 43650.0, "pe": 13.5}, {"d": "2026-05-20", "c": 607000.0, "eps": 43595.0, "pe": 13.9}, {"d": "2026-05-21", "c": 657000.0, "eps": 43541.0, "pe": 15.1}, {"d": "2026-05-22", "c": 655000.0, "eps": 43486.0, "pe": 15.1}, {"d": "2026-05-26", "c": 696000.0, "eps": 43267.0, "pe": 16.1}, {"d": "2026-05-27", "c": 692000.0, "eps": 43213.0, "pe": 16.0}, {"d": "2026-05-28", "c": 676000.0, "eps": 43158.0, "pe": 15.7}, {"d": "2026-05-29", "c": 733000.0, "eps": 43103.0, "pe": 17.0}, {"d": "2026-06-01", "c": 762000.0, "eps": 42939.0, "pe": 17.7}, {"d": "2026-06-02", "c": 722000.0, "eps": 42885.0, "pe": 16.8}, {"d": "2026-06-04", "c": 679000.0, "eps": 42776.0, "pe": 15.9}, {"d": "2026-06-05", "c": 690000.0, "eps": 42721.0, "pe": 16.2}, {"d": "2026-06-08", "c": 649000.0, "eps": 42557.0, "pe": 15.3}, {"d": "2026-06-09", "c": 656000.0, "eps": 42502.0, "pe": 15.4}, {"d": "2026-06-10", "c": 587000.0, "eps": 42448.0, "pe": 13.8}, {"d": "2026-06-11", "c": 613000.0, "eps": 42393.0, "pe": 14.5}, {"d": "2026-06-12", "c": 615000.0, "eps": 42338.0, "pe": 14.5}, {"d": "2026-06-15", "c": 653000.0, "eps": 42174.0, "pe": 15.5}, {"d": "2026-06-16", "c": 642000.0, "eps": 42120.0, "pe": 15.2}, {"d": "2026-06-17", "c": 619000.0, "eps": 42065.0, "pe": 14.7}, {"d": "2026-06-18", "c": 606000.0, "eps": 42010.0, "pe": 14.4}, {"d": "2026-06-19", "c": 607000.0, "eps": 41956.0, "pe": 14.5}, {"d": "2026-06-22", "c": 585000.0, "eps": 41792.0, "pe": 14.0}, {"d": "2026-06-23", "c": 505000.0, "eps": 41737.0, "pe": 12.1}, {"d": "2026-06-24", "c": 511000.0, "eps": 41683.0, "pe": 12.3}, {"d": "2026-06-25", "c": 505000.0, "eps": 41628.0, "pe": 12.1}, {"d": "2026-06-26", "c": 481500.0, "eps": 41573.0, "pe": 11.6}, {"d": "2026-06-29", "c": 500000.0, "eps": 41409.0, "pe": 12.1}, {"d": "2026-06-30", "c": 494000.0, "eps": 41355.0, "pe": 11.9}, {"d": "2026-07-01", "c": 487000.0, "eps": 41300.0, "pe": 11.8}, {"d": "2026-07-02", "c": 478000.0, "eps": 41245.0, "pe": 11.6}, {"d": "2026-07-03", "c": 494500.0, "eps": 41191.0, "pe": 12.0}, {"d": "2026-07-06", "c": 497000.0, "eps": 41027.0, "pe": 12.1}, {"d": "2026-07-07", "c": 471000.0, "eps": 40972.0, "pe": 11.5}, {"d": "2026-07-08", "c": 438000.0, "eps": 40917.0, "pe": 10.7}, {"d": "2026-07-09", "c": 446000.0, "eps": 40863.0, "pe": 10.9}, {"d": "2026-07-10", "c": 459500.0, "eps": 40808.0, "pe": 11.3}, {"d": "2026-07-13", "c": 444000.0, "eps": 40644.0, "pe": 10.9}, {"d": "2026-07-14", "c": 426500.0, "eps": 40590.0, "pe": 10.5}, {"d": "2026-07-15", "c": 430500.0, "eps": 40535.0, "pe": 10.6}, {"d": "2026-07-16", "c": 421500.0, "eps": 40480.0, "pe": 10.4}], "stats": {"avg": 5.2, "min": 2.7, "max": 17.7, "min_day": "2023-10-31", "max_day": "2026-06-01", "cur": 10.4, "cur_eps": 40480.0, "cur_price": 421500.0, "percentile": 87}, "stats_1y": {"avg": 8.4, "min": 4.0, "max": 17.7, "min_day": "2025-07-22", "max_day": "2026-06-01", "cur": 10.4, "cur_eps": 40480.0, "cur_price": 421500.0, "percentile": 60}, "events": [{"d": "2025-04-03", "label": "미 관세 25%", "kind": "down"}, {"d": "2025-10-20", "label": "관세 15% 타결", "kind": "up"}, {"d": "2026-05-07", "label": "아틀라스 랠리", "kind": "up"}, {"d": "2026-07-13", "label": "부분파업", "kind": "down"}], "regimes": [{"from": "2025-04-03", "to": "2025-10-20", "label": "관세 25% 구간"}, {"from": "2026-01-02", "to": "2026-06-01", "label": "로보틱스 리레이팅"}], "cfg": {"currency": "KRW", "multiples": [5, 10, 15, 20], "priceMax": 1000000, "priceTick": 200000, "peMax": 20, "peTick": 4, "epsMax": 75000.0, "epsTick": 15000.0}, "anchors": [{"d": "2023-05-03", "val": "14.8조원", "eps": 61763.71, "why": "1Q23 호실적 후 FY23 컨센 상향 국면 — FY23 실적은 15조1,269억으로 확정(뉴스핌 2024-01-25 '첫 영업익 15조'). 당시 NTM 보도 미확보 — 사후 실적 기반 근사"}, {"d": "2024-01-25", "val": "14.9조원", "eps": 62181.04, "why": "FY23 15조1,269억 확정 발표(뉴스핌) — FY24 컨센 15조 내외 유지 국면. FY24 실적 14조2,396억(-5.9% YoY) 감안한 근사"}, {"d": "2024-08-28", "val": "14.3조원", "eps": 59677.1, "why": "기업가치 제고 계획(밸류업) 발표 — TSR 35%·최소배당 10,000원. 이익 모멘텀은 피크아웃 국면(FY24 14조2,396억) — NTM 컨센 완만 하향 근사"}, {"d": "2025-04-03", "val": "11.8조원", "eps": 49244.04, "why": "미국 수입차 관세 25% 발효 — 현대차·기아 연간 부담 수조원 추정 보도, FY25 컨센 일제 하향(FY25 실적 11조4,679억으로 착지, DART 사업보고서). 당시 보도 미확보 구간은 사후 실적 기반 근사"}, {"d": "2025-10-20", "val": "12.6조원", "eps": 52582.62, "why": "한미 관세 협상 타결 — 자동차 관세 25%→15%, '15% 인하 시 2026년 영업이익 현대차 +2.4조' 보도(머니투데이 2025-10-20). FY26 회복 기대 반영 근사"}, {"d": "2026-04-23", "val": "10.8조원", "eps": 45070.82, "why": "1Q26 잠정실적 쇼크 — 영업이익 2조5,147억(-30.8% YoY, DART 공정공시), 분기 관세 부담 8,600억 보도. FY26 컨센 하향 개시"}, {"d": "2026-07-16", "val": "9.7조원", "eps": 40480.27, "why": "FnGuide 2026E EPS 38,717원(추정 25개사) → 지배순익 약 7.9조 → 실측 전환율 0.8545 역산 NTM 영업이익 약 9.3조 + 2Q26E 컨센 3조1,033억(-13.8% YoY) 경로 감안 9.7조 근사"}], "meta": {"symbol": "005380", "name": "현대차", "shares": 204757766, "mode": "op_krw", "conv": 0.8545, "conv_basis": "최근 8개 흑자 분기 합산 (2Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 0.8545 (DART 실측, 2026-07-19)", "range": ["2023-05-03", "2026-07-16"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
+
+</body>
+</html>
