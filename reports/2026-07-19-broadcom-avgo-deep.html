@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="AVGO">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>브로드컴(AVGO) — Kimi K3 셀오프가 지운 프리미엄, 선행 P/E 24배로 내려온 커스텀 실리콘 챔피언</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.chip.cool { background: var(--accent-bg); color: var(--accent); }
+
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-19-broadcom-avgo-deep.html">
+<meta property="og:title" content="브로드컴(AVGO) — Kimi K3 셀오프가 지운 프리미엄, 선행 P/E 24배로 내려온 커스텀 실리콘 챔피언">
+<meta property="og:description" content="셀오프로 선행 P/E가 3년 밴드 백분위 21%(저평가권)까지 눌렸으나 Base 환산 상승여력은 +8.0%에 그쳐, 상방은 밸류가 아니라 소수 하이퍼스케일러 커스텀 물량의 지속 여부에 달렸다 — 콜은 중립.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-19-broadcom-avgo-deep.html">
+<meta name="description" content="셀오프로 선행 P/E가 3년 밴드 백분위 21%(저평가권)까지 눌렸으나 Base 환산 상승여력은 +8.0%에 그쳐, 상방은 밸류가 아니라 소수 하이퍼스케일러 커스텀 물량의 지속 여부에 달렸다 — 콜은 중립.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-19-broadcom-avgo-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 2026-07-19 · 가격 기준 7/17(금) 종가 (미 증시 마지막 거래일)</div>
+  <h1>브로드컴(AVGO) — Kimi K3 셀오프가 지운 프리미엄, 선행 P/E 24배로 내려온 커스텀 실리콘 챔피언</h1>
+  <p class="sub">AI 커스텀 ASIC·네트워킹의 사실상 독점 사업자지만, 이번 반도체 셀오프의 진앙 중 하나로 <strong>고점 대비 −23%</strong> 하락했다. 12개월 선행 P/E는 <strong>24.1배</strong>(자기 3년 밴드 백분위 21%)로 저평가권까지 내려왔으나, Base 환산 상승여력은 <strong>+8.0%</strong>에 그친다 — 콜은 <strong>중립</strong>.</p>
+  <p class="sub" style="font-size:12.5px;color:var(--muted);margin-top:6px;">실적 서사(AI 매출 +143%)와 밸류 되돌림 사이의 간극은 실재한다. 다만 이 종목의 상방은 "싸다"가 아니라 "소수 하이퍼스케일러 커스텀 물량이 계속 커지는가"에 달렸다 — 그 성립·붕괴 조건을 정량으로 나눴다.</p>
+</header>
+
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-neutral">중립</span></div>
+    <div class="delta">P/E 백분위 21%(저평가) · Base <span class="up">+8.0%</span> &lt; 15%</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">$370.82</div>
+    <div class="delta">Fwd P/E 24.1배 (3년 평균 29.1배) · 백분위 21% <span class="chip cool">저평가</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val up">+8.0%</div>
+    <div class="delta">Bull <span class="up">+51.3%</span> / Bear <span class="down">−34.5%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 7/27 Kimi K3 가중치 공개 · 9월 초 Q3 FY26 실적</div>
+  </div>
+</div>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다. 모든 EPS는 별도 표기가 없으면 비GAAP(조정) 기준입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 중립.</strong> 셀오프로 선행 P/E가 <strong>24.1배(NTM)</strong>까지 눌리며 3년 밴드 백분위 <strong>21%(저평가권)</strong>에 왔다. 그러나 Base 시나리오 환산 상승여력은 <strong><span class="up">+8.0%</span></strong>에 불과하다 — "싸긴 하지만 크게 싸진 않다". 밸류 위치(저평가)와 조건부 상방(제한적)이 갈려 공식은 중립으로 산출된다.</li>
+    <li><strong>실적은 여전히 폭발적이다.</strong> Q2 FY26 총매출 <strong>$22.2B(YoY <span class="up">+48%</span>)</strong>, AI 반도체 매출 <strong>$10.8B(YoY <span class="up">+143%</span>)</strong>, Q3 AI 매출 가이드는 <strong>$16B(YoY <span class="up">+200%</span> 이상)</strong>. 잉여현금흐름은 매출의 46%다. 커스텀 ASIC·네트워킹 수요가 실적의 엔진이다.</li>
+    <li><strong>상방과 하방을 가르는 건 "고객 집중"이다.</strong> 커스텀 실리콘은 구글·메타·바이트댄스·앤트로픽·오픈AI 등 <strong>소수 하이퍼스케일러</strong>에 집중돼 있다. 강점(다년 커스텀 계약)이자 최대 리스크(구글 멀티소싱·캐펙스 삭감 시 직격)다. Kimi K3발 "AI 캐펙스가 정말 회수되는가" 회의론이 정확히 이 지점을 때렸다.</li>
+    <li><strong>콜을 바꿀 조건을 명시했다.</strong> 상향 전환: ① Q3 AI 매출 $16B 가이드 달성·상향, ② 커스텀 ASIC 신규 고객(오픈AI·앤트로픽) 램프 확인. 하향 전환: ① 구글 멀티소싱으로 TPU 점유 이탈 확인, ② 하이퍼스케일러 캐펙스 가이던스 삭감, ③ VMware 소프트웨어 성장 재둔화. 가장 가까운 판정 지점은 <strong>7/27 Kimi K3 가중치 공개</strong>와 <strong>9월 초 Q3 실적</strong>이다.</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">분석경로</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-17 미 증시 종가 기준)</strong><br>미 10년물 <strong>4.57%</strong> · 달러지수 120.50 · SPY 743.29$ (<span class="down">−0.99%</span>) — AI 랠리 되돌림 국면<br>SOX(필라델피아 반도체지수) 고점(6/22) 대비 <span class="down">−20.2%</span> → 베어마켓 진입, 주간 <span class="down">−12.5%</span>(15개월 만의 최악)<br>원/달러 1,488.80원 · 한국 기준금리 2.75% (참고 — US 종목이라 밸류 변수는 미 금리) — <a href="https://report.devindgkim.net/" style="color:var(--accent);">당일 브리핑</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>미 10년물 4.57%</strong>(할인율)·하이퍼스케일러 캐펙스 지속 가정 위에서 계산했다 (하우스 매크로 가정 상속 — 금리가 크게 오르거나 캐펙스 뷰가 꺾이면 시나리오 전제도 함께 갱신되어야 한다).</p>
+
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — 수요의 최상류는 커지는데, 심리의 최하류는 얼어붙었다</h2>
+  <p class="deck">AI 반도체 업황의 축은 <strong>하이퍼스케일러 캐펙스</strong>(수요)·<strong>커스텀 실리콘 침투</strong>(구조)·<strong>시장 심리</strong>(SOX·금리)다. 앞의 둘은 브로드컴에 우호적이고, 셋째가 지금 주가를 눌렀다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>업종 지표</th><th class="num">최근값</th><th>방향·해석</th></tr></thead>
+    <tbody>
+      <tr><td>하이퍼스케일러 4사 2026 캐펙스 합계 <span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·Value Add VC · 빅테크 2026 캐펙스 집계 (2026)</span><span class="evd-sum">Amazon·Google·Microsoft·Meta 2026 캐펙스 합계 약 <strong>$725B</strong>(YoY +77%, '25년 $410B). 5사(오라클 포함) $700~900B, 2027년 $1조 전망. 이 지출의 상당 부분이 커스텀 XPU·네트워킹으로 흘러 브로드컴 매출의 최상류가 된다.</span><a href="https://finance.yahoo.com/sectors/technology/articles/hyperscalers-hit-700-billion-2026-111243744.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">약 $725B</td><td>YoY <span class="up">+77%</span> — 커스텀 실리콘 수요의 최상류, 2027 $1조 전망</td></tr>
+      <tr><td>브로드컴 AI 반도체 매출 (분기) <span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">CNBC·브로드컴 IR · Q2 FY26 실적 (2026.06.03)</span><span class="evd-sum">Q2 FY26 AI 반도체 매출 <strong>$10.8B</strong>(YoY +143%). 커스텀 AI 가속기(XPU)+AI 네트워킹 수요가 견인. 직전 Q1은 $8.4B(YoY +106%). Q3 가이드는 $16B(YoY +200% 이상).</span><a href="https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num">$10.8B/분기</td><td>YoY <span class="up">+143%</span> — 연 런레이트 $40B+, Q3 $16B 가이드로 가속</td></tr>
+      <tr><td>SOX 반도체지수 (고점 대비) <span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">Yahoo Finance · 칩 셀오프·SOX 베어마켓 (2026.07.17)</span><span class="evd-sum">필라델피아 반도체지수(SOX)가 6/22 사상 최고 대비 <strong>−20.2%</strong> 하락해 베어마켓 진입, 주간 −12.5%로 15개월 만의 최악. 방아쇠는 중국 Moonshot Kimi K3 공개발 AI 캐펙스 회의론. 브로드컴은 이 셀오프의 핵심 하락주 중 하나.</span><a href="https://finance.yahoo.com/markets/stocks/articles/chip-selloff-hits-sox-broadcoms-100511793.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td><td class="num"><span class="down">−20.2%</span></td><td>베어마켓 진입 — 심리 최악, 밸류 압축의 직접 원인</td></tr>
+      <tr><td>미 10년물 국채금리 (할인율) <span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">briefing_ref 스냅샷 (2026-07-17 기준)</span><span class="evd-sum">미 10년물 <strong>4.57%</strong>·달러지수 120.50·SPY 743.29$(−0.99%). 성장주 밸류에이션의 할인율 기준 — 금리가 높을수록 원거리 이익의 현재가치가 눌린다.</span><span class="evd-nolink">계산·공개데이터 실측값 — 원문 링크 없음</span></span></span></td><td class="num">4.57%</td><td>고금리 지속 — 성장주 밸류 역풍(그럼에도 P/E는 이미 저평가권)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">AI 반도체는 sector_map.json의 KR 11업종 매핑에 없어, 리서치 가이드(업종 정의)에 따라 수요(하이퍼스케일러 캐펙스)·기업 지표(AI 반도체 매출)·심리(SOX)·할인율(미 10년물) 4개로 직접 정의했다. 업황의 방향(수요)과 주가의 방향(심리)이 지금 정반대인 것이 이 종목의 핵심 대치다.</p>
+</div>
+
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 심층(재출발 기준선)</h2>
+  <p class="deck">이 리포트는 발굴 스크리닝의 산출물이 아니라, 특정 종목을 지목해 모든 소스로 검증한 <strong>지정 심층</strong>이며, 리서치 표준 재출발 이후의 <strong>1세대 기준선</strong>이다.</p>
+  <p>브로드컴은 랭킹·스크리닝으로 좁혀 고른 종목이 아니라 사용자가 지목한 단일 종목이다. 앞선 리서치 표준의 리포트들은 전량 정리되었으므로, 이 리포트는 과거 발간물과의 연계·후속 판정 없이 <strong>새 기준선</strong>으로 작성한다. 미국 상장사이므로 데이터 소스는 국내와 다르다 — 공시는 <strong>SEC EDGAR</strong>(10-K·10-Q·8-K·Form 4), 재무·컨센서스는 <strong>FMP</strong>(무료 티어 제한 시 실적 보도·IR로 폴백), 매크로는 미 금리 스냅샷을 썼다.</p>
+  <p>분석 방식은 <strong>서사(Kimi K3 셀오프·AI 캐펙스 회의론)와 공시 숫자(가속하는 AI 반도체 실적)를 분리해 각각 검증</strong>하고, 그 간극을 논지의 중심에 놓는 것이다. 결론을 미리 말하면 — 실적 서사는 강하지만, 이미 밴드 저평가권에 온 밸류에서 <strong>추가 상방은 "고객 집중 리스크가 얼마나 해소되는가"에 종속</strong>돼 있어 공식 콜이 중립으로 떨어진다.</p>
+</div>
+
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 셀오프 트리거 3 + 경고 1</h2>
+  <p class="deck">주가를 지금 여기로 데려온 것은 실적이 아니라 심리다. 트리거 세 가지가 겹쳤고, 반대 신호 하나가 그 심리를 정당화한다.</p>
+  <h3>트리거 ① Kimi K3발 AI 캐펙스 회의론 — 브로드컴이 진앙</h3>
+  <p>7/17 중국 Moonshot이 2.8조 파라미터 오픈웨이트 모델 <strong>Kimi K3</strong>를 공개하자, 시장은 2025년 딥시크 쇼크를 재현하듯 "고성능 AI가 저렴해지면 하이퍼스케일러의 $700B 캐펙스가 회수되지 않는다"는 공포로 반응했다<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">Fortune·Yahoo · Kimi K3 마켓 쇼크 (2026.07.17)</span><span class="evd-sum">Moonshot이 7/17 세계 최대 오픈웨이트 모델(2.8조 파라미터) Kimi K3 공개, 벤치마크에서 상위 미국 모델에 근접. 전체 가중치는 7/27 공개 예정. AI·반도체주 급락하며 "딥시크 모먼트" 재현 — 저비용 모델이 캐펙스 축소를 부를지에 대한 공포가 핵심.</span><a href="https://fortune.com/2026/07/17/china-moonshot-kimi-k3-markets-china-ai/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 브로드컴은 이 캐펙스를 커스텀 XPU·네트워킹으로 받아내는 최전방이라, 셀오프의 직격탄을 맞았다.</p>
+  <h3>트리거 ② 선행 P/E 24배 — 3년 밴드 저평가권(백분위 21%)</h3>
+  <p>고점 대비 −23% 하락과 동시에 FY26·FY27 이익 추정이 상향되며, 12개월 선행 P/E는 <strong>24.1배</strong>로 자기 3년 밴드의 <strong>백분위 21%</strong>(평균 29.1배·범위 17.8~44.9배)까지 내려왔다<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">build_series.py 계산값 (2026.07.17 종가·NTM EPS 앵커)</span><span class="evd-sum">종가 $370.82 ÷ NTM 비GAAP EPS 추정 $15.4 = <strong>24.1배</strong>. 3년 밴드 평균 29.1배, 백분위 21%(저평가권). 6월 고점(6/2 종가 $481.57)에서는 약 35배였다.</span><span class="evd-nolink">계산값 — 앵커·방법론은 밸류에이션 섹션·근거9 참조</span></span></span>. 6월 초 고점의 ~35배에서 크게 압축됐다. 모틀리풀은 이 레벨을 "아무도 얘기 안 하는 가장 싼 메가캡 AI주(선행 25배)"로 평가했다<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">Motley Fool · "가장 싼 메가캡 AI주" (2026.06.19)</span><span class="evd-sum">브로드컴이 구글·메타·앤트로픽·오픈AI의 커스텀 칩을 만들면서도 선행 25배로, 엔비디아·다른 메가캡 대비 저평가라는 논지. 커스텀 실리콘 스토리에 비해 밸류가 뒤처져 있다는 시각.</span><a href="https://www.fool.com/investing/2026/06/19/broadcom-builds-custom-chips-for-google-meta-anthr/" target="_blank" rel="noopener">원문 ↗</a></span></span>.</p>
+  <h3>트리거 ③ 실적 자체는 가속 중</h3>
+  <p>Q2 FY26 AI 매출 $10.8B(+143%)에 이어 Q3 가이드는 $16B(+200% 이상), 총매출 가이드 ~$29.4B(+84%)로 컨센($28.25B)을 상회했다<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">CNBC·oplexa · Q3 FY26 가이던스 (2026.06)</span><span class="evd-sum">Q3 AI 반도체 매출 가이드 <strong>$16B</strong>(YoY +200% 이상), 총매출 가이드 ~$29.4B(+84%)로 컨센 $28.25B 상회. 경영진은 FY27 AI 반도체 매출을 $100B 초과 규모로 제시(장기 SAM·강한 가정).</span><a href="https://oplexa.com/broadcom-ai-revenue-2026/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 밸류가 눌리는 동안 이익 궤적은 우상향이라 — 밴드가 저평가권으로 내려온 근본 이유다.</p>
+  <div class="note"><strong>경고(반대 신호):</strong> 6월 3일 실적 발표 당일 주가는 <span class="down">약 −15%</span> 급락했다. AI 매출은 폭발했지만 ① 소프트웨어(VMware) 매출이 컨센을 하회했고, ② CEO 혹 탄이 "구글이 여러 공급사를 쓸 것"이라고 인정하며 커스텀 ASIC 독점 서사에 균열을 냈다<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">Futurum·TechTimes · Q2 소프트웨어 미스·혹 탄 발언 (2026.06)</span><span class="evd-sum">Q2 인프라 소프트웨어 매출 <strong>$7.18B</strong>(YoY +9%)로 컨센 $7.32B 하회. 혹 탄이 구글 멀티소싱 가능성 인정 → 커스텀 ASIC 점유 이탈 우려로 주가 −15%. AI 서프라이즈를 소프트웨어·고객 집중 우려가 상쇄한 세션.</span><a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 셀오프는 밸류만의 문제가 아니라 "고객 집중"이라는 구조적 취약점을 건드렸다.</p>
+</div>
+
+<div class="card prose" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 되돌림의 위치</h2>
+  <p class="deck">모멘텀은 꺾였으나 장기 추세는 훼손 전. 52주 고가 대비 −23%, 주간 −7% — 셀오프 초입의 위치다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>현재가 (7/17 종가)</td><td class="num">$370.82</td><td>기준가</td></tr>
+      <tr><td>52주 고가 (6/2 종가) 대비</td><td class="num"><span class="down">−23.0%</span></td><td>고점 $481.57에서 큰 폭 되돌림 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">fetch_prices.py · 780일 가격 시계열 (2026.07)</span><span class="evd-sum">3년 창 최고 종가 <strong>$481.57</strong>(2026-06-02), 최저 $79.26(2023-06). 7/17 종가 $370.82 → 고점 대비 −23.0%, 3년 저점 대비 +368%.</span><span class="evd-nolink">토스 Open API 가격 실측 — 계산값</span></span></span></td></tr>
+      <tr><td>주간 등락 (7/10→7/17)</td><td class="num"><span class="down">−7.5%</span></td><td>$400.0 → $370.8, 셀오프 주간</td></tr>
+      <tr><td>3년 수익률</td><td class="num"><span class="up">+368%</span></td><td>$79.26 → $370.82, 장기 추세 유지</td></tr>
+      <tr><td>20일 이동평균 대비</td><td class="num"><span class="down">이격 −3%대</span></td><td>단기선 아래로 이탈 — 조정 국면 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">fetch_prices.py 계산값 (최근 20거래일)</span><span class="evd-sum">최근 20거래일 종가 평균 약 $383, 현재가 $370.82 → 20일선 하회. 7/9 $401 고점 후 되돌림이 이어지는 중. 60일선(약 $410대)도 하회해 중기 조정 국면.</span><span class="evd-nolink">가격 실측 기반 계산값</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">기술 스크리닝은 재현 가능한 수치 확인용이다. 급락형 조정(고점 −23%)이지만 3년 추세(+368%)는 훼손 전 — "추세 안에서의 리셋"으로 본다. 이동평균은 780일 종가 시계열의 단순 근사이며, 매매 신호가 아니다.</p>
+</div>
+
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC 분석 — 가격(P)·물량(Q)·비용(C)</h2>
+  <p class="deck">브로드컴은 팹리스 설계사다. 판가결정력(소수 고객 커스텀 설계)·폭증하는 물량·업계 최상위 마진 — 세 축 모두 강하다.</p>
+  <h3>P — 가격결정력 <span class="grade g-full">● 강함</span></h3>
+  <p>브로드컴의 커스텀 XPU는 범용 GPU가 아니라 <strong>하이퍼스케일러와 공동 설계한 전용 실리콘</strong>이다. 고객이 자체 워크로드에 최적화된 칩을 브로드컴에만 맡기는 구조라, 설계 IP·선단 패키징(CoWoS)·네트워킹을 묶은 <strong>솔루션 프리미엄</strong>을 받는다<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Tom's Hardware·IBTimes · 커스텀 ASIC 경쟁 구도 (2026)</span><span class="evd-sum">브로드컴은 구글(TPU)·메타(MTIA)·바이트댄스·앤트로픽·오픈AI 등과 커스텀 ASIC을 공동 설계. 네트워킹 스위치 Tomahawk 5(51.2 Tbps)로 XPU 클러스터를 연결. 범용 GPU 대비 워크로드 최적화·전력효율에서 우위, 고객 락인이 강하다.</span><a href="https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia" target="_blank" rel="noopener">원문 ↗</a></span></span>. 다만 협상 상대가 소수 대형 고객이라 <strong>가격 협상력은 고객 쪽으로도 상당</strong>하다 — 혹 탄의 "구글 멀티소싱" 인정이 그 방증.</p>
+  <h3>Q — 물량 <span class="grade g-full">● 폭증</span></h3>
+  <p>AI 반도체 매출은 Q1 $8.4B → Q2 $10.8B → Q3 가이드 $16B로 분기마다 계단식 증가다. 앤트로픽은 2026년 1GW 규모 TPU를 2027년 3GW로 확대, 오픈AI는 2027년 첫 커스텀 칩 배치를 예고했다<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Tom's Hardware·IBTimes · 커스텀 ASIC 고객 램프 (2026)</span><span class="evd-sum">앤트로픽 2026년 1GW TPU → 2027년 3GW 확대. 오픈AI 2027년 첫 커스텀 칩 배치 목표. 브로드컴 공개 커스텀 ASIC 고객이 3곳→6곳(구글·메타·바이트댄스·앤트로픽·오픈AI·후지쯔/애플 등)으로 확대.</span><a href="https://www.ibtimes.com/what-broadcom-unknown-company-building-ai-chips-powering-google-anthropic-openai-meta-3802922" target="_blank" rel="noopener">원문 ↗</a></span></span>. 물량 파이프라인은 다년간 예약된 성격이라 가장 강한 축이다.</p>
+  <h3>C — 비용·수익성 <span class="grade g-full">● 최상위</span></h3>
+  <p>Q2 영업이익률은 GAAP 기준으로도 43%대, 잉여현금흐름은 매출의 <strong>46%</strong>($10.3B)에 달한다<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">CNBC·브로드컴 IR · Q2 FY26 수익성 (2026.06)</span><span class="evd-sum">Q2 잉여현금흐름 <strong>$10.3B</strong>(매출의 46%), 분기말 현금 $19.6B(직전 $14.2B). 반도체 규모의 경제 + VMware 고마진 소프트웨어가 결합해 업계 최상위 현금창출력. peer_table 기준 TTM 영업이익률 42.9%.</span><a href="https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html" target="_blank" rel="noopener">원문 ↗</a></span></span>. 팹리스 구조 + VMware 고마진 소프트웨어가 결합해, 매출 성장이 곧 현금으로 전환된다. GAAP 순이익은 VMware 인수 상각·이자로 눌려 있으나(TTM P/E 왜곡의 원인), 이는 회계 항목이지 현금 유출이 아니다.</p>
+  <div class="callout"><div class="co-num">46%</div><div class="co-lbl"><strong>Q2 잉여현금흐름 / 매출 비율.</strong> 매출의 절반 가까이가 현금으로 남는다 — 커스텀 실리콘 물량 증가가 마진 희석 없이 현금으로 전환되는 것이 이 회사의 구조적 강점이다.</div></div>
+</div>
+
+<div class="card prose" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 6항목 판정</h2>
+  <p class="deck">제조 세트 v1의 "가동률·설비투자" 축은 팹리스라 <span class="grade g-na">— 해당없음</span>. 대신 수주·미국향·리레이팅·TAM 축에서 성장 지속성을 검증한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th style="min-width:130px;">항목</th><th class="num">판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>① 매출↑ + 공장 가동률↑</td><td class="num"><span class="grade g-na">— 해당없음</span></td><td>팹리스(TSMC 위탁 생산) — 자체 팹 없음. 대신 <strong>CoWoS·HBM 공급 확보</strong>가 물량의 실질 제약 <span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Tom's Hardware · 팹리스 공급망 (2026)</span><span class="evd-sum">브로드컴은 자체 팹 없이 TSMC 선단 공정·CoWoS 패키징에 위탁. "가동률" 개념은 부적합하며, 실질 병목은 파운드리·어드밴스드 패키징 캐파 확보다.</span><a href="https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>② 설비투자 후 가동률↑</td><td class="num"><span class="grade g-na">— 해당없음</span></td><td>팹리스라 대규모 자체 CAPEX 없음 — 자산 경량 모델</td></tr>
+      <tr><td>③ 수주 &gt; 매출 성장</td><td class="num"><span class="grade g-full">● 충족</span></td><td>커스텀 ASIC은 <strong>다년 예약 물량</strong> 성격. 신규 고객(오픈AI·앤트로픽) 램프가 매출을 선행 <span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">oplexa·IR · FY27 AI 매출 가이드 (2026)</span><span class="evd-sum">경영진이 FY27 AI 반도체 매출을 $100B 초과 규모로 제시(현 분기 런레이트 대비 큰 폭 상방). 다년 커스텀 설계 파이프라인이 백로그처럼 매출을 선행하는 구조 — 단, 이 가이드는 강한 가정이라 검증 필요.</span><a href="https://oplexa.com/broadcom-ai-revenue-2026/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>④ 미국향(하이퍼스케일러) 매출</td><td class="num"><span class="grade g-full">● 충족</span></td><td>구글·메타·오픈AI·앤트로픽 등 <strong>미국 하이퍼스케일러가 핵심 고객</strong> — AI 캐펙스 최대 수혜 지역 <span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">IBTimes · 커스텀 칩 고객 (2026)</span><span class="evd-sum">브로드컴 커스텀 칩 주요 고객은 구글·메타·앤트로픽·오픈AI 등 미국 빅테크. 바이트댄스 등 일부 비미국 고객도 있으나, 매출의 최대 성장 축은 미국 하이퍼스케일러 캐펙스다.</span><a href="https://www.ibtimes.com/what-broadcom-unknown-company-building-ai-chips-powering-google-anthropic-openai-meta-3802922" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>⑤ 밸류 체계 전환(리레이팅)</td><td class="num"><span class="grade g-part">◐ 부분</span></td><td>반도체 사이클주 → <strong>AI 성장주 + 소프트웨어 현금창출주</strong> 하이브리드로 재평가 중. 단 셀오프로 리레이팅이 되돌려짐 <span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">Motley Fool · 밸류 재평가 논지 (2026.06)</span><span class="evd-sum">브로드컴을 "커스텀 AI + 고마진 소프트웨어"의 결합으로 보면 순수 반도체 사이클주보다 높은 배수가 정당화된다는 시각. 다만 6월 이후 셀오프로 배수가 35배→24배로 되돌려져, 리레이팅이 진행과 후퇴를 반복 중.</span><a href="https://www.fool.com/investing/2026/06/19/broadcom-builds-custom-chips-for-google-meta-anthr/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>⑥ 산업 TAM 확대 수혜</td><td class="num"><span class="grade g-full">● 충족</span></td><td>커스텀 실리콘 SAM이 하이퍼스케일러 캐펙스($725B→$1조)와 함께 확대 <span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Yahoo Finance · 캐펙스 TAM (2026)</span><span class="evd-sum">하이퍼스케일러 캐펙스 2026 $725B → 2027 $1조 전망. AI 인프라 지출에서 커스텀 XPU·네트워킹 비중이 커지며 브로드컴의 서비스 가능 시장(SAM)이 함께 확대. TAM 성장의 직접 수혜주.</span><a href="https://finance.yahoo.com/sectors/technology/articles/hyperscalers-hit-700-billion-2026-111243744.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">집계: 충족 4 · 부분 1 · 해당없음 2(제조 축) — <strong>성장 지속성은 강하나, ⑤ 리레이팅이 셀오프로 되돌려진 것이 밸류 상방을 제한</strong>한다. ①·② 가동률 축은 팹리스 특성상 부적합해 억지로 성립시키지 않았다.</p>
+</div>
+
+<div class="card prose" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 세그먼트 물량×판가 + 컨센 델타</h2>
+  <p class="deck">두 엔진 — 폭증하는 반도체(AI 중심)와 안정적 고마진 소프트웨어(VMware). 전자가 성장을, 후자가 현금·부채상환을 책임진다.</p>
+  <h3>세그먼트 구조 (Q2 FY26)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>세그먼트</th><th class="num">Q2 매출</th><th class="num">YoY</th><th>구성·해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>반도체 솔루션</strong></td><td class="num">$15.01B</td><td class="num"><span class="up">+79%</span></td><td>AI $10.8B(+143%) + 비AI(브로드밴드·서버스토리지 등) ~$4.2B</td></tr>
+      <tr><td>&nbsp;&nbsp;└ AI 반도체</td><td class="num">$10.8B</td><td class="num"><span class="up">+143%</span></td><td>커스텀 XPU + AI 네트워킹 — 성장 엔진 <span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">CNBC·IR · Q2 세그먼트 (2026.06)</span><span class="evd-sum">반도체 솔루션 $15.01B(+79%), 그 중 AI $10.8B(+143%). 비AI 반도체는 브로드밴드·무선·서버스토리지로 완만 회복 국면. Q3 AI 가이드 $16B.</span><a href="https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td><strong>인프라 소프트웨어</strong></td><td class="num">$7.18B</td><td class="num"><span class="up">+9%</span></td><td>VMware 중심 — 컨센 $7.32B 하회(감점) <span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">Futurum·TechTimes · 소프트웨어 세그먼트 (2026.06)</span><span class="evd-sum">인프라 소프트웨어 $7.18B(+9%)로 컨센 $7.32B 하회. VMware 구독 전환이 성숙 국면에 접어들며 성장률 둔화. 다만 고마진·안정 현금흐름으로 부채상환·자사주 재원을 제공.</span><a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td><strong>총매출</strong></td><td class="num"><strong>$22.2B</strong></td><td class="num"><span class="up">+48%</span></td><td>기록적 분기 · 비GAAP EPS $2.44</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>컨센서스 델타 — 우리 추정 vs 시장</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">우리 추정(NTM)</th><th class="num">컨센 대표값</th><th class="num">델타</th></tr></thead>
+    <tbody>
+      <tr><td>NTM 비GAAP EPS</td><td class="num">$15.4</td><td class="num">$15.0~15.5</td><td class="num">≈ 0%</td></tr>
+      <tr><td>FY26 비GAAP EPS</td><td class="num">$11.6</td><td class="num">$11.6</td><td class="num">0%</td></tr>
+      <tr><td>FY27 비GAAP EPS</td><td class="num">$17.0~17.5</td><td class="num">~$17.5</td><td class="num"><span class="down">−2%</span> 보수적</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:8px;">우리 NTM EPS 추정($15.4)은 FY26($11.6)과 FY27($17.5)의 약 50:50 블렌드로, 시장 컨센과 정합적이다. FY27은 커스텀 ASIC 신규 고객 램프의 실현 시점 불확실성을 반영해 컨센보다 소폭 보수적으로 잡았다.</p>
+
+  <h3>다년 추정 (비GAAP)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>회계연도</th><th class="num">매출</th><th class="num">YoY</th><th class="num">비GAAP EPS</th><th class="num">Fwd P/E(현재가)</th></tr></thead>
+    <tbody>
+      <tr><td>FY25A</td><td class="num">~$60B</td><td class="num">—</td><td class="num">~$6.4</td><td class="num">58배</td></tr>
+      <tr><td>FY26E</td><td class="num">~$105.8B</td><td class="num"><span class="up">+75%</span></td><td class="num">~$11.6</td><td class="num">32배</td></tr>
+      <tr><td>FY27E</td><td class="num">~$135B+</td><td class="num"><span class="up">+28%</span></td><td class="num">~$17.5</td><td class="num">21배</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">추정치(E)는 추정이며 확정이 아니다. FY26E 매출·EPS는 시장 컨센 집계(EPS $11.6·매출 ~$105.8B), FY27E는 경영진 AI 가이드와 컨센을 반영한 근사다. 현재가 기준 선행 P/E가 FY26 32배 → FY27 21배로 빠르게 낮아지는 것이 밸류의 핵심 — <strong>headline TTM P/E(약 62배)는 VMware 인수 상각으로 GAAP 순이익이 눌린 착시</strong>다(피어 섹션 왜곡 주석 참조). 체크포인트: 9월 초 Q3 실적의 AI 매출 $16B 가이드 달성 여부.</p>
+</div>
+
+<div class="card prose" id="s08">
+  <h2><span class="idx">08</span>시나리오 — Bull / Base / Bear</h2>
+  <p class="deck">배수는 피어·자기 밴드 실측에서 잡았다(임의 배수 금지). Base는 현재와 유사한 26배·NTM EPS $15.4 유지를 가정한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">NTM EPS</th><th class="num">배수</th><th class="num">환산가</th><th class="num">상승여력</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">$16.5</td><td class="num">34배</td><td class="num">$561</td><td class="num"><span class="up">+51.3%</span></td><td>오픈AI·앤트로픽 램프 가속, 네트워킹 점유 유지, 리레이트</td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">$15.4</td><td class="num">26배</td><td class="num">$400</td><td class="num"><span class="up">+8.0%</span></td><td>AI 성장 지속·VMware 현금창출, 멀티플 유지</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">$13.5</td><td class="num">18배</td><td class="num">$243</td><td class="num"><span class="down">−34.5%</span></td><td>AI 캐펙스 에어포켓·구글 멀티소싱 침식, 배수 압축</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>민감도 — NTM 비GAAP EPS ±10% (26배 고정)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>EPS 시나리오</th><th class="num">환산가</th><th class="num">상승여력</th></tr></thead>
+    <tbody>
+      <tr><td>−10% ($13.9)</td><td class="num">$361</td><td class="num"><span class="down">−2.5%</span></td></tr>
+      <tr><td>기준 ($15.4)</td><td class="num">$400</td><td class="num"><span class="up">+8.0%</span></td></tr>
+      <tr><td>+10% ($16.9)</td><td class="num">$439</td><td class="num"><span class="up">+18.5%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>읽는 법.</strong> 분포가 위로 열려 있으나(Bull +51% vs Bear −35%) Base 자체의 상방은 +8%로 제한적이다. 이는 "지금 배수(24배)가 이미 저평가권이라 크게 더 압축될 여지도, 크게 리레이트될 여지도 Base에선 작다"는 뜻이다. 상방을 결정하는 건 <strong>EPS(물량)</strong>이지 배수가 아니다 — 민감도 표에서 EPS +10%면 +18.5%로 벌어진다. 따라서 콜의 트리거는 "밸류가 싸다"가 아니라 "Q3·FY27 AI 매출 가이드가 실제로 달성되는가"다.</p>
+  <p class="fine">시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다. 배수는 자기 3년 밴드(18~45배)와 AI 반도체 피어 선행 배수 범위에서 잡았다.</p>
+</div>
+
+<div class="card prose" id="s09">
+  <h2><span class="idx">09</span>피어 비교 — TTM 실측 + 선행 배수</h2>
+  <p class="deck">TTM P/E는 회계 항목(VMware 상각)에 크게 왜곡된다. 비교는 반드시 <strong>선행(Forward) 배수</strong>로 해야 한다.</p>
+  <h3>TTM 실측 (SEC EDGAR companyfacts, GAAP)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">TTM 매출</th><th class="num">TTM 영업이익</th><th class="num">OPM</th><th class="num">P/E(TTM)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>브로드컴(AVGO)</strong></td><td class="num">$1,760B</td><td class="num">$72.5B</td><td class="num">$31.1B</td><td class="num">42.9%</td><td class="num">588배 <sup>*왜곡</sup></td></tr>
+      <tr><td>AMD</td><td class="num">$803B</td><td class="num">$34.6B</td><td class="num">$3.4B</td><td class="num">9.9%</td><td class="num">191배 <sup>*왜곡</sup></td></tr>
+      <tr><td>마벨(MRVL)</td><td class="num">$164B</td><td class="num">$8.4B</td><td class="num">$1.3B</td><td class="num">15.0%</td><td class="num">71배</td></tr>
+      <tr><td>엔비디아(NVDA)</td><td class="num">$4,900B</td><td class="num" colspan="4">EDGAR TTM 파싱 이상치 — 아래 선행 배수로 대체 <span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">peer_table.py · SEC EDGAR companyfacts (2026.07)</span><span class="evd-sum">peer_table 실행 시 NVDA의 EDGAR companyfacts 태그 파싱이 이상치(매출 $10.9B·영업이익 $139.6B로 영업이익&gt;매출)를 반환 — 회계연도 태그 매칭 오류로 신뢰 불가. NVDA는 선행 배수(FMP)로 대체 비교한다.</span><span class="evd-nolink">계산 파이프라인 한계 — 정직 표기</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note" style="margin-top:12px;"><strong>*왜곡 주석:</strong> 브로드컴 TTM P/E(약 588배)와 AMD(191배)는 GAAP 순이익이 각각 <strong>VMware 인수 상각·이자</strong>, <strong>일회성 비용</strong>으로 크게 눌린 착시다. AVGO의 실질 수익성은 OPM 42.9%·FCF 46%로 업계 최상위 — TTM P/E로 비교하면 안 된다.</p>
+  <h3>선행 P/E 비교 (FMP 추정·컨센 기반)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목</th><th class="num">현재가</th><th class="num">Fwd P/E (차기 FY)</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td><strong>브로드컴(AVGO)</strong></td><td class="num">$370.82</td><td class="num"><strong>21배</strong> (FY27)</td><td>커스텀 ASIC+SW, FY26 32배→FY27 21배 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">build_series.py·컨센 (2026.07)</span><span class="evd-sum">AVGO $370.82 ÷ FY26 EPS $11.6 = 32배, ÷ FY27 EPS $17.5 = 21배. NTM 블렌드 24.1배. 이익 급성장으로 선행 배수가 빠르게 낮아지는 구조.</span><span class="evd-nolink">계산값 — 밸류 섹션 참조</span></span></span></td></tr>
+      <tr><td>엔비디아(NVDA)</td><td class="num">$202.81</td><td class="num">~23배 (FY27)</td><td>범용 GPU 지배자, FMP TTM P/E 30.9배 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">FMP quote·estimates (2026.07)</span><span class="evd-sum">NVDA 현재가 $202.81, FMP TTM EPS $6.57(P/E 30.9배), FMP FY27E EPS $8.99 → 선행 약 22.6배. 브로드컴과 유사한 선행 밸류대.</span><span class="evd-nolink">FMP 실측 — 계산값</span></span></span></td></tr>
+      <tr><td>AMD</td><td class="num">$495.76</td><td class="num">~37배 (FY27)</td><td>FY26E 66배→FY27E 37배, 가장 비쌈 <span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">FMP quote·estimates (2026.07)</span><span class="evd-sum">AMD 현재가 $495.76, FMP FY26E EPS $7.49(선행 66배)·FY27E $13.5(선행 37배). AI 이익 기여가 아직 초기라 선행 배수가 피어 중 가장 높다.</span><span class="evd-nolink">FMP 실측 — 계산값</span></span></span></td></tr>
+      <tr><td>마벨(MRVL)</td><td class="num">—</td><td class="num">? 확인불가</td><td>FMP 무료 티어 제한(HTTP 402) — TTM만 확보</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">선행 배수로 보면 브로드컴(21배)은 엔비디아(~23배)와 비슷하고 AMD(~37배)보다 크게 싸다. 다만 이는 "이익 급성장 가정"이 실현될 때의 배수라, 물량 가이드 미달 시 배수와 EPS가 동시에 무너지는 이중 위험(Bear 시나리오)이 있다. 마벨은 FMP 무료 티어 제한으로 선행 배수 미확보 — 정직 표기.</p>
+</div>
+
+<div class="card prose" id="s10">
+  <h2><span class="idx">10</span>수급 — 내부자 동향과 데이터 한계</h2>
+  <p class="deck">US 종목이라 KRX 투자자별 수급·5%룰은 적용되지 않는다. SEC 공시로 확인 가능한 것은 내부자 거래(Form 4)와 매도 예정(Rule 144)이다.</p>
+  <p>최근 180일 SEC EDGAR 공시 목록은 <strong>Form 4(내부자 거래)·Rule 144(매도 예정 통지)가 다수</strong>를 차지한다 — 6월 말~7월 중순에 집중됐다<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">SEC EDGAR · AVGO 최근 공시 (2026.06~07)</span><span class="evd-sum">최근 공시 20건 중 다수가 Form 4·Rule 144(임원·10%주주의 매도 관련). 7/6에는 8-K 1건. 커스텀 실리콘 대형주에서 임원 계획매도(10b5-1)는 통상적이나, 셀오프 국면과 겹쳐 심리에 부담 요인. 기관 대량 매집을 확인할 13D/G는 이 창에서 관측되지 않음.</span><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001730168&type=&dateb=&owner=include&count=40" target="_blank" rel="noopener">원문 ↗</a></span></span>. 대형 성장주에서 임원 계획매도(10b5-1)는 통상적이지만, 셀오프 국면과 겹치면 심리적 부담이 된다.</p>
+  <p><strong>기관 신규 대량 매집을 확인할 13D/13G·기관 순매수 데이터는 이 조회 창에서 확인되지 않아 <span class="grade g-unk">? 확인불가</span></strong>로 둔다. 분기 13F는 시차가 커 실시간 수급 판단에는 부적합하다. 수급은 이 리포트에서 콜의 근거로 쓰지 않았다 — 밸류·실적 축으로만 판정했다.</p>
+  <p class="fine">KRX 투자자별 순매수·DART 5%룰은 국내 종목 전용이라 US 종목에는 해당되지 않는다(<span class="grade g-na">— 해당없음</span>). 내부자 매도는 SEC 공개 공시 정보이며 사적 자산 정보가 아니다.</p>
+</div>
+
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 콜을 바꿀 조건</h2>
+  <div class="note" style="border-left-color:var(--accent);background:var(--accent-bg);color:var(--ink-2);"><strong style="color:var(--accent);">콜을 바꿀 조건 (먼저 읽으세요).</strong><br>· <strong>중립 → 비중확대</strong>: ① 9월 Q3 실적에서 AI 매출 $16B 가이드 달성·상향, ② 오픈AI·앤트로픽 커스텀 ASIC 램프의 매출 인식 개시 확인, ③ 배수 리레이트로 Base 상승여력이 +15% 이상 회복.<br>· <strong>중립 → 비중축소</strong>: ① 구글 멀티소싱(미디어텍 등)으로 TPU 물량 점유 이탈 확인, ② 하이퍼스케일러 캐펙스 가이던스 삭감(Kimi K3발 다이제스천 현실화), ③ VMware 소프트웨어 성장 재둔화 + FY27 AI 가이드 하향.</div>
+  <h3>핵심 리스크 → 시나리오 연결</h3>
+  <p><strong>① 고객 집중.</strong> 커스텀 실리콘 매출이 소수 하이퍼스케일러에 집중돼, 한 고객의 물량 조정·멀티소싱이 곧바로 실적에 반영된다. 혹 탄이 구글 멀티소싱 가능성을 직접 인정했다는 점이 Bear 시나리오(배수 18배·EPS $13.5)의 방아쇠다<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">TechTimes·Futurum · 고객 집중 리스크 (2026.06)</span><span class="evd-sum">CEO 혹 탄이 Q2 콜에서 구글이 복수 공급사를 쓸 가능성을 인정. 모건스탠리는 그럼에도 브로드컴이 구글 커스텀 물량의 약 80%를 유지할 것으로 방어했으나, 고객 집중은 구조적 약점으로 남는다.</span><a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">원문 ↗</a></span></span>.</p>
+  <p><strong>② AI 캐펙스 다이제스천.</strong> Kimi K3처럼 저비용 고성능 모델이 확산되면, 하이퍼스케일러가 캐펙스 페이스를 늦출 수 있다. 반대 논거는 Jevons 역설(효율↑ → 총수요↑)이지만, 검증까지 시간이 걸린다<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">Fortune · AI 캐펙스 회의 vs Jevons (2026.07)</span><span class="evd-sum">Kimi K3발 공포의 핵심은 "$700B 캐펙스가 회수되지 않을 수 있다". 반대로 모델이 싸지면 사용이 폭증(Jevons 역설)해 오히려 컴퓨팅 수요가 늘 것이란 반론도 팽팽. 어느 쪽이 맞는지는 하이퍼스케일러 캐펙스 가이던스로 판정된다.</span><a href="https://fortune.com/2026/07/17/china-moonshot-kimi-k3-markets-china-ai/" target="_blank" rel="noopener">원문 ↗</a></span></span>.</p>
+  <p><strong>③ VMware 부채·소프트웨어 둔화.</strong> $69B 규모 VMware 인수로 진 부채는 순부채/EBITDA 1.24배까지 낮아졌으나, 소프트웨어 성장이 컨센을 하회하면 "성장주 프리미엄"의 한 축이 약해진다<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">Futurum·guru · VMware 부채·소프트웨어 (2026)</span><span class="evd-sum">VMware 인수($69B, 2023) 부채는 강한 FCF로 순부채/EBITDA 약 1.24배까지 디레버리징. 그러나 Q2 소프트웨어 매출이 컨센 하회 → 구독 전환 성숙 국면. 소프트웨어는 현금·부채상환의 안전판이자 성장 둔화 리스크의 양면.</span><a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">원문 ↗</a></span></span>.</p>
+  <p><strong>④ 밸류에이션.</strong> 선행 24배는 자기 밴드로는 저평가권이나 절대 레벨로는 여전히 시장 배수를 크게 웃돈다. Bear 시나리오는 EPS와 배수가 동시에 무너지는 이중 압축을 가정한다(−34.5%).</p>
+</div>
+
+<div class="card prose" id="s12">
+  <h2><span class="idx">12</span>다음 이벤트 — 날짜 박힌 체크포인트</h2>
+  <p class="deck">가장 가까운 판정 지점은 7/27 Kimi K3 가중치 공개, 그 다음이 9월 초 Q3 실적이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>무엇을 확인하나</th></tr></thead>
+    <tbody>
+      <tr><td>2026-07-27</td><td>Kimi K3 전체 가중치 공개</td><td>실제 성능·비용이 확인되면 "AI 캐펙스 회의론"의 강도가 재조정 — 셀오프 지속/반전의 1차 방아쇠 <span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">Fortune · Kimi K3 가중치 공개 일정 (2026.07)</span><span class="evd-sum">Kimi K3 전체 모델 가중치는 7/27 공개 예정. 실제 성능·추론비용이 드러나면 시장의 캐펙스 회의론이 강화/완화되는 분기점이 된다.</span><a href="https://fortune.com/2026/07/17/china-moonshot-kimi-k3-markets-china-ai/" target="_blank" rel="noopener">원문 ↗</a></span></span></td></tr>
+      <tr><td>2026-09 초 (추정)</td><td>Q3 FY26 실적 발표</td><td><strong>AI 매출 $16B 가이드 달성 여부</strong>·FY27 방향 — 콜의 핵심 판정 <span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">브로드컴 IR·회계일정 (추정)</span><span class="evd-sum">브로드컴 회계 3분기는 8월 초 종료, 실적은 통상 9월 초 발표. Q3 AI 매출 $16B 가이드 달성·상향 여부가 커스텀 실리콘 서사의 실물 검증 지점. 날짜는 추정.</span><span class="evd-nolink">회계일정 기반 추정 — 확정 시 갱신</span></span></span></td></tr>
+      <tr><td>2026-12 중순 (추정)</td><td>Q4 FY26 실적·FY27 가이드</td><td>FY27 AI 매출 가이드의 구체화(경영진 $100B+ 언급의 실체) — 리레이팅/디레이팅의 분기점</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">브로드컴 회계연도는 11월 초 종료다. 실적 발표일은 회계일정 기반 추정이며, 확정 공지 시 갱신되어야 한다(추정 표기).</p>
+</div>
+
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 리레이팅 분해 + 2차 밸류 + PE 밴드</h2>
+  <p class="deck">밸류의 핵심은 "TTM 62배 착시를 벗겨내면 선행 24배(밴드 백분위 21%)"라는 것. 상방은 배수가 아니라 EPS(물량)에 달렸다.</p>
+  <h3>리레이팅 분해 — 무엇이 주가를 움직였나</h3>
+  <p>2023년 6월 이후 주가는 $79 → $371로 <strong>+368%</strong>. 이 중 <strong>EPS 성장</strong>이 NTM 기준 $4.3 → $15.4(<strong>+258%</strong>)로 대부분을 설명하고, <strong>배수 확장</strong>은 18배 → 24배(+33%)로 일부만 기여했다. 6월 고점(배수 ~35배)에서 지금(24배)으로의 하락은 <strong>순수 배수 압축(디레이팅)</strong>이며 EPS는 오히려 상향됐다 — 즉 이번 하락은 실적 훼손이 아니라 심리·멀티플의 문제다.</p>
+  <div class="callout"><div class="co-num">24.1배</div><div class="co-lbl"><strong>현재 12개월 선행 P/E = 3년 밴드 백분위 21%(저평가권).</strong> 6월 고점의 ~35배에서 배수만 압축됐고 EPS는 상향 — headline TTM 62배는 VMware 상각 착시다.</div></div>
+  <h3>2차 밸류에이션 — P/FCF·EV/EBITDA 교차확인</h3>
+  <p>P/E 밴드의 GAAP 착시를 보완하기 위해 현금 기준 지표를 병기한다. Q2 FCF $10.3B을 연율화하면 약 $41B, 시총 $1,760B 대비 <strong>P/FCF 약 43배</strong> — 성장률(FY26 매출 +75%)을 감안하면 과도하지 않다. 순부채/EBITDA는 약 1.24배로 VMware 인수 부채가 빠르게 디레버리징됐다<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">guru·Futurum · 부채·현금흐름 (2026)</span><span class="evd-sum">순부채/EBITDA 약 1.24배(업계 중앙값 대비 낮음). Q2 FCF $10.3B(연율 ~$41B). 강한 현금창출로 부채상환·자사주·배당을 병행 — 자본집약 없이 현금이 남는 팹리스 구조.</span><a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">원문 ↗</a></span></span>. EV/EBITDA 역시 GAAP 상각의 영향을 덜 받아, TTM P/E보다 현실적인 밸류를 보여준다.</p>
+  <h3>애널리스트 컨센</h3>
+  <p>셀오프에도 월가 컨센은 "Strong Buy"에 목표주가 평균 <strong>~$500~524</strong>를 유지한다(48개사)<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">MarketBeat·Benzinga · 애널리스트 컨센 (2026.07)</span><span class="evd-sum">48개사 컨센 "Strong Buy", 목표주가 평균 약 $500~524. 모건스탠리 조셉 무어는 7/14 매수 유지·목표 $502로, 브로드컴이 구글 커스텀 물량의 약 80%를 유지할 것이라 방어. 컨센 목표는 현재가($371) 대비 큰 상방을 시사하나, 목표주가는 낙관 편향이 있어 우리 콜은 밴드·시나리오 기반으로 별도 산출.</span><a href="https://www.marketbeat.com/stocks/NASDAQ/AVGO/forecast/" target="_blank" rel="noopener">원문 ↗</a></span></span>. 다만 목표주가는 낙관 편향이 있어, 우리 콜은 밴드 백분위 + 시나리오 상승여력의 결정론적 공식으로 별도 산출했다(중립).</p>
+</div>
+
+<details class="pe-embed" data-peb="AVGO" open>
+  <summary>
+    <span class="peb-t">📊 브로드컴(AVGO) — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 24.1배 · 기간 평균 29.1배 · 백분위 21%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스·IR 추정 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다(비GAAP·10:1 분할 소급). 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균(29.1배).</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM EPS 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows"><tr><td>&#x27;23.6.7</td><td class="num">$4.30</td><td class="num">$4.30</td><td>FY23 조정(비GAAP) EPS ~$4.2 트래킹, 10:1 액면분할 소급 (NTM ~$4.3)</td></tr><tr><td>&#x27;23.12.1</td><td class="num">$4.70</td><td class="num">$4.70</td><td>VMware 인수 완료(2023-11), 소프트웨어 통합 초기 (NTM ~$4.7)</td></tr><tr><td>&#x27;24.6.5</td><td class="num">$5.20</td><td class="num">$5.20</td><td>AI 커스텀 실리콘 램프 시작, FY24 비GAAP EPS ~$4.9 (NTM ~$5.2)</td></tr><tr><td>&#x27;24.12.12</td><td class="num">$6.30</td><td class="num">$6.30</td><td>AI 매출 가속·FY25 가이드, NTM ~$6.3</td></tr><tr><td>&#x27;25.6.5</td><td class="num">$7.20</td><td class="num">$7.20</td><td>FY25 비GAAP EPS ~$6.4 트래킹, VMware 마진 기여 (NTM ~$7.2)</td></tr><tr><td>&#x27;25.12.11</td><td class="num">$9.20</td><td class="num">$9.20</td><td>FY26 가이드·AI 커스텀 실리콘 확대, NTM ~$9.2</td></tr><tr><td>&#x27;26.6.2</td><td class="num">$13.50</td><td class="num">$13.50</td><td>Q2 FY26 비GAAP EPS $2.44 서프라이즈, Q3 AI $16B 가이드 (NTM 롤 → FY27 ~$13.5)</td></tr><tr><td>&#x27;26.7.17</td><td class="num">$15.40</td><td class="num">$15.40</td><td>FY26 비GAAP EPS 컨센 ~$11.6 / FY27 ~$17.5 블렌드 (NTM ~$15.4)</td></tr></tbody>
+      </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: US 종목이므로 앵커는 NTM 비GAAP EPS(달러)를 직접 입력(전환율 없음). 앵커 사이는 선형 보간, 양 끝은 상수 연장. 발행주식수 약 47.6억주. 최근 1년 기준으로는 평균 34.4배·백분위 0%(현재가 1년 내 최저 배수). 이 모델은 추정이며 실제 컨센서스 히스토리가 아니다 — 과거 앵커는 사후 실적·분할 소급 기반 재구성이며 각 행 근거에 명시.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>CNBC·브로드컴 IR · Q2 FY26 실적 — 총매출 $22.2B·AI 반도체 $10.8B·FCF $10.3B (근거1) <a href="https://www.cnbc.com/2026/06/03/broadcom-avgo-earnings-report-q2-2026.html" target="_blank" rel="noopener">↗</a></li>
+    <li>oplexa·IR · Q3 가이드 $16B AI / FY27 $100B+ AI 가이드 (근거2·근거12) <a href="https://oplexa.com/broadcom-ai-revenue-2026/" target="_blank" rel="noopener">↗</a></li>
+    <li>Futurum · Q2 소프트웨어(VMware) $7.18B·부채·혹 탄 발언 (근거3) <a href="https://futurumgroup.com/insights/broadcom-q2-fy-2026-vmware-stability-supports-ai-led-semiconductor-expansion/" target="_blank" rel="noopener">↗</a></li>
+    <li>Tom's Hardware · 커스텀 AI ASIC 경쟁 구도·Tomahawk 네트워킹 (근거4) <a href="https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia" target="_blank" rel="noopener">↗</a></li>
+    <li>Fortune · Moonshot Kimi K3 마켓 쇼크·캐펙스 회의론 (근거5) <a href="https://fortune.com/2026/07/17/china-moonshot-kimi-k3-markets-china-ai/" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance · 칩 셀오프·SOX 베어마켓·브로드컴 하락 (근거6) <a href="https://finance.yahoo.com/markets/stocks/articles/chip-selloff-hits-sox-broadcoms-100511793.html" target="_blank" rel="noopener">↗</a></li>
+    <li>MarketBeat·Benzinga · 애널리스트 컨센 목표 ~$500·MS $502 (근거7) <a href="https://www.marketbeat.com/stocks/NASDAQ/AVGO/forecast/" target="_blank" rel="noopener">↗</a></li>
+    <li>Motley Fool · "가장 싼 메가캡 AI주(선행 25배)" (근거8) <a href="https://www.fool.com/investing/2026/06/19/broadcom-builds-custom-chips-for-google-meta-anthr/" target="_blank" rel="noopener">↗</a></li>
+    <li>IBTimes · 커스텀 칩 고객(구글·메타·앤트로픽·오픈AI) (근거4 보강) <a href="https://www.ibtimes.com/what-broadcom-unknown-company-building-ai-chips-powering-google-anthropic-openai-meta-3802922" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance·Value Add VC · 하이퍼스케일러 2026 캐펙스 $725B (근거11) <a href="https://finance.yahoo.com/sectors/technology/articles/hyperscalers-hit-700-billion-2026-111243744.html" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC EDGAR · AVGO 최근 공시(Form 4·144·8-K, 2026.06~07) (근거13) <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001730168&type=&dateb=&owner=include&count=40" target="_blank" rel="noopener">↗</a></li>
+    <li>FMP·peer_table.py·build_series.py·rating.py 계산값 (2026.07 실행 · 가격 7/17 종가) (근거9·근거10·근거14)</li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM EPS는 리포트·뉴스·IR 추정 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님 — 과거 앵커는 사후 실적·10:1 분할 소급 기반 재구성이며 각 앵커 근거에 명시). US 종목이라 비GAAP EPS(달러)를 직접 입력했다(전환율 없음). 시총·P/FCF·EV/EBITDA·밴드 환산가는 근사치. TTM P/E는 VMware 인수 상각으로 GAAP 순이익이 눌린 착시라 선행 배수로 비교했다. 선호도는 정해진 공식(밸류 위치+시나리오)의 산출이며 목표주가가 아니다.</p>
+  <p>생성: 2026-07-19 · 가격 기준일: 2026-07-17(금) 미 증시 마지막 거래일 종가 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-19 22:00 KST</div></footer>
+
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.forEach(i => {
+      const x = xScale(i, W);
+      el("line", {x1: x, x2: x, y1: PAD.t, y2: plotB, class: "gridline"}, svg);
+      el("text", {x: x, y: plotB + 16, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d));
+    });
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: plotB, y2: plotB, class: "axisline"}, svg);
+  }
+  function yGrid(svg, W, y, yMax, step, fmt) {
+    for (let v = 0; v <= yMax + 1e-9; v += step) {
+      const yy = y(v);
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: yy, y2: yy, class: "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: yy + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {class: "crosshair", y1: PAD.t, y2: plotB}, svg);
+    const dot = el("circle", {r: 4, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: PAD.t, width: W - PAD.l - PAD.r, height: plotB - PAD.t,
+      fill: "transparent", style: "cursor:crosshair"}, svg);
+    function show(ev) {
+      const rect = svg.getBoundingClientRect();
+      const px = (ev.clientX - rect.left) / rect.width * W;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const x = xScale(i, W), rowsArr = rowsFn(i), yv = yFn(i);
+      cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.style.visibility = "visible";
+      dot.setAttribute("cx", x); dot.setAttribute("cy", yv); dot.style.visibility = "visible";
+      tip.style.visibility = "visible";
+      tip.innerHTML = `<div class="tdate">${fmtDate(rows[i].d)}</div>` +
+        rowsArr.map(([lbl, val, on]) => `<div class="trow"><span class="tkey${on ? "" : " none"}"></span><span class="tval">${val}</span><span class="tlbl">${lbl}</span></div>`).join("");
+      const tw = tip.offsetWidth, box_w = box.clientWidth;
+      let tx = x / W * box_w + 12; if (tx + tw > box_w) tx = x / W * box_w - tw - 12;
+      tip.style.left = Math.max(0, tx) + "px";
+      tip.style.top = (yv / (box.querySelector("svg").viewBox.baseVal.height) * box.clientHeight - 10) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"AVGO":{"rows":[{"d":"2023-06-07","c":79.263,"eps":4.3,"pe":18.4},{"d":"2023-06-08","c":80.42,"eps":4.3,"pe":18.7},{"d":"2023-06-09","c":80.462,"eps":4.3,"pe":18.7},{"d":"2023-06-12","c":85.536,"eps":4.31,"pe":19.8},{"d":"2023-06-13","c":85.112,"eps":4.31,"pe":19.7},{"d":"2023-06-14","c":88.618,"eps":4.32,"pe":20.5},{"d":"2023-06-15","c":88.343,"eps":4.32,"pe":20.5},{"d":"2023-06-16","c":86.811,"eps":4.32,"pe":20.1},{"d":"2023-06-20","c":86.803,"eps":4.33,"pe":20.0},{"d":"2023-06-21","c":84.766,"eps":4.33,"pe":19.6},{"d":"2023-06-22","c":84.243,"eps":4.33,"pe":19.4},{"d":"2023-06-23","c":82.215,"eps":4.34,"pe":19.0},{"d":"2023-06-26","c":82.163,"eps":4.34,"pe":18.9},{"d":"2023-06-27","c":84.84,"eps":4.35,"pe":19.5},{"d":"2023-06-28","c":84.794,"eps":4.35,"pe":19.5},{"d":"2023-06-29","c":86.257,"eps":4.35,"pe":19.8},{"d":"2023-06-30","c":86.743,"eps":4.35,"pe":19.9},{"d":"2023-07-03","c":87.644,"eps":4.36,"pe":20.1},{"d":"2023-07-05","c":86.186,"eps":4.36,"pe":19.8},{"d":"2023-07-06","c":84.8,"eps":4.37,"pe":19.4},{"d":"2023-07-07","c":84.675,"eps":4.37,"pe":19.4},{"d":"2023-07-10","c":87.773,"eps":4.37,"pe":20.1},{"d":"2023-07-11","c":88.205,"eps":4.38,"pe":20.2},{"d":"2023-07-12","c":88.995,"eps":4.38,"pe":20.3},{"d":"2023-07-13","c":89.036,"eps":4.38,"pe":20.3},{"d":"2023-07-14","c":88.858,"eps":4.38,"pe":20.3},{"d":"2023-07-17","c":91.035,"eps":4.39,"pe":20.7},{"d":"2023-07-18","c":90.343,"eps":4.39,"pe":20.6},{"d":"2023-07-19","c":90.137,"eps":4.39,"pe":20.5},{"d":"2023-07-20","c":88.834,"eps":4.4,"pe":20.2},{"d":"2023-07-21","c":89.675,"eps":4.4,"pe":20.4},{"d":"2023-07-24","c":90.159,"eps":4.41,"pe":20.5},{"d":"2023-07-25","c":91.799,"eps":4.41,"pe":20.8},{"d":"2023-07-26","c":89.309,"eps":4.41,"pe":20.2},{"d":"2023-07-27","c":89.353,"eps":4.41,"pe":20.2},{"d":"2023-07-28","c":89.979,"eps":4.42,"pe":20.4},{"d":"2023-07-31","c":89.865,"eps":4.42,"pe":20.3},{"d":"2023-08-01","c":92.0,"eps":4.42,"pe":20.8},{"d":"2023-08-02","c":89.23,"eps":4.43,"pe":20.2},{"d":"2023-08-03","c":88.498,"eps":4.43,"pe":20.0},{"d":"2023-08-04","c":88.165,"eps":4.43,"pe":19.9},{"d":"2023-08-07","c":89.706,"eps":4.44,"pe":20.2},{"d":"2023-08-08","c":88.316,"eps":4.44,"pe":19.9},{"d":"2023-08-09","c":85.073,"eps":4.44,"pe":19.2},{"d":"2023-08-10","c":84.29,"eps":4.44,"pe":19.0},{"d":"2023-08-11","c":82.976,"eps":4.45,"pe":18.7},{"d":"2023-08-14","c":85.41,"eps":4.45,"pe":19.2},{"d":"2023-08-15","c":84.252,"eps":4.46,"pe":18.9},{"d":"2023-08-16","c":83.299,"eps":4.46,"pe":18.7},{"d":"2023-08-17","c":82.71,"eps":4.46,"pe":18.5},{"d":"2023-08-18","c":82.584,"eps":4.46,"pe":18.5},{"d":"2023-08-21","c":86.514,"eps":4.47,"pe":19.4},{"d":"2023-08-22","c":85.579,"eps":4.47,"pe":19.1},{"d":"2023-08-23","c":87.658,"eps":4.47,"pe":19.6},{"d":"2023-08-24","c":85.446,"eps":4.48,"pe":19.1},{"d":"2023-08-25","c":85.182,"eps":4.48,"pe":19.0},{"d":"2023-08-28","c":86.108,"eps":4.49,"pe":19.2},{"d":"2023-08-29","c":88.993,"eps":4.49,"pe":19.8},{"d":"2023-08-30","c":89.228,"eps":4.49,"pe":19.9},{"d":"2023-08-31","c":92.289,"eps":4.49,"pe":20.5},{"d":"2023-09-01","c":87.252,"eps":4.49,"pe":19.4},{"d":"2023-09-05","c":87.217,"eps":4.5,"pe":19.4},{"d":"2023-09-06","c":87.227,"eps":4.51,"pe":19.4},{"d":"2023-09-07","c":85.703,"eps":4.51,"pe":19.0},{"d":"2023-09-08","c":85.755,"eps":4.51,"pe":19.0},{"d":"2023-09-11","c":85.914,"eps":4.52,"pe":19.0},{"d":"2023-09-12","c":84.452,"eps":4.52,"pe":18.7},{"d":"2023-09-13","c":85.293,"eps":4.52,"pe":18.9},{"d":"2023-09-14","c":87.164,"eps":4.52,"pe":19.3},{"d":"2023-09-15","c":85.168,"eps":4.53,"pe":18.8},{"d":"2023-09-18","c":85.0,"eps":4.53,"pe":18.8},{"d":"2023-09-19","c":84.92,"eps":4.54,"pe":18.7},{"d":"2023-09-20","c":83.057,"eps":4.54,"pe":18.3},{"d":"2023-09-21","c":80.836,"eps":4.54,"pe":17.8},{"d":"2023-09-22","c":82.908,"eps":4.54,"pe":18.3},{"d":"2023-09-25","c":83.389,"eps":4.55,"pe":18.3},{"d":"2023-09-26","c":81.619,"eps":4.55,"pe":17.9},{"d":"2023-09-27","c":81.681,"eps":4.55,"pe":17.9},{"d":"2023-09-28","c":83.2,"eps":4.56,"pe":18.3},{"d":"2023-09-29","c":83.058,"eps":4.56,"pe":18.2},{"d":"2023-10-02","c":83.495,"eps":4.56,"pe":18.3},{"d":"2023-10-03","c":81.483,"eps":4.57,"pe":17.8},{"d":"2023-10-04","c":82.381,"eps":4.57,"pe":18.0},{"d":"2023-10-05","c":82.386,"eps":4.57,"pe":18.0},{"d":"2023-10-06","c":84.526,"eps":4.57,"pe":18.5},{"d":"2023-10-09","c":85.588,"eps":4.58,"pe":18.7},{"d":"2023-10-10","c":85.841,"eps":4.58,"pe":18.7},{"d":"2023-10-11","c":87.456,"eps":4.58,"pe":19.1},{"d":"2023-10-12","c":90.56,"eps":4.59,"pe":19.7},{"d":"2023-10-13","c":88.318,"eps":4.59,"pe":19.2},{"d":"2023-10-16","c":90.257,"eps":4.6,"pe":19.6},{"d":"2023-10-17","c":88.44,"eps":4.6,"pe":19.2},{"d":"2023-10-18","c":88.703,"eps":4.6,"pe":19.3},{"d":"2023-10-19","c":86.783,"eps":4.6,"pe":18.9},{"d":"2023-10-20","c":85.363,"eps":4.61,"pe":18.5},{"d":"2023-10-23","c":86.222,"eps":4.61,"pe":18.7},{"d":"2023-10-24","c":88.111,"eps":4.61,"pe":19.1},{"d":"2023-10-25","c":84.963,"eps":4.62,"pe":18.4},{"d":"2023-10-26","c":82.675,"eps":4.62,"pe":17.9},{"d":"2023-10-27","c":83.836,"eps":4.62,"pe":18.1},{"d":"2023-10-30","c":84.125,"eps":4.63,"pe":18.2},{"d":"2023-10-31","c":84.137,"eps":4.63,"pe":18.2},{"d":"2023-11-01","c":85.294,"eps":4.63,"pe":18.4},{"d":"2023-11-02","c":87.13,"eps":4.63,"pe":18.8},{"d":"2023-11-03","c":88.268,"eps":4.64,"pe":19.0},{"d":"2023-11-06","c":88.083,"eps":4.64,"pe":19.0},{"d":"2023-11-07","c":89.782,"eps":4.65,"pe":19.3},{"d":"2023-11-08","c":91.113,"eps":4.65,"pe":19.6},{"d":"2023-11-09","c":91.138,"eps":4.65,"pe":19.6},{"d":"2023-11-10","c":95.752,"eps":4.65,"pe":20.6},{"d":"2023-11-13","c":94.693,"eps":4.66,"pe":20.3},{"d":"2023-11-14","c":97.296,"eps":4.66,"pe":20.9},{"d":"2023-11-15","c":97.54,"eps":4.66,"pe":20.9},{"d":"2023-11-16","c":95.955,"eps":4.67,"pe":20.6},{"d":"2023-11-17","c":97.773,"eps":4.67,"pe":20.9},{"d":"2023-11-20","c":99.571,"eps":4.68,"pe":21.3},{"d":"2023-11-21","c":98.12,"eps":4.68,"pe":21.0},{"d":"2023-11-22","c":97.2,"eps":4.68,"pe":20.8},{"d":"2023-11-24","c":97.887,"eps":4.68,"pe":20.9},{"d":"2023-11-27","c":95.024,"eps":4.69,"pe":20.3},{"d":"2023-11-28","c":94.635,"eps":4.69,"pe":20.2},{"d":"2023-11-29","c":94.083,"eps":4.7,"pe":20.0},{"d":"2023-11-30","c":92.573,"eps":4.7,"pe":19.7},{"d":"2023-12-01","c":93.0,"eps":4.7,"pe":19.8},{"d":"2023-12-04","c":92.397,"eps":4.71,"pe":19.6},{"d":"2023-12-05","c":91.312,"eps":4.71,"pe":19.4},{"d":"2023-12-06","c":90.364,"eps":4.71,"pe":19.2},{"d":"2023-12-07","c":92.226,"eps":4.72,"pe":19.6},{"d":"2023-12-08","c":94.43,"eps":4.72,"pe":20.0},{"d":"2023-12-11","c":102.924,"eps":4.73,"pe":21.8},{"d":"2023-12-12","c":107.228,"eps":4.73,"pe":22.7},{"d":"2023-12-13","c":108.969,"eps":4.73,"pe":23.0},{"d":"2023-12-14","c":110.649,"eps":4.73,"pe":23.4},{"d":"2023-12-15","c":112.974,"eps":4.74,"pe":23.8},{"d":"2023-12-18","c":114.7,"eps":4.75,"pe":24.2},{"d":"2023-12-19","c":113.958,"eps":4.75,"pe":24.0},{"d":"2023-12-20","c":111.038,"eps":4.75,"pe":23.4},{"d":"2023-12-21","c":112.729,"eps":4.75,"pe":23.7},{"d":"2023-12-22","c":112.198,"eps":4.76,"pe":23.6},{"d":"2023-12-26","c":113.189,"eps":4.77,"pe":23.7},{"d":"2023-12-27","c":112.617,"eps":4.77,"pe":23.6},{"d":"2023-12-28","c":112.241,"eps":4.77,"pe":23.5},{"d":"2023-12-29","c":111.625,"eps":4.77,"pe":23.4},{"d":"2024-01-02","c":108.538,"eps":4.79,"pe":22.7},{"d":"2024-01-03","c":105.858,"eps":4.79,"pe":22.1},{"d":"2024-01-04","c":104.901,"eps":4.79,"pe":21.9},{"d":"2024-01-05","c":104.928,"eps":4.79,"pe":21.9},{"d":"2024-01-08","c":107.485,"eps":4.8,"pe":22.4},{"d":"2024-01-09","c":108.249,"eps":4.8,"pe":22.5},{"d":"2024-01-10","c":108.057,"eps":4.81,"pe":22.5},{"d":"2024-01-11","c":109.998,"eps":4.81,"pe":22.9},{"d":"2024-01-12","c":110.768,"eps":4.81,"pe":23.0},{"d":"2024-01-16","c":111.496,"eps":4.82,"pe":23.1},{"d":"2024-01-17","c":110.367,"eps":4.83,"pe":22.9},{"d":"2024-01-18","c":114.391,"eps":4.83,"pe":23.7},{"d":"2024-01-19","c":121.12,"eps":4.83,"pe":25.1},{"d":"2024-01-22","c":122.05,"eps":4.84,"pe":25.2},{"d":"2024-01-23","c":122.631,"eps":4.84,"pe":25.3},{"d":"2024-01-24","c":125.387,"eps":4.84,"pe":25.9},{"d":"2024-01-25","c":123.0,"eps":4.85,"pe":25.4},{"d":"2024-01-26","c":120.488,"eps":4.85,"pe":24.8},{"d":"2024-01-29","c":121.777,"eps":4.86,"pe":25.1},{"d":"2024-01-30","c":120.816,"eps":4.86,"pe":24.9},{"d":"2024-01-31","c":118.0,"eps":4.86,"pe":24.3},{"d":"2024-02-01","c":120.001,"eps":4.87,"pe":24.7},{"d":"2024-02-02","c":122.434,"eps":4.87,"pe":25.1},{"d":"2024-02-05","c":124.31,"eps":4.88,"pe":25.5},{"d":"2024-02-06","c":122.265,"eps":4.88,"pe":25.1},{"d":"2024-02-07","c":125.706,"eps":4.88,"pe":25.7},{"d":"2024-02-08","c":127.476,"eps":4.88,"pe":26.1},{"d":"2024-02-09","c":128.344,"eps":4.89,"pe":26.3},{"d":"2024-02-12","c":126.5,"eps":4.9,"pe":25.8},{"d":"2024-02-13","c":125.165,"eps":4.9,"pe":25.6},{"d":"2024-02-14","c":126.222,"eps":4.9,"pe":25.8},{"d":"2024-02-15","c":126.507,"eps":4.9,"pe":25.8},{"d":"2024-02-16","c":124.548,"eps":4.91,"pe":25.4},{"d":"2024-02-20","c":122.655,"eps":4.92,"pe":24.9},{"d":"2024-02-21","c":122.745,"eps":4.92,"pe":25.0},{"d":"2024-02-22","c":130.49,"eps":4.92,"pe":26.5},{"d":"2024-02-23","c":129.637,"eps":4.92,"pe":26.3},{"d":"2024-02-26","c":130.913,"eps":4.93,"pe":26.5},{"d":"2024-02-27","c":129.623,"eps":4.94,"pe":26.3},{"d":"2024-02-28","c":128.942,"eps":4.94,"pe":26.1},{"d":"2024-02-29","c":130.049,"eps":4.94,"pe":26.3},{"d":"2024-03-01","c":139.917,"eps":4.94,"pe":28.3},{"d":"2024-03-04","c":140.226,"eps":4.95,"pe":28.3},{"d":"2024-03-05","c":134.275,"eps":4.95,"pe":27.1},{"d":"2024-03-06","c":135.0,"eps":4.96,"pe":27.2},{"d":"2024-03-07","c":140.701,"eps":4.96,"pe":28.4},{"d":"2024-03-08","c":130.872,"eps":4.96,"pe":26.4},{"d":"2024-03-11","c":129.312,"eps":4.97,"pe":26.0},{"d":"2024-03-12","c":129.188,"eps":4.97,"pe":26.0},{"d":"2024-03-13","c":125.787,"eps":4.98,"pe":25.3},{"d":"2024-03-14","c":126.227,"eps":4.98,"pe":25.4},{"d":"2024-03-15","c":123.55,"eps":4.98,"pe":24.8},{"d":"2024-03-18","c":123.724,"eps":4.99,"pe":24.8},{"d":"2024-03-19","c":123.801,"eps":4.99,"pe":24.8},{"d":"2024-03-20","c":127.6,"eps":4.99,"pe":25.6},{"d":"2024-03-21","c":134.8,"eps":5.0,"pe":27.0},{"d":"2024-03-22","c":135.347,"eps":5.0,"pe":27.1},{"d":"2024-03-25","c":135.158,"eps":5.01,"pe":27.0},{"d":"2024-03-26","c":133.149,"eps":5.01,"pe":26.6},{"d":"2024-03-27","c":131.873,"eps":5.01,"pe":26.3},{"d":"2024-03-28","c":132.541,"eps":5.02,"pe":26.4},{"d":"2024-04-01","c":135.026,"eps":5.03,"pe":26.9},{"d":"2024-04-02","c":133.876,"eps":5.03,"pe":26.6},{"d":"2024-04-03","c":136.321,"eps":5.03,"pe":27.1},{"d":"2024-04-04","c":131.75,"eps":5.03,"pe":26.2},{"d":"2024-04-05","c":133.943,"eps":5.04,"pe":26.6},{"d":"2024-04-08","c":133.61,"eps":5.04,"pe":26.5},{"d":"2024-04-09","c":133.408,"eps":5.05,"pe":26.4},{"d":"2024-04-10","c":132.237,"eps":5.05,"pe":26.2},{"d":"2024-04-11","c":138.246,"eps":5.05,"pe":27.4},{"d":"2024-04-12","c":134.407,"eps":5.06,"pe":26.6},{"d":"2024-04-15","c":131.069,"eps":5.06,"pe":25.9},{"d":"2024-04-16","c":132.906,"eps":5.07,"pe":26.2},{"d":"2024-04-17","c":128.263,"eps":5.07,"pe":25.3},{"d":"2024-04-18","c":125.899,"eps":5.07,"pe":24.8},{"d":"2024-04-19","c":120.471,"eps":5.07,"pe":23.7},{"d":"2024-04-22","c":122.446,"eps":5.08,"pe":24.1},{"d":"2024-04-23","c":124.919,"eps":5.09,"pe":24.6},{"d":"2024-04-24","c":125.682,"eps":5.09,"pe":24.7},{"d":"2024-04-25","c":129.442,"eps":5.09,"pe":25.4},{"d":"2024-04-26","c":134.407,"eps":5.09,"pe":26.4},{"d":"2024-04-29","c":133.862,"eps":5.1,"pe":26.2},{"d":"2024-04-30","c":130.027,"eps":5.1,"pe":25.5},{"d":"2024-05-01","c":124.286,"eps":5.11,"pe":24.3},{"d":"2024-05-02","c":123.857,"eps":5.11,"pe":24.2},{"d":"2024-05-03","c":127.811,"eps":5.11,"pe":25.0},{"d":"2024-05-06","c":131.031,"eps":5.12,"pe":25.6},{"d":"2024-05-07","c":130.311,"eps":5.12,"pe":25.4},{"d":"2024-05-08","c":132.537,"eps":5.13,"pe":25.9},{"d":"2024-05-09","c":130.567,"eps":5.13,"pe":25.5},{"d":"2024-05-10","c":133.28,"eps":5.13,"pe":26.0},{"d":"2024-05-13","c":133.751,"eps":5.14,"pe":26.0},{"d":"2024-05-14","c":138.003,"eps":5.14,"pe":26.8},{"d":"2024-05-15","c":143.617,"eps":5.14,"pe":27.9},{"d":"2024-05-16","c":141.213,"eps":5.15,"pe":27.4},{"d":"2024-05-17","c":139.529,"eps":5.15,"pe":27.1},{"d":"2024-05-20","c":141.403,"eps":5.16,"pe":27.4},{"d":"2024-05-21","c":139.92,"eps":5.16,"pe":27.1},{"d":"2024-05-22","c":139.224,"eps":5.16,"pe":27.0},{"d":"2024-05-23","c":139.329,"eps":5.17,"pe":27.0},{"d":"2024-05-24","c":140.784,"eps":5.17,"pe":27.2},{"d":"2024-05-28","c":141.245,"eps":5.18,"pe":27.3},{"d":"2024-05-29","c":139.067,"eps":5.18,"pe":26.8},{"d":"2024-05-30","c":136.408,"eps":5.18,"pe":26.3},{"d":"2024-05-31","c":132.855,"eps":5.19,"pe":25.6},{"d":"2024-06-03","c":132.19,"eps":5.19,"pe":25.4},{"d":"2024-06-04","c":133.082,"eps":5.2,"pe":25.6},{"d":"2024-06-05","c":141.309,"eps":5.2,"pe":27.2},{"d":"2024-06-06","c":140.127,"eps":5.21,"pe":26.9},{"d":"2024-06-07","c":140.664,"eps":5.21,"pe":27.0},{"d":"2024-06-10","c":144.047,"eps":5.23,"pe":27.5},{"d":"2024-06-11","c":146.103,"eps":5.23,"pe":27.9},{"d":"2024-06-12","c":149.551,"eps":5.24,"pe":28.5},{"d":"2024-06-13","c":167.899,"eps":5.25,"pe":32.0},{"d":"2024-06-14","c":173.504,"eps":5.25,"pe":33.0},{"d":"2024-06-17","c":182.887,"eps":5.27,"pe":34.7},{"d":"2024-06-18","c":180.252,"eps":5.28,"pe":34.2},{"d":"2024-06-20","c":173.456,"eps":5.29,"pe":32.8},{"d":"2024-06-21","c":165.863,"eps":5.29,"pe":31.3},{"d":"2024-06-24","c":159.221,"eps":5.31,"pe":30.0},{"d":"2024-06-25","c":158.079,"eps":5.32,"pe":29.7},{"d":"2024-06-26","c":159.2,"eps":5.32,"pe":29.9},{"d":"2024-06-27","c":158.666,"eps":5.33,"pe":29.8},{"d":"2024-06-28","c":160.553,"eps":5.33,"pe":30.1},{"d":"2024-07-01","c":164.08,"eps":5.35,"pe":30.7},{"d":"2024-07-02","c":165.748,"eps":5.36,"pe":30.9},{"d":"2024-07-03","c":172.922,"eps":5.36,"pe":32.2},{"d":"2024-07-05","c":170.331,"eps":5.37,"pe":31.7},{"d":"2024-07-08","c":174.586,"eps":5.39,"pe":32.4},{"d":"2024-07-09","c":173.331,"eps":5.4,"pe":32.1},{"d":"2024-07-10","c":174.469,"eps":5.4,"pe":32.3},{"d":"2024-07-11","c":170.595,"eps":5.41,"pe":31.5},{"d":"2024-07-12","c":170.067,"eps":5.41,"pe":31.4},{"d":"2024-07-15","c":171.42,"eps":5.43,"pe":31.6},{"d":"2024-07-16","c":169.375,"eps":5.44,"pe":31.2},{"d":"2024-07-17","c":155.98,"eps":5.44,"pe":28.7},{"d":"2024-07-18","c":160.52,"eps":5.45,"pe":29.5},{"d":"2024-07-19","c":157.35,"eps":5.45,"pe":28.8},{"d":"2024-07-22","c":161.06,"eps":5.47,"pe":29.4},{"d":"2024-07-23","c":163.77,"eps":5.48,"pe":29.9},{"d":"2024-07-24","c":151.34,"eps":5.48,"pe":27.6},{"d":"2024-07-25","c":149.26,"eps":5.49,"pe":27.2},{"d":"2024-07-26","c":151.63,"eps":5.5,"pe":27.6},{"d":"2024-07-29","c":150.22,"eps":5.51,"pe":27.3},{"d":"2024-07-30","c":143.52,"eps":5.52,"pe":26.0},{"d":"2024-07-31","c":160.68,"eps":5.52,"pe":29.1},{"d":"2024-08-01","c":147.02,"eps":5.53,"pe":26.6},{"d":"2024-08-02","c":143.82,"eps":5.54,"pe":26.0},{"d":"2024-08-05","c":142.08,"eps":5.55,"pe":25.6},{"d":"2024-08-06","c":143.92,"eps":5.56,"pe":25.9},{"d":"2024-08-07","c":136.27,"eps":5.56,"pe":24.5},{"d":"2024-08-08","c":145.74,"eps":5.57,"pe":26.2},{"d":"2024-08-09","c":148.26,"eps":5.58,"pe":26.6},{"d":"2024-08-12","c":148.62,"eps":5.59,"pe":26.6},{"d":"2024-08-13","c":156.16,"eps":5.6,"pe":27.9},{"d":"2024-08-14","c":157.69,"eps":5.61,"pe":28.1},{"d":"2024-08-15","c":166.13,"eps":5.61,"pe":29.6},{"d":"2024-08-16","c":165.72,"eps":5.62,"pe":29.5},{"d":"2024-08-19","c":167.71,"eps":5.63,"pe":29.8},{"d":"2024-08-20","c":165.95,"eps":5.64,"pe":29.4},{"d":"2024-08-21","c":165.78,"eps":5.65,"pe":29.4},{"d":"2024-08-22","c":162.34,"eps":5.65,"pe":28.7},{"d":"2024-08-23","c":166.36,"eps":5.66,"pe":29.4},{"d":"2024-08-26","c":159.62,"eps":5.67,"pe":28.1},{"d":"2024-08-27","c":161.39,"eps":5.68,"pe":28.4},{"d":"2024-08-28","c":158.18,"eps":5.69,"pe":27.8},{"d":"2024-08-29","c":156.93,"eps":5.69,"pe":27.6},{"d":"2024-08-30","c":162.82,"eps":5.7,"pe":28.6},{"d":"2024-09-03","c":152.79,"eps":5.72,"pe":26.7},{"d":"2024-09-04","c":154.12,"eps":5.73,"pe":26.9},{"d":"2024-09-05","c":152.82,"eps":5.73,"pe":26.7},{"d":"2024-09-06","c":136.995,"eps":5.74,"pe":23.9},{"d":"2024-09-09","c":140.82,"eps":5.76,"pe":24.5},{"d":"2024-09-10","c":148.21,"eps":5.76,"pe":25.7},{"d":"2024-09-11","c":158.27,"eps":5.77,"pe":27.4},{"d":"2024-09-12","c":164.56,"eps":5.77,"pe":28.5},{"d":"2024-09-13","c":167.69,"eps":5.78,"pe":29.0},{"d":"2024-09-16","c":164.02,"eps":5.8,"pe":28.3},{"d":"2024-09-17","c":162.47,"eps":5.8,"pe":28.0},{"d":"2024-09-18","c":161.67,"eps":5.81,"pe":27.8},{"d":"2024-09-19","c":167.42,"eps":5.81,"pe":28.8},{"d":"2024-09-20","c":171.1,"eps":5.82,"pe":29.4},{"d":"2024-09-23","c":172.94,"eps":5.84,"pe":29.6},{"d":"2024-09-24","c":174.84,"eps":5.84,"pe":29.9},{"d":"2024-09-25","c":175.52,"eps":5.85,"pe":30.0},{"d":"2024-09-26","c":178.09,"eps":5.85,"pe":30.4},{"d":"2024-09-27","c":172.69,"eps":5.86,"pe":29.5},{"d":"2024-09-30","c":172.5,"eps":5.88,"pe":29.3},{"d":"2024-10-01","c":167.47,"eps":5.88,"pe":28.5},{"d":"2024-10-02","c":170.66,"eps":5.89,"pe":29.0},{"d":"2024-10-03","c":171.89,"eps":5.89,"pe":29.2},{"d":"2024-10-04","c":176.64,"eps":5.9,"pe":29.9},{"d":"2024-10-07","c":175.08,"eps":5.92,"pe":29.6},{"d":"2024-10-08","c":180.73,"eps":5.92,"pe":30.5},{"d":"2024-10-09","c":185.95,"eps":5.93,"pe":31.4},{"d":"2024-10-10","c":185.69,"eps":5.94,"pe":31.3},{"d":"2024-10-11","c":181.48,"eps":5.94,"pe":30.5},{"d":"2024-10-14","c":182.31,"eps":5.96,"pe":30.6},{"d":"2024-10-15","c":175.98,"eps":5.96,"pe":29.5},{"d":"2024-10-16","c":176.82,"eps":5.97,"pe":29.6},{"d":"2024-10-17","c":181.53,"eps":5.98,"pe":30.4},{"d":"2024-10-18","c":179.89,"eps":5.98,"pe":30.1},{"d":"2024-10-21","c":179.99,"eps":6.0,"pe":30.0},{"d":"2024-10-22","c":179.38,"eps":6.0,"pe":29.9},{"d":"2024-10-23","c":173.51,"eps":6.01,"pe":28.9},{"d":"2024-10-24","c":171.35,"eps":6.02,"pe":28.5},{"d":"2024-10-25","c":173.0,"eps":6.02,"pe":28.7},{"d":"2024-10-28","c":172.02,"eps":6.04,"pe":28.5},{"d":"2024-10-29","c":179.24,"eps":6.05,"pe":29.6},{"d":"2024-10-30","c":176.64,"eps":6.05,"pe":29.2},{"d":"2024-10-31","c":169.77,"eps":6.06,"pe":28.0},{"d":"2024-11-01","c":168.92,"eps":6.06,"pe":27.9},{"d":"2024-11-04","c":168.55,"eps":6.08,"pe":27.7},{"d":"2024-11-05","c":173.9,"eps":6.09,"pe":28.6},{"d":"2024-11-06","c":179.55,"eps":6.09,"pe":29.5},{"d":"2024-11-07","c":183.81,"eps":6.1,"pe":30.1},{"d":"2024-11-08","c":183.64,"eps":6.1,"pe":30.1},{"d":"2024-11-11","c":178.91,"eps":6.12,"pe":29.2},{"d":"2024-11-12","c":176.22,"eps":6.13,"pe":28.8},{"d":"2024-11-13","c":173.58,"eps":6.13,"pe":28.3},{"d":"2024-11-14","c":170.38,"eps":6.14,"pe":27.8},{"d":"2024-11-15","c":164.84,"eps":6.14,"pe":26.8},{"d":"2024-11-18","c":165.67,"eps":6.16,"pe":26.9},{"d":"2024-11-19","c":165.35,"eps":6.17,"pe":26.8},{"d":"2024-11-20","c":163.25,"eps":6.17,"pe":26.4},{"d":"2024-11-21","c":163.94,"eps":6.18,"pe":26.5},{"d":"2024-11-22","c":164.23,"eps":6.18,"pe":26.6},{"d":"2024-11-25","c":164.82,"eps":6.2,"pe":26.6},{"d":"2024-11-26","c":164.74,"eps":6.21,"pe":26.5},{"d":"2024-11-27","c":159.67,"eps":6.21,"pe":25.7},{"d":"2024-11-29","c":162.08,"eps":6.22,"pe":26.0},{"d":"2024-12-02","c":166.51,"eps":6.24,"pe":26.7},{"d":"2024-12-03","c":168.15,"eps":6.25,"pe":26.9},{"d":"2024-12-04","c":170.56,"eps":6.25,"pe":27.3},{"d":"2024-12-05","c":170.47,"eps":6.26,"pe":27.2},{"d":"2024-12-06","c":179.53,"eps":6.27,"pe":28.7},{"d":"2024-12-09","c":178.94,"eps":6.28,"pe":28.5},{"d":"2024-12-10","c":171.81,"eps":6.29,"pe":27.3},{"d":"2024-12-11","c":183.2,"eps":6.29,"pe":29.1},{"d":"2024-12-12","c":180.66,"eps":6.3,"pe":28.7},{"d":"2024-12-13","c":224.8,"eps":6.31,"pe":35.7},{"d":"2024-12-16","c":250.0,"eps":6.32,"pe":39.6},{"d":"2024-12-17","c":240.23,"eps":6.33,"pe":38.0},{"d":"2024-12-18","c":223.62,"eps":6.33,"pe":35.3},{"d":"2024-12-19","c":218.32,"eps":6.34,"pe":34.5},{"d":"2024-12-20","c":220.79,"eps":6.34,"pe":34.8},{"d":"2024-12-23","c":232.35,"eps":6.36,"pe":36.6},{"d":"2024-12-24","c":239.68,"eps":6.36,"pe":37.7},{"d":"2024-12-26","c":245.36,"eps":6.37,"pe":38.5},{"d":"2024-12-27","c":241.75,"eps":6.38,"pe":37.9},{"d":"2024-12-30","c":235.58,"eps":6.39,"pe":36.9},{"d":"2024-12-31","c":231.84,"eps":6.4,"pe":36.2},{"d":"2025-01-02","c":231.98,"eps":6.41,"pe":36.2},{"d":"2025-01-03","c":232.55,"eps":6.41,"pe":36.3},{"d":"2025-01-06","c":236.41,"eps":6.43,"pe":36.8},{"d":"2025-01-07","c":228.64,"eps":6.43,"pe":35.5},{"d":"2025-01-08","c":229.31,"eps":6.44,"pe":35.6},{"d":"2025-01-10","c":224.31,"eps":6.45,"pe":34.8},{"d":"2025-01-13","c":225.29,"eps":6.46,"pe":34.8},{"d":"2025-01-14","c":224.7,"eps":6.47,"pe":34.7},{"d":"2025-01-15","c":228.0,"eps":6.47,"pe":35.2},{"d":"2025-01-16","c":229.41,"eps":6.48,"pe":35.4},{"d":"2025-01-17","c":237.44,"eps":6.49,"pe":36.6},{"d":"2025-01-21","c":240.31,"eps":6.51,"pe":36.9},{"d":"2025-01-22","c":240.91,"eps":6.51,"pe":37.0},{"d":"2025-01-23","c":240.28,"eps":6.52,"pe":36.9},{"d":"2025-01-24","c":244.7,"eps":6.52,"pe":37.5},{"d":"2025-01-27","c":202.13,"eps":6.54,"pe":30.9},{"d":"2025-01-28","c":207.36,"eps":6.54,"pe":31.7},{"d":"2025-01-29","c":206.35,"eps":6.55,"pe":31.5},{"d":"2025-01-30","c":215.66,"eps":6.55,"pe":32.9},{"d":"2025-01-31","c":221.27,"eps":6.56,"pe":33.7},{"d":"2025-02-03","c":217.73,"eps":6.57,"pe":33.1},{"d":"2025-02-04","c":222.43,"eps":6.58,"pe":33.8},{"d":"2025-02-05","c":232.0,"eps":6.58,"pe":35.2},{"d":"2025-02-06","c":231.36,"eps":6.59,"pe":35.1},{"d":"2025-02-07","c":224.87,"eps":6.59,"pe":34.1},{"d":"2025-02-10","c":235.04,"eps":6.61,"pe":35.6},{"d":"2025-02-11","c":235.04,"eps":6.61,"pe":35.5},{"d":"2025-02-12","c":236.35,"eps":6.62,"pe":35.7},{"d":"2025-02-13","c":235.8,"eps":6.62,"pe":35.6},{"d":"2025-02-14","c":233.04,"eps":6.63,"pe":35.2},{"d":"2025-02-18","c":228.53,"eps":6.65,"pe":34.4},{"d":"2025-02-19","c":228.73,"eps":6.65,"pe":34.4},{"d":"2025-02-20","c":226.74,"eps":6.66,"pe":34.0},{"d":"2025-02-21","c":218.66,"eps":6.67,"pe":32.8},{"d":"2025-02-24","c":207.93,"eps":6.68,"pe":31.1},{"d":"2025-02-25","c":202.54,"eps":6.69,"pe":30.3},{"d":"2025-02-26","c":212.94,"eps":6.69,"pe":31.8},{"d":"2025-02-27","c":197.8,"eps":6.7,"pe":29.5},{"d":"2025-02-28","c":199.43,"eps":6.7,"pe":29.8},{"d":"2025-03-03","c":187.37,"eps":6.72,"pe":27.9},{"d":"2025-03-04","c":187.48,"eps":6.72,"pe":27.9},{"d":"2025-03-05","c":191.58,"eps":6.73,"pe":28.5},{"d":"2025-03-06","c":179.45,"eps":6.73,"pe":26.7},{"d":"2025-03-07","c":194.96,"eps":6.74,"pe":28.9},{"d":"2025-03-10","c":184.45,"eps":6.75,"pe":27.3},{"d":"2025-03-11","c":190.09,"eps":6.76,"pe":28.1},{"d":"2025-03-12","c":194.23,"eps":6.76,"pe":28.7},{"d":"2025-03-13","c":191.36,"eps":6.77,"pe":28.3},{"d":"2025-03-14","c":195.54,"eps":6.77,"pe":28.9},{"d":"2025-03-17","c":194.5,"eps":6.79,"pe":28.7},{"d":"2025-03-18","c":188.67,"eps":6.79,"pe":27.8},{"d":"2025-03-19","c":195.57,"eps":6.8,"pe":28.8},{"d":"2025-03-20","c":190.54,"eps":6.8,"pe":28.0},{"d":"2025-03-21","c":191.66,"eps":6.81,"pe":28.1},{"d":"2025-03-24","c":191.25,"eps":6.82,"pe":28.0},{"d":"2025-03-25","c":188.26,"eps":6.83,"pe":27.6},{"d":"2025-03-26","c":179.27,"eps":6.83,"pe":26.2},{"d":"2025-03-27","c":171.99,"eps":6.84,"pe":25.1},{"d":"2025-03-28","c":169.12,"eps":6.85,"pe":24.7},{"d":"2025-03-31","c":167.43,"eps":6.86,"pe":24.4},{"d":"2025-04-01","c":168.52,"eps":6.87,"pe":24.5},{"d":"2025-04-02","c":172.09,"eps":6.87,"pe":25.0},{"d":"2025-04-03","c":154.01,"eps":6.88,"pe":22.4},{"d":"2025-04-04","c":146.29,"eps":6.88,"pe":21.3},{"d":"2025-04-07","c":154.14,"eps":6.9,"pe":22.4},{"d":"2025-04-08","c":156.03,"eps":6.9,"pe":22.6},{"d":"2025-04-09","c":185.15,"eps":6.91,"pe":26.8},{"d":"2025-04-10","c":172.3,"eps":6.91,"pe":24.9},{"d":"2025-04-11","c":181.94,"eps":6.92,"pe":26.3},{"d":"2025-04-14","c":178.36,"eps":6.93,"pe":25.7},{"d":"2025-04-15","c":178.95,"eps":6.94,"pe":25.8},{"d":"2025-04-16","c":174.61,"eps":6.94,"pe":25.1},{"d":"2025-04-17","c":170.99,"eps":6.95,"pe":24.6},{"d":"2025-04-21","c":166.21,"eps":6.97,"pe":23.9},{"d":"2025-04-22","c":169.58,"eps":6.97,"pe":24.3},{"d":"2025-04-23","c":176.91,"eps":6.98,"pe":25.3},{"d":"2025-04-24","c":188.15,"eps":6.98,"pe":26.9},{"d":"2025-04-25","c":192.31,"eps":6.99,"pe":27.5},{"d":"2025-04-28","c":192.47,"eps":7.0,"pe":27.5},{"d":"2025-04-29","c":191.17,"eps":7.01,"pe":27.3},{"d":"2025-04-30","c":192.47,"eps":7.01,"pe":27.4},{"d":"2025-05-01","c":197.33,"eps":7.02,"pe":28.1},{"d":"2025-05-02","c":203.64,"eps":7.03,"pe":29.0},{"d":"2025-05-05","c":200.72,"eps":7.04,"pe":28.5},{"d":"2025-05-06","c":200.09,"eps":7.05,"pe":28.4},{"d":"2025-05-07","c":204.81,"eps":7.05,"pe":29.0},{"d":"2025-05-08","c":207.77,"eps":7.06,"pe":29.4},{"d":"2025-05-09","c":208.2,"eps":7.06,"pe":29.5},{"d":"2025-05-12","c":221.58,"eps":7.08,"pe":31.3},{"d":"2025-05-13","c":232.42,"eps":7.08,"pe":32.8},{"d":"2025-05-14","c":232.12,"eps":7.09,"pe":32.8},{"d":"2025-05-15","c":232.64,"eps":7.09,"pe":32.8},{"d":"2025-05-16","c":228.61,"eps":7.1,"pe":32.2},{"d":"2025-05-19","c":230.63,"eps":7.11,"pe":32.4},{"d":"2025-05-20","c":231.68,"eps":7.12,"pe":32.5},{"d":"2025-05-21","c":229.73,"eps":7.12,"pe":32.3},{"d":"2025-05-22","c":230.53,"eps":7.13,"pe":32.3},{"d":"2025-05-23","c":228.72,"eps":7.13,"pe":32.1},{"d":"2025-05-27","c":235.65,"eps":7.15,"pe":32.9},{"d":"2025-05-28","c":239.43,"eps":7.16,"pe":33.4},{"d":"2025-05-29","c":241.97,"eps":7.16,"pe":33.8},{"d":"2025-05-30","c":242.07,"eps":7.17,"pe":33.8},{"d":"2025-06-02","c":248.71,"eps":7.18,"pe":34.6},{"d":"2025-06-03","c":256.85,"eps":7.19,"pe":35.7},{"d":"2025-06-04","c":261.08,"eps":7.19,"pe":36.3},{"d":"2025-06-05","c":259.93,"eps":7.2,"pe":36.1},{"d":"2025-06-06","c":246.93,"eps":7.21,"pe":34.2},{"d":"2025-06-09","c":244.28,"eps":7.24,"pe":33.7},{"d":"2025-06-10","c":244.63,"eps":7.25,"pe":33.7},{"d":"2025-06-11","c":252.91,"eps":7.26,"pe":34.8},{"d":"2025-06-12","c":256.07,"eps":7.27,"pe":35.2},{"d":"2025-06-13","c":248.7,"eps":7.28,"pe":34.1},{"d":"2025-06-16","c":252.1,"eps":7.32,"pe":34.5},{"d":"2025-06-17","c":249.37,"eps":7.33,"pe":34.0},{"d":"2025-06-18","c":251.26,"eps":7.34,"pe":34.2},{"d":"2025-06-20","c":249.99,"eps":7.36,"pe":34.0},{"d":"2025-06-23","c":253.77,"eps":7.39,"pe":34.3},{"d":"2025-06-24","c":263.77,"eps":7.4,"pe":35.6},{"d":"2025-06-25","c":264.65,"eps":7.41,"pe":35.7},{"d":"2025-06-26","c":270.17,"eps":7.42,"pe":36.4},{"d":"2025-06-27","c":269.35,"eps":7.43,"pe":36.2},{"d":"2025-06-30","c":275.65,"eps":7.46,"pe":36.9},{"d":"2025-07-01","c":264.74,"eps":7.48,"pe":35.4},{"d":"2025-07-02","c":269.9,"eps":7.49,"pe":36.1},{"d":"2025-07-03","c":275.18,"eps":7.5,"pe":36.7},{"d":"2025-07-07","c":274.18,"eps":7.54,"pe":36.4},{"d":"2025-07-08","c":271.8,"eps":7.55,"pe":36.0},{"d":"2025-07-09","c":277.9,"eps":7.56,"pe":36.8},{"d":"2025-07-10","c":275.4,"eps":7.57,"pe":36.4},{"d":"2025-07-11","c":274.38,"eps":7.58,"pe":36.2},{"d":"2025-07-14","c":275.6,"eps":7.61,"pe":36.2},{"d":"2025-07-15","c":280.94,"eps":7.62,"pe":36.9},{"d":"2025-07-16","c":280.81,"eps":7.63,"pe":36.8},{"d":"2025-07-17","c":286.45,"eps":7.64,"pe":37.5},{"d":"2025-07-18","c":283.34,"eps":7.66,"pe":37.0},{"d":"2025-07-21","c":288.21,"eps":7.69,"pe":37.5},{"d":"2025-07-22","c":278.59,"eps":7.7,"pe":36.2},{"d":"2025-07-23","c":283.69,"eps":7.71,"pe":36.8},{"d":"2025-07-24","c":288.71,"eps":7.72,"pe":37.4},{"d":"2025-07-25","c":290.18,"eps":7.73,"pe":37.5},{"d":"2025-07-28","c":294.3,"eps":7.76,"pe":37.9},{"d":"2025-07-29","c":297.42,"eps":7.77,"pe":38.3},{"d":"2025-07-30","c":302.62,"eps":7.78,"pe":38.9},{"d":"2025-07-31","c":293.7,"eps":7.79,"pe":37.7},{"d":"2025-08-01","c":288.64,"eps":7.8,"pe":37.0},{"d":"2025-08-04","c":297.72,"eps":7.83,"pe":38.0},{"d":"2025-08-05","c":292.93,"eps":7.85,"pe":37.3},{"d":"2025-08-06","c":301.67,"eps":7.86,"pe":38.4},{"d":"2025-08-07","c":303.76,"eps":7.87,"pe":38.6},{"d":"2025-08-08","c":304.97,"eps":7.88,"pe":38.7},{"d":"2025-08-11","c":303.9,"eps":7.91,"pe":38.4},{"d":"2025-08-12","c":312.83,"eps":7.92,"pe":39.5},{"d":"2025-08-13","c":309.09,"eps":7.93,"pe":39.0},{"d":"2025-08-14","c":311.23,"eps":7.94,"pe":39.2},{"d":"2025-08-15","c":306.34,"eps":7.95,"pe":38.5},{"d":"2025-08-18","c":305.76,"eps":7.98,"pe":38.3},{"d":"2025-08-19","c":294.91,"eps":7.99,"pe":36.9},{"d":"2025-08-20","c":291.17,"eps":8.0,"pe":36.4},{"d":"2025-08-21","c":289.6,"eps":8.01,"pe":36.1},{"d":"2025-08-22","c":294.0,"eps":8.03,"pe":36.6},{"d":"2025-08-25","c":294.23,"eps":8.06,"pe":36.5},{"d":"2025-08-26","c":298.01,"eps":8.07,"pe":36.9},{"d":"2025-08-27","c":300.25,"eps":8.08,"pe":37.2},{"d":"2025-08-28","c":308.65,"eps":8.09,"pe":38.2},{"d":"2025-08-29","c":297.39,"eps":8.1,"pe":36.7},{"d":"2025-09-02","c":298.24,"eps":8.14,"pe":36.6},{"d":"2025-09-03","c":302.39,"eps":8.15,"pe":37.1},{"d":"2025-09-04","c":306.1,"eps":8.16,"pe":37.5},{"d":"2025-09-05","c":334.89,"eps":8.17,"pe":41.0},{"d":"2025-09-08","c":345.65,"eps":8.21,"pe":42.1},{"d":"2025-09-09","c":336.67,"eps":8.22,"pe":41.0},{"d":"2025-09-10","c":369.57,"eps":8.23,"pe":44.9},{"d":"2025-09-11","c":359.63,"eps":8.24,"pe":43.7},{"d":"2025-09-12","c":359.87,"eps":8.25,"pe":43.6},{"d":"2025-09-15","c":364.09,"eps":8.28,"pe":44.0},{"d":"2025-09-16","c":360.0,"eps":8.29,"pe":43.4},{"d":"2025-09-17","c":346.17,"eps":8.3,"pe":41.7},{"d":"2025-09-18","c":345.35,"eps":8.31,"pe":41.6},{"d":"2025-09-19","c":344.94,"eps":8.32,"pe":41.5},{"d":"2025-09-22","c":338.79,"eps":8.35,"pe":40.6},{"d":"2025-09-23","c":338.94,"eps":8.36,"pe":40.5},{"d":"2025-09-24","c":339.31,"eps":8.37,"pe":40.5},{"d":"2025-09-25","c":336.1,"eps":8.39,"pe":40.1},{"d":"2025-09-26","c":334.53,"eps":8.4,"pe":39.8},{"d":"2025-09-29","c":327.9,"eps":8.43,"pe":38.9},{"d":"2025-09-30","c":329.91,"eps":8.44,"pe":39.1},{"d":"2025-10-01","c":333.39,"eps":8.45,"pe":39.5},{"d":"2025-10-02","c":338.18,"eps":8.46,"pe":40.0},{"d":"2025-10-03","c":338.37,"eps":8.47,"pe":39.9},{"d":"2025-10-06","c":335.49,"eps":8.5,"pe":39.5},{"d":"2025-10-07","c":336.41,"eps":8.51,"pe":39.5},{"d":"2025-10-08","c":345.5,"eps":8.52,"pe":40.5},{"d":"2025-10-09","c":345.02,"eps":8.53,"pe":40.4},{"d":"2025-10-10","c":324.63,"eps":8.54,"pe":38.0},{"d":"2025-10-13","c":356.7,"eps":8.58,"pe":41.6},{"d":"2025-10-14","c":344.13,"eps":8.59,"pe":40.1},{"d":"2025-10-15","c":351.33,"eps":8.6,"pe":40.9},{"d":"2025-10-16","c":354.15,"eps":8.61,"pe":41.1},{"d":"2025-10-17","c":349.33,"eps":8.62,"pe":40.5},{"d":"2025-10-20","c":349.24,"eps":8.65,"pe":40.4},{"d":"2025-10-21","c":342.66,"eps":8.66,"pe":39.6},{"d":"2025-10-22","c":340.3,"eps":8.67,"pe":39.2},{"d":"2025-10-23","c":344.29,"eps":8.68,"pe":39.7},{"d":"2025-10-24","c":354.13,"eps":8.69,"pe":40.7},{"d":"2025-10-27","c":362.05,"eps":8.72,"pe":41.5},{"d":"2025-10-28","c":372.97,"eps":8.73,"pe":42.7},{"d":"2025-10-29","c":385.98,"eps":8.74,"pe":44.1},{"d":"2025-10-30","c":376.47,"eps":8.76,"pe":43.0},{"d":"2025-10-31","c":369.63,"eps":8.77,"pe":42.2},{"d":"2025-11-03","c":362.55,"eps":8.8,"pe":41.2},{"d":"2025-11-04","c":351.94,"eps":8.81,"pe":40.0},{"d":"2025-11-05","c":358.98,"eps":8.82,"pe":40.7},{"d":"2025-11-06","c":355.59,"eps":8.83,"pe":40.3},{"d":"2025-11-07","c":349.43,"eps":8.84,"pe":39.5},{"d":"2025-11-10","c":358.39,"eps":8.87,"pe":40.4},{"d":"2025-11-11","c":351.96,"eps":8.88,"pe":39.6},{"d":"2025-11-12","c":355.22,"eps":8.89,"pe":39.9},{"d":"2025-11-13","c":339.98,"eps":8.9,"pe":38.2},{"d":"2025-11-14","c":342.46,"eps":8.91,"pe":38.4},{"d":"2025-11-17","c":342.65,"eps":8.95,"pe":38.3},{"d":"2025-11-18","c":340.5,"eps":8.96,"pe":38.0},{"d":"2025-11-19","c":354.42,"eps":8.97,"pe":39.5},{"d":"2025-11-20","c":346.82,"eps":8.98,"pe":38.6},{"d":"2025-11-21","c":340.2,"eps":8.99,"pe":37.8},{"d":"2025-11-24","c":377.96,"eps":9.02,"pe":41.9},{"d":"2025-11-25","c":385.03,"eps":9.03,"pe":42.6},{"d":"2025-11-26","c":397.57,"eps":9.04,"pe":44.0},{"d":"2025-11-28","c":402.96,"eps":9.06,"pe":44.5},{"d":"2025-12-01","c":386.08,"eps":9.09,"pe":42.5},{"d":"2025-12-02","c":381.57,"eps":9.1,"pe":41.9},{"d":"2025-12-03","c":380.61,"eps":9.12,"pe":41.8},{"d":"2025-12-04","c":381.03,"eps":9.13,"pe":41.8},{"d":"2025-12-05","c":390.24,"eps":9.14,"pe":42.7},{"d":"2025-12-08","c":401.1,"eps":9.17,"pe":43.7},{"d":"2025-12-09","c":406.29,"eps":9.18,"pe":44.3},{"d":"2025-12-10","c":412.97,"eps":9.19,"pe":44.9},{"d":"2025-12-11","c":406.37,"eps":9.2,"pe":44.2},{"d":"2025-12-12","c":359.93,"eps":9.22,"pe":39.0},{"d":"2025-12-15","c":339.81,"eps":9.3,"pe":36.5},{"d":"2025-12-16","c":341.3,"eps":9.32,"pe":36.6},{"d":"2025-12-17","c":326.02,"eps":9.35,"pe":34.9},{"d":"2025-12-18","c":329.88,"eps":9.37,"pe":35.2},{"d":"2025-12-19","c":340.36,"eps":9.4,"pe":36.2},{"d":"2025-12-22","c":341.45,"eps":9.47,"pe":36.0},{"d":"2025-12-23","c":349.32,"eps":9.5,"pe":36.8},{"d":"2025-12-24","c":350.22,"eps":9.52,"pe":36.8},{"d":"2025-12-26","c":352.13,"eps":9.57,"pe":36.8},{"d":"2025-12-29","c":349.39,"eps":9.65,"pe":36.2},{"d":"2025-12-30","c":349.85,"eps":9.67,"pe":36.2},{"d":"2025-12-31","c":346.1,"eps":9.7,"pe":35.7},{"d":"2026-01-02","c":347.62,"eps":9.75,"pe":35.7},{"d":"2026-01-05","c":343.42,"eps":9.82,"pe":35.0},{"d":"2026-01-06","c":343.77,"eps":9.85,"pe":34.9},{"d":"2026-01-07","c":343.5,"eps":9.87,"pe":34.8},{"d":"2026-01-08","c":332.48,"eps":9.9,"pe":33.6},{"d":"2026-01-09","c":344.97,"eps":9.92,"pe":34.8},{"d":"2026-01-12","c":352.21,"eps":10.0,"pe":35.2},{"d":"2026-01-13","c":354.61,"eps":10.02,"pe":35.4},{"d":"2026-01-14","c":339.89,"eps":10.05,"pe":33.8},{"d":"2026-01-15","c":343.02,"eps":10.07,"pe":34.1},{"d":"2026-01-16","c":351.71,"eps":10.09,"pe":34.8},{"d":"2026-01-20","c":332.6,"eps":10.19,"pe":32.6},{"d":"2026-01-21","c":328.8,"eps":10.22,"pe":32.2},{"d":"2026-01-22","c":325.49,"eps":10.24,"pe":31.8},{"d":"2026-01-23","c":320.05,"eps":10.27,"pe":31.2},{"d":"2026-01-26","c":324.85,"eps":10.34,"pe":31.4},{"d":"2026-01-27","c":332.79,"eps":10.37,"pe":32.1},{"d":"2026-01-28","c":333.24,"eps":10.39,"pe":32.1},{"d":"2026-01-29","c":330.73,"eps":10.42,"pe":31.7},{"d":"2026-01-30","c":331.3,"eps":10.44,"pe":31.7},{"d":"2026-02-02","c":331.11,"eps":10.52,"pe":31.5},{"d":"2026-02-03","c":320.33,"eps":10.54,"pe":30.4},{"d":"2026-02-04","c":308.05,"eps":10.57,"pe":29.2},{"d":"2026-02-05","c":310.51,"eps":10.59,"pe":29.3},{"d":"2026-02-06","c":332.92,"eps":10.62,"pe":31.4},{"d":"2026-02-09","c":343.94,"eps":10.69,"pe":32.2},{"d":"2026-02-10","c":340.44,"eps":10.72,"pe":31.8},{"d":"2026-02-11","c":342.76,"eps":10.74,"pe":31.9},{"d":"2026-02-12","c":331.17,"eps":10.77,"pe":30.8},{"d":"2026-02-13","c":325.17,"eps":10.79,"pe":30.1},{"d":"2026-02-17","c":332.54,"eps":10.89,"pe":30.5},{"d":"2026-02-18","c":333.51,"eps":10.92,"pe":30.6},{"d":"2026-02-19","c":333.99,"eps":10.94,"pe":30.5},{"d":"2026-02-20","c":332.65,"eps":10.96,"pe":30.3},{"d":"2026-02-23","c":330.34,"eps":11.04,"pe":29.9},{"d":"2026-02-24","c":325.49,"eps":11.06,"pe":29.4},{"d":"2026-02-25","c":332.31,"eps":11.09,"pe":30.0},{"d":"2026-02-26","c":321.7,"eps":11.11,"pe":28.9},{"d":"2026-02-27","c":319.55,"eps":11.14,"pe":28.7},{"d":"2026-03-02","c":318.82,"eps":11.21,"pe":28.4},{"d":"2026-03-03","c":313.84,"eps":11.24,"pe":27.9},{"d":"2026-03-04","c":317.53,"eps":11.26,"pe":28.2},{"d":"2026-03-05","c":332.77,"eps":11.29,"pe":29.5},{"d":"2026-03-06","c":330.48,"eps":11.31,"pe":29.2},{"d":"2026-03-09","c":345.75,"eps":11.39,"pe":30.4},{"d":"2026-03-10","c":342.58,"eps":11.41,"pe":30.0},{"d":"2026-03-11","c":341.57,"eps":11.44,"pe":29.9},{"d":"2026-03-12","c":335.97,"eps":11.46,"pe":29.3},{"d":"2026-03-13","c":322.16,"eps":11.49,"pe":28.0},{"d":"2026-03-16","c":324.92,"eps":11.56,"pe":28.1},{"d":"2026-03-17","c":321.31,"eps":11.59,"pe":27.7},{"d":"2026-03-18","c":315.93,"eps":11.61,"pe":27.2},{"d":"2026-03-19","c":319.84,"eps":11.64,"pe":27.5},{"d":"2026-03-20","c":310.51,"eps":11.66,"pe":26.6},{"d":"2026-03-23","c":322.51,"eps":11.74,"pe":27.5},{"d":"2026-03-24","c":318.29,"eps":11.76,"pe":27.1},{"d":"2026-03-25","c":318.81,"eps":11.78,"pe":27.1},{"d":"2026-03-26","c":309.415,"eps":11.81,"pe":26.2},{"d":"2026-03-27","c":300.68,"eps":11.83,"pe":25.4},{"d":"2026-03-30","c":293.41,"eps":11.91,"pe":24.6},{"d":"2026-03-31","c":309.51,"eps":11.93,"pe":25.9},{"d":"2026-04-01","c":313.49,"eps":11.96,"pe":26.2},{"d":"2026-04-02","c":314.55,"eps":11.98,"pe":26.2},{"d":"2026-04-06","c":314.43,"eps":12.08,"pe":26.0},{"d":"2026-04-07","c":333.97,"eps":12.11,"pe":27.6},{"d":"2026-04-08","c":350.63,"eps":12.13,"pe":28.9},{"d":"2026-04-09","c":354.91,"eps":12.16,"pe":29.2},{"d":"2026-04-10","c":371.55,"eps":12.18,"pe":30.5},{"d":"2026-04-13","c":379.75,"eps":12.26,"pe":31.0},{"d":"2026-04-14","c":380.78,"eps":12.28,"pe":31.0},{"d":"2026-04-15","c":396.72,"eps":12.31,"pe":32.2},{"d":"2026-04-16","c":398.47,"eps":12.33,"pe":32.3},{"d":"2026-04-17","c":406.54,"eps":12.36,"pe":32.9},{"d":"2026-04-20","c":399.63,"eps":12.43,"pe":32.1},{"d":"2026-04-21","c":402.17,"eps":12.46,"pe":32.3},{"d":"2026-04-22","c":422.65,"eps":12.48,"pe":33.9},{"d":"2026-04-23","c":419.94,"eps":12.51,"pe":33.6},{"d":"2026-04-24","c":422.76,"eps":12.53,"pe":33.7},{"d":"2026-04-27","c":418.2,"eps":12.61,"pe":33.2},{"d":"2026-04-28","c":399.83,"eps":12.63,"pe":31.7},{"d":"2026-04-29","c":405.45,"eps":12.65,"pe":32.0},{"d":"2026-04-30","c":417.43,"eps":12.68,"pe":32.9},{"d":"2026-05-01","c":421.28,"eps":12.7,"pe":33.2},{"d":"2026-05-04","c":416.5,"eps":12.78,"pe":32.6},{"d":"2026-05-05","c":427.36,"eps":12.8,"pe":33.4},{"d":"2026-05-06","c":425.44,"eps":12.83,"pe":33.2},{"d":"2026-05-07","c":412.56,"eps":12.85,"pe":32.1},{"d":"2026-05-08","c":430.0,"eps":12.88,"pe":33.4},{"d":"2026-05-11","c":428.43,"eps":12.95,"pe":33.1},{"d":"2026-05-12","c":419.3,"eps":12.98,"pe":32.3},{"d":"2026-05-13","c":416.79,"eps":13.0,"pe":32.1},{"d":"2026-05-14","c":439.79,"eps":13.03,"pe":33.8},{"d":"2026-05-15","c":425.19,"eps":13.05,"pe":32.6},{"d":"2026-05-18","c":420.71,"eps":13.13,"pe":32.0},{"d":"2026-05-19","c":411.07,"eps":13.15,"pe":31.3},{"d":"2026-05-20","c":417.76,"eps":13.18,"pe":31.7},{"d":"2026-05-21","c":414.57,"eps":13.2,"pe":31.4},{"d":"2026-05-22","c":414.14,"eps":13.23,"pe":31.3},{"d":"2026-05-26","c":422.01,"eps":13.33,"pe":31.7},{"d":"2026-05-27","c":421.86,"eps":13.35,"pe":31.6},{"d":"2026-05-28","c":426.58,"eps":13.38,"pe":31.9},{"d":"2026-05-29","c":446.77,"eps":13.4,"pe":33.3},{"d":"2026-06-01","c":459.97,"eps":13.48,"pe":34.1},{"d":"2026-06-02","c":481.57,"eps":13.5,"pe":35.7},{"d":"2026-06-03","c":479.23,"eps":13.54,"pe":35.4},{"d":"2026-06-04","c":418.91,"eps":13.58,"pe":30.8},{"d":"2026-06-05","c":385.73,"eps":13.63,"pe":28.3},{"d":"2026-06-08","c":396.6,"eps":13.75,"pe":28.8},{"d":"2026-06-09","c":392.16,"eps":13.8,"pe":28.4},{"d":"2026-06-10","c":372.1,"eps":13.84,"pe":26.9},{"d":"2026-06-11","c":385.57,"eps":13.88,"pe":27.8},{"d":"2026-06-12","c":382.07,"eps":13.92,"pe":27.4},{"d":"2026-06-15","c":393.94,"eps":14.05,"pe":28.0},{"d":"2026-06-16","c":376.71,"eps":14.09,"pe":26.7},{"d":"2026-06-17","c":392.9,"eps":14.13,"pe":27.8},{"d":"2026-06-18","c":411.35,"eps":14.18,"pe":29.0},{"d":"2026-06-22","c":392.13,"eps":14.34,"pe":27.3},{"d":"2026-06-23","c":380.15,"eps":14.39,"pe":26.4},{"d":"2026-06-24","c":382.07,"eps":14.43,"pe":26.5},{"d":"2026-06-25","c":378.91,"eps":14.47,"pe":26.2},{"d":"2026-06-26","c":365.02,"eps":14.51,"pe":25.2},{"d":"2026-06-29","c":372.45,"eps":14.64,"pe":25.4},{"d":"2026-06-30","c":377.75,"eps":14.68,"pe":25.7},{"d":"2026-07-01","c":369.34,"eps":14.72,"pe":25.1},{"d":"2026-07-02","c":360.45,"eps":14.77,"pe":24.4},{"d":"2026-07-06","c":373.9,"eps":14.94,"pe":25.0},{"d":"2026-07-07","c":370.78,"eps":14.98,"pe":24.8},{"d":"2026-07-08","c":388.69,"eps":15.02,"pe":25.9},{"d":"2026-07-09","c":401.11,"eps":15.06,"pe":26.6},{"d":"2026-07-10","c":399.97,"eps":15.1,"pe":26.5},{"d":"2026-07-13","c":384.05,"eps":15.23,"pe":25.2},{"d":"2026-07-14","c":389.11,"eps":15.27,"pe":25.5},{"d":"2026-07-15","c":394.28,"eps":15.32,"pe":25.7},{"d":"2026-07-16","c":374.45,"eps":15.36,"pe":24.4},{"d":"2026-07-17","c":370.825,"eps":15.4,"pe":24.1}],"stats":{"avg":29.1,"min":17.8,"max":44.9,"min_day":"2023-09-21","max_day":"2025-09-10","cur":24.1,"cur_eps":15.4,"cur_price":370.825,"percentile":21},"stats_1y":{"avg":34.4,"min":24.1,"max":44.9,"min_day":"2026-07-17","max_day":"2025-09-10","cur":24.1,"cur_eps":15.4,"cur_price":370.825,"percentile":0},"events":[{"d":"2023-11-22","label":"VMware 인수 완료","kind":"neutral"},{"d":"2026-06-03","label":"Q2 어닝·AI가이드 실망 −15%","kind":"down"},{"d":"2026-07-17","label":"Kimi K3 셀오프","kind":"down"}],"regimes":[{"from":"2026-06-03","to":"2026-07-17","label":"AI 캐펙스 리레이팅"}],"cfg":{"currency":"USD","multiples":[18,24,30,38],"priceMax":750.0,"priceTick":150.0,"peMax":50,"peTick":10,"epsMax":20,"epsTick":4},"anchors":[{"d":"2023-06-07","val":"$4.30","eps":4.3,"why":"FY23 조정(비GAAP) EPS ~$4.2 트래킹, 10:1 액면분할 소급 (NTM ~$4.3)"},{"d":"2023-12-01","val":"$4.70","eps":4.7,"why":"VMware 인수 완료(2023-11), 소프트웨어 통합 초기 (NTM ~$4.7)"},{"d":"2024-06-05","val":"$5.20","eps":5.2,"why":"AI 커스텀 실리콘 램프 시작, FY24 비GAAP EPS ~$4.9 (NTM ~$5.2)"},{"d":"2024-12-12","val":"$6.30","eps":6.3,"why":"AI 매출 가속·FY25 가이드, NTM ~$6.3"},{"d":"2025-06-05","val":"$7.20","eps":7.2,"why":"FY25 비GAAP EPS ~$6.4 트래킹, VMware 마진 기여 (NTM ~$7.2)"},{"d":"2025-12-11","val":"$9.20","eps":9.2,"why":"FY26 가이드·AI 커스텀 실리콘 확대, NTM ~$9.2"},{"d":"2026-06-02","val":"$13.50","eps":13.5,"why":"Q2 FY26 비GAAP EPS $2.44 서프라이즈, Q3 AI $16B 가이드 (NTM 롤 → FY27 ~$13.5)"},{"d":"2026-07-17","val":"$15.40","eps":15.4,"why":"FY26 비GAAP EPS 컨센 ~$11.6 / FY27 ~$17.5 블렌드 (NTM ~$15.4)"}],"meta":{"symbol":"AVGO","name":"브로드컴","shares":4757580198,"mode":"eps","conv":null,"conv_basis":null,"range":["2023-06-07","2026-07-17"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
