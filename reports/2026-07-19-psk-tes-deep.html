@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="319660,095610">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>피에스케이(319660)·테스(095610) — 같은 슈퍼사이클, 백분위 99%에 나란히 선 두 장비주</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 74ch; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.pairhead { font-size: 12px; font-weight: 750; letter-spacing: 0.04em; color: var(--ink-2); margin: 6px 0 -6px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 24px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card h2 .tag { margin-left: auto; font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
+  border: 1px solid var(--border-2); border-radius: 99px; padding: 2px 11px; color: var(--ink-2); }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 78ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 28px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 72ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.cond { border-left: 3px solid var(--accent); background: var(--accent-bg); border-radius: 0 10px 10px 0;
+  padding: 13px 16px; font-size: 13px; color: var(--ink-2); margin: 0 0 16px; }
+.cond strong { color: var(--accent); }
+.cond ul { margin: 8px 0 0; padding-left: 18px; } .cond li { margin-bottom: 4px; }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-19-psk-tes-deep.html">
+<meta property="og:title" content="피에스케이(319660)·테스(095610) — 같은 슈퍼사이클, 백분위 99%에 나란히 선 두 장비주">
+<meta property="og:description" content="두 반도체 전공정 장비주 모두 3개월 +120%대 급등으로 Forward P/E가 3년 밴드 백분위 99%에 도달 — 사이클도 실적도 진짜지만 Base 환산가가 현재가 대비 각각 −25.5%·−26.5%로 상방이 소진돼 둘 다 비중축소.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-19-psk-tes-deep.html">
+<meta name="description" content="두 반도체 전공정 장비주 모두 3개월 +120%대 급등으로 Forward P/E가 3년 밴드 백분위 99%에 도달 — 사이클도 실적도 진짜지만 Base 환산가가 현재가 대비 각각 −25.5%·−26.5%로 상방이 소진돼 둘 다 비중축소.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-19-psk-tes-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 페어 심층 분석 · 2026-07-19 · 가격·수급 기준 7/16(목) 종가 (7/17 제헌절 휴장)</div>
+  <h1>피에스케이(319660)·테스(095610) — 같은 슈퍼사이클, 백분위 99%에 나란히 선 두 장비주</h1>
+  <p class="sub">둘 다 3개월 +120% 넘게 뛴 반도체 전공정 장비주다. 각 종목을 PQC·성장지속성·정량 체인으로 따로 완결한 뒤, "같은 사이클·다른 밸류에이션 위치"로 대조한다.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">두 종목 모두 Forward P/E가 3년 밴드 백분위 99%에 도달했다 — 사이클도 실적도 진짜지만, 이 가격에 남은 상방이 있는지를 종목별로 정량 계산했다.</p>
+</header>
+
+<!-- 콜 furniture (rating.py 산출 — 결정론적, 종목별) -->
+<div class="pairhead">■ 피에스케이 (319660) — 드라이 스트립 세계 1위</div>
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">P/E 백분위 99% ≥ 75%(고평가) · Base −25.5% ≤ 0%(상방 소진)</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">191,400<small>원</small></div>
+    <div class="delta">Fwd P/E 33.5배 (3년 평균 10.9배) · 백분위 99% <span class="chip">과열</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−25.5%</div>
+    <div class="delta">Bull <span class="up">+11.8%</span> / Bear <span class="down">−68.4%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 2Q26 잠정실적 (8월 중 추정)</div>
+  </div>
+</div>
+
+<div class="pairhead">■ 테스 (095610) — PECVD·건식식각, 수주잔고 공개</div>
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">P/E 백분위 99% ≥ 75%(고평가) · Base −26.5% ≤ 0%(상방 소진)</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">189,900<small>원</small></div>
+    <div class="delta">Fwd P/E 34.0배 (3년 평균 10.8배) · 백분위 99% <span class="chip">과열</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−26.5%</div>
+    <div class="delta">Bull <span class="up">+11.2%</span> / Bear <span class="down">−69.1%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 2Q26 잠정실적 (8월 중 추정)</div>
+  </div>
+</div>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 둘 다 비중축소.</strong> 피에스케이 Fwd P/E 33.5배·테스 34.0배 — 각각 3년 백분위 <strong>99%</strong>, 3년 평균(약 11배)의 3배. Base 시나리오 환산가는 현재가 대비 각각 <span class="down">−25.5%</span>·<span class="down">−26.5%</span>다.</li>
+    <li><strong>사이클은 진짜다.</strong> 반도체(HS 8542) 수출 <span class="up">+173.9%</span> YoY, HBM·DDR5 공급 타이트 — 두 종목 모두 1Q26 이익이 실제로 늘었다(피에스케이 OP <span class="up">+108%</span>, 테스 <span class="up">+36%</span>). 산업 방향엔 이견이 없다.</li>
+    <li><strong>같은 사이클, 다른 방어막.</strong> 피에스케이는 OPM 30%·드라이 스트립 세계 1위(≈39%)라는 <strong>이익의 질</strong>, 테스는 수주잔고 1,455억 공개·국민연금 지속 매집이라는 <strong>가시성</strong>으로 각각 프리미엄을 방어한다. 그러나 밸류 백분위는 똑같이 99%다.</li>
+    <li><strong>가격이 서사를 앞질렀다.</strong> 두 종목 다 컨센 목표주가 부근~위(피에스케이 191,400 vs 컨센 목표 179,143)까지 왔다. 7/17 SOX 베어마켓 진입으로 7/20(월) 갭 리스크도 있다. 콜 전환 조건은 12번 박스에 명시했다 — 8월 2Q26 잠정실적이 첫 판정 지점.</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">분석경로</a><a href="#s03">왜지금</a><a href="#s04">PSK 스크리닝·PQC</a><a href="#s05">PSK 성장지속성</a><a href="#s06">PSK 어닝·밸류</a><a href="#s07">TES 스크리닝·PQC</a><a href="#s08">TES 성장지속성</a><a href="#s09">TES 어닝·밸류</a><a href="#s10">피어</a><a href="#s11">수급</a><a href="#s12">리스크</a><a href="#s13">이벤트</a><a href="#s14">대조·종합</a>
+</nav>
+
+<!-- 매크로 요약 (당일 스냅샷 상속) -->
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-16 종가 기준 · 7/17 제헌절 휴장)</strong><br>원/달러 1,488.80원 (전일 1,492.20 → 원화 강세) · 기준금리 2.75% · 미 10년물 4.57% · 달러지수 120.50<br>미국은 7/17(금)까지 거래 — 필라델피아 반도체지수(SOX)가 6/22 고점 대비 20%+ 하락하며 베어마켓 진입, 국내 장비주에 7/20(월) 갭 리스크. KOSPI/KOSDAQ 지수 API는 이번 조회에서 확인불가(HTTP 400).</div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>원/달러 1,488.80원 · 미 10년물 4.57% · 기준금리 2.75%</strong> 가정 위에서 계산했다 (하우스 매크로 가정 상속 — 매크로가 크게 바뀌면 시나리오 전제도 함께 갱신되어야 한다).</p>
+
+<!-- 01 업종 지표 (공유) -->
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — 두 종목이 공유하는 슈퍼사이클<span class="tag">공유</span></h2>
+  <p class="deck">피에스케이·테스는 둘 다 삼성전자·SK하이닉스의 국내 메모리 팹 투자에 연동된다 — 같은 전방 지표를 공유한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신치</th><th>방향·해석</th></tr></thead>
+    <tbody>
+      <tr><td>반도체 수출 (HS 8542, 2026-06)</td><td class="num">$335.7억</td><td>YoY <span class="up">+173.9%</span> · MoM <span class="up">+14.0%</span> — 메모리 슈퍼사이클을 실측 관세 데이터가 확인<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">관세청 품목별 수출입 API (HS 8542, 2026-06) — 실측</span><span class="evd-sum">2026년 6월 반도체(집적회로) 수출 <strong>335.7억 달러</strong>, 전년동월 대비 <strong>+173.9%</strong>·전월 대비 +14.0%. HBM·DDR5 단가 급등과 물량 회복이 동반된 전형적 업턴 신호.</span><span class="evd-nolink">관세청 Open API 실측 계산값 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>DRAM 고정가·HBM</td><td class="num">상승</td><td>DDR5 공급 타이트·HBM 증설 지속 — 전방 캐펙스(전공정 장비 발주)의 근거<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">공개 보도 — 반도체 업황 (2026.07)</span><span class="evd-sum">AI 데이터센터 투자·HBM 수요로 DDR5 고정가 상승세 지속. 다만 SOX가 6/22 고점 이후 조정, 7/17 베어마켓 진입 — 단기 급등 후 차익실현·실적 우려가 겹치며 변동성 확대.</span><a href="https://kr.investing.com/indices/phlx-semiconductor" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>원/달러 (2026-07-16)</td><td class="num">1,488.8원</td><td>전일 1,492.2 대비 소폭 <span class="down">하락</span>(원화 강세) — 장비 수출 채산성엔 소폭 부정적이나, 두 종목 모두 내수 매출 비중이 커 영향 제한적</td></tr>
+      <tr><td>미 10년물 (2026-07-16)</td><td class="num">4.57%</td><td>고금리 유지 — 고멀티플 성장주 할인율 부담. 백분위 99% 밸류엔 역풍</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">두 종목의 전방 수요는 사실상 삼성전자·SK하이닉스·마이크론의 D램/낸드 전환·증설 투자다. 산업 방향(TAM 확대)은 실측으로 확인되지만, "산업이 좋다"와 "이 주가가 싸다"는 다른 질문이다 — 그 간극이 이 리포트의 논지다.</p>
+</div>
+
+<!-- 02 분석 경로 -->
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 페어 심층 (재출발 기준선)<span class="tag">방법</span></h2>
+  <p class="deck">발굴 스크리닝이 아니라, 사용자가 지목한 두 종목을 총동원 데이터로 검증하는 지정 심층이다.</p>
+  <p>이 리포트는 랭킹·스크리닝으로 종목을 <em>발굴</em>한 것이 아니라, 지목된 <strong>피에스케이·테스</strong>를 모든 데이터 소스(토스 Open API·DART 원문·관세청·FnGuide 컨센)로 검증한 <strong>지정 페어 심층</strong>이다. 두 종목은 같은 반도체 전공정 장비 업종이라 전방 지표(01)를 공유하되, PQC·성장지속성·정량 체인·시나리오·선호도 산출은 <strong>각 종목을 독립적으로 완결</strong>한 뒤 마지막(14)에 대조한다.</p>
+  <p>본 리포트는 <strong>리서치 표준 재출발 이후 1세대 기준선 리포트</strong>다. 과거 발간분(전작 링크·후속 판정)은 참조하지 않으며, 이 리포트가 두 종목의 새 기준선이 된다. 콜은 임의 판단이 아니라 밴드 백분위+시나리오 상승여력을 결합한 결정론적 공식(rating.py)의 산출이다.</p>
+</div>
+
+<!-- 03 왜 지금인가 -->
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 트리거 3 + 경고 1<span class="tag">공유</span></h2>
+  <p class="deck">두 종목을 3개월 만에 2배 넘게 밀어올린 힘과, 지금 그 반대편에 선 신호를 함께 본다.</p>
+  <p><strong>트리거 1 — 실적이 실제로 도착했다.</strong> 피에스케이 1Q26 영업이익 472억(YoY <span class="up">+108%</span>)·OPM 30.1%로 분기 사상 최대, 테스 1Q26 영업이익 222억(YoY <span class="up">+36.4%</span>)·OPM 22.8%.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 피에스케이 분기보고서 2026.03 (2026.05.15)</span><span class="evd-sum">1Q26 연결 매출 <strong>1,566억</strong>(YoY +53.6%, vs 1Q25 1,020억)·영업이익 <strong>472억</strong>(YoY +108%, vs 1Q25 226억)·OPM 30.1%. 분기 누적 기준.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 서사가 아니라 공시 숫자다.</p>
+  <p><strong>트리거 2 — 전방 캐펙스 재가속.</strong> 반도체 수출 +173.9%(01)와 HBM·DDR5 타이트가 삼성·SK의 전공정 투자를 끌어올린다. 테스는 SK하이닉스와 1,969억 규모 장비 공급계약을 체결하는 등 수주가 가시화됐다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">공개 보도·DART · 테스 단일판매·공급계약 (2026)</span><span class="evd-sum">테스는 2026년 초 SK하이닉스와 반도체 제조장비 <strong>1,969억</strong> 공급계약을 체결(계약기간 2026.1.26~2.16 보도)했고, 이후에도 3~6월 다수의 단일판매·공급계약을 자율공시했다.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260605900283" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>트리거 3 — 리레이팅.</strong> 두 종목 다 최근 3개월 주가가 피에스케이 <span class="up">+131.7%</span>·테스 <span class="up">+120.6%</span> 상승, PBR 평가에서 PER·성장주 평가로 밸류 체계가 이동했다.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 계산 (2026.07.16 종가)</span><span class="evd-sum">3개월 수익률 피에스케이 +131.7%·테스 +120.6%, 1개월 +18.7%·+12.4%. 두 종목 다 20일선>60일선, 거래대금 배수 1.6~1.9배.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+  <div class="note"><strong>경고 — 반대 신호:</strong> 이미 두 종목 다 컨센 목표주가 부근~위까지 왔고(피에스케이 191,400 vs 컨센 목표 179,143), Fwd P/E는 백분위 99%다. 미국 SOX는 7/17 베어마켓에 진입했다 — 반도체 셀오프가 7/20(월) 국내 장비주 갭 하락으로 전이될 수 있다.<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">Investing.com · 필라델피아 반도체지수(SOX) (2026.07)</span><span class="evd-sum">SOX가 2026-06-22 고점(약 14,655) 이후 조정, 7/17 직전 장에서 4.8% 급락하며 고점 대비 20%+ 하락(베어마켓 진입). 단기 급등 후 작은 악재에도 매도 압력이 커지는 국면.</span><a href="https://kr.investing.com/indices/phlx-semiconductor" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+</div>
+
+<!-- ============ PART A: 피에스케이 ============ -->
+<!-- 04 PSK 스크리닝·PQC -->
+<div class="card prose" id="s04">
+  <h2><span class="idx">04</span>피에스케이 — 기술 스크리닝 & PQC<span class="tag">319660</span></h2>
+  <p class="deck">드라이 스트립 세계 1위(≈39%). 1Q26 OPM 30%로 이익의 질이 두 종목 중 가장 높다.</p>
+  <h3>기술 스크리닝 (재현 가능)</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>지표</th><th class="num">값</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>3개월 / 1개월 수익률</td><td class="num"><span class="up">+131.7%</span> / <span class="up">+18.7%</span></td><td><span class="grade g-full">● 강한 모멘텀</span></td></tr>
+      <tr><td>52주 고가 대비</td><td class="num">−14.6%</td><td><span class="grade g-full">● 신고가 부근</span></td></tr>
+      <tr><td>이평 배열 (20일>60일)</td><td class="num">골든크로스 ✓</td><td><span class="grade g-full">● 정배열</span></td></tr>
+      <tr><td>거래대금 배수 (5일/이전20일)</td><td class="num">1.6배 (2,866억/일)</td><td><span class="grade g-part">◐ 유입 확대</span></td></tr>
+      <tr><td>시총 (근사) · 투자유의</td><td class="num">≈5.5조 · 0건</td><td><span class="grade g-full">● 정상</span></td></tr>
+    </tbody>
+  </table></div>
+  <h3>PQC 분석 — 주력: 드라이 스트립·드라이 클리닝</h3>
+  <p><strong>P (가격·가격결정력):</strong> 고객사(삼성·SK·마이크론) 사양별 주문제작이라 표준 판가 공시는 없으나, <strong>드라이 스트립 장비 세계 점유율 약 39%로 글로벌 1위</strong>라는 구조적 프리미엄이 가격결정력의 근거다.<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">공개 보도 · 피에스케이 실적/커버리지 (2026)</span><span class="evd-sum">피에스케이는 감광액 제거(Dry Strip) 장비에서 세계 시장 점유율 <strong>약 39%</strong>로 글로벌 선도. 현대차증권이 목표주가 194,000원으로 커버리지 개시, 한투·하나·신한 160,000원 등 컨센 목표주가가 한 달 새 107,833원→156,000원대로 상향.</span><a href="https://alphasquare.co.kr/home/stock-summary?code=319660" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 가격변동표는 "사양별 상이"로 미기재(공시 한계).</p>
+  <p><strong>Q (물량):</strong> 1Q26 장비 생산 <strong>76대</strong>(연 환산 ≈304대) — FY25 연간 187대·FY24 191대를 크게 웃도는 생산 램프.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 피에스케이 분기보고서 2026.03 — 생산실적</span><span class="evd-sum">반도체 장비 생산실적(단위: 대) 제8기 1분기 <strong>76대</strong> vs 제7기(2025) 187대·제6기(2024) 191대. 주문생산 방식이라 가동률(%)은 "산출 상관관계 낮음"으로 기재 생략.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>C (비용·수익성):</strong> 1Q26 OPM <strong>30.1%</strong>(FY25 19.4%·FY24 21.1%)로 마진이 급확장 — 두 종목 중 최고. 물량 증가에 따른 고정비 레버리지와 믹스 개선이 동반됐다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">DART · 피에스케이 사업보고서 2025.12 + 1Q26 분기</span><span class="evd-sum">FY25 매출 4,572억·영업이익 885억(OPM 19.4%), FY24 매출 3,981억·OP 839억. 1Q26 OPM 30.1%로 점프 — 매출 +53.6% 구간에서 이익 +108%로 레버리지 확인.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323000017" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <div class="callout"><div class="co-num">OPM 30.1%</div><div class="co-lbl"><strong>피에스케이 1Q26 영업이익률</strong> — 테스(22.8%)·주성급 경쟁사 대비 우위. 이익의 질이 두 종목 중 가장 두껍다는 것이 피에스케이 프리미엄의 핵심 근거다.</div></div>
+</div>
+
+<!-- 05 PSK Growth Sustainability -->
+<div class="card" id="s05">
+  <h2><span class="idx">05</span>피에스케이 — 성장 지속성 6항목<span class="tag">319660</span></h2>
+  <p class="deck">6항목 중 3항목은 공시 한계로 확인불가·미충족 — "이익은 급증했으나 지속성의 증거는 반만 채워졌다".</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출 증가 + 가동률 상승</td><td><span class="grade g-unk">? 확인불가</span></td><td>주문생산이라 가동률(%) 미기재. 생산 76대 램프는 확인되나 가동률 수치는 없음<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 — 가동률</span><span class="evd-sum">"생산능력과 실제 생산실적 간 상관관계가 높지 않아 기재 생략" — 장비주 공통 한계. 대신 생산 대수(76대)로 물량 추세만 확인 가능.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률 회수</td><td><span class="grade g-part">◐ 부분</span></td><td>생산 램프(76대/분기)와 매출 +53.6%는 정합. 다만 가동률 수치 부재로 "설비 회수" 직접 확인은 불가</td></tr>
+      <tr><td>3</td><td>수주 &gt; 매출 성장</td><td><span class="grade g-unk">? 확인불가</span></td><td>수주총액·수주잔고를 NDA로 미공개 — 테스와 대비되는 결정적 약점<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 — 수주상황</span><span class="evd-sum">"고객과의 NDA 준수 및 영업정책에 따라 세부 수주현황 기재 생략". 수주잔고/매출 배율을 계산할 데이터가 없어 성장 가시성은 실적 발표에 의존.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>4</td><td>미국향 매출 의존</td><td><span class="grade g-none">○ 미충족</span></td><td>1Q26 수출 67%(내수 33%)지만 수출은 마이크론+해외 자회사향 혼재 — 순수 미국 최종수요 플레이 아님. 전방은 국내 메모리<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 분기보고서 2026.03 — 매출실적</span><span class="evd-sum">1Q26 매출 내수 519.99억·수출 1,045.95억(수출 67%). 주요 고객은 S사(삼성)·H사(하이닉스), 해외는 M사(마이크론) 포함 10개사+. 수출엔 해외 자회사향이 섞여 미국 최종수요 비중은 특정 불가.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>5</td><td>밸류 체계 전환 (PBR→PER)</td><td><span class="grade g-full">● 충족</span></td><td>PBR 평가→PER·성장주 평가로 이동. Fwd P/E 33.5배·백분위 99%가 리레이팅을 수치로 증명(13 밴드)</td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td><span class="grade g-full">● 충족</span></td><td>반도체 수출 +173.9%·HBM 캐펙스 — 전공정 스트립/클리닝 수요 직접 수혜(01)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">집계: ● 2 / ◐ 1 / ○ 1 / ? 2. 이익 급증(P·C)과 산업 수혜(6)·리레이팅(5)은 확실하나, <strong>지속성의 핵심 증거인 수주잔고(3)와 가동률(1)이 공시로 확인되지 않는다.</strong> 장비주 특유의 "인도기준 매출 인식"(만든 것과 넘긴 것이 다름) 아래에서, 피에스케이는 성장 가시성을 <em>분기 실적 발표에만</em> 의존한다 — 테스보다 불리한 지점.</p>
+</div>
+
+<!-- 06 PSK 어닝·밸류 + PE embed -->
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>피에스케이 — 어닝 모델 · 시나리오 · 밸류에이션<span class="tag">319660</span></h2>
+  <p class="deck">컨센은 FY26 이익 2배를 본다. 하지만 Base 환산가는 현재가보다 25% 낮다 — 배수가 문제다.</p>
+  <h3>어닝 모델 · 컨센서스 델타</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>구분</th><th class="num">FY24A</th><th class="num">FY25A</th><th class="num">FY26E</th><th class="num">FY27E</th></tr></thead>
+    <tbody>
+      <tr><td>매출액 (억원)</td><td class="num">3,981</td><td class="num">4,572</td><td class="num">6,758</td><td class="num">≈7,400</td></tr>
+      <tr><td>영업이익 (억원)</td><td class="num">839</td><td class="num">885</td><td class="num">1,890</td><td class="num">≈1,960</td></tr>
+      <tr><td>OPM</td><td class="num">21.1%</td><td class="num">19.4%</td><td class="num">28.1%</td><td class="num">≈26%</td></tr>
+      <tr><td>EPS (원)</td><td class="num">—</td><td class="num">—</td><td class="num">5,285</td><td class="num">6,068</td></tr>
+      <tr><td>Fwd PER</td><td class="num">—</td><td class="num">—</td><td class="num">36.97배</td><td class="num">32.20배</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="margin-top:12px;">컨센(7개 기관)은 FY26 영업이익 <strong>1,890억(+114.6%)</strong>·매출 6,758억(+47.8%)을 본다 — 우리 정량 체인의 NTM 앵커(1,840억)와 사실상 일치해 별도 컨센 델타 조정은 두지 않았다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 (2026.07.16 기준) — 컨센서스</span><span class="evd-sum">2026E EPS 5,285원·PER 36.97배·BPS 23,217원, 2027E EPS 6,068원·PER 32.20배. 컨센 목표주가 <strong>179,143원</strong>·추정기관 7곳. FY26E 매출 6,758억·OP 1,890억(공개 보도).</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=319660" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 현재가 191,400원은 이미 컨센 목표주가(179,143원)를 <strong>넘어섰다</strong> — 애널리스트 눈높이보다 주가가 앞서 있다.</p>
+  <p class="fine">체크포인트(2Q26 잠정, 8월): ① 매출 1,600억+ 유지 여부 ② OPM 30% 방어 ③ 수주잔고 공개 전환 여부 ④ 마이크론·해외 수출 지속성. FY27E는 컨센 EPS 6,068원에서 역산한 근사(≈)다.</p>
+
+  <h3>시나리오 · 민감도</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>시나리오</th><th>전제</th><th class="num">NTM OP</th><th class="num">배수</th><th class="num">환산가</th><th class="num">현재가 대비</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td>HBM 캐펙스 재가속 + 스트립 M/S 39% 방어, 프리미엄 유지</td><td class="num">2,300억</td><td class="num">30배</td><td class="num">213,955</td><td class="num"><span class="up">+11.8%</span></td></tr>
+      <tr><td><strong>Base</strong></td><td>FY26 컨센 수렴(NTM 1,840억), 사이클 정상화 멀티플</td><td class="num">1,840억</td><td class="num">25배</td><td class="num">142,637</td><td class="num"><span class="down">−25.5%</span></td></tr>
+      <tr><td><strong>Bear</strong></td><td>SOX 셀오프·메모리 캐펙스 이연, 다운사이클 디레이팅</td><td class="num">1,300억</td><td class="num">15배</td><td class="num">60,466</td><td class="num"><span class="down">−68.4%</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">민감도(Base 25배 고정): NTM OP −20% → 114,109원(−40.4%) · 기준 → 142,637원(−25.5%) · +20% → 171,164원(−10.6%). 배수 근거는 글로벌 피어 실측 P/E(10 참조). <strong>시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다.</strong></p>
+  <div class="callout"><div class="co-num">−25.5%</div><div class="co-lbl"><strong>Base 환산가의 현재가 대비 하락폭</strong> — 이익이 컨센대로 2배 나도, 사이클 정상화 멀티플(25배)로는 현재가에 못 미친다. 상방(Bull +11.8%)보다 하방(Bear −68.4%)이 훨씬 크다.</div></div>
+  <p class="prose"><strong>2차 밸류에이션 (P/B–ROE 교차확인):</strong> FY26E BPS 23,217원 기준 <strong>PBR 8.2배</strong>, FY26E ROE는 약 22%(EPS 5,285 ÷ BPS). ROE 20%대 우량 제조업이라도 PBR 8배는 이익 정점 가정을 이미 반영한 수준 — P/E 백분위 99%와 같은 결론이다.</p>
+</div>
+
+<details class="pe-embed" data-peb="319660" open>
+  <summary>
+    <span class="peb-t">📊 피에스케이 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 33.5배 · 기간 평균 10.9배 · 백분위 99%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM 이익은 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="피에스케이 주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="피에스케이 forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows">
+          <tr><td>'23.5.3</td><td class="num">550억원</td><td class="num">1,705원</td><td>사후 실적 기반 근사(당시 컨센 보도 미확보): 2023년 메모리 다운사이클 저점 — FY24 회복 기대 초기의 NTM 근사</td></tr>
+          <tr><td>'24.5.15</td><td class="num">800억원</td><td class="num">2,481원</td><td>사후 실적 기반 근사: FY24 영업이익 839억(확정)에 수렴하는 NTM — 스트립 장비 수요 회복 국면</td></tr>
+          <tr><td>'25.5.15</td><td class="num">900억원</td><td class="num">2,791원</td><td>사후 실적 기반 근사: FY25 영업이익 885억(확정)에 부합. 2025년 매출 +14.9%로 성장 둔화 구간</td></tr>
+          <tr><td>'26.4.2</td><td class="num">1,500억원</td><td class="num">4,651원</td><td>대신증권 커버리지 개시(2026-04-02) 전후 — HBM·선단공정 스트립 수요로 FY26E 상향, NTM 1,500억대 리레이팅</td></tr>
+          <tr><td>'26.5.15</td><td class="num">1,750억원</td><td class="num">5,426원</td><td>1Q26 분기보고서: 매출 1,566억(+53.6%)·OP 472억(+108%)·OPM 30% 사상 최대 — FY26E 컨센 OP 1,890억(+114.6%) 급상향</td></tr>
+          <tr><td>'26.7.16</td><td class="num">1,840억원</td><td class="num">5,705원</td><td>FnGuide(2026-07-16) Fwd12M EPS ≈5,700원 × 28.97M주 ÷ 전환율 0.898 ≈ NTM 영업이익 1,840억 역산 — 2026E PER 36.97·2027E 32.20과 정합</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 영업이익(억원) 앵커 × 지배순이익 전환율 0.8982(DART 실측 — 2Q24~1Q26 흑자 8개 분기 합산) ÷ 발행주식수 28,966,714주. 앵커 사이는 선형 보간. 이 모델은 추정이며 실제 컨센서스 히스토리가 아니다.</p>
+  </div>
+</details>
+
+<!-- ============ PART B: 테스 ============ -->
+<!-- 07 TES 스크리닝·PQC -->
+<div class="card prose" id="s07">
+  <h2><span class="idx">07</span>테스 — 기술 스크리닝 & PQC<span class="tag">095610</span></h2>
+  <p class="deck">PECVD(박막증착)·GPE(건식식각). 마진은 피에스케이보다 얇지만 수주잔고를 공개하는 가시성 우위.</p>
+  <h3>기술 스크리닝 (재현 가능)</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>지표</th><th class="num">값</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>3개월 / 1개월 수익률</td><td class="num"><span class="up">+120.6%</span> / <span class="up">+12.4%</span></td><td><span class="grade g-full">● 강한 모멘텀</span></td></tr>
+      <tr><td>52주 고가 대비</td><td class="num">−20.2%</td><td><span class="grade g-part">◐ 고가권(조정 후)</span></td></tr>
+      <tr><td>이평 배열 (20일>60일)</td><td class="num">골든크로스 ✓</td><td><span class="grade g-full">● 정배열</span></td></tr>
+      <tr><td>거래대금 배수 (5일/이전20일)</td><td class="num">1.9배 (2,895억/일)</td><td><span class="grade g-full">● 유입 강함</span></td></tr>
+      <tr><td>시총 (근사) · 투자유의</td><td class="num">≈3.7조 · 0건</td><td><span class="grade g-full">● 정상</span></td></tr>
+    </tbody>
+  </table></div>
+  <h3>PQC 분석 — 주력: PECVD·건식식각(GPE)</h3>
+  <p><strong>P (가격·가격결정력):</strong> Challenger300·CUMAX 시리즈 등 챔버 수·공정별 맞춤 생산이라 판가표는 미기재. 다만 <strong>포트폴리오 믹스 개선으로 평균판가(ASP)가 오르는 국면</strong>이라는 것이 증권가 시각이다.<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">하나증권 · 테스 Earnings Preview '순항중' (2026.01.23)</span><span class="evd-sum">2026년 매출 3,853억·영업이익 842억 전망(전년비 증가). 2026년 매출은 2021년 기록(3,752억)을 상회 예상 — 장비 포트폴리오 믹스 개선에 따른 ASP 상승이 근거.</span><a href="https://www.hanaw.com/download/research/FileServer/WEB/industry/enterprise/2026/01/22/TES_260123.pdf" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>Q (물량):</strong> 1Q26 생산 <strong>26대</strong>(분기 생산능력 45대 대비 가동률 프록시 ≈58%, FY25 88대/180대 ≈49%) — 능력 대비 가동 프록시가 상승 중.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 테스 분기보고서 2026.03 — 생산능력·생산실적</span><span class="evd-sum">생산능력 45 System/분기(180/년), 1Q26 생산실적 <strong>26대</strong>(FY25 88대·FY24 62대). 회사는 "가동률 개념 적용 곤란"이라 명시하나 능력 대비 실적(26/45≈58%)은 계산 가능 — 물량 회복 신호.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000153" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>C (비용·수익성):</strong> 1Q26 OPM <strong>22.8%</strong>(FY25 16.5%·FY24 16.0%)로 개선 중이나 절대 수준은 피에스케이(30.1%)보다 <span class="down">7%p 이상 낮다</span>. 대규모 현금성자산(671억, 전기말 121억)에서 나오는 금융수익이 순이익을 두껍게 한다(전환율 1.01).<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">DART · 테스 사업보고서 2025.12 + 1Q26 분기</span><span class="evd-sum">FY25 매출 3,511억·영업이익 578억(OPM 16.5%, YoY +50.3%), FY24 2,401억·385억. 1Q26 현금성자산 671억으로 급증 — 금융수익이 순이익>영업이익 구조(전환율 1.01)를 만든다.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313000585" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <div class="callout"><div class="co-num">수주잔고 1,455억</div><div class="co-lbl"><strong>테스 1Q26말 수주잔고</strong>(수주총액 2,428억 − 기납품 972억) — 분기 매출의 약 1.5배. 피에스케이가 NDA로 감춘 이 숫자를 테스는 공개한다. 성장 가시성의 결정적 차이다.</div></div>
+</div>
+
+<!-- 08 TES Growth Sustainability -->
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>테스 — 성장 지속성 6항목<span class="tag">095610</span></h2>
+  <p class="deck">수주잔고 공개(3)와 가동 프록시 상승(1·2)에서 피에스케이보다 앞선다. 대신 내수 95% 편중이 약점.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출 증가 + 가동률 상승</td><td><span class="grade g-part">◐ 부분</span></td><td>가동률(%)은 미기재지만 능력 대비 생산 프록시 49%→58% 상승, 매출 +15% 동반<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 테스 분기보고서 2026.03 — 생산실적</span><span class="evd-sum">생산능력 45대/분기 고정, 생산실적 1Q26 26대(≈58%) vs FY25 분기평균 22대(≈49%). 가동 프록시 상승 — 피에스케이는 능력 미공개라 이 계산 자체가 불가.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000153" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률 회수</td><td><span class="grade g-part">◐ 부분</span></td><td>산업은행 300억 시설자금 약정(R&D 시설 확충) + 가동 프록시 상승 — 설비 회수 초기 신호</td></tr>
+      <tr><td>3</td><td>수주 &gt; 매출 성장</td><td><span class="grade g-full">● 충족</span></td><td>수주잔고 1,455억 공개(매출의 1.5배). SK하이닉스 1,969억 등 신규 수주 가시화<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 테스 분기보고서 2026.03 — 수주상황</span><span class="evd-sum">1Q26말 수주총액 2,428억·기납품 972억·<strong>수주잔고 1,455억</strong>. 분기 매출(972억) 대비 1.5배로 향후 매출 가시성 확보. 세부내역은 고객 보호로 미기재.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000153" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>4</td><td>미국향 매출 의존</td><td><span class="grade g-none">○ 미충족</span></td><td>1Q26 장비 매출 100% 내수(전체 수출 4.4%) — 삼성·SK 국내 팹 발주에 전면 의존. 미국 수요 플레이 아님<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 테스 분기보고서 2026.03 — 매출실적</span><span class="evd-sum">1Q26 매출 내수 929.56억(95.6%)·수출 42.87억(4.4%), 장비는 전량 내수. 사업본부가 삼성/SKH/OED로 편성 — 국내 메모리 2사 발주가 매출의 사실상 전부. 편중 리스크.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000153" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>5</td><td>밸류 체계 전환 (PBR→PER)</td><td><span class="grade g-full">● 충족</span></td><td>Fwd P/E 34.0배·백분위 99%로 성장주 리레이팅 완연(13 밴드)</td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td><span class="grade g-full">● 충족</span></td><td>반도체 수출 +173.9%·HBM 캐펙스 — PECVD/식각 수요 직접 수혜(01)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">집계: ● 3 / ◐ 2 / ○ 1 / ? 0. 피에스케이(● 2·? 2) 대비 <strong>확인불가 항목이 없고 수주잔고(3)를 실제 공개</strong>한다는 점에서 성장 지속성 <em>증거의 양</em>은 테스가 앞선다. 약점은 미국(4) 미충족을 넘어 <strong>내수 95% 편중</strong> — 삼성·SK 발주 사이클이 꺾이면 완충이 없다.</p>
+</div>
+
+<!-- 09 TES 어닝·밸류 + PE embed -->
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>테스 — 어닝 모델 · 시나리오 · 밸류에이션<span class="tag">095610</span></h2>
+  <p class="deck">2025년이 이미 고성장 해(+46%)였다. 2026 성장은 둔화되나 수주잔고가 하방을 받친다.</p>
+  <h3>어닝 모델 · 컨센서스 델타</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>구분</th><th class="num">FY24A</th><th class="num">FY25A</th><th class="num">FY26E</th><th class="num">FY27E</th></tr></thead>
+    <tbody>
+      <tr><td>매출액 (억원)</td><td class="num">2,401</td><td class="num">3,511</td><td class="num">3,853</td><td class="num">≈4,200</td></tr>
+      <tr><td>영업이익 (억원)</td><td class="num">385</td><td class="num">578</td><td class="num">842</td><td class="num">≈960</td></tr>
+      <tr><td>OPM</td><td class="num">16.0%</td><td class="num">16.5%</td><td class="num">21.9%</td><td class="num">≈23%</td></tr>
+      <tr><td>EPS (원)</td><td class="num">—</td><td class="num">—</td><td class="num">5,196</td><td class="num">5,995</td></tr>
+      <tr><td>Fwd PER</td><td class="num">—</td><td class="num">—</td><td class="num">37.40배</td><td class="num">32.41배</td></tr>
+    </tbody>
+  </table></div>
+  <p class="prose" style="margin-top:12px;">컨센(7개 기관)은 FY26 매출 <strong>3,853억</strong>·영업이익 <strong>842억</strong>을 본다 — 2025년 매출 +46.2% 고성장 뒤라 성장률은 둔화(매출 +9.7%)되나 절대 이익은 계속 는다.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 (2026.07.16 기준) — 컨센서스</span><span class="evd-sum">2026E EPS 5,196원·PER 37.40배·BPS 26,756원, 2027E EPS 5,995원·PER 32.41배. 컨센 목표주가 <strong>188,571원</strong>·추정기관 7곳. 순이익은 대규모 현금 금융수익 반영으로 영업이익을 상회.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=095610" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 현재가 189,900원은 컨센 목표주가(188,571원)와 사실상 <strong>동일</strong> — 상방이 이미 소진됐다.</p>
+  <p class="fine">체크포인트(2Q26 잠정, 8월): ① 수주잔고 1,455억의 매출 전환 속도 ② OPM 22%대 유지 ③ 신규 수주 지속(삼성·SK 발주) ④ 내수 편중 완화 여부. FY27E는 컨센 EPS 5,995원 역산 근사(≈). 밴드 모델의 NTM 이익 앵커(1,070억)는 순이익 기준 역산이라 순수 영업이익 컨센(842억)보다 크다 — 금융수익 포함분.</p>
+
+  <h3>시나리오 · 민감도</h3>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>시나리오</th><th>전제</th><th class="num">NTM 이익</th><th class="num">배수</th><th class="num">환산가</th><th class="num">현재가 대비</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td>수주잔고 소진+신규 수주로 FY27 이익 1,350억, 믹스 개선 ASP 유지</td><td class="num">1,350억</td><td class="num">30배</td><td class="num">211,202</td><td class="num"><span class="up">+11.2%</span></td></tr>
+      <tr><td><strong>Base</strong></td><td>FY26 컨센+금융수익 반영 NTM 1,070억, 사이클 정상화 멀티플</td><td class="num">1,070억</td><td class="num">25배</td><td class="num">139,498</td><td class="num"><span class="down">−26.5%</span></td></tr>
+      <tr><td><strong>Bear</strong></td><td>삼성·SK 국내 발주 둔화(내수 95% 편중 현실화), 다운사이클 디레이팅</td><td class="num">750억</td><td class="num">15배</td><td class="num">58,667</td><td class="num"><span class="down">−69.1%</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">민감도(Base 25배 고정): NTM 이익 −20% → 111,598원(−41.2%) · 기준 → 139,498원(−26.5%) · +20% → 167,398원(−11.8%). 배수 근거는 글로벌 피어 실측 P/E(10). <strong>시나리오 가치는 조건부 환산 범위이며 목표주가·예측이 아니다.</strong></p>
+  <div class="callout"><div class="co-num">−26.5%</div><div class="co-lbl"><strong>Base 환산가의 현재가 대비 하락폭</strong> — 피에스케이(−25.5%)와 사실상 같다. 수주 가시성이 좋아도 34배 밸류 앞에서는 하방(Bear −69.1%)이 상방(+11.2%)을 압도한다.</div></div>
+  <p class="prose"><strong>2차 밸류에이션 (P/B–ROE 교차확인):</strong> FY26E BPS 26,756원 기준 <strong>PBR 7.1배</strong>, FY26E ROE는 약 19%(EPS 5,196 ÷ BPS). 피에스케이(PBR 8.2배·ROE 22%)보다 P/B는 낮지만 ROE도 낮아, 질(質) 대비 밸류는 두 종목이 비슷한 프리미엄대에 있다.</p>
+</div>
+
+<details class="pe-embed" data-peb="095610" open>
+  <summary>
+    <span class="peb-t">📊 테스 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 34.0배 · 기간 평균 10.8배 · 백분위 99%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM 이익은 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="테스 주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="테스 forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows">
+          <tr><td>'23.5.3</td><td class="num">350억원</td><td class="num">1,825원</td><td>사후 실적 기반 근사(당시 컨센 보도 미확보): 2023년 메모리 다운사이클 저점 국면의 NTM 근사</td></tr>
+          <tr><td>'24.5.15</td><td class="num">450억원</td><td class="num">2,347원</td><td>사후 실적 기반 근사: FY24 영업이익 385억(확정)+FY25 회복 기대. PECVD·식각 수요 회복 초기</td></tr>
+          <tr><td>'25.5.15</td><td class="num">600억원</td><td class="num">3,129원</td><td>사후 실적 기반 근사: FY25 영업이익 578억(확정)에 수렴 — 매출 +46.2%·OP +50.3% 고성장 확인</td></tr>
+          <tr><td>'26.1.23</td><td class="num">800억원</td><td class="num">4,172원</td><td>하나증권 실적 프리뷰('순항중', 2026-01-23) 전후 — SK하이닉스 1,969억 수주 반영, FY26E 상향</td></tr>
+          <tr><td>'26.5.13</td><td class="num">950억원</td><td class="num">4,954원</td><td>1Q26 분기보고서: 매출 972억(+15.1%)·OP 222억(+36.4%)·수주잔고 1,455억 공개 — FY26E 컨센 OP 842억 상향</td></tr>
+          <tr><td>'26.7.16</td><td class="num">1,070억원</td><td class="num">5,580원</td><td>FnGuide(2026-07-16) Fwd12M EPS ≈5,600원 × 19.36M주 ÷ 전환율 1.010 ≈ NTM 이익 1,070억 역산(순이익 기준 — 현금성자산 금융수익 포함) — 2026E PER 37.40·2027E 32.41과 정합</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 이익(억원) 앵커 × 전환율 1.0096(DART 실측 — 2Q24~1Q26 흑자 8개 분기, 지배순이익÷영업이익. 대규모 금융수익으로 &gt;1) ÷ 발행주식수 19,360,000주. 앵커 사이는 선형 보간. 추정 모델이며 실제 컨센서스 히스토리가 아니다.</p>
+  </div>
+</details>
+
+<!-- 10 피어 -->
+<div class="card" id="s10">
+  <h2><span class="idx">10</span>피어 비교 — 두 종목 + 국내·글로벌<span class="tag">공유</span></h2>
+  <p class="deck">TTM 실측. 이익 바닥·인식 시차 탓에 TTM P/E는 왜곡되니, 비교는 Forward 기준으로 읽는다.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">TTM 매출</th><th class="num">TTM OP</th><th class="num">OPM</th><th class="num">TTM P/E</th><th class="num">Fwd P/E</th></tr></thead>
+    <tbody>
+      <tr><td><strong>피에스케이 (319660)</strong></td><td class="num">5.5조</td><td class="num">5,118억</td><td class="num">1,131억</td><td class="num">22.1%</td><td class="num">55.6배</td><td class="num">33.5배</td></tr>
+      <tr><td><strong>테스 (095610)</strong></td><td class="num">3.7조</td><td class="num">3,638억</td><td class="num">637억</td><td class="num">17.5%</td><td class="num">56.0배</td><td class="num">34.0배</td></tr>
+      <tr><td>주성엔지니어링 (036930)</td><td class="num">8.7조</td><td class="num">2,500억*</td><td class="num">적자*</td><td class="num">−4.0%*</td><td class="num">1,287배*</td><td class="num">—</td></tr>
+      <tr><td>어플라이드 머티어리얼즈 (AMAT)</td><td class="num">$414.6B</td><td class="num">$29.3B</td><td class="num">$8.8B</td><td class="num">29.9%</td><td class="num">47.4배</td><td class="num">—</td></tr>
+      <tr><td>램리서치 (LRCX)</td><td class="num">$387.8B</td><td class="num">$21.2B</td><td class="num">$7.2B</td><td class="num">34.1%</td><td class="num">61.4배</td><td class="num">—</td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">* 주성엔지니어링은 TTM에 영업적자 분기가 포함돼 P/E·OPM이 <strong>왜곡</strong>됐다(비교 무의미) — 사이클 착시의 대표 사례. 통화가 섞여 절대액은 각자 통화, 비교는 배수(OPM·P/E)로만.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">peer_table.py · DART/SEC EDGAR TTM 실측 (2026.07.19)</span><span class="evd-sum">TTM 매출·영업이익은 DART 분기(KR)·SEC companyfacts(US) 실측, 시총은 토스 현재가×발행주식수. 피에스케이/테스 TTM OPM 22.1%/17.5%. 글로벌 1군 AMAT 29.9%·LRCX 34.1% — 대형사가 규모의 마진 우위.</span><span class="evd-nolink">peer_table.py 계산값 — 원문 링크 없음</span></span></span></p>
+  <p class="prose"><strong>읽는 법:</strong> 두 국내 장비주는 TTM P/E 55~56배로 AMAT(47배)보다 비싸다. Forward로 내려도 33~34배 — 글로벌 1군과 비슷하거나 소폭 높은 수준이다. OPM은 피에스케이(22%)가 테스(17.5%)를 앞서지만 둘 다 글로벌 대형사(30~34%)보다 낮다. 규모·마진 열위를 <strong>성장률로 정당화</strong>하는 구조라, 성장이 둔화되면 멀티플 정상화 압력이 크다.</p>
+</div>
+
+<!-- 11 수급 -->
+<div class="card" id="s11">
+  <h2><span class="idx">11</span>수급 — 국민연금이 갈라서다<span class="tag">공유</span></h2>
+  <p class="deck">같은 사이클인데 연기금의 방향이 반대다 — 테스는 매집, 피에스케이는 축소.</p>
+  <div class="note">KRX 투자자별 순매수(외국인·기관)는 이번 조회에서 <strong>? 확인불가</strong>(KRX API HTTP 400). 아래는 DART 5%룰 대량보유(지분율 증감) 실측으로 보완한다.</div>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>종목</th><th>보고자</th><th class="num">지분율</th><th class="num">증감</th><th>날짜·해석</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2">테스</td><td>국민연금공단</td><td class="num">9.44%</td><td class="num"><span class="up">+1.01%p</span></td><td>2026-07-01 — 직전 8.43%(1/2, +2.32%p)에 이어 <strong>지속 매집</strong><span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">DART · 테스 대량보유(약식) 국민연금 (2026.04.01)</span><span class="evd-sum">국민연금 테스 지분율 8.43%→<strong>9.44%</strong>(+1.01%p). 2026-01-02 보고에서도 6.11%→8.43%(+2.32%p) — 연초부터 꾸준히 매집. 스마트머니 유입 신호.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004600" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>주숭일 (최대주주)</td><td class="num">29.46%</td><td class="num"><span class="up">+0.14%p</span></td><td>2026-07-15 — 대표이사 겸 최대주주, 안정적 지배구조</td></tr>
+      <tr><td rowspan="2">피에스케이</td><td>국민연금공단</td><td class="num">7.12%</td><td class="num"><span class="down">−1.02%p</span></td><td>2026-07-01 — <strong>차익실현·축소</strong><span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">DART · 피에스케이 대량보유(약식) 국민연금 (2026.07.01)</span><span class="evd-sum">국민연금 피에스케이 지분율 8.14%→<strong>7.12%</strong>(−1.02%p, 단순 추가취득/처분). 급등 구간에서 연기금이 비중을 줄이는 방향 — 테스와 정반대.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701000574" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>삼성자산운용</td><td class="num">5.94%</td><td class="num"><span class="down">−1.36%p</span></td><td>2026-07-08 — 운용사도 축소<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">DART · 피에스케이 대량보유(약식) 삼성자산운용 (2026.07.08)</span><span class="evd-sum">삼성자산운용(액티브 위탁분 포함) 피에스케이 7.30%→<strong>5.94%</strong>(−1.36%p, 매매로 인한 변동). 국민연금에 이어 기관 이탈 — 급등 후 차익실현 흐름.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260708000389" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">피에스케이는 모회사 피에스케이홀딩스가 32.84% 지분을 안정적으로 유지하나, <strong>급등 구간에서 연기금·운용사가 함께 비중을 줄였다</strong>. 반대로 테스는 국민연금이 연초부터 매집을 이어갔다 — 수급 신호만 보면 테스가 우호적이다. (5%룰 지분율은 DART 공개 정보다.)</p>
+</div>
+
+<!-- 12 반대 논리 -->
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>반대 논리 — 콜을 바꿀 조건<span class="tag">공유</span></h2>
+  <p class="deck">지금은 둘 다 비중축소다. 아래 조건이 확인되면 중립·비중확대로 재판정한다.</p>
+  <div class="cond"><strong>콜을 비중축소 → 중립/비중확대로 바꿀 조건 (공통)</strong>
+    <ul>
+      <li>Forward P/E 백분위가 <strong>75% 미만</strong>으로 내려올 것(가격 조정 또는 이익 급상향) — 현재 둘 다 99%.</li>
+      <li>2Q26 잠정실적에서 <strong>이익이 컨센을 상회</strong>하며 NTM 추정이 재차 상향될 것(8월 판정).</li>
+    </ul>
+  </div>
+  <p class="prose"><strong>피에스케이 개별 조건:</strong> ① 2Q26 매출 1,600억+ & OPM 30% 방어 ② 수주잔고를 공개로 전환(현재 NDA로 확인불가) ③ 연기금·운용사 매도세 진정. — 리스크: 수주 가시성 부재 + 기관 이탈이 겹치면 하락 시 완충이 약하다.</p>
+  <p class="prose"><strong>테스 개별 조건:</strong> ① 수주잔고 1,455억의 매출 전환 가속 ② 내수 편중 완화(수출·신규 고객) ③ OPM 22% 이상 유지. — 리스크: 삼성·SK 국내 발주에 100% 연동돼, 두 고객의 캐펙스 이연이 곧바로 실적 리스크(GS 4번).</p>
+  <div class="note"><strong>공통 하방 리스크:</strong> ① SOX 베어마켓의 국내 전이(7/20 갭) ② 백분위 99%에서의 멀티플 정상화 ③ 장비주 인도기준 매출 인식 — "만든 물량"과 "넘긴 매출"의 시차로 분기 실적 변동성이 크다.</p>
+</div>
+
+<!-- 13 다음 이벤트 -->
+<div class="card" id="s13">
+  <h2><span class="idx">13</span>다음 이벤트 — 날짜 박힌 체크포인트<span class="tag">공유</span></h2>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>시점(추정)</th><th>종목</th><th>이벤트</th><th>왜 중요한가</th></tr></thead>
+    <tbody>
+      <tr><td>2026-07-20 (월)</td><td>공통</td><td>SOX 베어마켓 후 국내 첫 거래일</td><td>미국 반도체 셀오프의 국내 장비주 갭 전이 여부 — 단기 최대 변수</td></tr>
+      <tr><td>2026년 8월 (추정)</td><td>피에스케이</td><td>2Q26 잠정실적</td><td>OPM 30% 방어·수주잔고 공개 여부 — 콜 재판정 1차 지점</td></tr>
+      <tr><td>2026년 8월 (추정)</td><td>테스</td><td>2Q26 잠정실적</td><td>수주잔고 1,455억의 매출 전환 속도·내수 편중 — 콜 재판정 1차 지점</td></tr>
+      <tr><td>상시</td><td>테스</td><td>단일판매·공급계약 자율공시</td><td>신규 수주 흐름의 실시간 신호(3~6월 다수 공시 이력)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="fine">실적 발표일은 과거 패턴 기반 추정이며 회사 확정 일정이 아니다. 두 종목 모두 정기 IR을 개최해왔다(피에스케이 5/11, 테스 5/18 등).</p>
+</div>
+
+<!-- 14 대조·종합 -->
+<div class="card prose" id="s14">
+  <h2><span class="idx">14</span>대조 — 같은 사이클, 다른 밸류에이션 위치<span class="tag">종합</span></h2>
+  <p class="deck">둘 다 좋은 회사이고 사이클도 진짜다. 그런데 가격이 서사를 앞질렀다는 결론도 둘 다 같다.</p>
+  <div class="tbl-scroll"><table>
+    <thead><tr><th>항목</th><th>피에스케이 (319660)</th><th>테스 (095610)</th></tr></thead>
+    <tbody>
+      <tr><td>주력 장비</td><td>드라이 스트립·클리닝 (세계 1위 ≈39%)</td><td>PECVD·건식식각(GPE)</td></tr>
+      <tr><td>시가총액</td><td>5.5조</td><td>3.7조</td></tr>
+      <tr><td>1Q26 매출 / YoY</td><td>1,566억 / <span class="up">+53.6%</span></td><td>972억 / <span class="up">+15.1%</span></td></tr>
+      <tr><td>1Q26 OPM</td><td><strong>30.1%</strong></td><td>22.8%</td></tr>
+      <tr><td>2025 성장 (매출/OP)</td><td><span class="up">+14.9%</span> / <span class="up">+5.4%</span> (둔화 후 가속)</td><td><span class="up">+46.2%</span> / <span class="up">+50.3%</span> (고성장 해)</td></tr>
+      <tr><td>수주잔고</td><td>미공개 (NDA) <span class="grade g-unk">? 확인불가</span></td><td><strong>1,455억 공개</strong> (매출 1.5배)</td></tr>
+      <tr><td>수출 비중 (1Q26)</td><td>67% (마이크론+자회사 혼재)</td><td>4.4% (내수 95%)</td></tr>
+      <tr><td>연기금 방향</td><td>국민연금 <span class="down">−1.02%p</span> 축소</td><td>국민연금 <span class="up">+1.01%p</span> 매집</td></tr>
+      <tr><td>Fwd P/E · 백분위</td><td>33.5배 · <strong>99%</strong></td><td>34.0배 · <strong>99%</strong></td></tr>
+      <tr><td>PBR · ROE(FY26E)</td><td>8.2배 · ≈22%</td><td>7.1배 · ≈19%</td></tr>
+      <tr><td>Base 상승여력</td><td><span class="down">−25.5%</span></td><td><span class="down">−26.5%</span></td></tr>
+      <tr><td>선호도 (rating.py)</td><td><span class="pref pref-under">비중축소</span></td><td><span class="pref pref-under">비중축소</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><div class="co-num">99% = 99%</div><div class="co-lbl"><strong>두 종목의 Forward P/E 밴드 백분위</strong> — 사업의 결(이익질 vs 수주가시성)은 다르지만, "3년 만에 가장 비싼 가격"이라는 위치는 정확히 같다.</div></div>
+  <p><strong>같은 사이클:</strong> 둘 다 삼성·SK 국내 메모리 캐펙스에 연동되고, 반도체 수출 +173.9%·HBM 슈퍼사이클의 같은 수혜주다. 3개월 +120%대 상승, Fwd P/E 33~34배·백분위 99%, Base 환산가 −25~26%까지 —<strong>정량 결과가 놀랍도록 겹친다.</strong></p>
+  <p><strong>다른 방어막:</strong> 피에스케이는 <strong>이익의 질</strong>(OPM 30%·세계 1위 점유율)로, 테스는 <strong>가시성</strong>(수주잔고 공개·연기금 매집)으로 각자 프리미엄을 방어한다. 굳이 상대 우위를 꼽자면 — 이익 마진은 피에스케이, 성장 가시성·수급은 테스다. 하지만 <strong>어느 쪽도 현재 밸류(백분위 99%)를 정당화하기엔 부족</strong>하다.</p>
+  <p><strong>종합 결론:</strong> 두 종목 모두 <span class="pref pref-under">비중축소</span>. 이는 "나쁜 회사"라는 뜻이 아니라 <em>이 가격에 남은 상방이 얇다</em>는 뜻이다. 무엇을 사느냐(피에스케이 vs 테스)보다 <strong>이 가격이냐</strong>가 지금의 질문이다. 8월 2Q26 잠정실적이 두 콜을 동시에 재판정하는 첫 지점이다.</p>
+</div>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>DART · 피에스케이 분기보고서 2026.03 (2026.05.15) — 생산실적·가동률·수주상황·매출실적 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001244" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 피에스케이 사업보고서 2025.12 (2026.03.23) — FY25 확정 실적·수출입 구성 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323000017" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 테스 분기보고서 2026.03 (2026.05.13) — 생산능력·생산실적·수주잔고·매출실적 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260513000153" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 테스 사업보고서 2025.12 (2026.03.13) — FY25 확정 실적·현금성자산 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260313000585" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 테스 단일판매·공급계약(자율공시) (2026.06.05) — 신규 수주 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260605900283" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 테스 대량보유(약식) 국민연금 (2026.04.01) — +1.01%p 매집 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260401004600" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 피에스케이 대량보유(약식) 국민연금 (2026.07.01) — −1.02%p 축소 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260701000574" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 피에스케이 대량보유(약식) 삼성자산운용 (2026.07.08) — −1.36%p 축소 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260708000389" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 피에스케이 컨센서스·목표주가 (2026.07.16 기준) <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=319660" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 테스 컨센서스·목표주가 (2026.07.16 기준) <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=095610" target="_blank" rel="noopener">↗</a></li>
+    <li>관세청 · 품목별 수출입 API (HS 8542, 2026-06) — 실측 계산값</li>
+    <li>알파스퀘어·공개 보도 · 피에스케이 M/S·커버리지(현대차·대신 등) <a href="https://alphasquare.co.kr/home/stock-summary?code=319660" target="_blank" rel="noopener">↗</a></li>
+    <li>하나증권 · 테스 Earnings Preview '순항중' (2026.01.23) <a href="https://www.hanaw.com/download/research/FileServer/WEB/industry/enterprise/2026/01/22/TES_260123.pdf" target="_blank" rel="noopener">↗</a></li>
+    <li>Investing.com · 필라델피아 반도체지수(SOX) — 7/17 베어마켓 진입 <a href="https://kr.investing.com/indices/phlx-semiconductor" target="_blank" rel="noopener">↗</a></li>
+    <li>토스 Open API·DART·SEC EDGAR — screen.py / kr_financials.py / peer_table.py / conversion_rate.py / build_series.py 계산값 (2026.07.19 실행 · KR 가격 7/16 종가)</li>
+    <li>대신증권 · 피에스케이 Initiation '조용한 강자' (2026.04.02) <a href="http://money2.daishin.com/PDF/Out/intranet_data/product/researchcenter/report/2026/04/57003_psk_initiation_260402.pdf" target="_blank" rel="noopener">↗</a></li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM 이익은 리포트·뉴스 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님). 전환율은 DART 실측(피에스케이 0.8982·테스 1.0096, 2Q24~1Q26 흑자 8개 분기). 시총·밴드 환산가는 근사치. 선호도는 정해진 공식(밸류 위치+시나리오 상승여력)의 산출이며 목표주가가 아니다. 두 종목은 인도기준 매출 인식(생산과 매출의 시차)이 커 분기 실적 변동성이 크다.</p>
+  <p>생성: 2026-07-19 · 가격·수급 기준일: 2026-07-16(목) 종가 (7/17 제헌절 휴장) · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-19 21:37 KST</div></footer>
+
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {
+  "319660": {"rows":[{"d":"2023-05-03","c":20400.0,"eps":1705.0,"pe":12.0},{"d":"2023-05-04","c":19920.0,"eps":1707.0,"pe":11.7},{"d":"2023-05-08","c":20450.0,"eps":1716.0,"pe":11.9},{"d":"2023-05-09","c":19890.0,"eps":1718.0,"pe":11.6},{"d":"2023-05-10","c":19600.0,"eps":1720.0,"pe":11.4},{"d":"2023-05-11","c":19430.0,"eps":1722.0,"pe":11.3},{"d":"2023-05-12","c":19550.0,"eps":1724.0,"pe":11.3},{"d":"2023-05-15","c":19140.0,"eps":1730.0,"pe":11.1},{"d":"2023-05-16","c":19100.0,"eps":1732.0,"pe":11.0},{"d":"2023-05-17","c":19380.0,"eps":1734.0,"pe":11.2},{"d":"2023-05-18","c":19910.0,"eps":1736.0,"pe":11.5},{"d":"2023-05-19","c":21750.0,"eps":1738.0,"pe":12.5},{"d":"2023-05-22","c":21750.0,"eps":1744.0,"pe":12.5},{"d":"2023-05-23","c":21600.0,"eps":1746.0,"pe":12.4},{"d":"2023-05-24","c":21550.0,"eps":1749.0,"pe":12.3},{"d":"2023-05-25","c":21850.0,"eps":1751.0,"pe":12.5},{"d":"2023-05-26","c":21650.0,"eps":1753.0,"pe":12.4},{"d":"2023-05-30","c":21250.0,"eps":1761.0,"pe":12.1},{"d":"2023-05-31","c":21450.0,"eps":1763.0,"pe":12.2},{"d":"2023-06-01","c":21900.0,"eps":1765.0,"pe":12.4},{"d":"2023-06-02","c":21300.0,"eps":1767.0,"pe":12.1},{"d":"2023-06-05","c":21250.0,"eps":1773.0,"pe":12.0},{"d":"2023-06-07","c":21100.0,"eps":1777.0,"pe":11.9},{"d":"2023-06-08","c":21750.0,"eps":1779.0,"pe":12.2},{"d":"2023-06-09","c":22000.0,"eps":1781.0,"pe":12.4},{"d":"2023-06-12","c":21950.0,"eps":1787.0,"pe":12.3},{"d":"2023-06-13","c":22400.0,"eps":1790.0,"pe":12.5},{"d":"2023-06-14","c":21700.0,"eps":1792.0,"pe":12.1},{"d":"2023-06-15","c":22350.0,"eps":1794.0,"pe":12.5},{"d":"2023-06-16","c":22050.0,"eps":1796.0,"pe":12.3},{"d":"2023-06-19","c":21900.0,"eps":1802.0,"pe":12.2},{"d":"2023-06-20","c":22000.0,"eps":1804.0,"pe":12.2},{"d":"2023-06-21","c":21900.0,"eps":1806.0,"pe":12.1},{"d":"2023-06-22","c":21800.0,"eps":1808.0,"pe":12.1},{"d":"2023-06-23","c":21800.0,"eps":1810.0,"pe":12.0},{"d":"2023-06-26","c":22350.0,"eps":1816.0,"pe":12.3},{"d":"2023-06-27","c":22700.0,"eps":1818.0,"pe":12.5},{"d":"2023-06-28","c":22700.0,"eps":1820.0,"pe":12.5},{"d":"2023-06-29","c":23100.0,"eps":1822.0,"pe":12.7},{"d":"2023-06-30","c":22700.0,"eps":1824.0,"pe":12.4},{"d":"2023-07-03","c":22700.0,"eps":1831.0,"pe":12.4},{"d":"2023-07-04","c":22900.0,"eps":1833.0,"pe":12.5},{"d":"2023-07-05","c":22100.0,"eps":1835.0,"pe":12.0},{"d":"2023-07-06","c":21000.0,"eps":1837.0,"pe":11.4},{"d":"2023-07-07","c":20800.0,"eps":1839.0,"pe":11.3},{"d":"2023-07-10","c":20350.0,"eps":1845.0,"pe":11.0},{"d":"2023-07-11","c":20850.0,"eps":1847.0,"pe":11.3},{"d":"2023-07-12","c":21250.0,"eps":1849.0,"pe":11.5},{"d":"2023-07-13","c":21650.0,"eps":1851.0,"pe":11.7},{"d":"2023-07-14","c":21650.0,"eps":1853.0,"pe":11.7},{"d":"2023-07-17","c":23350.0,"eps":1859.0,"pe":12.6},{"d":"2023-07-18","c":22700.0,"eps":1861.0,"pe":12.2},{"d":"2023-07-19","c":22650.0,"eps":1863.0,"pe":12.2},{"d":"2023-07-20","c":22950.0,"eps":1865.0,"pe":12.3},{"d":"2023-07-21","c":22150.0,"eps":1867.0,"pe":11.9},{"d":"2023-07-24","c":22500.0,"eps":1874.0,"pe":12.0},{"d":"2023-07-25","c":22600.0,"eps":1876.0,"pe":12.0},{"d":"2023-07-26","c":21400.0,"eps":1878.0,"pe":11.4},{"d":"2023-07-27","c":22650.0,"eps":1880.0,"pe":12.0},{"d":"2023-07-28","c":23150.0,"eps":1882.0,"pe":12.3},{"d":"2023-07-31","c":22500.0,"eps":1888.0,"pe":11.9},{"d":"2023-08-01","c":22650.0,"eps":1890.0,"pe":12.0},{"d":"2023-08-02","c":21200.0,"eps":1892.0,"pe":11.2},{"d":"2023-08-03","c":21450.0,"eps":1894.0,"pe":11.3},{"d":"2023-08-04","c":21200.0,"eps":1896.0,"pe":11.2},{"d":"2023-08-07","c":20950.0,"eps":1902.0,"pe":11.0},{"d":"2023-08-08","c":20950.0,"eps":1904.0,"pe":11.0},{"d":"2023-08-09","c":20900.0,"eps":1906.0,"pe":11.0},{"d":"2023-08-10","c":19720.0,"eps":1908.0,"pe":10.3},{"d":"2023-08-11","c":19880.0,"eps":1911.0,"pe":10.4},{"d":"2023-08-14","c":19410.0,"eps":1917.0,"pe":10.1},{"d":"2023-08-16","c":19640.0,"eps":1921.0,"pe":10.2},{"d":"2023-08-17","c":19650.0,"eps":1923.0,"pe":10.2},{"d":"2023-08-18","c":19670.0,"eps":1925.0,"pe":10.2},{"d":"2023-08-21","c":19290.0,"eps":1931.0,"pe":10.0},{"d":"2023-08-22","c":18320.0,"eps":1933.0,"pe":9.5},{"d":"2023-08-23","c":18200.0,"eps":1935.0,"pe":9.4},{"d":"2023-08-24","c":18630.0,"eps":1937.0,"pe":9.6},{"d":"2023-08-25","c":18110.0,"eps":1939.0,"pe":9.3},{"d":"2023-08-28","c":17950.0,"eps":1945.0,"pe":9.2},{"d":"2023-08-29","c":18370.0,"eps":1947.0,"pe":9.4},{"d":"2023-08-30","c":18430.0,"eps":1949.0,"pe":9.5},{"d":"2023-08-31","c":18750.0,"eps":1952.0,"pe":9.6},{"d":"2023-09-01","c":20100.0,"eps":1954.0,"pe":10.3},{"d":"2023-09-04","c":20450.0,"eps":1960.0,"pe":10.4},{"d":"2023-09-05","c":19860.0,"eps":1962.0,"pe":10.1},{"d":"2023-09-06","c":19390.0,"eps":1964.0,"pe":9.9},{"d":"2023-09-07","c":19520.0,"eps":1966.0,"pe":9.9},{"d":"2023-09-08","c":19280.0,"eps":1968.0,"pe":9.8},{"d":"2023-09-11","c":19030.0,"eps":1974.0,"pe":9.6},{"d":"2023-09-12","c":19810.0,"eps":1976.0,"pe":10.0},{"d":"2023-09-13","c":20000.0,"eps":1978.0,"pe":10.1},{"d":"2023-09-14","c":20400.0,"eps":1980.0,"pe":10.3},{"d":"2023-09-15","c":20500.0,"eps":1982.0,"pe":10.3},{"d":"2023-09-18","c":20500.0,"eps":1988.0,"pe":10.3},{"d":"2023-09-19","c":20150.0,"eps":1991.0,"pe":10.1},{"d":"2023-09-20","c":20150.0,"eps":1993.0,"pe":10.1},{"d":"2023-09-21","c":19300.0,"eps":1995.0,"pe":9.7},{"d":"2023-09-22","c":19570.0,"eps":1997.0,"pe":9.8},{"d":"2023-09-25","c":19420.0,"eps":2003.0,"pe":9.7},{"d":"2023-09-26","c":19270.0,"eps":2005.0,"pe":9.6},{"d":"2023-09-27","c":19270.0,"eps":2007.0,"pe":9.6},{"d":"2023-10-04","c":19180.0,"eps":2021.0,"pe":9.5},{"d":"2023-10-05","c":19350.0,"eps":2023.0,"pe":9.6},{"d":"2023-10-06","c":19320.0,"eps":2025.0,"pe":9.5},{"d":"2023-10-10","c":19300.0,"eps":2034.0,"pe":9.5},{"d":"2023-10-11","c":20050.0,"eps":2036.0,"pe":9.8},{"d":"2023-10-12","c":19820.0,"eps":2038.0,"pe":9.7},{"d":"2023-10-13","c":19900.0,"eps":2040.0,"pe":9.8},{"d":"2023-10-16","c":19450.0,"eps":2046.0,"pe":9.5},{"d":"2023-10-17","c":19660.0,"eps":2048.0,"pe":9.6},{"d":"2023-10-18","c":19250.0,"eps":2050.0,"pe":9.4},{"d":"2023-10-19","c":18520.0,"eps":2052.0,"pe":9.0},{"d":"2023-10-20","c":18740.0,"eps":2054.0,"pe":9.1},{"d":"2023-10-23","c":18550.0,"eps":2060.0,"pe":9.0},{"d":"2023-10-24","c":19280.0,"eps":2062.0,"pe":9.3},{"d":"2023-10-25","c":19320.0,"eps":2064.0,"pe":9.4},{"d":"2023-10-26","c":18820.0,"eps":2066.0,"pe":9.1},{"d":"2023-10-27","c":18420.0,"eps":2068.0,"pe":8.9},{"d":"2023-10-30","c":18210.0,"eps":2075.0,"pe":8.8},{"d":"2023-10-31","c":17160.0,"eps":2077.0,"pe":8.3},{"d":"2023-11-01","c":17710.0,"eps":2079.0,"pe":8.5},{"d":"2023-11-02","c":18900.0,"eps":2081.0,"pe":9.1},{"d":"2023-11-03","c":18900.0,"eps":2083.0,"pe":9.1},{"d":"2023-11-06","c":19290.0,"eps":2089.0,"pe":9.2},{"d":"2023-11-07","c":19770.0,"eps":2091.0,"pe":9.5},{"d":"2023-11-08","c":19550.0,"eps":2093.0,"pe":9.3},{"d":"2023-11-09","c":19390.0,"eps":2095.0,"pe":9.3},{"d":"2023-11-10","c":19360.0,"eps":2097.0,"pe":9.2},{"d":"2023-11-13","c":19380.0,"eps":2103.0,"pe":9.2},{"d":"2023-11-14","c":19300.0,"eps":2105.0,"pe":9.2},{"d":"2023-11-15","c":20200.0,"eps":2107.0,"pe":9.6},{"d":"2023-11-16","c":20750.0,"eps":2109.0,"pe":9.8},{"d":"2023-11-17","c":20800.0,"eps":2111.0,"pe":9.9},{"d":"2023-11-20","c":20700.0,"eps":2118.0,"pe":9.8},{"d":"2023-11-21","c":20850.0,"eps":2120.0,"pe":9.8},{"d":"2023-11-22","c":20850.0,"eps":2122.0,"pe":9.8},{"d":"2023-11-23","c":19840.0,"eps":2124.0,"pe":9.3},{"d":"2023-11-24","c":19650.0,"eps":2126.0,"pe":9.2},{"d":"2023-11-27","c":19960.0,"eps":2132.0,"pe":9.4},{"d":"2023-11-28","c":20250.0,"eps":2134.0,"pe":9.5},{"d":"2023-11-29","c":20150.0,"eps":2136.0,"pe":9.4},{"d":"2023-11-30","c":19840.0,"eps":2138.0,"pe":9.3},{"d":"2023-12-01","c":19580.0,"eps":2140.0,"pe":9.1},{"d":"2023-12-04","c":19600.0,"eps":2146.0,"pe":9.1},{"d":"2023-12-05","c":19330.0,"eps":2148.0,"pe":9.0},{"d":"2023-12-06","c":19270.0,"eps":2150.0,"pe":9.0},{"d":"2023-12-07","c":19320.0,"eps":2153.0,"pe":9.0},{"d":"2023-12-08","c":19650.0,"eps":2155.0,"pe":9.1},{"d":"2023-12-11","c":20100.0,"eps":2161.0,"pe":9.3},{"d":"2023-12-12","c":20300.0,"eps":2163.0,"pe":9.4},{"d":"2023-12-13","c":20500.0,"eps":2165.0,"pe":9.5},{"d":"2023-12-14","c":20750.0,"eps":2167.0,"pe":9.6},{"d":"2023-12-15","c":20600.0,"eps":2169.0,"pe":9.5},{"d":"2023-12-18","c":20950.0,"eps":2175.0,"pe":9.6},{"d":"2023-12-19","c":20350.0,"eps":2177.0,"pe":9.3},{"d":"2023-12-20","c":20300.0,"eps":2179.0,"pe":9.3},{"d":"2023-12-21","c":20200.0,"eps":2181.0,"pe":9.3},{"d":"2023-12-22","c":20400.0,"eps":2183.0,"pe":9.3},{"d":"2023-12-26","c":20350.0,"eps":2191.0,"pe":9.3},{"d":"2023-12-27","c":20900.0,"eps":2194.0,"pe":9.5},{"d":"2023-12-28","c":21050.0,"eps":2196.0,"pe":9.6},{"d":"2024-01-02","c":21750.0,"eps":2206.0,"pe":9.9},{"d":"2024-01-03","c":21950.0,"eps":2208.0,"pe":9.9},{"d":"2024-01-04","c":21800.0,"eps":2210.0,"pe":9.9},{"d":"2024-01-05","c":21600.0,"eps":2212.0,"pe":9.8},{"d":"2024-01-08","c":21250.0,"eps":2218.0,"pe":9.6},{"d":"2024-01-09","c":21100.0,"eps":2220.0,"pe":9.5},{"d":"2024-01-10","c":20600.0,"eps":2222.0,"pe":9.3},{"d":"2024-01-11","c":20950.0,"eps":2224.0,"pe":9.4},{"d":"2024-01-12","c":21150.0,"eps":2226.0,"pe":9.5},{"d":"2024-01-15","c":20750.0,"eps":2232.0,"pe":9.3},{"d":"2024-01-16","c":20800.0,"eps":2235.0,"pe":9.3},{"d":"2024-01-17","c":20900.0,"eps":2237.0,"pe":9.3},{"d":"2024-01-18","c":20800.0,"eps":2239.0,"pe":9.3},{"d":"2024-01-19","c":21200.0,"eps":2241.0,"pe":9.5},{"d":"2024-01-22","c":21600.0,"eps":2247.0,"pe":9.6},{"d":"2024-01-23","c":21400.0,"eps":2249.0,"pe":9.5},{"d":"2024-01-24","c":21650.0,"eps":2251.0,"pe":9.6},{"d":"2024-01-25","c":21650.0,"eps":2253.0,"pe":9.6},{"d":"2024-01-26","c":21450.0,"eps":2255.0,"pe":9.5},{"d":"2024-01-29","c":21300.0,"eps":2261.0,"pe":9.4},{"d":"2024-01-30","c":20650.0,"eps":2263.0,"pe":9.1},{"d":"2024-01-31","c":20100.0,"eps":2265.0,"pe":8.9},{"d":"2024-02-01","c":19760.0,"eps":2267.0,"pe":8.7},{"d":"2024-02-02","c":20150.0,"eps":2269.0,"pe":8.9},{"d":"2024-02-05","c":19850.0,"eps":2276.0,"pe":8.7},{"d":"2024-02-06","c":20400.0,"eps":2278.0,"pe":9.0},{"d":"2024-02-07","c":20400.0,"eps":2280.0,"pe":8.9},{"d":"2024-02-08","c":21000.0,"eps":2282.0,"pe":9.2},{"d":"2024-02-13","c":21600.0,"eps":2292.0,"pe":9.4},{"d":"2024-02-14","c":22150.0,"eps":2294.0,"pe":9.7},{"d":"2024-02-15","c":22100.0,"eps":2296.0,"pe":9.6},{"d":"2024-02-16","c":22150.0,"eps":2298.0,"pe":9.6},{"d":"2024-02-19","c":22100.0,"eps":2304.0,"pe":9.6},{"d":"2024-02-20","c":22200.0,"eps":2306.0,"pe":9.6},{"d":"2024-02-21","c":22300.0,"eps":2308.0,"pe":9.7},{"d":"2024-02-22","c":22500.0,"eps":2310.0,"pe":9.7},{"d":"2024-02-23","c":22500.0,"eps":2312.0,"pe":9.7},{"d":"2024-02-26","c":21850.0,"eps":2319.0,"pe":9.4},{"d":"2024-02-27","c":22300.0,"eps":2321.0,"pe":9.6},{"d":"2024-02-28","c":22950.0,"eps":2323.0,"pe":9.9},{"d":"2024-02-29","c":25400.0,"eps":2325.0,"pe":10.9},{"d":"2024-03-04","c":26300.0,"eps":2333.0,"pe":11.3},{"d":"2024-03-05","c":26550.0,"eps":2335.0,"pe":11.4},{"d":"2024-03-06","c":26250.0,"eps":2337.0,"pe":11.2},{"d":"2024-03-07","c":25900.0,"eps":2339.0,"pe":11.1},{"d":"2024-03-08","c":25950.0,"eps":2341.0,"pe":11.1},{"d":"2024-03-11","c":25400.0,"eps":2347.0,"pe":10.8},{"d":"2024-03-12","c":26500.0,"eps":2349.0,"pe":11.3},{"d":"2024-03-13","c":26500.0,"eps":2351.0,"pe":11.3},{"d":"2024-03-14","c":26000.0,"eps":2353.0,"pe":11.0},{"d":"2024-03-15","c":26500.0,"eps":2356.0,"pe":11.3},{"d":"2024-03-18","c":27850.0,"eps":2362.0,"pe":11.8},{"d":"2024-03-19","c":26850.0,"eps":2364.0,"pe":11.4},{"d":"2024-03-20","c":26750.0,"eps":2366.0,"pe":11.3},{"d":"2024-03-21","c":29300.0,"eps":2368.0,"pe":12.4},{"d":"2024-03-22","c":28250.0,"eps":2370.0,"pe":11.9},{"d":"2024-03-25","c":27850.0,"eps":2376.0,"pe":11.7},{"d":"2024-03-26","c":27950.0,"eps":2378.0,"pe":11.8},{"d":"2024-03-27","c":28850.0,"eps":2380.0,"pe":12.1},{"d":"2024-03-28","c":28650.0,"eps":2382.0,"pe":12.0},{"d":"2024-03-29","c":30200.0,"eps":2384.0,"pe":12.7},{"d":"2024-04-01","c":30000.0,"eps":2390.0,"pe":12.6},{"d":"2024-04-02","c":31100.0,"eps":2392.0,"pe":13.0},{"d":"2024-04-03","c":31050.0,"eps":2395.0,"pe":13.0},{"d":"2024-04-04","c":31200.0,"eps":2397.0,"pe":13.0},{"d":"2024-04-05","c":30400.0,"eps":2399.0,"pe":12.7},{"d":"2024-04-08","c":29950.0,"eps":2405.0,"pe":12.5},{"d":"2024-04-09","c":31050.0,"eps":2407.0,"pe":12.9},{"d":"2024-04-11","c":31450.0,"eps":2411.0,"pe":13.0},{"d":"2024-04-12","c":31200.0,"eps":2413.0,"pe":12.9},{"d":"2024-04-15","c":32100.0,"eps":2419.0,"pe":13.3},{"d":"2024-04-16","c":31200.0,"eps":2421.0,"pe":12.9},{"d":"2024-04-17","c":32350.0,"eps":2423.0,"pe":13.4},{"d":"2024-04-18","c":33300.0,"eps":2425.0,"pe":13.7},{"d":"2024-04-19","c":31800.0,"eps":2427.0,"pe":13.1},{"d":"2024-04-22","c":30700.0,"eps":2433.0,"pe":12.6},{"d":"2024-04-23","c":29050.0,"eps":2436.0,"pe":11.9},{"d":"2024-04-24","c":30550.0,"eps":2438.0,"pe":12.5},{"d":"2024-04-25","c":30100.0,"eps":2440.0,"pe":12.3},{"d":"2024-04-26","c":30050.0,"eps":2442.0,"pe":12.3},{"d":"2024-04-29","c":29850.0,"eps":2448.0,"pe":12.2},{"d":"2024-04-30","c":29700.0,"eps":2450.0,"pe":12.1},{"d":"2024-05-02","c":29900.0,"eps":2454.0,"pe":12.2},{"d":"2024-05-03","c":29550.0,"eps":2456.0,"pe":12.0},{"d":"2024-05-07","c":30100.0,"eps":2464.0,"pe":12.2},{"d":"2024-05-08","c":29900.0,"eps":2466.0,"pe":12.1},{"d":"2024-05-09","c":29200.0,"eps":2468.0,"pe":11.8},{"d":"2024-05-10","c":27850.0,"eps":2470.0,"pe":11.3},{"d":"2024-05-13","c":28450.0,"eps":2477.0,"pe":11.5},{"d":"2024-05-14","c":28450.0,"eps":2479.0,"pe":11.5},{"d":"2024-05-16","c":31250.0,"eps":2481.0,"pe":12.6},{"d":"2024-05-17","c":31100.0,"eps":2482.0,"pe":12.5},{"d":"2024-05-20","c":31750.0,"eps":2485.0,"pe":12.8},{"d":"2024-05-21","c":32000.0,"eps":2486.0,"pe":12.9},{"d":"2024-05-22","c":32050.0,"eps":2487.0,"pe":12.9},{"d":"2024-05-23","c":31150.0,"eps":2487.0,"pe":12.5},{"d":"2024-05-24","c":30400.0,"eps":2488.0,"pe":12.2},{"d":"2024-05-27","c":30550.0,"eps":2491.0,"pe":12.3},{"d":"2024-05-28","c":31900.0,"eps":2492.0,"pe":12.8},{"d":"2024-05-29","c":31750.0,"eps":2493.0,"pe":12.7},{"d":"2024-05-30","c":31250.0,"eps":2493.0,"pe":12.5},{"d":"2024-05-31","c":31750.0,"eps":2494.0,"pe":12.7},{"d":"2024-06-03","c":31800.0,"eps":2497.0,"pe":12.7},{"d":"2024-06-04","c":30550.0,"eps":2498.0,"pe":12.2},{"d":"2024-06-05","c":30950.0,"eps":2498.0,"pe":12.4},{"d":"2024-06-07","c":33500.0,"eps":2500.0,"pe":13.4},{"d":"2024-06-10","c":33850.0,"eps":2503.0,"pe":13.5},{"d":"2024-06-11","c":32850.0,"eps":2504.0,"pe":13.1},{"d":"2024-06-12","c":33400.0,"eps":2504.0,"pe":13.3},{"d":"2024-06-13","c":33300.0,"eps":2505.0,"pe":13.3},{"d":"2024-06-14","c":33250.0,"eps":2506.0,"pe":13.3},{"d":"2024-06-17","c":33350.0,"eps":2509.0,"pe":13.3},{"d":"2024-06-18","c":36100.0,"eps":2510.0,"pe":14.4},{"d":"2024-06-19","c":35400.0,"eps":2510.0,"pe":14.1},{"d":"2024-06-20","c":35700.0,"eps":2511.0,"pe":14.2},{"d":"2024-06-21","c":35200.0,"eps":2512.0,"pe":14.0},{"d":"2024-06-24","c":33800.0,"eps":2515.0,"pe":13.4},{"d":"2024-06-25","c":33450.0,"eps":2515.0,"pe":13.3},{"d":"2024-06-26","c":34450.0,"eps":2516.0,"pe":13.7},{"d":"2024-06-27","c":34450.0,"eps":2517.0,"pe":13.7},{"d":"2024-06-28","c":36450.0,"eps":2518.0,"pe":14.5},{"d":"2024-07-01","c":36150.0,"eps":2521.0,"pe":14.3},{"d":"2024-07-02","c":35750.0,"eps":2521.0,"pe":14.2},{"d":"2024-07-03","c":35500.0,"eps":2522.0,"pe":14.1},{"d":"2024-07-04","c":37800.0,"eps":2523.0,"pe":15.0},{"d":"2024-07-05","c":37150.0,"eps":2524.0,"pe":14.7},{"d":"2024-07-08","c":36850.0,"eps":2527.0,"pe":14.6},{"d":"2024-07-09","c":38300.0,"eps":2527.0,"pe":15.2},{"d":"2024-07-10","c":38550.0,"eps":2528.0,"pe":15.2},{"d":"2024-07-11","c":38600.0,"eps":2529.0,"pe":15.3},{"d":"2024-07-12","c":35750.0,"eps":2530.0,"pe":14.1},{"d":"2024-07-15","c":35700.0,"eps":2532.0,"pe":14.1},{"d":"2024-07-16","c":36200.0,"eps":2533.0,"pe":14.3},{"d":"2024-07-17","c":32900.0,"eps":2534.0,"pe":13.0},{"d":"2024-07-18","c":32700.0,"eps":2535.0,"pe":12.9},{"d":"2024-07-19","c":32300.0,"eps":2536.0,"pe":12.7},{"d":"2024-07-22","c":31250.0,"eps":2538.0,"pe":12.3},{"d":"2024-07-23","c":30500.0,"eps":2539.0,"pe":12.0},{"d":"2024-07-24","c":31550.0,"eps":2540.0,"pe":12.4},{"d":"2024-07-25","c":29900.0,"eps":2541.0,"pe":11.8},{"d":"2024-07-26","c":29250.0,"eps":2542.0,"pe":11.5},{"d":"2024-07-29","c":29350.0,"eps":2544.0,"pe":11.5},{"d":"2024-07-30","c":29050.0,"eps":2545.0,"pe":11.4},{"d":"2024-07-31","c":31350.0,"eps":2546.0,"pe":12.3},{"d":"2024-08-01","c":31650.0,"eps":2547.0,"pe":12.4},{"d":"2024-08-02","c":27950.0,"eps":2548.0,"pe":11.0},{"d":"2024-08-05","c":25900.0,"eps":2550.0,"pe":10.2},{"d":"2024-08-06","c":26750.0,"eps":2551.0,"pe":10.5},{"d":"2024-08-07","c":27250.0,"eps":2552.0,"pe":10.7},{"d":"2024-08-08","c":26600.0,"eps":2553.0,"pe":10.4},{"d":"2024-08-09","c":28600.0,"eps":2554.0,"pe":11.2},{"d":"2024-08-12","c":28950.0,"eps":2556.0,"pe":11.3},{"d":"2024-08-13","c":29700.0,"eps":2557.0,"pe":11.6},{"d":"2024-08-14","c":30450.0,"eps":2558.0,"pe":11.9},{"d":"2024-08-16","c":29950.0,"eps":2560.0,"pe":11.7},{"d":"2024-08-19","c":30100.0,"eps":2562.0,"pe":11.7},{"d":"2024-08-20","c":28950.0,"eps":2563.0,"pe":11.3},{"d":"2024-08-21","c":28150.0,"eps":2564.0,"pe":11.0},{"d":"2024-08-22","c":27600.0,"eps":2565.0,"pe":10.8},{"d":"2024-08-23","c":27400.0,"eps":2566.0,"pe":10.7},{"d":"2024-08-26","c":26250.0,"eps":2568.0,"pe":10.2},{"d":"2024-08-27","c":25400.0,"eps":2569.0,"pe":9.9},{"d":"2024-08-28","c":27050.0,"eps":2570.0,"pe":10.5},{"d":"2024-08-29","c":26000.0,"eps":2571.0,"pe":10.1},{"d":"2024-08-30","c":25800.0,"eps":2572.0,"pe":10.0},{"d":"2024-09-02","c":25100.0,"eps":2574.0,"pe":9.8},{"d":"2024-09-03","c":24350.0,"eps":2575.0,"pe":9.5},{"d":"2024-09-04","c":23200.0,"eps":2576.0,"pe":9.0},{"d":"2024-09-05","c":22250.0,"eps":2577.0,"pe":8.6},{"d":"2024-09-06","c":21700.0,"eps":2577.0,"pe":8.4},{"d":"2024-09-09","c":22050.0,"eps":2580.0,"pe":8.5},{"d":"2024-09-10","c":21900.0,"eps":2581.0,"pe":8.5},{"d":"2024-09-11","c":21900.0,"eps":2582.0,"pe":8.5},{"d":"2024-09-12","c":22750.0,"eps":2583.0,"pe":8.8},{"d":"2024-09-13","c":21700.0,"eps":2583.0,"pe":8.4},{"d":"2024-09-19","c":21250.0,"eps":2589.0,"pe":8.2},{"d":"2024-09-20","c":21600.0,"eps":2589.0,"pe":8.3},{"d":"2024-09-23","c":22200.0,"eps":2592.0,"pe":8.6},{"d":"2024-09-24","c":22850.0,"eps":2593.0,"pe":8.8},{"d":"2024-09-25","c":22600.0,"eps":2594.0,"pe":8.7},{"d":"2024-09-26","c":23900.0,"eps":2594.0,"pe":9.2},{"d":"2024-09-27","c":23100.0,"eps":2595.0,"pe":8.9},{"d":"2024-09-30","c":22850.0,"eps":2598.0,"pe":8.8},{"d":"2024-10-02","c":22700.0,"eps":2600.0,"pe":8.7},{"d":"2024-10-04","c":22850.0,"eps":2601.0,"pe":8.8},{"d":"2024-10-07","c":23150.0,"eps":2604.0,"pe":8.9},{"d":"2024-10-08","c":23000.0,"eps":2605.0,"pe":8.8},{"d":"2024-10-10","c":22450.0,"eps":2606.0,"pe":8.6},{"d":"2024-10-11","c":22700.0,"eps":2607.0,"pe":8.7},{"d":"2024-10-14","c":23950.0,"eps":2610.0,"pe":9.2},{"d":"2024-10-15","c":24250.0,"eps":2611.0,"pe":9.3},{"d":"2024-10-16","c":22850.0,"eps":2611.0,"pe":8.7},{"d":"2024-10-17","c":22250.0,"eps":2612.0,"pe":8.5},{"d":"2024-10-18","c":21200.0,"eps":2613.0,"pe":8.1},{"d":"2024-10-21","c":21200.0,"eps":2616.0,"pe":8.1},{"d":"2024-10-22","c":20600.0,"eps":2617.0,"pe":7.9},{"d":"2024-10-23","c":21100.0,"eps":2617.0,"pe":8.1},{"d":"2024-10-24","c":20500.0,"eps":2618.0,"pe":7.8},{"d":"2024-10-25","c":20250.0,"eps":2619.0,"pe":7.7},{"d":"2024-10-28","c":20600.0,"eps":2622.0,"pe":7.9},{"d":"2024-10-29","c":20600.0,"eps":2623.0,"pe":7.9},{"d":"2024-10-30","c":20300.0,"eps":2623.0,"pe":7.7},{"d":"2024-10-31","c":20800.0,"eps":2624.0,"pe":7.9},{"d":"2024-11-01","c":20750.0,"eps":2625.0,"pe":7.9},{"d":"2024-11-04","c":20950.0,"eps":2628.0,"pe":8.0},{"d":"2024-11-05","c":19850.0,"eps":2628.0,"pe":7.6},{"d":"2024-11-06","c":19980.0,"eps":2629.0,"pe":7.6},{"d":"2024-11-07","c":20000.0,"eps":2630.0,"pe":7.6},{"d":"2024-11-08","c":19910.0,"eps":2631.0,"pe":7.6},{"d":"2024-11-11","c":18950.0,"eps":2634.0,"pe":7.2},{"d":"2024-11-12","c":18020.0,"eps":2634.0,"pe":6.8},{"d":"2024-11-13","c":17600.0,"eps":2635.0,"pe":6.7},{"d":"2024-11-14","c":17390.0,"eps":2636.0,"pe":6.6},{"d":"2024-11-15","c":17950.0,"eps":2637.0,"pe":6.8},{"d":"2024-11-18","c":17470.0,"eps":2640.0,"pe":6.6},{"d":"2024-11-19","c":17380.0,"eps":2640.0,"pe":6.6},{"d":"2024-11-20","c":17590.0,"eps":2641.0,"pe":6.7},{"d":"2024-11-21","c":17540.0,"eps":2642.0,"pe":6.6},{"d":"2024-11-22","c":17610.0,"eps":2643.0,"pe":6.7},{"d":"2024-11-25","c":18200.0,"eps":2645.0,"pe":6.9},{"d":"2024-11-26","c":18000.0,"eps":2646.0,"pe":6.8},{"d":"2024-11-27","c":17250.0,"eps":2647.0,"pe":6.5},{"d":"2024-11-28","c":17200.0,"eps":2648.0,"pe":6.5},{"d":"2024-11-29","c":16800.0,"eps":2649.0,"pe":6.3},{"d":"2024-12-02","c":16660.0,"eps":2651.0,"pe":6.3},{"d":"2024-12-03","c":16880.0,"eps":2652.0,"pe":6.4},{"d":"2024-12-04","c":16600.0,"eps":2653.0,"pe":6.3},{"d":"2024-12-05","c":17330.0,"eps":2654.0,"pe":6.5},{"d":"2024-12-06","c":16820.0,"eps":2655.0,"pe":6.3},{"d":"2024-12-09","c":16380.0,"eps":2657.0,"pe":6.2},{"d":"2024-12-10","c":16650.0,"eps":2658.0,"pe":6.3},{"d":"2024-12-11","c":17370.0,"eps":2659.0,"pe":6.5},{"d":"2024-12-12","c":17670.0,"eps":2660.0,"pe":6.6},{"d":"2024-12-13","c":17770.0,"eps":2661.0,"pe":6.7},{"d":"2024-12-16","c":17820.0,"eps":2663.0,"pe":6.7},{"d":"2024-12-17","c":18000.0,"eps":2664.0,"pe":6.8},{"d":"2024-12-18","c":17800.0,"eps":2665.0,"pe":6.7},{"d":"2024-12-19","c":16720.0,"eps":2666.0,"pe":6.3},{"d":"2024-12-20","c":16530.0,"eps":2667.0,"pe":6.2},{"d":"2024-12-23","c":17020.0,"eps":2669.0,"pe":6.4},{"d":"2024-12-24","c":17000.0,"eps":2670.0,"pe":6.4},{"d":"2024-12-26","c":16490.0,"eps":2672.0,"pe":6.2},{"d":"2024-12-27","c":16500.0,"eps":2673.0,"pe":6.2},{"d":"2024-12-30","c":16500.0,"eps":2675.0,"pe":6.2},{"d":"2025-01-02","c":16360.0,"eps":2678.0,"pe":6.1},{"d":"2025-01-03","c":17410.0,"eps":2679.0,"pe":6.5},{"d":"2025-01-06","c":19070.0,"eps":2681.0,"pe":7.1},{"d":"2025-01-07","c":18540.0,"eps":2682.0,"pe":6.9},{"d":"2025-01-08","c":19500.0,"eps":2683.0,"pe":7.3},{"d":"2025-01-09","c":19010.0,"eps":2684.0,"pe":7.1},{"d":"2025-01-10","c":18900.0,"eps":2685.0,"pe":7.0},{"d":"2025-01-13","c":18200.0,"eps":2687.0,"pe":6.8},{"d":"2025-01-14","c":18440.0,"eps":2688.0,"pe":6.9},{"d":"2025-01-15","c":18560.0,"eps":2689.0,"pe":6.9},{"d":"2025-01-16","c":18820.0,"eps":2690.0,"pe":7.0},{"d":"2025-01-17","c":19000.0,"eps":2690.0,"pe":7.1},{"d":"2025-01-20","c":19000.0,"eps":2693.0,"pe":7.1},{"d":"2025-01-21","c":19100.0,"eps":2694.0,"pe":7.1},{"d":"2025-01-22","c":20500.0,"eps":2695.0,"pe":7.6},{"d":"2025-01-23","c":19900.0,"eps":2696.0,"pe":7.4},{"d":"2025-01-24","c":20650.0,"eps":2696.0,"pe":7.7},{"d":"2025-01-31","c":19100.0,"eps":2702.0,"pe":7.1},{"d":"2025-02-03","c":17750.0,"eps":2705.0,"pe":6.6},{"d":"2025-02-04","c":18210.0,"eps":2706.0,"pe":6.7},{"d":"2025-02-05","c":18410.0,"eps":2707.0,"pe":6.8},{"d":"2025-02-06","c":19220.0,"eps":2707.0,"pe":7.1},{"d":"2025-02-07","c":19340.0,"eps":2708.0,"pe":7.1},{"d":"2025-02-10","c":19830.0,"eps":2711.0,"pe":7.3},{"d":"2025-02-11","c":20000.0,"eps":2712.0,"pe":7.4},{"d":"2025-02-12","c":19300.0,"eps":2713.0,"pe":7.1},{"d":"2025-02-13","c":19330.0,"eps":2713.0,"pe":7.1},{"d":"2025-02-14","c":19380.0,"eps":2714.0,"pe":7.1},{"d":"2025-02-17","c":19370.0,"eps":2717.0,"pe":7.1},{"d":"2025-02-18","c":19180.0,"eps":2718.0,"pe":7.1},{"d":"2025-02-19","c":21450.0,"eps":2719.0,"pe":7.9},{"d":"2025-02-20","c":21700.0,"eps":2719.0,"pe":8.0},{"d":"2025-02-21","c":21100.0,"eps":2720.0,"pe":7.8},{"d":"2025-02-24","c":21300.0,"eps":2723.0,"pe":7.8},{"d":"2025-02-25","c":21250.0,"eps":2724.0,"pe":7.8},{"d":"2025-02-26","c":20600.0,"eps":2724.0,"pe":7.6},{"d":"2025-02-27","c":19890.0,"eps":2725.0,"pe":7.3},{"d":"2025-02-28","c":18650.0,"eps":2726.0,"pe":6.8},{"d":"2025-03-04","c":18150.0,"eps":2730.0,"pe":6.6},{"d":"2025-03-05","c":18120.0,"eps":2730.0,"pe":6.6},{"d":"2025-03-06","c":17110.0,"eps":2731.0,"pe":6.3},{"d":"2025-03-07","c":17400.0,"eps":2732.0,"pe":6.4},{"d":"2025-03-10","c":17560.0,"eps":2735.0,"pe":6.4},{"d":"2025-03-11","c":17470.0,"eps":2736.0,"pe":6.4},{"d":"2025-03-12","c":18450.0,"eps":2736.0,"pe":6.7},{"d":"2025-03-13","c":18340.0,"eps":2737.0,"pe":6.7},{"d":"2025-03-14","c":19210.0,"eps":2738.0,"pe":7.0},{"d":"2025-03-17","c":19800.0,"eps":2741.0,"pe":7.2},{"d":"2025-03-18","c":19850.0,"eps":2741.0,"pe":7.2},{"d":"2025-03-19","c":21150.0,"eps":2742.0,"pe":7.7},{"d":"2025-03-20","c":21300.0,"eps":2743.0,"pe":7.8},{"d":"2025-03-21","c":21450.0,"eps":2744.0,"pe":7.8},{"d":"2025-03-24","c":22300.0,"eps":2747.0,"pe":8.1},{"d":"2025-03-25","c":21050.0,"eps":2747.0,"pe":7.7},{"d":"2025-03-26","c":22250.0,"eps":2748.0,"pe":8.1},{"d":"2025-03-27","c":21700.0,"eps":2749.0,"pe":7.9},{"d":"2025-03-28","c":20950.0,"eps":2750.0,"pe":7.6},{"d":"2025-03-31","c":19960.0,"eps":2752.0,"pe":7.3},{"d":"2025-04-01","c":20450.0,"eps":2753.0,"pe":7.4},{"d":"2025-04-02","c":19520.0,"eps":2754.0,"pe":7.1},{"d":"2025-04-03","c":18720.0,"eps":2755.0,"pe":6.8},{"d":"2025-04-04","c":17610.0,"eps":2756.0,"pe":6.4},{"d":"2025-04-07","c":17050.0,"eps":2758.0,"pe":6.2},{"d":"2025-04-08","c":16840.0,"eps":2759.0,"pe":6.1},{"d":"2025-04-09","c":16880.0,"eps":2760.0,"pe":6.1},{"d":"2025-04-10","c":17600.0,"eps":2761.0,"pe":6.4},{"d":"2025-04-11","c":17790.0,"eps":2762.0,"pe":6.4},{"d":"2025-04-14","c":18100.0,"eps":2764.0,"pe":6.5},{"d":"2025-04-15","c":18070.0,"eps":2765.0,"pe":6.5},{"d":"2025-04-16","c":17340.0,"eps":2766.0,"pe":6.3},{"d":"2025-04-17","c":17560.0,"eps":2767.0,"pe":6.3},{"d":"2025-04-18","c":17740.0,"eps":2768.0,"pe":6.4},{"d":"2025-04-21","c":18380.0,"eps":2770.0,"pe":6.6},{"d":"2025-04-22","c":18120.0,"eps":2771.0,"pe":6.5},{"d":"2025-04-23","c":18830.0,"eps":2772.0,"pe":6.8},{"d":"2025-04-24","c":18630.0,"eps":2773.0,"pe":6.7},{"d":"2025-04-25","c":18670.0,"eps":2774.0,"pe":6.7},{"d":"2025-04-28","c":18090.0,"eps":2776.0,"pe":6.5},{"d":"2025-04-29","c":18230.0,"eps":2777.0,"pe":6.6},{"d":"2025-04-30","c":17790.0,"eps":2778.0,"pe":6.4},{"d":"2025-05-02","c":18270.0,"eps":2780.0,"pe":6.6},{"d":"2025-05-07","c":18580.0,"eps":2784.0,"pe":6.7},{"d":"2025-05-08","c":18800.0,"eps":2785.0,"pe":6.8},{"d":"2025-05-09","c":18440.0,"eps":2786.0,"pe":6.6},{"d":"2025-05-12","c":19490.0,"eps":2788.0,"pe":7.0},{"d":"2025-05-13","c":19450.0,"eps":2789.0,"pe":7.0},{"d":"2025-05-14","c":19700.0,"eps":2790.0,"pe":7.1},{"d":"2025-05-15","c":19020.0,"eps":2791.0,"pe":6.8},{"d":"2025-05-16","c":19010.0,"eps":2796.0,"pe":6.8},{"d":"2025-05-19","c":18310.0,"eps":2814.0,"pe":6.5},{"d":"2025-05-20","c":18380.0,"eps":2820.0,"pe":6.5},{"d":"2025-05-21","c":18450.0,"eps":2825.0,"pe":6.5},{"d":"2025-05-22","c":17820.0,"eps":2831.0,"pe":6.3},{"d":"2025-05-23","c":17810.0,"eps":2837.0,"pe":6.3},{"d":"2025-05-26","c":18430.0,"eps":2854.0,"pe":6.5},{"d":"2025-05-27","c":18210.0,"eps":2860.0,"pe":6.4},{"d":"2025-05-28","c":18630.0,"eps":2866.0,"pe":6.5},{"d":"2025-05-29","c":18880.0,"eps":2872.0,"pe":6.6},{"d":"2025-05-30","c":18330.0,"eps":2877.0,"pe":6.4},{"d":"2025-06-02","c":18430.0,"eps":2895.0,"pe":6.4},{"d":"2025-06-04","c":19020.0,"eps":2906.0,"pe":6.5},{"d":"2025-06-05","c":19560.0,"eps":2912.0,"pe":6.7},{"d":"2025-06-09","c":19620.0,"eps":2935.0,"pe":6.7},{"d":"2025-06-10","c":19490.0,"eps":2941.0,"pe":6.6},{"d":"2025-06-11","c":20000.0,"eps":2947.0,"pe":6.8},{"d":"2025-06-12","c":19880.0,"eps":2953.0,"pe":6.7},{"d":"2025-06-13","c":19190.0,"eps":2958.0,"pe":6.5},{"d":"2025-06-16","c":19520.0,"eps":2976.0,"pe":6.6},{"d":"2025-06-17","c":19660.0,"eps":2981.0,"pe":6.6},{"d":"2025-06-18","c":19880.0,"eps":2987.0,"pe":6.7},{"d":"2025-06-19","c":19430.0,"eps":2993.0,"pe":6.5},{"d":"2025-06-20","c":19740.0,"eps":2999.0,"pe":6.6},{"d":"2025-06-23","c":18940.0,"eps":3016.0,"pe":6.3},{"d":"2025-06-24","c":19650.0,"eps":3022.0,"pe":6.5},{"d":"2025-06-25","c":19660.0,"eps":3028.0,"pe":6.5},{"d":"2025-06-26","c":19550.0,"eps":3033.0,"pe":6.4},{"d":"2025-06-27","c":19390.0,"eps":3039.0,"pe":6.4},{"d":"2025-06-30","c":19360.0,"eps":3057.0,"pe":6.3},{"d":"2025-07-01","c":19340.0,"eps":3062.0,"pe":6.3},{"d":"2025-07-02","c":19150.0,"eps":3068.0,"pe":6.2},{"d":"2025-07-03","c":19640.0,"eps":3074.0,"pe":6.4},{"d":"2025-07-04","c":18950.0,"eps":3080.0,"pe":6.2},{"d":"2025-07-07","c":18700.0,"eps":3097.0,"pe":6.0},{"d":"2025-07-08","c":18830.0,"eps":3103.0,"pe":6.1},{"d":"2025-07-09","c":18220.0,"eps":3109.0,"pe":5.9},{"d":"2025-07-10","c":18330.0,"eps":3114.0,"pe":5.9},{"d":"2025-07-11","c":19780.0,"eps":3120.0,"pe":6.3},{"d":"2025-07-14","c":19850.0,"eps":3137.0,"pe":6.3},{"d":"2025-07-15","c":20450.0,"eps":3143.0,"pe":6.5},{"d":"2025-07-16","c":20450.0,"eps":3149.0,"pe":6.5},{"d":"2025-07-17","c":20700.0,"eps":3155.0,"pe":6.6},{"d":"2025-07-18","c":20200.0,"eps":3161.0,"pe":6.4},{"d":"2025-07-21","c":20250.0,"eps":3178.0,"pe":6.4},{"d":"2025-07-22","c":20050.0,"eps":3184.0,"pe":6.3},{"d":"2025-07-23","c":20250.0,"eps":3189.0,"pe":6.3},{"d":"2025-07-24","c":19930.0,"eps":3195.0,"pe":6.2},{"d":"2025-07-25","c":19680.0,"eps":3201.0,"pe":6.1},{"d":"2025-07-28","c":20900.0,"eps":3218.0,"pe":6.5},{"d":"2025-07-29","c":21000.0,"eps":3224.0,"pe":6.5},{"d":"2025-07-30","c":21150.0,"eps":3230.0,"pe":6.5},{"d":"2025-07-31","c":20550.0,"eps":3236.0,"pe":6.4},{"d":"2025-08-01","c":19420.0,"eps":3241.0,"pe":6.0},{"d":"2025-08-04","c":19570.0,"eps":3259.0,"pe":6.0},{"d":"2025-08-05","c":19510.0,"eps":3265.0,"pe":6.0},{"d":"2025-08-06","c":19750.0,"eps":3270.0,"pe":6.0},{"d":"2025-08-07","c":20150.0,"eps":3276.0,"pe":6.2},{"d":"2025-08-08","c":21450.0,"eps":3282.0,"pe":6.5},{"d":"2025-08-11","c":21700.0,"eps":3299.0,"pe":6.6},{"d":"2025-08-12","c":21100.0,"eps":3305.0,"pe":6.4},{"d":"2025-08-13","c":21700.0,"eps":3311.0,"pe":6.6},{"d":"2025-08-14","c":21300.0,"eps":3317.0,"pe":6.4},{"d":"2025-08-18","c":20700.0,"eps":3340.0,"pe":6.2},{"d":"2025-08-19","c":20400.0,"eps":3345.0,"pe":6.1},{"d":"2025-08-20","c":20300.0,"eps":3351.0,"pe":6.1},{"d":"2025-08-21","c":19850.0,"eps":3357.0,"pe":5.9},{"d":"2025-08-22","c":19810.0,"eps":3363.0,"pe":5.9},{"d":"2025-08-25","c":20200.0,"eps":3380.0,"pe":6.0},{"d":"2025-08-26","c":21650.0,"eps":3386.0,"pe":6.4},{"d":"2025-08-27","c":21650.0,"eps":3392.0,"pe":6.4},{"d":"2025-08-28","c":22350.0,"eps":3397.0,"pe":6.6},{"d":"2025-08-29","c":24350.0,"eps":3403.0,"pe":7.2},{"d":"2025-09-01","c":23700.0,"eps":3421.0,"pe":6.9},{"d":"2025-09-02","c":23000.0,"eps":3426.0,"pe":6.7},{"d":"2025-09-03","c":23450.0,"eps":3432.0,"pe":6.8},{"d":"2025-09-04","c":23550.0,"eps":3438.0,"pe":6.9},{"d":"2025-09-05","c":24050.0,"eps":3444.0,"pe":7.0},{"d":"2025-09-08","c":24100.0,"eps":3461.0,"pe":7.0},{"d":"2025-09-09","c":24850.0,"eps":3467.0,"pe":7.2},{"d":"2025-09-10","c":26200.0,"eps":3473.0,"pe":7.5},{"d":"2025-09-11","c":25950.0,"eps":3478.0,"pe":7.5},{"d":"2025-09-12","c":27350.0,"eps":3484.0,"pe":7.9},{"d":"2025-09-15","c":29150.0,"eps":3501.0,"pe":8.3},{"d":"2025-09-16","c":28450.0,"eps":3507.0,"pe":8.1},{"d":"2025-09-17","c":28100.0,"eps":3513.0,"pe":8.0},{"d":"2025-09-18","c":29800.0,"eps":3519.0,"pe":8.5},{"d":"2025-09-19","c":31150.0,"eps":3525.0,"pe":8.8},{"d":"2025-09-22","c":31500.0,"eps":3542.0,"pe":8.9},{"d":"2025-09-23","c":31700.0,"eps":3548.0,"pe":8.9},{"d":"2025-09-24","c":32550.0,"eps":3553.0,"pe":9.2},{"d":"2025-09-25","c":31900.0,"eps":3559.0,"pe":9.0},{"d":"2025-09-26","c":31000.0,"eps":3565.0,"pe":8.7},{"d":"2025-09-29","c":33300.0,"eps":3582.0,"pe":9.3},{"d":"2025-09-30","c":32650.0,"eps":3588.0,"pe":9.1},{"d":"2025-10-01","c":33150.0,"eps":3594.0,"pe":9.2},{"d":"2025-10-02","c":34300.0,"eps":3600.0,"pe":9.5},{"d":"2025-10-10","c":35850.0,"eps":3646.0,"pe":9.8},{"d":"2025-10-13","c":35600.0,"eps":3663.0,"pe":9.7},{"d":"2025-10-14","c":31800.0,"eps":3669.0,"pe":8.7},{"d":"2025-10-15","c":33550.0,"eps":3675.0,"pe":9.1},{"d":"2025-10-16","c":33100.0,"eps":3681.0,"pe":9.0},{"d":"2025-10-17","c":31900.0,"eps":3686.0,"pe":8.7},{"d":"2025-10-20","c":38100.0,"eps":3704.0,"pe":10.3},{"d":"2025-10-21","c":36450.0,"eps":3709.0,"pe":9.8},{"d":"2025-10-22","c":36250.0,"eps":3715.0,"pe":9.8},{"d":"2025-10-23","c":37700.0,"eps":3721.0,"pe":10.1},{"d":"2025-10-24","c":38450.0,"eps":3727.0,"pe":10.3},{"d":"2025-10-27","c":38200.0,"eps":3744.0,"pe":10.2},{"d":"2025-10-28","c":37000.0,"eps":3750.0,"pe":9.9},{"d":"2025-10-29","c":38150.0,"eps":3756.0,"pe":10.2},{"d":"2025-10-30","c":38400.0,"eps":3761.0,"pe":10.2},{"d":"2025-10-31","c":38300.0,"eps":3767.0,"pe":10.2},{"d":"2025-11-03","c":37950.0,"eps":3785.0,"pe":10.0},{"d":"2025-11-04","c":37450.0,"eps":3790.0,"pe":9.9},{"d":"2025-11-05","c":37000.0,"eps":3796.0,"pe":9.7},{"d":"2025-11-06","c":39600.0,"eps":3802.0,"pe":10.4},{"d":"2025-11-07","c":36650.0,"eps":3808.0,"pe":9.6},{"d":"2025-11-10","c":38150.0,"eps":3825.0,"pe":10.0},{"d":"2025-11-11","c":38650.0,"eps":3831.0,"pe":10.1},{"d":"2025-11-12","c":38550.0,"eps":3837.0,"pe":10.0},{"d":"2025-11-13","c":37150.0,"eps":3842.0,"pe":9.7},{"d":"2025-11-14","c":33950.0,"eps":3848.0,"pe":8.8},{"d":"2025-11-17","c":35450.0,"eps":3865.0,"pe":9.2},{"d":"2025-11-18","c":33750.0,"eps":3871.0,"pe":8.7},{"d":"2025-11-19","c":33700.0,"eps":3877.0,"pe":8.7},{"d":"2025-11-20","c":32500.0,"eps":3883.0,"pe":8.4},{"d":"2025-11-21","c":29400.0,"eps":3889.0,"pe":7.6},{"d":"2025-11-24","c":29700.0,"eps":3906.0,"pe":7.6},{"d":"2025-11-25","c":29200.0,"eps":3912.0,"pe":7.5},{"d":"2025-11-26","c":29700.0,"eps":3917.0,"pe":7.6},{"d":"2025-11-27","c":29350.0,"eps":3923.0,"pe":7.5},{"d":"2025-11-28","c":29950.0,"eps":3929.0,"pe":7.6},{"d":"2025-12-01","c":31800.0,"eps":3946.0,"pe":8.1},{"d":"2025-12-02","c":33150.0,"eps":3952.0,"pe":8.4},{"d":"2025-12-03","c":32400.0,"eps":3958.0,"pe":8.2},{"d":"2025-12-04","c":31350.0,"eps":3964.0,"pe":7.9},{"d":"2025-12-05","c":31600.0,"eps":3969.0,"pe":8.0},{"d":"2025-12-08","c":31700.0,"eps":3987.0,"pe":8.0},{"d":"2025-12-09","c":31500.0,"eps":3993.0,"pe":7.9},{"d":"2025-12-10","c":32800.0,"eps":3998.0,"pe":8.2},{"d":"2025-12-11","c":32650.0,"eps":4004.0,"pe":8.2},{"d":"2025-12-12","c":31850.0,"eps":4010.0,"pe":7.9},{"d":"2025-12-15","c":30550.0,"eps":4027.0,"pe":7.6},{"d":"2025-12-16","c":29700.0,"eps":4033.0,"pe":7.4},{"d":"2025-12-17","c":32600.0,"eps":4039.0,"pe":8.1},{"d":"2025-12-18","c":32350.0,"eps":4045.0,"pe":8.0},{"d":"2025-12-19","c":31800.0,"eps":4050.0,"pe":7.9},{"d":"2025-12-22","c":34900.0,"eps":4068.0,"pe":8.6},{"d":"2025-12-23","c":35300.0,"eps":4073.0,"pe":8.7},{"d":"2025-12-24","c":34750.0,"eps":4079.0,"pe":8.5},{"d":"2025-12-26","c":36000.0,"eps":4091.0,"pe":8.8},{"d":"2025-12-29","c":36000.0,"eps":4108.0,"pe":8.8},{"d":"2025-12-30","c":36800.0,"eps":4114.0,"pe":8.9},{"d":"2026-01-02","c":39250.0,"eps":4131.0,"pe":9.5},{"d":"2026-01-05","c":42050.0,"eps":4149.0,"pe":10.1},{"d":"2026-01-06","c":43550.0,"eps":4154.0,"pe":10.5},{"d":"2026-01-07","c":44600.0,"eps":4160.0,"pe":10.7},{"d":"2026-01-08","c":43550.0,"eps":4166.0,"pe":10.5},{"d":"2026-01-09","c":42600.0,"eps":4172.0,"pe":10.2},{"d":"2026-01-12","c":40800.0,"eps":4189.0,"pe":9.7},{"d":"2026-01-13","c":41800.0,"eps":4195.0,"pe":10.0},{"d":"2026-01-14","c":42650.0,"eps":4201.0,"pe":10.2},{"d":"2026-01-15","c":41900.0,"eps":4206.0,"pe":10.0},{"d":"2026-01-16","c":41800.0,"eps":4212.0,"pe":9.9},{"d":"2026-01-19","c":41550.0,"eps":4229.0,"pe":9.8},{"d":"2026-01-20","c":39350.0,"eps":4235.0,"pe":9.3},{"d":"2026-01-21","c":39650.0,"eps":4241.0,"pe":9.3},{"d":"2026-01-22","c":40100.0,"eps":4247.0,"pe":9.4},{"d":"2026-01-23","c":39650.0,"eps":4253.0,"pe":9.3},{"d":"2026-01-26","c":42300.0,"eps":4270.0,"pe":9.9},{"d":"2026-01-27","c":47950.0,"eps":4276.0,"pe":11.2},{"d":"2026-01-28","c":53700.0,"eps":4281.0,"pe":12.5},{"d":"2026-01-29","c":54700.0,"eps":4287.0,"pe":12.8},{"d":"2026-01-30","c":60400.0,"eps":4293.0,"pe":14.1},{"d":"2026-02-02","c":55900.0,"eps":4310.0,"pe":13.0},{"d":"2026-02-03","c":60000.0,"eps":4316.0,"pe":13.9},{"d":"2026-02-04","c":57800.0,"eps":4322.0,"pe":13.4},{"d":"2026-02-05","c":54800.0,"eps":4328.0,"pe":12.7},{"d":"2026-02-06","c":56200.0,"eps":4333.0,"pe":13.0},{"d":"2026-02-09","c":56800.0,"eps":4351.0,"pe":13.1},{"d":"2026-02-10","c":56300.0,"eps":4357.0,"pe":12.9},{"d":"2026-02-11","c":56900.0,"eps":4362.0,"pe":13.0},{"d":"2026-02-12","c":59500.0,"eps":4368.0,"pe":13.6},{"d":"2026-02-13","c":57900.0,"eps":4374.0,"pe":13.2},{"d":"2026-02-19","c":62900.0,"eps":4409.0,"pe":14.3},{"d":"2026-02-20","c":60900.0,"eps":4414.0,"pe":13.8},{"d":"2026-02-23","c":57300.0,"eps":4432.0,"pe":12.9},{"d":"2026-02-24","c":63400.0,"eps":4437.0,"pe":14.3},{"d":"2026-02-25","c":61800.0,"eps":4443.0,"pe":13.9},{"d":"2026-02-26","c":66000.0,"eps":4449.0,"pe":14.8},{"d":"2026-02-27","c":64300.0,"eps":4455.0,"pe":14.4},{"d":"2026-03-03","c":59700.0,"eps":4478.0,"pe":13.3},{"d":"2026-03-04","c":57600.0,"eps":4484.0,"pe":12.8},{"d":"2026-03-05","c":67100.0,"eps":4489.0,"pe":14.9},{"d":"2026-03-06","c":70200.0,"eps":4495.0,"pe":15.6},{"d":"2026-03-09","c":62000.0,"eps":4513.0,"pe":13.7},{"d":"2026-03-10","c":62700.0,"eps":4518.0,"pe":13.9},{"d":"2026-03-11","c":59100.0,"eps":4524.0,"pe":13.1},{"d":"2026-03-12","c":60900.0,"eps":4530.0,"pe":13.4},{"d":"2026-03-13","c":64200.0,"eps":4536.0,"pe":14.2},{"d":"2026-03-16","c":74700.0,"eps":4553.0,"pe":16.4},{"d":"2026-03-17","c":73900.0,"eps":4559.0,"pe":16.2},{"d":"2026-03-18","c":77600.0,"eps":4565.0,"pe":17.0},{"d":"2026-03-19","c":80000.0,"eps":4570.0,"pe":17.5},{"d":"2026-03-20","c":85500.0,"eps":4576.0,"pe":18.7},{"d":"2026-03-23","c":78300.0,"eps":4593.0,"pe":17.0},{"d":"2026-03-24","c":82000.0,"eps":4599.0,"pe":17.8},{"d":"2026-03-25","c":85100.0,"eps":4605.0,"pe":18.5},{"d":"2026-03-26","c":84200.0,"eps":4611.0,"pe":18.3},{"d":"2026-03-27","c":80700.0,"eps":4617.0,"pe":17.5},{"d":"2026-03-30","c":80300.0,"eps":4634.0,"pe":17.3},{"d":"2026-03-31","c":78800.0,"eps":4640.0,"pe":17.0},{"d":"2026-04-01","c":87200.0,"eps":4645.0,"pe":18.8},{"d":"2026-04-02","c":80100.0,"eps":4651.0,"pe":17.2},{"d":"2026-04-03","c":76800.0,"eps":4669.0,"pe":16.4},{"d":"2026-04-06","c":77400.0,"eps":4723.0,"pe":16.4},{"d":"2026-04-07","c":74700.0,"eps":4741.0,"pe":15.8},{"d":"2026-04-08","c":85700.0,"eps":4759.0,"pe":18.0},{"d":"2026-04-09","c":82900.0,"eps":4777.0,"pe":17.4},{"d":"2026-04-10","c":82300.0,"eps":4795.0,"pe":17.2},{"d":"2026-04-13","c":82700.0,"eps":4850.0,"pe":17.1},{"d":"2026-04-14","c":82600.0,"eps":4868.0,"pe":17.0},{"d":"2026-04-15","c":88200.0,"eps":4886.0,"pe":18.1},{"d":"2026-04-16","c":89300.0,"eps":4904.0,"pe":18.2},{"d":"2026-04-17","c":84700.0,"eps":4922.0,"pe":17.2},{"d":"2026-04-20","c":82100.0,"eps":4976.0,"pe":16.5},{"d":"2026-04-21","c":83700.0,"eps":4994.0,"pe":16.8},{"d":"2026-04-22","c":86900.0,"eps":5012.0,"pe":17.3},{"d":"2026-04-23","c":87100.0,"eps":5030.0,"pe":17.3},{"d":"2026-04-24","c":93000.0,"eps":5048.0,"pe":18.4},{"d":"2026-04-27","c":92000.0,"eps":5102.0,"pe":18.0},{"d":"2026-04-28","c":93500.0,"eps":5120.0,"pe":18.3},{"d":"2026-04-29","c":93300.0,"eps":5138.0,"pe":18.2},{"d":"2026-04-30","c":88700.0,"eps":5156.0,"pe":17.2},{"d":"2026-05-04","c":99000.0,"eps":5228.0,"pe":18.9},{"d":"2026-05-06","c":105400.0,"eps":5264.0,"pe":20.0},{"d":"2026-05-07","c":105800.0,"eps":5282.0,"pe":20.0},{"d":"2026-05-08","c":104100.0,"eps":5300.0,"pe":19.6},{"d":"2026-05-11","c":113300.0,"eps":5354.0,"pe":21.2},{"d":"2026-05-12","c":102600.0,"eps":5372.0,"pe":19.1},{"d":"2026-05-13","c":111400.0,"eps":5390.0,"pe":20.7},{"d":"2026-05-14","c":109900.0,"eps":5408.0,"pe":20.3},{"d":"2026-05-15","c":103800.0,"eps":5426.0,"pe":19.1},{"d":"2026-05-18","c":107200.0,"eps":5440.0,"pe":19.7},{"d":"2026-05-19","c":100900.0,"eps":5444.0,"pe":18.5},{"d":"2026-05-20","c":109400.0,"eps":5449.0,"pe":20.1},{"d":"2026-05-21","c":108700.0,"eps":5453.0,"pe":19.9},{"d":"2026-05-22","c":117900.0,"eps":5458.0,"pe":21.6},{"d":"2026-05-26","c":116500.0,"eps":5476.0,"pe":21.3},{"d":"2026-05-27","c":108500.0,"eps":5480.0,"pe":19.8},{"d":"2026-05-28","c":103400.0,"eps":5485.0,"pe":18.9},{"d":"2026-05-29","c":98400.0,"eps":5489.0,"pe":17.9},{"d":"2026-06-01","c":93100.0,"eps":5503.0,"pe":16.9},{"d":"2026-06-02","c":90700.0,"eps":5507.0,"pe":16.5},{"d":"2026-06-04","c":107300.0,"eps":5516.0,"pe":19.5},{"d":"2026-06-05","c":131700.0,"eps":5521.0,"pe":23.9},{"d":"2026-06-08","c":116100.0,"eps":5534.0,"pe":21.0},{"d":"2026-06-09","c":139300.0,"eps":5539.0,"pe":25.1},{"d":"2026-06-10","c":140400.0,"eps":5543.0,"pe":25.3},{"d":"2026-06-11","c":151900.0,"eps":5548.0,"pe":27.4},{"d":"2026-06-12","c":168400.0,"eps":5552.0,"pe":30.3},{"d":"2026-06-15","c":169000.0,"eps":5566.0,"pe":30.4},{"d":"2026-06-16","c":160800.0,"eps":5570.0,"pe":28.9},{"d":"2026-06-17","c":161200.0,"eps":5575.0,"pe":28.9},{"d":"2026-06-18","c":176000.0,"eps":5579.0,"pe":31.5},{"d":"2026-06-19","c":161900.0,"eps":5584.0,"pe":29.0},{"d":"2026-06-22","c":182500.0,"eps":5597.0,"pe":32.6},{"d":"2026-06-23","c":159300.0,"eps":5602.0,"pe":28.4},{"d":"2026-06-24","c":172900.0,"eps":5606.0,"pe":30.8},{"d":"2026-06-25","c":170200.0,"eps":5611.0,"pe":30.3},{"d":"2026-06-26","c":193800.0,"eps":5615.0,"pe":34.5},{"d":"2026-06-29","c":179900.0,"eps":5629.0,"pe":32.0},{"d":"2026-06-30","c":196000.0,"eps":5633.0,"pe":34.8},{"d":"2026-07-01","c":213500.0,"eps":5638.0,"pe":37.9},{"d":"2026-07-02","c":185900.0,"eps":5642.0,"pe":32.9},{"d":"2026-07-03","c":186300.0,"eps":5647.0,"pe":33.0},{"d":"2026-07-06","c":168200.0,"eps":5660.0,"pe":29.7},{"d":"2026-07-07","c":157300.0,"eps":5665.0,"pe":27.8},{"d":"2026-07-08","c":139600.0,"eps":5669.0,"pe":24.6},{"d":"2026-07-09","c":154300.0,"eps":5674.0,"pe":27.2},{"d":"2026-07-10","c":190100.0,"eps":5678.0,"pe":33.5},{"d":"2026-07-13","c":191200.0,"eps":5692.0,"pe":33.6},{"d":"2026-07-14","c":210500.0,"eps":5696.0,"pe":37.0},{"d":"2026-07-15","c":198900.0,"eps":5701.0,"pe":34.9},{"d":"2026-07-16","c":191400.0,"eps":5705.0,"pe":33.5}],"stats":{"avg":10.9,"min":5.9,"max":37.9,"min_day":"2025-07-09","max_day":"2026-07-01","cur":33.5,"cur_eps":5705.0,"cur_price":191400.0,"percentile":99},"stats_1y":{"avg":13.6,"min":5.9,"max":37.9,"min_day":"2025-07-09","max_day":"2026-07-01","cur":33.5,"cur_eps":5705.0,"cur_price":191400.0,"percentile":98},"events":[{"d":"2026-04-02","label":"대신 커버 개시","kind":"up"},{"d":"2026-05-15","label":"1Q26 OPM 30% 최대","kind":"up"},{"d":"2026-07-01","label":"국민연금 7.12%로 축소","kind":"down"}],"regimes":[{"from":"2025-01-01","to":"2026-03-31","label":"성장 둔화 정체"},{"from":"2026-04-01","to":"2026-07-16","label":"이익 급증 리레이팅"}],"cfg":{"currency":"KRW","multiples":[5,15,25,35],"priceMax":250000,"priceTick":50000,"peMax":50,"peTick":10,"epsMax":7500.0,"epsTick":1500.0},"anchors":[{"d":"2023-05-03","val":"0.1조원","eps":1705.44,"why":"사후 실적 기반 근사(당시 컨센 보도 미확보): 2023년 메모리 다운사이클 저점 — FY23 실적 부진, FY24 회복 기대 초기의 NTM 근사"},{"d":"2024-05-15","val":"0.1조원","eps":2480.64,"why":"사후 실적 기반 근사: FY24 영업이익 839억(2025 사업보고서 확정)에 수렴하는 NTM 기대 — 감광액 제거(스트립) 장비 수요 회복 국면"},{"d":"2025-05-15","val":"0.1조원","eps":2790.72,"why":"사후 실적 기반 근사: FY25 영업이익 885억(확정)에 부합. 2025년은 매출 +14.9%로 성장 둔화 구간 — NTM 900억대 정체"},{"d":"2026-04-02","val":"0.1조원","eps":4651.2,"why":"대신증권 커버리지 개시(2026-04-02, '조용한 강자') 전후 — HBM·선단공정 스트립 수요로 FY26E 상향 국면 진입, NTM 1,500억대로 리레이팅"},{"d":"2026-05-15","val":"0.2조원","eps":5426.4,"why":"1Q26 분기보고서(DART 2026-05-15): 매출 1,566억(YoY +53.6%)·영업이익 472억(YoY +108%)·OPM 30% 분기 사상 최대 — FY26E 컨센 매출 6,758억·OP 1,890억(+114.6%)으로 급상향"},{"d":"2026-07-16","val":"0.2조원","eps":5705.47,"why":"FnGuide(2026-07-16) Fwd12M EPS ≈5,700원 × 28.97M주 / 전환율 0.898 ≈ NTM 영업이익 1,840억 역산 — 2026E PER 36.97·2027E 32.20과 정합"}],"meta":{"symbol":"319660","name":"피에스케이","shares":28966714,"mode":"op_krw","conv":0.8982,"conv_basis":"최근 8개 흑자 분기 합산 (2Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 0.8982 (DART 실측, 2026-07-19)","range":["2023-05-03","2026-07-16"]}},
+  "095610": {"rows":[{"d":"2023-05-03","c":21450.0,"eps":1825.0,"pe":11.8},{"d":"2023-05-04","c":21250.0,"eps":1827.0,"pe":11.6},{"d":"2023-05-08","c":21700.0,"eps":1832.0,"pe":11.8},{"d":"2023-05-09","c":21100.0,"eps":1833.0,"pe":11.5},{"d":"2023-05-10","c":20750.0,"eps":1835.0,"pe":11.3},{"d":"2023-05-11","c":20550.0,"eps":1836.0,"pe":11.2},{"d":"2023-05-12","c":20600.0,"eps":1838.0,"pe":11.2},{"d":"2023-05-15","c":20400.0,"eps":1842.0,"pe":11.1},{"d":"2023-05-16","c":20800.0,"eps":1843.0,"pe":11.3},{"d":"2023-05-17","c":20850.0,"eps":1845.0,"pe":11.3},{"d":"2023-05-18","c":21050.0,"eps":1846.0,"pe":11.4},{"d":"2023-05-19","c":22500.0,"eps":1847.0,"pe":12.2},{"d":"2023-05-22","c":22350.0,"eps":1851.0,"pe":12.1},{"d":"2023-05-23","c":22300.0,"eps":1853.0,"pe":12.0},{"d":"2023-05-24","c":22050.0,"eps":1854.0,"pe":11.9},{"d":"2023-05-25","c":21900.0,"eps":1856.0,"pe":11.8},{"d":"2023-05-26","c":22400.0,"eps":1857.0,"pe":12.1},{"d":"2023-05-30","c":22350.0,"eps":1862.0,"pe":12.0},{"d":"2023-05-31","c":21850.0,"eps":1864.0,"pe":11.7},{"d":"2023-06-01","c":22200.0,"eps":1865.0,"pe":11.9},{"d":"2023-06-02","c":21900.0,"eps":1867.0,"pe":11.7},{"d":"2023-06-05","c":21800.0,"eps":1871.0,"pe":11.7},{"d":"2023-06-07","c":21550.0,"eps":1873.0,"pe":11.5},{"d":"2023-06-08","c":21800.0,"eps":1875.0,"pe":11.6},{"d":"2023-06-09","c":21950.0,"eps":1876.0,"pe":11.7},{"d":"2023-06-12","c":22000.0,"eps":1880.0,"pe":11.7},{"d":"2023-06-13","c":22100.0,"eps":1882.0,"pe":11.7},{"d":"2023-06-14","c":21650.0,"eps":1883.0,"pe":11.5},{"d":"2023-06-15","c":22300.0,"eps":1885.0,"pe":11.8},{"d":"2023-06-16","c":21950.0,"eps":1886.0,"pe":11.6},{"d":"2023-06-19","c":22300.0,"eps":1890.0,"pe":11.8},{"d":"2023-06-20","c":21700.0,"eps":1891.0,"pe":11.5},{"d":"2023-06-21","c":21000.0,"eps":1893.0,"pe":11.1},{"d":"2023-06-22","c":20800.0,"eps":1894.0,"pe":11.0},{"d":"2023-06-23","c":20850.0,"eps":1896.0,"pe":11.0},{"d":"2023-06-26","c":21200.0,"eps":1900.0,"pe":11.2},{"d":"2023-06-27","c":21250.0,"eps":1901.0,"pe":11.2},{"d":"2023-06-28","c":21350.0,"eps":1902.0,"pe":11.2},{"d":"2023-06-29","c":21500.0,"eps":1904.0,"pe":11.3},{"d":"2023-06-30","c":21300.0,"eps":1905.0,"pe":11.2},{"d":"2023-07-03","c":21750.0,"eps":1909.0,"pe":11.4},{"d":"2023-07-04","c":21950.0,"eps":1911.0,"pe":11.5},{"d":"2023-07-05","c":21650.0,"eps":1912.0,"pe":11.3},{"d":"2023-07-06","c":21450.0,"eps":1914.0,"pe":11.2},{"d":"2023-07-07","c":19900.0,"eps":1915.0,"pe":10.4},{"d":"2023-07-10","c":19200.0,"eps":1919.0,"pe":10.0},{"d":"2023-07-11","c":20400.0,"eps":1920.0,"pe":10.6},{"d":"2023-07-12","c":20400.0,"eps":1922.0,"pe":10.6},{"d":"2023-07-13","c":20600.0,"eps":1923.0,"pe":10.7},{"d":"2023-07-14","c":21000.0,"eps":1925.0,"pe":10.9},{"d":"2023-07-17","c":23400.0,"eps":1929.0,"pe":12.1},{"d":"2023-07-18","c":23250.0,"eps":1930.0,"pe":12.0},{"d":"2023-07-19","c":22500.0,"eps":1931.0,"pe":11.6},{"d":"2023-07-20","c":22450.0,"eps":1933.0,"pe":11.6},{"d":"2023-07-21","c":21700.0,"eps":1934.0,"pe":11.2},{"d":"2023-07-24","c":21450.0,"eps":1938.0,"pe":11.1},{"d":"2023-07-25","c":21400.0,"eps":1940.0,"pe":11.0},{"d":"2023-07-26","c":20400.0,"eps":1941.0,"pe":10.5},{"d":"2023-07-27","c":22150.0,"eps":1942.0,"pe":11.4},{"d":"2023-07-28","c":22800.0,"eps":1944.0,"pe":11.7},{"d":"2023-07-31","c":22700.0,"eps":1948.0,"pe":11.7},{"d":"2023-08-01","c":22700.0,"eps":1949.0,"pe":11.6},{"d":"2023-08-02","c":21700.0,"eps":1951.0,"pe":11.1},{"d":"2023-08-03","c":21450.0,"eps":1952.0,"pe":11.0},{"d":"2023-08-04","c":21150.0,"eps":1954.0,"pe":10.8},{"d":"2023-08-07","c":20850.0,"eps":1958.0,"pe":10.7},{"d":"2023-08-08","c":20500.0,"eps":1959.0,"pe":10.5},{"d":"2023-08-09","c":20750.0,"eps":1960.0,"pe":10.6},{"d":"2023-08-10","c":20050.0,"eps":1962.0,"pe":10.2},{"d":"2023-08-11","c":20000.0,"eps":1963.0,"pe":10.2},{"d":"2023-08-14","c":19820.0,"eps":1967.0,"pe":10.1},{"d":"2023-08-16","c":20150.0,"eps":1970.0,"pe":10.2},{"d":"2023-08-17","c":20150.0,"eps":1971.0,"pe":10.2},{"d":"2023-08-18","c":19980.0,"eps":1973.0,"pe":10.1},{"d":"2023-08-21","c":20200.0,"eps":1977.0,"pe":10.2},{"d":"2023-08-22","c":19880.0,"eps":1978.0,"pe":10.0},{"d":"2023-08-23","c":19740.0,"eps":1980.0,"pe":10.0},{"d":"2023-08-24","c":20050.0,"eps":1981.0,"pe":10.1},{"d":"2023-08-25","c":19730.0,"eps":1982.0,"pe":10.0},{"d":"2023-08-28","c":19390.0,"eps":1987.0,"pe":9.8},{"d":"2023-08-29","c":19620.0,"eps":1988.0,"pe":9.9},{"d":"2023-08-30","c":19830.0,"eps":1989.0,"pe":10.0},{"d":"2023-08-31","c":19660.0,"eps":1991.0,"pe":9.9},{"d":"2023-09-01","c":20750.0,"eps":1992.0,"pe":10.4},{"d":"2023-09-04","c":20750.0,"eps":1996.0,"pe":10.4},{"d":"2023-09-05","c":20600.0,"eps":1998.0,"pe":10.3},{"d":"2023-09-06","c":20300.0,"eps":1999.0,"pe":10.2},{"d":"2023-09-07","c":21450.0,"eps":2000.0,"pe":10.7},{"d":"2023-09-08","c":20950.0,"eps":2002.0,"pe":10.5},{"d":"2023-09-11","c":20300.0,"eps":2006.0,"pe":10.1},{"d":"2023-09-12","c":21350.0,"eps":2007.0,"pe":10.6},{"d":"2023-09-13","c":21500.0,"eps":2009.0,"pe":10.7},{"d":"2023-09-14","c":22750.0,"eps":2010.0,"pe":11.3},{"d":"2023-09-15","c":22700.0,"eps":2011.0,"pe":11.3},{"d":"2023-09-18","c":22350.0,"eps":2016.0,"pe":11.1},{"d":"2023-09-19","c":22700.0,"eps":2017.0,"pe":11.3},{"d":"2023-09-20","c":22400.0,"eps":2018.0,"pe":11.1},{"d":"2023-09-21","c":21550.0,"eps":2020.0,"pe":10.7},{"d":"2023-09-22","c":21700.0,"eps":2021.0,"pe":10.7},{"d":"2023-09-25","c":21750.0,"eps":2025.0,"pe":10.7},{"d":"2023-09-26","c":21700.0,"eps":2027.0,"pe":10.7},{"d":"2023-09-27","c":20200.0,"eps":2028.0,"pe":10.0},{"d":"2023-10-04","c":20000.0,"eps":2038.0,"pe":9.8},{"d":"2023-10-05","c":19970.0,"eps":2039.0,"pe":9.8},{"d":"2023-10-06","c":20000.0,"eps":2040.0,"pe":9.8},{"d":"2023-10-10","c":19870.0,"eps":2046.0,"pe":9.7},{"d":"2023-10-11","c":20400.0,"eps":2047.0,"pe":10.0},{"d":"2023-10-12","c":20500.0,"eps":2049.0,"pe":10.0},{"d":"2023-10-13","c":20750.0,"eps":2050.0,"pe":10.1},{"d":"2023-10-16","c":20200.0,"eps":2054.0,"pe":9.8},{"d":"2023-10-17","c":20700.0,"eps":2056.0,"pe":10.1},{"d":"2023-10-18","c":20750.0,"eps":2057.0,"pe":10.1},{"d":"2023-10-19","c":20000.0,"eps":2058.0,"pe":9.7},{"d":"2023-10-20","c":20200.0,"eps":2060.0,"pe":9.8},{"d":"2023-10-23","c":20250.0,"eps":2064.0,"pe":9.8},{"d":"2023-10-24","c":20550.0,"eps":2065.0,"pe":10.0},{"d":"2023-10-25","c":20850.0,"eps":2067.0,"pe":10.1},{"d":"2023-10-26","c":20500.0,"eps":2068.0,"pe":9.9},{"d":"2023-10-27","c":19960.0,"eps":2069.0,"pe":9.6},{"d":"2023-10-30","c":20200.0,"eps":2074.0,"pe":9.7},{"d":"2023-10-31","c":19620.0,"eps":2075.0,"pe":9.5},{"d":"2023-11-01","c":19950.0,"eps":2076.0,"pe":9.6},{"d":"2023-11-02","c":21400.0,"eps":2078.0,"pe":10.3},{"d":"2023-11-03","c":21250.0,"eps":2079.0,"pe":10.2},{"d":"2023-11-06","c":21600.0,"eps":2083.0,"pe":10.4},{"d":"2023-11-07","c":21550.0,"eps":2085.0,"pe":10.3},{"d":"2023-11-08","c":21500.0,"eps":2086.0,"pe":10.3},{"d":"2023-11-09","c":21600.0,"eps":2087.0,"pe":10.3},{"d":"2023-11-10","c":21950.0,"eps":2089.0,"pe":10.5},{"d":"2023-11-13","c":21250.0,"eps":2093.0,"pe":10.2},{"d":"2023-11-14","c":21200.0,"eps":2094.0,"pe":10.1},{"d":"2023-11-15","c":20500.0,"eps":2096.0,"pe":9.8},{"d":"2023-11-16","c":20800.0,"eps":2097.0,"pe":9.9},{"d":"2023-11-17","c":21000.0,"eps":2098.0,"pe":10.0},{"d":"2023-11-20","c":21250.0,"eps":2103.0,"pe":10.1},{"d":"2023-11-21","c":21250.0,"eps":2104.0,"pe":10.1},{"d":"2023-11-22","c":21050.0,"eps":2105.0,"pe":10.0},{"d":"2023-11-23","c":20750.0,"eps":2107.0,"pe":9.8},{"d":"2023-11-24","c":20500.0,"eps":2108.0,"pe":9.7},{"d":"2023-11-27","c":20700.0,"eps":2112.0,"pe":9.8},{"d":"2023-11-28","c":20800.0,"eps":2114.0,"pe":9.8},{"d":"2023-11-29","c":20500.0,"eps":2115.0,"pe":9.7},{"d":"2023-11-30","c":20500.0,"eps":2116.0,"pe":9.7},{"d":"2023-12-01","c":20200.0,"eps":2118.0,"pe":9.5},{"d":"2023-12-04","c":19960.0,"eps":2122.0,"pe":9.4},{"d":"2023-12-05","c":19420.0,"eps":2123.0,"pe":9.1},{"d":"2023-12-06","c":19330.0,"eps":2125.0,"pe":9.1},{"d":"2023-12-07","c":19150.0,"eps":2126.0,"pe":9.0},{"d":"2023-12-08","c":19360.0,"eps":2127.0,"pe":9.1},{"d":"2023-12-11","c":19290.0,"eps":2131.0,"pe":9.1},{"d":"2023-12-12","c":19540.0,"eps":2133.0,"pe":9.2},{"d":"2023-12-13","c":20500.0,"eps":2134.0,"pe":9.6},{"d":"2023-12-14","c":20600.0,"eps":2136.0,"pe":9.6},{"d":"2023-12-15","c":20350.0,"eps":2137.0,"pe":9.5},{"d":"2023-12-18","c":20300.0,"eps":2141.0,"pe":9.5},{"d":"2023-12-19","c":20450.0,"eps":2143.0,"pe":9.5},{"d":"2023-12-20","c":20500.0,"eps":2144.0,"pe":9.6},{"d":"2023-12-21","c":20350.0,"eps":2145.0,"pe":9.5},{"d":"2023-12-22","c":20450.0,"eps":2147.0,"pe":9.5},{"d":"2023-12-26","c":20400.0,"eps":2152.0,"pe":9.5},{"d":"2023-12-27","c":20250.0,"eps":2154.0,"pe":9.4},{"d":"2023-12-28","c":20100.0,"eps":2155.0,"pe":9.3},{"d":"2024-01-02","c":20750.0,"eps":2162.0,"pe":9.6},{"d":"2024-01-03","c":20550.0,"eps":2163.0,"pe":9.5},{"d":"2024-01-04","c":20800.0,"eps":2165.0,"pe":9.6},{"d":"2024-01-05","c":20700.0,"eps":2166.0,"pe":9.6},{"d":"2024-01-08","c":20700.0,"eps":2170.0,"pe":9.5},{"d":"2024-01-09","c":20500.0,"eps":2171.0,"pe":9.4},{"d":"2024-01-10","c":20600.0,"eps":2173.0,"pe":9.5},{"d":"2024-01-11","c":20650.0,"eps":2174.0,"pe":9.5},{"d":"2024-01-12","c":20300.0,"eps":2176.0,"pe":9.3},{"d":"2024-01-15","c":19950.0,"eps":2180.0,"pe":9.2},{"d":"2024-01-16","c":19870.0,"eps":2181.0,"pe":9.1},{"d":"2024-01-17","c":19320.0,"eps":2183.0,"pe":8.9},{"d":"2024-01-18","c":19320.0,"eps":2184.0,"pe":8.8},{"d":"2024-01-19","c":19780.0,"eps":2185.0,"pe":9.1},{"d":"2024-01-22","c":19910.0,"eps":2189.0,"pe":9.1},{"d":"2024-01-23","c":19600.0,"eps":2191.0,"pe":8.9},{"d":"2024-01-24","c":19870.0,"eps":2192.0,"pe":9.1},{"d":"2024-01-25","c":19950.0,"eps":2194.0,"pe":9.1},{"d":"2024-01-26","c":19540.0,"eps":2195.0,"pe":8.9},{"d":"2024-01-29","c":19590.0,"eps":2199.0,"pe":8.9},{"d":"2024-01-30","c":19390.0,"eps":2200.0,"pe":8.8},{"d":"2024-01-31","c":18990.0,"eps":2202.0,"pe":8.6},{"d":"2024-02-01","c":18920.0,"eps":2203.0,"pe":8.6},{"d":"2024-02-02","c":19190.0,"eps":2205.0,"pe":8.7},{"d":"2024-02-05","c":18620.0,"eps":2209.0,"pe":8.4},{"d":"2024-02-06","c":18520.0,"eps":2210.0,"pe":8.4},{"d":"2024-02-07","c":18370.0,"eps":2211.0,"pe":8.3},{"d":"2024-02-08","c":18480.0,"eps":2213.0,"pe":8.4},{"d":"2024-02-13","c":18560.0,"eps":2220.0,"pe":8.4},{"d":"2024-02-14","c":18530.0,"eps":2221.0,"pe":8.3},{"d":"2024-02-15","c":18500.0,"eps":2223.0,"pe":8.3},{"d":"2024-02-16","c":18670.0,"eps":2224.0,"pe":8.4},{"d":"2024-02-19","c":19120.0,"eps":2228.0,"pe":8.6},{"d":"2024-02-20","c":18930.0,"eps":2229.0,"pe":8.5},{"d":"2024-02-21","c":19250.0,"eps":2231.0,"pe":8.6},{"d":"2024-02-22","c":19440.0,"eps":2232.0,"pe":8.7},{"d":"2024-02-23","c":19420.0,"eps":2234.0,"pe":8.7},{"d":"2024-02-26","c":18830.0,"eps":2238.0,"pe":8.4},{"d":"2024-02-27","c":18740.0,"eps":2239.0,"pe":8.4},{"d":"2024-02-28","c":19080.0,"eps":2240.0,"pe":8.5},{"d":"2024-02-29","c":19980.0,"eps":2242.0,"pe":8.9},{"d":"2024-03-04","c":20200.0,"eps":2247.0,"pe":9.0},{"d":"2024-03-05","c":20400.0,"eps":2249.0,"pe":9.1},{"d":"2024-03-06","c":20800.0,"eps":2250.0,"pe":9.2},{"d":"2024-03-07","c":20500.0,"eps":2252.0,"pe":9.1},{"d":"2024-03-08","c":20300.0,"eps":2253.0,"pe":9.0},{"d":"2024-03-11","c":20200.0,"eps":2257.0,"pe":8.9},{"d":"2024-03-12","c":19810.0,"eps":2258.0,"pe":8.8},{"d":"2024-03-13","c":19870.0,"eps":2260.0,"pe":8.8},{"d":"2024-03-14","c":19480.0,"eps":2261.0,"pe":8.6},{"d":"2024-03-15","c":19230.0,"eps":2263.0,"pe":8.5},{"d":"2024-03-18","c":19150.0,"eps":2267.0,"pe":8.4},{"d":"2024-03-19","c":19070.0,"eps":2268.0,"pe":8.4},{"d":"2024-03-20","c":19600.0,"eps":2269.0,"pe":8.6},{"d":"2024-03-21","c":20500.0,"eps":2271.0,"pe":9.0},{"d":"2024-03-22","c":20550.0,"eps":2272.0,"pe":9.0},{"d":"2024-03-25","c":20100.0,"eps":2276.0,"pe":8.8},{"d":"2024-03-26","c":20100.0,"eps":2278.0,"pe":8.8},{"d":"2024-03-27","c":20100.0,"eps":2279.0,"pe":8.8},{"d":"2024-03-28","c":20200.0,"eps":2280.0,"pe":8.9},{"d":"2024-03-29","c":21850.0,"eps":2282.0,"pe":9.6},{"d":"2024-04-01","c":21400.0,"eps":2286.0,"pe":9.4},{"d":"2024-04-02","c":25150.0,"eps":2287.0,"pe":11.0},{"d":"2024-04-03","c":24250.0,"eps":2289.0,"pe":10.6},{"d":"2024-04-04","c":25350.0,"eps":2290.0,"pe":11.1},{"d":"2024-04-05","c":26100.0,"eps":2292.0,"pe":11.4},{"d":"2024-04-08","c":23550.0,"eps":2296.0,"pe":10.3},{"d":"2024-04-09","c":23400.0,"eps":2297.0,"pe":10.2},{"d":"2024-04-11","c":24100.0,"eps":2300.0,"pe":10.5},{"d":"2024-04-12","c":24500.0,"eps":2301.0,"pe":10.6},{"d":"2024-04-15","c":28650.0,"eps":2305.0,"pe":12.4},{"d":"2024-04-16","c":29550.0,"eps":2307.0,"pe":12.8},{"d":"2024-04-17","c":29300.0,"eps":2308.0,"pe":12.7},{"d":"2024-04-18","c":29750.0,"eps":2309.0,"pe":12.9},{"d":"2024-04-19","c":27200.0,"eps":2311.0,"pe":11.8},{"d":"2024-04-22","c":25950.0,"eps":2315.0,"pe":11.2},{"d":"2024-04-23","c":25750.0,"eps":2316.0,"pe":11.1},{"d":"2024-04-24","c":26650.0,"eps":2318.0,"pe":11.5},{"d":"2024-04-25","c":26100.0,"eps":2319.0,"pe":11.3},{"d":"2024-04-26","c":26200.0,"eps":2320.0,"pe":11.3},{"d":"2024-04-29","c":24750.0,"eps":2325.0,"pe":10.6},{"d":"2024-04-30","c":24300.0,"eps":2326.0,"pe":10.4},{"d":"2024-05-02","c":24300.0,"eps":2329.0,"pe":10.4},{"d":"2024-05-03","c":24100.0,"eps":2330.0,"pe":10.3},{"d":"2024-05-07","c":24350.0,"eps":2336.0,"pe":10.4},{"d":"2024-05-08","c":24000.0,"eps":2337.0,"pe":10.3},{"d":"2024-05-09","c":23600.0,"eps":2338.0,"pe":10.1},{"d":"2024-05-10","c":23000.0,"eps":2340.0,"pe":9.8},{"d":"2024-05-13","c":22650.0,"eps":2344.0,"pe":9.7},{"d":"2024-05-14","c":22700.0,"eps":2345.0,"pe":9.7},{"d":"2024-05-16","c":23900.0,"eps":2349.0,"pe":10.2},{"d":"2024-05-17","c":23150.0,"eps":2351.0,"pe":9.8},{"d":"2024-05-20","c":23500.0,"eps":2357.0,"pe":10.0},{"d":"2024-05-21","c":24000.0,"eps":2360.0,"pe":10.2},{"d":"2024-05-22","c":23450.0,"eps":2362.0,"pe":9.9},{"d":"2024-05-23","c":23400.0,"eps":2364.0,"pe":9.9},{"d":"2024-05-24","c":22950.0,"eps":2366.0,"pe":9.7},{"d":"2024-05-27","c":22900.0,"eps":2372.0,"pe":9.7},{"d":"2024-05-28","c":23200.0,"eps":2375.0,"pe":9.8},{"d":"2024-05-29","c":23100.0,"eps":2377.0,"pe":9.7},{"d":"2024-05-30","c":23450.0,"eps":2379.0,"pe":9.9},{"d":"2024-05-31","c":22300.0,"eps":2381.0,"pe":9.4},{"d":"2024-06-03","c":22900.0,"eps":2387.0,"pe":9.6},{"d":"2024-06-04","c":22200.0,"eps":2390.0,"pe":9.3},{"d":"2024-06-05","c":22600.0,"eps":2392.0,"pe":9.4},{"d":"2024-06-07","c":23250.0,"eps":2396.0,"pe":9.7},{"d":"2024-06-10","c":23750.0,"eps":2402.0,"pe":9.9},{"d":"2024-06-11","c":23750.0,"eps":2405.0,"pe":9.9},{"d":"2024-06-12","c":23850.0,"eps":2407.0,"pe":9.9},{"d":"2024-06-13","c":23850.0,"eps":2409.0,"pe":9.9},{"d":"2024-06-14","c":23450.0,"eps":2411.0,"pe":9.7},{"d":"2024-06-17","c":23000.0,"eps":2417.0,"pe":9.5},{"d":"2024-06-18","c":23600.0,"eps":2420.0,"pe":9.8},{"d":"2024-06-19","c":23850.0,"eps":2422.0,"pe":9.8},{"d":"2024-06-20","c":23650.0,"eps":2424.0,"pe":9.8},{"d":"2024-06-21","c":23200.0,"eps":2426.0,"pe":9.6},{"d":"2024-06-24","c":22150.0,"eps":2432.0,"pe":9.1},{"d":"2024-06-25","c":22300.0,"eps":2435.0,"pe":9.2},{"d":"2024-06-26","c":26500.0,"eps":2437.0,"pe":10.9},{"d":"2024-06-27","c":27300.0,"eps":2439.0,"pe":11.2},{"d":"2024-06-28","c":26600.0,"eps":2441.0,"pe":10.9},{"d":"2024-07-01","c":26150.0,"eps":2447.0,"pe":10.7},{"d":"2024-07-02","c":25250.0,"eps":2450.0,"pe":10.3},{"d":"2024-07-03","c":26150.0,"eps":2452.0,"pe":10.7},{"d":"2024-07-04","c":26150.0,"eps":2454.0,"pe":10.7},{"d":"2024-07-05","c":25700.0,"eps":2456.0,"pe":10.5},{"d":"2024-07-08","c":25900.0,"eps":2462.0,"pe":10.5},{"d":"2024-07-09","c":26250.0,"eps":2465.0,"pe":10.7},{"d":"2024-07-10","c":25150.0,"eps":2467.0,"pe":10.2},{"d":"2024-07-11","c":23650.0,"eps":2469.0,"pe":9.6},{"d":"2024-07-12","c":23550.0,"eps":2471.0,"pe":9.5},{"d":"2024-07-15","c":23450.0,"eps":2477.0,"pe":9.5},{"d":"2024-07-16","c":24000.0,"eps":2480.0,"pe":9.7},{"d":"2024-07-17","c":22550.0,"eps":2482.0,"pe":9.1},{"d":"2024-07-18","c":22300.0,"eps":2484.0,"pe":9.0},{"d":"2024-07-19","c":22000.0,"eps":2486.0,"pe":8.8},{"d":"2024-07-22","c":21300.0,"eps":2492.0,"pe":8.5},{"d":"2024-07-23","c":20850.0,"eps":2495.0,"pe":8.4},{"d":"2024-07-24","c":20850.0,"eps":2497.0,"pe":8.4},{"d":"2024-07-25","c":19820.0,"eps":2499.0,"pe":7.9},{"d":"2024-07-26","c":19970.0,"eps":2501.0,"pe":8.0},{"d":"2024-07-29","c":20100.0,"eps":2507.0,"pe":8.0},{"d":"2024-07-30","c":19820.0,"eps":2510.0,"pe":7.9},{"d":"2024-07-31","c":20750.0,"eps":2512.0,"pe":8.3},{"d":"2024-08-01","c":20550.0,"eps":2514.0,"pe":8.2},{"d":"2024-08-02","c":19340.0,"eps":2516.0,"pe":7.7},{"d":"2024-08-05","c":16700.0,"eps":2522.0,"pe":6.6},{"d":"2024-08-06","c":17470.0,"eps":2525.0,"pe":6.9},{"d":"2024-08-07","c":17550.0,"eps":2527.0,"pe":6.9},{"d":"2024-08-08","c":17610.0,"eps":2529.0,"pe":7.0},{"d":"2024-08-09","c":18040.0,"eps":2531.0,"pe":7.1},{"d":"2024-08-12","c":18110.0,"eps":2537.0,"pe":7.1},{"d":"2024-08-13","c":18410.0,"eps":2540.0,"pe":7.2},{"d":"2024-08-14","c":19150.0,"eps":2542.0,"pe":7.5},{"d":"2024-08-16","c":19450.0,"eps":2546.0,"pe":7.6},{"d":"2024-08-19","c":19190.0,"eps":2552.0,"pe":7.5},{"d":"2024-08-20","c":19500.0,"eps":2555.0,"pe":7.6},{"d":"2024-08-21","c":19260.0,"eps":2557.0,"pe":7.5},{"d":"2024-08-22","c":19190.0,"eps":2559.0,"pe":7.5},{"d":"2024-08-23","c":18730.0,"eps":2561.0,"pe":7.3},{"d":"2024-08-26","c":18450.0,"eps":2567.0,"pe":7.2},{"d":"2024-08-27","c":18560.0,"eps":2570.0,"pe":7.2},{"d":"2024-08-28","c":18850.0,"eps":2572.0,"pe":7.3},{"d":"2024-08-29","c":18150.0,"eps":2574.0,"pe":7.1},{"d":"2024-08-30","c":18200.0,"eps":2576.0,"pe":7.1},{"d":"2024-09-02","c":18000.0,"eps":2582.0,"pe":7.0},{"d":"2024-09-03","c":17630.0,"eps":2585.0,"pe":6.8},{"d":"2024-09-04","c":16760.0,"eps":2587.0,"pe":6.5},{"d":"2024-09-05","c":16740.0,"eps":2589.0,"pe":6.5},{"d":"2024-09-06","c":16380.0,"eps":2591.0,"pe":6.3},{"d":"2024-09-09","c":16590.0,"eps":2597.0,"pe":6.4},{"d":"2024-09-10","c":16260.0,"eps":2600.0,"pe":6.3},{"d":"2024-09-11","c":15980.0,"eps":2602.0,"pe":6.1},{"d":"2024-09-12","c":16830.0,"eps":2604.0,"pe":6.5},{"d":"2024-09-13","c":16650.0,"eps":2606.0,"pe":6.4},{"d":"2024-09-19","c":16400.0,"eps":2619.0,"pe":6.3},{"d":"2024-09-20","c":16390.0,"eps":2621.0,"pe":6.3},{"d":"2024-09-23","c":16390.0,"eps":2627.0,"pe":6.2},{"d":"2024-09-24","c":16650.0,"eps":2630.0,"pe":6.3},{"d":"2024-09-25","c":16730.0,"eps":2632.0,"pe":6.4},{"d":"2024-09-26","c":17730.0,"eps":2634.0,"pe":6.7},{"d":"2024-09-27","c":17760.0,"eps":2636.0,"pe":6.7},{"d":"2024-09-30","c":17330.0,"eps":2642.0,"pe":6.6},{"d":"2024-10-02","c":17370.0,"eps":2647.0,"pe":6.6},{"d":"2024-10-04","c":17140.0,"eps":2651.0,"pe":6.5},{"d":"2024-10-07","c":17620.0,"eps":2657.0,"pe":6.6},{"d":"2024-10-08","c":17390.0,"eps":2660.0,"pe":6.5},{"d":"2024-10-10","c":17130.0,"eps":2664.0,"pe":6.4},{"d":"2024-10-11","c":17260.0,"eps":2666.0,"pe":6.5},{"d":"2024-10-14","c":17580.0,"eps":2672.0,"pe":6.6},{"d":"2024-10-15","c":17600.0,"eps":2675.0,"pe":6.6},{"d":"2024-10-16","c":16620.0,"eps":2677.0,"pe":6.2},{"d":"2024-10-17","c":16850.0,"eps":2679.0,"pe":6.3},{"d":"2024-10-18","c":16310.0,"eps":2681.0,"pe":6.1},{"d":"2024-10-21","c":16650.0,"eps":2687.0,"pe":6.2},{"d":"2024-10-22","c":16150.0,"eps":2690.0,"pe":6.0},{"d":"2024-10-23","c":16430.0,"eps":2692.0,"pe":6.1},{"d":"2024-10-24","c":16100.0,"eps":2694.0,"pe":6.0},{"d":"2024-10-25","c":15870.0,"eps":2696.0,"pe":5.9},{"d":"2024-10-28","c":16270.0,"eps":2702.0,"pe":6.0},{"d":"2024-10-29","c":16290.0,"eps":2705.0,"pe":6.0},{"d":"2024-10-30","c":16220.0,"eps":2707.0,"pe":6.0},{"d":"2024-10-31","c":16850.0,"eps":2709.0,"pe":6.2},{"d":"2024-11-01","c":16690.0,"eps":2711.0,"pe":6.2},{"d":"2024-11-04","c":17110.0,"eps":2717.0,"pe":6.3},{"d":"2024-11-05","c":16890.0,"eps":2720.0,"pe":6.2},{"d":"2024-11-06","c":16690.0,"eps":2722.0,"pe":6.1},{"d":"2024-11-07","c":16650.0,"eps":2724.0,"pe":6.1},{"d":"2024-11-08","c":16290.0,"eps":2726.0,"pe":6.0},{"d":"2024-11-11","c":15610.0,"eps":2732.0,"pe":5.7},{"d":"2024-11-12","c":14890.0,"eps":2735.0,"pe":5.4},{"d":"2024-11-13","c":14870.0,"eps":2737.0,"pe":5.4},{"d":"2024-11-14","c":14370.0,"eps":2739.0,"pe":5.2},{"d":"2024-11-15","c":14880.0,"eps":2741.0,"pe":5.4},{"d":"2024-11-18","c":14770.0,"eps":2747.0,"pe":5.4},{"d":"2024-11-19","c":14690.0,"eps":2750.0,"pe":5.3},{"d":"2024-11-20","c":14410.0,"eps":2752.0,"pe":5.2},{"d":"2024-11-21","c":14590.0,"eps":2754.0,"pe":5.3},{"d":"2024-11-22","c":14820.0,"eps":2756.0,"pe":5.4},{"d":"2024-11-25","c":15110.0,"eps":2762.0,"pe":5.5},{"d":"2024-11-26","c":15170.0,"eps":2765.0,"pe":5.5},{"d":"2024-11-27","c":14740.0,"eps":2767.0,"pe":5.3},{"d":"2024-11-28","c":14590.0,"eps":2769.0,"pe":5.3},{"d":"2024-11-29","c":14220.0,"eps":2771.0,"pe":5.1},{"d":"2024-12-02","c":13970.0,"eps":2777.0,"pe":5.0},{"d":"2024-12-03","c":14150.0,"eps":2780.0,"pe":5.1},{"d":"2024-12-04","c":14000.0,"eps":2782.0,"pe":5.0},{"d":"2024-12-05","c":14290.0,"eps":2784.0,"pe":5.1},{"d":"2024-12-06","c":14230.0,"eps":2786.0,"pe":5.1},{"d":"2024-12-09","c":13090.0,"eps":2792.0,"pe":4.7},{"d":"2024-12-10","c":13820.0,"eps":2795.0,"pe":4.9},{"d":"2024-12-11","c":14330.0,"eps":2797.0,"pe":5.1},{"d":"2024-12-12","c":14540.0,"eps":2799.0,"pe":5.2},{"d":"2024-12-13","c":14750.0,"eps":2801.0,"pe":5.3},{"d":"2024-12-16","c":15010.0,"eps":2807.0,"pe":5.3},{"d":"2024-12-17","c":15250.0,"eps":2810.0,"pe":5.4},{"d":"2024-12-18","c":15930.0,"eps":2812.0,"pe":5.7},{"d":"2024-12-19","c":16000.0,"eps":2814.0,"pe":5.7},{"d":"2024-12-20","c":15330.0,"eps":2816.0,"pe":5.4},{"d":"2024-12-23","c":16140.0,"eps":2822.0,"pe":5.7},{"d":"2024-12-24","c":16140.0,"eps":2825.0,"pe":5.7},{"d":"2024-12-26","c":16000.0,"eps":2829.0,"pe":5.7},{"d":"2024-12-27","c":15550.0,"eps":2831.0,"pe":5.5},{"d":"2024-12-30","c":15500.0,"eps":2837.0,"pe":5.5},{"d":"2025-01-02","c":15360.0,"eps":2844.0,"pe":5.4},{"d":"2025-01-03","c":16400.0,"eps":2846.0,"pe":5.8},{"d":"2025-01-06","c":17150.0,"eps":2852.0,"pe":6.0},{"d":"2025-01-07","c":17060.0,"eps":2855.0,"pe":6.0},{"d":"2025-01-08","c":17440.0,"eps":2857.0,"pe":6.1},{"d":"2025-01-09","c":17100.0,"eps":2859.0,"pe":6.0},{"d":"2025-01-10","c":17070.0,"eps":2861.0,"pe":6.0},{"d":"2025-01-13","c":16590.0,"eps":2867.0,"pe":5.8},{"d":"2025-01-14","c":17020.0,"eps":2870.0,"pe":5.9},{"d":"2025-01-15","c":17380.0,"eps":2872.0,"pe":6.1},{"d":"2025-01-16","c":17340.0,"eps":2874.0,"pe":6.0},{"d":"2025-01-17","c":18410.0,"eps":2876.0,"pe":6.4},{"d":"2025-01-20","c":18090.0,"eps":2882.0,"pe":6.3},{"d":"2025-01-21","c":18020.0,"eps":2885.0,"pe":6.2},{"d":"2025-01-22","c":19200.0,"eps":2887.0,"pe":6.7},{"d":"2025-01-23","c":18870.0,"eps":2889.0,"pe":6.5},{"d":"2025-01-24","c":19020.0,"eps":2891.0,"pe":6.6},{"d":"2025-01-31","c":17900.0,"eps":2906.0,"pe":6.2},{"d":"2025-02-03","c":16960.0,"eps":2912.0,"pe":5.8},{"d":"2025-02-04","c":16950.0,"eps":2915.0,"pe":5.8},{"d":"2025-02-05","c":20150.0,"eps":2917.0,"pe":6.9},{"d":"2025-02-06","c":22350.0,"eps":2919.0,"pe":7.7},{"d":"2025-02-07","c":21750.0,"eps":2921.0,"pe":7.4},{"d":"2025-02-10","c":21650.0,"eps":2927.0,"pe":7.4},{"d":"2025-02-11","c":21450.0,"eps":2930.0,"pe":7.3},{"d":"2025-02-12","c":21950.0,"eps":2932.0,"pe":7.5},{"d":"2025-02-13","c":22900.0,"eps":2934.0,"pe":7.8},{"d":"2025-02-14","c":22600.0,"eps":2936.0,"pe":7.7},{"d":"2025-02-17","c":22100.0,"eps":2942.0,"pe":7.5},{"d":"2025-02-18","c":22850.0,"eps":2945.0,"pe":7.8},{"d":"2025-02-19","c":23200.0,"eps":2947.0,"pe":7.9},{"d":"2025-02-20","c":22250.0,"eps":2949.0,"pe":7.5},{"d":"2025-02-21","c":22600.0,"eps":2951.0,"pe":7.7},{"d":"2025-02-24","c":22000.0,"eps":2957.0,"pe":7.4},{"d":"2025-02-25","c":22200.0,"eps":2960.0,"pe":7.5},{"d":"2025-02-26","c":22200.0,"eps":2962.0,"pe":7.5},{"d":"2025-02-27","c":21850.0,"eps":2964.0,"pe":7.4},{"d":"2025-02-28","c":20750.0,"eps":2966.0,"pe":7.0},{"d":"2025-03-04","c":20950.0,"eps":2975.0,"pe":7.0},{"d":"2025-03-05","c":21800.0,"eps":2977.0,"pe":7.3},{"d":"2025-03-06","c":21000.0,"eps":2979.0,"pe":7.0},{"d":"2025-03-07","c":20900.0,"eps":2981.0,"pe":7.0},{"d":"2025-03-10","c":21500.0,"eps":2987.0,"pe":7.2},{"d":"2025-03-11","c":22950.0,"eps":2990.0,"pe":7.7},{"d":"2025-03-12","c":23250.0,"eps":2992.0,"pe":7.8},{"d":"2025-03-13","c":23000.0,"eps":2994.0,"pe":7.7},{"d":"2025-03-14","c":23800.0,"eps":2996.0,"pe":7.9},{"d":"2025-03-17","c":24050.0,"eps":3002.0,"pe":8.0},{"d":"2025-03-18","c":22900.0,"eps":3005.0,"pe":7.6},{"d":"2025-03-19","c":23800.0,"eps":3007.0,"pe":7.9},{"d":"2025-03-20","c":23700.0,"eps":3009.0,"pe":7.9},{"d":"2025-03-21","c":23900.0,"eps":3011.0,"pe":7.9},{"d":"2025-03-24","c":24000.0,"eps":3017.0,"pe":8.0},{"d":"2025-03-25","c":22850.0,"eps":3020.0,"pe":7.6},{"d":"2025-03-26","c":22950.0,"eps":3022.0,"pe":7.6},{"d":"2025-03-27","c":22800.0,"eps":3024.0,"pe":7.5},{"d":"2025-03-28","c":21650.0,"eps":3026.0,"pe":7.2},{"d":"2025-03-31","c":21450.0,"eps":3032.0,"pe":7.1},{"d":"2025-04-01","c":21450.0,"eps":3035.0,"pe":7.1},{"d":"2025-04-02","c":21900.0,"eps":3037.0,"pe":7.2},{"d":"2025-04-03","c":21300.0,"eps":3039.0,"pe":7.0},{"d":"2025-04-04","c":19200.0,"eps":3041.0,"pe":6.3},{"d":"2025-04-07","c":17960.0,"eps":3047.0,"pe":5.9},{"d":"2025-04-08","c":18180.0,"eps":3050.0,"pe":6.0},{"d":"2025-04-09","c":17450.0,"eps":3052.0,"pe":5.7},{"d":"2025-04-10","c":18590.0,"eps":3054.0,"pe":6.1},{"d":"2025-04-11","c":19130.0,"eps":3056.0,"pe":6.3},{"d":"2025-04-14","c":19760.0,"eps":3062.0,"pe":6.5},{"d":"2025-04-15","c":21350.0,"eps":3065.0,"pe":7.0},{"d":"2025-04-16","c":20500.0,"eps":3067.0,"pe":6.7},{"d":"2025-04-17","c":20650.0,"eps":3069.0,"pe":6.7},{"d":"2025-04-18","c":20300.0,"eps":3071.0,"pe":6.6},{"d":"2025-04-21","c":20650.0,"eps":3077.0,"pe":6.7},{"d":"2025-04-22","c":20700.0,"eps":3080.0,"pe":6.7},{"d":"2025-04-23","c":21800.0,"eps":3082.0,"pe":7.1},{"d":"2025-04-24","c":21750.0,"eps":3084.0,"pe":7.1},{"d":"2025-04-25","c":22100.0,"eps":3086.0,"pe":7.2},{"d":"2025-04-28","c":21000.0,"eps":3092.0,"pe":6.8},{"d":"2025-04-29","c":21100.0,"eps":3095.0,"pe":6.8},{"d":"2025-04-30","c":20100.0,"eps":3097.0,"pe":6.5},{"d":"2025-05-02","c":20900.0,"eps":3101.0,"pe":6.7},{"d":"2025-05-07","c":20900.0,"eps":3112.0,"pe":6.7},{"d":"2025-05-08","c":21050.0,"eps":3114.0,"pe":6.8},{"d":"2025-05-09","c":20900.0,"eps":3116.0,"pe":6.7},{"d":"2025-05-12","c":22650.0,"eps":3122.0,"pe":7.3},{"d":"2025-05-13","c":23050.0,"eps":3125.0,"pe":7.4},{"d":"2025-05-14","c":23000.0,"eps":3127.0,"pe":7.4},{"d":"2025-05-15","c":22300.0,"eps":3129.0,"pe":7.1},{"d":"2025-05-16","c":22350.0,"eps":3133.0,"pe":7.1},{"d":"2025-05-19","c":21450.0,"eps":3145.0,"pe":6.8},{"d":"2025-05-20","c":21850.0,"eps":3150.0,"pe":6.9},{"d":"2025-05-21","c":23150.0,"eps":3154.0,"pe":7.3},{"d":"2025-05-22","c":22500.0,"eps":3158.0,"pe":7.1},{"d":"2025-05-23","c":22600.0,"eps":3162.0,"pe":7.1},{"d":"2025-05-26","c":23000.0,"eps":3174.0,"pe":7.2},{"d":"2025-05-27","c":22700.0,"eps":3178.0,"pe":7.1},{"d":"2025-05-28","c":22900.0,"eps":3183.0,"pe":7.2},{"d":"2025-05-29","c":23400.0,"eps":3187.0,"pe":7.3},{"d":"2025-05-30","c":22450.0,"eps":3191.0,"pe":7.0},{"d":"2025-06-02","c":22300.0,"eps":3203.0,"pe":7.0},{"d":"2025-06-04","c":23000.0,"eps":3211.0,"pe":7.2},{"d":"2025-06-05","c":24600.0,"eps":3215.0,"pe":7.7},{"d":"2025-06-09","c":24050.0,"eps":3232.0,"pe":7.4},{"d":"2025-06-10","c":23900.0,"eps":3236.0,"pe":7.4},{"d":"2025-06-11","c":24800.0,"eps":3240.0,"pe":7.7},{"d":"2025-06-12","c":24500.0,"eps":3244.0,"pe":7.6},{"d":"2025-06-13","c":24200.0,"eps":3248.0,"pe":7.4},{"d":"2025-06-16","c":24250.0,"eps":3261.0,"pe":7.4},{"d":"2025-06-17","c":25350.0,"eps":3265.0,"pe":7.8},{"d":"2025-06-18","c":25300.0,"eps":3269.0,"pe":7.7},{"d":"2025-06-19","c":25650.0,"eps":3273.0,"pe":7.8},{"d":"2025-06-20","c":26100.0,"eps":3277.0,"pe":8.0},{"d":"2025-06-23","c":25400.0,"eps":3290.0,"pe":7.7},{"d":"2025-06-24","c":25900.0,"eps":3294.0,"pe":7.9},{"d":"2025-06-25","c":26150.0,"eps":3298.0,"pe":7.9},{"d":"2025-06-26","c":26000.0,"eps":3302.0,"pe":7.9},{"d":"2025-06-27","c":25800.0,"eps":3306.0,"pe":7.8},{"d":"2025-06-30","c":25500.0,"eps":3319.0,"pe":7.7},{"d":"2025-07-01","c":25200.0,"eps":3323.0,"pe":7.6},{"d":"2025-07-02","c":25150.0,"eps":3327.0,"pe":7.6},{"d":"2025-07-03","c":26650.0,"eps":3331.0,"pe":8.0},{"d":"2025-07-04","c":26800.0,"eps":3335.0,"pe":8.0},{"d":"2025-07-07","c":26750.0,"eps":3347.0,"pe":8.0},{"d":"2025-07-08","c":26950.0,"eps":3352.0,"pe":8.0},{"d":"2025-07-09","c":27000.0,"eps":3356.0,"pe":8.0},{"d":"2025-07-10","c":26150.0,"eps":3360.0,"pe":7.8},{"d":"2025-07-11","c":26650.0,"eps":3364.0,"pe":7.9},{"d":"2025-07-14","c":26350.0,"eps":3376.0,"pe":7.8},{"d":"2025-07-15","c":26850.0,"eps":3380.0,"pe":7.9},{"d":"2025-07-16","c":27900.0,"eps":3385.0,"pe":8.2},{"d":"2025-07-17","c":27000.0,"eps":3389.0,"pe":8.0},{"d":"2025-07-18","c":26500.0,"eps":3393.0,"pe":7.8},{"d":"2025-07-21","c":26750.0,"eps":3405.0,"pe":7.9},{"d":"2025-07-22","c":25150.0,"eps":3409.0,"pe":7.4},{"d":"2025-07-23","c":25300.0,"eps":3413.0,"pe":7.4},{"d":"2025-07-24","c":25000.0,"eps":3417.0,"pe":7.3},{"d":"2025-07-25","c":24900.0,"eps":3422.0,"pe":7.3},{"d":"2025-07-28","c":26050.0,"eps":3434.0,"pe":7.6},{"d":"2025-07-29","c":25450.0,"eps":3438.0,"pe":7.4},{"d":"2025-07-30","c":26850.0,"eps":3442.0,"pe":7.8},{"d":"2025-07-31","c":26000.0,"eps":3446.0,"pe":7.5},{"d":"2025-08-01","c":24850.0,"eps":3450.0,"pe":7.2},{"d":"2025-08-04","c":24400.0,"eps":3463.0,"pe":7.0},{"d":"2025-08-05","c":24000.0,"eps":3467.0,"pe":6.9},{"d":"2025-08-06","c":24150.0,"eps":3471.0,"pe":7.0},{"d":"2025-08-07","c":24450.0,"eps":3475.0,"pe":7.0},{"d":"2025-08-08","c":25150.0,"eps":3479.0,"pe":7.2},{"d":"2025-08-11","c":25600.0,"eps":3492.0,"pe":7.3},{"d":"2025-08-12","c":26500.0,"eps":3496.0,"pe":7.6},{"d":"2025-08-13","c":27750.0,"eps":3500.0,"pe":7.9},{"d":"2025-08-14","c":27500.0,"eps":3504.0,"pe":7.8},{"d":"2025-08-18","c":28000.0,"eps":3521.0,"pe":8.0},{"d":"2025-08-19","c":29250.0,"eps":3525.0,"pe":8.3},{"d":"2025-08-20","c":29650.0,"eps":3529.0,"pe":8.4},{"d":"2025-08-21","c":29050.0,"eps":3533.0,"pe":8.2},{"d":"2025-08-22","c":29550.0,"eps":3537.0,"pe":8.4},{"d":"2025-08-25","c":29900.0,"eps":3549.0,"pe":8.4},{"d":"2025-08-26","c":30000.0,"eps":3554.0,"pe":8.4},{"d":"2025-08-27","c":29850.0,"eps":3558.0,"pe":8.4},{"d":"2025-08-28","c":29900.0,"eps":3562.0,"pe":8.4},{"d":"2025-08-29","c":30000.0,"eps":3566.0,"pe":8.4},{"d":"2025-09-01","c":28750.0,"eps":3578.0,"pe":8.0},{"d":"2025-09-02","c":28200.0,"eps":3582.0,"pe":7.9},{"d":"2025-09-03","c":29650.0,"eps":3587.0,"pe":8.3},{"d":"2025-09-04","c":28950.0,"eps":3591.0,"pe":8.1},{"d":"2025-09-05","c":28950.0,"eps":3595.0,"pe":8.1},{"d":"2025-09-08","c":28850.0,"eps":3607.0,"pe":8.0},{"d":"2025-09-09","c":31100.0,"eps":3611.0,"pe":8.6},{"d":"2025-09-10","c":32650.0,"eps":3615.0,"pe":9.0},{"d":"2025-09-11","c":33350.0,"eps":3619.0,"pe":9.2},{"d":"2025-09-12","c":37850.0,"eps":3624.0,"pe":10.4},{"d":"2025-09-15","c":40000.0,"eps":3636.0,"pe":11.0},{"d":"2025-09-16","c":41950.0,"eps":3640.0,"pe":11.5},{"d":"2025-09-17","c":41500.0,"eps":3644.0,"pe":11.4},{"d":"2025-09-18","c":43250.0,"eps":3648.0,"pe":11.9},{"d":"2025-09-19","c":43200.0,"eps":3652.0,"pe":11.8},{"d":"2025-09-22","c":44150.0,"eps":3665.0,"pe":12.0},{"d":"2025-09-23","c":44500.0,"eps":3669.0,"pe":12.1},{"d":"2025-09-24","c":45700.0,"eps":3673.0,"pe":12.4},{"d":"2025-09-25","c":43750.0,"eps":3677.0,"pe":11.9},{"d":"2025-09-26","c":41550.0,"eps":3681.0,"pe":11.3},{"d":"2025-09-29","c":43450.0,"eps":3694.0,"pe":11.8},{"d":"2025-09-30","c":42950.0,"eps":3698.0,"pe":11.6},{"d":"2025-10-01","c":43800.0,"eps":3702.0,"pe":11.8},{"d":"2025-10-02","c":46100.0,"eps":3706.0,"pe":12.4},{"d":"2025-10-10","c":47500.0,"eps":3739.0,"pe":12.7},{"d":"2025-10-13","c":46800.0,"eps":3751.0,"pe":12.5},{"d":"2025-10-14","c":44700.0,"eps":3756.0,"pe":11.9},{"d":"2025-10-15","c":47300.0,"eps":3760.0,"pe":12.6},{"d":"2025-10-16","c":46100.0,"eps":3764.0,"pe":12.2},{"d":"2025-10-17","c":45450.0,"eps":3768.0,"pe":12.1},{"d":"2025-10-20","c":51000.0,"eps":3780.0,"pe":13.5},{"d":"2025-10-21","c":46750.0,"eps":3784.0,"pe":12.4},{"d":"2025-10-22","c":47000.0,"eps":3789.0,"pe":12.4},{"d":"2025-10-23","c":48600.0,"eps":3793.0,"pe":12.8},{"d":"2025-10-24","c":49850.0,"eps":3797.0,"pe":13.1},{"d":"2025-10-27","c":50200.0,"eps":3809.0,"pe":13.2},{"d":"2025-10-28","c":44950.0,"eps":3813.0,"pe":11.8},{"d":"2025-10-29","c":45950.0,"eps":3817.0,"pe":12.0},{"d":"2025-10-30","c":44450.0,"eps":3821.0,"pe":11.6},{"d":"2025-10-31","c":44300.0,"eps":3826.0,"pe":11.6},{"d":"2025-11-03","c":42050.0,"eps":3838.0,"pe":11.0},{"d":"2025-11-04","c":44200.0,"eps":3842.0,"pe":11.5},{"d":"2025-11-05","c":41450.0,"eps":3846.0,"pe":10.8},{"d":"2025-11-06","c":43300.0,"eps":3850.0,"pe":11.2},{"d":"2025-11-07","c":40050.0,"eps":3854.0,"pe":10.4},{"d":"2025-11-10","c":43200.0,"eps":3867.0,"pe":11.2},{"d":"2025-11-11","c":45500.0,"eps":3871.0,"pe":11.8},{"d":"2025-11-12","c":45400.0,"eps":3875.0,"pe":11.7},{"d":"2025-11-13","c":44950.0,"eps":3879.0,"pe":11.6},{"d":"2025-11-14","c":41650.0,"eps":3883.0,"pe":10.7},{"d":"2025-11-17","c":46700.0,"eps":3896.0,"pe":12.0},{"d":"2025-11-18","c":44600.0,"eps":3900.0,"pe":11.4},{"d":"2025-11-19","c":44900.0,"eps":3904.0,"pe":11.5},{"d":"2025-11-20","c":42650.0,"eps":3908.0,"pe":10.9},{"d":"2025-11-21","c":38100.0,"eps":3912.0,"pe":9.7},{"d":"2025-11-24","c":39000.0,"eps":3925.0,"pe":9.9},{"d":"2025-11-25","c":38100.0,"eps":3929.0,"pe":9.7},{"d":"2025-11-26","c":39300.0,"eps":3933.0,"pe":10.0},{"d":"2025-11-27","c":38850.0,"eps":3937.0,"pe":9.9},{"d":"2025-11-28","c":39850.0,"eps":3941.0,"pe":10.1},{"d":"2025-12-01","c":41500.0,"eps":3953.0,"pe":10.5},{"d":"2025-12-02","c":41200.0,"eps":3958.0,"pe":10.4},{"d":"2025-12-03","c":41100.0,"eps":3962.0,"pe":10.4},{"d":"2025-12-04","c":38750.0,"eps":3966.0,"pe":9.8},{"d":"2025-12-05","c":38900.0,"eps":3970.0,"pe":9.8},{"d":"2025-12-08","c":39100.0,"eps":3982.0,"pe":9.8},{"d":"2025-12-09","c":38300.0,"eps":3986.0,"pe":9.6},{"d":"2025-12-10","c":39500.0,"eps":3991.0,"pe":9.9},{"d":"2025-12-11","c":38750.0,"eps":3995.0,"pe":9.7},{"d":"2025-12-12","c":37750.0,"eps":3999.0,"pe":9.4},{"d":"2025-12-15","c":37400.0,"eps":4011.0,"pe":9.3},{"d":"2025-12-16","c":36500.0,"eps":4015.0,"pe":9.1},{"d":"2025-12-17","c":39400.0,"eps":4019.0,"pe":9.8},{"d":"2025-12-18","c":38800.0,"eps":4023.0,"pe":9.6},{"d":"2025-12-19","c":38700.0,"eps":4028.0,"pe":9.6},{"d":"2025-12-22","c":40950.0,"eps":4040.0,"pe":10.1},{"d":"2025-12-23","c":41600.0,"eps":4044.0,"pe":10.3},{"d":"2025-12-24","c":41400.0,"eps":4048.0,"pe":10.2},{"d":"2025-12-26","c":44400.0,"eps":4056.0,"pe":10.9},{"d":"2025-12-29","c":44400.0,"eps":4069.0,"pe":10.9},{"d":"2025-12-30","c":44650.0,"eps":4073.0,"pe":11.0},{"d":"2026-01-02","c":54600.0,"eps":4085.0,"pe":13.4},{"d":"2026-01-05","c":54900.0,"eps":4098.0,"pe":13.4},{"d":"2026-01-06","c":57400.0,"eps":4102.0,"pe":14.0},{"d":"2026-01-07","c":57400.0,"eps":4106.0,"pe":14.0},{"d":"2026-01-08","c":54300.0,"eps":4110.0,"pe":13.2},{"d":"2026-01-09","c":52600.0,"eps":4114.0,"pe":12.8},{"d":"2026-01-12","c":50800.0,"eps":4127.0,"pe":12.3},{"d":"2026-01-13","c":52200.0,"eps":4131.0,"pe":12.6},{"d":"2026-01-14","c":51400.0,"eps":4135.0,"pe":12.4},{"d":"2026-01-15","c":51000.0,"eps":4139.0,"pe":12.3},{"d":"2026-01-16","c":51700.0,"eps":4143.0,"pe":12.5},{"d":"2026-01-19","c":50500.0,"eps":4155.0,"pe":12.2},{"d":"2026-01-20","c":47600.0,"eps":4160.0,"pe":11.4},{"d":"2026-01-21","c":47850.0,"eps":4164.0,"pe":11.5},{"d":"2026-01-22","c":47950.0,"eps":4168.0,"pe":11.5},{"d":"2026-01-23","c":47650.0,"eps":4172.0,"pe":11.4},{"d":"2026-01-26","c":54600.0,"eps":4193.0,"pe":13.0},{"d":"2026-01-27","c":57100.0,"eps":4200.0,"pe":13.6},{"d":"2026-01-28","c":71100.0,"eps":4207.0,"pe":16.9},{"d":"2026-01-29","c":71800.0,"eps":4215.0,"pe":17.0},{"d":"2026-01-30","c":72500.0,"eps":4222.0,"pe":17.2},{"d":"2026-02-02","c":67700.0,"eps":4243.0,"pe":16.0},{"d":"2026-02-03","c":71000.0,"eps":4250.0,"pe":16.7},{"d":"2026-02-04","c":68100.0,"eps":4257.0,"pe":16.0},{"d":"2026-02-05","c":64400.0,"eps":4264.0,"pe":15.1},{"d":"2026-02-06","c":69000.0,"eps":4271.0,"pe":16.2},{"d":"2026-02-09","c":69500.0,"eps":4293.0,"pe":16.2},{"d":"2026-02-10","c":67300.0,"eps":4300.0,"pe":15.7},{"d":"2026-02-11","c":64600.0,"eps":4307.0,"pe":15.0},{"d":"2026-02-12","c":67400.0,"eps":4314.0,"pe":15.6},{"d":"2026-02-13","c":66500.0,"eps":4321.0,"pe":15.4},{"d":"2026-02-19","c":71700.0,"eps":4364.0,"pe":16.4},{"d":"2026-02-20","c":73500.0,"eps":4371.0,"pe":16.8},{"d":"2026-02-23","c":70600.0,"eps":4392.0,"pe":16.1},{"d":"2026-02-24","c":72800.0,"eps":4399.0,"pe":16.5},{"d":"2026-02-25","c":71100.0,"eps":4407.0,"pe":16.1},{"d":"2026-02-26","c":75900.0,"eps":4414.0,"pe":17.2},{"d":"2026-02-27","c":74100.0,"eps":4421.0,"pe":16.8},{"d":"2026-03-03","c":68200.0,"eps":4449.0,"pe":15.3},{"d":"2026-03-04","c":64300.0,"eps":4456.0,"pe":14.4},{"d":"2026-03-05","c":74200.0,"eps":4463.0,"pe":16.6},{"d":"2026-03-06","c":74700.0,"eps":4471.0,"pe":16.7},{"d":"2026-03-09","c":68000.0,"eps":4492.0,"pe":15.1},{"d":"2026-03-10","c":69200.0,"eps":4499.0,"pe":15.4},{"d":"2026-03-11","c":66800.0,"eps":4506.0,"pe":14.8},{"d":"2026-03-12","c":65500.0,"eps":4513.0,"pe":14.5},{"d":"2026-03-13","c":65200.0,"eps":4520.0,"pe":14.4},{"d":"2026-03-16","c":66800.0,"eps":4542.0,"pe":14.7},{"d":"2026-03-17","c":65500.0,"eps":4549.0,"pe":14.4},{"d":"2026-03-18","c":68800.0,"eps":4556.0,"pe":15.1},{"d":"2026-03-19","c":65400.0,"eps":4563.0,"pe":14.3},{"d":"2026-03-20","c":65500.0,"eps":4570.0,"pe":14.3},{"d":"2026-03-23","c":60200.0,"eps":4591.0,"pe":13.1},{"d":"2026-03-24","c":63500.0,"eps":4599.0,"pe":13.8},{"d":"2026-03-25","c":69000.0,"eps":4606.0,"pe":15.0},{"d":"2026-03-26","c":63500.0,"eps":4613.0,"pe":13.8},{"d":"2026-03-27","c":60400.0,"eps":4620.0,"pe":13.1},{"d":"2026-03-30","c":57400.0,"eps":4641.0,"pe":12.4},{"d":"2026-03-31","c":55700.0,"eps":4648.0,"pe":12.0},{"d":"2026-04-01","c":61400.0,"eps":4655.0,"pe":13.2},{"d":"2026-04-02","c":57700.0,"eps":4663.0,"pe":12.4},{"d":"2026-04-03","c":59900.0,"eps":4670.0,"pe":12.8},{"d":"2026-04-06","c":63200.0,"eps":4691.0,"pe":13.5},{"d":"2026-04-07","c":60500.0,"eps":4698.0,"pe":12.9},{"d":"2026-04-08","c":70900.0,"eps":4705.0,"pe":15.1},{"d":"2026-04-09","c":73800.0,"eps":4712.0,"pe":15.7},{"d":"2026-04-10","c":82100.0,"eps":4719.0,"pe":17.4},{"d":"2026-04-13","c":82000.0,"eps":4741.0,"pe":17.3},{"d":"2026-04-14","c":86100.0,"eps":4748.0,"pe":18.1},{"d":"2026-04-15","c":90000.0,"eps":4755.0,"pe":18.9},{"d":"2026-04-16","c":89900.0,"eps":4762.0,"pe":18.9},{"d":"2026-04-17","c":88700.0,"eps":4769.0,"pe":18.6},{"d":"2026-04-20","c":90600.0,"eps":4791.0,"pe":18.9},{"d":"2026-04-21","c":88800.0,"eps":4798.0,"pe":18.5},{"d":"2026-04-22","c":93900.0,"eps":4805.0,"pe":19.5},{"d":"2026-04-23","c":89600.0,"eps":4812.0,"pe":18.6},{"d":"2026-04-24","c":89700.0,"eps":4819.0,"pe":18.6},{"d":"2026-04-27","c":88500.0,"eps":4840.0,"pe":18.3},{"d":"2026-04-28","c":86600.0,"eps":4847.0,"pe":17.9},{"d":"2026-04-29","c":86600.0,"eps":4855.0,"pe":17.8},{"d":"2026-04-30","c":84000.0,"eps":4862.0,"pe":17.3},{"d":"2026-05-04","c":86700.0,"eps":4890.0,"pe":17.7},{"d":"2026-05-06","c":89700.0,"eps":4904.0,"pe":18.3},{"d":"2026-05-07","c":89200.0,"eps":4911.0,"pe":18.2},{"d":"2026-05-08","c":92900.0,"eps":4919.0,"pe":18.9},{"d":"2026-05-11","c":105300.0,"eps":4940.0,"pe":21.3},{"d":"2026-05-12","c":105500.0,"eps":4947.0,"pe":21.3},{"d":"2026-05-13","c":120500.0,"eps":4954.0,"pe":24.3},{"d":"2026-05-14","c":125100.0,"eps":4964.0,"pe":25.2},{"d":"2026-05-15","c":118100.0,"eps":4974.0,"pe":23.7},{"d":"2026-05-18","c":119100.0,"eps":5003.0,"pe":23.8},{"d":"2026-05-19","c":107800.0,"eps":5013.0,"pe":21.5},{"d":"2026-05-20","c":118600.0,"eps":5023.0,"pe":23.6},{"d":"2026-05-21","c":118800.0,"eps":5032.0,"pe":23.6},{"d":"2026-05-22","c":130300.0,"eps":5042.0,"pe":25.8},{"d":"2026-05-26","c":128600.0,"eps":5081.0,"pe":25.3},{"d":"2026-05-27","c":121000.0,"eps":5091.0,"pe":23.8},{"d":"2026-05-28","c":121500.0,"eps":5101.0,"pe":23.8},{"d":"2026-05-29","c":118500.0,"eps":5111.0,"pe":23.2},{"d":"2026-06-01","c":111300.0,"eps":5140.0,"pe":21.7},{"d":"2026-06-02","c":103900.0,"eps":5150.0,"pe":20.2},{"d":"2026-06-04","c":126300.0,"eps":5169.0,"pe":24.4},{"d":"2026-06-05","c":138500.0,"eps":5179.0,"pe":26.7},{"d":"2026-06-08","c":136200.0,"eps":5208.0,"pe":26.2},{"d":"2026-06-09","c":163000.0,"eps":5218.0,"pe":31.2},{"d":"2026-06-10","c":168200.0,"eps":5228.0,"pe":32.2},{"d":"2026-06-11","c":174400.0,"eps":5238.0,"pe":33.3},{"d":"2026-06-12","c":178300.0,"eps":5247.0,"pe":34.0},{"d":"2026-06-15","c":178900.0,"eps":5277.0,"pe":33.9},{"d":"2026-06-16","c":166500.0,"eps":5287.0,"pe":31.5},{"d":"2026-06-17","c":169000.0,"eps":5296.0,"pe":31.9},{"d":"2026-06-18","c":176800.0,"eps":5306.0,"pe":33.3},{"d":"2026-06-19","c":165200.0,"eps":5316.0,"pe":31.1},{"d":"2026-06-22","c":184300.0,"eps":5345.0,"pe":34.5},{"d":"2026-06-23","c":159500.0,"eps":5355.0,"pe":29.8},{"d":"2026-06-24","c":164900.0,"eps":5365.0,"pe":30.7},{"d":"2026-06-25","c":169100.0,"eps":5375.0,"pe":31.5},{"d":"2026-06-26","c":185000.0,"eps":5384.0,"pe":34.4},{"d":"2026-06-29","c":182000.0,"eps":5414.0,"pe":33.6},{"d":"2026-06-30","c":211000.0,"eps":5423.0,"pe":38.9},{"d":"2026-07-01","c":215000.0,"eps":5433.0,"pe":39.6},{"d":"2026-07-02","c":181100.0,"eps":5443.0,"pe":33.3},{"d":"2026-07-03","c":178700.0,"eps":5453.0,"pe":32.8},{"d":"2026-07-06","c":159500.0,"eps":5482.0,"pe":29.1},{"d":"2026-07-07","c":140700.0,"eps":5492.0,"pe":25.6},{"d":"2026-07-08","c":126000.0,"eps":5502.0,"pe":22.9},{"d":"2026-07-09","c":148000.0,"eps":5511.0,"pe":26.9},{"d":"2026-07-10","c":178800.0,"eps":5521.0,"pe":32.4},{"d":"2026-07-13","c":187900.0,"eps":5551.0,"pe":33.9},{"d":"2026-07-14","c":221500.0,"eps":5560.0,"pe":39.8},{"d":"2026-07-15","c":210500.0,"eps":5570.0,"pe":37.8},{"d":"2026-07-16","c":189900.0,"eps":5580.0,"pe":34.0}],"stats":{"avg":10.8,"min":4.7,"max":39.8,"min_day":"2024-12-09","max_day":"2026-07-14","cur":34.0,"cur_eps":5580.0,"cur_price":189900.0,"percentile":99},"stats_1y":{"avg":15.2,"min":6.9,"max":39.8,"min_day":"2025-08-05","max_day":"2026-07-14","cur":34.0,"cur_eps":5580.0,"cur_price":189900.0,"percentile":98},"events":[{"d":"2026-01-26","label":"SKH 1,969억 수주","kind":"up"},{"d":"2026-05-13","label":"수주잔고 1,455억 공개","kind":"up"},{"d":"2026-04-01","label":"국민연금 9.44%로 매집","kind":"up"}],"regimes":[{"from":"2024-06-01","to":"2025-12-31","label":"고성장 구간"},{"from":"2026-01-01","to":"2026-07-16","label":"수주 기반 리레이팅"}],"cfg":{"currency":"KRW","multiples":[5,15,25,35],"priceMax":250000,"priceTick":50000,"peMax":50,"peTick":10,"epsMax":7500.0,"epsTick":1500.0},"anchors":[{"d":"2023-05-03","val":"0.0조원","eps":1825.21,"why":"사후 실적 기반 근사(당시 컨센 보도 미확보): 2023년 메모리 다운사이클 — FY24 영업이익 385억 회복 이전 저점 국면의 NTM 근사"},{"d":"2024-05-15","val":"0.0조원","eps":2346.69,"why":"사후 실적 기반 근사: FY24 영업이익 385억(확정)+FY25 회복 기대. PECVD·식각 장비 수요 회복 초기"},{"d":"2025-05-15","val":"0.1조원","eps":3128.93,"why":"사후 실적 기반 근사: FY25 영업이익 578억(확정)에 수렴 — 2025년 매출 +46.2%·OP +50.3% 고성장 확인 국면"},{"d":"2026-01-23","val":"0.1조원","eps":4171.9,"why":"하나증권 실적 프리뷰('순항중', 2026-01-23) 전후 — SK하이닉스 공급계약 1,969억(2026.01) 반영, FY26E 상향 국면"},{"d":"2026-05-13","val":"0.1조원","eps":4954.13,"why":"1Q26 분기보고서(DART 2026-05-13): 매출 972억(YoY +15.1%)·영업이익 222억(YoY +36.4%)·수주잔고 1,455억 공개 — FY26E 컨센 매출 3,853억·OP 842억으로 상향"},{"d":"2026-07-16","val":"0.1조원","eps":5579.92,"why":"FnGuide(2026-07-16) Fwd12M EPS ≈5,600원 × 19.36M주 / 전환율 1.010 ≈ NTM 이익 1,070억 역산(순이익 기준 — 대규모 현금성자산 금융수익 포함) — 2026E PER 37.40·2027E 32.41과 정합"}],"meta":{"symbol":"095610","name":"테스","shares":19360000,"mode":"op_krw","conv":1.0096,"conv_basis":"최근 8개 흑자 분기 합산 (2Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 1.0096 (DART 실측, 2026-07-19)","range":["2023-05-03","2026-07-16"]}}
+};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
