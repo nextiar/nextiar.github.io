@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>실리콘투(257720) · 알테오젠(196170) — 같은 성장주, 정반대의 밸류에이션 청구서</title>
+<meta name="report-symbols" content="257720,196170">
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+/* ---- 콜 furniture 타일: 파스텔 4색 틴트 ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+.chip.cool { background: var(--accent-bg); color: var(--accent); }
+
+/* ---- Key Takeaways (30초 요약층) ---- */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+/* ---- 스티키 미니 목차 ---- */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+.toc a.seg { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ---- 파트 구분 배너 ---- */
+.partbar { display: flex; align-items: baseline; gap: 12px; margin: 30px 0 -4px; padding: 4px 2px 12px;
+  border-bottom: 3px solid var(--ink); }
+.partbar .pk { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent-ink);
+  background: var(--accent); border-radius: 6px; padding: 3px 9px; }
+.partbar .pt { font-size: 18px; font-weight: 750; letter-spacing: -0.01em; }
+.partbar .ps { font-size: 12.5px; color: var(--muted); margin-left: auto; font-variant-numeric: tabular-nums; }
+
+/* ---- 섹션 카드 + 번호 배지 헤더 ---- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; min-width: 28px; height: 28px; padding: 0 5px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card h2 .callchip { margin-left: auto; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 80ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 86ch; }
+.prose strong { color: var(--ink); }
+
+/* ---- 킬러 스탯 콜아웃 ---- */
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 72ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+/* ---- 경고 노트 vs 참고 ---- */
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 90ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+  .partbar .ps { display: none; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-19-silicon2-alteogen-deep.html">
+<meta property="og:title" content="실리콘투(257720) · 알테오젠(196170) — 같은 성장주, 정반대의 밸류에이션 청구서">
+<meta property="og:description" content="실리콘투는 밴드 하단(백분위 33%)에서 실적이 밸류를 앞질러 간 저평가 성장주로 비중확대, 알테오젠은 시총이 매출의 72배(HALO의 10배)로 미래 로열티가 선반영된 프리미엄 성장주로 비중축소.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Nextiar Research">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-19-silicon2-alteogen-deep.html">
+<meta name="description" content="실리콘투는 밴드 하단(백분위 33%)에서 실적이 밸류를 앞질러 간 저평가 성장주로 비중확대, 알테오젠은 시총이 매출의 72배(HALO의 10배)로 미래 로열티가 선반영된 프리미엄 성장주로 비중축소.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-19-silicon2-alteogen-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 페어 심층 분석 · 2026-07-19</div>
+  <h1>실리콘투(257720) · 알테오젠(196170) — 같은 성장주, 정반대의 밸류에이션 청구서</h1>
+  <p class="sub">둘 다 52주 고가에서 반토막 난 성장주지만, 한쪽은 실적이 밸류를 앞질렀고 다른 한쪽은 밸류가 실적을 한참 앞질렀다. 성격이 전혀 다른 두 종목을 각각 완결한 뒤, 마지막에 "가격이 서 있는 위치"로 대조한다.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">실리콘투 Fwd P/E 9.1배(3년 백분위 33%)·매출 +41~61% — 저평가 성장주로 비중확대. 알테오젠 Fwd P/E 53.8배·시총/매출 72배(HALO의 10배) — 미래 로열티가 선반영된 프리미엄으로 비중축소.</p>
+</header>
+
+<!-- 콜 furniture — 실리콘투 -->
+<div class="partbar" style="margin-top:6px;"><span class="pk">CALL A</span><span class="pt">실리콘투 (257720)</span><span class="ps">KOSDAQ · 시총 ≈2.35조 · K뷰티 유통 플랫폼</span></div>
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-over">비중확대</span></div>
+    <div class="delta">P/E 백분위 33% ≤ 40%(저평가) · Base <span class="up">+20.3%</span> ≥ 15% — 공식 산출</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">35,800<small>원</small></div>
+    <div class="delta">Fwd P/E 9.1배 (3년 평균 12.5배) · 백분위 33% <span class="chip cool">중립권</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val up">+20.3%</div>
+    <div class="delta">Bull <span class="up">+93.6%</span> / Bear <span class="down">−38.5%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 2026-08 2Q26 실적발표 (추정)</div>
+  </div>
+</div>
+
+<!-- 콜 furniture — 알테오젠 -->
+<div class="partbar"><span class="pk">CALL B</span><span class="pt">알테오젠 (196170)</span><span class="ps">KOSDAQ · 시총 ≈14.8조 · ALT-B4 원천기술 바이오</span></div>
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">Base <span class="down">−7.2%</span> ≤ 0%(상방 소진) · P/E 밴드 신뢰 낮아 제외 — 공식 산출</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">276,500<small>원</small></div>
+    <div class="delta">Fwd P/E 53.8배 (3년 41~180배) <span class="chip">밴드 신뢰 낮음</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−7.2%</div>
+    <div class="delta">Bull <span class="up">+88.4%</span> / Bear <span class="down">−66.1%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 2026 2Q 실적 — 키트루다 SC 첫 로열티 인식 (추정)</div>
+  </div>
+</div>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 두 종목은 콜을 각각 독립적으로 산출했으며(서로 다를 수 있습니다), 알테오젠은 P/E 밴드 신뢰도가 낮아 <strong>밴드 신호를 제외</strong>하고 시나리오만으로 판정했습니다. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 국내 가격·수급 데이터 기준일은 <strong>2026-07-16(목) 종가</strong>입니다(7/17 금요일은 제헌절 휴장, 7/18~19 주말 — 미국 시장은 7/17 마감 반영). KRX 투자자별 순매수는 조회 오류로 <strong>? 확인불가</strong>입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 실리콘투 비중확대 · 알테오젠 비중축소.</strong> 둘 다 "성장주"지만 가격이 선 위치가 정반대다. 실리콘투는 밴드 하단에서 실적이 밸류를 앞질렀고, 알테오젠은 밴드가 무의미할 만큼 미래 로열티가 선반영돼 있다. 콜을 바꿀 조건은 각각 섹션 08·15에 수치로 명시했다.</li>
+    <li><strong>실리콘투 — 저평가 성장.</strong> 2025 매출 1조1,163억(<span class="up">YoY +61.4%</span>)·1Q26 매출 3,466억(<span class="up">+41.1%</span>), 수출 비중 90.3%. 그런데 Fwd P/E는 9.1배로 <strong>3년 관측치의 33% 백분위</strong>, 컨센 목표주가는 55,500원(<span class="up">+55%</span>)이다. 하우스 Base <span class="up">+20.3%</span>. 유일한 흠은 이익률 둔화(OPM 19.9%→18.4%).</li>
+    <li><strong>알테오젠 — 프리미엄 선반영.</strong> ALT-B4는 진짜 원천기술이고 로열티 모델의 마진(OPM 42~55%)도 진짜다. 그러나 시총 14.8조는 TTM 매출의 <strong>72배</strong> — 같은 히알루로니다제 플랫폼인 할로자임(HALO)의 매출배수 7배의 <strong>10배</strong>다. Fwd P/E 53.8배(밴드 41~180배로 신뢰 낮음), 하우스 Base <span class="down">−7.2%</span>. 컨센 목표(<span class="up">+94%</span>)는 하우스 Bull(+88.4%)에 붙어 있다.</li>
+    <li><strong>전환 조건.</strong> 실리콘투는 OPM이 17% 아래로 무너지거나 수출 성장이 급감하면 콜을 낮춘다. 알테오젠은 키트루다 SC 로열티가 HALO 궤도($800M급)로 실제 인식되거나 신규 파트너 본계약이 다수 성사되면 상방(Bull)이 열린다 — 반대로 로열티율 2% 고착·마일스톤 공백이면 Bear(−66%)로 향한다.</li>
+  </ol>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">분석경로</a>
+  <a href="#s03" class="seg">실리콘투 ▾</a><a href="#s03">왜 지금</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS</a><a href="#s07">어닝</a><a href="#s08">시나리오·수급</a><a href="#s09">밸류</a>
+  <a href="#s10" class="seg">알테오젠 ▾</a><a href="#s10">왜 지금</a><a href="#s11">스크리닝</a><a href="#s12">PQC</a><a href="#s13">GS</a><a href="#s14">어닝</a><a href="#s15">시나리오·수급</a><a href="#s16">밸류</a>
+  <a href="#s17" class="seg">밸류 대조</a>
+</nav>
+
+<!-- 매크로 요약 (당일 브리핑 상속) -->
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-18 기준 — 전일 폴백)</strong><br>원/달러 1,488.80원 (전일 1,492.20) · 기준금리 2.75% · 미 10년물 4.57% · 달러지수 120.50 · SPY 743.29$ (<span class="down">−0.99%</span>) — <a href="https://report.devindgkim.net/" style="color:var(--accent);">당일 브리핑</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>원/달러 1,488.80원 · 미 10년물 4.57% · 기준금리 2.75%</strong> 가정 위에서 계산했다(하우스 매크로 가정 상속 — 매크로가 크게 바뀌면 시나리오 전제도 함께 갱신되어야 한다). 원화 약세는 수출 비중 90%인 실리콘투에 우호적이고, 달러 라이선스·로열티가 매출의 대부분인 알테오젠에도 환산 이익 측면에서 유리하다.</p>
+
+<!-- 01 업종 지표 -->
+<div class="card prose" id="s01">
+  <h2><span class="idx">01</span>업종·시장 배경 — 두 개의 다른 성장 엔진</h2>
+  <p class="deck">실리콘투는 "K뷰티 수출 물량"이라는 소비재 사이클을, 알테오젠은 "IV→SC 전환 로열티"라는 기술 침투 곡선을 탄다 — 겹치는 지표가 없다.</p>
+  <h3>K뷰티 수출 (실리콘투)</h3>
+  <p>한국 화장품 수출은 사상 최고를 경신하는 구조적 성장 국면이고, 실리콘투는 브랜드가 아니라 <strong>전 세계 유통·물류를 대행하는 플랫폼</strong>이다 — 개별 브랜드의 흥망과 무관하게 "K뷰티 전체 수출량"에 베팅하는 셈이다. 회사 수출 비중은 2023년 70.7% → 2024년 81.8% → 2025년 <strong>90.3%</strong>로, 사실상 수출 기업으로 재편됐다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 실리콘투 2025 사업보고서 (2026.03.20)</span><span class="evd-sum">매출 유형별에서 <strong>수출 비중 90.3%</strong>(2023 70.7%·2024 81.8%). 상품 매입·판매(유통)업으로 자체 생산설비 없음을 명시.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001024" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> 2026년 성장의 무게중심은 미국이 아니라 <strong>유럽</strong>으로 이동했다(1Q26 지역 비중 유럽 47%, <span class="up">+64% YoY</span>).</p>
+  <h3>피하주사(SC) 전환 시장 (알테오젠)</h3>
+  <p>정맥주사(IV) 바이오의약품을 피하주사(SC)로 바꾸면 투여 시간이 30~60분에서 수 분으로 줄어 병원·환자 편의가 급격히 개선된다. 이 전환을 가능케 하는 재조합 히알루로니다제 시장은 사실상 <strong>할로자임(ENHANZE)의 독점</strong>이었고, 알테오젠의 ALT-B4가 유일한 실질적 대항마다. 할로자임은 2025년 로열티만 <strong>8억6,800만 달러</strong>를 거둬 이 모델의 상업성을 입증했다.<span class="evd"><button type="button" aria-expanded="false">근거18</button><span class="evd-pop"><span class="evd-src">Halozyme · FY2025 실적 (PRNewswire, 2026.02)</span><span class="evd-sum">FY2025 매출 <strong>14억 달러</strong>, 로열티 매출 <strong>8억6,800만 달러</strong>. ENHANZE 플랫폼의 로열티 모델이 대형 캐시플로우로 성립함을 보여주는 벤치마크.</span><a href="https://www.prnewswire.com/news-releases/halozyme-reports-full-year-2025-record-revenue-of-1-4-billion-and-reiterates-strong-2026-financial-guidance-302689822.html" target="_blank" rel="noopener">보도 원문 ↗</a></span></span> 알테오젠의 밸류에이션 논쟁은 결국 "ALT-B4가 얼마나 HALO에 가까워지는가"의 문제다.</p>
+</div>
+
+<!-- 02 분석 경로 -->
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 심층 (재출발 기준선)</h2>
+  <p class="deck">발굴 스크리닝이 아니라 두 종목을 지정해 총동원 검증한 심층 리포트다. 사이트 리서치 표준을 재출발한 <strong>1세대 기준선</strong>으로, 과거 리포트와의 연계·후속 판정은 하지 않는다.</p>
+  <p>이 리포트는 후보를 걸러 뽑는 발굴이 아니라, 지정된 두 종목(실리콘투·알테오젠)을 <strong>DART 원문·재무 실측·컨센서스·글로벌 피어·정량 밸류에이션 체인</strong>으로 각각 완결하는 지정 심층이다. 두 종목은 업종도 밸류에이션 잣대도 다르므로 억지로 같은 표에 욱여넣지 않는다 — 각 종목을 PQC·Growth Sustainability·시나리오·선호도 산출까지 <strong>독립적으로</strong> 끝낸 뒤(섹션 03~09 실리콘투, 10~16 알테오젠), 마지막 섹션 17에서만 "밸류에이션이 서 있는 위치"라는 하나의 관점으로 겹쳐 본다.</p>
+  <p>왜 이 둘을 한 편에 묶었나: 둘 다 <strong>KOSDAQ의 대표 성장주</strong>이면서, 2025~26년 고점 대비 각각 −37%·−51% 급락해 "성장주 조정"이라는 같은 겉모습을 하고 있다. 그러나 정량 체인을 돌리면 한쪽은 밴드 하단의 저평가, 다른 한쪽은 밴드가 무의미한 프리미엄으로 갈린다 — 이 대비 자체가 "성장주라서 싸다/비싸다"는 라벨이 얼마나 공허한지를 보여주는 좋은 페어다.</p>
+  <p class="fine">방법론: 각 종목의 콜은 정해진 공식의 결정론적 산출만 쓴다(임의 판단 없음). 밸류에이션 밴드는 리포트·뉴스 시점의 NTM 이익 앵커를 선형 보간한 하우스 추정 모델이며 실제 컨센서스 히스토리가 아니다. "데이터 기준일"은 본문·푸터에 표기했다.</p>
+</div>
+
+<div class="partbar" id="s03"><span class="pk">PART A</span><span class="pt">실리콘투 (257720)</span><span class="ps">비중확대 · Fwd P/E 9.1배 · Base +20.3%</span></div>
+
+<!-- 03 실리콘투 왜 지금 -->
+<div class="card prose">
+  <h2><span class="idx">03</span>실리콘투 — 왜 지금인가<span class="callchip" style="background:var(--tile2-bg);color:var(--up);border:1px solid var(--tile2-bd);">비중확대</span></h2>
+  <p class="deck">트리거는 유럽·중동으로의 판로 확장과 계속되는 실적 서프라이즈. 경고는 성장의 질 — 이익률이 완만히 새고 있다.</p>
+  <div class="callout"><div class="co-num">+61.4%</div><div class="co-lbl"><strong>2025 연간 매출 성장 (1조1,163억원).</strong> 유통 플랫폼이 3년 만에 매출을 3배로 키웠다 — 이 리포트가 "성장은 진짜"라고 보는 출발점이자, 밸류에이션이 왜 이 성장을 따라오지 못했는지를 묻는 이유.</div></div>
+  <p><strong>트리거 1 — 유럽 폭발.</strong> 성장의 무게중심이 미국에서 유럽으로 옮겨갔다. 1Q26 지역 비중은 유럽이 47%로 최대이고 전년동기 대비 <span class="up">+64%</span> 성장했다(북미도 <span class="up">+50%</span>).<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">비즈니스포스트 (2026.05)</span><span class="evd-sum">1Q26 지역별에서 <strong>유럽 매출 +64% YoY</strong>, 북미 <strong>+50% YoY</strong>, 미국 오프라인 유통 채널 약 <strong>1,800곳</strong> 확보. 성장 견인축이 유럽으로 이동.</span><a href="https://www.businesspost.co.kr/BP?command=article_view&num=435669" target="_blank" rel="noopener">기사 ↗</a></span></span> K뷰티가 미국 일극(一極)이 아니라 다지역 수요로 확산된다는 신호다.</p>
+  <p><strong>트리거 2 — 물류 인프라 확장.</strong> 2025년 12월 중동 물류창고를 가동(월 매출 약 400만 달러)했고, 하반기 영국·싱가포르 신규 법인 설립과 미국 LA 물류창고 5~6배 확충이 예정돼 있다 — 유통 플랫폼의 "생산능력"에 해당하는 판로 자체가 커지고 있다.</p>
+  <p><strong>트리거 3 — 실적 서프라이즈 지속.</strong> 1Q26 잠정 매출 3,466억(<span class="up">+41.1%</span>)·영업이익 645억(<span class="up">+35.2%</span>)으로 고성장을 이어갔다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">DART · 실리콘투 매출액 또는 손익구조 30%이상 변경(공정공시) (2026.05.12)</span><span class="evd-sum">1Q26 잠정 매출 <strong>3,466억(+41.1%)</strong>·영업이익 <strong>645억(+35.2%)</strong>. 이후 분기보고서 확정치와 일치.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260512900303" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></p>
+  <div class="note"><strong>경고 1 — 성장의 질:</strong> 매출은 폭증하지만 영업이익률은 2024년 19.9% → 2025년 18.4%로 완만히 내려왔다. 성과급·재고자산 급증·물류비 상승, 매입원가율 상승(69.3%→76.9%)이 원인이다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">뉴스1 (2026.02)</span><span class="evd-sum">4Q 영업이익 컨센서스 약 12% 하회. <strong>성과급·재고자산 급증</strong>이 이익률 둔화 원인. 북미 성장률 둔화·중동 지정학 리스크도 함께 지적.</span><a href="https://www.news1.kr/industry/sb-founded/6104364" target="_blank" rel="noopener">기사 ↗</a></span></span> 주가가 3개월 <span class="down">−23.5%</span> 조정된 배경이며, 이 둔화가 추세가 되면 Bear 시나리오로 향한다.</p></div>
+</div>
+
+<!-- 04 실리콘투 스크리닝 -->
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>실리콘투 — 기술 스크리닝</h2>
+  <p class="deck">모멘텀은 이미 식었다(3개월 −23.5%, MA 역배열) — 이 리포트는 "달리는 주식"이 아니라 "조정 뒤 밸류"에 대한 판단이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값 (2026-07-16)</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>수익률 1주 / 1개월 / 3개월</td><td class="num"><span class="up">+0.6%</span> / <span class="up">+1.8%</span> / <span class="down">−23.5%</span></td><td>모멘텀 소멸 — 고점 후 조정 국면</td></tr>
+      <tr><td>52주 고가 대비</td><td class="num"><span class="down">−37.3%</span></td><td>신고가권 아님(반등형 접근)</td></tr>
+      <tr><td>이동평균 배열 (MA20 vs MA60)</td><td class="num">MA20 &lt; MA60</td><td>단기 약세(역배열)</td></tr>
+      <tr><td>거래대금 (5일 평균)</td><td class="num">약 335억원 (1.1×)</td><td>과열 아님 — 유동성 충분</td></tr>
+      <tr><td>시가총액 (근사)</td><td class="num">약 2조3,476억원</td><td>중형 성장주</td></tr>
+      <tr><td>매수 유의사항</td><td class="num">0건</td><td>경고 없음 — 통과</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">기술적으로는 "모멘텀 트리거"가 이미 소멸한 상태다. 따라서 이 콜의 근거는 차트가 아니라 <strong>실적 성장 대비 밴드 위치</strong>(섹션 09)에 있다 — 조정으로 밸류가 열린 케이스로 접근한다.</p>
+  <p class="fine">시총은 발행주식수 65,576,252주 × 7/16 종가 35,800원으로 근사. 거래대금 배수는 최근 5일÷직전 20일 평균.</p>
+</div>
+
+<!-- 05 실리콘투 PQC -->
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>실리콘투 — PQC</h2>
+  <p class="deck">Q(물량)가 압도적 강점, P(판가)는 플랫폼 특성상 계량 불가, C(비용)는 완만한 역풍 — "물량으로 버는 회사"다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>축</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P — 판가·가격결정력</strong></td><td><span class="grade g-part">◐ 부분</span></td><td>플랫폼이 거래처·국가·환율·SKU별 맞춤 단가로 판매 — SKU 약 22,000개(2025)로 <strong>기간별 단가 추이 산정 불가</strong>(회사 자체 공시). 가격전가력은 있으나 계량 불가.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">DART · 실리콘투 1Q26 분기보고서 (2026.05.15)</span><span class="evd-sum">"거래처·국가·환율 및 SKU(약 22,000종)별로 판매단가가 상이하여 <strong>기간별 단가 추이 산정이 불가</strong>"라고 명시. 상품 매입·판매업 특성.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001136" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+      <tr><td><strong>Q — 물량·출하·수출</strong></td><td><span class="grade g-full">● 충족</span></td><td>매출 <span class="up">+41%</span>(1Q26)·<span class="up">+61%</span>(2025), 수출 비중 90.3%. 유럽 +64%·북미 +50% YoY. 물량 성장이 이 회사의 본질.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART 매출실적표 + 비즈니스포스트</span><span class="evd-sum">2025 매출 <strong>1조1,163억(+61.4%)</strong>·수출 90.3%. 지역별 유럽 +64%·북미 +50% YoY(1Q26).</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001024" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+      <tr><td><strong>C — 원가율·OPM</strong></td><td><span class="grade g-part">◐ 부분</span></td><td>매입원가율 69.3%(2024)→<strong>76.9%</strong>(2025)로 상승, OPM 19.9%→18.4%로 압박. 절대 마진은 고수준이나 추세는 하락.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">DART 매입현황 + 뉴스1</span><span class="evd-sum">매입/매출 비율 <strong>69.3%→76.9%</strong>. 성과급·재고자산·물류비로 OPM 완만히 둔화. 절대 OPM 18%대는 유통업 상위권.</span><a href="https://www.news1.kr/industry/sb-founded/6104364" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:14px;">경쟁사 TTM 대비: 실리콘투 OPM 18.3%는 국내 화장품 유통 피어 브이티(15.8%)·아이패밀리에스씨(10.5%)를 앞선다. <strong>가격이 아니라 물량과 유통 효율로 버는 구조</strong>이며, 이익률이 피어 대비 높다는 점이 "그냥 유통업"이 아니라는 근거다(피어 실측은 섹션 08).</p>
+</div>
+
+<!-- 06 실리콘투 GS -->
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>실리콘투 — Growth Sustainability 판정</h2>
+  <p class="deck">유통 플랫폼이라 제조 지표(가동률·수주)는 정직하게 "해당없음". 성립하는 축(밸류 전환·TAM)은 모두 충족.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>매출↑ + 공장 가동률↑</td><td><span class="grade g-na">— 해당없음</span></td><td>자체 생산설비 없는 상품 매입·판매업 → 가동률·생산실적 개념 부재(회사 자체 공시)</td></tr>
+      <tr><td>2</td><td>설비투자 후 가동률 회복</td><td><span class="grade g-na">— 해당없음</span></td><td>제조 CAPEX 없음. 물류창고(오포·LA·NJ·FL·폴란드·중동)는 수요 확인 후 임대·자가 확충</td></tr>
+      <tr><td>3</td><td>수주 &gt; 매출 성장</td><td><span class="grade g-na">— 해당없음</span></td><td>유통업으로 수주잔고 개념 없음 — 대신 "물류 캐파 확장"이 선행지표 역할(섹션 03)</td></tr>
+      <tr><td>4</td><td>미국·해외향 매출</td><td><span class="grade g-part">◐ 부분</span></td><td>수출 90.3%로 해외 의존은 명확하나, 최대·성장축은 미국이 아니라 <strong>유럽(1Q26 47%)</strong>. 북미 비중 ~19%(<span class="up">+50% YoY</span>)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">비즈니스포스트 (2026.05)</span><span class="evd-sum">1Q26 지역 비중 유럽 47%·북미 ~19%. 미국 의존도가 낮아 관세·단일시장 리스크 분산 — 단, "미국 수혜주"라기보다 "글로벌 K뷰티 수혜주".</span><a href="https://www.businesspost.co.kr/BP?command=article_view&num=435669" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+      <tr><td>5</td><td>밸류에이션 체계 전환</td><td><span class="grade g-full">● 충족</span></td><td>적자·저성장 유통주가 아니라 고성장 성장주로 평가받는 구간. Fwd P/E 9.1배·3년 백분위 33%로 오히려 밸류 부담이 낮아진 상태<span class="evd"><button type="button" aria-expanded="false">근거21</button><span class="evd-pop"><span class="evd-src">하우스 밴드 모델 (2026.07.19 계산)</span><span class="evd-sum">Fwd P/E <strong>9.1배</strong> · 3년 평균 12.5배(범위 3.7~28.7) · 백분위 <strong>33%</strong>. 성장이 밸류를 앞질러 밴드 하단으로 내려온 상태.</span><span class="evd-nolink">가격·앵커 기반 하우스 추정 모델 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td><span class="grade g-full">● 충족</span></td><td>K뷰티 수출 사상 최고 경신 구조 + 유럽·중동·동남아 신규 시장 순차 개방(영국·싱가포르 법인, LA 물류 5~6배 확충)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">집계: 성립 4개 축 중 충족 2 · 부분 2 · 해당없음 3(제조 지표). 유통 플랫폼으로서 성장 지속성의 핵심(물량·TAM·밸류 여력)은 모두 우호적이며, 유일한 감점은 이익률(C)과 지역 편중(유럽 쏠림)이다.</p>
+</div>
+
+<!-- 07 실리콘투 어닝 모델 -->
+<div class="card prose" id="s07">
+  <h2><span class="idx">07</span>실리콘투 — 어닝 모델 · 컨센 델타 · 다년 추정</h2>
+  <p class="deck">구조는 단순하다: 수출 물량 × 유통 마진. 하우스 NTM 추정은 FnGuide 컨센과 사실상 일치(델타 −0.1%).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>기간</th><th class="num">매출</th><th class="num">영업이익</th><th class="num">OPM</th><th class="num">매출 YoY</th><th class="num">OP YoY</th></tr></thead>
+    <tbody>
+      <tr><td>1Q25 (전년동기)</td><td class="num">2,457억</td><td class="num">477억</td><td class="num">19.4%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td><strong>1Q26 (당기)</strong></td><td class="num"><strong>3,466억</strong></td><td class="num"><strong>645억</strong></td><td class="num">18.6%</td><td class="num"><span class="up">+41.1%</span></td><td class="num"><span class="up">+35.2%</span></td></tr>
+      <tr><td>FY24 (연간)</td><td class="num">6,915억</td><td class="num">1,376억</td><td class="num">19.9%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td><strong>FY25 (연간)</strong></td><td class="num"><strong>1조1,163억</strong></td><td class="num"><strong>2,054억</strong></td><td class="num">18.4%</td><td class="num"><span class="up">+61.4%</span></td><td class="num"><span class="up">+49.3%</span></td></tr>
+      <tr><td>FY26E (하우스, NTM)</td><td class="num">≈1.4조</td><td class="num">≈3,050억</td><td class="num">~18%</td><td class="num"><span class="up">+25% 내외</span></td><td class="num"><span class="up">+49%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">분기 수치는 DART 확정·잠정 기준(누적 아님, 단일 분기). FY26E는 하우스 NTM 영업이익 앵커(3,050억)에서 역산한 근사이며 추정치다.</p>
+  <h3>컨센서스 델타</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">하우스 (NTM)</th><th class="num">FnGuide 컨센</th><th class="num">델타</th></tr></thead>
+    <tbody>
+      <tr><td>NTM 지배순익 EPS</td><td class="num">3,914원</td><td class="num">3,918원 (Fwd12M)</td><td class="num"><span class="down">−0.1%</span></td></tr>
+      <tr><td>Fwd P/E</td><td class="num">9.1배</td><td class="num">9.2배</td><td class="num">≈ 일치</td></tr>
+      <tr><td>목표주가 / Base</td><td class="num">43,058원 (Base)</td><td class="num">55,500원 (8개 기관)</td><td class="num"><span class="up">컨센 +29%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:12px;">이익 전제는 컨센과 <strong>거의 동일</strong>하다(EPS 델타 −0.1%). 차이는 오직 배수에 있다 — 하우스 Base는 11배(3년 평균 12.5배 하회)를 쓰는 반면 컨센 목표주가 55,500원에 내재된 배수는 약 14.2배로, 리레이팅을 더 공격적으로 인정한다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 실리콘투 (2026.07.19 조회)</span><span class="evd-sum">Fwd12M EPS <strong>3,918원</strong> · PER 9.20배 · BPS 12,445원 · 목표주가 평균 <strong>55,500원</strong>(추정기관 8곳, 현재가 대비 +55%). 표본 충분.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=257720" target="_blank" rel="noopener">FnGuide ↗</a></span></span> 하우스가 더 보수적인 이유는 이익 둔화(C 축) 리스크에 안전마진을 두기 때문이며, 컨센이 옳다면 상방은 오히려 더 크다.</p>
+</div>
+
+<!-- 08 실리콘투 시나리오·피어·수급 -->
+<div class="card prose" id="s08">
+  <h2><span class="idx">08</span>실리콘투 — 시나리오 · 피어 · 수급</h2>
+  <p class="deck">Base +20.3%는 국내 피어(7배대)에 성장 할증만 얹은 보수적 값 — 상방의 대부분은 이익률 방어에 달려 있다.</p>
+  <h3>Bull / Base / Bear</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">NTM 영업이익</th><th class="num">배수</th><th class="num">환산주가</th><th class="num">상승여력</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">3,600억</td><td class="num">15배</td><td class="num">69,303원</td><td class="num"><span class="up">+93.6%</span></td><td>유럽·미국·중동 확장으로 고성장 지속 + OPM 18%+ 유지, 리레이팅</td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">3,050억</td><td class="num">11배</td><td class="num">43,058원</td><td class="num"><span class="up">+20.3%</span></td><td>FnGuide 컨센 부합, 국내 피어 대비 성장 할증</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">2,450억</td><td class="num">7배</td><td class="num">22,010원</td><td class="num"><span class="down">−38.5%</span></td><td>성과급·재고·물류비로 OPM 둔화 + 수출 감속, 화장품 피어 수준 디레이팅</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc">민감도(수출 성장률 → NTM 영업이익): −10%p 38,823원(<span class="up">+8.4%</span>) · 기준 43,058원(<span class="up">+20.3%</span>) · +10%p 47,293원(<span class="up">+32.1%</span>). Base에서도 하방(−10%p)이 여전히 플러스라는 점이 밴드 하단 접근의 안전마진이다.</p>
+  <p class="fine">배수 근거: 국내 피어 브이티 7.3배·아이패밀리 7.6배(TTM 실측)에 고성장 할증. Bull 15배는 3년 관측 평균(12.5배) 상회 리레이팅. 시나리오 가치는 전제 실현 시의 조건부 환산이며 목표주가가 아니다.</p>
+  <h3>글로벌 피어 비교 (TTM 실측)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>기업</th><th class="num">P/E (TTM)</th><th class="num">OPM</th><th class="num">시총/영업이익</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>실리콘투 (257720)</strong></td><td class="num"><strong>12.7배</strong></td><td class="num">18.3%</td><td class="num">10.6배</td><td>고성장·고마진</td></tr>
+      <tr><td>브이티 (018290)</td><td class="num">7.3배</td><td class="num">15.8%</td><td class="num">5.8배</td><td>국내 K뷰티 피어</td></tr>
+      <tr><td>아이패밀리에스씨 (114840)</td><td class="num">7.6배</td><td class="num">10.5%</td><td class="num">6.0배</td><td>국내 색조 브랜드</td></tr>
+      <tr><td>엘프 뷰티 (ELF)</td><td class="num">164.3배 <span class="chip">*왜곡</span></td><td class="num">9.7%</td><td class="num">27.2배</td><td>이익 급감으로 TTM P/E 왜곡 — 비교 부적합</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:10px;">실리콘투 TTM P/E 12.7배는 국내 피어(7배대)보다 높지만, 성장률(+61% vs 피어 한 자리~30%대)과 마진(18.3%로 최고)을 감안하면 성장 프리미엄이 정당화되는 수준이다. 미국 ELF는 이익 급감으로 배수가 왜곡돼 Fwd 기준이 아니면 비교가 무의미하다.</p>
+  <h3>수급 / 5%룰 지분율</h3>
+  <p><strong>KRX 투자자별 순매수는 조회 오류(HTTP 400)로 <span class="mono">? 확인불가</span></strong>다. 5%룰 대량보유는 최대주주 김성운 지분율이 2026-04-27 <strong>43.62%</strong>(<span class="down">−6.96%p</span>)로 낮아졌는데, 이는 장내 처분이 아니라 상환전환우선주(RCPS) 전환·특별관계 해소에 따른 <strong>기계적 감소</strong>가 주성분이다(같은 날 실크투자목적회사가 6.72% 신규 보고).<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">DART · 주식등의 대량보유상황보고서 (2026.04.27)</span><span class="evd-sum">김성운 지분율 <strong>43.62%(−6.96%p)</strong> — RCPS 전환·특별관계 해소로 별도 보고 전환. 실크투자목적회사 <strong>6.72% 신규</strong>. 경영권 훼손 아닌 지분 구조 재편.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000627" target="_blank" rel="noopener">DART 원문 ↗</a></span></span> 기관 신규 매집 신호는 데이터상 확인되지 않는다.</p>
+</div>
+
+<!-- 09 실리콘투 밸류에이션 -->
+<div class="card prose" id="s09">
+  <h2><span class="idx">09</span>실리콘투 — 밸류에이션 위치</h2>
+  <p class="deck">Fwd P/E 9.1배는 3년 관측치의 33% 백분위 — 성장이 밸류를 앞질러 밴드 하단으로 내려왔다. 콜: 비중확대.</p>
+  <div class="callout"><div class="co-num">33%</div><div class="co-lbl"><strong>Fwd P/E 3년 백분위 (9.1배, 평균 12.5배).</strong> 매출이 3배로 크는 동안 주가는 그만큼 오르지 못해, 밸류에이션 부담이 오히려 낮아진 상태. 공식상 백분위 40% 이하 + Base +20% → 비중확대.</div></div>
+  <p><strong>역사적 위치와 환산주가.</strong> 3년 밴드(5·15·25·35배) 기준 환산주가는 5배=19,570원 · 15배=58,710원 · 25배=97,850원 · 35배=136,990원이고, 3년 평균 12.5배는 48,925원이다. 현재가 35,800원은 5배선과 15배선 사이, 평균선 한참 아래다 — 즉 시장은 지금 이 회사에 <strong>과거 3년 평균보다 낮은 배수</strong>를 매기고 있다.<span class="evd"><button type="button" aria-expanded="false">근거21</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델 (2026.07.19)</span><span class="evd-sum">Fwd P/E 현재 <strong>9.1배</strong> · 3년 평균 12.5배(최소 3.7 / 최대 28.7) · 백분위 <strong>33%</strong> · 최근 1년 평균 12.9배·백분위 9%. NTM EPS(추정) 3,914원 — FnGuide Fwd12M EPS 3,918원과 −0.1% 정합.</span><span class="evd-nolink">가격·앵커 기반 하우스 추정 모델 — 원문 링크 없음</span></span></span></p>
+  <p><strong>2차 밸류에이션 (시총/영업이익 교차확인).</strong> 유통·소비재는 P/E 밴드에 EV/EBITDA·시총배수를 병기해 절대레벨을 보정한다. 실리콘투 시총/영업이익은 10.6배로 국내 피어 브이티(5.8배)·아이패밀리(6.0배)보다 높지만, 이는 성장률 격차(+61% vs 피어)를 반영한 프리미엄이다. P/E 축(백분위 33%)과 시총배수 축(성장 할증) 모두 "비싸지 않다"를 가리킨다는 점이 일관적이다.</p>
+  <p><strong>결론.</strong> 좋은 회사인가는 공시가 답했다 — 3년 만에 3배가 된 매출, 수출 90%, 피어 최고 마진. 이 리포트의 질문 "이 가격에 남은 상방이 있는가"에 대한 답도 <strong>예</strong>다: 밴드 하단(백분위 33%)에서 Base +20.3%, 컨센 목표는 +55%. 유일한 리스크는 이익률 둔화가 추세가 되는 것. <strong>콜: 비중확대.</strong> OPM이 17% 아래로 무너지거나 수출이 급감하면 콜을 낮춘다.</p>
+</div>
+
+<details class="pe-embed" data-peb="257720" open>
+  <summary>
+    <span class="peb-t">📊 실리콘투 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 9.1배 · 3년 평균 12.5배 · 백분위 33%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM 영업이익·EPS는 실제 컨센서스 집계가 아니라 리포트·뉴스 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="실리콘투 주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="실리콘투 forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody class="peb-anchor-rows">
+        <tr><td>'23.5.3</td><td class="num">650억원</td><td class="num">834원</td><td>상장 초기 — 2023 연간 영업이익 ~480억, K뷰티 수출 초입(사후 실적 기반 근사)</td></tr>
+        <tr><td>'24.3.20</td><td class="num">1,050억원</td><td class="num">1,348원</td><td>2023 사업보고서 반영·2024 북미 수출 반등 기대(근사)</td></tr>
+        <tr><td>'24.8.1</td><td class="num">1,600억원</td><td class="num">2,053원</td><td>2024 상반기 매출 1.6배 급성장·북미 +85%(증권 추정)</td></tr>
+        <tr><td>'25.3.20</td><td class="num">2,050억원</td><td class="num">2,631원</td><td>2024 영업이익 1,376억 확정, 2025 컨센 ~2,155억 형성</td></tr>
+        <tr><td>'25.8.1</td><td class="num">2,300억원</td><td class="num">2,952원</td><td>2025 상반기 유럽·중동 확장 가속 반영 상향</td></tr>
+        <tr><td>'26.3.20</td><td class="num">2,700억원</td><td class="num">3,465원</td><td>2025 영업이익 2,054억 확정, 유럽 47%·중동 물류 가동</td></tr>
+        <tr><td>'26.5.15</td><td class="num">3,050억원</td><td class="num">3,914원</td><td>1Q26 잠정 매출 3,466억(+41%)·OP 645억, FnGuide Fwd12M EPS 3,918원 역산 정합</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 지배주주순이익 = NTM 영업이익 × 전환율 0.8416(최근 8개 흑자 분기 합산 2Q24~1Q26, DART 실측) ÷ 발행주식수 65,576,252주 · 앵커 사이 선형 보간. 앵커 중 '근사' 표기는 당시 컨센서스 보도를 확보하지 못해 사후 실적 기반으로 추정한 값이다.</p>
+  </div>
+</details>
+
+<div class="partbar" id="s10"><span class="pk">PART B</span><span class="pt">알테오젠 (196170)</span><span class="ps">비중축소 · Fwd P/E 53.8배(밴드 신뢰 낮음) · Base −7.2%</span></div>
+
+<!-- 10 알테오젠 왜 지금 -->
+<div class="card prose">
+  <h2><span class="idx">10</span>알테오젠 — 왜 지금인가<span class="callchip" style="background:var(--tile1-bg);color:var(--down);border:1px solid var(--tile1-bd);">비중축소</span></h2>
+  <p class="deck">트리거는 로열티의 실체화(키트루다 SC 승인·파트너 다각화). 경고는 그 실체보다 가격이 한참 앞서 있다는 것.</p>
+  <div class="callout"><div class="co-num">×72</div><div class="co-lbl"><strong>시총 ÷ TTM 매출 (14.8조 ÷ 0.20조).</strong> 같은 히알루로니다제 플랫폼인 할로자임(7배)의 10배. 이 격차 전부가 "아직 오지 않은 로열티"에 대한 기대다 — 이 리포트의 핵심 질문.</div></div>
+  <p><strong>트리거 1 — 키트루다 SC FDA 승인.</strong> 2025년 9월, ALT-B4(성분명 berahyaluronidase alfa)를 쓴 키트루다 피하주사(Keytruda Qlex)가 FDA 승인을 받아 로열티가 "기대"에서 "실체"로 넘어갔다.<span class="evd"><button type="button" aria-expanded="false">근거17</button><span class="evd-pop"><span class="evd-src">FDA (2025.09.19)</span><span class="evd-sum">pembrolizumab + <strong>berahyaluronidase alfa(=ALT-B4)</strong> 피하주사 승인. 키트루다(2025 매출 $31.7B)의 SC 전환 로열티가 알테오젠으로 유입되는 출발점.</span><a href="https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-and-berahyaluronidase-alfa-pmph-subcutaneous-injection" target="_blank" rel="noopener">FDA 승인 ↗</a></span></span></p>
+  <p><strong>트리거 2 — 파트너 다각화.</strong> MSD(머크)·아스트라제네카·다이이찌산쿄·GSK에 더해 2026년 3월 바이오젠(최대 ~8,600억 규모), 6월 사노피(첫 공개)까지 파트너가 늘었다 — 키트루다 단일 의존을 줄이는 방향.<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">DART · ALT-B4 독점 라이선스 계약 체결 (2026.03.25)</span><span class="evd-sum">바이오젠 인터내셔널과 ALT-B4 독점 라이선스 — 최대 규모 <strong>약 8,600억원</strong>, 선급금 $20M(≈300억)+품목당 마일스톤. 플랫폼 협상력 확인.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260325901047" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></p>
+  <p><strong>트리거 3 — 파이프라인 성숙·이벤트.</strong> 2026년 5월 ALT-L9(아일리아 바이오시밀러, 아이젠피주) 식약처 허가로 자체 제품 파이프라인도 상업화 단계에 진입했다. 무상증자(7/16 결정)·코스피 이전상장(7/16 잠정 유보) 등 수급 이벤트도 대기 중이다.</p>
+  <div class="note"><strong>경고 1 — 로열티율과 집중:</strong> 2026년 1월 머크 분기보고서에서 키트루다 SC 로열티율이 <strong>~2%</strong>로 공개됐는데, 시장 기대(더 높은 두 자릿수 추정)에 못 미쳐 주가가 481,000원→373,500원(<span class="down">−22%</span>)으로 급락했다.<span class="evd"><button type="button" aria-expanded="false">근거20</button><span class="evd-pop"><span class="evd-src">더데일리머니 등 (2026.01)</span><span class="evd-sum">머크 공시로 키트루다 SC 로열티율 <strong>~2%</strong> 추정 확산 → 기대 대비 낮아 주가 <strong>−22%</strong>. 로열티의 실제 크기가 밸류의 핵심 변수임을 시장이 확인.</span><a href="https://www.thedailymoney.com/news/articleView.html?idxno=1136907" target="_blank" rel="noopener">기사 ↗</a></span></span> 매출이 사실상 100% 해외 파트너에 의존하고, 그중 키트루다 비중이 크다는 집중 리스크가 상존한다.</p></div>
+</div>
+
+<!-- 11 알테오젠 스크리닝 -->
+<div class="card" id="s11">
+  <h2><span class="idx">11</span>알테오젠 — 기술 스크리닝</h2>
+  <p class="deck">모멘텀은 이미 크게 꺾였다(1개월 −25.5%, 52주 고가 대비 −51.4%) — 하이프 사이클의 되돌림 국면.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값 (2026-07-16)</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>수익률 1주 / 1개월 / 3개월</td><td class="num"><span class="down">−6.7%</span> / <span class="down">−25.5%</span> / <span class="down">−22.4%</span></td><td>강한 하락 모멘텀 — 되돌림</td></tr>
+      <tr><td>52주 고가 대비</td><td class="num"><span class="down">−51.4%</span></td><td>고점 반토막(52주 고가 ~57만원)</td></tr>
+      <tr><td>이동평균 배열 (MA20 vs MA60)</td><td class="num">MA20 &lt; MA60</td><td>하락추세</td></tr>
+      <tr><td>거래대금 (일평균)</td><td class="num">약 3,469억원 (1.2×)</td><td>대형주급 유동성</td></tr>
+      <tr><td>시가총액 (근사)</td><td class="num">약 14조8,166억원</td><td>KOSDAQ 최상위권</td></tr>
+      <tr><td>매수 유의사항</td><td class="num">0건</td><td>경고 없음</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">기술적으로 "이미 많이 빠진" 종목이지만, 급락의 원인이 밸류 정상화(로열티율 2% 확인)라는 점에서 실리콘투와 성격이 다르다 — 조정이 밸류를 열어준 게 아니라, 여전히 높은 밴드 안에서의 이동이다(섹션 16).</p>
+  <p class="fine">시총은 발행주식수 53,586,343주 × 7/16 종가 276,500원으로 근사.</p>
+</div>
+
+<!-- 12 알테오젠 PQC -->
+<div class="card prose" id="s12">
+  <h2><span class="idx">12</span>알테오젠 — PQC (플랫폼·로열티 프레임)</h2>
+  <p class="deck">제조 프레임 대신 라이선스 프레임: P=로열티 단가, Q=계약·파트너 수, C=로열티 모델의 고마진. Q·C는 강, P는 논쟁적.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>축</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P — 라이선스 단가·로열티율</strong></td><td><span class="grade g-part">◐ 부분</span></td><td>키트루다 SC 로열티율 <strong>~2%</strong>로 기대 하회(주가 −22%). 그러나 플랫폼 독점성은 강하고(ENHANZE 유일 대항마, 물질특허 ~2043 언급), 바이오젠 계약 최대 8,600억이 협상력을 방증.<span class="evd"><button type="button" aria-expanded="false">근거20</button><span class="evd-pop"><span class="evd-src">머크 공시 보도 (2026.01)</span><span class="evd-sum">키트루다 SC 로열티율 ~2% — 단가(로열티율)는 낮게 확인됐으나, 신규 계약(바이오젠 8,600억)에서 협상력은 유지. 단가 프리미엄은 '부분'.</span><a href="https://www.thedailymoney.com/news/articleView.html?idxno=1136907" target="_blank" rel="noopener">기사 ↗</a></span></span></td></tr>
+      <tr><td><strong>Q — 계약·파트너 수·물량 램프</strong></td><td><span class="grade g-full">● 충족</span></td><td>MSD·AZ·다이이찌산쿄·GSK·바이오젠(2026-03)·사노피(2026-06) 등 파트너 다수. 키트루다 SC 승인·판매 개시로 로열티 물량 램프 진입.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">DART · 알테오젠 2025 사업보고서 (2026.03.23)</span><span class="evd-sum">기술용역 수출 <strong>$120.5M</strong>(2025, 2024 $53.9M) — 라이선스·마일스톤 매출이 실체화. 파트너 다변화로 계약(Q) 축은 명확한 충족.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001596" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+      <tr><td><strong>C — R&amp;D 효율·OPM</strong></td><td><span class="grade g-full">● 충족</span></td><td>OPM 41.8%(TTM)~54.9%(1Q26) — 로열티 모델 특유의 고마진으로 HALO(56.5%)에 근접. (R&amp;D 절대액은 원문 미파싱 → 세부는 확인불가.)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:14px;">요약: 알테오젠의 사업 실체(Q·C)는 튼튼하다 — 파트너가 늘고, 로열티 모델의 마진은 세계 최고 수준이다. 논쟁은 오직 P, 즉 <strong>로열티 단가(율)가 밸류에이션이 요구하는 만큼 크냐</strong>에 집중된다. 2% 확인은 그 질문에 부정적으로 답한 첫 데이터였다.</p>
+</div>
+
+<!-- 13 알테오젠 GS -->
+<div class="card" id="s13">
+  <h2><span class="idx">13</span>알테오젠 — Growth Sustainability 판정</h2>
+  <p class="deck">플랫폼 바이오라 제조 지표는 "해당없음". 성립 축 중 파이프라인·미국향·TAM은 충족이나, 밸류 전환(#5)은 이미 프리미엄 소진으로 미충족.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>생산능력·가동률</td><td><span class="grade g-na">— 해당없음</span></td><td>자체 양산시설 없음(CMO 위탁). 다만 "상업용 생산시설 부지 매입·순차 구축" 계획 명시 — 파이프라인 성숙 신호</td></tr>
+      <tr><td>2</td><td>수주·파이프라인 진척</td><td><span class="grade g-full">● 충족</span></td><td>"B사"(비공개) 기술용역 수주총액 767억·진행률 100% + 다수 파트너 + 키트루다 SC 승인<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">DART · 알테오젠 1Q26 분기보고서 (2026.05.15)</span><span class="evd-sum">수주계약(B사, 2023-01-12 체결) 수주총액 <strong>767.66억·진행률 100%</strong>. 라이선스 상세는 계약상 비공개.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001517" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+      <tr><td>3</td><td>신제품·신규 계약</td><td><span class="grade g-full">● 충족</span></td><td>2026-03 바이오젠 라이선스, 2026-05 ALT-L9(아일리아 바이오시밀러) 식약처 허가<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">DART · ALT-L9 품목허가 (2026.05.15)</span><span class="evd-sum">아일리아 바이오시밀러 <strong>아이젠피주 식약처 허가</strong> — 자체 제품 파이프라인 상업화 진입.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515900004" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></td></tr>
+      <tr><td>4</td><td>미국·해외향 매출</td><td><span class="grade g-full">● 충족</span></td><td>매출 사실상 100% 수출(기술용역)·머크 등 미국 파트너 의존 — <strong>강점이자 집중 리스크</strong></td></tr>
+      <tr><td>5</td><td>밸류에이션 체계 전환</td><td><span class="grade g-none">○ 미충족</span></td><td>적자→흑자 전환은 완료했으나, P/E 110배 TTM·시총&gt;HALO로 <strong>이미 프리미엄이 소진</strong>. 리레이팅 여력이 아니라 디레이팅 리스크 구간<span class="evd"><button type="button" aria-expanded="false">근거21</button><span class="evd-pop"><span class="evd-src">하우스 피어 실측 (2026.07.19)</span><span class="evd-sum">알테오젠 TTM P/E <strong>110.7배</strong>·시총/영업이익 173.9배 vs HALO 15.2배·12.4배. 밸류 체계 전환은 이미 성장주로 완료 — 추가 리레이팅 여력 제한.</span><span class="evd-nolink">DART·SEC 실측 — 원문 링크 없음</span></span></span></td></tr>
+      <tr><td>6</td><td>산업 TAM 확대 수혜</td><td><span class="grade g-full">● 충족</span></td><td>글로벌 IV→SC 전환 시장 확대, HALO 로열티 $868M로 시장성 입증 — TAM은 크고 성장 중</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">집계: 성립 5개 축 중 충족 4 · 미충족 1(밸류 전환) · 해당없음 1(가동률). 사업의 성장 지속성 자체는 매우 강하다 — 문제는 그 성장이 <strong>이미 가격에 얼마나 반영됐나(#5)</strong>이며, 이 한 축이 콜을 가른다.</p>
+</div>
+
+<!-- 14 알테오젠 어닝 모델 -->
+<div class="card prose" id="s14">
+  <h2><span class="idx">14</span>알테오젠 — 어닝 모델 · 컨센 델타 · 다년 추정</h2>
+  <p class="deck">로열티·마일스톤은 렘피(lumpy)해서 분기 변동이 크다 — 1Q26은 YoY 감소. 하우스 Base는 컨센의 절반 이하 상방을 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>기간</th><th class="num">매출</th><th class="num">영업이익</th><th class="num">OPM</th><th class="num">매출 YoY</th><th class="num">OP YoY</th></tr></thead>
+    <tbody>
+      <tr><td>1Q25 (전년동기)</td><td class="num">837억</td><td class="num">610억</td><td class="num">72.9%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td><strong>1Q26 (당기)</strong></td><td class="num"><strong>716억</strong></td><td class="num"><strong>393억</strong></td><td class="num">54.9%</td><td class="num"><span class="down">−14.5%</span></td><td class="num"><span class="down">−35.6%</span></td></tr>
+      <tr><td>FY24 (연간)</td><td class="num">1,029억</td><td class="num">254억</td><td class="num">24.7%</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td><strong>FY25 (연간)</strong></td><td class="num"><strong>2,159억</strong></td><td class="num"><strong>1,069억</strong></td><td class="num">49.5%</td><td class="num"><span class="up">+109.9%</span></td><td class="num"><span class="up">+320.8%</span></td></tr>
+      <tr><td>FY26E (하우스, NTM)</td><td class="num">≈2,600억</td><td class="num">≈1,540억</td><td class="num">~59%</td><td class="num"><span class="up">+20% 내외</span></td><td class="num"><span class="up">+44%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">FY25 연간은 매출 +109.9%·OP +320.8%로 폭발적이었으나, 1Q26은 마일스톤 공백으로 <span class="down">YoY 감소</span>(vs 1Q25) — 로열티·마일스톤 매출의 렘피(lumpy) 특성이다. 분기 하나로 추세를 읽지 말 것. FY26E는 하우스 NTM 앵커(영업이익 1,540억)에서 역산한 근사·추정치.</p>
+  <h3>컨센서스 델타</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">하우스 (NTM)</th><th class="num">FnGuide 컨센</th><th class="num">델타</th></tr></thead>
+    <tbody>
+      <tr><td>NTM 지배순익 EPS</td><td class="num">5,143원</td><td class="num">5,144원 (2026E)</td><td class="num">≈ 일치</td></tr>
+      <tr><td>Fwd P/E</td><td class="num">53.8배</td><td class="num">53.8배</td><td class="num">≈ 일치</td></tr>
+      <tr><td>목표주가 / Base</td><td class="num">256,471원 (Base)</td><td class="num">537,500원 (4개 기관)</td><td class="num"><span class="up">컨센 +110%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:12px;">이익 전제(EPS)는 컨센과 사실상 같다. 그러나 밸류에이션 결론은 극과 극이다 — 컨센 목표주가 537,500원(<span class="up">+94%</span>)은 하우스 <strong>Bull(520,957원, +88.4%)에 붙어 있다.</strong><span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 알테오젠 (2026.07.19 조회)</span><span class="evd-sum">목표주가 평균 <strong>537,500원</strong>(신한 620k·하나 580k·대신 500k·삼성 450k, <strong>4개 기관 — 표본 얇음</strong>). 2026E EPS 5,144·PER 53.8배·BPS 12,993·PBR 21.3배.</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=196170" target="_blank" rel="noopener">FnGuide ↗</a></span></span> 즉 컨센서스는 "로열티 가속(Bull)"을 기본 시나리오로 이미 반영하고 있다. 추정기관이 4곳뿐이라 <strong>컨센 표본이 얇다</strong>는 점도 함께 고려해야 한다.</p>
+</div>
+
+<!-- 15 알테오젠 시나리오·피어·수급·2차밸류 -->
+<div class="card prose" id="s15">
+  <h2><span class="idx">15</span>알테오젠 — 시나리오 · 피어 · 2차 밸류에이션</h2>
+  <p class="deck">P/E 밴드가 무의미하므로 2차 밸류(EV/Sales vs HALO · 로열티 DCF)가 1차. 결론: 미래 로열티가 상당 부분 선반영.</p>
+  <h3>Bull / Base / Bear</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시나리오</th><th class="num">NTM 영업이익</th><th class="num">배수</th><th class="num">환산주가</th><th class="num">상승여력</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bull</strong></td><td class="num">2,600억</td><td class="num">60배</td><td class="num">520,957원</td><td class="num"><span class="up">+88.4%</span></td><td>키트루다 SC 침투 확대 + 바이오젠·사노피 상업화 + 신규 본계약 다수, HALO식 프리미엄</td></tr>
+      <tr><td><strong>Base</strong></td><td class="num">1,600억</td><td class="num">48배</td><td class="num">256,471원</td><td class="num"><span class="down">−7.2%</span></td><td>컨센 경로(2026E 순익 2,756억) 달성 후 완만 성장, 현 배수 소폭 디레이팅</td></tr>
+      <tr><td><strong>Bear</strong></td><td class="num">850억</td><td class="num">33배</td><td class="num">93,672원</td><td class="num"><span class="down">−66.1%</span></td><td>SC 침투 저조 + 로열티율 2% 고착 + 신규 계약 지연·마일스톤 공백</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc">민감도(NTM 영업이익): −40%(로열티 저조) 152,280원(<span class="down">−44.9%</span>) · 기준 256,471원(<span class="down">−7.2%</span>) · +60%(로열티 가속) 416,766원(<span class="up">+50.7%</span>). Base조차 소폭 마이너스라는 점이 "선반영"의 정량적 표현이다.</p>
+  <p class="fine">배수 근거: HALO(TTM P/E 15.2배)에 초기 고성장 로열티 프리미엄을 크게 얹은 값(Base 48배·Bull 60배). 이 프리미엄 자체가 공격적 가정이며, 시나리오 가치는 전제 실현 시 조건부 환산이지 목표주가가 아니다.</p>
+  <h3>글로벌 피어 비교 (TTM 실측) — 직접 경쟁자 HALO가 기준</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>기업</th><th class="num">P/E (TTM)</th><th class="num">OPM</th><th class="num">시총/영업이익</th><th class="num">시총/매출</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>알테오젠 (196170)</strong></td><td class="num"><strong>110.7배</strong></td><td class="num">41.8%</td><td class="num">173.9배</td><td class="num"><strong>~72배</strong></td><td>초기 로열티·프리미엄</td></tr>
+      <tr><td>할로자임 (HALO)</td><td class="num">15.2배</td><td class="num">56.5%</td><td class="num">12.4배</td><td class="num">~7배</td><td>동일 SC 플랫폼 직접 경쟁자·성숙 로열티</td></tr>
+      <tr><td>리가켐바이오 (141080)</td><td class="num">적자 <span class="chip">*왜곡</span></td><td class="num">−123%</td><td class="num">—</td><td class="num">—</td><td>ADC 신약 개발사·영업적자로 P/E 비교 불가</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:10px;"><strong>2차 밸류에이션 (P/E 밴드 대체 — 이쪽이 1차).</strong> 알테오젠은 P/E 밴드가 41~180배로 극단적이라 밴드 신뢰도가 낮다. 대신 두 각도로 본다:</p>
+  <p><strong>① EV/Sales vs HALO.</strong> 알테오젠 시총/매출은 약 72배로, 동일 플랫폼 HALO(약 7배)의 <strong>10배</strong>다. HALO는 이미 로열티 $868M을 버는 성숙 기업이고 알테오젠 매출은 그 1/9 수준인데, 시가총액은 오히려 알테오젠(≈$10.6B)이 HALO(≈$9.3B)보다 크다. 이 격차 전액이 "알테오젠이 HALO 궤도로 성장한다"는 기대다 — 성장하면 배수가 압축되며 정당화되지만, 실패하면 급락 여지가 크다.</p>
+  <p><strong>② 로열티-DCF 스케치(전제 명시, 예측 아님).</strong> 키트루다 2025 매출 $31.7B에 SC 전환율 피크 30~40%, 로열티율 2%를 가정하면 키트루다 단독 로열티는 연 ~$200M(≈2,800억) 피크, 10년·할인율 10%로 현재가치는 대략 <strong>1.7~2.1조원</strong>이다.<span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">Merck FY2025 10-K (SEC) + 하우스 스케치</span><span class="evd-sum">키트루다 2025 매출 <strong>$31.68B</strong>(+7% YoY). SC 침투 30~40%·로열티 2% 가정 시 피크 로열티 ~$200M/년. 10년·10% 할인 PV ≈ 1.7~2.1조(예측 아닌 전제부 스케치).</span><a href="https://www.sec.gov/Archives/edgar/data/310158/000031015826000063/mrk-20251231.htm" target="_blank" rel="noopener">SEC 10-K ↗</a></span></span> 현 시총 14.8조 중 키트루다 몫이 ~2조라면, <strong>나머지 ~12조는 바이오젠·사노피·AZ 등 다른 파트너의 SC 전환 + 아직 없는 신규 계약의 옵션 가치</strong>다. 상당한 미래가 이미 가격에 들어와 있다는 뜻이다.</p>
+  <h3>수급 / 5%룰 지분율</h3>
+  <p><strong>KRX 투자자별 순매수는 조회 오류로 <span class="mono">? 확인불가</span></strong>다. 5%룰상 최대주주 박순재 대표 지분율은 2026-04-07 <strong>20.4%</strong>(<span class="down">−0.14%p</span>, 임원 퇴임 관련 소폭)로, 최근 기관의 뚜렷한 신규 매집 신호는 데이터상 확인되지 않는다.<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">DART · 주식등의 대량보유상황보고서 (2026.04.07)</span><span class="evd-sum">박순재 대표 지분율 <strong>20.4%(−0.14%p)</strong>. 대주주 구조 안정적이나 기관 신규 매집 신호는 부재.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003590" target="_blank" rel="noopener">DART 원문 ↗</a></span></span></p>
+</div>
+
+<!-- 16 알테오젠 밸류에이션 -->
+<div class="card prose" id="s16">
+  <h2><span class="idx">16</span>알테오젠 — 밸류에이션 위치</h2>
+  <p class="deck">밴드 백분위(12%)는 하이프로 부푼 자기 이력 대비일 뿐 — 절대 배수·피어·시나리오 모두 상방 소진을 가리킨다. 콜: 비중축소.</p>
+  <div class="callout"><div class="co-num">53.8배</div><div class="co-lbl"><strong>현재 Fwd P/E (3년 밴드 41~180배).</strong> 백분위로는 12%(밴드 하단)지만, 그 밴드 자체가 41~180배로 무의미하다. 밴드 신뢰도가 낮아 콜은 밴드가 아니라 시나리오(Base −7.2%)로 판정한다.</div></div>
+  <p><strong>밴드 신뢰도가 낮은 이유.</strong> 3년간 P/E가 41~180배를 오갔고, 지배순익÷영업이익 전환율도 분기별 0.83~3.79로 심하게 튄다(비영업손익·RCPS 공정가치·환율이 순익을 흔든다). 이런 종목의 P/E 밴드 백분위는 "싸다/비싸다"의 신호로 쓸 수 없다 — 그래서 콜은 P/E 밴드를 제외하고 시나리오 상방(Base −7.2% ≤ 0%)만으로 <strong>비중축소</strong>가 나온다.<span class="evd"><button type="button" aria-expanded="false">근거21</button><span class="evd-pop"><span class="evd-src">하우스 밴드 모델 (2026.07.19)</span><span class="evd-sum">Fwd P/E 현재 <strong>53.8배</strong>·3년 평균 97.3배(범위 41.4~179.7)·백분위 12%. 전환율 0.83~3.79 변동 → 밴드 신뢰 불가 판정, 콜은 시나리오 기준.</span><span class="evd-nolink">가격·앵커 기반 하우스 추정 모델 — 원문 링크 없음</span></span></span></p>
+  <p><strong>환산주가와 결론.</strong> 밴드(40·80·120·160배) 환산주가는 40배=205,720원 · 80배=411,440원 · 120배=617,160원 · 160배=822,880원으로, 현재가 276,500원은 40~80배 사이다. 그러나 절대 배수(53.8배)·피어(HALO 15.2배)·EV/Sales(HALO의 10배)·시나리오(Base −7.2%)가 모두 같은 방향을 가리킨다: <strong>사업은 훌륭하지만 가격이 미래를 너무 많이 당겨왔다.</strong> <strong>콜: 비중축소.</strong> 키트루다 SC 로열티가 HALO 궤도($800M급)로 실제 인식되거나 신규 파트너 본계약이 다수 성사되면 Bull(+88%)로 콜을 상향한다 — 그 전까지는 상방보다 하방(Bear −66%)의 폭이 크다.</p>
+</div>
+
+<details class="pe-embed" data-peb="196170" open>
+  <summary>
+    <span class="peb-t">📊 알테오젠 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 53.8배 · 3년 평균 97.3배 · 백분위 12% (밴드 신뢰 낮음)</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의 (밴드 신뢰 낮음):</strong> 이 종목은 3년 P/E가 41~180배를 오가고 이익 전환율도 크게 튀어 <strong>밴드 자체의 신뢰도가 낮습니다</strong>. 아래 NTM 영업이익·EPS는 앵커 선형 보간 추정치이며, 밸류에이션 판정은 밴드가 아니라 <strong>섹션 15의 EV/Sales·시나리오</strong>가 1차입니다.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="알테오젠 주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="알테오젠 forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody class="peb-anchor-rows">
+        <tr><td>'23.5.3</td><td class="num">200억원</td><td class="num">668원</td><td>로열티 이전 국면 — 기술용역매출 위주, 영업이익 소액(사후 실적 기반 근사)</td></tr>
+        <tr><td>'24.2.22</td><td class="num">450억원</td><td class="num">1,503원</td><td>머크 ALT-B4 독점 라이선스 확대(키트루다 SC) 부각(보도 기반 근사)</td></tr>
+        <tr><td>'25.1.2</td><td class="num">800억원</td><td class="num">2,672원</td><td>2024 영업이익 254억(+9배) 확정 + 2025 로열티 개시 기대(근사)</td></tr>
+        <tr><td>'25.9.19</td><td class="num">1,200억원</td><td class="num">4,007원</td><td>키트루다 SC FDA 승인 — 로열티 본격화 진입</td></tr>
+        <tr><td>'26.1.21</td><td class="num">1,400억원</td><td class="num">4,675원</td><td>머크 로열티율 ~2% 공개(주가 −22%)이나 판매 램프 지속</td></tr>
+        <tr><td>'26.3.25</td><td class="num">1,600억원</td><td class="num">5,343원</td><td>바이오젠 독점 라이선스(최대 ~8,600억) — 계약 다각화</td></tr>
+        <tr><td>'26.7.16</td><td class="num">1,540억원</td><td class="num">5,143원</td><td>FnGuide 2026E 순익 2,756억(EPS 5,144)÷전환 1.79 ≈ 영업이익 1,540억. 1Q26 렘피(−35.6% YoY)로 상단 제한</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 지배주주순이익 = NTM 영업이익 × 전환율 1.7895(최근 5개 흑자 분기 합산 4Q24~1Q26, DART 실측) ÷ 발행주식수 53,586,343주 · 앵커 사이 선형 보간. <strong>전환율이 1을 넘는 것은 비영업손익(RCPS 공정가치·이자·환율)이 순익을 부풀리기 때문이며, 이 변동성 자체가 밴드 신뢰도를 낮추는 원인이다.</strong> 앵커 중 '근사'는 당시 컨센 보도 미확보로 사후 실적 기반 추정한 값이다.</p>
+  </div>
+</details>
+
+<!-- 17 밸류 대조 -->
+<div class="card prose" id="s17">
+  <h2><span class="idx">17</span>두 성장주의 밸류에이션 위치 대조</h2>
+  <p class="deck">사업의 질은 둘 다 진짜다. 갈리는 것은 오직 하나 — 그 질(質)이 가격에 얼마나 들어와 있는가.</p>
+  <div class="callout"><div class="co-num">9.1배 vs 53.8배</div><div class="co-lbl"><strong>Fwd P/E — 실리콘투 vs 알테오젠.</strong> 하나는 3년 밴드 하단(백분위 33%)에서 실적이 밸류를 앞질렀고, 하나는 밴드가 무의미할 만큼 미래가 선반영됐다. "성장주"라는 같은 라벨 아래 정반대의 밸류에이션 청구서.</div></div>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>축</th><th>실리콘투 (257720)</th><th>알테오젠 (196170)</th></tr></thead>
+    <tbody>
+      <tr><td>사업 모델</td><td>K뷰티 글로벌 유통 플랫폼</td><td>ALT-B4 히알루로니다제 원천기술(로열티)</td></tr>
+      <tr><td>성장 엔진</td><td>수출 물량(유럽·북미·중동)</td><td>IV→SC 전환 로열티·라이선스</td></tr>
+      <tr><td>매출 성장(최근 연간)</td><td><span class="up">+61.4%</span></td><td><span class="up">+109.9%</span> (단 1Q26 렘피 <span class="down">−14.5%</span>)</td></tr>
+      <tr><td>영업이익률(TTM)</td><td>18.3%</td><td>41.8%</td></tr>
+      <tr><td>Fwd P/E</td><td><strong>9.1배</strong> (밴드 백분위 33%)</td><td><strong>53.8배</strong> (밴드 41~180배·신뢰 낮음)</td></tr>
+      <tr><td>시총 / TTM 매출</td><td>~1.9배</td><td><strong>~72배</strong></td></tr>
+      <tr><td>직접 피어 대비</td><td>브이티 7.3·아이패밀리 7.6배 (성장 할증권)</td><td>HALO 15.2배·매출배수 7배 (그 <strong>10배</strong> 프리미엄)</td></tr>
+      <tr><td>컨센 목표주가</td><td><span class="up">+55%</span> (8개 기관)</td><td><span class="up">+94%</span> (4개 기관·표본 얇음)</td></tr>
+      <tr><td>하우스 Base 상승여력</td><td><span class="up">+20.3%</span></td><td><span class="down">−7.2%</span></td></tr>
+      <tr><td>콜 (결정론적 공식)</td><td><span class="pref pref-over">비중확대</span></td><td><span class="pref pref-under">비중축소</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:14px;"><strong>핵심 대비.</strong> 실리콘투는 "밸류가 실적을 못 따라온" 종목이다 — 매출이 3배로 크는 동안 주가가 그만큼 오르지 못해 밴드 하단으로 내려왔고, 컨센마저 +55%를 본다. 알테오젠은 "밸류가 실적을 한참 앞질러 간" 종목이다 — 사업 실체(파트너·마진)는 튼튼하지만, 시총이 매출의 72배로 HALO의 10배까지 미래를 당겨왔다. 두 콜이 다른 것은 두 회사의 우열 때문이 아니라, <strong>같은 순간 두 주식이 서 있는 밸류에이션 좌표가 정반대</strong>이기 때문이다.</p>
+  <p><strong>무엇이 콜을 뒤집나.</strong> 실리콘투는 이익률(C 축)이 무너지면 하향, 알테오젠은 키트루다 SC 로열티가 HALO 궤도로 실제 찍히거나 신규 본계약이 쏟아지면 상향이다. 공교롭게도 두 검증 지점 모두 <strong>2026년 하반기 실적·계약</strong>에서 확인된다 — 다음 이벤트(섹션 아래)가 두 콜의 공통 채점일이다.</p>
+  <div class="note" style="border-left-color:var(--accent);background:var(--accent-bg);color:var(--ink-2);"><strong>다음 이벤트 (공통 채점일):</strong> 실리콘투 — 2026-08 2Q26 실적발표(추정): 유럽·북미 성장 지속 + OPM 방어 여부. 알테오젠 — 2026 2Q 실적(추정 8월): 키트루다 SC 첫 분기 로열티 인식 규모 + 신규 파트너 본계약(JPM 10여 곳 논의 보도)·무상증자 권리락·코스피 이전상장 재추진 여부. 날짜는 회사 미확정으로 추정치다.</div>
+</div>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>DART · 실리콘투 2025 사업보고서 (2026.03.20) — 연간 확정·수출 비중 90.3%·유형별 매출 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260320001024" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 실리콘투 1Q26 분기보고서 (2026.05.15) — SKU 22,000·단가 산정 불가·매입원가율·지역 매출 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001136" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 실리콘투 매출액또는손익구조30%이상변경(공정공시) (2026.05.12) — 1Q26 잠정 매출 3,466억·OP 645억 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260512900303" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 실리콘투 컨센서스 (2026.07.19 조회) — Fwd12M EPS 3,918·PER 9.20·목표주가 55,500·추정기관 8곳 <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=257720" target="_blank" rel="noopener">↗</a></li>
+    <li>비즈니스포스트 · 실리콘투 지역별 성장(유럽 +64%·북미 +50%·미국 채널 1,800곳) (2026.05) <a href="https://www.businesspost.co.kr/BP?command=article_view&num=435669" target="_blank" rel="noopener">↗</a></li>
+    <li>뉴스1 · 실리콘투 이익률 둔화 원인(성과급·재고자산·물류비)·북미 리스크 (2026.02) <a href="https://www.news1.kr/industry/sb-founded/6104364" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 실리콘투 주식등의 대량보유상황보고서 — 김성운 43.62%(−6.96%p, RCPS 전환·특별관계 해소) (2026.04.27) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000627" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 실리콘투 주식등의 대량보유상황보고서 — 실크투자목적회사 6.72% 신규 (2026.04.27) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260427000669" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 1Q26 분기보고서 (2026.05.15) — 수주(B사) 767억·진행 100%·기술용역 수출 구성 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515001517" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 2025 사업보고서 (2026.03.23) — 기술용역 수출 $120.5M·파트너 구성·FY25 확정 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260323001596" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 알테오젠 컨센서스 (2026.07.19 조회) — 목표주가 537,500·2026E EPS 5,144·PER 53.8·추정기관 4곳 <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=196170" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 ALT-B4 독점 라이선스 계약(바이오젠, 최대 ~8,600억) (2026.03.25) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260325901047" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 ALT-L9(아일리아 바이오시밀러) 식약처 품목허가 (2026.05.15) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260515900004" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 무상증자 결정 (2026.07.16) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260716000528" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 코스피 이전상장 잠정 유보 (2026.07.16) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260716900549" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 알테오젠 주식등의 대량보유상황보고서 — 박순재 20.4%(−0.14%p) (2026.04.07) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260407003590" target="_blank" rel="noopener">↗</a></li>
+    <li>FDA · 키트루다 SC(pembrolizumab + berahyaluronidase alfa=ALT-B4) 승인 (2025.09.19) <a href="https://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-pembrolizumab-and-berahyaluronidase-alfa-pmph-subcutaneous-injection" target="_blank" rel="noopener">↗</a></li>
+    <li>Halozyme · FY2025 실적(매출 $1.4B·로열티 $868M) (PRNewswire, 2026.02) <a href="https://www.prnewswire.com/news-releases/halozyme-reports-full-year-2025-record-revenue-of-1-4-billion-and-reiterates-strong-2026-financial-guidance-302689822.html" target="_blank" rel="noopener">↗</a></li>
+    <li>Merck · FY2025 10-K(키트루다 매출 $31.68B) (SEC) <a href="https://www.sec.gov/Archives/edgar/data/310158/000031015826000063/mrk-20251231.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>더데일리머니 · 알테오젠 키트루다 SC 로열티율 ~2% 확인·주가 −22% 보도 (2026.01) <a href="https://www.thedailymoney.com/news/articleView.html?idxno=1136907" target="_blank" rel="noopener">↗</a></li>
+    <li>토스 Open API·DART·SEC 공시 합산 — 기술 스크리닝·피어 TTM 실측·전환율 실측(실리콘투 0.8416·알테오젠 1.7895)·밴드 통계·시나리오·선호도 산출 (2026.07.19 계산, 원문 링크 없음)</li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM 영업이익은 리포트·뉴스 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님). 전환율은 DART 실측(실리콘투 2Q24~1Q26 8개 흑자 분기 0.8416 / 알테오젠 4Q24~1Q26 5개 흑자 분기 1.7895 — 알테오젠은 비영업손익으로 1 초과, 밴드 신뢰도 낮음의 근거). 시총·밴드 환산가는 근사·역산치. 알테오젠은 P/E 밴드 신뢰도가 낮아 콜을 시나리오 기준으로 산출했다(밴드 제외). 선호도는 정해진 공식(밸류 위치 + 시나리오)의 산출이며 목표주가가 아니다. 국내 가격·수급 기준일 2026-07-16 종가(7/17 제헌절 휴장·7/18~19 주말), 미국 시장 7/17 마감 반영. KRX 투자자별 순매수는 조회 오류로 확인불가.</p>
+  <p>생성: 2026-07-19 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-19 21:33 KST</div></footer>
+
+</div>
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러: 검증된 위젯 구조 (구조 변경 금지) ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"257720": {"rows": [{"d": "2023-05-03", "c": 3140.0, "eps": 834.0, "pe": 3.8}, {"d": "2023-05-04", "c": 3075.0, "eps": 836.0, "pe": 3.7}, {"d": "2023-05-08", "c": 3075.0, "eps": 842.0, "pe": 3.7}, {"d": "2023-05-09", "c": 3855.0, "eps": 844.0, "pe": 4.6}, {"d": "2023-05-10", "c": 4545.0, "eps": 845.0, "pe": 5.4}, {"d": "2023-05-11", "c": 4470.0, "eps": 847.0, "pe": 5.3}, {"d": "2023-05-12", "c": 4595.0, "eps": 849.0, "pe": 5.4}, {"d": "2023-05-15", "c": 4915.0, "eps": 853.0, "pe": 5.8}, {"d": "2023-05-16", "c": 4885.0, "eps": 855.0, "pe": 5.7}, {"d": "2023-05-17", "c": 5140.0, "eps": 857.0, "pe": 6.0}, {"d": "2023-05-18", "c": 4795.0, "eps": 858.0, "pe": 5.6}, {"d": "2023-05-19", "c": 4685.0, "eps": 860.0, "pe": 5.4}, {"d": "2023-05-22", "c": 4720.0, "eps": 864.0, "pe": 5.5}, {"d": "2023-05-23", "c": 4895.0, "eps": 866.0, "pe": 5.7}, {"d": "2023-05-24", "c": 5040.0, "eps": 868.0, "pe": 5.8}, {"d": "2023-05-25", "c": 5400.0, "eps": 869.0, "pe": 6.2}, {"d": "2023-05-26", "c": 5190.0, "eps": 871.0, "pe": 6.0}, {"d": "2023-05-30", "c": 5310.0, "eps": 877.0, "pe": 6.1}, {"d": "2023-05-31", "c": 5670.0, "eps": 879.0, "pe": 6.5}, {"d": "2023-06-01", "c": 5980.0, "eps": 880.0, "pe": 6.8}, {"d": "2023-06-02", "c": 5980.0, "eps": 882.0, "pe": 6.8}, {"d": "2023-06-05", "c": 5880.0, "eps": 887.0, "pe": 6.6}, {"d": "2023-06-07", "c": 5730.0, "eps": 890.0, "pe": 6.4}, {"d": "2023-06-08", "c": 5780.0, "eps": 892.0, "pe": 6.5}, {"d": "2023-06-09", "c": 6370.0, "eps": 893.0, "pe": 7.1}, {"d": "2023-06-12", "c": 6110.0, "eps": 898.0, "pe": 6.8}, {"d": "2023-06-13", "c": 6210.0, "eps": 900.0, "pe": 6.9}, {"d": "2023-06-14", "c": 6310.0, "eps": 901.0, "pe": 7.0}, {"d": "2023-06-15", "c": 6700.0, "eps": 903.0, "pe": 7.4}, {"d": "2023-06-16", "c": 6720.0, "eps": 904.0, "pe": 7.4}, {"d": "2023-06-19", "c": 7100.0, "eps": 909.0, "pe": 7.8}, {"d": "2023-06-20", "c": 7030.0, "eps": 911.0, "pe": 7.7}, {"d": "2023-06-21", "c": 6780.0, "eps": 912.0, "pe": 7.4}, {"d": "2023-06-22", "c": 6530.0, "eps": 914.0, "pe": 7.1}, {"d": "2023-06-23", "c": 6760.0, "eps": 916.0, "pe": 7.4}, {"d": "2023-06-26", "c": 6440.0, "eps": 920.0, "pe": 7.0}, {"d": "2023-06-27", "c": 7350.0, "eps": 922.0, "pe": 8.0}, {"d": "2023-06-28", "c": 7110.0, "eps": 923.0, "pe": 7.7}, {"d": "2023-06-29", "c": 7400.0, "eps": 925.0, "pe": 8.0}, {"d": "2023-06-30", "c": 7090.0, "eps": 927.0, "pe": 7.7}, {"d": "2023-07-03", "c": 7830.0, "eps": 931.0, "pe": 8.4}, {"d": "2023-07-04", "c": 7910.0, "eps": 933.0, "pe": 8.5}, {"d": "2023-07-05", "c": 7670.0, "eps": 935.0, "pe": 8.2}, {"d": "2023-07-06", "c": 7770.0, "eps": 936.0, "pe": 8.3}, {"d": "2023-07-07", "c": 7490.0, "eps": 938.0, "pe": 8.0}, {"d": "2023-07-10", "c": 7360.0, "eps": 943.0, "pe": 7.8}, {"d": "2023-07-11", "c": 7680.0, "eps": 944.0, "pe": 8.1}, {"d": "2023-07-12", "c": 7480.0, "eps": 946.0, "pe": 7.9}, {"d": "2023-07-13", "c": 7230.0, "eps": 947.0, "pe": 7.6}, {"d": "2023-07-14", "c": 7150.0, "eps": 949.0, "pe": 7.5}, {"d": "2023-07-17", "c": 7160.0, "eps": 954.0, "pe": 7.5}, {"d": "2023-07-18", "c": 7790.0, "eps": 955.0, "pe": 8.2}, {"d": "2023-07-19", "c": 7140.0, "eps": 957.0, "pe": 7.5}, {"d": "2023-07-20", "c": 7080.0, "eps": 959.0, "pe": 7.4}, {"d": "2023-07-21", "c": 6870.0, "eps": 960.0, "pe": 7.2}, {"d": "2023-07-24", "c": 6630.0, "eps": 965.0, "pe": 6.9}, {"d": "2023-07-25", "c": 6560.0, "eps": 967.0, "pe": 6.8}, {"d": "2023-07-26", "c": 6380.0, "eps": 968.0, "pe": 6.6}, {"d": "2023-07-27", "c": 6830.0, "eps": 970.0, "pe": 7.0}, {"d": "2023-07-28", "c": 7050.0, "eps": 971.0, "pe": 7.3}, {"d": "2023-07-31", "c": 7500.0, "eps": 976.0, "pe": 7.7}, {"d": "2023-08-01", "c": 7610.0, "eps": 978.0, "pe": 7.8}, {"d": "2023-08-02", "c": 7940.0, "eps": 979.0, "pe": 8.1}, {"d": "2023-08-03", "c": 7760.0, "eps": 981.0, "pe": 7.9}, {"d": "2023-08-04", "c": 9000.0, "eps": 982.0, "pe": 9.2}, {"d": "2023-08-07", "c": 9050.0, "eps": 987.0, "pe": 9.2}, {"d": "2023-08-08", "c": 9100.0, "eps": 989.0, "pe": 9.2}, {"d": "2023-08-09", "c": 8680.0, "eps": 990.0, "pe": 8.8}, {"d": "2023-08-10", "c": 8440.0, "eps": 992.0, "pe": 8.5}, {"d": "2023-08-11", "c": 8080.0, "eps": 994.0, "pe": 8.1}, {"d": "2023-08-14", "c": 8450.0, "eps": 998.0, "pe": 8.5}, {"d": "2023-08-16", "c": 7800.0, "eps": 1002.0, "pe": 7.8}, {"d": "2023-08-17", "c": 7750.0, "eps": 1003.0, "pe": 7.7}, {"d": "2023-08-18", "c": 7950.0, "eps": 1005.0, "pe": 7.9}, {"d": "2023-08-21", "c": 8000.0, "eps": 1010.0, "pe": 7.9}, {"d": "2023-08-22", "c": 8580.0, "eps": 1011.0, "pe": 8.5}, {"d": "2023-08-23", "c": 8340.0, "eps": 1013.0, "pe": 8.2}, {"d": "2023-08-24", "c": 8300.0, "eps": 1014.0, "pe": 8.2}, {"d": "2023-08-25", "c": 8310.0, "eps": 1016.0, "pe": 8.2}, {"d": "2023-08-28", "c": 7970.0, "eps": 1021.0, "pe": 7.8}, {"d": "2023-08-29", "c": 7960.0, "eps": 1022.0, "pe": 7.8}, {"d": "2023-08-30", "c": 8240.0, "eps": 1024.0, "pe": 8.0}, {"d": "2023-08-31", "c": 8280.0, "eps": 1026.0, "pe": 8.1}, {"d": "2023-09-01", "c": 8360.0, "eps": 1027.0, "pe": 8.1}, {"d": "2023-09-04", "c": 8490.0, "eps": 1032.0, "pe": 8.2}, {"d": "2023-09-05", "c": 8970.0, "eps": 1033.0, "pe": 8.7}, {"d": "2023-09-06", "c": 8900.0, "eps": 1035.0, "pe": 8.6}, {"d": "2023-09-07", "c": 8280.0, "eps": 1037.0, "pe": 8.0}, {"d": "2023-09-08", "c": 8300.0, "eps": 1038.0, "pe": 8.0}, {"d": "2023-09-11", "c": 8420.0, "eps": 1043.0, "pe": 8.1}, {"d": "2023-09-12", "c": 7970.0, "eps": 1045.0, "pe": 7.6}, {"d": "2023-09-13", "c": 7830.0, "eps": 1046.0, "pe": 7.5}, {"d": "2023-09-14", "c": 7830.0, "eps": 1048.0, "pe": 7.5}, {"d": "2023-09-15", "c": 8020.0, "eps": 1049.0, "pe": 7.6}, {"d": "2023-09-18", "c": 8520.0, "eps": 1054.0, "pe": 8.1}, {"d": "2023-09-19", "c": 9130.0, "eps": 1056.0, "pe": 8.6}, {"d": "2023-09-20", "c": 9080.0, "eps": 1057.0, "pe": 8.6}, {"d": "2023-09-21", "c": 8730.0, "eps": 1059.0, "pe": 8.2}, {"d": "2023-09-22", "c": 9370.0, "eps": 1061.0, "pe": 8.8}, {"d": "2023-09-25", "c": 8980.0, "eps": 1065.0, "pe": 8.4}, {"d": "2023-09-26", "c": 9010.0, "eps": 1067.0, "pe": 8.4}, {"d": "2023-09-27", "c": 9350.0, "eps": 1069.0, "pe": 8.8}, {"d": "2023-10-04", "c": 9180.0, "eps": 1080.0, "pe": 8.5}, {"d": "2023-10-05", "c": 9120.0, "eps": 1081.0, "pe": 8.4}, {"d": "2023-10-06", "c": 9820.0, "eps": 1083.0, "pe": 9.1}, {"d": "2023-10-10", "c": 9500.0, "eps": 1089.0, "pe": 8.7}, {"d": "2023-10-11", "c": 9960.0, "eps": 1091.0, "pe": 9.1}, {"d": "2023-10-12", "c": 10310.0, "eps": 1092.0, "pe": 9.4}, {"d": "2023-10-13", "c": 10240.0, "eps": 1094.0, "pe": 9.4}, {"d": "2023-10-16", "c": 8800.0, "eps": 1099.0, "pe": 8.0}, {"d": "2023-10-17", "c": 8570.0, "eps": 1100.0, "pe": 7.8}, {"d": "2023-10-18", "c": 8480.0, "eps": 1102.0, "pe": 7.7}, {"d": "2023-10-19", "c": 8060.0, "eps": 1104.0, "pe": 7.3}, {"d": "2023-10-20", "c": 7890.0, "eps": 1105.0, "pe": 7.1}, {"d": "2023-10-23", "c": 8370.0, "eps": 1110.0, "pe": 7.5}, {"d": "2023-10-24", "c": 8270.0, "eps": 1112.0, "pe": 7.4}, {"d": "2023-10-25", "c": 8250.0, "eps": 1113.0, "pe": 7.4}, {"d": "2023-10-26", "c": 7830.0, "eps": 1115.0, "pe": 7.0}, {"d": "2023-10-27", "c": 7920.0, "eps": 1116.0, "pe": 7.1}, {"d": "2023-10-30", "c": 7700.0, "eps": 1121.0, "pe": 6.9}, {"d": "2023-10-31", "c": 7850.0, "eps": 1123.0, "pe": 7.0}, {"d": "2023-11-01", "c": 7460.0, "eps": 1124.0, "pe": 6.6}, {"d": "2023-11-02", "c": 7990.0, "eps": 1126.0, "pe": 7.1}, {"d": "2023-11-03", "c": 7980.0, "eps": 1128.0, "pe": 7.1}, {"d": "2023-11-06", "c": 7890.0, "eps": 1132.0, "pe": 7.0}, {"d": "2023-11-07", "c": 8470.0, "eps": 1134.0, "pe": 7.5}, {"d": "2023-11-08", "c": 8880.0, "eps": 1136.0, "pe": 7.8}, {"d": "2023-11-09", "c": 8600.0, "eps": 1137.0, "pe": 7.6}, {"d": "2023-11-10", "c": 8600.0, "eps": 1139.0, "pe": 7.6}, {"d": "2023-11-13", "c": 8100.0, "eps": 1143.0, "pe": 7.1}, {"d": "2023-11-14", "c": 8330.0, "eps": 1145.0, "pe": 7.3}, {"d": "2023-11-15", "c": 8670.0, "eps": 1147.0, "pe": 7.6}, {"d": "2023-11-16", "c": 9180.0, "eps": 1148.0, "pe": 8.0}, {"d": "2023-11-17", "c": 9160.0, "eps": 1150.0, "pe": 8.0}, {"d": "2023-11-20", "c": 8790.0, "eps": 1155.0, "pe": 7.6}, {"d": "2023-11-21", "c": 9200.0, "eps": 1156.0, "pe": 8.0}, {"d": "2023-11-22", "c": 8860.0, "eps": 1158.0, "pe": 7.7}, {"d": "2023-11-23", "c": 8780.0, "eps": 1159.0, "pe": 7.6}, {"d": "2023-11-24", "c": 8630.0, "eps": 1161.0, "pe": 7.4}, {"d": "2023-11-27", "c": 8290.0, "eps": 1166.0, "pe": 7.1}, {"d": "2023-11-28", "c": 8180.0, "eps": 1167.0, "pe": 7.0}, {"d": "2023-11-29", "c": 8210.0, "eps": 1169.0, "pe": 7.0}, {"d": "2023-11-30", "c": 8560.0, "eps": 1171.0, "pe": 7.3}, {"d": "2023-12-01", "c": 8160.0, "eps": 1172.0, "pe": 7.0}, {"d": "2023-12-04", "c": 7790.0, "eps": 1177.0, "pe": 6.6}, {"d": "2023-12-05", "c": 7800.0, "eps": 1179.0, "pe": 6.6}, {"d": "2023-12-06", "c": 7960.0, "eps": 1180.0, "pe": 6.7}, {"d": "2023-12-07", "c": 7850.0, "eps": 1182.0, "pe": 6.6}, {"d": "2023-12-08", "c": 8270.0, "eps": 1183.0, "pe": 7.0}, {"d": "2023-12-11", "c": 8090.0, "eps": 1188.0, "pe": 6.8}, {"d": "2023-12-12", "c": 8120.0, "eps": 1190.0, "pe": 6.8}, {"d": "2023-12-13", "c": 7880.0, "eps": 1191.0, "pe": 6.6}, {"d": "2023-12-14", "c": 8050.0, "eps": 1193.0, "pe": 6.7}, {"d": "2023-12-15", "c": 7900.0, "eps": 1195.0, "pe": 6.6}, {"d": "2023-12-18", "c": 8200.0, "eps": 1199.0, "pe": 6.8}, {"d": "2023-12-19", "c": 8210.0, "eps": 1201.0, "pe": 6.8}, {"d": "2023-12-20", "c": 8060.0, "eps": 1202.0, "pe": 6.7}, {"d": "2023-12-21", "c": 8110.0, "eps": 1204.0, "pe": 6.7}, {"d": "2023-12-22", "c": 7620.0, "eps": 1206.0, "pe": 6.3}, {"d": "2023-12-26", "c": 7570.0, "eps": 1212.0, "pe": 6.2}, {"d": "2023-12-27", "c": 7500.0, "eps": 1214.0, "pe": 6.2}, {"d": "2023-12-28", "c": 7710.0, "eps": 1215.0, "pe": 6.3}, {"d": "2024-01-02", "c": 7830.0, "eps": 1223.0, "pe": 6.4}, {"d": "2024-01-03", "c": 7970.0, "eps": 1225.0, "pe": 6.5}, {"d": "2024-01-04", "c": 7850.0, "eps": 1226.0, "pe": 6.4}, {"d": "2024-01-05", "c": 7970.0, "eps": 1228.0, "pe": 6.5}, {"d": "2024-01-08", "c": 8000.0, "eps": 1233.0, "pe": 6.5}, {"d": "2024-01-09", "c": 8640.0, "eps": 1234.0, "pe": 7.0}, {"d": "2024-01-10", "c": 8940.0, "eps": 1236.0, "pe": 7.2}, {"d": "2024-01-11", "c": 8870.0, "eps": 1238.0, "pe": 7.2}, {"d": "2024-01-12", "c": 8500.0, "eps": 1239.0, "pe": 6.9}, {"d": "2024-01-15", "c": 8730.0, "eps": 1244.0, "pe": 7.0}, {"d": "2024-01-16", "c": 8700.0, "eps": 1246.0, "pe": 7.0}, {"d": "2024-01-17", "c": 8570.0, "eps": 1247.0, "pe": 6.9}, {"d": "2024-01-18", "c": 9320.0, "eps": 1249.0, "pe": 7.5}, {"d": "2024-01-19", "c": 9040.0, "eps": 1250.0, "pe": 7.2}, {"d": "2024-01-22", "c": 8420.0, "eps": 1255.0, "pe": 6.7}, {"d": "2024-01-23", "c": 8710.0, "eps": 1257.0, "pe": 6.9}, {"d": "2024-01-24", "c": 8840.0, "eps": 1258.0, "pe": 7.0}, {"d": "2024-01-25", "c": 8680.0, "eps": 1260.0, "pe": 6.9}, {"d": "2024-01-26", "c": 8040.0, "eps": 1261.0, "pe": 6.4}, {"d": "2024-01-29", "c": 7910.0, "eps": 1266.0, "pe": 6.2}, {"d": "2024-01-30", "c": 8010.0, "eps": 1268.0, "pe": 6.3}, {"d": "2024-01-31", "c": 7940.0, "eps": 1269.0, "pe": 6.3}, {"d": "2024-02-01", "c": 8230.0, "eps": 1271.0, "pe": 6.5}, {"d": "2024-02-02", "c": 8300.0, "eps": 1273.0, "pe": 6.5}, {"d": "2024-02-05", "c": 8290.0, "eps": 1277.0, "pe": 6.5}, {"d": "2024-02-06", "c": 8160.0, "eps": 1279.0, "pe": 6.4}, {"d": "2024-02-07", "c": 8290.0, "eps": 1281.0, "pe": 6.5}, {"d": "2024-02-08", "c": 8030.0, "eps": 1282.0, "pe": 6.3}, {"d": "2024-02-13", "c": 8140.0, "eps": 1290.0, "pe": 6.3}, {"d": "2024-02-14", "c": 8670.0, "eps": 1292.0, "pe": 6.7}, {"d": "2024-02-15", "c": 8420.0, "eps": 1293.0, "pe": 6.5}, {"d": "2024-02-16", "c": 8320.0, "eps": 1295.0, "pe": 6.4}, {"d": "2024-02-19", "c": 8170.0, "eps": 1300.0, "pe": 6.3}, {"d": "2024-02-20", "c": 8130.0, "eps": 1301.0, "pe": 6.2}, {"d": "2024-02-21", "c": 10400.0, "eps": 1303.0, "pe": 8.0}, {"d": "2024-02-22", "c": 9770.0, "eps": 1305.0, "pe": 7.5}, {"d": "2024-02-23", "c": 10010.0, "eps": 1306.0, "pe": 7.7}, {"d": "2024-02-26", "c": 9740.0, "eps": 1311.0, "pe": 7.4}, {"d": "2024-02-27", "c": 8970.0, "eps": 1312.0, "pe": 6.8}, {"d": "2024-02-28", "c": 9140.0, "eps": 1314.0, "pe": 7.0}, {"d": "2024-02-29", "c": 9260.0, "eps": 1316.0, "pe": 7.0}, {"d": "2024-03-04", "c": 9230.0, "eps": 1322.0, "pe": 7.0}, {"d": "2024-03-05", "c": 9230.0, "eps": 1324.0, "pe": 7.0}, {"d": "2024-03-06", "c": 9330.0, "eps": 1325.0, "pe": 7.0}, {"d": "2024-03-07", "c": 8980.0, "eps": 1327.0, "pe": 6.8}, {"d": "2024-03-08", "c": 9420.0, "eps": 1328.0, "pe": 7.1}, {"d": "2024-03-11", "c": 9560.0, "eps": 1333.0, "pe": 7.2}, {"d": "2024-03-12", "c": 9350.0, "eps": 1335.0, "pe": 7.0}, {"d": "2024-03-13", "c": 9250.0, "eps": 1336.0, "pe": 6.9}, {"d": "2024-03-14", "c": 9030.0, "eps": 1338.0, "pe": 6.7}, {"d": "2024-03-15", "c": 8910.0, "eps": 1340.0, "pe": 6.7}, {"d": "2024-03-18", "c": 9570.0, "eps": 1344.0, "pe": 7.1}, {"d": "2024-03-19", "c": 9650.0, "eps": 1346.0, "pe": 7.2}, {"d": "2024-03-20", "c": 10750.0, "eps": 1348.0, "pe": 8.0}, {"d": "2024-03-21", "c": 10820.0, "eps": 1353.0, "pe": 8.0}, {"d": "2024-03-22", "c": 11540.0, "eps": 1358.0, "pe": 8.5}, {"d": "2024-03-25", "c": 11250.0, "eps": 1374.0, "pe": 8.2}, {"d": "2024-03-26", "c": 11920.0, "eps": 1379.0, "pe": 8.6}, {"d": "2024-03-27", "c": 11760.0, "eps": 1384.0, "pe": 8.5}, {"d": "2024-03-28", "c": 11410.0, "eps": 1390.0, "pe": 8.2}, {"d": "2024-03-29", "c": 11780.0, "eps": 1395.0, "pe": 8.4}, {"d": "2024-04-01", "c": 12900.0, "eps": 1411.0, "pe": 9.1}, {"d": "2024-04-02", "c": 12600.0, "eps": 1416.0, "pe": 8.9}, {"d": "2024-04-03", "c": 12910.0, "eps": 1421.0, "pe": 9.1}, {"d": "2024-04-04", "c": 12450.0, "eps": 1427.0, "pe": 8.7}, {"d": "2024-04-05", "c": 12300.0, "eps": 1432.0, "pe": 8.6}, {"d": "2024-04-08", "c": 11840.0, "eps": 1448.0, "pe": 8.2}, {"d": "2024-04-09", "c": 12490.0, "eps": 1453.0, "pe": 8.6}, {"d": "2024-04-11", "c": 12610.0, "eps": 1463.0, "pe": 8.6}, {"d": "2024-04-12", "c": 13760.0, "eps": 1469.0, "pe": 9.4}, {"d": "2024-04-15", "c": 12830.0, "eps": 1485.0, "pe": 8.6}, {"d": "2024-04-16", "c": 12650.0, "eps": 1490.0, "pe": 8.5}, {"d": "2024-04-17", "c": 12800.0, "eps": 1495.0, "pe": 8.6}, {"d": "2024-04-18", "c": 13260.0, "eps": 1500.0, "pe": 8.8}, {"d": "2024-04-19", "c": 12810.0, "eps": 1506.0, "pe": 8.5}, {"d": "2024-04-22", "c": 12840.0, "eps": 1521.0, "pe": 8.4}, {"d": "2024-04-23", "c": 13100.0, "eps": 1527.0, "pe": 8.6}, {"d": "2024-04-24", "c": 13260.0, "eps": 1532.0, "pe": 8.7}, {"d": "2024-04-25", "c": 13040.0, "eps": 1537.0, "pe": 8.5}, {"d": "2024-04-26", "c": 13610.0, "eps": 1542.0, "pe": 8.8}, {"d": "2024-04-29", "c": 14280.0, "eps": 1558.0, "pe": 9.2}, {"d": "2024-04-30", "c": 14800.0, "eps": 1564.0, "pe": 9.5}, {"d": "2024-05-02", "c": 14850.0, "eps": 1574.0, "pe": 9.4}, {"d": "2024-05-03", "c": 15100.0, "eps": 1579.0, "pe": 9.6}, {"d": "2024-05-07", "c": 15960.0, "eps": 1600.0, "pe": 10.0}, {"d": "2024-05-08", "c": 15560.0, "eps": 1606.0, "pe": 9.7}, {"d": "2024-05-09", "c": 20200.0, "eps": 1611.0, "pe": 12.5}, {"d": "2024-05-10", "c": 26250.0, "eps": 1616.0, "pe": 16.2}, {"d": "2024-05-13", "c": 26650.0, "eps": 1632.0, "pe": 16.3}, {"d": "2024-05-14", "c": 27000.0, "eps": 1637.0, "pe": 16.5}, {"d": "2024-05-16", "c": 28900.0, "eps": 1648.0, "pe": 17.5}, {"d": "2024-05-17", "c": 29550.0, "eps": 1653.0, "pe": 17.9}, {"d": "2024-05-20", "c": 30300.0, "eps": 1669.0, "pe": 18.2}, {"d": "2024-05-21", "c": 32000.0, "eps": 1674.0, "pe": 19.1}, {"d": "2024-05-22", "c": 29950.0, "eps": 1679.0, "pe": 17.8}, {"d": "2024-05-23", "c": 31450.0, "eps": 1685.0, "pe": 18.7}, {"d": "2024-05-24", "c": 33950.0, "eps": 1690.0, "pe": 20.1}, {"d": "2024-05-27", "c": 36400.0, "eps": 1706.0, "pe": 21.3}, {"d": "2024-05-28", "c": 38950.0, "eps": 1711.0, "pe": 22.8}, {"d": "2024-05-29", "c": 39200.0, "eps": 1716.0, "pe": 22.8}, {"d": "2024-05-30", "c": 39000.0, "eps": 1722.0, "pe": 22.7}, {"d": "2024-05-31", "c": 37750.0, "eps": 1727.0, "pe": 21.9}, {"d": "2024-06-03", "c": 43100.0, "eps": 1743.0, "pe": 24.7}, {"d": "2024-06-04", "c": 42350.0, "eps": 1748.0, "pe": 24.2}, {"d": "2024-06-05", "c": 41500.0, "eps": 1753.0, "pe": 23.7}, {"d": "2024-06-07", "c": 44000.0, "eps": 1764.0, "pe": 24.9}, {"d": "2024-06-10", "c": 45300.0, "eps": 1780.0, "pe": 25.5}, {"d": "2024-06-11", "c": 46900.0, "eps": 1785.0, "pe": 26.3}, {"d": "2024-06-12", "c": 50300.0, "eps": 1790.0, "pe": 28.1}, {"d": "2024-06-13", "c": 50700.0, "eps": 1795.0, "pe": 28.2}, {"d": "2024-06-14", "c": 51200.0, "eps": 1801.0, "pe": 28.4}, {"d": "2024-06-17", "c": 49050.0, "eps": 1816.0, "pe": 27.0}, {"d": "2024-06-18", "c": 51300.0, "eps": 1822.0, "pe": 28.2}, {"d": "2024-06-19", "c": 50700.0, "eps": 1827.0, "pe": 27.8}, {"d": "2024-06-20", "c": 50000.0, "eps": 1832.0, "pe": 27.3}, {"d": "2024-06-21", "c": 52800.0, "eps": 1837.0, "pe": 28.7}, {"d": "2024-06-24", "c": 50900.0, "eps": 1853.0, "pe": 27.5}, {"d": "2024-06-25", "c": 48550.0, "eps": 1859.0, "pe": 26.1}, {"d": "2024-06-26", "c": 49750.0, "eps": 1864.0, "pe": 26.7}, {"d": "2024-06-27", "c": 47950.0, "eps": 1869.0, "pe": 25.7}, {"d": "2024-06-28", "c": 47000.0, "eps": 1874.0, "pe": 25.1}, {"d": "2024-07-01", "c": 43250.0, "eps": 1890.0, "pe": 22.9}, {"d": "2024-07-02", "c": 43750.0, "eps": 1895.0, "pe": 23.1}, {"d": "2024-07-03", "c": 44550.0, "eps": 1901.0, "pe": 23.4}, {"d": "2024-07-04", "c": 43350.0, "eps": 1906.0, "pe": 22.7}, {"d": "2024-07-05", "c": 41400.0, "eps": 1911.0, "pe": 21.7}, {"d": "2024-07-08", "c": 44300.0, "eps": 1927.0, "pe": 23.0}, {"d": "2024-07-09", "c": 45000.0, "eps": 1932.0, "pe": 23.3}, {"d": "2024-07-10", "c": 46050.0, "eps": 1938.0, "pe": 23.8}, {"d": "2024-07-11", "c": 48400.0, "eps": 1943.0, "pe": 24.9}, {"d": "2024-07-12", "c": 42450.0, "eps": 1948.0, "pe": 21.8}, {"d": "2024-07-15", "c": 43550.0, "eps": 1964.0, "pe": 22.2}, {"d": "2024-07-16", "c": 40700.0, "eps": 1969.0, "pe": 20.7}, {"d": "2024-07-17", "c": 42700.0, "eps": 1974.0, "pe": 21.6}, {"d": "2024-07-18", "c": 42000.0, "eps": 1980.0, "pe": 21.2}, {"d": "2024-07-19", "c": 43500.0, "eps": 1985.0, "pe": 21.9}, {"d": "2024-07-22", "c": 44800.0, "eps": 2001.0, "pe": 22.4}, {"d": "2024-07-23", "c": 47400.0, "eps": 2006.0, "pe": 23.6}, {"d": "2024-07-24", "c": 46650.0, "eps": 2011.0, "pe": 23.2}, {"d": "2024-07-25", "c": 42400.0, "eps": 2017.0, "pe": 21.0}, {"d": "2024-07-26", "c": 42050.0, "eps": 2022.0, "pe": 20.8}, {"d": "2024-07-29", "c": 45900.0, "eps": 2038.0, "pe": 22.5}, {"d": "2024-07-30", "c": 44900.0, "eps": 2043.0, "pe": 22.0}, {"d": "2024-07-31", "c": 44300.0, "eps": 2048.0, "pe": 21.6}, {"d": "2024-08-01", "c": 46000.0, "eps": 2053.0, "pe": 22.4}, {"d": "2024-08-02", "c": 42050.0, "eps": 2056.0, "pe": 20.5}, {"d": "2024-08-05", "c": 36250.0, "eps": 2063.0, "pe": 17.6}, {"d": "2024-08-06", "c": 41750.0, "eps": 2066.0, "pe": 20.2}, {"d": "2024-08-07", "c": 41900.0, "eps": 2068.0, "pe": 20.3}, {"d": "2024-08-08", "c": 43450.0, "eps": 2071.0, "pe": 21.0}, {"d": "2024-08-09", "c": 45250.0, "eps": 2073.0, "pe": 21.8}, {"d": "2024-08-12", "c": 44550.0, "eps": 2081.0, "pe": 21.4}, {"d": "2024-08-13", "c": 42450.0, "eps": 2083.0, "pe": 20.4}, {"d": "2024-08-14", "c": 40400.0, "eps": 2086.0, "pe": 19.4}, {"d": "2024-08-16", "c": 45200.0, "eps": 2091.0, "pe": 21.6}, {"d": "2024-08-19", "c": 45400.0, "eps": 2098.0, "pe": 21.6}, {"d": "2024-08-20", "c": 44350.0, "eps": 2101.0, "pe": 21.1}, {"d": "2024-08-21", "c": 42200.0, "eps": 2103.0, "pe": 20.1}, {"d": "2024-08-22", "c": 41950.0, "eps": 2106.0, "pe": 19.9}, {"d": "2024-08-23", "c": 42700.0, "eps": 2108.0, "pe": 20.3}, {"d": "2024-08-26", "c": 39800.0, "eps": 2116.0, "pe": 18.8}, {"d": "2024-08-27", "c": 39550.0, "eps": 2118.0, "pe": 18.7}, {"d": "2024-08-28", "c": 39250.0, "eps": 2121.0, "pe": 18.5}, {"d": "2024-08-29", "c": 36600.0, "eps": 2123.0, "pe": 17.2}, {"d": "2024-08-30", "c": 38600.0, "eps": 2126.0, "pe": 18.2}, {"d": "2024-09-02", "c": 40950.0, "eps": 2133.0, "pe": 19.2}, {"d": "2024-09-03", "c": 42650.0, "eps": 2136.0, "pe": 20.0}, {"d": "2024-09-04", "c": 41300.0, "eps": 2138.0, "pe": 19.3}, {"d": "2024-09-05", "c": 40400.0, "eps": 2141.0, "pe": 18.9}, {"d": "2024-09-06", "c": 39400.0, "eps": 2143.0, "pe": 18.4}, {"d": "2024-09-09", "c": 43400.0, "eps": 2151.0, "pe": 20.2}, {"d": "2024-09-10", "c": 42550.0, "eps": 2153.0, "pe": 19.8}, {"d": "2024-09-11", "c": 40850.0, "eps": 2156.0, "pe": 18.9}, {"d": "2024-09-12", "c": 44150.0, "eps": 2158.0, "pe": 20.5}, {"d": "2024-09-13", "c": 44200.0, "eps": 2161.0, "pe": 20.5}, {"d": "2024-09-19", "c": 45450.0, "eps": 2176.0, "pe": 20.9}, {"d": "2024-09-20", "c": 45950.0, "eps": 2178.0, "pe": 21.1}, {"d": "2024-09-23", "c": 46200.0, "eps": 2186.0, "pe": 21.1}, {"d": "2024-09-24", "c": 45150.0, "eps": 2188.0, "pe": 20.6}, {"d": "2024-09-25", "c": 43900.0, "eps": 2191.0, "pe": 20.0}, {"d": "2024-09-26", "c": 44700.0, "eps": 2193.0, "pe": 20.4}, {"d": "2024-09-27", "c": 43850.0, "eps": 2196.0, "pe": 20.0}, {"d": "2024-09-30", "c": 46200.0, "eps": 2203.0, "pe": 21.0}, {"d": "2024-10-02", "c": 42400.0, "eps": 2208.0, "pe": 19.2}, {"d": "2024-10-04", "c": 42850.0, "eps": 2213.0, "pe": 19.4}, {"d": "2024-10-07", "c": 43800.0, "eps": 2221.0, "pe": 19.7}, {"d": "2024-10-08", "c": 41700.0, "eps": 2223.0, "pe": 18.8}, {"d": "2024-10-10", "c": 43050.0, "eps": 2228.0, "pe": 19.3}, {"d": "2024-10-11", "c": 41050.0, "eps": 2231.0, "pe": 18.4}, {"d": "2024-10-14", "c": 40000.0, "eps": 2238.0, "pe": 17.9}, {"d": "2024-10-15", "c": 41750.0, "eps": 2241.0, "pe": 18.6}, {"d": "2024-10-16", "c": 39600.0, "eps": 2243.0, "pe": 17.7}, {"d": "2024-10-17", "c": 40100.0, "eps": 2246.0, "pe": 17.9}, {"d": "2024-10-18", "c": 40000.0, "eps": 2248.0, "pe": 17.8}, {"d": "2024-10-21", "c": 41300.0, "eps": 2256.0, "pe": 18.3}, {"d": "2024-10-22", "c": 39000.0, "eps": 2258.0, "pe": 17.3}, {"d": "2024-10-23", "c": 37350.0, "eps": 2261.0, "pe": 16.5}, {"d": "2024-10-24", "c": 37900.0, "eps": 2263.0, "pe": 16.7}, {"d": "2024-10-25", "c": 35950.0, "eps": 2266.0, "pe": 15.9}, {"d": "2024-10-28", "c": 37800.0, "eps": 2273.0, "pe": 16.6}, {"d": "2024-10-29", "c": 37800.0, "eps": 2276.0, "pe": 16.6}, {"d": "2024-10-30", "c": 38700.0, "eps": 2278.0, "pe": 17.0}, {"d": "2024-10-31", "c": 38200.0, "eps": 2281.0, "pe": 16.7}, {"d": "2024-11-01", "c": 36750.0, "eps": 2283.0, "pe": 16.1}, {"d": "2024-11-04", "c": 40650.0, "eps": 2291.0, "pe": 17.7}, {"d": "2024-11-05", "c": 39250.0, "eps": 2293.0, "pe": 17.1}, {"d": "2024-11-06", "c": 40500.0, "eps": 2296.0, "pe": 17.6}, {"d": "2024-11-07", "c": 40400.0, "eps": 2298.0, "pe": 17.6}, {"d": "2024-11-08", "c": 41250.0, "eps": 2301.0, "pe": 17.9}, {"d": "2024-11-11", "c": 38200.0, "eps": 2308.0, "pe": 16.5}, {"d": "2024-11-12", "c": 34850.0, "eps": 2311.0, "pe": 15.1}, {"d": "2024-11-13", "c": 36500.0, "eps": 2313.0, "pe": 15.8}, {"d": "2024-11-14", "c": 28250.0, "eps": 2316.0, "pe": 12.2}, {"d": "2024-11-15", "c": 28050.0, "eps": 2318.0, "pe": 12.1}, {"d": "2024-11-18", "c": 27650.0, "eps": 2326.0, "pe": 11.9}, {"d": "2024-11-19", "c": 26750.0, "eps": 2328.0, "pe": 11.5}, {"d": "2024-11-20", "c": 27400.0, "eps": 2331.0, "pe": 11.8}, {"d": "2024-11-21", "c": 26600.0, "eps": 2333.0, "pe": 11.4}, {"d": "2024-11-22", "c": 25750.0, "eps": 2336.0, "pe": 11.0}, {"d": "2024-11-25", "c": 26250.0, "eps": 2343.0, "pe": 11.2}, {"d": "2024-11-26", "c": 24850.0, "eps": 2346.0, "pe": 10.6}, {"d": "2024-11-27", "c": 25850.0, "eps": 2348.0, "pe": 11.0}, {"d": "2024-11-28", "c": 25550.0, "eps": 2351.0, "pe": 10.9}, {"d": "2024-11-29", "c": 24500.0, "eps": 2353.0, "pe": 10.4}, {"d": "2024-12-02", "c": 25100.0, "eps": 2361.0, "pe": 10.6}, {"d": "2024-12-03", "c": 28200.0, "eps": 2363.0, "pe": 11.9}, {"d": "2024-12-04", "c": 27000.0, "eps": 2366.0, "pe": 11.4}, {"d": "2024-12-05", "c": 26250.0, "eps": 2368.0, "pe": 11.1}, {"d": "2024-12-06", "c": 25650.0, "eps": 2371.0, "pe": 10.8}, {"d": "2024-12-09", "c": 23550.0, "eps": 2378.0, "pe": 9.9}, {"d": "2024-12-10", "c": 26600.0, "eps": 2381.0, "pe": 11.2}, {"d": "2024-12-11", "c": 28450.0, "eps": 2383.0, "pe": 11.9}, {"d": "2024-12-12", "c": 28400.0, "eps": 2386.0, "pe": 11.9}, {"d": "2024-12-13", "c": 30100.0, "eps": 2388.0, "pe": 12.6}, {"d": "2024-12-16", "c": 30300.0, "eps": 2396.0, "pe": 12.6}, {"d": "2024-12-17", "c": 30850.0, "eps": 2398.0, "pe": 12.9}, {"d": "2024-12-18", "c": 29500.0, "eps": 2401.0, "pe": 12.3}, {"d": "2024-12-19", "c": 31750.0, "eps": 2403.0, "pe": 13.2}, {"d": "2024-12-20", "c": 31750.0, "eps": 2406.0, "pe": 13.2}, {"d": "2024-12-23", "c": 31100.0, "eps": 2413.0, "pe": 12.9}, {"d": "2024-12-24", "c": 31750.0, "eps": 2416.0, "pe": 13.1}, {"d": "2024-12-26", "c": 31700.0, "eps": 2421.0, "pe": 13.1}, {"d": "2024-12-27", "c": 30700.0, "eps": 2423.0, "pe": 12.7}, {"d": "2024-12-30", "c": 32700.0, "eps": 2431.0, "pe": 13.5}, {"d": "2025-01-02", "c": 33700.0, "eps": 2438.0, "pe": 13.8}, {"d": "2025-01-03", "c": 34550.0, "eps": 2441.0, "pe": 14.2}, {"d": "2025-01-06", "c": 33450.0, "eps": 2448.0, "pe": 13.7}, {"d": "2025-01-07", "c": 34050.0, "eps": 2451.0, "pe": 13.9}, {"d": "2025-01-08", "c": 33000.0, "eps": 2453.0, "pe": 13.5}, {"d": "2025-01-09", "c": 33100.0, "eps": 2456.0, "pe": 13.5}, {"d": "2025-01-10", "c": 31850.0, "eps": 2458.0, "pe": 13.0}, {"d": "2025-01-13", "c": 31600.0, "eps": 2466.0, "pe": 12.8}, {"d": "2025-01-14", "c": 30700.0, "eps": 2468.0, "pe": 12.4}, {"d": "2025-01-15", "c": 31000.0, "eps": 2471.0, "pe": 12.5}, {"d": "2025-01-16", "c": 33900.0, "eps": 2473.0, "pe": 13.7}, {"d": "2025-01-17", "c": 33900.0, "eps": 2476.0, "pe": 13.7}, {"d": "2025-01-20", "c": 32400.0, "eps": 2483.0, "pe": 13.0}, {"d": "2025-01-21", "c": 33600.0, "eps": 2486.0, "pe": 13.5}, {"d": "2025-01-22", "c": 32700.0, "eps": 2488.0, "pe": 13.1}, {"d": "2025-01-23", "c": 31650.0, "eps": 2491.0, "pe": 12.7}, {"d": "2025-01-24", "c": 31750.0, "eps": 2493.0, "pe": 12.7}, {"d": "2025-01-31", "c": 30850.0, "eps": 2511.0, "pe": 12.3}, {"d": "2025-02-03", "c": 29200.0, "eps": 2518.0, "pe": 11.6}, {"d": "2025-02-04", "c": 29950.0, "eps": 2521.0, "pe": 11.9}, {"d": "2025-02-05", "c": 29050.0, "eps": 2523.0, "pe": 11.5}, {"d": "2025-02-06", "c": 28600.0, "eps": 2526.0, "pe": 11.3}, {"d": "2025-02-07", "c": 28550.0, "eps": 2528.0, "pe": 11.3}, {"d": "2025-02-10", "c": 28350.0, "eps": 2536.0, "pe": 11.2}, {"d": "2025-02-11", "c": 27900.0, "eps": 2538.0, "pe": 11.0}, {"d": "2025-02-12", "c": 28750.0, "eps": 2541.0, "pe": 11.3}, {"d": "2025-02-13", "c": 30450.0, "eps": 2543.0, "pe": 12.0}, {"d": "2025-02-14", "c": 30950.0, "eps": 2546.0, "pe": 12.2}, {"d": "2025-02-17", "c": 31200.0, "eps": 2553.0, "pe": 12.2}, {"d": "2025-02-18", "c": 31650.0, "eps": 2556.0, "pe": 12.4}, {"d": "2025-02-19", "c": 32300.0, "eps": 2558.0, "pe": 12.6}, {"d": "2025-02-20", "c": 31500.0, "eps": 2561.0, "pe": 12.3}, {"d": "2025-02-21", "c": 33800.0, "eps": 2563.0, "pe": 13.2}, {"d": "2025-02-24", "c": 35950.0, "eps": 2571.0, "pe": 14.0}, {"d": "2025-02-25", "c": 34650.0, "eps": 2573.0, "pe": 13.5}, {"d": "2025-02-26", "c": 26700.0, "eps": 2576.0, "pe": 10.4}, {"d": "2025-02-27", "c": 25800.0, "eps": 2578.0, "pe": 10.0}, {"d": "2025-02-28", "c": 26650.0, "eps": 2581.0, "pe": 10.3}, {"d": "2025-03-04", "c": 25750.0, "eps": 2591.0, "pe": 9.9}, {"d": "2025-03-05", "c": 26050.0, "eps": 2593.0, "pe": 10.0}, {"d": "2025-03-06", "c": 25600.0, "eps": 2596.0, "pe": 9.9}, {"d": "2025-03-07", "c": 25250.0, "eps": 2598.0, "pe": 9.7}, {"d": "2025-03-10", "c": 24300.0, "eps": 2606.0, "pe": 9.3}, {"d": "2025-03-11", "c": 24400.0, "eps": 2608.0, "pe": 9.4}, {"d": "2025-03-12", "c": 25100.0, "eps": 2611.0, "pe": 9.6}, {"d": "2025-03-13", "c": 26650.0, "eps": 2613.0, "pe": 10.2}, {"d": "2025-03-14", "c": 26800.0, "eps": 2616.0, "pe": 10.2}, {"d": "2025-03-17", "c": 26700.0, "eps": 2623.0, "pe": 10.2}, {"d": "2025-03-18", "c": 26350.0, "eps": 2626.0, "pe": 10.0}, {"d": "2025-03-19", "c": 26650.0, "eps": 2628.0, "pe": 10.1}, {"d": "2025-03-20", "c": 28650.0, "eps": 2631.0, "pe": 10.9}, {"d": "2025-03-21", "c": 28400.0, "eps": 2633.0, "pe": 10.8}, {"d": "2025-03-24", "c": 28450.0, "eps": 2641.0, "pe": 10.8}, {"d": "2025-03-25", "c": 27000.0, "eps": 2643.0, "pe": 10.2}, {"d": "2025-03-26", "c": 27300.0, "eps": 2645.0, "pe": 10.3}, {"d": "2025-03-27", "c": 26000.0, "eps": 2648.0, "pe": 9.8}, {"d": "2025-03-28", "c": 25850.0, "eps": 2650.0, "pe": 9.8}, {"d": "2025-03-31", "c": 24300.0, "eps": 2657.0, "pe": 9.1}, {"d": "2025-04-01", "c": 26950.0, "eps": 2660.0, "pe": 10.1}, {"d": "2025-04-02", "c": 28700.0, "eps": 2662.0, "pe": 10.8}, {"d": "2025-04-03", "c": 26800.0, "eps": 2664.0, "pe": 10.1}, {"d": "2025-04-04", "c": 27950.0, "eps": 2667.0, "pe": 10.5}, {"d": "2025-04-07", "c": 26850.0, "eps": 2674.0, "pe": 10.0}, {"d": "2025-04-08", "c": 26950.0, "eps": 2676.0, "pe": 10.1}, {"d": "2025-04-09", "c": 27400.0, "eps": 2679.0, "pe": 10.2}, {"d": "2025-04-10", "c": 29350.0, "eps": 2681.0, "pe": 10.9}, {"d": "2025-04-11", "c": 31150.0, "eps": 2684.0, "pe": 11.6}, {"d": "2025-04-14", "c": 32350.0, "eps": 2691.0, "pe": 12.0}, {"d": "2025-04-15", "c": 31900.0, "eps": 2693.0, "pe": 11.8}, {"d": "2025-04-16", "c": 32750.0, "eps": 2696.0, "pe": 12.1}, {"d": "2025-04-17", "c": 34550.0, "eps": 2698.0, "pe": 12.8}, {"d": "2025-04-18", "c": 33950.0, "eps": 2700.0, "pe": 12.6}, {"d": "2025-04-21", "c": 32700.0, "eps": 2708.0, "pe": 12.1}, {"d": "2025-04-22", "c": 33150.0, "eps": 2710.0, "pe": 12.2}, {"d": "2025-04-23", "c": 31850.0, "eps": 2712.0, "pe": 11.7}, {"d": "2025-04-24", "c": 31650.0, "eps": 2715.0, "pe": 11.7}, {"d": "2025-04-25", "c": 34600.0, "eps": 2717.0, "pe": 12.7}, {"d": "2025-04-28", "c": 35500.0, "eps": 2724.0, "pe": 13.0}, {"d": "2025-04-29", "c": 36350.0, "eps": 2727.0, "pe": 13.3}, {"d": "2025-04-30", "c": 35850.0, "eps": 2729.0, "pe": 13.1}, {"d": "2025-05-02", "c": 37100.0, "eps": 2734.0, "pe": 13.6}, {"d": "2025-05-07", "c": 37100.0, "eps": 2746.0, "pe": 13.5}, {"d": "2025-05-08", "c": 41050.0, "eps": 2748.0, "pe": 14.9}, {"d": "2025-05-09", "c": 42900.0, "eps": 2751.0, "pe": 15.6}, {"d": "2025-05-12", "c": 39700.0, "eps": 2758.0, "pe": 14.4}, {"d": "2025-05-13", "c": 38750.0, "eps": 2760.0, "pe": 14.0}, {"d": "2025-05-14", "c": 37850.0, "eps": 2763.0, "pe": 13.7}, {"d": "2025-05-15", "c": 37200.0, "eps": 2765.0, "pe": 13.5}, {"d": "2025-05-16", "c": 38100.0, "eps": 2767.0, "pe": 13.8}, {"d": "2025-05-19", "c": 36500.0, "eps": 2775.0, "pe": 13.2}, {"d": "2025-05-20", "c": 42000.0, "eps": 2777.0, "pe": 15.1}, {"d": "2025-05-21", "c": 40150.0, "eps": 2779.0, "pe": 14.4}, {"d": "2025-05-22", "c": 38650.0, "eps": 2782.0, "pe": 13.9}, {"d": "2025-05-23", "c": 40150.0, "eps": 2784.0, "pe": 14.4}, {"d": "2025-05-26", "c": 42300.0, "eps": 2791.0, "pe": 15.2}, {"d": "2025-05-27", "c": 42050.0, "eps": 2794.0, "pe": 15.1}, {"d": "2025-05-28", "c": 45250.0, "eps": 2796.0, "pe": 16.2}, {"d": "2025-05-29", "c": 47250.0, "eps": 2799.0, "pe": 16.9}, {"d": "2025-05-30", "c": 46750.0, "eps": 2801.0, "pe": 16.7}, {"d": "2025-06-02", "c": 51300.0, "eps": 2808.0, "pe": 18.3}, {"d": "2025-06-04", "c": 52000.0, "eps": 2813.0, "pe": 18.5}, {"d": "2025-06-05", "c": 51400.0, "eps": 2815.0, "pe": 18.3}, {"d": "2025-06-09", "c": 51600.0, "eps": 2825.0, "pe": 18.3}, {"d": "2025-06-10", "c": 51900.0, "eps": 2827.0, "pe": 18.4}, {"d": "2025-06-11", "c": 60700.0, "eps": 2830.0, "pe": 21.5}, {"d": "2025-06-12", "c": 55100.0, "eps": 2832.0, "pe": 19.5}, {"d": "2025-06-13", "c": 53700.0, "eps": 2834.0, "pe": 18.9}, {"d": "2025-06-16", "c": 54600.0, "eps": 2842.0, "pe": 19.2}, {"d": "2025-06-17", "c": 55000.0, "eps": 2844.0, "pe": 19.3}, {"d": "2025-06-18", "c": 56900.0, "eps": 2846.0, "pe": 20.0}, {"d": "2025-06-19", "c": 55500.0, "eps": 2849.0, "pe": 19.5}, {"d": "2025-06-20", "c": 57000.0, "eps": 2851.0, "pe": 20.0}, {"d": "2025-06-23", "c": 57600.0, "eps": 2858.0, "pe": 20.2}, {"d": "2025-06-24", "c": 58000.0, "eps": 2861.0, "pe": 20.3}, {"d": "2025-06-25", "c": 56100.0, "eps": 2863.0, "pe": 19.6}, {"d": "2025-06-26", "c": 56600.0, "eps": 2866.0, "pe": 19.8}, {"d": "2025-06-27", "c": 55300.0, "eps": 2868.0, "pe": 19.3}, {"d": "2025-06-30", "c": 62900.0, "eps": 2875.0, "pe": 21.9}, {"d": "2025-07-01", "c": 61400.0, "eps": 2878.0, "pe": 21.3}, {"d": "2025-07-02", "c": 53500.0, "eps": 2880.0, "pe": 18.6}, {"d": "2025-07-03", "c": 52300.0, "eps": 2882.0, "pe": 18.1}, {"d": "2025-07-04", "c": 49550.0, "eps": 2885.0, "pe": 17.2}, {"d": "2025-07-07", "c": 51400.0, "eps": 2892.0, "pe": 17.8}, {"d": "2025-07-08", "c": 53600.0, "eps": 2894.0, "pe": 18.5}, {"d": "2025-07-09", "c": 54400.0, "eps": 2897.0, "pe": 18.8}, {"d": "2025-07-10", "c": 54500.0, "eps": 2899.0, "pe": 18.8}, {"d": "2025-07-11", "c": 54500.0, "eps": 2902.0, "pe": 18.8}, {"d": "2025-07-14", "c": 54500.0, "eps": 2909.0, "pe": 18.7}, {"d": "2025-07-15", "c": 56500.0, "eps": 2911.0, "pe": 19.4}, {"d": "2025-07-16", "c": 53000.0, "eps": 2913.0, "pe": 18.2}, {"d": "2025-07-17", "c": 53000.0, "eps": 2916.0, "pe": 18.2}, {"d": "2025-07-18", "c": 50800.0, "eps": 2918.0, "pe": 17.4}, {"d": "2025-07-21", "c": 51200.0, "eps": 2925.0, "pe": 17.5}, {"d": "2025-07-22", "c": 50900.0, "eps": 2928.0, "pe": 17.4}, {"d": "2025-07-23", "c": 51000.0, "eps": 2930.0, "pe": 17.4}, {"d": "2025-07-24", "c": 49850.0, "eps": 2933.0, "pe": 17.0}, {"d": "2025-07-25", "c": 49900.0, "eps": 2935.0, "pe": 17.0}, {"d": "2025-07-28", "c": 48350.0, "eps": 2942.0, "pe": 16.4}, {"d": "2025-07-29", "c": 49650.0, "eps": 2945.0, "pe": 16.9}, {"d": "2025-07-30", "c": 50400.0, "eps": 2947.0, "pe": 17.1}, {"d": "2025-07-31", "c": 51900.0, "eps": 2949.0, "pe": 17.6}, {"d": "2025-08-01", "c": 48250.0, "eps": 2952.0, "pe": 16.3}, {"d": "2025-08-04", "c": 49450.0, "eps": 2958.0, "pe": 16.7}, {"d": "2025-08-05", "c": 52100.0, "eps": 2961.0, "pe": 17.6}, {"d": "2025-08-06", "c": 52000.0, "eps": 2963.0, "pe": 17.6}, {"d": "2025-08-07", "c": 52600.0, "eps": 2965.0, "pe": 17.7}, {"d": "2025-08-08", "c": 53300.0, "eps": 2967.0, "pe": 18.0}, {"d": "2025-08-11", "c": 43650.0, "eps": 2974.0, "pe": 14.7}, {"d": "2025-08-12", "c": 42750.0, "eps": 2976.0, "pe": 14.4}, {"d": "2025-08-13", "c": 43800.0, "eps": 2978.0, "pe": 14.7}, {"d": "2025-08-14", "c": 45450.0, "eps": 2981.0, "pe": 15.2}, {"d": "2025-08-18", "c": 45250.0, "eps": 2990.0, "pe": 15.1}, {"d": "2025-08-19", "c": 44700.0, "eps": 2992.0, "pe": 14.9}, {"d": "2025-08-20", "c": 45600.0, "eps": 2994.0, "pe": 15.2}, {"d": "2025-08-21", "c": 47500.0, "eps": 2996.0, "pe": 15.9}, {"d": "2025-08-22", "c": 47200.0, "eps": 2998.0, "pe": 15.7}, {"d": "2025-08-25", "c": 46400.0, "eps": 3005.0, "pe": 15.4}, {"d": "2025-08-26", "c": 46900.0, "eps": 3007.0, "pe": 15.6}, {"d": "2025-08-27", "c": 45950.0, "eps": 3010.0, "pe": 15.3}, {"d": "2025-08-28", "c": 45700.0, "eps": 3012.0, "pe": 15.2}, {"d": "2025-08-29", "c": 44750.0, "eps": 3014.0, "pe": 14.8}, {"d": "2025-09-01", "c": 43950.0, "eps": 3021.0, "pe": 14.5}, {"d": "2025-09-02", "c": 43500.0, "eps": 3023.0, "pe": 14.4}, {"d": "2025-09-03", "c": 42850.0, "eps": 3025.0, "pe": 14.2}, {"d": "2025-09-04", "c": 43050.0, "eps": 3027.0, "pe": 14.2}, {"d": "2025-09-05", "c": 42000.0, "eps": 3030.0, "pe": 13.9}, {"d": "2025-09-08", "c": 42700.0, "eps": 3036.0, "pe": 14.1}, {"d": "2025-09-09", "c": 42500.0, "eps": 3038.0, "pe": 14.0}, {"d": "2025-09-10", "c": 41950.0, "eps": 3041.0, "pe": 13.8}, {"d": "2025-09-11", "c": 42600.0, "eps": 3043.0, "pe": 14.0}, {"d": "2025-09-12", "c": 41800.0, "eps": 3045.0, "pe": 13.7}, {"d": "2025-09-15", "c": 41900.0, "eps": 3052.0, "pe": 13.7}, {"d": "2025-09-16", "c": 43150.0, "eps": 3054.0, "pe": 14.1}, {"d": "2025-09-17", "c": 44650.0, "eps": 3056.0, "pe": 14.6}, {"d": "2025-09-18", "c": 45950.0, "eps": 3058.0, "pe": 15.0}, {"d": "2025-09-19", "c": 46100.0, "eps": 3061.0, "pe": 15.1}, {"d": "2025-09-22", "c": 46600.0, "eps": 3067.0, "pe": 15.2}, {"d": "2025-09-23", "c": 45950.0, "eps": 3070.0, "pe": 15.0}, {"d": "2025-09-24", "c": 45150.0, "eps": 3072.0, "pe": 14.7}, {"d": "2025-09-25", "c": 44450.0, "eps": 3074.0, "pe": 14.5}, {"d": "2025-09-26", "c": 44750.0, "eps": 3076.0, "pe": 14.5}, {"d": "2025-09-29", "c": 46400.0, "eps": 3083.0, "pe": 15.1}, {"d": "2025-09-30", "c": 46000.0, "eps": 3085.0, "pe": 14.9}, {"d": "2025-10-01", "c": 47400.0, "eps": 3087.0, "pe": 15.4}, {"d": "2025-10-02", "c": 47250.0, "eps": 3090.0, "pe": 15.3}, {"d": "2025-10-10", "c": 46450.0, "eps": 3107.0, "pe": 14.9}, {"d": "2025-10-13", "c": 46050.0, "eps": 3114.0, "pe": 14.8}, {"d": "2025-10-14", "c": 42700.0, "eps": 3116.0, "pe": 13.7}, {"d": "2025-10-15", "c": 43400.0, "eps": 3118.0, "pe": 13.9}, {"d": "2025-10-16", "c": 43350.0, "eps": 3121.0, "pe": 13.9}, {"d": "2025-10-17", "c": 42450.0, "eps": 3123.0, "pe": 13.6}, {"d": "2025-10-20", "c": 44200.0, "eps": 3130.0, "pe": 14.1}, {"d": "2025-10-21", "c": 42850.0, "eps": 3132.0, "pe": 13.7}, {"d": "2025-10-22", "c": 43250.0, "eps": 3134.0, "pe": 13.8}, {"d": "2025-10-23", "c": 46050.0, "eps": 3136.0, "pe": 14.7}, {"d": "2025-10-24", "c": 44600.0, "eps": 3138.0, "pe": 14.2}, {"d": "2025-10-27", "c": 43950.0, "eps": 3145.0, "pe": 14.0}, {"d": "2025-10-28", "c": 45600.0, "eps": 3147.0, "pe": 14.5}, {"d": "2025-10-29", "c": 44100.0, "eps": 3150.0, "pe": 14.0}, {"d": "2025-10-30", "c": 45800.0, "eps": 3152.0, "pe": 14.5}, {"d": "2025-10-31", "c": 45250.0, "eps": 3154.0, "pe": 14.3}, {"d": "2025-11-03", "c": 45350.0, "eps": 3161.0, "pe": 14.3}, {"d": "2025-11-04", "c": 43900.0, "eps": 3163.0, "pe": 13.9}, {"d": "2025-11-05", "c": 42300.0, "eps": 3165.0, "pe": 13.4}, {"d": "2025-11-06", "c": 39700.0, "eps": 3167.0, "pe": 12.5}, {"d": "2025-11-07", "c": 39650.0, "eps": 3170.0, "pe": 12.5}, {"d": "2025-11-10", "c": 44500.0, "eps": 3176.0, "pe": 14.0}, {"d": "2025-11-11", "c": 41300.0, "eps": 3178.0, "pe": 13.0}, {"d": "2025-11-12", "c": 42150.0, "eps": 3181.0, "pe": 13.3}, {"d": "2025-11-13", "c": 42850.0, "eps": 3183.0, "pe": 13.5}, {"d": "2025-11-14", "c": 44350.0, "eps": 3185.0, "pe": 13.9}, {"d": "2025-11-17", "c": 45200.0, "eps": 3192.0, "pe": 14.2}, {"d": "2025-11-18", "c": 45050.0, "eps": 3194.0, "pe": 14.1}, {"d": "2025-11-19", "c": 46650.0, "eps": 3196.0, "pe": 14.6}, {"d": "2025-11-20", "c": 46900.0, "eps": 3198.0, "pe": 14.7}, {"d": "2025-11-21", "c": 45450.0, "eps": 3201.0, "pe": 14.2}, {"d": "2025-11-24", "c": 46800.0, "eps": 3207.0, "pe": 14.6}, {"d": "2025-11-25", "c": 44700.0, "eps": 3210.0, "pe": 13.9}, {"d": "2025-11-26", "c": 44650.0, "eps": 3212.0, "pe": 13.9}, {"d": "2025-11-27", "c": 43550.0, "eps": 3214.0, "pe": 13.5}, {"d": "2025-11-28", "c": 45450.0, "eps": 3216.0, "pe": 14.1}, {"d": "2025-12-01", "c": 43900.0, "eps": 3223.0, "pe": 13.6}, {"d": "2025-12-02", "c": 44950.0, "eps": 3225.0, "pe": 13.9}, {"d": "2025-12-03", "c": 43850.0, "eps": 3227.0, "pe": 13.6}, {"d": "2025-12-04", "c": 42650.0, "eps": 3230.0, "pe": 13.2}, {"d": "2025-12-05", "c": 41750.0, "eps": 3232.0, "pe": 12.9}, {"d": "2025-12-08", "c": 41850.0, "eps": 3238.0, "pe": 12.9}, {"d": "2025-12-09", "c": 41250.0, "eps": 3241.0, "pe": 12.7}, {"d": "2025-12-10", "c": 41750.0, "eps": 3243.0, "pe": 12.9}, {"d": "2025-12-11", "c": 41200.0, "eps": 3245.0, "pe": 12.7}, {"d": "2025-12-12", "c": 40950.0, "eps": 3247.0, "pe": 12.6}, {"d": "2025-12-15", "c": 41750.0, "eps": 3254.0, "pe": 12.8}, {"d": "2025-12-16", "c": 42850.0, "eps": 3256.0, "pe": 13.2}, {"d": "2025-12-17", "c": 41350.0, "eps": 3258.0, "pe": 12.7}, {"d": "2025-12-18", "c": 40350.0, "eps": 3261.0, "pe": 12.4}, {"d": "2025-12-19", "c": 40550.0, "eps": 3263.0, "pe": 12.4}, {"d": "2025-12-22", "c": 40800.0, "eps": 3270.0, "pe": 12.5}, {"d": "2025-12-23", "c": 39700.0, "eps": 3272.0, "pe": 12.1}, {"d": "2025-12-24", "c": 39050.0, "eps": 3274.0, "pe": 11.9}, {"d": "2025-12-26", "c": 37850.0, "eps": 3278.0, "pe": 11.5}, {"d": "2025-12-29", "c": 38350.0, "eps": 3285.0, "pe": 11.7}, {"d": "2025-12-30", "c": 39000.0, "eps": 3287.0, "pe": 11.9}, {"d": "2026-01-02", "c": 40600.0, "eps": 3294.0, "pe": 12.3}, {"d": "2026-01-05", "c": 40450.0, "eps": 3301.0, "pe": 12.3}, {"d": "2026-01-06", "c": 40450.0, "eps": 3303.0, "pe": 12.2}, {"d": "2026-01-07", "c": 41900.0, "eps": 3305.0, "pe": 12.7}, {"d": "2026-01-08", "c": 42700.0, "eps": 3307.0, "pe": 12.9}, {"d": "2026-01-09", "c": 43800.0, "eps": 3310.0, "pe": 13.2}, {"d": "2026-01-12", "c": 41950.0, "eps": 3316.0, "pe": 12.6}, {"d": "2026-01-13", "c": 42000.0, "eps": 3318.0, "pe": 12.7}, {"d": "2026-01-14", "c": 43450.0, "eps": 3321.0, "pe": 13.1}, {"d": "2026-01-15", "c": 42950.0, "eps": 3323.0, "pe": 12.9}, {"d": "2026-01-16", "c": 42250.0, "eps": 3325.0, "pe": 12.7}, {"d": "2026-01-19", "c": 40100.0, "eps": 3332.0, "pe": 12.0}, {"d": "2026-01-20", "c": 43150.0, "eps": 3334.0, "pe": 12.9}, {"d": "2026-01-21", "c": 47950.0, "eps": 3336.0, "pe": 14.4}, {"d": "2026-01-22", "c": 49050.0, "eps": 3338.0, "pe": 14.7}, {"d": "2026-01-23", "c": 49450.0, "eps": 3341.0, "pe": 14.8}, {"d": "2026-01-26", "c": 52600.0, "eps": 3347.0, "pe": 15.7}, {"d": "2026-01-27", "c": 51500.0, "eps": 3350.0, "pe": 15.4}, {"d": "2026-01-28", "c": 51500.0, "eps": 3352.0, "pe": 15.4}, {"d": "2026-01-29", "c": 54300.0, "eps": 3354.0, "pe": 16.2}, {"d": "2026-01-30", "c": 52000.0, "eps": 3356.0, "pe": 15.5}, {"d": "2026-02-02", "c": 51900.0, "eps": 3363.0, "pe": 15.4}, {"d": "2026-02-03", "c": 46000.0, "eps": 3365.0, "pe": 13.7}, {"d": "2026-02-04", "c": 44950.0, "eps": 3367.0, "pe": 13.3}, {"d": "2026-02-05", "c": 43100.0, "eps": 3370.0, "pe": 12.8}, {"d": "2026-02-06", "c": 41500.0, "eps": 3372.0, "pe": 12.3}, {"d": "2026-02-09", "c": 44600.0, "eps": 3378.0, "pe": 13.2}, {"d": "2026-02-10", "c": 43900.0, "eps": 3381.0, "pe": 13.0}, {"d": "2026-02-11", "c": 43000.0, "eps": 3383.0, "pe": 12.7}, {"d": "2026-02-12", "c": 43050.0, "eps": 3385.0, "pe": 12.7}, {"d": "2026-02-13", "c": 43250.0, "eps": 3387.0, "pe": 12.8}, {"d": "2026-02-19", "c": 44200.0, "eps": 3401.0, "pe": 13.0}, {"d": "2026-02-20", "c": 43650.0, "eps": 3403.0, "pe": 12.8}, {"d": "2026-02-23", "c": 45400.0, "eps": 3410.0, "pe": 13.3}, {"d": "2026-02-24", "c": 45150.0, "eps": 3412.0, "pe": 13.2}, {"d": "2026-02-25", "c": 43950.0, "eps": 3414.0, "pe": 12.9}, {"d": "2026-02-26", "c": 42500.0, "eps": 3416.0, "pe": 12.4}, {"d": "2026-02-27", "c": 44050.0, "eps": 3418.0, "pe": 12.9}, {"d": "2026-03-03", "c": 40000.0, "eps": 3427.0, "pe": 11.7}, {"d": "2026-03-04", "c": 37500.0, "eps": 3430.0, "pe": 10.9}, {"d": "2026-03-05", "c": 39000.0, "eps": 3432.0, "pe": 11.4}, {"d": "2026-03-06", "c": 39850.0, "eps": 3434.0, "pe": 11.6}, {"d": "2026-03-09", "c": 36050.0, "eps": 3441.0, "pe": 10.5}, {"d": "2026-03-10", "c": 38700.0, "eps": 3443.0, "pe": 11.2}, {"d": "2026-03-11", "c": 37750.0, "eps": 3445.0, "pe": 11.0}, {"d": "2026-03-12", "c": 36900.0, "eps": 3447.0, "pe": 10.7}, {"d": "2026-03-13", "c": 36500.0, "eps": 3450.0, "pe": 10.6}, {"d": "2026-03-16", "c": 35400.0, "eps": 3456.0, "pe": 10.2}, {"d": "2026-03-17", "c": 38600.0, "eps": 3458.0, "pe": 11.2}, {"d": "2026-03-18", "c": 38200.0, "eps": 3461.0, "pe": 11.0}, {"d": "2026-03-19", "c": 36500.0, "eps": 3463.0, "pe": 10.5}, {"d": "2026-03-20", "c": 38600.0, "eps": 3465.0, "pe": 11.1}, {"d": "2026-03-23", "c": 37800.0, "eps": 3489.0, "pe": 10.8}, {"d": "2026-03-24", "c": 38900.0, "eps": 3497.0, "pe": 11.1}, {"d": "2026-03-25", "c": 38650.0, "eps": 3505.0, "pe": 11.0}, {"d": "2026-03-26", "c": 36450.0, "eps": 3513.0, "pe": 10.4}, {"d": "2026-03-27", "c": 38400.0, "eps": 3521.0, "pe": 10.9}, {"d": "2026-03-30", "c": 37800.0, "eps": 3545.0, "pe": 10.7}, {"d": "2026-03-31", "c": 38550.0, "eps": 3553.0, "pe": 10.8}, {"d": "2026-04-01", "c": 39950.0, "eps": 3561.0, "pe": 11.2}, {"d": "2026-04-02", "c": 38750.0, "eps": 3569.0, "pe": 10.9}, {"d": "2026-04-03", "c": 39350.0, "eps": 3577.0, "pe": 11.0}, {"d": "2026-04-06", "c": 38200.0, "eps": 3602.0, "pe": 10.6}, {"d": "2026-04-07", "c": 38250.0, "eps": 3610.0, "pe": 10.6}, {"d": "2026-04-08", "c": 41600.0, "eps": 3618.0, "pe": 11.5}, {"d": "2026-04-09", "c": 43000.0, "eps": 3626.0, "pe": 11.9}, {"d": "2026-04-10", "c": 42750.0, "eps": 3634.0, "pe": 11.8}, {"d": "2026-04-13", "c": 47150.0, "eps": 3658.0, "pe": 12.9}, {"d": "2026-04-14", "c": 46800.0, "eps": 3666.0, "pe": 12.8}, {"d": "2026-04-15", "c": 46400.0, "eps": 3674.0, "pe": 12.6}, {"d": "2026-04-16", "c": 46750.0, "eps": 3682.0, "pe": 12.7}, {"d": "2026-04-17", "c": 47100.0, "eps": 3690.0, "pe": 12.8}, {"d": "2026-04-20", "c": 47450.0, "eps": 3714.0, "pe": 12.8}, {"d": "2026-04-21", "c": 48650.0, "eps": 3722.0, "pe": 13.1}, {"d": "2026-04-22", "c": 48750.0, "eps": 3730.0, "pe": 13.1}, {"d": "2026-04-23", "c": 47600.0, "eps": 3738.0, "pe": 12.7}, {"d": "2026-04-24", "c": 45950.0, "eps": 3746.0, "pe": 12.3}, {"d": "2026-04-27", "c": 45250.0, "eps": 3770.0, "pe": 12.0}, {"d": "2026-04-28", "c": 44700.0, "eps": 3778.0, "pe": 11.8}, {"d": "2026-04-29", "c": 45100.0, "eps": 3786.0, "pe": 11.9}, {"d": "2026-04-30", "c": 44050.0, "eps": 3794.0, "pe": 11.6}, {"d": "2026-05-04", "c": 43650.0, "eps": 3826.0, "pe": 11.4}, {"d": "2026-05-06", "c": 43550.0, "eps": 3842.0, "pe": 11.3}, {"d": "2026-05-07", "c": 45500.0, "eps": 3850.0, "pe": 11.8}, {"d": "2026-05-08", "c": 45300.0, "eps": 3858.0, "pe": 11.7}, {"d": "2026-05-11", "c": 44200.0, "eps": 3882.0, "pe": 11.4}, {"d": "2026-05-12", "c": 41700.0, "eps": 3890.0, "pe": 10.7}, {"d": "2026-05-13", "c": 40650.0, "eps": 3898.0, "pe": 10.4}, {"d": "2026-05-14", "c": 41250.0, "eps": 3906.0, "pe": 10.6}, {"d": "2026-05-15", "c": 38250.0, "eps": 3914.0, "pe": 9.8}, {"d": "2026-05-18", "c": 39100.0, "eps": 3914.0, "pe": 10.0}, {"d": "2026-05-19", "c": 39900.0, "eps": 3914.0, "pe": 10.2}, {"d": "2026-05-20", "c": 38150.0, "eps": 3914.0, "pe": 9.7}, {"d": "2026-05-21", "c": 37650.0, "eps": 3914.0, "pe": 9.6}, {"d": "2026-05-22", "c": 38850.0, "eps": 3914.0, "pe": 9.9}, {"d": "2026-05-26", "c": 37900.0, "eps": 3914.0, "pe": 9.7}, {"d": "2026-05-27", "c": 37400.0, "eps": 3914.0, "pe": 9.6}, {"d": "2026-05-28", "c": 36650.0, "eps": 3914.0, "pe": 9.4}, {"d": "2026-05-29", "c": 36150.0, "eps": 3914.0, "pe": 9.2}, {"d": "2026-06-01", "c": 35850.0, "eps": 3914.0, "pe": 9.2}, {"d": "2026-06-02", "c": 35400.0, "eps": 3914.0, "pe": 9.0}, {"d": "2026-06-04", "c": 35650.0, "eps": 3914.0, "pe": 9.1}, {"d": "2026-06-05", "c": 34150.0, "eps": 3914.0, "pe": 8.7}, {"d": "2026-06-08", "c": 32850.0, "eps": 3914.0, "pe": 8.4}, {"d": "2026-06-09", "c": 33550.0, "eps": 3914.0, "pe": 8.6}, {"d": "2026-06-10", "c": 34050.0, "eps": 3914.0, "pe": 8.7}, {"d": "2026-06-11", "c": 35550.0, "eps": 3914.0, "pe": 9.1}, {"d": "2026-06-12", "c": 34800.0, "eps": 3914.0, "pe": 8.9}, {"d": "2026-06-15", "c": 36050.0, "eps": 3914.0, "pe": 9.2}, {"d": "2026-06-16", "c": 35150.0, "eps": 3914.0, "pe": 9.0}, {"d": "2026-06-17", "c": 35150.0, "eps": 3914.0, "pe": 9.0}, {"d": "2026-06-18", "c": 33750.0, "eps": 3914.0, "pe": 8.6}, {"d": "2026-06-19", "c": 33000.0, "eps": 3914.0, "pe": 8.4}, {"d": "2026-06-22", "c": 34750.0, "eps": 3914.0, "pe": 8.9}, {"d": "2026-06-23", "c": 33150.0, "eps": 3914.0, "pe": 8.5}, {"d": "2026-06-24", "c": 33700.0, "eps": 3914.0, "pe": 8.6}, {"d": "2026-06-25", "c": 32050.0, "eps": 3914.0, "pe": 8.2}, {"d": "2026-06-26", "c": 30050.0, "eps": 3914.0, "pe": 7.7}, {"d": "2026-06-29", "c": 32950.0, "eps": 3914.0, "pe": 8.4}, {"d": "2026-06-30", "c": 31800.0, "eps": 3914.0, "pe": 8.1}, {"d": "2026-07-01", "c": 35950.0, "eps": 3914.0, "pe": 9.2}, {"d": "2026-07-02", "c": 35200.0, "eps": 3914.0, "pe": 9.0}, {"d": "2026-07-03", "c": 36350.0, "eps": 3914.0, "pe": 9.3}, {"d": "2026-07-06", "c": 37700.0, "eps": 3914.0, "pe": 9.6}, {"d": "2026-07-07", "c": 38850.0, "eps": 3914.0, "pe": 9.9}, {"d": "2026-07-08", "c": 34600.0, "eps": 3914.0, "pe": 8.8}, {"d": "2026-07-09", "c": 35600.0, "eps": 3914.0, "pe": 9.1}, {"d": "2026-07-10", "c": 38100.0, "eps": 3914.0, "pe": 9.7}, {"d": "2026-07-13", "c": 38750.0, "eps": 3914.0, "pe": 9.9}, {"d": "2026-07-14", "c": 36300.0, "eps": 3914.0, "pe": 9.3}, {"d": "2026-07-15", "c": 36200.0, "eps": 3914.0, "pe": 9.2}, {"d": "2026-07-16", "c": 35800.0, "eps": 3914.0, "pe": 9.1}], "stats": {"avg": 12.5, "min": 3.7, "max": 28.7, "min_day": "2023-05-04", "max_day": "2024-06-21", "cur": 9.1, "cur_eps": 3914.0, "cur_price": 35800.0, "percentile": 33}, "stats_1y": {"avg": 12.9, "min": 7.7, "max": 19.4, "min_day": "2026-06-26", "max_day": "2025-07-15", "cur": 9.1, "cur_eps": 3914.0, "cur_price": 35800.0, "percentile": 9}, "events": [{"d": "2025-12-01", "label": "중동 물류창고 가동(월 $4M)", "kind": "up"}, {"d": "2026-01-20", "label": "K뷰티 수출 수혜주 부각 +6.4%", "kind": "up"}, {"d": "2026-05-12", "label": "1Q26 잠정 매출+41%/OP+35%", "kind": "up"}, {"d": "2026-06-26", "label": "3개월 -23% 조정(이익률 둔화 우려)", "kind": "down"}], "regimes": [{"from": "2024-03-01", "to": "2025-06-30", "label": "K뷰티 수출 리레이팅"}], "cfg": {"currency": "KRW", "multiples": [5, 15, 25, 35], "priceMax": 150000, "priceTick": 30000, "peMax": 40, "peTick": 8, "epsMax": 5000, "epsTick": 1000}, "anchors": [{"d": "2023-05-03", "val": "0.1조원", "eps": 834.2, "why": "상장 초기(2023.05). 2023 연간 영업이익 ~480억 수준에서 K뷰티 수출 성장 초입, NTM 영업이익 600억대 기대"}, {"d": "2024-03-20", "val": "0.1조원", "eps": 1347.56, "why": "2023 사업보고서 반영·2024 미국/북미 수출 반등 기대로 NTM 영업이익 1,000억대 진입"}, {"d": "2024-08-01", "val": "0.2조원", "eps": 2053.43, "why": "2024 상반기 매출 1.6배 급성장·북미 +85%(뉴스1/증권 추정) → NTM 상향 1,600억대"}, {"d": "2025-03-20", "val": "0.2조원", "eps": 2630.95, "why": "2024 사업보고서 영업이익 1,376억 확정, 2025 컨센서스 영업이익 ~2,155억 형성(증권 추정)"}, {"d": "2025-08-01", "val": "0.2조원", "eps": 2951.8, "why": "2025 상반기 유럽·중동 확장 가속, NTM 영업이익 2,300억대로 상향"}, {"d": "2026-03-20", "val": "0.3조원", "eps": 3465.16, "why": "2025 사업보고서 영업이익 2,054억 확정, 2026 유럽 47%·중동 물류창고 가동 반영 NTM 상향"}, {"d": "2026-05-15", "val": "0.3조원", "eps": 3914.34, "why": "1Q26 잠정실적 매출 3,466억(+41%)·영업이익 645억(+35%), FnGuide Fwd12M EPS 3,918원 → 전환율 0.8416 역산 NTM 영업이익 ~3,050억"}], "meta": {"symbol": "257720", "name": "실리콘투", "shares": 65576252, "mode": "op_krw", "conv": 0.8416, "conv_basis": "최근 8개 흑자 분기 합산 (2Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 0.8416 (DART 실측, 2026-07-19)", "range": ["2023-05-03", "2026-07-16"]}}, "196170": {"rows": [{"d": "2023-05-03", "c": 42100.0, "eps": 668.0, "pe": 63.0}, {"d": "2023-05-04", "c": 45850.0, "eps": 671.0, "pe": 68.4}, {"d": "2023-05-08", "c": 45250.0, "eps": 682.0, "pe": 66.3}, {"d": "2023-05-09", "c": 44850.0, "eps": 685.0, "pe": 65.5}, {"d": "2023-05-10", "c": 44200.0, "eps": 688.0, "pe": 64.3}, {"d": "2023-05-11", "c": 44300.0, "eps": 691.0, "pe": 64.2}, {"d": "2023-05-12", "c": 44100.0, "eps": 693.0, "pe": 63.6}, {"d": "2023-05-15", "c": 44700.0, "eps": 702.0, "pe": 63.7}, {"d": "2023-05-16", "c": 43700.0, "eps": 705.0, "pe": 62.0}, {"d": "2023-05-17", "c": 45300.0, "eps": 708.0, "pe": 64.0}, {"d": "2023-05-18", "c": 44100.0, "eps": 710.0, "pe": 62.1}, {"d": "2023-05-19", "c": 47200.0, "eps": 713.0, "pe": 66.2}, {"d": "2023-05-22", "c": 48350.0, "eps": 722.0, "pe": 67.0}, {"d": "2023-05-23", "c": 49200.0, "eps": 724.0, "pe": 67.9}, {"d": "2023-05-24", "c": 46500.0, "eps": 727.0, "pe": 63.9}, {"d": "2023-05-25", "c": 45850.0, "eps": 730.0, "pe": 62.8}, {"d": "2023-05-26", "c": 45650.0, "eps": 733.0, "pe": 62.3}, {"d": "2023-05-30", "c": 46050.0, "eps": 744.0, "pe": 61.9}, {"d": "2023-05-31", "c": 50500.0, "eps": 747.0, "pe": 67.6}, {"d": "2023-06-01", "c": 52800.0, "eps": 750.0, "pe": 70.4}, {"d": "2023-06-02", "c": 51800.0, "eps": 753.0, "pe": 68.8}, {"d": "2023-06-05", "c": 48050.0, "eps": 761.0, "pe": 63.1}, {"d": "2023-06-07", "c": 48150.0, "eps": 767.0, "pe": 62.8}, {"d": "2023-06-08", "c": 46800.0, "eps": 770.0, "pe": 60.8}, {"d": "2023-06-09", "c": 47100.0, "eps": 773.0, "pe": 61.0}, {"d": "2023-06-12", "c": 45600.0, "eps": 781.0, "pe": 58.4}, {"d": "2023-06-13", "c": 44800.0, "eps": 784.0, "pe": 57.1}, {"d": "2023-06-14", "c": 44200.0, "eps": 787.0, "pe": 56.2}, {"d": "2023-06-15", "c": 43600.0, "eps": 790.0, "pe": 55.2}, {"d": "2023-06-16", "c": 43600.0, "eps": 792.0, "pe": 55.0}, {"d": "2023-06-19", "c": 46000.0, "eps": 801.0, "pe": 57.4}, {"d": "2023-06-20", "c": 44000.0, "eps": 804.0, "pe": 54.7}, {"d": "2023-06-21", "c": 42200.0, "eps": 807.0, "pe": 52.3}, {"d": "2023-06-22", "c": 42650.0, "eps": 809.0, "pe": 52.7}, {"d": "2023-06-23", "c": 42250.0, "eps": 812.0, "pe": 52.0}, {"d": "2023-06-26", "c": 42400.0, "eps": 821.0, "pe": 51.7}, {"d": "2023-06-27", "c": 42000.0, "eps": 824.0, "pe": 51.0}, {"d": "2023-06-28", "c": 42350.0, "eps": 826.0, "pe": 51.2}, {"d": "2023-06-29", "c": 41850.0, "eps": 829.0, "pe": 50.5}, {"d": "2023-06-30", "c": 42950.0, "eps": 832.0, "pe": 51.6}, {"d": "2023-07-03", "c": 43050.0, "eps": 841.0, "pe": 51.2}, {"d": "2023-07-04", "c": 41850.0, "eps": 843.0, "pe": 49.6}, {"d": "2023-07-05", "c": 41150.0, "eps": 846.0, "pe": 48.6}, {"d": "2023-07-06", "c": 38950.0, "eps": 849.0, "pe": 45.9}, {"d": "2023-07-07", "c": 38600.0, "eps": 852.0, "pe": 45.3}, {"d": "2023-07-10", "c": 38100.0, "eps": 860.0, "pe": 44.3}, {"d": "2023-07-11", "c": 39550.0, "eps": 863.0, "pe": 45.8}, {"d": "2023-07-12", "c": 40300.0, "eps": 866.0, "pe": 46.5}, {"d": "2023-07-13", "c": 41600.0, "eps": 869.0, "pe": 47.9}, {"d": "2023-07-14", "c": 41000.0, "eps": 872.0, "pe": 47.0}, {"d": "2023-07-17", "c": 41100.0, "eps": 880.0, "pe": 46.7}, {"d": "2023-07-18", "c": 41150.0, "eps": 883.0, "pe": 46.6}, {"d": "2023-07-19", "c": 42050.0, "eps": 886.0, "pe": 47.5}, {"d": "2023-07-20", "c": 43200.0, "eps": 889.0, "pe": 48.6}, {"d": "2023-07-21", "c": 43950.0, "eps": 891.0, "pe": 49.3}, {"d": "2023-07-24", "c": 42200.0, "eps": 900.0, "pe": 46.9}, {"d": "2023-07-25", "c": 42600.0, "eps": 903.0, "pe": 47.2}, {"d": "2023-07-26", "c": 40550.0, "eps": 906.0, "pe": 44.8}, {"d": "2023-07-27", "c": 43250.0, "eps": 908.0, "pe": 47.6}, {"d": "2023-07-28", "c": 42400.0, "eps": 911.0, "pe": 46.5}, {"d": "2023-07-31", "c": 44600.0, "eps": 920.0, "pe": 48.5}, {"d": "2023-08-01", "c": 44050.0, "eps": 923.0, "pe": 47.7}, {"d": "2023-08-02", "c": 42150.0, "eps": 925.0, "pe": 45.5}, {"d": "2023-08-03", "c": 46100.0, "eps": 928.0, "pe": 49.7}, {"d": "2023-08-04", "c": 46000.0, "eps": 931.0, "pe": 49.4}, {"d": "2023-08-07", "c": 45450.0, "eps": 940.0, "pe": 48.4}, {"d": "2023-08-08", "c": 44950.0, "eps": 942.0, "pe": 47.7}, {"d": "2023-08-09", "c": 47450.0, "eps": 945.0, "pe": 50.2}, {"d": "2023-08-10", "c": 47700.0, "eps": 948.0, "pe": 50.3}, {"d": "2023-08-11", "c": 47500.0, "eps": 951.0, "pe": 50.0}, {"d": "2023-08-14", "c": 46300.0, "eps": 959.0, "pe": 48.3}, {"d": "2023-08-16", "c": 45900.0, "eps": 965.0, "pe": 47.6}, {"d": "2023-08-17", "c": 45100.0, "eps": 968.0, "pe": 46.6}, {"d": "2023-08-18", "c": 44150.0, "eps": 971.0, "pe": 45.5}, {"d": "2023-08-21", "c": 44950.0, "eps": 979.0, "pe": 45.9}, {"d": "2023-08-22", "c": 46450.0, "eps": 982.0, "pe": 47.3}, {"d": "2023-08-23", "c": 46400.0, "eps": 985.0, "pe": 47.1}, {"d": "2023-08-24", "c": 46650.0, "eps": 988.0, "pe": 47.2}, {"d": "2023-08-25", "c": 46600.0, "eps": 991.0, "pe": 47.0}, {"d": "2023-08-28", "c": 44000.0, "eps": 999.0, "pe": 44.0}, {"d": "2023-08-29", "c": 44650.0, "eps": 1002.0, "pe": 44.6}, {"d": "2023-08-30", "c": 45750.0, "eps": 1005.0, "pe": 45.5}, {"d": "2023-08-31", "c": 45250.0, "eps": 1008.0, "pe": 44.9}, {"d": "2023-09-01", "c": 43750.0, "eps": 1010.0, "pe": 43.3}, {"d": "2023-09-04", "c": 43050.0, "eps": 1019.0, "pe": 42.3}, {"d": "2023-09-05", "c": 42650.0, "eps": 1022.0, "pe": 41.7}, {"d": "2023-09-06", "c": 42400.0, "eps": 1024.0, "pe": 41.4}, {"d": "2023-09-07", "c": 42500.0, "eps": 1027.0, "pe": 41.4}, {"d": "2023-09-08", "c": 43950.0, "eps": 1030.0, "pe": 42.7}, {"d": "2023-09-11", "c": 51900.0, "eps": 1039.0, "pe": 50.0}, {"d": "2023-09-12", "c": 59600.0, "eps": 1041.0, "pe": 57.2}, {"d": "2023-09-13", "c": 62200.0, "eps": 1044.0, "pe": 59.6}, {"d": "2023-09-14", "c": 62600.0, "eps": 1047.0, "pe": 59.8}, {"d": "2023-09-15", "c": 65500.0, "eps": 1050.0, "pe": 62.4}, {"d": "2023-09-18", "c": 70400.0, "eps": 1058.0, "pe": 66.5}, {"d": "2023-09-19", "c": 77100.0, "eps": 1061.0, "pe": 72.6}, {"d": "2023-09-20", "c": 73900.0, "eps": 1064.0, "pe": 69.4}, {"d": "2023-09-21", "c": 76500.0, "eps": 1067.0, "pe": 71.7}, {"d": "2023-09-22", "c": 70400.0, "eps": 1070.0, "pe": 65.8}, {"d": "2023-09-25", "c": 81000.0, "eps": 1078.0, "pe": 75.1}, {"d": "2023-09-26", "c": 63300.0, "eps": 1081.0, "pe": 58.6}, {"d": "2023-09-27", "c": 68100.0, "eps": 1084.0, "pe": 62.8}, {"d": "2023-10-04", "c": 65300.0, "eps": 1104.0, "pe": 59.2}, {"d": "2023-10-05", "c": 64600.0, "eps": 1107.0, "pe": 58.4}, {"d": "2023-10-06", "c": 68300.0, "eps": 1109.0, "pe": 61.6}, {"d": "2023-10-10", "c": 65200.0, "eps": 1121.0, "pe": 58.2}, {"d": "2023-10-11", "c": 66200.0, "eps": 1124.0, "pe": 58.9}, {"d": "2023-10-12", "c": 63200.0, "eps": 1126.0, "pe": 56.1}, {"d": "2023-10-13", "c": 61500.0, "eps": 1129.0, "pe": 54.5}, {"d": "2023-10-16", "c": 60900.0, "eps": 1138.0, "pe": 53.5}, {"d": "2023-10-17", "c": 60000.0, "eps": 1141.0, "pe": 52.6}, {"d": "2023-10-18", "c": 58100.0, "eps": 1143.0, "pe": 50.8}, {"d": "2023-10-19", "c": 55900.0, "eps": 1146.0, "pe": 48.8}, {"d": "2023-10-20", "c": 54900.0, "eps": 1149.0, "pe": 47.8}, {"d": "2023-10-23", "c": 55400.0, "eps": 1157.0, "pe": 47.9}, {"d": "2023-10-24", "c": 55600.0, "eps": 1160.0, "pe": 47.9}, {"d": "2023-10-25", "c": 54800.0, "eps": 1163.0, "pe": 47.1}, {"d": "2023-10-26", "c": 58800.0, "eps": 1166.0, "pe": 50.4}, {"d": "2023-10-27", "c": 60000.0, "eps": 1169.0, "pe": 51.3}, {"d": "2023-10-30", "c": 62200.0, "eps": 1177.0, "pe": 52.8}, {"d": "2023-10-31", "c": 62400.0, "eps": 1180.0, "pe": 52.9}, {"d": "2023-11-01", "c": 62800.0, "eps": 1183.0, "pe": 53.1}, {"d": "2023-11-02", "c": 68200.0, "eps": 1186.0, "pe": 57.5}, {"d": "2023-11-03", "c": 68800.0, "eps": 1189.0, "pe": 57.9}, {"d": "2023-11-06", "c": 71900.0, "eps": 1197.0, "pe": 60.1}, {"d": "2023-11-07", "c": 70600.0, "eps": 1200.0, "pe": 58.8}, {"d": "2023-11-08", "c": 65500.0, "eps": 1203.0, "pe": 54.5}, {"d": "2023-11-09", "c": 62200.0, "eps": 1206.0, "pe": 51.6}, {"d": "2023-11-10", "c": 64700.0, "eps": 1208.0, "pe": 53.5}, {"d": "2023-11-13", "c": 61500.0, "eps": 1217.0, "pe": 50.5}, {"d": "2023-11-14", "c": 65500.0, "eps": 1220.0, "pe": 53.7}, {"d": "2023-11-15", "c": 72300.0, "eps": 1223.0, "pe": 59.1}, {"d": "2023-11-16", "c": 70100.0, "eps": 1225.0, "pe": 57.2}, {"d": "2023-11-17", "c": 69200.0, "eps": 1228.0, "pe": 56.3}, {"d": "2023-11-20", "c": 67900.0, "eps": 1237.0, "pe": 54.9}, {"d": "2023-11-21", "c": 71700.0, "eps": 1240.0, "pe": 57.8}, {"d": "2023-11-22", "c": 73500.0, "eps": 1242.0, "pe": 59.2}, {"d": "2023-11-23", "c": 73100.0, "eps": 1245.0, "pe": 58.7}, {"d": "2023-11-24", "c": 74100.0, "eps": 1248.0, "pe": 59.4}, {"d": "2023-11-27", "c": 73100.0, "eps": 1257.0, "pe": 58.2}, {"d": "2023-11-28", "c": 79000.0, "eps": 1259.0, "pe": 62.7}, {"d": "2023-11-29", "c": 78600.0, "eps": 1262.0, "pe": 62.3}, {"d": "2023-11-30", "c": 80000.0, "eps": 1265.0, "pe": 63.2}, {"d": "2023-12-01", "c": 82600.0, "eps": 1268.0, "pe": 65.1}, {"d": "2023-12-04", "c": 78500.0, "eps": 1276.0, "pe": 61.5}, {"d": "2023-12-05", "c": 74500.0, "eps": 1279.0, "pe": 58.2}, {"d": "2023-12-06", "c": 73600.0, "eps": 1282.0, "pe": 57.4}, {"d": "2023-12-07", "c": 73400.0, "eps": 1285.0, "pe": 57.1}, {"d": "2023-12-08", "c": 73900.0, "eps": 1288.0, "pe": 57.4}, {"d": "2023-12-11", "c": 72700.0, "eps": 1296.0, "pe": 56.1}, {"d": "2023-12-12", "c": 72100.0, "eps": 1299.0, "pe": 55.5}, {"d": "2023-12-13", "c": 69600.0, "eps": 1302.0, "pe": 53.5}, {"d": "2023-12-14", "c": 69400.0, "eps": 1305.0, "pe": 53.2}, {"d": "2023-12-15", "c": 67800.0, "eps": 1307.0, "pe": 51.9}, {"d": "2023-12-18", "c": 72400.0, "eps": 1316.0, "pe": 55.0}, {"d": "2023-12-19", "c": 72300.0, "eps": 1319.0, "pe": 54.8}, {"d": "2023-12-20", "c": 72800.0, "eps": 1322.0, "pe": 55.1}, {"d": "2023-12-21", "c": 88100.0, "eps": 1324.0, "pe": 66.5}, {"d": "2023-12-22", "c": 87900.0, "eps": 1327.0, "pe": 66.2}, {"d": "2023-12-26", "c": 91900.0, "eps": 1339.0, "pe": 68.7}, {"d": "2023-12-27", "c": 96600.0, "eps": 1341.0, "pe": 72.0}, {"d": "2023-12-28", "c": 98500.0, "eps": 1344.0, "pe": 73.3}, {"d": "2024-01-02", "c": 91500.0, "eps": 1358.0, "pe": 67.4}, {"d": "2024-01-03", "c": 90500.0, "eps": 1361.0, "pe": 66.5}, {"d": "2024-01-04", "c": 88500.0, "eps": 1364.0, "pe": 64.9}, {"d": "2024-01-05", "c": 89500.0, "eps": 1367.0, "pe": 65.5}, {"d": "2024-01-08", "c": 87300.0, "eps": 1375.0, "pe": 63.5}, {"d": "2024-01-09", "c": 93000.0, "eps": 1378.0, "pe": 67.5}, {"d": "2024-01-10", "c": 97300.0, "eps": 1381.0, "pe": 70.5}, {"d": "2024-01-11", "c": 93700.0, "eps": 1384.0, "pe": 67.7}, {"d": "2024-01-12", "c": 94800.0, "eps": 1387.0, "pe": 68.4}, {"d": "2024-01-15", "c": 89300.0, "eps": 1395.0, "pe": 64.0}, {"d": "2024-01-16", "c": 90400.0, "eps": 1398.0, "pe": 64.7}, {"d": "2024-01-17", "c": 87800.0, "eps": 1401.0, "pe": 62.7}, {"d": "2024-01-18", "c": 83000.0, "eps": 1404.0, "pe": 59.1}, {"d": "2024-01-19", "c": 75600.0, "eps": 1407.0, "pe": 53.7}, {"d": "2024-01-22", "c": 76500.0, "eps": 1415.0, "pe": 54.1}, {"d": "2024-01-23", "c": 76000.0, "eps": 1418.0, "pe": 53.6}, {"d": "2024-01-24", "c": 72500.0, "eps": 1421.0, "pe": 51.0}, {"d": "2024-01-25", "c": 73600.0, "eps": 1424.0, "pe": 51.7}, {"d": "2024-01-26", "c": 76600.0, "eps": 1426.0, "pe": 53.7}, {"d": "2024-01-29", "c": 74500.0, "eps": 1435.0, "pe": 51.9}, {"d": "2024-01-30", "c": 80800.0, "eps": 1438.0, "pe": 56.2}, {"d": "2024-01-31", "c": 77300.0, "eps": 1441.0, "pe": 53.7}, {"d": "2024-02-01", "c": 71400.0, "eps": 1443.0, "pe": 49.5}, {"d": "2024-02-02", "c": 76400.0, "eps": 1446.0, "pe": 52.8}, {"d": "2024-02-05", "c": 75900.0, "eps": 1455.0, "pe": 52.2}, {"d": "2024-02-06", "c": 77300.0, "eps": 1457.0, "pe": 53.0}, {"d": "2024-02-07", "c": 76700.0, "eps": 1460.0, "pe": 52.5}, {"d": "2024-02-08", "c": 76800.0, "eps": 1463.0, "pe": 52.5}, {"d": "2024-02-13", "c": 86600.0, "eps": 1477.0, "pe": 58.6}, {"d": "2024-02-14", "c": 87000.0, "eps": 1480.0, "pe": 58.8}, {"d": "2024-02-15", "c": 87500.0, "eps": 1483.0, "pe": 59.0}, {"d": "2024-02-16", "c": 90700.0, "eps": 1486.0, "pe": 61.0}, {"d": "2024-02-19", "c": 89400.0, "eps": 1494.0, "pe": 59.8}, {"d": "2024-02-20", "c": 87100.0, "eps": 1497.0, "pe": 58.2}, {"d": "2024-02-21", "c": 93900.0, "eps": 1500.0, "pe": 62.6}, {"d": "2024-02-22", "c": 105000.0, "eps": 1503.0, "pe": 69.9}, {"d": "2024-02-23", "c": 131200.0, "eps": 1506.0, "pe": 87.1}, {"d": "2024-02-26", "c": 156600.0, "eps": 1518.0, "pe": 103.2}, {"d": "2024-02-27", "c": 157500.0, "eps": 1521.0, "pe": 103.5}, {"d": "2024-02-28", "c": 164500.0, "eps": 1525.0, "pe": 107.9}, {"d": "2024-02-29", "c": 160600.0, "eps": 1529.0, "pe": 105.1}, {"d": "2024-03-04", "c": 167200.0, "eps": 1544.0, "pe": 108.3}, {"d": "2024-03-05", "c": 192200.0, "eps": 1547.0, "pe": 124.2}, {"d": "2024-03-06", "c": 194200.0, "eps": 1551.0, "pe": 125.2}, {"d": "2024-03-07", "c": 184400.0, "eps": 1555.0, "pe": 118.6}, {"d": "2024-03-08", "c": 190800.0, "eps": 1558.0, "pe": 122.4}, {"d": "2024-03-11", "c": 180000.0, "eps": 1570.0, "pe": 114.7}, {"d": "2024-03-12", "c": 193500.0, "eps": 1573.0, "pe": 123.0}, {"d": "2024-03-13", "c": 201000.0, "eps": 1577.0, "pe": 127.5}, {"d": "2024-03-14", "c": 206500.0, "eps": 1581.0, "pe": 130.6}, {"d": "2024-03-15", "c": 204500.0, "eps": 1584.0, "pe": 129.1}, {"d": "2024-03-18", "c": 202000.0, "eps": 1596.0, "pe": 126.6}, {"d": "2024-03-19", "c": 209000.0, "eps": 1599.0, "pe": 130.7}, {"d": "2024-03-20", "c": 196100.0, "eps": 1603.0, "pe": 122.3}, {"d": "2024-03-21", "c": 196800.0, "eps": 1607.0, "pe": 122.5}, {"d": "2024-03-22", "c": 204000.0, "eps": 1610.0, "pe": 126.7}, {"d": "2024-03-25", "c": 213500.0, "eps": 1621.0, "pe": 131.7}, {"d": "2024-03-26", "c": 219500.0, "eps": 1625.0, "pe": 135.1}, {"d": "2024-03-27", "c": 195600.0, "eps": 1629.0, "pe": 120.1}, {"d": "2024-03-28", "c": 207500.0, "eps": 1633.0, "pe": 127.1}, {"d": "2024-03-29", "c": 197400.0, "eps": 1636.0, "pe": 120.6}, {"d": "2024-04-01", "c": 186300.0, "eps": 1647.0, "pe": 113.1}, {"d": "2024-04-02", "c": 170000.0, "eps": 1651.0, "pe": 103.0}, {"d": "2024-04-03", "c": 170600.0, "eps": 1655.0, "pe": 103.1}, {"d": "2024-04-04", "c": 166500.0, "eps": 1659.0, "pe": 100.4}, {"d": "2024-04-05", "c": 161000.0, "eps": 1662.0, "pe": 96.9}, {"d": "2024-04-08", "c": 162300.0, "eps": 1673.0, "pe": 97.0}, {"d": "2024-04-09", "c": 173200.0, "eps": 1677.0, "pe": 103.3}, {"d": "2024-04-11", "c": 173500.0, "eps": 1685.0, "pe": 103.0}, {"d": "2024-04-12", "c": 178700.0, "eps": 1688.0, "pe": 105.8}, {"d": "2024-04-15", "c": 171300.0, "eps": 1699.0, "pe": 100.8}, {"d": "2024-04-16", "c": 168300.0, "eps": 1703.0, "pe": 98.8}, {"d": "2024-04-17", "c": 160800.0, "eps": 1707.0, "pe": 94.2}, {"d": "2024-04-18", "c": 176200.0, "eps": 1711.0, "pe": 103.0}, {"d": "2024-04-19", "c": 168400.0, "eps": 1714.0, "pe": 98.2}, {"d": "2024-04-22", "c": 166300.0, "eps": 1725.0, "pe": 96.4}, {"d": "2024-04-23", "c": 173900.0, "eps": 1729.0, "pe": 100.6}, {"d": "2024-04-24", "c": 178300.0, "eps": 1733.0, "pe": 102.9}, {"d": "2024-04-25", "c": 173700.0, "eps": 1737.0, "pe": 100.0}, {"d": "2024-04-26", "c": 173700.0, "eps": 1740.0, "pe": 99.8}, {"d": "2024-04-29", "c": 176500.0, "eps": 1751.0, "pe": 100.8}, {"d": "2024-04-30", "c": 176900.0, "eps": 1755.0, "pe": 100.8}, {"d": "2024-05-02", "c": 180800.0, "eps": 1762.0, "pe": 102.6}, {"d": "2024-05-03", "c": 177200.0, "eps": 1766.0, "pe": 100.3}, {"d": "2024-05-07", "c": 177300.0, "eps": 1781.0, "pe": 99.5}, {"d": "2024-05-08", "c": 174100.0, "eps": 1785.0, "pe": 97.5}, {"d": "2024-05-09", "c": 169900.0, "eps": 1788.0, "pe": 95.0}, {"d": "2024-05-10", "c": 170200.0, "eps": 1792.0, "pe": 95.0}, {"d": "2024-05-13", "c": 164400.0, "eps": 1803.0, "pe": 91.2}, {"d": "2024-05-14", "c": 174500.0, "eps": 1807.0, "pe": 96.6}, {"d": "2024-05-16", "c": 178000.0, "eps": 1814.0, "pe": 98.1}, {"d": "2024-05-17", "c": 189600.0, "eps": 1818.0, "pe": 104.3}, {"d": "2024-05-20", "c": 190000.0, "eps": 1829.0, "pe": 103.9}, {"d": "2024-05-21", "c": 189400.0, "eps": 1833.0, "pe": 103.3}, {"d": "2024-05-22", "c": 192300.0, "eps": 1837.0, "pe": 104.7}, {"d": "2024-05-23", "c": 185900.0, "eps": 1840.0, "pe": 101.0}, {"d": "2024-05-24", "c": 193100.0, "eps": 1844.0, "pe": 104.7}, {"d": "2024-05-27", "c": 189800.0, "eps": 1855.0, "pe": 102.3}, {"d": "2024-05-28", "c": 186000.0, "eps": 1859.0, "pe": 100.1}, {"d": "2024-05-29", "c": 182100.0, "eps": 1863.0, "pe": 97.8}, {"d": "2024-05-30", "c": 180000.0, "eps": 1866.0, "pe": 96.4}, {"d": "2024-05-31", "c": 185900.0, "eps": 1870.0, "pe": 99.4}, {"d": "2024-06-03", "c": 199000.0, "eps": 1881.0, "pe": 105.8}, {"d": "2024-06-04", "c": 233500.0, "eps": 1885.0, "pe": 123.9}, {"d": "2024-06-05", "c": 238000.0, "eps": 1889.0, "pe": 126.0}, {"d": "2024-06-07", "c": 269000.0, "eps": 1896.0, "pe": 141.9}, {"d": "2024-06-10", "c": 253000.0, "eps": 1907.0, "pe": 132.7}, {"d": "2024-06-11", "c": 283500.0, "eps": 1911.0, "pe": 148.4}, {"d": "2024-06-12", "c": 276000.0, "eps": 1915.0, "pe": 144.2}, {"d": "2024-06-13", "c": 268500.0, "eps": 1918.0, "pe": 140.0}, {"d": "2024-06-14", "c": 265000.0, "eps": 1922.0, "pe": 137.9}, {"d": "2024-06-17", "c": 267500.0, "eps": 1933.0, "pe": 138.4}, {"d": "2024-06-18", "c": 273500.0, "eps": 1937.0, "pe": 141.2}, {"d": "2024-06-19", "c": 255000.0, "eps": 1941.0, "pe": 131.4}, {"d": "2024-06-20", "c": 259500.0, "eps": 1944.0, "pe": 133.5}, {"d": "2024-06-21", "c": 281000.0, "eps": 1948.0, "pe": 144.2}, {"d": "2024-06-24", "c": 286000.0, "eps": 1959.0, "pe": 146.0}, {"d": "2024-06-25", "c": 289500.0, "eps": 1963.0, "pe": 147.5}, {"d": "2024-06-26", "c": 286000.0, "eps": 1967.0, "pe": 145.4}, {"d": "2024-06-27", "c": 284500.0, "eps": 1970.0, "pe": 144.4}, {"d": "2024-06-28", "c": 280500.0, "eps": 1974.0, "pe": 142.1}, {"d": "2024-07-01", "c": 277500.0, "eps": 1985.0, "pe": 139.8}, {"d": "2024-07-02", "c": 262500.0, "eps": 1989.0, "pe": 132.0}, {"d": "2024-07-03", "c": 258500.0, "eps": 1993.0, "pe": 129.7}, {"d": "2024-07-04", "c": 257000.0, "eps": 1996.0, "pe": 128.7}, {"d": "2024-07-05", "c": 279000.0, "eps": 2000.0, "pe": 139.5}, {"d": "2024-07-08", "c": 272500.0, "eps": 2011.0, "pe": 135.5}, {"d": "2024-07-09", "c": 262500.0, "eps": 2015.0, "pe": 130.3}, {"d": "2024-07-10", "c": 270000.0, "eps": 2019.0, "pe": 133.8}, {"d": "2024-07-11", "c": 269500.0, "eps": 2022.0, "pe": 133.3}, {"d": "2024-07-12", "c": 272500.0, "eps": 2026.0, "pe": 134.5}, {"d": "2024-07-15", "c": 278500.0, "eps": 2037.0, "pe": 136.7}, {"d": "2024-07-16", "c": 273000.0, "eps": 2041.0, "pe": 133.8}, {"d": "2024-07-17", "c": 274000.0, "eps": 2044.0, "pe": 134.0}, {"d": "2024-07-18", "c": 263000.0, "eps": 2048.0, "pe": 128.4}, {"d": "2024-07-19", "c": 271500.0, "eps": 2052.0, "pe": 132.3}, {"d": "2024-07-22", "c": 264000.0, "eps": 2063.0, "pe": 128.0}, {"d": "2024-07-23", "c": 285000.0, "eps": 2067.0, "pe": 137.9}, {"d": "2024-07-24", "c": 304500.0, "eps": 2070.0, "pe": 147.1}, {"d": "2024-07-25", "c": 275500.0, "eps": 2074.0, "pe": 132.8}, {"d": "2024-07-26", "c": 283500.0, "eps": 2078.0, "pe": 136.4}, {"d": "2024-07-29", "c": 298500.0, "eps": 2089.0, "pe": 142.9}, {"d": "2024-07-30", "c": 320500.0, "eps": 2093.0, "pe": 153.1}, {"d": "2024-07-31", "c": 315000.0, "eps": 2096.0, "pe": 150.3}, {"d": "2024-08-01", "c": 319000.0, "eps": 2100.0, "pe": 151.9}, {"d": "2024-08-02", "c": 295000.0, "eps": 2104.0, "pe": 140.2}, {"d": "2024-08-05", "c": 261500.0, "eps": 2115.0, "pe": 123.6}, {"d": "2024-08-06", "c": 279000.0, "eps": 2119.0, "pe": 131.7}, {"d": "2024-08-07", "c": 284000.0, "eps": 2122.0, "pe": 133.8}, {"d": "2024-08-08", "c": 297000.0, "eps": 2126.0, "pe": 139.7}, {"d": "2024-08-09", "c": 302000.0, "eps": 2130.0, "pe": 141.8}, {"d": "2024-08-12", "c": 303000.0, "eps": 2141.0, "pe": 141.5}, {"d": "2024-08-13", "c": 292500.0, "eps": 2145.0, "pe": 136.4}, {"d": "2024-08-14", "c": 292500.0, "eps": 2148.0, "pe": 136.1}, {"d": "2024-08-16", "c": 301000.0, "eps": 2156.0, "pe": 139.6}, {"d": "2024-08-19", "c": 298500.0, "eps": 2167.0, "pe": 137.8}, {"d": "2024-08-20", "c": 300500.0, "eps": 2171.0, "pe": 138.4}, {"d": "2024-08-21", "c": 288500.0, "eps": 2174.0, "pe": 132.7}, {"d": "2024-08-22", "c": 289000.0, "eps": 2178.0, "pe": 132.7}, {"d": "2024-08-23", "c": 315000.0, "eps": 2182.0, "pe": 144.4}, {"d": "2024-08-26", "c": 312500.0, "eps": 2193.0, "pe": 142.5}, {"d": "2024-08-27", "c": 315000.0, "eps": 2197.0, "pe": 143.4}, {"d": "2024-08-28", "c": 319000.0, "eps": 2200.0, "pe": 145.0}, {"d": "2024-08-29", "c": 315500.0, "eps": 2204.0, "pe": 143.1}, {"d": "2024-08-30", "c": 319000.0, "eps": 2208.0, "pe": 144.5}, {"d": "2024-09-02", "c": 322000.0, "eps": 2219.0, "pe": 145.1}, {"d": "2024-09-03", "c": 325500.0, "eps": 2223.0, "pe": 146.4}, {"d": "2024-09-04", "c": 307500.0, "eps": 2226.0, "pe": 138.1}, {"d": "2024-09-05", "c": 307000.0, "eps": 2230.0, "pe": 137.7}, {"d": "2024-09-06", "c": 301000.0, "eps": 2234.0, "pe": 134.8}, {"d": "2024-09-09", "c": 304500.0, "eps": 2245.0, "pe": 135.6}, {"d": "2024-09-10", "c": 305000.0, "eps": 2249.0, "pe": 135.6}, {"d": "2024-09-11", "c": 306000.0, "eps": 2252.0, "pe": 135.9}, {"d": "2024-09-12", "c": 316000.0, "eps": 2256.0, "pe": 140.1}, {"d": "2024-09-13", "c": 319500.0, "eps": 2260.0, "pe": 141.4}, {"d": "2024-09-19", "c": 350000.0, "eps": 2282.0, "pe": 153.4}, {"d": "2024-09-20", "c": 363000.0, "eps": 2286.0, "pe": 158.8}, {"d": "2024-09-23", "c": 350000.0, "eps": 2297.0, "pe": 152.4}, {"d": "2024-09-24", "c": 353000.0, "eps": 2301.0, "pe": 153.4}, {"d": "2024-09-25", "c": 330500.0, "eps": 2304.0, "pe": 143.4}, {"d": "2024-09-26", "c": 341000.0, "eps": 2308.0, "pe": 147.8}, {"d": "2024-09-27", "c": 332000.0, "eps": 2312.0, "pe": 143.6}, {"d": "2024-09-30", "c": 327000.0, "eps": 2323.0, "pe": 140.8}, {"d": "2024-10-02", "c": 336000.0, "eps": 2330.0, "pe": 144.2}, {"d": "2024-10-04", "c": 356000.0, "eps": 2338.0, "pe": 152.3}, {"d": "2024-10-07", "c": 359500.0, "eps": 2349.0, "pe": 153.1}, {"d": "2024-10-08", "c": 369000.0, "eps": 2352.0, "pe": 156.9}, {"d": "2024-10-10", "c": 369000.0, "eps": 2360.0, "pe": 156.4}, {"d": "2024-10-11", "c": 386000.0, "eps": 2364.0, "pe": 163.3}, {"d": "2024-10-14", "c": 378500.0, "eps": 2375.0, "pe": 159.4}, {"d": "2024-10-15", "c": 386500.0, "eps": 2378.0, "pe": 162.5}, {"d": "2024-10-16", "c": 386000.0, "eps": 2382.0, "pe": 162.0}, {"d": "2024-10-17", "c": 384000.0, "eps": 2386.0, "pe": 160.9}, {"d": "2024-10-18", "c": 386500.0, "eps": 2390.0, "pe": 161.7}, {"d": "2024-10-21", "c": 397500.0, "eps": 2401.0, "pe": 165.6}, {"d": "2024-10-22", "c": 383500.0, "eps": 2404.0, "pe": 159.5}, {"d": "2024-10-23", "c": 380500.0, "eps": 2408.0, "pe": 158.0}, {"d": "2024-10-24", "c": 382000.0, "eps": 2412.0, "pe": 158.4}, {"d": "2024-10-25", "c": 374000.0, "eps": 2416.0, "pe": 154.8}, {"d": "2024-10-28", "c": 379000.0, "eps": 2427.0, "pe": 156.2}, {"d": "2024-10-29", "c": 386000.0, "eps": 2430.0, "pe": 158.8}, {"d": "2024-10-30", "c": 379000.0, "eps": 2434.0, "pe": 155.7}, {"d": "2024-10-31", "c": 376500.0, "eps": 2438.0, "pe": 154.4}, {"d": "2024-11-01", "c": 356500.0, "eps": 2442.0, "pe": 146.0}, {"d": "2024-11-04", "c": 389500.0, "eps": 2453.0, "pe": 158.8}, {"d": "2024-11-05", "c": 381000.0, "eps": 2456.0, "pe": 155.1}, {"d": "2024-11-06", "c": 391500.0, "eps": 2460.0, "pe": 159.1}, {"d": "2024-11-07", "c": 380000.0, "eps": 2464.0, "pe": 154.2}, {"d": "2024-11-08", "c": 437000.0, "eps": 2467.0, "pe": 177.1}, {"d": "2024-11-11", "c": 445500.0, "eps": 2479.0, "pe": 179.7}, {"d": "2024-11-12", "c": 439500.0, "eps": 2482.0, "pe": 177.1}, {"d": "2024-11-13", "c": 421500.0, "eps": 2486.0, "pe": 169.5}, {"d": "2024-11-14", "c": 441500.0, "eps": 2490.0, "pe": 177.3}, {"d": "2024-11-15", "c": 437500.0, "eps": 2493.0, "pe": 175.5}, {"d": "2024-11-18", "c": 407500.0, "eps": 2505.0, "pe": 162.7}, {"d": "2024-11-19", "c": 376000.0, "eps": 2508.0, "pe": 149.9}, {"d": "2024-11-20", "c": 350500.0, "eps": 2512.0, "pe": 139.5}, {"d": "2024-11-21", "c": 346500.0, "eps": 2516.0, "pe": 137.7}, {"d": "2024-11-22", "c": 292000.0, "eps": 2519.0, "pe": 115.9}, {"d": "2024-11-25", "c": 331000.0, "eps": 2531.0, "pe": 130.8}, {"d": "2024-11-26", "c": 297000.0, "eps": 2534.0, "pe": 117.2}, {"d": "2024-11-27", "c": 305500.0, "eps": 2538.0, "pe": 120.4}, {"d": "2024-11-28", "c": 302500.0, "eps": 2542.0, "pe": 119.0}, {"d": "2024-11-29", "c": 280000.0, "eps": 2545.0, "pe": 110.0}, {"d": "2024-12-02", "c": 302000.0, "eps": 2557.0, "pe": 118.1}, {"d": "2024-12-03", "c": 325000.0, "eps": 2560.0, "pe": 126.9}, {"d": "2024-12-04", "c": 318000.0, "eps": 2564.0, "pe": 124.0}, {"d": "2024-12-05", "c": 311000.0, "eps": 2568.0, "pe": 121.1}, {"d": "2024-12-06", "c": 306000.0, "eps": 2571.0, "pe": 119.0}, {"d": "2024-12-09", "c": 285000.0, "eps": 2583.0, "pe": 110.4}, {"d": "2024-12-10", "c": 318000.0, "eps": 2586.0, "pe": 123.0}, {"d": "2024-12-11", "c": 308000.0, "eps": 2590.0, "pe": 118.9}, {"d": "2024-12-12", "c": 312500.0, "eps": 2594.0, "pe": 120.5}, {"d": "2024-12-13", "c": 317000.0, "eps": 2597.0, "pe": 122.0}, {"d": "2024-12-16", "c": 310500.0, "eps": 2608.0, "pe": 119.0}, {"d": "2024-12-17", "c": 301500.0, "eps": 2612.0, "pe": 115.4}, {"d": "2024-12-18", "c": 297000.0, "eps": 2616.0, "pe": 113.5}, {"d": "2024-12-19", "c": 286500.0, "eps": 2620.0, "pe": 109.4}, {"d": "2024-12-20", "c": 277000.0, "eps": 2623.0, "pe": 105.6}, {"d": "2024-12-23", "c": 277000.0, "eps": 2634.0, "pe": 105.1}, {"d": "2024-12-24", "c": 296000.0, "eps": 2638.0, "pe": 112.2}, {"d": "2024-12-26", "c": 301500.0, "eps": 2646.0, "pe": 114.0}, {"d": "2024-12-27", "c": 301000.0, "eps": 2649.0, "pe": 113.6}, {"d": "2024-12-30", "c": 309500.0, "eps": 2660.0, "pe": 116.3}, {"d": "2025-01-02", "c": 300000.0, "eps": 2672.0, "pe": 112.3}, {"d": "2025-01-03", "c": 318500.0, "eps": 2677.0, "pe": 119.0}, {"d": "2025-01-06", "c": 315500.0, "eps": 2692.0, "pe": 117.2}, {"d": "2025-01-07", "c": 326000.0, "eps": 2697.0, "pe": 120.9}, {"d": "2025-01-08", "c": 310000.0, "eps": 2702.0, "pe": 114.7}, {"d": "2025-01-09", "c": 309000.0, "eps": 2708.0, "pe": 114.1}, {"d": "2025-01-10", "c": 309500.0, "eps": 2713.0, "pe": 114.1}, {"d": "2025-01-13", "c": 299000.0, "eps": 2728.0, "pe": 109.6}, {"d": "2025-01-14", "c": 307500.0, "eps": 2733.0, "pe": 112.5}, {"d": "2025-01-15", "c": 303500.0, "eps": 2738.0, "pe": 110.8}, {"d": "2025-01-16", "c": 312000.0, "eps": 2744.0, "pe": 113.7}, {"d": "2025-01-17", "c": 307500.0, "eps": 2749.0, "pe": 111.9}, {"d": "2025-01-20", "c": 318500.0, "eps": 2764.0, "pe": 115.2}, {"d": "2025-01-21", "c": 325000.0, "eps": 2769.0, "pe": 117.4}, {"d": "2025-01-22", "c": 342000.0, "eps": 2774.0, "pe": 123.3}, {"d": "2025-01-23", "c": 347000.0, "eps": 2779.0, "pe": 124.8}, {"d": "2025-01-24", "c": 362000.0, "eps": 2785.0, "pe": 130.0}, {"d": "2025-01-31", "c": 371500.0, "eps": 2821.0, "pe": 131.7}, {"d": "2025-02-03", "c": 352500.0, "eps": 2836.0, "pe": 124.3}, {"d": "2025-02-04", "c": 374000.0, "eps": 2841.0, "pe": 131.6}, {"d": "2025-02-05", "c": 376000.0, "eps": 2846.0, "pe": 132.1}, {"d": "2025-02-06", "c": 392000.0, "eps": 2851.0, "pe": 137.5}, {"d": "2025-02-07", "c": 391500.0, "eps": 2857.0, "pe": 137.1}, {"d": "2025-02-10", "c": 392000.0, "eps": 2872.0, "pe": 136.5}, {"d": "2025-02-11", "c": 378000.0, "eps": 2877.0, "pe": 131.4}, {"d": "2025-02-12", "c": 377500.0, "eps": 2882.0, "pe": 131.0}, {"d": "2025-02-13", "c": 370500.0, "eps": 2887.0, "pe": 128.3}, {"d": "2025-02-14", "c": 394000.0, "eps": 2892.0, "pe": 136.2}, {"d": "2025-02-17", "c": 398500.0, "eps": 2908.0, "pe": 137.0}, {"d": "2025-02-18", "c": 395000.0, "eps": 2913.0, "pe": 135.6}, {"d": "2025-02-19", "c": 387000.0, "eps": 2918.0, "pe": 132.6}, {"d": "2025-02-20", "c": 378000.0, "eps": 2923.0, "pe": 129.3}, {"d": "2025-02-21", "c": 392000.0, "eps": 2928.0, "pe": 133.9}, {"d": "2025-02-24", "c": 383000.0, "eps": 2944.0, "pe": 130.1}, {"d": "2025-02-25", "c": 393500.0, "eps": 2949.0, "pe": 133.4}, {"d": "2025-02-26", "c": 393500.0, "eps": 2954.0, "pe": 133.2}, {"d": "2025-02-27", "c": 401500.0, "eps": 2959.0, "pe": 135.7}, {"d": "2025-02-28", "c": 387000.0, "eps": 2964.0, "pe": 130.5}, {"d": "2025-03-04", "c": 400000.0, "eps": 2985.0, "pe": 134.0}, {"d": "2025-03-05", "c": 414000.0, "eps": 2990.0, "pe": 138.5}, {"d": "2025-03-06", "c": 390500.0, "eps": 2995.0, "pe": 130.4}, {"d": "2025-03-07", "c": 368500.0, "eps": 3000.0, "pe": 122.8}, {"d": "2025-03-10", "c": 372000.0, "eps": 3016.0, "pe": 123.4}, {"d": "2025-03-11", "c": 370000.0, "eps": 3021.0, "pe": 122.5}, {"d": "2025-03-12", "c": 361000.0, "eps": 3026.0, "pe": 119.3}, {"d": "2025-03-13", "c": 375000.0, "eps": 3031.0, "pe": 123.7}, {"d": "2025-03-14", "c": 392000.0, "eps": 3036.0, "pe": 129.1}, {"d": "2025-03-17", "c": 439500.0, "eps": 3052.0, "pe": 144.0}, {"d": "2025-03-18", "c": 443500.0, "eps": 3057.0, "pe": 145.1}, {"d": "2025-03-19", "c": 419000.0, "eps": 3062.0, "pe": 136.8}, {"d": "2025-03-20", "c": 373000.0, "eps": 3067.0, "pe": 121.6}, {"d": "2025-03-21", "c": 370000.0, "eps": 3072.0, "pe": 120.4}, {"d": "2025-03-24", "c": 374000.0, "eps": 3088.0, "pe": 121.1}, {"d": "2025-03-25", "c": 360500.0, "eps": 3093.0, "pe": 116.6}, {"d": "2025-03-26", "c": 362000.0, "eps": 3098.0, "pe": 116.8}, {"d": "2025-03-27", "c": 351000.0, "eps": 3103.0, "pe": 113.1}, {"d": "2025-03-28", "c": 350000.0, "eps": 3108.0, "pe": 112.6}, {"d": "2025-03-31", "c": 357500.0, "eps": 3124.0, "pe": 114.4}, {"d": "2025-04-01", "c": 373000.0, "eps": 3129.0, "pe": 119.2}, {"d": "2025-04-02", "c": 361000.0, "eps": 3134.0, "pe": 115.2}, {"d": "2025-04-03", "c": 363000.0, "eps": 3139.0, "pe": 115.6}, {"d": "2025-04-04", "c": 356000.0, "eps": 3144.0, "pe": 113.2}, {"d": "2025-04-07", "c": 337500.0, "eps": 3160.0, "pe": 106.8}, {"d": "2025-04-08", "c": 360500.0, "eps": 3165.0, "pe": 113.9}, {"d": "2025-04-09", "c": 351000.0, "eps": 3170.0, "pe": 110.7}, {"d": "2025-04-10", "c": 364500.0, "eps": 3175.0, "pe": 114.8}, {"d": "2025-04-11", "c": 375000.0, "eps": 3180.0, "pe": 117.9}, {"d": "2025-04-14", "c": 386000.0, "eps": 3196.0, "pe": 120.8}, {"d": "2025-04-15", "c": 378500.0, "eps": 3201.0, "pe": 118.3}, {"d": "2025-04-16", "c": 367000.0, "eps": 3206.0, "pe": 114.5}, {"d": "2025-04-17", "c": 376500.0, "eps": 3211.0, "pe": 117.3}, {"d": "2025-04-18", "c": 391500.0, "eps": 3216.0, "pe": 121.7}, {"d": "2025-04-21", "c": 385000.0, "eps": 3232.0, "pe": 119.1}, {"d": "2025-04-22", "c": 387000.0, "eps": 3237.0, "pe": 119.6}, {"d": "2025-04-23", "c": 389000.0, "eps": 3242.0, "pe": 120.0}, {"d": "2025-04-24", "c": 387000.0, "eps": 3247.0, "pe": 119.2}, {"d": "2025-04-25", "c": 364500.0, "eps": 3252.0, "pe": 112.1}, {"d": "2025-04-28", "c": 356000.0, "eps": 3268.0, "pe": 109.0}, {"d": "2025-04-29", "c": 361500.0, "eps": 3273.0, "pe": 110.5}, {"d": "2025-04-30", "c": 350000.0, "eps": 3278.0, "pe": 106.8}, {"d": "2025-05-02", "c": 355500.0, "eps": 3288.0, "pe": 108.1}, {"d": "2025-05-07", "c": 356000.0, "eps": 3314.0, "pe": 107.4}, {"d": "2025-05-08", "c": 354000.0, "eps": 3319.0, "pe": 106.7}, {"d": "2025-05-09", "c": 346500.0, "eps": 3324.0, "pe": 104.2}, {"d": "2025-05-12", "c": 335000.0, "eps": 3339.0, "pe": 100.3}, {"d": "2025-05-13", "c": 359000.0, "eps": 3345.0, "pe": 107.3}, {"d": "2025-05-14", "c": 334000.0, "eps": 3350.0, "pe": 99.7}, {"d": "2025-05-15", "c": 330000.0, "eps": 3355.0, "pe": 98.4}, {"d": "2025-05-16", "c": 318000.0, "eps": 3360.0, "pe": 94.6}, {"d": "2025-05-19", "c": 319500.0, "eps": 3375.0, "pe": 94.7}, {"d": "2025-05-20", "c": 320000.0, "eps": 3381.0, "pe": 94.7}, {"d": "2025-05-21", "c": 325500.0, "eps": 3386.0, "pe": 96.1}, {"d": "2025-05-22", "c": 323500.0, "eps": 3391.0, "pe": 95.4}, {"d": "2025-05-23", "c": 323500.0, "eps": 3396.0, "pe": 95.3}, {"d": "2025-05-26", "c": 336500.0, "eps": 3411.0, "pe": 98.6}, {"d": "2025-05-27", "c": 343000.0, "eps": 3417.0, "pe": 100.4}, {"d": "2025-05-28", "c": 333000.0, "eps": 3422.0, "pe": 97.3}, {"d": "2025-05-29", "c": 335000.0, "eps": 3427.0, "pe": 97.8}, {"d": "2025-05-30", "c": 331500.0, "eps": 3432.0, "pe": 96.6}, {"d": "2025-06-02", "c": 350500.0, "eps": 3447.0, "pe": 101.7}, {"d": "2025-06-04", "c": 383000.0, "eps": 3458.0, "pe": 110.8}, {"d": "2025-06-05", "c": 369000.0, "eps": 3463.0, "pe": 106.6}, {"d": "2025-06-09", "c": 388000.0, "eps": 3483.0, "pe": 111.4}, {"d": "2025-06-10", "c": 393500.0, "eps": 3488.0, "pe": 112.8}, {"d": "2025-06-11", "c": 408000.0, "eps": 3494.0, "pe": 116.8}, {"d": "2025-06-12", "c": 409000.0, "eps": 3499.0, "pe": 116.9}, {"d": "2025-06-13", "c": 384000.0, "eps": 3504.0, "pe": 109.6}, {"d": "2025-06-16", "c": 406000.0, "eps": 3519.0, "pe": 115.4}, {"d": "2025-06-17", "c": 395000.0, "eps": 3524.0, "pe": 112.1}, {"d": "2025-06-18", "c": 395500.0, "eps": 3530.0, "pe": 112.1}, {"d": "2025-06-19", "c": 387500.0, "eps": 3535.0, "pe": 109.6}, {"d": "2025-06-20", "c": 392000.0, "eps": 3540.0, "pe": 110.7}, {"d": "2025-06-23", "c": 379000.0, "eps": 3555.0, "pe": 106.6}, {"d": "2025-06-24", "c": 390500.0, "eps": 3560.0, "pe": 109.7}, {"d": "2025-06-25", "c": 391000.0, "eps": 3566.0, "pe": 109.7}, {"d": "2025-06-26", "c": 384000.0, "eps": 3571.0, "pe": 107.5}, {"d": "2025-06-27", "c": 380500.0, "eps": 3576.0, "pe": 106.4}, {"d": "2025-06-30", "c": 373000.0, "eps": 3591.0, "pe": 103.9}, {"d": "2025-07-01", "c": 371500.0, "eps": 3596.0, "pe": 103.3}, {"d": "2025-07-02", "c": 394000.0, "eps": 3601.0, "pe": 109.4}, {"d": "2025-07-03", "c": 398000.0, "eps": 3607.0, "pe": 110.4}, {"d": "2025-07-04", "c": 376500.0, "eps": 3612.0, "pe": 104.2}, {"d": "2025-07-07", "c": 415000.0, "eps": 3627.0, "pe": 114.4}, {"d": "2025-07-08", "c": 418500.0, "eps": 3632.0, "pe": 115.2}, {"d": "2025-07-09", "c": 424000.0, "eps": 3637.0, "pe": 116.6}, {"d": "2025-07-10", "c": 450000.0, "eps": 3643.0, "pe": 123.5}, {"d": "2025-07-11", "c": 441500.0, "eps": 3648.0, "pe": 121.0}, {"d": "2025-07-14", "c": 442000.0, "eps": 3663.0, "pe": 120.7}, {"d": "2025-07-15", "c": 471000.0, "eps": 3668.0, "pe": 128.4}, {"d": "2025-07-16", "c": 481000.0, "eps": 3673.0, "pe": 130.9}, {"d": "2025-07-17", "c": 489000.0, "eps": 3679.0, "pe": 132.9}, {"d": "2025-07-18", "c": 487500.0, "eps": 3684.0, "pe": 132.3}, {"d": "2025-07-21", "c": 480500.0, "eps": 3699.0, "pe": 129.9}, {"d": "2025-07-22", "c": 475500.0, "eps": 3704.0, "pe": 128.4}, {"d": "2025-07-23", "c": 478500.0, "eps": 3709.0, "pe": 129.0}, {"d": "2025-07-24", "c": 475000.0, "eps": 3715.0, "pe": 127.9}, {"d": "2025-07-25", "c": 463000.0, "eps": 3720.0, "pe": 124.5}, {"d": "2025-07-28", "c": 455000.0, "eps": 3735.0, "pe": 121.8}, {"d": "2025-07-29", "c": 464000.0, "eps": 3740.0, "pe": 124.1}, {"d": "2025-07-30", "c": 451000.0, "eps": 3745.0, "pe": 120.4}, {"d": "2025-07-31", "c": 450500.0, "eps": 3750.0, "pe": 120.1}, {"d": "2025-08-01", "c": 422000.0, "eps": 3756.0, "pe": 112.4}, {"d": "2025-08-04", "c": 438000.0, "eps": 3771.0, "pe": 116.1}, {"d": "2025-08-05", "c": 443500.0, "eps": 3776.0, "pe": 117.4}, {"d": "2025-08-06", "c": 439500.0, "eps": 3781.0, "pe": 116.2}, {"d": "2025-08-07", "c": 431000.0, "eps": 3786.0, "pe": 113.8}, {"d": "2025-08-08", "c": 429500.0, "eps": 3792.0, "pe": 113.3}, {"d": "2025-08-11", "c": 430000.0, "eps": 3807.0, "pe": 112.9}, {"d": "2025-08-12", "c": 434500.0, "eps": 3812.0, "pe": 114.0}, {"d": "2025-08-13", "c": 449500.0, "eps": 3817.0, "pe": 117.8}, {"d": "2025-08-14", "c": 439000.0, "eps": 3822.0, "pe": 114.8}, {"d": "2025-08-18", "c": 437500.0, "eps": 3843.0, "pe": 113.8}, {"d": "2025-08-19", "c": 423500.0, "eps": 3848.0, "pe": 110.1}, {"d": "2025-08-20", "c": 415000.0, "eps": 3853.0, "pe": 107.7}, {"d": "2025-08-21", "c": 405500.0, "eps": 3858.0, "pe": 105.1}, {"d": "2025-08-22", "c": 420500.0, "eps": 3864.0, "pe": 108.8}, {"d": "2025-08-25", "c": 437500.0, "eps": 3879.0, "pe": 112.8}, {"d": "2025-08-26", "c": 438500.0, "eps": 3884.0, "pe": 112.9}, {"d": "2025-08-27", "c": 425000.0, "eps": 3889.0, "pe": 109.3}, {"d": "2025-08-28", "c": 418500.0, "eps": 3894.0, "pe": 107.5}, {"d": "2025-08-29", "c": 438500.0, "eps": 3899.0, "pe": 112.5}, {"d": "2025-09-01", "c": 459500.0, "eps": 3915.0, "pe": 117.4}, {"d": "2025-09-02", "c": 457500.0, "eps": 3920.0, "pe": 116.7}, {"d": "2025-09-03", "c": 463500.0, "eps": 3925.0, "pe": 118.1}, {"d": "2025-09-04", "c": 466500.0, "eps": 3930.0, "pe": 118.7}, {"d": "2025-09-05", "c": 477500.0, "eps": 3935.0, "pe": 121.3}, {"d": "2025-09-08", "c": 475500.0, "eps": 3951.0, "pe": 120.4}, {"d": "2025-09-09", "c": 478000.0, "eps": 3956.0, "pe": 120.8}, {"d": "2025-09-10", "c": 485500.0, "eps": 3961.0, "pe": 122.6}, {"d": "2025-09-11", "c": 477000.0, "eps": 3966.0, "pe": 120.3}, {"d": "2025-09-12", "c": 493000.0, "eps": 3971.0, "pe": 124.1}, {"d": "2025-09-15", "c": 493500.0, "eps": 3987.0, "pe": 123.8}, {"d": "2025-09-16", "c": 493000.0, "eps": 3992.0, "pe": 123.5}, {"d": "2025-09-17", "c": 471000.0, "eps": 3997.0, "pe": 117.8}, {"d": "2025-09-18", "c": 474500.0, "eps": 4002.0, "pe": 118.6}, {"d": "2025-09-19", "c": 471500.0, "eps": 4007.0, "pe": 117.7}, {"d": "2025-09-22", "c": 506000.0, "eps": 4024.0, "pe": 125.8}, {"d": "2025-09-23", "c": 482500.0, "eps": 4029.0, "pe": 119.8}, {"d": "2025-09-24", "c": 465500.0, "eps": 4034.0, "pe": 115.4}, {"d": "2025-09-25", "c": 456500.0, "eps": 4040.0, "pe": 113.0}, {"d": "2025-09-26", "c": 445500.0, "eps": 4045.0, "pe": 110.1}, {"d": "2025-09-29", "c": 467000.0, "eps": 4061.0, "pe": 115.0}, {"d": "2025-09-30", "c": 455500.0, "eps": 4067.0, "pe": 112.0}, {"d": "2025-10-01", "c": 460500.0, "eps": 4072.0, "pe": 113.1}, {"d": "2025-10-02", "c": 471000.0, "eps": 4077.0, "pe": 115.5}, {"d": "2025-10-10", "c": 461500.0, "eps": 4120.0, "pe": 112.0}, {"d": "2025-10-13", "c": 447000.0, "eps": 4137.0, "pe": 108.1}, {"d": "2025-10-14", "c": 446500.0, "eps": 4142.0, "pe": 107.8}, {"d": "2025-10-15", "c": 447500.0, "eps": 4147.0, "pe": 107.9}, {"d": "2025-10-16", "c": 433000.0, "eps": 4153.0, "pe": 104.3}, {"d": "2025-10-17", "c": 427500.0, "eps": 4158.0, "pe": 102.8}, {"d": "2025-10-20", "c": 444500.0, "eps": 4174.0, "pe": 106.5}, {"d": "2025-10-21", "c": 444500.0, "eps": 4180.0, "pe": 106.3}, {"d": "2025-10-22", "c": 451500.0, "eps": 4185.0, "pe": 107.9}, {"d": "2025-10-23", "c": 452500.0, "eps": 4190.0, "pe": 108.0}, {"d": "2025-10-24", "c": 447500.0, "eps": 4196.0, "pe": 106.7}, {"d": "2025-10-27", "c": 487000.0, "eps": 4212.0, "pe": 115.6}, {"d": "2025-10-28", "c": 476500.0, "eps": 4217.0, "pe": 113.0}, {"d": "2025-10-29", "c": 470000.0, "eps": 4223.0, "pe": 111.3}, {"d": "2025-10-30", "c": 473500.0, "eps": 4228.0, "pe": 112.0}, {"d": "2025-10-31", "c": 488000.0, "eps": 4234.0, "pe": 115.3}, {"d": "2025-11-03", "c": 520000.0, "eps": 4250.0, "pe": 122.4}, {"d": "2025-11-04", "c": 544000.0, "eps": 4255.0, "pe": 127.8}, {"d": "2025-11-05", "c": 526000.0, "eps": 4261.0, "pe": 123.5}, {"d": "2025-11-06", "c": 545000.0, "eps": 4266.0, "pe": 127.8}, {"d": "2025-11-07", "c": 523000.0, "eps": 4271.0, "pe": 122.4}, {"d": "2025-11-10", "c": 527000.0, "eps": 4287.0, "pe": 122.9}, {"d": "2025-11-11", "c": 511000.0, "eps": 4293.0, "pe": 119.0}, {"d": "2025-11-12", "c": 552000.0, "eps": 4298.0, "pe": 128.4}, {"d": "2025-11-13", "c": 552000.0, "eps": 4304.0, "pe": 128.3}, {"d": "2025-11-14", "c": 552000.0, "eps": 4309.0, "pe": 128.1}, {"d": "2025-11-17", "c": 549000.0, "eps": 4325.0, "pe": 126.9}, {"d": "2025-11-18", "c": 554000.0, "eps": 4331.0, "pe": 127.9}, {"d": "2025-11-19", "c": 540000.0, "eps": 4336.0, "pe": 124.5}, {"d": "2025-11-20", "c": 559000.0, "eps": 4341.0, "pe": 128.8}, {"d": "2025-11-21", "c": 535000.0, "eps": 4347.0, "pe": 123.1}, {"d": "2025-11-24", "c": 523000.0, "eps": 4363.0, "pe": 119.9}, {"d": "2025-11-25", "c": 515000.0, "eps": 4368.0, "pe": 117.9}, {"d": "2025-11-26", "c": 522000.0, "eps": 4374.0, "pe": 119.4}, {"d": "2025-11-27", "c": 525000.0, "eps": 4379.0, "pe": 119.9}, {"d": "2025-11-28", "c": 532000.0, "eps": 4384.0, "pe": 121.3}, {"d": "2025-12-01", "c": 541000.0, "eps": 4401.0, "pe": 122.9}, {"d": "2025-12-02", "c": 526000.0, "eps": 4406.0, "pe": 119.4}, {"d": "2025-12-03", "c": 522000.0, "eps": 4411.0, "pe": 118.3}, {"d": "2025-12-04", "c": 518000.0, "eps": 4417.0, "pe": 117.3}, {"d": "2025-12-05", "c": 467500.0, "eps": 4422.0, "pe": 105.7}, {"d": "2025-12-08", "c": 459000.0, "eps": 4438.0, "pe": 103.4}, {"d": "2025-12-09", "c": 458500.0, "eps": 4444.0, "pe": 103.2}, {"d": "2025-12-10", "c": 456000.0, "eps": 4449.0, "pe": 102.5}, {"d": "2025-12-11", "c": 451500.0, "eps": 4454.0, "pe": 101.4}, {"d": "2025-12-12", "c": 434500.0, "eps": 4460.0, "pe": 97.4}, {"d": "2025-12-15", "c": 435000.0, "eps": 4476.0, "pe": 97.2}, {"d": "2025-12-16", "c": 423000.0, "eps": 4481.0, "pe": 94.4}, {"d": "2025-12-17", "c": 420500.0, "eps": 4487.0, "pe": 93.7}, {"d": "2025-12-18", "c": 432000.0, "eps": 4492.0, "pe": 96.2}, {"d": "2025-12-19", "c": 449000.0, "eps": 4498.0, "pe": 99.8}, {"d": "2025-12-22", "c": 441000.0, "eps": 4514.0, "pe": 97.7}, {"d": "2025-12-23", "c": 440500.0, "eps": 4519.0, "pe": 97.5}, {"d": "2025-12-24", "c": 431500.0, "eps": 4524.0, "pe": 95.4}, {"d": "2025-12-26", "c": 440500.0, "eps": 4535.0, "pe": 97.1}, {"d": "2025-12-29", "c": 454000.0, "eps": 4551.0, "pe": 99.8}, {"d": "2025-12-30", "c": 450500.0, "eps": 4557.0, "pe": 98.9}, {"d": "2026-01-02", "c": 459000.0, "eps": 4573.0, "pe": 100.4}, {"d": "2026-01-05", "c": 468500.0, "eps": 4589.0, "pe": 102.1}, {"d": "2026-01-06", "c": 471500.0, "eps": 4594.0, "pe": 102.6}, {"d": "2026-01-07", "c": 470000.0, "eps": 4600.0, "pe": 102.2}, {"d": "2026-01-08", "c": 481500.0, "eps": 4605.0, "pe": 104.6}, {"d": "2026-01-09", "c": 508000.0, "eps": 4611.0, "pe": 110.2}, {"d": "2026-01-12", "c": 476500.0, "eps": 4627.0, "pe": 103.0}, {"d": "2026-01-13", "c": 478000.0, "eps": 4632.0, "pe": 103.2}, {"d": "2026-01-14", "c": 466500.0, "eps": 4638.0, "pe": 100.6}, {"d": "2026-01-15", "c": 470000.0, "eps": 4643.0, "pe": 101.2}, {"d": "2026-01-16", "c": 514000.0, "eps": 4648.0, "pe": 110.6}, {"d": "2026-01-19", "c": 497500.0, "eps": 4664.0, "pe": 106.7}, {"d": "2026-01-20", "c": 466000.0, "eps": 4670.0, "pe": 99.8}, {"d": "2026-01-21", "c": 373000.0, "eps": 4675.0, "pe": 79.8}, {"d": "2026-01-22", "c": 369500.0, "eps": 4686.0, "pe": 78.9}, {"d": "2026-01-23", "c": 388000.0, "eps": 4696.0, "pe": 82.6}, {"d": "2026-01-26", "c": 409500.0, "eps": 4728.0, "pe": 86.6}, {"d": "2026-01-27", "c": 407000.0, "eps": 4739.0, "pe": 85.9}, {"d": "2026-01-28", "c": 435000.0, "eps": 4749.0, "pe": 91.6}, {"d": "2026-01-29", "c": 431500.0, "eps": 4760.0, "pe": 90.6}, {"d": "2026-01-30", "c": 409500.0, "eps": 4771.0, "pe": 85.8}, {"d": "2026-02-02", "c": 396000.0, "eps": 4802.0, "pe": 82.5}, {"d": "2026-02-03", "c": 403000.0, "eps": 4813.0, "pe": 83.7}, {"d": "2026-02-04", "c": 394500.0, "eps": 4824.0, "pe": 81.8}, {"d": "2026-02-05", "c": 379500.0, "eps": 4834.0, "pe": 78.5}, {"d": "2026-02-06", "c": 364500.0, "eps": 4845.0, "pe": 75.2}, {"d": "2026-02-09", "c": 379500.0, "eps": 4877.0, "pe": 77.8}, {"d": "2026-02-10", "c": 380000.0, "eps": 4887.0, "pe": 77.8}, {"d": "2026-02-11", "c": 386000.0, "eps": 4898.0, "pe": 78.8}, {"d": "2026-02-12", "c": 388500.0, "eps": 4908.0, "pe": 79.1}, {"d": "2026-02-13", "c": 384000.0, "eps": 4919.0, "pe": 78.1}, {"d": "2026-02-19", "c": 409000.0, "eps": 4983.0, "pe": 82.1}, {"d": "2026-02-20", "c": 403500.0, "eps": 4993.0, "pe": 80.8}, {"d": "2026-02-23", "c": 409500.0, "eps": 5025.0, "pe": 81.5}, {"d": "2026-02-24", "c": 407500.0, "eps": 5036.0, "pe": 80.9}, {"d": "2026-02-25", "c": 403000.0, "eps": 5046.0, "pe": 79.9}, {"d": "2026-02-26", "c": 404000.0, "eps": 5057.0, "pe": 79.9}, {"d": "2026-02-27", "c": 407500.0, "eps": 5068.0, "pe": 80.4}, {"d": "2026-03-03", "c": 369000.0, "eps": 5110.0, "pe": 72.2}, {"d": "2026-03-04", "c": 347500.0, "eps": 5121.0, "pe": 67.9}, {"d": "2026-03-05", "c": 378500.0, "eps": 5131.0, "pe": 73.8}, {"d": "2026-03-06", "c": 371000.0, "eps": 5142.0, "pe": 72.2}, {"d": "2026-03-09", "c": 365000.0, "eps": 5174.0, "pe": 70.6}, {"d": "2026-03-10", "c": 377000.0, "eps": 5184.0, "pe": 72.7}, {"d": "2026-03-11", "c": 361000.0, "eps": 5195.0, "pe": 69.5}, {"d": "2026-03-12", "c": 367000.0, "eps": 5205.0, "pe": 70.5}, {"d": "2026-03-13", "c": 361000.0, "eps": 5216.0, "pe": 69.2}, {"d": "2026-03-16", "c": 355500.0, "eps": 5248.0, "pe": 67.7}, {"d": "2026-03-17", "c": 357000.0, "eps": 5258.0, "pe": 67.9}, {"d": "2026-03-18", "c": 357500.0, "eps": 5269.0, "pe": 67.9}, {"d": "2026-03-19", "c": 354000.0, "eps": 5280.0, "pe": 67.1}, {"d": "2026-03-20", "c": 354000.0, "eps": 5290.0, "pe": 66.9}, {"d": "2026-03-23", "c": 323500.0, "eps": 5322.0, "pe": 60.8}, {"d": "2026-03-24", "c": 352500.0, "eps": 5333.0, "pe": 66.1}, {"d": "2026-03-25", "c": 396500.0, "eps": 5343.0, "pe": 74.2}, {"d": "2026-03-26", "c": 378000.0, "eps": 5341.0, "pe": 70.8}, {"d": "2026-03-27", "c": 375500.0, "eps": 5340.0, "pe": 70.3}, {"d": "2026-03-30", "c": 354000.0, "eps": 5334.0, "pe": 66.4}, {"d": "2026-03-31", "c": 340000.0, "eps": 5333.0, "pe": 63.8}, {"d": "2026-04-01", "c": 361500.0, "eps": 5331.0, "pe": 67.8}, {"d": "2026-04-02", "c": 344500.0, "eps": 5329.0, "pe": 64.6}, {"d": "2026-04-03", "c": 367500.0, "eps": 5327.0, "pe": 69.0}, {"d": "2026-04-06", "c": 366000.0, "eps": 5322.0, "pe": 68.8}, {"d": "2026-04-07", "c": 350000.0, "eps": 5320.0, "pe": 65.8}, {"d": "2026-04-08", "c": 376500.0, "eps": 5318.0, "pe": 70.8}, {"d": "2026-04-09", "c": 369500.0, "eps": 5317.0, "pe": 69.5}, {"d": "2026-04-10", "c": 363500.0, "eps": 5315.0, "pe": 68.4}, {"d": "2026-04-13", "c": 352500.0, "eps": 5309.0, "pe": 66.4}, {"d": "2026-04-14", "c": 356500.0, "eps": 5308.0, "pe": 67.2}, {"d": "2026-04-15", "c": 375000.0, "eps": 5306.0, "pe": 70.7}, {"d": "2026-04-16", "c": 371500.0, "eps": 5304.0, "pe": 70.0}, {"d": "2026-04-17", "c": 368000.0, "eps": 5302.0, "pe": 69.4}, {"d": "2026-04-20", "c": 373000.0, "eps": 5297.0, "pe": 70.4}, {"d": "2026-04-21", "c": 371000.0, "eps": 5295.0, "pe": 70.1}, {"d": "2026-04-22", "c": 361000.0, "eps": 5294.0, "pe": 68.2}, {"d": "2026-04-23", "c": 358500.0, "eps": 5292.0, "pe": 67.7}, {"d": "2026-04-24", "c": 371000.0, "eps": 5290.0, "pe": 70.1}, {"d": "2026-04-27", "c": 383500.0, "eps": 5285.0, "pe": 72.6}, {"d": "2026-04-28", "c": 373500.0, "eps": 5283.0, "pe": 70.7}, {"d": "2026-04-29", "c": 381000.0, "eps": 5281.0, "pe": 72.1}, {"d": "2026-04-30", "c": 371500.0, "eps": 5279.0, "pe": 70.4}, {"d": "2026-05-04", "c": 373000.0, "eps": 5272.0, "pe": 70.7}, {"d": "2026-05-06", "c": 365500.0, "eps": 5269.0, "pe": 69.4}, {"d": "2026-05-07", "c": 359000.0, "eps": 5267.0, "pe": 68.2}, {"d": "2026-05-08", "c": 344000.0, "eps": 5265.0, "pe": 65.3}, {"d": "2026-05-11", "c": 324500.0, "eps": 5260.0, "pe": 61.7}, {"d": "2026-05-12", "c": 344000.0, "eps": 5258.0, "pe": 65.4}, {"d": "2026-05-13", "c": 356000.0, "eps": 5256.0, "pe": 67.7}, {"d": "2026-05-14", "c": 387500.0, "eps": 5254.0, "pe": 73.7}, {"d": "2026-05-15", "c": 370000.0, "eps": 5253.0, "pe": 70.4}, {"d": "2026-05-18", "c": 354500.0, "eps": 5247.0, "pe": 67.6}, {"d": "2026-05-19", "c": 365500.0, "eps": 5246.0, "pe": 69.7}, {"d": "2026-05-20", "c": 359000.0, "eps": 5244.0, "pe": 68.5}, {"d": "2026-05-21", "c": 352000.0, "eps": 5242.0, "pe": 67.1}, {"d": "2026-05-22", "c": 370500.0, "eps": 5240.0, "pe": 70.7}, {"d": "2026-05-26", "c": 367000.0, "eps": 5233.0, "pe": 70.1}, {"d": "2026-05-27", "c": 390000.0, "eps": 5231.0, "pe": 74.5}, {"d": "2026-05-28", "c": 367500.0, "eps": 5230.0, "pe": 70.3}, {"d": "2026-05-29", "c": 369000.0, "eps": 5228.0, "pe": 70.6}, {"d": "2026-06-01", "c": 366000.0, "eps": 5223.0, "pe": 70.1}, {"d": "2026-06-02", "c": 358000.0, "eps": 5221.0, "pe": 68.6}, {"d": "2026-06-04", "c": 340500.0, "eps": 5217.0, "pe": 65.3}, {"d": "2026-06-05", "c": 332000.0, "eps": 5215.0, "pe": 63.7}, {"d": "2026-06-08", "c": 289500.0, "eps": 5210.0, "pe": 55.6}, {"d": "2026-06-09", "c": 326500.0, "eps": 5208.0, "pe": 62.7}, {"d": "2026-06-10", "c": 310500.0, "eps": 5207.0, "pe": 59.6}, {"d": "2026-06-11", "c": 347000.0, "eps": 5205.0, "pe": 66.7}, {"d": "2026-06-12", "c": 340000.0, "eps": 5203.0, "pe": 65.3}, {"d": "2026-06-15", "c": 350000.0, "eps": 5198.0, "pe": 67.3}, {"d": "2026-06-16", "c": 350500.0, "eps": 5196.0, "pe": 67.5}, {"d": "2026-06-17", "c": 371000.0, "eps": 5194.0, "pe": 71.4}, {"d": "2026-06-18", "c": 367500.0, "eps": 5192.0, "pe": 70.8}, {"d": "2026-06-19", "c": 351500.0, "eps": 5191.0, "pe": 67.7}, {"d": "2026-06-22", "c": 345000.0, "eps": 5185.0, "pe": 66.5}, {"d": "2026-06-23", "c": 327000.0, "eps": 5184.0, "pe": 63.1}, {"d": "2026-06-24", "c": 372000.0, "eps": 5182.0, "pe": 71.8}, {"d": "2026-06-25", "c": 377000.0, "eps": 5180.0, "pe": 72.8}, {"d": "2026-06-26", "c": 346000.0, "eps": 5178.0, "pe": 66.8}, {"d": "2026-06-29", "c": 376000.0, "eps": 5173.0, "pe": 72.7}, {"d": "2026-06-30", "c": 363500.0, "eps": 5171.0, "pe": 70.3}, {"d": "2026-07-01", "c": 360000.0, "eps": 5169.0, "pe": 69.6}, {"d": "2026-07-02", "c": 351000.0, "eps": 5168.0, "pe": 67.9}, {"d": "2026-07-03", "c": 342000.0, "eps": 5166.0, "pe": 66.2}, {"d": "2026-07-06", "c": 330500.0, "eps": 5161.0, "pe": 64.0}, {"d": "2026-07-07", "c": 334500.0, "eps": 5159.0, "pe": 64.8}, {"d": "2026-07-08", "c": 300000.0, "eps": 5157.0, "pe": 58.2}, {"d": "2026-07-09", "c": 296500.0, "eps": 5155.0, "pe": 57.5}, {"d": "2026-07-10", "c": 326000.0, "eps": 5153.0, "pe": 63.3}, {"d": "2026-07-13", "c": 308500.0, "eps": 5148.0, "pe": 59.9}, {"d": "2026-07-14", "c": 285500.0, "eps": 5146.0, "pe": 55.5}, {"d": "2026-07-15", "c": 283500.0, "eps": 5145.0, "pe": 55.1}, {"d": "2026-07-16", "c": 276500.0, "eps": 5143.0, "pe": 53.8}], "stats": {"avg": 97.3, "min": 41.4, "max": 179.7, "min_day": "2023-09-06", "max_day": "2024-11-11", "cur": 53.8, "cur_eps": 5143.0, "cur_price": 276500.0, "percentile": 12}, "stats_1y": {"avg": 93.6, "min": 53.8, "max": 132.9, "min_day": "2026-07-16", "max_day": "2025-07-17", "cur": 53.8, "cur_eps": 5143.0, "cur_price": 276500.0, "percentile": 0}, "events": [{"d": "2025-09-19", "label": "키트루다 SC FDA 승인", "kind": "up"}, {"d": "2026-01-21", "label": "머크 로열티율 ~2% 공개", "kind": "down"}, {"d": "2026-03-25", "label": "바이오젠 라이선스 계약", "kind": "up"}], "regimes": [{"from": "2026-01-21", "to": "2026-07-16", "label": "로열티율 공개 후 밸류 조정기"}], "cfg": {"currency": "KRW", "multiples": [40, 80, 120, 160], "priceMax": 1000000, "priceTick": 200000, "peMax": 200, "peTick": 40, "epsMax": 7500.0, "epsTick": 1500.0}, "anchors": [{"d": "2023-05-03", "val": "0.0조원", "eps": 667.89, "why": "로열티 이전 국면 — 2023 별도 기술용역매출 833억 수준이나 영업이익은 소액(2024 연간 OP 254억의 직전). NTM은 사후 실적 기반 근사(개별 기관 NTM 컨센 미확보)"}, {"d": "2024-02-22", "val": "0.0조원", "eps": 1502.76, "why": "머크 ALT-B4 독점 라이선스 확대(키트루다 SC) 부각 — 마일스톤·로열티 기대 반영. 당시 보도 기반 근사"}, {"d": "2025-01-02", "val": "0.1조원", "eps": 2671.58, "why": "2024 영업이익 254억(+9배 YoY) 확정 경로 + 2025 로열티 개시 기대. NTM 성장경로 감안 근사"}, {"d": "2025-09-19", "val": "0.1조원", "eps": 4007.36, "why": "키트루다 SC(Keytruda Qlex, berahyaluronidase alfa=ALT-B4) FDA 승인 — 로열티 본격화 진입. 2025E OP 1,000억 경로 + 2026 램프 반영 근사"}, {"d": "2026-01-21", "val": "0.1조원", "eps": 4675.26, "why": "머크 분기보고서서 ALT-B4 로열티율 ~2% 공개 — 기대 대비 낮아 주가 481,000→373,500(-22%)이나 판매 램프는 지속. FnGuide 2026E 순익 경로 기반 근사"}, {"d": "2026-03-25", "val": "0.2조원", "eps": 5343.15, "why": "바이오젠 인터내셔널 ALT-B4 독점 라이선스(최대 ~8,600억, 선급금 $20M≈300억+2품목 $10M) — 계약 다각화. 선급 인식·마일스톤 기대 반영"}, {"d": "2026-07-16", "val": "0.2조원", "eps": 5142.78, "why": "FnGuide 4개 기관 2026E 순익 컨센 2,756억(EPS 5,144)÷전환 1.79 ≈ 영업이익 1,540억. 단 1Q26 연결 영업이익 393억(-35.6% YoY)로 상단 제한 — 마일스톤 렘피(lumpy) 특성"}], "meta": {"symbol": "196170", "name": "알테오젠", "shares": 53586343, "mode": "op_krw", "conv": 1.7895, "conv_basis": "최근 5개 흑자 분기 합산 (4Q24~1Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 1.7895 (DART 실측, 2026-07-19)", "range": ["2023-05-03", "2026-07-16"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
