@@ -253,6 +253,63 @@ details.pe-embed .inner { padding: 0 20px 18px; }
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<style>
+/* ---- 모바일 가독성 스케일 (2026-07-20) — 휴대폰 폭에서만 확대 ---- */
+@media (max-width: 640px) {
+  body { font-size: 16px; line-height: 1.72; }
+  .desc, .card .deck { font-size: 14.5px; }
+  .fine { font-size: 12.5px; }
+  .lbl, .caption, figcaption, small { font-size: 13px; }
+  section, .card { margin-top: 40px; }
+  .wrap, main, .container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ===== 표 3유형 (2026-07-20) ===== */
+/* 데이터 나열표: 가로스크롤 래퍼 + 힌트 */
+.tbl-data { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 8px; }
+.tbl-data > table { white-space: nowrap; margin: 0; }
+.tbl-data::after { content: "← 옆으로 넘겨 나머지 열 보기"; display: none; font-size: 11px; color: var(--muted); padding: 4px 8px; }
+@media (max-width: 640px) { .tbl-data.scrollable::after { display: block; } }
+
+/* 판정표: 좁은 화면에서 행→카드 */
+@media (max-width: 640px) {
+  .tbl-judge, .tbl-judge tbody, .tbl-judge tr, .tbl-judge td { display: block; width: 100%; }
+  .tbl-judge thead { display: none; }
+  .tbl-judge tr { border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; margin: 0 0 10px; }
+  .tbl-judge tr.self { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+  .tbl-judge td { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border: 0; border-top: 1px solid var(--border); text-align: right; }
+  .tbl-judge td:first-child { border-top: 0; }
+  .tbl-judge td::before { content: attr(data-label); color: var(--muted); font-weight: 500; text-align: left; flex: 0 0 auto; }
+  /* 버그 수정 (2026-07-20, 소급 dry-run 중 발견): 값이 긴 자유서술 문단이면
+     라벨 옆 flex 아이템이 min-content(글자 1개 폭)까지 짓눌려 세로로 한 글자씩
+     쌓인다. <span class="v"> 로 감싼 값에 flex-basis:0 성장형 사이징을 줘 정상
+     줄바꿈으로 복구(retrofit_report_mobile.py 의 _wrap_cell_value 가 주입). */
+  .tbl-judge td > .v { flex: 1 1 0%; min-width: 0; }
+}
+
+/* 근거 팝업 트리거 경량화 (위첨자 느낌) — report-widgets.html 과 동일하게 동기화 */
+.evd > button { font-size: 9.5px; vertical-align: super; opacity: .85; padding: 0 3px; }
+.evd > button:hover, .evd.on > button { opacity: 1; }
+
+/* ===== 피어 막대차트 (2026-07-20) ===== */
+.peer-chart .metric { margin: 0 0 20px; }
+.peer-chart .mtitle { font-size: 14px; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+.peer-chart .mhint { font-size: 11.5px; color: var(--muted); margin: 0 0 10px; }
+.peer-chart .brow { display: flex; align-items: center; gap: 8px; margin: 0 0 7px; }
+.peer-chart .blabel { width: 84px; flex: 0 0 84px; font-size: 12.5px; color: var(--ink-2); text-align: right; }
+.peer-chart .blabel.self { color: var(--accent); font-weight: 700; }
+.peer-chart .btrack { flex: 1; height: 20px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+.peer-chart .bfill { height: 100%; border-radius: 5px; background: var(--border-2); }
+.peer-chart .bfill.self { background: var(--accent); }
+.peer-chart .bval { width: 60px; flex: 0 0 60px; font-size: 12.5px; color: var(--ink); font-weight: 600; }
+
+/* ===== 피어 원표 보존 (2026-07-20, I1) ===== */
+/* details/summary 자체의 테두리·캐럿은 기존 전역 details 규칙을 그대로 물려받는다 —
+   여기선 "차트가 주, 원표는 보조 자료"임을 드러내는 최소 오버라이드만 얹는다. */
+.peer-chart + details.peer-raw { margin-top: 14px; }
+details.peer-raw summary { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+details.peer-raw > .tbl-scroll, details.peer-raw > table { margin: 0 20px 16px; }
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -313,12 +370,12 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <h2><span class="idx">01</span>업종 지표 — 클라우드 TAM·AI 인프라·할인율</h2>
   <p class="deck">클라우드 인프라 시장은 1분기 $129B(<span class="up">+35% YoY</span>)로 가속 중이고 AI 인프라가 그 성장의 축이다 — 성장 산업은 확실하며, 문제는 산업이 아니라 아마존이 그 성장을 잡기 위해 쓰는 돈($200B 캐펙스)과 할인율(미 10년물)이다.</p>
   <div class="tbl-scroll">
-  <table>
+  <table class="tbl-judge">
     <thead><tr><th>지표</th><th class="num">최신값 (2026)</th><th class="num">방향</th><th>읽는 법</th></tr></thead>
     <tbody>
-      <tr><td><strong>글로벌 클라우드 인프라 시장</strong> (1Q26)</td><td class="num">약 $129B/분기</td><td class="num"><span class="up">YoY +35%</span></td><td>AWS 매출의 TAM. AI 인프라가 전체 클라우드 지출의 19%로 확대(2023년 8%)되며 성장을 견인<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">Statista·CloudZero 클라우드 인프라 점유율 (1Q26)</span><span class="evd-sum">1Q26 글로벌 클라우드 인프라 <strong>약 $129B</strong>(YoY +35%). 점유율 AWS 28%·Azure 21%·GCP 14%. AI 인프라가 전체 지출의 19%(2023 8%)로 최고 성장 세그먼트.</span><a href="https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
-      <tr><td><strong>AWS 클라우드 점유율</strong></td><td class="num">약 28%</td><td class="num"><span class="down">유지·경쟁 심화</span></td><td>Azure 21%·GCP 14% 대비 여전히 1위. 다만 AI 워크로드가 Azure(OpenAI)·GCP(Gemini/TPU)로도 흘러 성장률 경쟁은 치열</td></tr>
-      <tr><td><strong>미 국채 10년물</strong> (DGS10)</td><td class="num">4.57%</td><td class="num">고착</td><td>30년 수명 데이터센터 캐펙스의 할인율 — 4.5%대 고착이 장기 회수 스토리의 멀티플을 누른다</td></tr>
+      <tr><td data-label="지표"><span class="v"><strong>글로벌 클라우드 인프라 시장</strong> (1Q26)</span></td><td data-label="최신값 (2026)" class="num"><span class="v">약 $129B/분기</span></td><td data-label="방향" class="num"><span class="v"><span class="up">YoY +35%</span></span></td><td data-label="읽는 법"><span class="v">AWS 매출의 TAM. AI 인프라가 전체 클라우드 지출의 19%로 확대(2023년 8%)되며 성장을 견인<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">Statista·CloudZero 클라우드 인프라 점유율 (1Q26)</span><span class="evd-sum">1Q26 글로벌 클라우드 인프라 <strong>약 $129B</strong>(YoY +35%). 점유율 AWS 28%·Azure 21%·GCP 14%. AI 인프라가 전체 지출의 19%(2023 8%)로 최고 성장 세그먼트.</span><a href="https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="지표"><span class="v"><strong>AWS 클라우드 점유율</strong></span></td><td data-label="최신값 (2026)" class="num"><span class="v">약 28%</span></td><td data-label="방향" class="num"><span class="v"><span class="down">유지·경쟁 심화</span></span></td><td data-label="읽는 법"><span class="v">Azure 21%·GCP 14% 대비 여전히 1위. 다만 AI 워크로드가 Azure(OpenAI)·GCP(Gemini/TPU)로도 흘러 성장률 경쟁은 치열</span></td></tr>
+      <tr><td data-label="지표"><span class="v"><strong>미 국채 10년물</strong> (DGS10)</span></td><td data-label="최신값 (2026)" class="num"><span class="v">4.57%</span></td><td data-label="방향" class="num"><span class="v">고착</span></td><td data-label="읽는 법"><span class="v">30년 수명 데이터센터 캐펙스의 할인율 — 4.5%대 고착이 장기 회수 스토리의 멀티플을 누른다</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -349,15 +406,15 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <h2><span class="idx">04</span>기술 스크리닝 — 중립, 박스권 상단서 되밀림</h2>
   <p class="deck">52주 고가 대비 −10.1%로 신고가권이지만 1개월 +0.5%로 방향성은 약하고, MA20이 MA60을 밑도는 단기 역배열이다. 모멘텀 트리거는 뚜렷하지 않다 — 이 종목을 심층 대상으로 삼은 이유는 모멘텀이 아니라 이익 개선과 밸류 디레이팅의 교차다.</p>
   <div class="tbl-scroll">
-  <table>
+  <table class="tbl-judge">
     <thead><tr><th>항목</th><th class="num">측정값 (7/17 종가)</th><th>하우스 1차 필터 기준</th><th>판정</th></tr></thead>
     <tbody>
-      <tr><td>수익률 1주 / 1개월 / 3개월</td><td class="num"><span class="up">+0.8%</span> / <span class="up">+0.5%</span> / <span class="down">−1.0%</span></td><td>1개월 +15% 이상 (모멘텀 트리거)</td><td><span class="grade g-none">○ 미충족</span> — 방향성 약함</td></tr>
-      <tr><td>52주 고가 대비</td><td class="num"><span class="down">−10.1%</span> (고점 $274.99)</td><td>−25% 이내 (신고가 부근)</td><td><span class="grade g-full">● 통과</span></td></tr>
-      <tr><td>30일 저점 대비</td><td class="num"><span class="up">+8.9%</span> (저점 $227.01)</td><td>바닥 반등형 참고</td><td><span class="grade g-part">◐</span> — 저점서 반등 중</td></tr>
-      <tr><td>이동평균 배열</td><td class="num">MA20 $242 &lt; MA60 $254</td><td>MA20 &gt; MA60 (정배열)</td><td><span class="grade g-none">○ 미충족</span> — 단기 역배열</td></tr>
-      <tr><td>시가총액 (근사)</td><td class="num">약 $2.65조</td><td>—</td><td>메가캡</td></tr>
-      <tr><td>투자유의 지정</td><td class="num">0건</td><td>1건 이상 탈락</td><td><span class="grade g-full">● 통과</span></td></tr>
+      <tr><td data-label="항목"><span class="v">수익률 1주 / 1개월 / 3개월</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v"><span class="up">+0.8%</span> / <span class="up">+0.5%</span> / <span class="down">−1.0%</span></span></td><td data-label="하우스 1차 필터 기준"><span class="v">1개월 +15% 이상 (모멘텀 트리거)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 미충족</span> — 방향성 약함</span></td></tr>
+      <tr><td data-label="항목"><span class="v">52주 고가 대비</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v"><span class="down">−10.1%</span> (고점 $274.99)</span></td><td data-label="하우스 1차 필터 기준"><span class="v">−25% 이내 (신고가 부근)</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 통과</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v">30일 저점 대비</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v"><span class="up">+8.9%</span> (저점 $227.01)</span></td><td data-label="하우스 1차 필터 기준"><span class="v">바닥 반등형 참고</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐</span> — 저점서 반등 중</span></td></tr>
+      <tr><td data-label="항목"><span class="v">이동평균 배열</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v">MA20 $242 &lt; MA60 $254</span></td><td data-label="하우스 1차 필터 기준"><span class="v">MA20 &gt; MA60 (정배열)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 미충족</span> — 단기 역배열</span></td></tr>
+      <tr><td data-label="항목"><span class="v">시가총액 (근사)</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v">약 $2.65조</span></td><td data-label="하우스 1차 필터 기준"><span class="v">—</span></td><td data-label="판정"><span class="v">메가캡</span></td></tr>
+      <tr><td data-label="항목"><span class="v">투자유의 지정</span></td><td data-label="측정값 (7/17 종가)" class="num"><span class="v">0건</span></td><td data-label="하우스 1차 필터 기준"><span class="v">1건 이상 탈락</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 통과</span></span></td></tr>
     </tbody>
   </table>
   </div>
@@ -375,7 +432,22 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <p>물량은 전 부문에서 늘었다. AWS 매출 <strong>+28%</strong>(15분기 최고)·북미 리테일 +12%·국제 +19%·광고 +24%. AWS는 이미 $150B 런레이트에 이르렀는데도 두 자릿수 후반으로 가속하고 있고, 이는 계약잔고 RPO가 <strong>+93%</strong>로 매출보다 훨씬 빠르게 쌓이는 것으로 뒷받침된다(섹션 06). 판가(가격 결정력)와 물량(성장 재가속)이 함께 올라 전사 이익률을 사상 최고로 밀어올렸다.</p>
   <h3>C (비용) — <span class="grade g-part">◐ 부분 충족</span> : 마진은 오르지만, 캐펙스 감가가 앞에 있다</h3>
   <p>현재 비용 통제는 우수하다 — 전사 영업이익률 13.1%는 사상 최고이고 북미 리테일 마진은 9.0%로 확장 중이다. 그러나 TTM 블렌드 영업이익률(<strong>11.5%</strong>)은 순수 소프트웨어 피어(MSFT 47.0%·GOOGL 38.6%)에 크게 못 미친다 — 저마진 리테일이 섞여 있기 때문이다. 진짜 C의 시험대는 앞으로다: $200B 캐펙스(2025년의 배)의 감가상각이 향후 손익계산서에 본격 반영될 때, AWS의 규모의 경제가 그 감가를 흡수하며 마진을 지킬 수 있느냐가 관건이다. 1Q26 잉여현금흐름(FCF)이 캐펙스 급증으로 <strong>전년비 95% 감소</strong>한 것은 그 부담의 첫 신호다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">TheNextWeb · 아마존 1Q26 FCF·Anthropic (2026.04.29)</span><span class="evd-sum">1Q26 FCF가 캐펙스 $44.2B(+77%)로 <strong>전년비 −95%</strong>. 순이익엔 Anthropic 투자 평가익 <strong>$16.8B(세전, 비영업)</strong>가 포함 — 이를 제외하면 순이익은 전분기와 대체로 보합.</span><a href="https://thenextweb.com/news/amazon-q1-2026-anthropic-aws-earnings" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
-  <div class="tbl-scroll">
+  <div class="peer-chart">
+<div class="metric"><div class="mtitle">영업이익률 (OPM)</div>
+<div class="mhint">높을수록 수익성↑</div>
+<div class="brow"><span class="blabel self">아마존</span><div class="btrack"><div class="bfill self" style="width:24%"></div></div><span class="bval mono">11.5%</span></div>
+<div class="brow"><span class="blabel">마이크로소프트</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">47%</span></div>
+<div class="brow"><span class="blabel">알파벳</span><div class="btrack"><div class="bfill" style="width:82%"></div></div><span class="bval mono">38.6%</span></div>
+</div>
+<div class="metric"><div class="mtitle">P/E (TTM)</div>
+<div class="mhint">낮을수록 저평가</div>
+<div class="brow"><span class="blabel self">아마존</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">30.6배</span></div>
+<div class="brow"><span class="blabel">마이크로소프트</span><div class="btrack"><div class="bfill" style="width:77%"></div></div><span class="bval mono">23.6배</span></div>
+<div class="brow"><span class="blabel">알파벳</span><div class="btrack"><div class="bfill" style="width:47%"></div></div><span class="bval mono">14.5배</span></div>
+</div>
+</div>
+<details class="peer-raw"><summary>전체 수치·비교 보기</summary>
+<div class="tbl-scroll">
   <table>
     <thead><tr><th>PQC 경쟁사 비교 (TTM 실측)</th><th class="num">아마존 (AMZN)</th><th class="num">마이크로소프트 (MSFT)</th><th class="num">알파벳 (GOOGL)</th></tr></thead>
     <tbody>
@@ -386,6 +458,7 @@ details.pe-embed .inner { padding: 0 20px 18px; }
     </tbody>
   </table>
   </div>
+</details>
   <p class="fine">TTM은 SEC EDGAR companyfacts 4개 분기 합산. 아마존의 블렌드 OPM(11.5%)이 낮은 것은 리테일이 섞였기 때문이며, AWS 단독 영업이익률은 ~35%로 소프트웨어 피어에 근접한다 — 이 "혼합 왜곡"이 아마존을 유통 멀티플로도, 소프트웨어 멀티플로도 온전히 못 읽게 만드는 원인이다(섹션 13).<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">SEC EDGAR·토스 Open API — 하우스 피어 테이블 (2026.07.19)</span><span class="evd-sum">TTM: AMZN 매출 $685.1B·OP $78.8B(OPM 11.5%)·P/E 30.6 · MSFT $311.9B·$146.6B(47.0%)·23.6 · GOOGL $343.8B·$132.8B(38.6%)·14.5. AWS 단독 FY25 OPM은 $45.6B/$128.7B≈35%.</span><span class="evd-nolink">공시 실측 기반 하우스 계산 — 원문 링크 없음</span></span></span></p>
 </div>
 
@@ -394,15 +467,15 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <h2><span class="idx">06</span>Growth Sustainability — 6항목 판정</h2>
   <p class="deck">미국향·TAM·백로그는 확실히 켜졌고(●), 데이터센터 회수·밸류 전환은 절반(◐) — 집계 ● 3 / ◐ 3. 메타와 결정적으로 다른 지점은 3번(백로그): AWS는 계약잔고 $364B(+93%)가 매출보다 빠르게 쌓여, 캐펙스가 투기가 아니라 계약된 수요를 따라간다.</p>
   <div class="tbl-scroll">
-  <table>
+  <table class="tbl-judge">
     <thead><tr><th style="width:30%">항목 (플랫폼·클라우드 변형 적용)</th><th style="width:12%">판정</th><th>근거</th></tr></thead>
     <tbody>
-      <tr><td><strong>1. 매출 증가와 함께 인프라 가동률 상승</strong></td><td><span class="grade g-part">◐ 부분 충족</span></td><td>AWS 데이터센터 활용률(%)은 공시되지 않지만, 경영진은 AWS가 <strong>"용량 제약(capacity constrained)"</strong> 상태 — 수요가 공급을 앞선다 — 라고 반복 안내한다. 이는 메타의 "잉여 컴퓨트" 시인과 정반대 신호다. 다만 정량 가동률이 없어 ●는 유보<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">Global Data Center Hub · AWS 용량 제약·RPO (2026.04)</span><span class="evd-sum">AWS는 수요가 용량을 앞서는 "capacity constrained" 상태로, $200B 캐펙스는 계약 백로그에 연동된 투자이지 투기적 증설이 아님. 자산 수명 셸 ~30년·서버 5~6년.</span><a href="https://www.globaldatacenterhub.com/p/amazon-q1-fy2026-the-silicon-pivot" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
-      <tr><td><strong>2. 설비투자 후 수익화(가동률)</strong></td><td><span class="grade g-part">◐ 부분 충족</span></td><td>AWS 영업이익 +23%·OPM ~35%로 기존 설비의 회수는 진행형이고 리테일 마진도 개선 중이다. 그러나 $200B(2025년의 배) 캐펙스 전체의 증분 ROI는 미검증이며, FCF −95%가 그 부담을 드러낸다 — 회수의 "속도"가 관건</td></tr>
-      <tr><td><strong>3. 수주(백로그)가 매출보다 빠르게</strong></td><td><span class="grade g-full">● 충족</span></td><td>AWS 계약잔고(RPO) <strong>$364B, +93% YoY</strong> — AWS 매출 성장률(+28%)의 세 배 넘게 빠르다. OpenAI $100B·기존 $38B 등 대형 계약이 백로그를 채운다. 캐펙스가 <strong>계약된 수요를 따라간다</strong>는 가장 강한 증거이며, 이 항목이 유의미한 첫 US 종목형 변형<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">Global Data Center Hub·Cloud Wars · AWS RPO (2026.04)</span><span class="evd-sum">AWS RPO <strong>$364B(+93% YoY)</strong> — OpenAI 신규 $100B 약정 및 기존 $38B 계약 포함. 2025년 초 $189B(+20%)에서 급증. 매출(+28%)보다 훨씬 빠른 계약잔고 축적.</span><a href="https://www.globaldatacenterhub.com/p/amazon-q1-fy2026-the-silicon-pivot" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
-      <tr><td><strong>4. 미국향 매출 여부</strong></td><td><span class="grade g-full">● 충족</span></td><td>1Q26 북미 매출 $104.1B로 전사 매출의 약 <strong>58%</strong>. 미국 소비·기업 IT 지출의 직접 수혜이자, 동시에 미국 규제(반독점·노동)·소비 경기의 직접 노출</td></tr>
-      <tr><td><strong>5. 밸류에이션 체계 전환</strong></td><td><span class="grade g-part">◐ 부분 충족</span></td><td>"유통주(GMV·매출 멀티플)"에서 "AWS를 소프트웨어 멀티플로 값매기는 SOTP(부분합산)"로 프레임을 옮기려는 시도가 지속 — 성공하면 리레이팅 논거지만, 현재는 오히려 캐펙스 부담이 부각돼 멀티플이 눌린다(섹션 13)</td></tr>
-      <tr><td><strong>6. 산업 TAM 확대 수혜</strong></td><td><span class="grade g-full">● 충족</span></td><td>클라우드 인프라 +35%·AI 인프라 비중 확대(섹션 01) + 리테일 물류 자동화·광고 성장까지 세 개의 성장 시장에 동시 노출. AWS는 그 중심<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">Statista·CloudZero (1Q26)</span><span class="evd-sum">클라우드 인프라 1Q26 +35% YoY, AI 인프라가 지출의 19%로 최고 성장 세그먼트. AWS·리테일·광고 3개 시장 동시 노출.</span><a href="https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>1. 매출 증가와 함께 인프라 가동률 상승</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">AWS 데이터센터 활용률(%)은 공시되지 않지만, 경영진은 AWS가 <strong>"용량 제약(capacity constrained)"</strong> 상태 — 수요가 공급을 앞선다 — 라고 반복 안내한다. 이는 메타의 "잉여 컴퓨트" 시인과 정반대 신호다. 다만 정량 가동률이 없어 ●는 유보<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">Global Data Center Hub · AWS 용량 제약·RPO (2026.04)</span><span class="evd-sum">AWS는 수요가 용량을 앞서는 "capacity constrained" 상태로, $200B 캐펙스는 계약 백로그에 연동된 투자이지 투기적 증설이 아님. 자산 수명 셸 ~30년·서버 5~6년.</span><a href="https://www.globaldatacenterhub.com/p/amazon-q1-fy2026-the-silicon-pivot" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>2. 설비투자 후 수익화(가동률)</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">AWS 영업이익 +23%·OPM ~35%로 기존 설비의 회수는 진행형이고 리테일 마진도 개선 중이다. 그러나 $200B(2025년의 배) 캐펙스 전체의 증분 ROI는 미검증이며, FCF −95%가 그 부담을 드러낸다 — 회수의 "속도"가 관건</span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>3. 수주(백로그)가 매출보다 빠르게</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">AWS 계약잔고(RPO) <strong>$364B, +93% YoY</strong> — AWS 매출 성장률(+28%)의 세 배 넘게 빠르다. OpenAI $100B·기존 $38B 등 대형 계약이 백로그를 채운다. 캐펙스가 <strong>계약된 수요를 따라간다</strong>는 가장 강한 증거이며, 이 항목이 유의미한 첫 US 종목형 변형<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">Global Data Center Hub·Cloud Wars · AWS RPO (2026.04)</span><span class="evd-sum">AWS RPO <strong>$364B(+93% YoY)</strong> — OpenAI 신규 $100B 약정 및 기존 $38B 계약 포함. 2025년 초 $189B(+20%)에서 급증. 매출(+28%)보다 훨씬 빠른 계약잔고 축적.</span><a href="https://www.globaldatacenterhub.com/p/amazon-q1-fy2026-the-silicon-pivot" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>4. 미국향 매출 여부</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">1Q26 북미 매출 $104.1B로 전사 매출의 약 <strong>58%</strong>. 미국 소비·기업 IT 지출의 직접 수혜이자, 동시에 미국 규제(반독점·노동)·소비 경기의 직접 노출</span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>5. 밸류에이션 체계 전환</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">"유통주(GMV·매출 멀티플)"에서 "AWS를 소프트웨어 멀티플로 값매기는 SOTP(부분합산)"로 프레임을 옮기려는 시도가 지속 — 성공하면 리레이팅 논거지만, 현재는 오히려 캐펙스 부담이 부각돼 멀티플이 눌린다(섹션 13)</span></td></tr>
+      <tr><td data-label="항목 (플랫폼·클라우드 변형 적용)"><span class="v"><strong>6. 산업 TAM 확대 수혜</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">클라우드 인프라 +35%·AI 인프라 비중 확대(섹션 01) + 리테일 물류 자동화·광고 성장까지 세 개의 성장 시장에 동시 노출. AWS는 그 중심<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">Statista·CloudZero (1Q26)</span><span class="evd-sum">클라우드 인프라 1Q26 +35% YoY, AI 인프라가 지출의 19%로 최고 성장 세그먼트. AWS·리테일·광고 3개 시장 동시 노출.</span><a href="https://www.statista.com/chart/18819/worldwide-market-share-of-leading-cloud-infrastructure-service-providers/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
     </tbody>
   </table>
   </div>
@@ -444,12 +517,12 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <p class="fine">E = 하우스 추정(FMP 컨센 실측 기반). FY26E EPS $8.83에는 1Q26 Anthropic 평가익($16.8B 세전, EPS 약 +$1.2 상당)이 이미 포함돼 있어, 이 일회성을 제외한 FY26 '클린' EPS는 약 $7.6 수준이다 — 표면 성장률(+23%)보다 본업 성장은 완만하다. FY27E(+14%)는 캐펙스 감가가 본격 반영되며 EPS 성장이 정상화된다는 컨센서스 뷰를 반영한다.</p>
   <h3>컨센서스 델타</h3>
   <div class="tbl-scroll">
-  <table>
+  <table class="tbl-judge">
     <thead><tr><th>항목</th><th class="num">하우스</th><th class="num">컨센서스(FMP)</th><th class="num">델타</th></tr></thead>
     <tbody>
-      <tr><td>FY26 EPS</td><td class="num">$8.8 E</td><td class="num">$8.83</td><td class="num">−0.3%</td></tr>
-      <tr><td>FY27 EPS</td><td class="num">$10.1 E</td><td class="num">$10.09</td><td class="num">+0.1%</td></tr>
-      <tr><td>NTM EPS (Fwd 12M)</td><td class="num">$9.5 E</td><td class="num">$9.5 (블렌드)</td><td class="num">0.0%</td></tr>
+      <tr><td data-label="항목"><span class="v">FY26 EPS</span></td><td data-label="하우스" class="num"><span class="v">$8.8 E</span></td><td data-label="컨센서스(FMP)" class="num"><span class="v">$8.83</span></td><td data-label="델타" class="num"><span class="v">−0.3%</span></td></tr>
+      <tr><td data-label="항목"><span class="v">FY27 EPS</span></td><td data-label="하우스" class="num"><span class="v">$10.1 E</span></td><td data-label="컨센서스(FMP)" class="num"><span class="v">$10.09</span></td><td data-label="델타" class="num"><span class="v">+0.1%</span></td></tr>
+      <tr><td data-label="항목"><span class="v">NTM EPS (Fwd 12M)</span></td><td data-label="하우스" class="num"><span class="v">$9.5 E</span></td><td data-label="컨센서스(FMP)" class="num"><span class="v">$9.5 (블렌드)</span></td><td data-label="델타" class="num"><span class="v">0.0%</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -487,7 +560,28 @@ details.pe-embed .inner { padding: 0 20px 18px; }
 <div class="card" id="s09">
   <h2><span class="idx">09</span>피어 비교 — TTM 실측</h2>
   <p class="deck">TTM P/E 30.6배는 MSFT(23.6배)·GOOGL(14.5배)보다 비싸 보인다 — 그러나 아마존의 블렌드 이익률(11.5%)엔 저마진 리테일이 섞여, "시총/영업이익"으로 보면 왜곡이 드러난다. Fwd 26배가 실제 위치이며, 진짜 비교는 부분합산(SOTP)에서 나온다.</p>
-  <div class="tbl-scroll">
+  <div class="peer-chart">
+<div class="metric"><div class="mtitle">영업이익률 (OPM)</div>
+<div class="mhint">높을수록 수익성↑</div>
+<div class="brow"><span class="blabel self">아마존</span><div class="btrack"><div class="bfill self" style="width:24%"></div></div><span class="bval mono">11.5%</span></div>
+<div class="brow"><span class="blabel">마이크로소프트</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">47%</span></div>
+<div class="brow"><span class="blabel">알파벳 A</span><div class="btrack"><div class="bfill" style="width:82%"></div></div><span class="bval mono">38.6%</span></div>
+</div>
+<div class="metric"><div class="mtitle">P/E (TTM)</div>
+<div class="mhint">낮을수록 저평가</div>
+<div class="brow"><span class="blabel self">아마존</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">30.6배</span></div>
+<div class="brow"><span class="blabel">마이크로소프트</span><div class="btrack"><div class="bfill" style="width:77%"></div></div><span class="bval mono">23.6배</span></div>
+<div class="brow"><span class="blabel">알파벳 A</span><div class="btrack"><div class="bfill" style="width:47%"></div></div><span class="bval mono">14.5배</span></div>
+</div>
+<div class="metric"><div class="mtitle">시총 / 영업이익</div>
+<div class="mhint">낮을수록 이익 대비 저렴</div>
+<div class="brow"><span class="blabel self">아마존</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">33.7배</span></div>
+<div class="brow"><span class="blabel">마이크로소프트</span><div class="btrack"><div class="bfill" style="width:59%"></div></div><span class="bval mono">19.9배</span></div>
+<div class="brow"><span class="blabel">알파벳 A</span><div class="btrack"><div class="bfill" style="width:52%"></div></div><span class="bval mono">17.4배</span></div>
+</div>
+</div>
+<details class="peer-raw"><summary>전체 수치·비교 보기</summary>
+<div class="tbl-scroll">
   <table>
     <thead><tr><th>종목</th><th class="num">시가총액</th><th class="num">TTM 매출</th><th class="num">TTM 영업이익</th><th class="num">OPM</th><th class="num">P/E (TTM)</th><th class="num">시총/영업이익</th></tr></thead>
     <tbody>
@@ -497,6 +591,7 @@ details.pe-embed .inner { padding: 0 20px 18px; }
     </tbody>
   </table>
   </div>
+</details>
   <p style="max-width:84ch;color:var(--ink-2);margin-top:12px;"><strong>왜곡 주석 & 읽는 법:</strong> 단순 P/E·시총/영업이익만 보면 아마존이 가장 비싸다(시총/OP 33.7배). 하지만 이 지표는 <strong>저마진 리테일이 아마존의 영업이익을 눌러 분모를 작게 만든</strong> 착시다 — 아마존 영업이익의 57%를 만드는 AWS는 OPM ~35%로 MSFT·GOOGL의 클라우드와 같은 급이다. 그래서 시장은 아마존을 통짜 P/E가 아니라 <strong>부분합산(SOTP)</strong>으로 값매긴다: AWS를 소프트웨어 멀티플로, 리테일·광고를 별도로 평가한 뒤 합산한다. 통짜 지표로 "비싸다"고 결론내면 이 구조를 놓친다 — <strong>아마존이 싼 것은 절대 레벨이 아니라 자기 역사(Fwd 26배 = 3년 8%) 대비이며, SOTP 관점에서 AWS의 이익 기여가 저평가돼 있다는 것</strong>이 핵심이다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">SEC EDGAR·토스 Open API — 하우스 피어 테이블 (2026.07.19)</span><span class="evd-sum">TTM은 SEC companyfacts 4개 분기 합산, 시총 = 현재가 × 발행주식수. AMZN 시총 $2,654B·P/E 30.6·OPM 11.5%(리테일 혼재) vs MSFT 23.6·47.0% vs GOOGL 14.5·38.6%. AWS 단독 OPM ~35%.</span><span class="evd-nolink">공시 실측 기반 하우스 계산 — 원문 링크 없음</span></span></span></p>
 </div>
 
@@ -528,7 +623,7 @@ details.pe-embed .inner { padding: 0 20px 18px; }
   <h2><span class="idx">12</span>다음 확인 이벤트</h2>
   <p class="deck">7/30 2Q26 실적이 첫 판정 지점 — 확인할 것은 이익 총량이 아니라 AWS 성장·RPO의 지속과 캐펙스·FCF의 균형이다.</p>
   <div class="tbl-scroll">
-  <table>
+  <div class="tbl-data scrollable"><table>
     <thead><tr><th>시점</th><th>이벤트</th><th>확인할 것</th></tr></thead>
     <tbody>
       <tr><td><strong>7/30 (목) 17:00 ET</strong> — 확정</td><td>2Q26 실적 발표 + 컨퍼런스콜 (장 마감 후)</td><td>AWS 성장률(+28% 지속 여부)·RPO 증감 · 하반기 캐펙스 페이스(연 $200B 정합)·FCF · 리테일 마진 · 컨센 매출 ~$196B·EPS $1.82 대비<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">아마존 IR · 2Q26 실적 일정 (2026.07)</span><span class="evd-sum">아마존 2Q26 실적 발표 <strong>2026-07-30(목) 장 마감 후</strong>, 컨퍼런스콜 <strong>17:00 ET(14:00 PT)</strong>. 컨센 매출 ~$196B·EPS $1.82. 실적·슬라이드는 amazon.com/ir 게재.</span><a href="https://www.aboutamazon.com/news/company-news/amazon-earnings-q2-2026-report" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
@@ -537,7 +632,7 @@ details.pe-embed .inner { padding: 0 20px 18px; }
       <tr><td>2027-02 초 (추정)</td><td>4Q·FY26 실적 + 2027 캐펙스 가이던스</td><td>2027 캐펙스가 계속 오르는가(과잉 신호) 아니면 정점을 찍는가 — 밸류 전환의 분기점</td></tr>
       <tr><td>상시</td><td>미 규제·전력·금리 동향</td><td>반독점·노동·데이터센터 전력 확보 · 미 10년물 4.5%대 이탈 여부</td></tr>
     </tbody>
-  </table>
+  </table></div>
   </div>
 </div>
 
