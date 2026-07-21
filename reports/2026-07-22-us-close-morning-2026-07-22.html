@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 메모리가 증시를 끌어올렸다: 마이크론·WD 두 자릿수 급등, 삼성·하이닉스에 훈풍</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-22-us-close-morning-2026-07-22.html">
+<meta property="og:title" content="US 마감 시황 — 메모리가 증시를 끌어올렸다: 마이크론·WD 두 자릿수 급등, 삼성·하이닉스에 훈풍">
+<meta property="og:description" content="간밤 뉴욕은 메모리 반도체가 주도해 3대 지수 동반 상승 — 마이크론·WD·SanDisk 두 자릿수 급등에 삼성·SK하이닉스로 우호적 read-through.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-22-us-close-morning-2026-07-22.html">
+<meta name="description" content="간밤 뉴욕은 메모리 반도체가 주도해 3대 지수 동반 상승 — 마이크론·WD·SanDisk 두 자릿수 급등에 삼성·SK하이닉스로 우호적 read-through.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-22-us-close-morning-2026-07-22.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — <span class="up">메모리가 증시를 끌어올렸다</span>: 마이크론·WD 두 자릿수 급등, 삼성·하이닉스에 훈풍</h1>
+  <p class="sub">2026년 7월 22일(수) 국내 장 시작 전 기준 · 전일 미 증시(7/21 화 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했고, 이번엔 지수를 끌어올린 주인공이 <strong>메모리 반도체</strong>였다 — <strong>마이크론 <span class="up">+10~12%</span>·웨스턴디지털·SanDisk <span class="up">+12%</span>·SK하이닉스 ADR <span class="up">+10%대</span></strong>가 나란히 급등했다. 모건스탠리의 <strong>"메모리 가격 25% 상승" 전망</strong>과 한국·대만의 <strong>기록적 반도체 수출</strong>이 방아쇠였다. 지난주 급락 후 변동성이 극단으로 커진 국내 증시에, 간밤 메모리 강세는 삼성전자·SK하이닉스로 <strong>직접적인 read-through</strong>가 된다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-07-22 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-07-22 오전).</strong> 원/달러 <strong>1,482.0원</strong>(전일 1,484.3 → 원화 강세, 외국인 수급 우호) · 미 국채 10년물 4.592%(7/21 마감 보도, FRED 확정 4.60%는 7/20) · 한국 기준금리 2.75% · 달러지수 120.53. 간밤 위험선호가 살아나며 반도체가 지수를 견인했다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 온 · 메모리 주도</span></h2>
+  <p class="lead">미 지수·프록시(SPY/QQQ)는 토스증권 Open API 및 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (7/21 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · 메모리가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,509.20</div><div class="delta up">▲ +0.89%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">25,837.21</div><div class="delta up">▲ +1.29% · 반도체 견인</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">메모리 +12%</div><div class="delta">간밤 마이크론·WD發 → 삼성·하이닉스 훈풍</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong> — 이번 상승의 주인공은 <strong>메모리 반도체</strong>였다. 마이크론 <span class="up">+10~12%</span>, 웨스턴디지털·SanDisk <span class="up">+12%</span>, SK하이닉스 ADR <span class="up">+10%대</span>가 나란히 급등하며 지수를 끌어올렸다.</div>
+    <div class="tldr-item">② 반도체 안에서 로직·장비도 함께 올랐지만(엔비디아 <span class="up">+1.4~1.5%</span>·AMD <span class="up">+6.1%</span>, SOXX <span class="up">+5.2%</span>), <strong>메모리의 상승폭이 압도적</strong>이었다 — "반도체 랠리 = 메모리 주도"의 하루.</div>
+    <div class="tldr-item">③ 지난주 급락을 겪은 국내 증시엔 간밤 메모리 강세가 <strong>삼성전자·SK하이닉스로 직접 read-through</strong>된다. 원화 강세(1,482원)까지 겹쳐 외국인 수급에 우호적이나, 급등 직후 되돌림·차익실현은 경계할 변수다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 메모리가 밀어올린 기술주 랠리</h2>
+  <p class="lead">이날 상승은 <strong>기술·반도체 집중형</strong>이었다. 기술 섹터(XLK)가 <span class="up">+2.8%</span>로 S&amp;P 섹터 중 선두, 반도체 지수(SOXX)는 <span class="up">+5.2%</span> 급등했다. 국채금리는 소폭 하락해 성장주에 우호적이었다. 개별 매크로 지표 발표보다 <strong>실적 시즌 기대·반도체 수요 회복 신호</strong>가 장을 이끌었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">7/21 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,509.20</td><td class="num"><span class="up">+0.89%</span></td><td>기술주 주도, 광범위 상승<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">미 증시 마감 · 마감 보도 (2026-07-21)</span><span class="evd-sum">7/21 <strong>S&amp;P 500 7,509.20(+0.89%)·나스닥 종합 25,837.21(+1.29%)·다우 52,224.64(+385.38p, +0.74%)</strong>. 미 10년물 4.592%(−0.6bp)·2년물 4.204%(−1.1bp)로 소폭 하락. 반도체 반등이 지수를 견인.</span><a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">25,837.21</td><td class="num"><span class="up">+1.29%</span></td><td>빅테크·반도체가 견인</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,224.64</td><td class="num"><span class="up">+0.74%</span></td><td>+385.38p</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">4.592%</td><td class="num"><span class="down">−0.6bp</span></td><td>PPI·실적 관망, 성장주에 우호적</td></tr>
+      <tr><td>미 국채 2년물</td><td class="num">4.204%</td><td class="num"><span class="down">−1.1bp</span></td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 <strong>메모리 반도체</strong>였다. <strong>모건스탠리가 "AI 수요로 메모리 가격이 25% 오를 수 있다"</strong>고 전망하면서 마이크론·웨스턴디지털·SanDisk 등 메모리 체인이 일제히 두 자릿수 급등했고, 이것이 반도체 지수(SOXX <span class="up">+5.2%</span>)와 나스닥을 끌어올렸다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">메모리 랠리 촉매 · Motley Fool (2026-07-21)</span><span class="evd-sum">모건스탠리가 <strong>메모리 가격 25% 상승</strong>을 전망하며 <strong>마이크론 +10.1%</strong> 급등. 로직에서도 <strong>엔비디아 +1.5%</strong>(신규 AI 데이터센터 CPU 발표)·<strong>AMD +6.1%</strong>. iShares 반도체 ETF(SOXX) +5.2%.</span><a href="https://www.fool.com/investing/2026/07/21/memory-stocks-spark-a-market-rebound/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>주도 vs 관망.</strong> 국채금리가 소폭 내리며 밸류에이션 부담이 완화된 점도 성장주에 우호적이었다. 다만 이날은 굵직한 미 매크로 지표 발표보다 <strong>다가올 빅테크 실적 시즌 대기·반도체 수요 회복 신호</strong>가 장을 주도했다. 캐나다 관세·중동 지정학은 배경 리스크로 남았지만 위험선호를 꺾지는 못했다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 세부 — 메모리 vs 로직 vs 장비, 국내 직결도 <span class="chip cool h2-chip">메모리 압도</span></h2>
+  <p class="lead">국내 증시와 가장 직결되는 반도체를 <strong>메모리·로직·장비</strong>로 갈라서 본다. 세 갈래 모두 올랐지만, <strong>메모리의 상승폭이 로직·장비를 압도</strong>했다 — 지난주 지수를 눌렀던 메모리가 이번엔 반대로 지수를 끌어올린 국면이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분 / 종목 (간밤 미국)</th><th class="num">방향</th><th>성격</th><th>국내 read-through</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리 · 마이크론</strong> (MU)</td><td class="num"><span class="up">+10~12%</span></td><td>DRAM·HBM·NAND</td><td>삼성전자(005930)·SK하이닉스(000660) <strong>직접 긍정</strong> — 메모리 가격·AI 수요 read-through<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">메모리 급등 · Benzinga (2026-07-21)</span><span class="evd-sum">마이크론이 <strong>+12% 이상</strong> 급등하며 메가캡 중 최고. <strong>웨스턴디지털·SanDisk +12%대, SK하이닉스 ADR +10.5%</strong>. RoundHill Memory ETF(DRAM) +11.3%로 한 달여 만의 최고 상승. 엔비디아 +1.4%.</span><a href="https://www.benzinga.com/markets/market-summary/26/07/60589094/chips-power-micron-rallies-12-percent-nasdaq-100-markets-tuesday" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>메모리 · 웨스턴디지털/SanDisk</strong></td><td class="num"><span class="up">+12%대</span></td><td>NAND·SSD·스토리지</td><td>AI 스토리지 수요 — 낸드 사이클 국내 동조</td></tr>
+      <tr><td><strong>메모리 · SK하이닉스 ADR</strong></td><td class="num"><span class="up">+10%대</span></td><td>DRAM·HBM</td><td>국내 000660 개장 방향의 선행 지표</td></tr>
+      <tr><td>로직 · 엔비디아 (NVDA)</td><td class="num"><span class="up">+1.4~1.5%</span></td><td>AI GPU·데이터센터</td><td>신규 AI 데이터센터 CPU 발표 — AI 투자 지속 신호</td></tr>
+      <tr><td>로직 · AMD</td><td class="num"><span class="up">+6.1%</span></td><td>CPU·GPU</td><td>로직 강세이나 메모리 대비 온건</td></tr>
+      <tr><td>장비 · SOXX/SMH (ETF)</td><td class="num"><span class="up">+5.2%</span></td><td>반도체 지수(장비 포함)</td><td>개별 장비주(램리서치·AMAT 등) 수치는 매체 미확인 — ETF로만 표기</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 마이크론 등락은 매체별로 <strong>+10.1%(Motley Fool)~+12% 이상(Benzinga)</strong>으로 폭이 갈려 <strong>"+10~12%" 범위로만</strong> 표기했다(방향은 전 매체 일치). 개별 <strong>장비주(램리서치·어플라이드머티어리얼즈·ASML)의 정확한 등락은 확인된 소스가 없어 수치를 넣지 않고</strong> 반도체 ETF(SOXX +5.2%)로만 제시했다 — 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 국내 증시를 흔든 핵심이 바로 <strong>메모리·HBM 밸류에이션·수요 논쟁</strong>이다. 간밤 <strong>마이크론·SK하이닉스 ADR의 두 자릿수 급등</strong>은 시장이 메모리 사이클 지속성에 다시 베팅했다는 신호로, 오늘 국내 삼성전자·SK하이닉스에 직접적인 <strong>심리적 read-through</strong>가 된다. 촉매의 뿌리엔 <strong>한국의 기록적 반도체 수출</strong>이 있다 — 6월 반도체 수출은 <strong>$44.8B(전년비 <span class="up">+199.5%</span>)</strong>로 사상 최대, 상반기 누계도 이미 2025년 연간 기록을 넘어섰다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">한국 6월 반도체 수출 · TradingKey / Aju Press (2026-07-01)</span><span class="evd-sum">한국 6월 반도체 수출 <strong>$44.82B(+199.5% YoY)</strong>로 월간 사상 최대·첫 $40B 돌파. 상반기 누계 <strong>$192.4B(+162.6%)</strong>로 2025년 연간 기록($173.4B) 초과. 6월 총수출도 첫 $100B 돌파.</span><a href="https://www.tradingkey.com/analysis/economic/more/262003124-south-korea-june-exports-hit-milestone-ai-chips-surge-200-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 로직·장비 대비 메모리만 두드러진 만큼, "반도체를 한 덩어리로 보지 말라"는 원칙은 이날도 유효하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·프록시</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·토스증권 Open API(미 ETF 프록시) 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,482.0원</td><td class="num">1,484.3원</td><td>7/21 · ECOS <span class="down">(원화 강세 2.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>7/19 · ECOS</td></tr>
+      <tr><td>미 10년물 (7/21 마감 보도)</td><td class="num">4.592%</td><td class="num"><span class="down">−0.6bp</span></td><td>7/21 · 마감 보도</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">4.60%</td><td class="num">4.55%</td><td>7/20 · FRED DGS10 (확정은 T+1)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">120.53</td><td class="num">120.33</td><td>7/17 · FRED DTWEXBGS</td></tr>
+      <tr><td>SPY (미 ETF 프록시)</td><td class="num">748.28$</td><td class="num"><span class="up">+0.83%</span></td><td>7/21 · 토스 Open API</td></tr>
+      <tr><td>QQQ (미 ETF 프록시)</td><td class="num">708.97$</td><td class="num"><span class="up">+1.85%</span></td><td>7/21 · 토스 Open API</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 7/20 확정치(4.60%)와 7/21 마감 보도치(4.592%). 시황 해석엔 간밤(7/21) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 환율은 원화가 소폭 강세로 돌아 외국인 수급에 우호적 방향이다. QQQ(+1.85%)가 SPY(+0.83%)보다 크게 오른 것도 기술·반도체 주도 장세를 뒷받침한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(7/22) 국내 장 시사점 <span class="chip cool h2-chip">메모리 훈풍 · 되돌림 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕에서 <strong>메모리가 두 자릿수 급등</strong>했고 원화까지 강세로 돌아, 오늘 국내 장은 <strong>삼성전자·SK하이닉스에 우호적 read-through</strong>가 우세하다 — 다만 급등 직후의 되돌림·차익실현이 상방을 제한할 수 있다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 최근 반도체發 변동성이 극단으로 컸다. 지난주 급락 뒤 반등이 진행 중이며, 매크로 스냅샷상 KOSPI 프록시(KODEX 200)는 7/21 기준 <span class="up">+3.89%</span>로 강한 반등을 보였다(프록시 기준, 지수 종가와 다를 수 있음). 여기에 간밤 <strong>미 메모리 랠리 + 한국의 기록적 반도체 수출($44.8B, +199.5%)</strong>이 겹치며, 지난주와 정반대로 <strong>메모리가 지수를 끌어올리는 환경</strong>이 조성됐다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 마이크론·하이닉스 ADR <span class="up">+10%대</span>를 개장 갭·초반 거래대금으로 얼마나 반영하는지, ② 로직·장비 대비 <strong>메모리 편중</strong>이 국내에서도 재현되는지(한미반도체 등 HBM·장비 밸류체인 선별 확산 여부), ③ 원/달러 원화 강세에 <strong>외국인 순매수</strong>가 실제로 붙는지, ④ 다가올 <strong>미 빅테크 실적·관세(캐나다)·중동 지정학</strong>이 위험선호를 흔들지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며(매체별 등락폭 차이는 범위로 표기), 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 7/21 지수 마감(S&amp;P 7,509.20·나스닥 25,837.21·다우 52,224.64)·10년물 4.592%/2년물 4.204% — <a href="https://www.cnbc.com/2026/07/20/stock-market-today-live-updates.html">CNBC</a></span>
+  <span>근거2 마이크론 +12%·WD·SanDisk +12%·SK하이닉스 ADR +10.5%·메모리 ETF +11.3% — <a href="https://www.benzinga.com/markets/market-summary/26/07/60589094/chips-power-micron-rallies-12-percent-nasdaq-100-markets-tuesday">Benzinga</a></span>
+  <span>근거3 모건스탠리 메모리 가격 25%↑ 전망·마이크론 +10.1%·엔비디아 +1.5%·AMD +6.1%·SOXX +5.2% — <a href="https://www.fool.com/investing/2026/07/21/memory-stocks-spark-a-market-rebound/">Motley Fool</a></span>
+  <span>근거4 한국 6월 반도체 수출 $44.82B(+199.5% YoY)·상반기 $192.4B — <a href="https://www.tradingkey.com/analysis/economic/more/262003124-south-korea-june-exports-hit-milestone-ai-chips-surge-200-tradingkey">TradingKey</a>, <a href="https://www.ajupress.com/view/20260701094470099">Aju Press</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF 프록시·시세), 미 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수). 2026-07-22 오전 조회 기준(전일 7/21 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-07-22 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
