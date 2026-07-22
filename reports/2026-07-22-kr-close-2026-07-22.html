@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 장중 +5% 사이드카에도 상승분 반납, 외국인 2.6조 순매수로 코스피 +0.74% 마감</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-22-kr-close-2026-07-22.html">
+<meta property="og:title" content="코스피 마감 시황 — 장중 +5% 사이드카에도 상승분 반납, 외국인 2.6조 순매수로 코스피 +0.74% 마감">
+<meta property="og:description" content="코스피는 장 초반 반도체·수출 기대에 +5% 급등해 매수 사이드카까지 걸렸으나 미 빅테크 실적 대기 경계에 상승분을 반납, 외국인 2.6조 순매수에 힘입어 +0.74%(6,797.70)로 마감했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-22-kr-close-2026-07-22.html">
+<meta name="description" content="코스피는 장 초반 반도체·수출 기대에 +5% 급등해 매수 사이드카까지 걸렸으나 미 빅테크 실적 대기 경계에 상승분을 반납, 외국인 2.6조 순매수에 힘입어 +0.74%(6,797.70)로 마감했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-22-kr-close-2026-07-22.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 증시 마감 시황 심층 (KR Close Wrap)</div>
+  <h1>코스피 마감 시황 — 장중 +5% 사이드카에도 상승분 반납, <span class="up">외국인 2.6조 순매수</span>로 코스피 +0.74% 마감</h1>
+  <p class="sub">2026년 7월 22일(수) 국내 증시 마감 기준. 코스피는 장 초반 반도체 저가 매수·수출 호조 기대에 <strong>+5% 급등하며 매수 사이드카(올해 20번째)</strong>가 걸렸으나, 미 빅테크 실적 대기 경계심에 오후 상승분을 대부분 반납해 <strong>6,797.70(<span class="up">+0.74%</span>)</strong>로 마쳤다. 지수는 밀렸지만 <strong>외국인이 코스피에서 2조6천억원을 순매수</strong>하며 3거래일 연속 '사자'를 이어갔고, 그 반대편에서 기관·개인이 각각 1조 넘게 팔았다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-07-22 · 평일 16:00 KST 국내 마감 시황 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,482.0원</strong>(전일 1,484.3 → 원화 강세, 외국인 수급 우호, 7/21 ECOS) · 한국 기준금리 <strong>2.75%</strong>(7/19 ECOS) · 미 국채 10년물 4.60%(7/20 FRED) · 달러지수 120.5(7/17 FRED) · 간밤 미 SPY 746.04$(<span class="down">−0.30%</span>). 국내 지수·수급은 2026-07-22 마감 보도 기준이다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip cool h2-chip">급등 후 반납 · 외국인 사자</span></h2>
+  <p class="lead">국내 지수·수급은 공개 마감 보도(아주경제·아시아경제·파이낸셜뉴스), 매크로는 한국은행 ECOS·미 FRED·토스증권 Open API 기준. KRX 직접 조회는 비-KR IP 로 차단(HTTP 400)돼 마감 보도 수치를 우선한다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">KOSPI (7/22 종가)</div><div class="val up">6,797.70</div><div class="delta up">▲ +49.75p · +0.74%</div></div>
+    <div class="tile"><div class="lbl">KOSDAQ (7/22 종가)</div><div class="val down">751.09</div><div class="delta down">▼ −2.25p · −0.30%</div></div>
+    <div class="tile"><div class="lbl">외국인 (코스피 순매수)</div><div class="val up">+2.62조</div><div class="delta">3거래일 연속 순매수 · 기관/개인은 매도</div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val up">1,482.0<small>원</small></div><div class="delta up">▲ 원화 강세 2.3원(전일 1,484.3)</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 반도체 저가 매수와 <strong>7월 1~20일 수출 급증 기대</strong>에 장 초반 <span class="up">+5% 이상</span> 급등하며 <strong>매수 사이드카</strong>가 걸렸으나, 미 빅테크(알파벳 등) 실적 발표를 앞둔 경계심에 오후 상승분을 대부분 반납해 <strong>+0.74%</strong>로 마감했다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피·코스닥 마감 · 아주경제 (2026-07-22)</span><span class="evd-sum">코스피 <strong>6,797.70(+49.75p·+0.74%)</strong>, 코스닥 <strong>751.09(−2.25p·−0.30%)</strong>. 장 초반 5%대 급등·7,100선 회복 후 <strong>매수 사이드카(올해 20번째)</strong> 발동, 오후 상승분 반납.</span><a href="https://www.ajunews.com/view/20260722153441500" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">② 지수는 밀렸지만 <strong>수급의 주인공은 외국인</strong>이었다 — 코스피에서 <strong><span class="up">+2조6,223억</span></strong> 순매수하며 3거래일 연속 '사자'를 이어갔고, 반대편에서 기관 <span class="down">−1조3,868억</span>·개인 <span class="down">−1조2,278억</span>이 차익을 실현했다.</div>
+    <div class="tldr-item">③ 대형주는 <strong>자동차(현대차 <span class="up">+4.76%</span>)</strong>가 앞장서고 삼성전자 <span class="up">+0.58%</span>·삼성전기 <span class="up">+2.67%</span>가 오른 반면, <strong>SK하이닉스는 장중 강세를 지키지 못하고 <span class="down">−0.33%</span></strong>로 마쳤다. 코스닥은 외국인·기관 동반 매도에 소폭 약세였다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 급등 후 반납, 자동차가 버팀목</h2>
+  <p class="lead">코스피는 장 초반 갭 상승 후 7,166까지 치솟으며 사이드카가 걸렸으나(장중 고점 기준), 미 빅테크 실적 대기·국제유가 부담에 오후 상승분을 반납했다. '5% 급등 후 상승분 반납'은 최근 국내 증시의 극단적 변동성 패턴을 다시 확인시켰다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 종목</th><th class="num">7/22 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>KOSPI</strong></td><td class="num">6,797.70</td><td class="num"><span class="up">+0.74%</span></td><td>장중 고점 7,166 → 상승분 반납<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">장중 사이드카·고점 · 아시아경제 (2026-07-22)</span><span class="evd-sum">장 초반 코스피 <strong>7,052.09(+4.51%)</strong> 출발, 오전 <strong>7,099.83(+5.21%)</strong>·장중 고점 <strong>7,166</strong>, 저점 7,017. <strong>매수 사이드카</strong> 발동. 이후 오후에 상승분을 되돌렸다.</span><a href="https://www.asiae.co.kr/article/2026072212431024021" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>KOSDAQ</strong></td><td class="num">751.09</td><td class="num"><span class="down">−0.30%</span></td><td>외국인·기관 동반 매도에 약세</td></tr>
+      <tr><td>현대차</td><td class="num">—</td><td class="num"><span class="up">+4.76%</span></td><td>자동차 대형주 강세 주도</td></tr>
+      <tr><td>삼성전기</td><td class="num">—</td><td class="num"><span class="up">+2.67%</span></td><td>삼성전자우 +2.27%·삼성생명 +1.27% 동반 강세</td></tr>
+      <tr><td><strong>삼성전자</strong></td><td class="num">260,500</td><td class="num"><span class="up">+0.58%</span></td><td>반도체 저가 매수 유입, 강보합</td></tr>
+      <tr><td><strong>SK하이닉스</strong></td><td class="num">1,830,000</td><td class="num"><span class="down">−0.33%</span></td><td>장중 강세 반납, 소폭 약세 마감</td></tr>
+      <tr><td>SK스퀘어</td><td class="num">—</td><td class="num"><span class="down">−1.84%</span></td><td>삼성바이오로직스 −1.65% 등과 함께 부진</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 개별 종목 종가·등락은 <strong>아주경제 마감 보도 기준</strong>이며, 토스 실시간 스냅샷과 소폭 차이(호가 타이밍)가 있어 마감 보도 수치를 우선 표기했다. 현대차·SK스퀘어 등 <strong>종가 미표기 종목은 등락률만</strong> 보도돼 종가를 지어내지 않고 비웠다. 방향이 매체별로 엇갈리는 종목은 본문에서 제외했다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이날의 상승 방아쇠는 ① <strong>간밤 미 반도체주 강세를 따라간 저가 매수</strong>와 ② <strong>7월 초 수출 급증 기대</strong>였다. 관세청 잠정치 기준 7월 1~20일 수출이 큰 폭으로 늘고 특히 <strong>반도체 수출이 급증했다는 집계</strong>가 반도체·수출주 심리를 자극했다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">7월 1~20일 수출 급증 · 보도 인용 (2026-07-22)</span><span class="evd-sum">해외 매체 집계에 따르면 7월 첫 20일 수출이 전년 대비 큰 폭(보도상 <strong>+52.3%</strong>) 증가했고 <strong>반도체 수출이 급증(보도상 +180%)</strong>했다는 수치가 증시 강세의 근거로 인용됐다. 관세청 확정치와 다를 수 있어 <strong>보도 인용</strong>으로 표기한다.</span><a href="https://sundayguardianlive.com/business/korea-stock-market-today-22-july-kospi-kosdaq-index-surges-5-as-ai-chip-rally-samsung-sk-hynix-lead-amid-war-check-market-performance-top-gainers-losers-what-investors-should-watch-243201/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 <strong>알파벳 등 미 빅테크 실적 발표를 앞둔 경계심리와 국제유가 상승</strong>이 오후 차익 실현을 부추기며, 사이드카까지 걸렸던 급등분을 거의 되돌렸다. 업종별로는 <strong>자동차가 버팀목</strong>(현대차 +4.76%)이 됐고, 삼성전기·보험 등이 힘을 보탠 반면 SK스퀘어·삼성바이오로직스 등은 밀렸다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 외국인 홀로 사자, 기관·개인은 차익 실현</h2>
+  <p class="lead">지수가 밀린 하루의 진짜 스토리는 수급에 있다. 코스피에서 <strong>외국인이 2.6조 순매수</strong>한 물량을 기관(−1.4조)과 개인(−1.2조)이 고스란히 받아냈다 — 급등 구간에서 차익을 실현한 국내 자금과, 저가에 담은 외국인의 대치다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자</th><th class="num">코스피 순매수</th><th class="num">코스닥 순매수</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="up">+2조6,223억</span></td><td class="num"><span class="down">−818억</span></td><td>코스피 3거래일 연속 순매수<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">외국인 '사자' 지속 · 파이낸셜뉴스 (2026-07-22)</span><span class="evd-sum">외국인이 지난 20일 이후 이날까지 <strong>3거래일 연속 코스피 순매수</strong>. 2주째 '사자' 흐름으로 외국인의 본격 귀환 여부가 관심. 오전 순매수(약 +9,500억~1조)에서 장 막판까지 규모를 <strong>+2.6조</strong>로 확대.</span><a href="https://www.fnnews.com/news/202607221144573618" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="down">−1조3,868억</span></td><td class="num"><span class="down">−1,912억</span></td><td>급등 구간 차익 실현</td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="down">−1조2,278억</span></td><td class="num"><span class="up">+2,637억</span></td><td>코스피 매도·코스닥 매수로 엇갈림</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>거래대금 상위(토스 실시간 스냅샷).</strong> 거래대금은 <strong>SK하이닉스(약 2,861억)·삼성전자(약 1,417억)</strong> 반도체 양대장이 압도했고, <strong>SK스퀘어(약 644억)</strong>, 은행주(KB금융·신한지주), <strong>현대모비스(약 182억, 자동차 강세 동행)</strong>, <strong>삼성전기(약 116억)</strong>가 뒤를 이었다. 지수 상단이 밀리는 와중에도 반도체 대형주로 거래가 몰린 '집중 장세'였다.</p>
+      <p><strong>스마트머니 신호(DART 5%룰 대량보유).</strong> SK하이닉스는 최근 대량보유 보고에서 <strong>Capital Research가 지분을 처분(6.84%→…→3.53%, 투자자금 회수)</strong>한 반면 <strong>BlackRock이 5.00%로 신규 보고(단순투자 목적 장내 매수)</strong>하는 등, 외국계 기관 사이에서도 <strong>차익 실현과 신규 매집이 엇갈린다</strong>. 오늘의 외국인 순매수와 함께 읽으면, 반도체 대형주에 대한 외국계의 시각이 한 방향이 아님을 보여준다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">SK하이닉스 대량보유 · DART 5%룰</span><span class="evd-sum">Capital Research and Management: 2026-02-09 <strong>5.05%(−1.79%p 처분)</strong>, 2026-06-09 <strong>3.53%(−1.52%p 추가 처분, 투자자금 회수)</strong>. BlackRock Fund Advisors: 2026-02-20 <strong>5.00% 신규(+0.01%p, 단순투자 장내 매수)</strong>. 스마트머니 방향이 엇갈림.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260609000049" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원화 강세 · 금리 · 간밤 미국 잔영</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·토스증권 Open API(미 ETF) 기준. 소스별 <strong>데이터 기준일을 함께 표기</strong>한다 — 확정치 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,482.0원</td><td class="num">1,484.3원</td><td>7/21 · ECOS <span class="up">(원화 강세 2.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>7/19 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">4.60%</td><td class="num">—</td><td>7/20 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">120.5</td><td class="num">—</td><td>7/17 · FRED DTWEXBGS</td></tr>
+      <tr><td>간밤 미 SPY (S&amp;P500 프록시)</td><td class="num">746.04$</td><td class="num"><span class="down">−0.30%</span></td><td>토스 Open API · 프록시</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> ① <strong>원/달러가 1,482원으로 소폭 강세</strong>로 돌아 외국인 순매수에 우호적 환경이었고, 실제로 외국인이 2.6조를 담았다. ② 미 10년물 4.60%는 여전히 높은 수준으로 성장주 밸류에이션엔 부담 요인이다. ③ <strong>간밤 미국은 뚜렷한 방향 없이 소폭 약세(SPY −0.30%)</strong>였고, 시장의 시선은 이번 주 줄줄이 예정된 <strong>빅테크 실적</strong>에 쏠려 있다 — 이 '실적 대기'가 국내 장 오후 차익 실현의 배경이 됐다. 미 ETF 프록시 등락은 세션 타이밍상 현물 지수와 다를 수 있어 보조 지표로만 본다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(다음 거래일) 관전 포인트 <span class="chip h2-chip">실적·수급·변동성</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 오늘 <strong>사이드카까지 걸린 급등을 반납</strong>한 만큼, 내일은 ① 외국인 순매수가 나흘째 이어지는지, ② 삼성전자·SK하이닉스가 간밤 미 반도체·빅테크 실적을 어느 방향으로 반영하는지가 방향을 가른다.</p>
+      <p><strong>체크포인트.</strong></p>
+      <p>① <strong>미 빅테크 실적</strong> — 알파벳 등 실적 발표가 이어진다. AI·클라우드 가이던스가 국내 반도체(HBM·메모리) 심리로 곧장 전이된다. 오늘 오후 반납의 핵심 배경이 이 '실적 대기'였던 만큼, 결과에 따라 변동성이 재확대될 수 있다.</p>
+      <p>② <strong>외국인 수급 지속 여부</strong> — 오늘 코스피 <span class="up">+2.6조</span> 순매수는 3거래일 연속이다. 원화 강세가 이어지는 한 우호적이지만, 기관·개인의 차익 실현 물량을 계속 받아낼지가 관건이다.</p>
+      <p>③ <strong>반도체 대장주 방향</strong> — SK하이닉스는 장중 강세를 지키지 못했다(<span class="down">−0.33%</span>). 대량보유 보고에서 외국계의 매집·처분이 엇갈리는 국면이라, 삼성전자·SK하이닉스의 개장 갭과 초반 거래대금을 먼저 확인한다.</p>
+      <p>④ <strong>변동성·사이드카</strong> — 최근 '5%대 급등락'이 반복된다. 오늘도 사이드카가 걸렸다 반납했다. 지수 방향보다 <strong>장중 되돌림 폭</strong>을 관리하는 국면이다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 2026-07-22 국내 증시 마감 기준으로 공개 보도·공시·매크로 스냅샷을 정리한 것이다. 개별 종목 등락은 마감 보도에 기반하며, 매체별로 방향이 엇갈리는 수치는 지어내지 않고 제외했다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 6,797.70(+0.74%)·코스닥 751.09(−0.30%)·투자자별 수급·사이드카 — <a href="https://www.ajunews.com/view/20260722153441500">아주경제</a></span>
+  <span>근거2 장 초반 +5%대 급등·장중 고점 7,166·매수 사이드카 — <a href="https://www.asiae.co.kr/article/2026072212431024021">아시아경제</a></span>
+  <span>근거3 7월 1~20일 수출·반도체 수출 급증(보도 인용) — <a href="https://sundayguardianlive.com/business/korea-stock-market-today-22-july-kospi-kosdaq-index-surges-5-as-ai-chip-rally-samsung-sk-hynix-lead-amid-war-check-market-performance-top-gainers-losers-what-investors-should-watch-243201/">Sunday Guardian</a></span>
+  <span>근거4 외국인 3거래일 연속 코스피 순매수·본격 귀환 관심 — <a href="https://www.fnnews.com/news/202607221144573618">파이낸셜뉴스</a></span>
+  <span>근거5 SK하이닉스 5%룰 대량보유(Capital Research 처분·BlackRock 5% 신규) — <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260609000049">DART</a></span>
+  </div>
+  데이터 출처: 공개 마감 보도(아주경제·아시아경제·파이낸셜뉴스), 토스증권 Open API(거래대금·미 ETF·시세), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), DART(5%룰 대량보유). 국내 지수·수급은 2026-07-22 마감 기준, 매크로는 소스별 확정 시점(기준일)을 표기했다. KRX 직접 조회는 비-KR IP 차단(HTTP 400)으로 마감 보도 수치를 우선했다. <strong>작성·발간: 2026-07-22 (평일 16:00 KST 국내 마감 슬롯)</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
