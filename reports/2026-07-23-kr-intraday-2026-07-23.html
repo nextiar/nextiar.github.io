@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 장중 시황 — 알파벳 AI capex 상향에 반도체가 다시 지수를 끌어올린다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-23-kr-intraday-2026-07-23.html">
+<meta property="og:title" content="코스피 장중 시황 — 알파벳 AI capex 상향에 반도체가 다시 지수를 끌어올린다">
+<meta property="og:description" content="어제 장중 +6% 급등 후 반락했던 코스피, 간밤 알파벳 capex 상향(최대 $205B) 확인에 SK하이닉스·삼성전자 주도로 장중 +3%대 반등(프록시·10:48 KST)">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-23-kr-intraday-2026-07-23.html">
+<meta name="description" content="어제 장중 +6% 급등 후 반락했던 코스피, 간밤 알파벳 capex 상향(최대 $205B) 확인에 SK하이닉스·삼성전자 주도로 장중 +3%대 반등(프록시·10:48 KST)">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-23-kr-intraday-2026-07-23.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 코스피 장중 시황 (Intraday Snapshot)</div>
+  <h1>코스피 장중 시황 — 알파벳 AI capex 상향에 <span class="up">반도체가 다시 지수를 끌어올린다</span></h1>
+  <p class="sub">2026년 7월 23일(목) <strong>오전 10:48 KST 장중</strong> 기준(마감 아님). 어제(7/22) 장중 <strong>+6% 급등해 7,100선을 넘었다가</strong> 알파벳 실적 대기에 되돌려 <strong>+0.74%(6,797.70)로 마감</strong>했던 코스피가, 간밤 나온 <strong>알파벳의 2026년 설비투자(capex) 가이던스 상향</strong>을 확인하며 오전장에서 다시 강세다. <strong>SK하이닉스 <span class="up">+2.9%</span>·삼성전자 <span class="up">+2.9%</span></strong>가 앞장서고 코스피는 프록시 기준 <span class="up">+3%대</span>로 7,000선 회복을 시도 중이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📌 조회 2026-07-23 10:48 KST · 장중(실시간) 스냅샷</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (장중 조회).</strong> 원/달러 <strong>1,475.6원</strong>(직전 1,482.0 → 원화 강세 6.4원, 외국인 수급 우호 / ECOS 7/22 확정) · 한국 기준금리 2.75%(7/20) · 미 국채 10년물 4.63%(FRED 7/21) · 달러지수 120.53(FRED 7/17). 원화 강세와 간밤 미 AI 투자 신호가 반도체 대형주에 우호적으로 겹쳤다.</div>
+
+<section>
+  <h2><span class="idx">1</span>지금 이 순간 한눈에 <span class="chip h2-chip">반도체 주도 · 지수 반등 시도</span></h2>
+  <p class="lead">개별 종목가는 <strong>토스증권 Open API 실시간 시세</strong>(10:48 조회), 지수는 <strong>KRX 직접 조회 차단(HTTP 400)</strong>으로 KODEX 200·레버리지 ETF를 프록시로 쓴다(프록시 표기). 금리·환율은 미 FRED·한국은행 ECOS. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (KODEX 200 프록시)</div><div class="val up">+3.1%</div><div class="delta">KODEX 200 <span class="up">+3.14%</span> · 전일 6,797.70 기준 약 <strong>7,000선</strong> 회복 시도(추정·프록시)<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 프록시 · 토스 실시간 (2026-07-23 10:48)</span><span class="evd-sum">KRX 지수 직접 조회가 비-KR IP 로 차단(HTTP 400)돼, 코스피는 <strong>KODEX 200(069500) +3.14%·KODEX 레버리지(122630, 2배) +6.21%</strong> 로 프록시. 전일 종가 6,797.70 × (1+3.1%) ≈ <strong>약 7,010(추정)</strong>. 정확 지수 레벨은 KRX/증권사 앱으로 확인 권장.</span><span class="evd-nolink">실시간 프록시 — 확정 지수 레벨 아님(추정)</span></span></span></div></div>
+    <div class="tile"><div class="lbl">SK하이닉스 (000660)</div><div class="val up">1,883,000<small>원</small></div><div class="delta up">▲ +2.89% · 거래대금 1위(9,762억)</div></div>
+    <div class="tile"><div class="lbl">삼성전자 (005930)</div><div class="val up">268,000<small>원</small></div><div class="delta up">▲ +2.87% · 거래대금 2위(4,680억)</div></div>
+    <div class="tile"><div class="lbl">방아쇠 (간밤·미국)</div><div class="val up">AI capex ↑</div><div class="delta">알파벳 2026 capex 최대 <strong>$205B</strong>로 상향</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 어제 장중 <strong>+6% 급등(7,100선 돌파)</strong> 후 알파벳 실적 대기에 되돌려 <span class="up">+0.74%(6,797.70)</span> 마감했는데, 간밤 실적을 확인한 오늘 오전 <strong>다시 <span class="up">+3%대</span>(프록시)로 반등</strong>하며 7,000선 회복을 시도 중이다.</div>
+    <div class="tldr-item">② 방아쇠는 <strong>알파벳의 2026년 capex 가이던스 상향</strong>(전분기 $180~190B → 최대 <strong>$205B</strong>, "공급 제약·수요 강함") — 구글 주가는 지출 우려로 시간외 하락했지만, <strong>HBM·메모리 수요의 선행 지표</strong>로 읽혀 국내 <strong>SK하이닉스·삼성전자</strong>가 앞장섰다.</div>
+    <div class="tldr-item">③ 거래대금은 <strong>SK하이닉스·삼성전자·레버리지 ETF</strong>가 독식하고, 코스닥에선 <strong>SK이터닉스 <span class="up">+22.7%</span></strong> 등 특징주가 튄다. 다만 어제처럼 <strong>장중 되돌림 리스크</strong>가 상존해, 오후장 유지 여부가 관건이다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·주도주 — 반도체 대형주가 끌고, 지수는 프록시로 +3%대</h2>
+  <p class="lead">KRX 지수 직접 조회가 막혀 지수 레벨은 ETF 프록시로 대체한다(정직 표기). 개별 대형주 등락은 토스 실시간 실측이다. 오늘 오전의 주도력은 명확히 <strong>메모리 반도체 두 종목</strong>에 있다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 / 지표</th><th class="num">현재가</th><th class="num">등락</th><th>메모 (10:48 조회)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong> (KODEX 200 프록시)</td><td class="num">— </td><td class="num"><span class="up">≈+3.1%</span></td><td>KRX 차단 → ETF 프록시 · 약 7,000선 회복 시도(추정)</td></tr>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,883,000</td><td class="num"><span class="up">+2.89%</span></td><td>거래대금 <strong>1위</strong>(9,762억) · HBM 수급 수혜 대장</td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">268,000</td><td class="num"><span class="up">+2.87%</span></td><td>거래대금 <strong>2위</strong>(4,680억) · 대형주 동반 강세</td></tr>
+      <tr><td>KODEX 레버리지 (122630)</td><td class="num">125,840</td><td class="num"><span class="up">+6.21%</span></td><td>코스피 2배 → 지수 <strong>≈+3.1%</strong> 역산 근거</td></tr>
+      <tr><td>KODEX 200 (069500)</td><td class="num">111,720</td><td class="num"><span class="up">+3.14%</span></td><td>코스피 추종 프록시</td></tr>
+      <tr><td>코스닥</td><td class="num">—</td><td class="num">확인불가</td><td>KRX 차단 · 프록시 미확보 — 수치 표기 보류(정직)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 오늘 오전장은 <strong>지수보다 주도주가 먼저 읽힌다</strong>. 코스피 지수 레벨은 KRX 차단으로 프록시(KODEX 200 <span class="up">+3.14%</span>)에 의존하지만, <strong>SK하이닉스·삼성전자가 나란히 <span class="up">+2.9%</span></strong>대로 거래대금 1·2위를 독식하는 그림은 명확하다 — 지수 상승의 대부분이 <strong>메모리 반도체 두 종목</strong>에서 나오고 있다는 뜻이다. 어제(7/22) 코스피가 장중 7,123까지 <strong>+6% 급등</strong>했다가 알파벳 실적을 기다리며 <span class="up">+0.74%</span>로 반납했던 것을 감안하면, 오늘 반등은 <strong>"실적 확인 후 되사기(buy the confirmation)"</strong> 성격이다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">전일 코스피 장중 급등·반락 (2026-07-22)</span><span class="evd-sum">7/22 코스피는 개장 <strong>+5.56%(7,123.43)</strong>·장중 <strong>7,100선 재돌파</strong>했으나, 알파벳 실적 대기에 상승분을 반납해 <strong>+0.74%·6,797.70</strong>으로 마감. AI 반도체發 숏스퀴즈 성격이 컸다.</span><a href="https://www.tradingkey.com/analysis/stocks/more/262046356-kospi-nekki-kioxia-samsung-skhynix-ai-softbank-adr-skhy-google-tesla-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급·특징주 — 거래대금 반도체 독식, 코스닥 특징주 SK이터닉스</h2>
+  <p class="lead">토스증권 실시간 거래대금·급등락 랭킹(KR, 10:48 조회) 기준. 시장 전체 외국인·기관 순매수는 KRX 투자자별 집계가 차단돼 <strong>장중 확정 수치는 보류</strong>하고, 거래대금·특징주로 자금 쏠림을 읽는다(정직 표기).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th>종목</th><th class="num">등락</th><th>읽는 법</th></tr></thead>
+    <tbody>
+      <tr><td>거래대금 1·2위</td><td><strong>SK하이닉스·삼성전자</strong></td><td class="num"><span class="up">+2.9%</span></td><td>합산 1.4조+ · 자금이 <strong>메모리 대형주로 집중</strong></td></tr>
+      <tr><td>거래대금 상위</td><td>KODEX 레버리지·반도체 ETN</td><td class="num"><span class="up">양방향</span></td><td>레버리지·인버스 ETN 동시 급증 → <strong>변동성 베팅</strong> 활발</td></tr>
+      <tr><td>코스닥 특징주</td><td><strong>SK이터닉스</strong> (475150)</td><td class="num"><span class="up">+22.74%</span></td><td>현재가 75,900원 · 거래대금 상위권 급등<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">특징주 · 토스 실시간 (2026-07-23 10:48)</span><span class="evd-sum"><strong>SK이터닉스(475150)</strong> 현재가 <strong>75,900원 · +22.74%</strong>, 거래대금 상위권. 코스피 상장·SK 계열 신재생/소재 종목으로, 개별 재료·수급에 의한 급등(시황 맥락 언급이며 투자의견 콜 아님).</span><span class="evd-nolink">실시간 시세 — 급등 배경은 개별 공시·뉴스 확인 권장</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 시장 전체 <strong>외국인/기관 순매수</strong>는 KRX 투자자별 집계가 비-KR IP 로 차단돼 장중 확정치를 표기하지 않는다. 대신 <strong>거래대금 쏠림</strong>(SK하이닉스·삼성전자 1·2위)으로 자금 방향을 대리 해석했다. 지수 레벨·수급 수치는 확정이 아니며, 미확인 값은 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 반도체 두 종목인가.</strong> 오늘 오전 자금은 사실상 <strong>SK하이닉스·삼성전자로 집중</strong>됐다. 두 종목이 거래대금 1·2위를 차지하며 합산 1.4조 원을 넘겼고, 여기에 <strong>KODEX 레버리지(<span class="up">+6.21%</span>)</strong>와 반도체 관련 레버리지·인버스 ETN의 양방향 거래가 붙었다 — 방향은 위쪽이 우세하지만, 어제의 극심한 되돌림을 겪은 시장이라 <strong>변동성 자체에 베팅하는 자금</strong>도 함께 몰리는 국면이다. 코스닥 개별주(SK이터닉스 등)는 지수 흐름과 별개의 개별 재료성 급등으로, 시황 맥락으로만 언급한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 알파벳 capex 상향이 왜 국내 메모리를 밀어올렸나</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,475.6원</td><td class="num">1,482.0원</td><td>7/22 · ECOS <span class="down">(원화 강세 6.4원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>7/20 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">4.63%</td><td class="num">—</td><td>7/21 · FRED DGS10</td></tr>
+      <tr><td>달러지수</td><td class="num">120.53</td><td class="num">—</td><td>7/17 · FRED DTWEXBGS(스테일)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>간밤의 방아쇠.</strong> 미 증시 마감 후 나온 <strong>알파벳 2분기 실적</strong>이 오늘 국내 반도체의 촉매다. 매출은 컨센(약 $116.9B)을 웃돌았지만 시장을 움직인 숫자는 <strong>2026년 설비투자(capex) 가이던스</strong>였다 — 회사는 이를 <strong>전분기 $180~190B에서 최대 $205B로 상향</strong>하며 "여전히 <strong>공급 제약</strong> 환경이고, 클라우드 안팎의 <strong>수요가 매우 강하다</strong>"고 밝혔다. 구글 주가 자체는 <strong>지출 확대 우려로 시간외 하락</strong>했지만, 한국 시장은 정반대로 읽었다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">알파벳 Q2 실적·capex 상향 · CNBC (2026-07-22)</span><span class="evd-sum">알파벳 2분기 매출 컨센 상회, Q2 capex <strong>$44.9B</strong>. 2026년 capex 가이던스를 <strong>최대 $205B</strong>로 상향(직전 $180~190B). CFO "공급 제약 지속·수요 강함". 지출 확대 우려로 <strong>구글 주가는 시간외 하락</strong>.</span><a href="https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>국내 read-through.</strong> AI 인프라 capex는 곧 <strong>HBM·고용량 메모리 수요의 선행 지표</strong>다. 초대형 클라우드 사업자가 지출을 줄이기는커녕 <strong>상향</strong>하고 "공급이 부족하다"고 말한 것은, HBM을 공급하는 <strong>SK하이닉스·삼성전자</strong>에 직접적인 수요 신호가 된다. 여기에 <strong>원/달러 원화 강세</strong>(1,475원대)까지 외국인 수급에 우호적으로 겹치며, 어제 되돌렸던 반도체 강세가 오늘 오전 다시 살아난 배경이 됐다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오후장 관전 포인트 <span class="chip h2-chip">되돌림 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 알파벳 capex 상향이 <strong>HBM 수요 신호</strong>로 읽히며 SK하이닉스·삼성전자가 지수를 <span class="up">+3%대</span>(프록시)로 끌어올렸지만, <strong>어제 장중 7,100선을 찍고 반납한 전례</strong>가 있어 오후장까지 강세가 유지되느냐가 핵심이다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>오후장 되돌림 여부</strong> — 어제처럼 오전 급등분을 반납하는지, 아니면 종가까지 강세를 지키는지(SK하이닉스·삼성 거래대금 유지 여부), ② <strong>지수 vs 대장주 괴리</strong> — 지수 프록시(+3.1%)와 대형주(+2.9%)의 방향이 어긋나지 않는지(대형주 편중 랠리의 지속성), ③ <strong>외국인 실제 순매수</strong>가 원화 강세를 타고 붙는지(장 마감 후 확정치 확인), ④ 간밤 지출 우려로 밀린 <strong>미 빅테크·나스닥 선물</strong>이 오후 아시아 심리에 부담을 주는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 자료는 <strong>장중(오전 10:48 KST) 실시간 스냅샷</strong>으로 마감 시황이 아니다. 코스피 지수 레벨은 KRX 차단으로 ETF 프록시 기반 <strong>추정치</strong>이며, 개별 종목가는 조회 시점의 실시간값이라 <strong>이후 흐름은 달라질 수 있다</strong>. 개별 종목(삼성전자·SK하이닉스·SK이터닉스 등)은 시황 맥락으로 언급한 것이며 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 프록시(KODEX 200 +3.14%·레버리지 +6.21%)·개별 실시간 시세 — 토스증권 Open API(2026-07-23 10:48 조회)</span>
+  <span>근거2 전일 7/22 코스피 장중 +6%·7,100선 후 +0.74%(6,797.70) 마감 — <a href="https://www.tradingkey.com/analysis/stocks/more/262046356-kospi-nekki-kioxia-samsung-skhynix-ai-softbank-adr-skhy-google-tesla-tradingkey">TradingKey</a>, <a href="https://finance.biggo.com/news/69e8faf1-f2d0-4f42-b5f8-504ead560a73">BigGo Finance</a></span>
+  <span>근거3 SK이터닉스(475150) +22.74% 특징주 — 토스증권 Open API(2026-07-23 10:48 조회)</span>
+  <span>근거4 알파벳 Q2 실적·2026 capex 최대 $205B 상향·구글 시간외 하락 — <a href="https://www.cnbc.com/2026/07/22/google-earnings-q2-goog-live-updates.html">CNBC</a>, <a href="https://eciks.org/15177-40657-google-earnings-q2-2026-ai-capex">ECIKS</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(개별 실시간 시세·거래대금·지수 프록시), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 공개 마감·실적 보도(알파벳·전일 코스피). 2026-07-23 10:48 KST 장중 조회 기준. KRX 지수·투자자별 수급은 비-KR IP 차단으로 ETF 프록시·거래대금으로 대체했으며 확정 지수 레벨이 아니다. 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·조회: 2026-07-23 10:48 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-23 10:55 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
