@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>테슬라(TSLA) — 하루 −14.5%의 해부: 사상 최대 매출 뒤 영업이익률 1.4%, 옵션 프리미엄의 첫 리셋</title>
+<meta name="report-symbols" content="TSLA">
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+/* ---- 콜 furniture 타일: 파스텔 4색 틴트 ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+
+/* ---- Key Takeaways (30초 요약층) ---- */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+/* ---- 스티키 미니 목차 ---- */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ---- 섹션 카드 + 번호 배지 헤더 ---- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+/* ---- 킬러 스탯 콜아웃 ---- */
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+/* ---- 경고 노트 vs 참고 ---- */
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+
+</style>
+<style>
+@media (max-width: 640px) {
+  body { font-size: 16px; line-height: 1.72; }
+  .card .deck, .desc { font-size: 14.5px; }
+  .fine { font-size: 12.5px; }
+  .lbl, small { font-size: 13px; }
+  .card { margin-top: 0; }
+  .wrap { padding-left: 16px; padding-right: 16px; }
+}
+.tbl-data { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 8px; }
+.tbl-data > table { white-space: nowrap; margin: 0; }
+.tbl-data::after { content: "\2190 \C606\C73C\B85C \B118\ACA8 \B098\BA38\C9C0 \C5F4 \BCF4\AE30"; display: none; font-size: 11px; color: var(--muted); padding: 4px 8px; }
+@media (max-width: 640px) { .tbl-data.scrollable::after { display: block; } }
+.tbl-judge tr.self td { background: var(--tile1-bg); }
+@media (max-width: 640px) {
+  .tbl-judge, .tbl-judge tbody, .tbl-judge tr, .tbl-judge td { display: block; width: 100%; }
+  .tbl-judge thead { display: none; }
+  .tbl-judge tr { border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; margin: 0 0 10px; }
+  .tbl-judge tr.self { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+  .tbl-judge tr.self td { background: transparent; }
+  .tbl-judge td { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border: 0; border-top: 1px solid var(--border); text-align: right; }
+  .tbl-judge td:first-child { border-top: 0; }
+  .tbl-judge td::before { content: attr(data-label); color: var(--muted); font-weight: 500; text-align: left; flex: 0 0 auto; }
+  .tbl-judge td > .v { flex: 1 1 0%; min-width: 0; }
+}
+.peer-chart .metric { margin: 0 0 20px; }
+.peer-chart .mtitle { font-size: 14px; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+.peer-chart .mhint { font-size: 11.5px; color: var(--muted); margin: 0 0 10px; }
+.peer-chart .brow { display: flex; align-items: center; gap: 8px; margin: 0 0 7px; }
+.peer-chart .blabel { width: 96px; flex: 0 0 96px; font-size: 12.5px; color: var(--ink-2); text-align: right; }
+.peer-chart .blabel.self { color: var(--accent); font-weight: 700; }
+.peer-chart .btrack { flex: 1; height: 20px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+.peer-chart .bfill { height: 100%; border-radius: 5px; background: var(--border-2); }
+.peer-chart .bfill.self { background: var(--accent); }
+.peer-chart .bval { width: 66px; flex: 0 0 66px; font-size: 12.5px; color: var(--ink); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+details.peer-raw { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 14px; }
+details.peer-raw summary { cursor: pointer; padding: 11px 16px; font-weight: 650; font-size: 13px; list-style: none; color: var(--ink-2); }
+details.peer-raw summary::-webkit-details-marker { display: none; }
+details.peer-raw summary::before { content: "\25B8 "; color: var(--muted); }
+details.peer-raw[open] summary::before { content: "\25BE "; }
+details.peer-raw .inner { padding: 0 16px 14px; }
+/* ---- What's Changed 박스 (.wc — 후속 발간 전용, 위젯 [1b]) ---- */
+.wc { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: var(--accent-bg);
+  border-radius: 0 12px 12px 0; padding: 14px 18px 12px; }
+.wc .wc-head { font-size: 11px; letter-spacing: 0.14em; font-weight: 750; color: var(--accent); margin-bottom: 10px; }
+.wc .wc-head a { color: var(--accent); font-weight: 650; letter-spacing: 0; }
+.wc .wc-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  padding: 6px 0; border-top: 1px solid var(--border); font-size: 13.5px; }
+.wc .wc-row:first-of-type { border-top: 0; }
+.wc .wc-lbl { flex: 0 0 118px; font-size: 12px; color: var(--muted); font-weight: 650; }
+.wc .wc-val { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 650; }
+.wc .wc-old { color: var(--muted); font-weight: 500; }
+.wc .wc-arrow { color: var(--muted); font-weight: 400; padding: 0 2px; }
+.wc .wc-why { font-size: 12px; color: var(--ink-2); flex-basis: 100%; padding-left: 128px; }
+.wc .wc-keep { display: inline-block; background: var(--card); border: 1px solid var(--border-2);
+  color: var(--ink-2); border-radius: 999px; padding: 0 8px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+@media (max-width: 640px) {
+  .wc .wc-lbl { flex-basis: 100%; }
+  .wc .wc-why { padding-left: 0; }
+}
+/* ---- Risk-Reward 스큐 바 (.skew-bar) ---- */
+.skew-bar { border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+  padding: 14px 18px 10px; margin: 0; }
+.skew-bar .rr-title { display: block; font-size: 11px; letter-spacing: 0.14em; font-weight: 750;
+  color: var(--muted); }
+.skew-bar svg { display: block; width: 100%; height: auto; margin-top: 2px; }
+.skew-bar .rr-cap { font-size: 12px; color: var(--ink-2); margin: 2px 0 4px; }
+.skew-bar .rr-cap strong { color: var(--ink); }
+@media (max-width: 640px) {
+  .skew-bar svg .rr-lbl { font-size: 21px; }
+  .skew-bar svg .rr-zero { font-size: 19px; }
+  .skew-bar svg .rr-price { display: none; }
+}
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-24-tesla-tsla-deep.html">
+<meta property="og:title" content="테슬라(TSLA) — 하루 −14.5%의 해부: 사상 최대 매출 뒤 영업이익률 1.4%, 옵션 프리미엄의 첫 리셋">
+<meta property="og:description" content="매출 $28.24B 사상 최대에도 영업이익률 1.4%·FCF 적자 — 규제크레딧 절벽·AI 비용 급증·증분 마진 소멸이 유가 $100·금리 급등과 겹치며 하루 시총 약 $204B가 증발했다. 급락 후 Base 상방 +22.3%, 콜 중립 유지.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-24-tesla-tsla-deep.html">
+<meta name="description" content="매출 $28.24B 사상 최대에도 영업이익률 1.4%·FCF 적자 — 규제크레딧 절벽·AI 비용 급증·증분 마진 소멸이 유가 $100·금리 급등과 겹치며 하루 시총 약 $204B가 증발했다. 급락 후 Base 상방 +22.3%, 콜 중립 유지.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-24-tesla-tsla-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 급락 해부 · 2026-07-24</div>
+  <h1>테슬라(TSLA) — 하루 −14.5%의 해부: 사상 최대 매출 뒤 영업이익률 1.4%, 옵션 프리미엄의 첫 리셋</h1>
+  <p class="sub">2Q26 실적 다음 날(7/23 미 정규장) 주가는 −14.5%($374.01→$319.69, 11개월 저점)로 무너지며 시총 약 $2,040억이 하루에 증발했다. 매출 $28.24B(+26%) 사상 최대·인도 480,126대 신기록에도 영업이익은 $398M(−57% YoY)·영업이익률 1.4%(컨센 5.4%) — 규제크레딧 절벽(−67%), AI 비용 급증(opex +47%), 증분 매출의 마진 소멸이 겹친 '이익 없는 성장'에 유가 $100·금리 급등의 매크로 역풍이 옵션 프리미엄을 걷어냈다. 콜은 중립(유지).</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">Fwd P/E 159.8배(3년 백분위 60%·최근 1년 백분위 0% = 1년 최저 멀티플)·Base 상승여력 +22.3%(Bull +83.9% / Bear −57.8%) — 전작(2026-07-23, 기준가 $352.90) 대비 주가 −9.4%. 급락이 밸류 부담을 일부 덜었지만 여전히 3년 평균(137.2배) 위이며, 하우스 추정(FY26E 약 $1.85·FY27E $2.30)은 유지한다. 다음 검증은 2026-10-22 3Q26 실적(추정)이다.</p>
+</header>
+
+<!-- 콜 furniture (결정론적 산출) -->
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-neutral">중립</span></div>
+    <div class="delta">P/E 백분위 60% · Base +22.3% — 공식 산출(밴드 중상단 + 상방 확대) · 전작 콜 유지</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val"><span class="pref">$</span>319.69</div>
+    <div class="delta">Fwd P/E 159.8배 (3년 평균 137.2배) · 백분위 60% <span class="chip" style="background:var(--tile1-bg);color:var(--muted);">중립권</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val up">+22.3%</div>
+    <div class="delta">Bull <span class="up">+83.9%</span> / Bear <span class="down">−57.8%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 2026-10-22 3Q26 실적 발표 (추정)</div>
+  </div>
+</div>
+
+<figure class="skew-bar">
+<div class="rr-title">RISK-REWARD</div>
+<svg viewBox="0 0 720 168" role="img" aria-label="Risk-Reward 스큐 바: 현재가 $319.69를 0%로 두고 Bear −57.8%($135), Base +22.3%($391), Bull +83.9%($588)를 수평축에 표시.">
+<line x1="96" y1="92" x2="624" y2="92" stroke="var(--grid)" stroke-width="2"/>
+<rect x="96.0" y="86" width="215.4" height="12" rx="6" fill="var(--down)" opacity="0.16"/>
+<line x1="96.0" y1="80" x2="96.0" y2="104" stroke="var(--down)" stroke-width="2.5"/>
+<rect x="311.4" y="86" width="312.6" height="12" rx="6" fill="var(--up)" opacity="0.14"/>
+<line x1="624.0" y1="80" x2="624.0" y2="104" stroke="var(--up)" stroke-width="2.5"/>
+<line x1="311.4" y1="52" x2="311.4" y2="126" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="rr-zero" x="311.4" y="146" text-anchor="middle" font-size="12.5" fill="var(--muted)">현재가 0%<tspan class="rr-price"> · $319.69</tspan></text>
+<polygon points="96.0,101 88.5,87 103.5,87" fill="var(--down)"/>
+<circle cx="394.5" cy="92" r="7" fill="var(--accent)" stroke="var(--card)" stroke-width="2.5"/>
+<polygon points="624.0,83 616.5,97 631.5,97" fill="var(--up)"/>
+<text class="rr-lbl" x="96.0" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--down)" font-weight="650">▼ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bear</tspan><tspan fill="var(--down)" font-weight="750"> −57.8%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($135)</tspan></text>
+<text class="rr-lbl" x="394.5" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--accent)" font-weight="650">● </tspan><tspan fill="var(--ink-2)" font-weight="650">Base</tspan><tspan fill="var(--up)" font-weight="750"> +22.3%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($391)</tspan></text>
+<text class="rr-lbl" x="624.0" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--up)" font-weight="650">▲ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bull</tspan><tspan fill="var(--up)" font-weight="750"> +83.9%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($588)</tspan></text>
+</svg>
+<figcaption class="rr-cap"><strong>읽는 법:</strong> Base 상방 <span class="up">+22.3%</span>과 Bear 하방 <span class="down">−57.8%</span>의 비대칭이 위험-보상 스큐다. 목표주가가 아니라 조건부 환산 범위다.</figcaption>
+</figure>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다. 가격·밸류에이션 기준은 <strong>2026-07-23(수) 미 증시 종가 $319.69</strong>(−14.5% 급락 마감)입니다. 전작(2026-07-23, 기준가 $352.90 — 실적 발표 직후·정규장 급락 전)의 후속 신규 발간으로, 이번 회차의 목적은 ① 7/23 정규장 급락(−14.5%)의 해부, ② 10-Q·셰어홀더 덱 원문 검증(전작은 실적 보도 기준), ③ 급락 후 밸류에이션 재산정이다. 스크리닝·피어·수급·PE 밴드는 7/23 종가 기준으로 전면 갱신했다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 중립(유지).</strong> 7/23 <strong>−14.5% 급락</strong>($374.01→$319.69, 11개월 저점·시총 약 $204B 증발)으로 Fwd P/E는 176.9→<strong>159.8배</strong>, 3년 백분위 68→<strong>60%</strong>, 최근 1년 백분위 <strong>0%</strong>(1년 최저 멀티플)까지 내려왔다. Base 상승여력은 <span class="up">+22.3%</span>로 회복했지만 여전히 3년 평균(137.2배) 위 — 공식상 중립이다.</li>
+    <li><strong>급락의 1층: 이익의 해부.</strong> 매출 <strong>$28.24B(+26%) 사상 최대</strong>인데 영업이익은 <strong>$398M(−57% YoY)·영업이익률 1.4%</strong>(컨센 5.4%). 원인은 가격 인하가 아니라 ① 규제크레딧 $439M→<strong>$146M(−67%, 연방 EV 크레딧 만료의 구조적 절벽)</strong> ② R&D +49%·SG&A +45%(AI·Optimus·SBC) ③ 증분 매출 $5.85B(QoQ)에 증분 매출총이익 <strong>$27M</strong>(증분 마진 0.5%)이다. GAAP 순이익 $1.11B도 세전 <strong>$1.0B이 SpaceX 지분 평가익</strong>(영업 외) — 이익의 질이 세 겹으로 무너졌다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Tesla 10-Q·2Q26 셰어홀더 덱 (SEC, 2026.07.22~23)</span><span class="evd-sum">매출 $28,236M(+26%)·영업이익 <strong>$398M(1.4%)</strong>·규제크레딧 <strong>$146M</strong>(vs 2Q25 $439M·1Q26 $380M)·R&D $2,371M(+49%)·SG&A $1,982M·GAAP 순이익 $1,114M(SpaceX 세전 평가익 $1,005M 포함)·비GAAP EPS $0.33.</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/tsla-20260630.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+    <li><strong>급락의 2층: 서사와 매크로의 공진.</strong> capex $5.79B(+142%)로 <strong>FCF −$1.09B</strong>(2024년 초 이후 첫 현금소진 분기), 콜에서 CFO가 "FY26 capex $25B 초과·이후 분기도 FCF 마이너스"를 예고했다. 같은 날 알파벳의 capex 가이던스 $205B 상향과 겹치며 <strong>"AI 지출은 느는데 이익은 언제"</strong>라는 불안이 Mag7 전체(−$797B, 2025년 4월 이후 최악)로 번졌고, 브렌트유 $100 돌파·미 10년물 18개월 최고가 초장기 성장주의 할인율을 때렸다 — 급락은 개별 미스 × 시장 리스크오프의 곱이다.<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·Bloomberg 집계 보도 (2026.07.23)</span><span class="evd-sum">TSLA −14% 11개월 저점 — 이익 미스·capex 전망이 압박. CFO "capex $25B+". Mag7 하루 시총 <strong>$797B 증발</strong>(2025.4월 이후 최악), 알파벳 −6.6%(capex $205B 상향). 브렌트 $100 돌파·미 10년물 18개월 최고.</span><a href="https://finance.yahoo.com/markets/stocks/article/tesla-tumbles-14-to-11-month-low-as-profit-miss-capex-spending-outlook-weighs-on-stock-110300122.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></li>
+    <li><strong>월가는 깎았고, 다음 검증은 10/22.</strong> 급락 후 7개 하우스가 목표가 일괄 하향(Truist $430→$370, 모건스탠리 $417→$400, JPM $475→$445 등), 급락 후 평균 목표가 <strong>$406</strong>(46개 기관, Hold 컨센) — 하우스 Base $391과 정합한다. 추정(FY26E 약 $1.85·FY27E $2.30)은 유지. 다음 검증은 <strong>2026-10-22 3Q26 실적(추정)</strong> — 마진 바닥·FCF 적자 폭·로보택시 7개 도시권 확장이 체크포인트다(섹션 12).</li>
+  </ol>
+</div>
+
+<div class="wc" id="whats-changed">
+  <div class="wc-head">WHAT'S CHANGED — 전작 대비 ·
+    <a href="https://report.devindgkim.net/reports/2026-07-23-tesla-tsla-deep.html">전작: 2026-07-23 심층 (실적 직후) ↗</a></div>
+  <div class="wc-row">
+    <span class="wc-lbl">콜</span>
+    <span class="wc-val"><span class="wc-old">중립</span><span class="wc-arrow">→</span>중립<span class="wc-keep">유지</span></span>
+    <span class="wc-why">공식 산출 불변 — 급락으로 백분위 68→60%(1년 백분위 0%)로 내려왔으나 여전히 3년 평균 위, 중립 구간 유지</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">Base 상승여력</span>
+    <span class="wc-val mono"><span class="wc-old">+10.5%</span><span class="wc-arrow">→</span><span class="up">+22.3%</span></span>
+    <span class="wc-why">Bull +66.2%→+83.9% / Bear −61.8%→−57.8% — 시나리오 전제(FY27E $2.30×170배=$391)는 유지, 기준가만 −9.4% 리셋(섹션 08)</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">FY27E EPS (핵심 추정)</span>
+    <span class="wc-val mono"><span class="wc-old">$2.30</span><span class="wc-arrow">→</span>$2.30<span class="wc-keep">유지</span></span>
+    <span class="wc-why">전작에서 이미 2Q 미스 반영 하향($2.45→$2.30) — 이번 10-Q 원문 검증에서 추가 하향 사유 없음. 단 크레딧 절벽(−67%)의 연간화·capex $25B+ 확정은 FY26E(약 $1.85)의 하방 리스크로 반영(섹션 07)</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">전작 이후 주가</span>
+    <span class="wc-val mono">$352.90<span class="wc-arrow">→</span>$319.69 (<span class="down">−9.4%</span>)</span>
+    <span class="wc-why">변경 사유: 7/23 정규장 −14.5% 급락(7/22 종가 $374.01 대비) — 실적의 질 훼손 + 유가 $100·금리 급등 리스크오프. 전작은 정규장 급락 전(실적 직후 집계가) 발간</span>
+  </div>
+</div>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업황</a><a href="#s02">경로</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<!-- 매크로 요약 -->
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-07-23 미 증시 마감 기준)</strong><br>SPY $738.18 (<span class="down">−1.23%</span>) · 미 10년물 4.63% (18개월 최고 보도) · 브렌트유 $100 돌파<br>달러지수 120.53 · 원/달러 1,480.90원 — <a href="https://report.devindgkim.net/" style="color:var(--accent);">당일 브리핑</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>미 10년물 4.63%</strong> 가정 위에서 계산했다. 7/23은 브렌트유가 $100을 돌파하고(후티 유조선 공격·이란 긴장) 장기금리가 18개월 최고로 밀린 날이다 — <strong>이익의 대부분이 먼 미래(로보택시·Optimus)에 있는 초장기 성장주</strong>에게 최악의 매크로 조합이며, 테슬라 −14.5%는 개별 미스에 이 할인율 충격이 곱해진 결과다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">하우스 매크로 스냅샷(FRED·토스)·Benzinga·CNBC (2026-07-23/24)</span><span class="evd-sum">SPY <strong>$738.18(−1.23%)</strong> · 미 10년물 <strong>4.63%</strong>(보도 기준 18개월 최고) · 달러지수 120.53 · 원/달러 1,480.90. 브렌트유 <strong>$100 돌파</strong>(+6%대, 5월 이후 최고 — 후티의 사우디 유조선 공격, "다음은 $120" 전망 보도).</span><a href="https://www.cnbc.com/2026/07/23/brent-crude-tops-100-a-barrel-how-the-next-stop-could-be-120.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+
+<!-- 01 업종 지표 -->
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — EV 성장 둔화 vs 자율주행·로봇 TAM</h2>
+  <p class="deck">EV 판매 성장은 둔화하고 테슬라 인도량은 2년 연속 감소했다 — 즉 '자동차' 산업의 순풍은 약해졌다. 테슬라의 성장 서사는 이제 EV가 아니라 로보택시·휴머노이드·에너지저장이라는 인접 TAM으로 옮겨갔고, 그것이 밸류에이션의 핵심 변수다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값 (2026)</th><th class="num">방향</th><th>읽는 법</th></tr></thead>
+    <tbody>
+      <tr><td><strong>테슬라 인도량</strong> (연간)</td><td class="num">FY25 1.636M대</td><td class="num"><span class="down">YoY −8.6%</span></td><td>2년 연속 감소 — 자동차 본업의 성장 순풍이 꺾였음을 뜻한다. 2Q26 480,126대 서프라이즈가 회복의 첫 신호<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">Electrek·IG · 테슬라 FY2025 인도·실적 (2026.01)</span><span class="evd-sum">FY25 인도량 <strong>1.636M대</strong>(YoY −8.6%, 4Q25 418,227대 −15.6%) — 2년 연속 감소. FY25 EPS $1.08(−47%)·영업이익률 5.8%. 에너지저장 배치 46.7GWh(+49%).</span><a href="https://electrek.co/2026/01/02/tesla-tsla-releases-q4-delivery-results/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>에너지저장 배치량</strong> (연간)</td><td class="num">FY25 46.7GWh</td><td class="num"><span class="up">YoY +49%</span></td><td>자동차 둔화 속 유일한 고성장 축. Megapack 수요가 데이터센터·전력망 투자에 연동 — 이익 기여도 확대 중</td></tr>
+      <tr><td><strong>미 국채 10년물</strong> (DGS10)</td><td class="num">4.63%</td><td class="num"><span class="up">18개월 최고 보도</span></td><td>이익의 대부분이 먼 미래(로보택시·Optimus)에 있는 초장기 성장주의 할인율 — 7/23 금리 급등이 급락의 매크로 증폭기였다</td></tr>
+      <tr><td><strong>브렌트유</strong></td><td class="num">$100 돌파 (7/23)</td><td class="num"><span class="up">+6%대 급등</span></td><td>유가발 인플레 재점화 → 금리 인하 기대 후퇴 → 성장주 할인율 상승의 연쇄 — 자동차 수요(소비 여력)에도 이중 역풍</td></tr>
+      <tr><td><strong>로보택시·휴머노이드 TAM</strong></td><td class="num">장기 옵션</td><td class="num"><span class="up">미검증·거대</span></td><td>자율주행 모빌리티·휴머노이드 로봇 시장은 잠재 TAM이 거대하나 아직 매출화 전 — 테슬라 밸류의 '옵션 프리미엄'의 근거이자 최대 불확실성</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">테슬라는 GICS 표준상 <strong>경기소비재 — 자동차(Automobiles)</strong>로 분류되지만, 시장이 값매기는 멀티플(Fwd 159.8배 — 급락 후에도)은 자동차가 아니라 자율주행·로봇·에너지 플랫폼 기대를 반영한다 — 본 리포트는 이 괴리를 중심 논지로 본다. EV 시장 규모·TAM 수치는 기관마다 편차가 크며 방향(EV 성장 둔화·AV/로봇 잠재력) 참고용이다.</p>
+</div>
+
+<!-- 02 분석 경로 -->
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 심층 (급락 해부 후속)</h2>
+  <p class="deck">랭킹·스크리닝 파이프라인이 아니라 지정 종목의 심층 분석이며, 테슬라 3번째 회차다 — 7/20(프리뷰)·7/23(실적 직후)에 이어 이번 회차는 7/23 정규장 −14.5% 급락의 해부와 10-Q 원문 검증이 목적이다.</p>
+  <p>이 리포트는 발굴 스크리닝(거래대금·모멘텀 랭킹 → 기술 필터 → 공시 검증)을 거치지 않고 <strong>종목을 지정해 모든 데이터 소스를 동원한 심층 분석</strong>이다. 테슬라 심층 <strong>3번째 회차</strong>로, 전작 2026-07-23(실적 발표 직후·정규장 급락 전, 기준가 $352.90)과 2026-07-20(어닝 프리뷰, 기준가 $380.84)의 후속이다. 전작이 실적 보도 기준의 속보 대사였다면, 이번 회차는 ① 10-Q·셰어홀더 덱 <strong>원문</strong>으로 이익 붕괴를 항목 단위로 해부하고 ② 정규장 급락(−14.5%)의 매커니즘(개별 미스 × 매크로 리스크오프)을 분리하며 ③ 급락 후 가격에서 밸류에이션을 재산정한다.</p>
+  <p>미국 종목이므로 검증 경로는 KR 표준(DART·관세청)이 아니라 US 소스로 구성했다: 토스 Open API(가격·시세) → <strong>SEC EDGAR</strong>(10-K/10-Q·8-K·Form 4/144·13G) → <strong>FMP</strong>(연간 EPS·매출 컨센서스·목표주가 실측) → <strong>FRED</strong>(미 금리 매크로) → 외부 보도 교차확인 → 결정론적 밸류에이션 체인(NTM EPS 앵커 → 밴드 → 시나리오 → 선호도 공식) 순서다. NTM EPS는 US 종목이라 영업이익 환산 없이 달러 EPS를 직접 앵커로 입력한다. 테슬라는 자동차·에너지·서비스 부문과 로보택시·Optimus 옵션을 반드시 분리해서 본다.</p>
+</div>
+
+<!-- 03 왜 지금인가 -->
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 급락의 세 층위 + 경고 1 (과매도 반론)</h2>
+  <p class="deck">−14.5%는 한 가지 이유로 만들어진 숫자가 아니다 — ① 이익의 해부(크레딧 절벽·AI 비용 급증·증분 마진 소멸), ② 현금·capex 서사의 전환("이후 분기도 FCF 마이너스" 예고), ③ 매크로 공진(유가 $100·금리 18개월 최고·Mag7 −$797B)이 같은 날 곱해졌다. 경고(반대 신호): 물량·FSD·로보택시의 실체 진척은 오히려 확인됐고, 멀티플은 1년 최저까지 내려왔다.</p>
+  <p><strong>층위 1 — 이익의 해부: 영업이익 $398M(−57% YoY), 영업이익률 1.4%(컨센 5.4%의 4분의 1).</strong> 원인은 가격 인하가 아니다(2Q 판가는 유지 — 보도 기준). 첫째, <strong>규제크레딧 절벽</strong>: $439M→$146M(<span class="down">−67% YoY</span>). 연방 EV 세액공제가 2025-09-30 만료되고 연비 페널티가 폐지되면서 크레딧을 사줄 수요 자체가 소멸했다 — 일회성이 아니라 <strong>구조적 소멸</strong>이다. 크레딧은 사실상 원가 0의 순이익이라 감소분이 그대로 영업이익에서 빠진다: YoY 크레딧 감소 −$293M만으로 영업이익 감소(−$524M)의 <strong>56%</strong>가 설명된다. 둘째, <strong>AI 비용 급증</strong>: R&D $2.37B(+49% YoY)·SG&A $1.98B(+45%) — AI·Optimus 개발과 주식보상(2025 CEO 성과보상 포함)이다. 셋째, 에너지 부문도 벤더 셀 이슈 워런티 비용·관세로 마진이 압축됐다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Tesla 10-Q·2Q26 셰어홀더 덱 (SEC, 2026.07.22~23)</span><span class="evd-sum">영업이익 <strong>$398M</strong>(2Q25 약 $922M 대비 −57%)·OPM <strong>1.4%</strong>[2Q25 4.1%·1Q26 4.2%]. 규제크레딧 <strong>$146M</strong>[2Q25 $439M·1Q26 $380M]. R&D $2,371M(+49%)·SG&A $1,982M. 덱은 감익 요인으로 "AI·R&D 프로젝트, SBC(2025 CEO 성과보상 포함), 에너지 벤더 셀 이슈 워런티 비용"을 명시.</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/tsla-20260630.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">Electrek · 2Q26 실적 분석 (2026.07.22)</span><span class="evd-sum">규제크레딧 <strong>−67%</strong> — 연방 EV 세액공제 만료(2025-09-30)·연비 페널티 폐지로 크레딧 시장 소멸. opex <strong>+47%($4.35B)</strong> — AI·옵티머스·로보택시 개발+주식보상. 가격 인하 없이 나온 마진 붕괴.</span><a href="https://electrek.co/2026/07/22/tesla-tsla-q2-2026-financial-results/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <div class="callout"><div class="co-num">1.4%</div><div class="co-lbl"><strong>사상 최대 매출($28.24B) 분기의 영업이익률 — 컨센(5.4%)의 4분의 1, 전년(4.1%)·전분기(4.2%)의 3분의 1.</strong> 조정 EBITDA $3.27B도 예상(~$4B)을 밑돌았다. "record 인도에도 이익 붕괴" — 이것이 −14.5%의 1층이다.</div></div>
+  <p><strong>층위 2 — 현금·capex 서사의 전환: FCF −$1.09B, 그리고 "이후 분기도 마이너스" 예고.</strong> capex가 $5.79B로 전분기($2.49B)의 2.3배로 뛰며 FCF가 2024년 초 이후 처음 적자로 돌아섰고, 현금·단기투자 잔액은 $43.5B로 분기 중 $1.2B 줄었다. 결정타는 가이던스다 — CFO는 FY26 capex <strong>"$25B 초과"</strong>를 확정하며 "낭비가 없는 한 최대 속도로 지출하겠다"고 했고 향후 분기의 FCF 마이너스 지속을 예고했다. 머스크는 "massive capex year"라 불렀다. 같은 날 알파벳이 연 capex 전망을 $205B로 올리며, 시장의 질문이 개별 기업을 넘어 <strong>"AI 지출 사이클 전체의 회수 시점"</strong>으로 확장됐다 — 실적 비트였던 알파벳도 −6.6% 급락한 이유이고, 테슬라는 그 서사의 최전선에 있었다.<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·notateslaapp 콜 요약 (2026.07.22~23)</span><span class="evd-sum">capex <strong>$5.79B</strong>[1Q26 $2.49B]·FCF <strong>−$1.09B</strong>[전년 +$0.15B] — 2024년 초 이후 첫 현금소진 분기(일부 시장 추정 −$3.64B보다는 양호). 기말 현금+단기투자 $43.5B(−$1.2B). CFO "FY26 capex $25B+"·향후 분기 FCF 마이너스 예고. 머스크 "massive capex year·2차대전 이후 가장 빠른 산업 확장".</span><a href="https://finance.yahoo.com/markets/stocks/article/tesla-tumbles-14-to-11-month-low-as-profit-miss-capex-spending-outlook-weighs-on-stock-110300122.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>층위 3 — 매크로 공진: 최악의 날에 최악의 실적.</strong> 7/23은 브렌트유가 $100을 돌파(+6%대, 후티의 사우디 유조선 공격·이란 긴장)하고 미 10년물이 18개월 최고로 밀렸으며, 신규 실업수당 청구 18.7만 건(1969년 이후 최저 보도)이 금리 인하 기대마저 후퇴시킨 날이다. Mag7 시총이 하루 <strong>$797B 증발</strong>(2025년 4월 관세 쇼크 이후 최악)했고 그중 최대 기여가 테슬라(약 $204B, 하우스 계산)다. 거래량 80.2M주는 직전 1개월 평균(약 42M주)의 1.9배 — 공매도는 하루 $4B 수익을 봤다는 보도가 나왔다. 요컨대 −14.5%는 <strong>개별 미스(층위 1·2) × 시장 리스크오프(층위 3)의 곱</strong>이며, 초장기 이익(로보택시·Optimus)을 파는 종목이라 할인율 충격에 가장 크게 반응했다.<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·Bloomberg·하우스 US 장중 시황 (2026.07.23~24)</span><span class="evd-sum">Mag7 하루 시총 <strong>−$797B</strong>(2025.4월 이후 최악) — 테슬라 −14%·알파벳 −6.6% 주도. 브렌트 $100 돌파·미 10년물 18개월 최고·신규 실업수당 18.7만(1969년 이후 최저). TSLA 거래량 80.2M주(토스 캔들, 직전 1개월 평균 약 42M). 공매도 하루 $4B 수익 보도(Bloomberg).</span><a href="https://report.devindgkim.net/reports/2026-07-24-us-intraday-2026-07-23.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>경고 (반대 신호) — 이것은 과매도일 수 있다.</strong> 급락의 반대편 증거도 명확하다. ① 물량·옵션의 실체 진척은 오히려 확인됐다 — 인도 480,126대·에너지 배치 13.5GWh 신기록, FSD 유료 구독 <strong>148만(+56% YoY)</strong>·북미 신규 인도의 55%+가 FSD 선택, 로보택시는 7개 대도시권으로 확장(무감독 38만 마일 무사고 보도). ② FCF −$1.09B는 일부 시장 추정(−$3.64B)보다 양호했다. ③ 멀티플은 최근 1년 백분위 <strong>0%</strong>(1년 최저)까지 내려왔다. 즉 "옵션 서사의 사망"이 아니라 "옵션의 가격 재협상"이며, 3Q26에서 마진 바닥이 확인되면 되돌림의 재료도 갖춰져 있다 — 이 리포트의 콜이 비중축소가 아닌 중립인 이유다.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">notateslaapp · 2Q26 어닝콜 요약 (2026.07.23)</span><span class="evd-sum">로보택시 <strong>7개 대도시권</strong> 무감독 운행(오스틴·댈러스·휴스턴 램핑, 7월 마이애미·올랜도·탬파 개시)·피닉스·라스베이거스 준비. Cybercab 기가텍사스 양산 개시. Optimus 1세대 라인 설치 중(3Q26 프리몬트 초도 생산 — Optimus Academy 학습용). FSD 구독 148만(+56%)·재고 15일.</span><a href="https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- 04 기술 스크리닝 -->
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 급락으로 지표 전면 악화</h2>
+  <p class="deck">−14.5% 하루 급락으로 1개월 수익률 −16.2%·52주 고가 대비 −35.9%·11개월 저점 — 전작(−22.3%·고점권 이탈)에서 모든 지표가 한 단계씩 악화됐다. 기술적 모멘텀은 완전히 꺼졌고, 52주 저점($302.63)까지 남은 거리는 −5.3%다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">측정값 (7/23 종가)</th><th>하우스 1차 필터 기준</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>수익률 1주 / 1개월 / 3개월</td><td class="num"><span class="down">−18.3%</span> / <span class="down">−16.2%</span> / <span class="down">−17.5%</span></td><td>1개월 +15% 이상 (모멘텀 트리거)</td><td><span class="grade g-none">○ 미충족</span> — 전 구간 하락</td></tr>
+      <tr><td>52주 고가 대비</td><td class="num"><span class="down">−35.9%</span> (고점 $489.88)</td><td>−25% 이내 (신고가 부근)</td><td><span class="grade g-none">○ 미충족</span> — 11개월 저점</td></tr>
+      <tr><td>52주 저점 대비</td><td class="num"><span class="up">+5.6%</span> (저점 $302.63)</td><td>바닥 반등형 참고</td><td><span class="grade g-part">◐</span> — 저점까지 −5.3%</td></tr>
+      <tr><td>이동평균 배열</td><td class="num">MA20 &lt; MA60 (역배열 심화)</td><td>MA20 &gt; MA60 (정배열)</td><td><span class="grade g-none">○ 미충족</span> — 종가가 양 이평선 아래</td></tr>
+      <tr><td>거래대금 배수 / 급락일 거래량</td><td class="num">0.9x · <strong>80.2M주</strong> (1개월 평균의 1.9배)</td><td>1.5x 이상 (수급 트리거)</td><td><span class="grade g-part">◐</span> — 급락일에만 폭증</td></tr>
+      <tr><td>시가총액 (근사)</td><td class="num">약 $1.20조 <span class="down">(하루 −$204B)</span></td><td>—</td><td>메가캡</td></tr>
+      <tr><td>투자유의 지정</td><td class="num">0건</td><td>1건 이상 탈락</td><td><span class="grade g-full">● 통과</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">토스 Open API 캔들 기반 하우스 기술 지표 계산(2026-07-24, 가격 기준일 7/23 종가 $319.69). 시가총액은 발행주식수 3,755,723,871주 × 종가 근사. 하루 시총 증발액 = 주식수 × (374.01−319.69).<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 계산 (2026.07.24)</span><span class="evd-sum">1w −18.3% / 1m −16.2% / 3m −17.5% · 52주 고가 $489.88(−35.9%)·저가 $302.63(+5.6%) · MA20&lt;MA60 역배열 · 최근 5일 거래대금 배수 0.9x(일평균 $14.8B) · 7/23 거래량 80.2M주(직전 1개월 평균 약 42M주) · 투자유의 0건.</span><span class="evd-nolink">하우스 스크리닝 계산값 — 원문 링크 없음</span></span></span></p>
+  <p class="desc" style="margin-top:10px;">해석: 2025년 12월 $490 고점에서 시작된 조정이 급락으로 <strong>−35.9%</strong>까지 깊어지며 YTD −29%(보도 기준)가 됐다. 1주 −18.3%는 대부분 7/23 하루(−14.5%)에 만들어진 숫자다. 기술적으로 의미 있는 지지선은 52주 저점 $302.63(−5.3% 아래)과 심리적 $300 선 — 여기가 깨지면 2025년 8월 저점 구간의 하방이 열린다. 발굴 관점의 모멘텀은 완전히 꺼져 있으며, 이 리포트의 관심은 모멘텀이 아니라 "급락이 옵션 프리미엄을 얼마나 걷어냈고, 남은 가격이 정당한가"다.</p>
+</div>
+
+<!-- 05 PQC -->
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC — 물량은 이겼고, 비용이 무너뜨렸다</h2>
+  <p class="deck">P(판가)는 하드웨어가 정체된 채 소프트웨어(FSD 148만 구독·+56%)로 전환 중(◐), Q(물량)는 인도·에너지 모두 분기 신기록으로 회복 확인(◐→상향 여지), C(비용)는 크레딧 절벽·opex +47%·FCF 적자로 <strong>2Q26 실측이 미충족(○)</strong> — 이번 분기의 이익 붕괴는 P·Q가 아니라 C에서 왔다.</p>
+  <h3>P (가격) — <span class="grade g-part">◐ 부분 충족</span> : 하드웨어 판가 약세, 소프트웨어로 전환 시도</h3>
+  <p>테슬라의 "판가"는 두 겹으로 갈라진다. 자동차 <strong>하드웨어 판가</strong>는 수요 방어를 위한 반복적 가격 인하로 2023~2025년 내내 눌렸고, 이것이 인도량 감소기의 마진 압박의 주범이었다. 반면 <strong>소프트웨어 판가</strong>(FSD 구독·향후 로보택시 승차 요금)는 한계비용이 거의 0이라 실현되면 판가 결정력을 근본적으로 바꾼다 — 2Q26 서비스·기타 매출 <strong>+50%</strong>·FSD 유료 구독 <strong>148만(+56% YoY)</strong>·북미 신규 인도의 55%+ FSD 선택이 그 초기 신호다. 즉 P는 하드웨어에서 소프트웨어로 무게중심을 옮기려는 전환기이며, 아직 옵션 단계다. 한편 2Q26 하드웨어 판가는 인하 없이 유지됐다(보도 기준) — 이번 마진 붕괴는 P의 문제가 아니다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">Tesla 1Q2026 10-Q (SEC, 2026.04.23)</span><span class="evd-sum">1Q26 서비스·기타 매출 <strong>$3.75B(+42% YoY)</strong> — FSD·슈퍼차저·보험 등. 자동차 매출 $16.23B(+16%)는 가격 인하 후 물량 회복으로. 자동차 총이익률 21.1%로 반등.</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <h3>Q (물량) — <span class="grade g-part">◐ 부분 충족</span> : 인도·에너지 분기 신기록 — 회복은 확인, 추세는 검증 중</h3>
+  <p>물량은 이번 분기의 <strong>승자</strong>다. 인도 480,126대(+25% YoY, 분기 사상 최대)·에너지저장 배치 13.5GWh(vs 2Q25 9.6GWh)로 두 축 모두 신기록이고, 생산(451,758대)보다 2.8만대 더 팔아 재고가 15일까지 줄었다 — 밀어내기가 아니라 실수요 소진이다. 다만 FY25 인도가 2년 연속 감소(1.636M대, −8.6%)했던 기저 위의 반등이라, 연간 추세 전환은 3Q~4Q 인도로 확인해야 한다 — 그래서 아직 ◐이며, 상향 여지가 있는 ◐다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Tesla 2Q26 셰어홀더 덱 (SEC Ex-99.1, 2026.07.22)</span><span class="evd-sum">인도 <strong>480,126대</strong>[2Q25 384,122·1Q26 358,023] — Model 3/Y 467,762. 생산 451,758대. 에너지저장 배치 <strong>13.5GWh</strong>[9.6/8.8]. 재고일수 15일. TTM 매출 $100B 첫 돌파.</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <h3>C (비용) — <span class="grade g-none">○ 미충족</span> : 2Q26 실측 — 크레딧 절벽·opex 급증·FCF 적자의 삼중 악화</h3>
+  <p>전작까지 "C의 시험대는 미래"라며 ◐를 유지했지만, <strong>2Q26 실측으로 미충족(○)으로 내린다</strong>. ① 총이익률 21.1%→16.8%로 반락 — 자동차 GM(신용제외) 19.2%→16.3%, 규제크레딧 $380M→$146M(구조적 소멸), 에너지 마진도 관세·워런티로 압축. ② opex +47%(R&D +49%·SG&A +45%) — AI·Optimus 개발과 주식보상이 영업이익률을 1.4%까지 끌어내렸다. ③ capex $5.79B로 FCF −$1.09B 적자 전환에 "이후 분기도 마이너스" 가이던스까지. 원가 통제가 무너진 것이 아니라 <strong>이익 체력 대비 투자 속도가 과속</strong>인 상태다 — 회수(로보택시·Optimus 매출화)가 확인되기 전까지 C는 미충족이다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Tesla 10-Q·셰어홀더 덱 (SEC, 2026.07.22~23)</span><span class="evd-sum">총 GM <strong>16.8%</strong>[17.2%/21.1%]·자동차 GM(신용제외) <strong>16.3%</strong>[15.0%/19.2%]. R&D $2,371M(+49%)·SG&A $1,982M. 영업이익률 1.4%. capex $5,789M·FCF −$1,092M. 10-Q에 FY26 capex "$25B 초과" 2회 명시(AI 컴퓨트·데이터센터·제조 라인).</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/tsla-20260630.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <h3>경쟁사 비교 — 범주가 다른 피어</h3>
+  <p style="max-width:84ch;color:var(--ink-2);margin:0 0 6px;">전통 완성차(GM·포드)와의 TTM 실측 비교는 섹션 09 피어 차트에 있다. 2Q26을 반영한 테슬라의 TTM 영업이익률은 <strong>3.8%</strong>로 GM(4.5%)보다도 낮아졌다(포드 2.6%) — 이익 구조는 자동차 하위권인데 값은 옵션으로 매겨지는 <strong>범주 불일치</strong>가 이 종목 분석의 핵심이며, 단순 P/E 비교가 무의미한 이유다(섹션 09·13).</p>
+</div>
+
+<!-- 06 Growth Sustainability -->
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 6항목 판정</h2>
+  <p class="deck">밸류에이션 체계 전환(자동차→AI/로봇)과 인접 TAM 확대는 확실히 켜졌고(●), 가동률·설비 회수·미국 의존은 절반(◐), 자동차형 수주잔고는 해당 약함(—) — 집계 ● 2 / ◐ 3 / — 1. 테슬라의 성장 지속성은 '자동차 재가속'이 아니라 '옵션의 매출 전환'에 달렸다.</p>
+  <table class="tbl-judge">
+    <thead><tr><th style="width:30%">항목 (자동차·플랫폼 변형 적용)</th><th style="width:14%">판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v"><strong>1. 매출 증가와 함께 공장 가동률 상승</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">2Q26 인도 480,126대(+25%) 사상 최대·생산 451,758대·재고 15일로 소진 — 물량 회복은 확정 실측. 다만 테슬라는 공장 가동률(%)을 정량 공시하지 않고, 이번 분기는 물량이 늘어도 마진이 무너져(OPM 1.4%) "매출 증가와 함께 수익성 개선"의 절반만 충족</span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>2. 설비투자 후 수익화(가동률)</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">FY26 capex "$25B 초과"가 10-Q에 확정 명시됐고 2Q에만 $5.79B 집행·FCF −$1.09B — 신규 투자(AI 컴퓨트·Cybercab·Optimus 라인·반도체 팹)의 증분 ROI는 전부 미검증. CFO가 향후 분기 FCF 마이너스를 예고해 회수 '속도'의 불확실성이 커짐</span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>3. 수주(백로그)가 매출보다 빠르게</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-na">— 해당 약함</span></span></td><td data-label="근거"><span class="v">자동차는 즉시 인도 모델이라 전통적 수주잔고 개념이 약하다. 에너지저장은 계약 백로그가 존재하나 분기별 정량 공시가 제한적. 로보택시·FSD는 '선주문' 성격의 예약이 있으나 매출 전환 전 — 이 항목은 자동차 사업엔 부적합</span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>4. 미국향 매출 여부</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">미국이 최대 단일 시장이자 로보택시 상업화의 출발지(오스틴·댈러스·휴스턴). 다만 매출은 중국·유럽에 분산돼 있고 중국 인도량이 −9%로 약하며, 미 EV 세액공제 정책 변화가 미국 수요의 변수</span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>5. 밸류에이션 체계 전환</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">테슬라 서사의 핵심 — 시장은 이미 테슬라를 '자동차 P/E'가 아니라 '자율주행·로봇 플랫폼 옵션'으로 값매긴다(급락 후에도 Fwd 159.8배). 자동차 멀티플(9~18배)로는 설명 불가능한 이 전환이 밸류의 상방과 하방을 동시에 만들며, 7/23 급락이 하방 메커니즘의 실증이다(섹션 13)</span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>6. 산업 TAM 확대 수혜</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">EV 자체는 성장 둔화지만, 자율주행 모빌리티·휴머노이드 로봇·전력망 에너지저장이라는 세 개의 거대 인접 TAM에 동시 노출. 에너지저장(+49%)은 이미 매출화됐고 로보택시·Optimus는 옵션 단계<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">TradingKey·Investing.com · 테슬라 AI 전환·밸류 (2026)</span><span class="evd-sum">시장은 테슬라 시총 ~$1.5조 중 상당 부분을 로보택시·Optimus·FSD·에너지 옵션으로 값매김. 178배 포워드는 자동차 8~12배·빅테크 25~35배 대비 극단. 자율주행·휴머노이드 TAM은 거대하나 매출화 전.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/261732341-tesla-2026-stock-analysis-ai-robotaxi-valuation-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>판정의 핵심 — ● 5번 = 옵션값.</strong> 테슬라의 성장 지속성 판정은 '밸류에이션 체계 전환'(5번)에 집중된다. 자동차 사업의 성장 순풍은 꺾였고(1~4번이 ●가 아닌 이유), 남은 상방은 로보택시·로봇·에너지가 옵션에서 매출로 전환되느냐(5·6번)에 걸려 있다. 7/23 급락은 이 옵션값의 <strong>첫 대규모 가격 재협상</strong>이었다 — 옵션 서사 자체는 살아 있으나(7개 도시권·Cybercab 양산·Optimus 3Q26 초도 생산), 시장이 지불할 프리미엄이 한 단계 낮아졌다.</div>
+  <p class="fine">판정 기호: ● 충족 / ◐ 부분 충족 / ○ 미충족 / — 해당없음 / ? 확인불가. 제조업 세트(가동률·수주)를 자동차+플랫폼 하이브리드에 맞게 변형 적용했다 — 공장 가동률(%)은 회사가 공시하지 않아 인도량·마진으로, 수주잔고는 자동차 특성상 '해당 약함'으로 판정했다.</p>
+</div>
+
+<!-- 07 어닝 모델 -->
+<div class="card" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 이익 붕괴의 해부: 크레딧 절벽 × 증분 마진 소멸 × AI 비용</h2>
+  <p class="deck">10-Q 원문으로 마진 브리지를 그리면 급락의 1층이 정확히 보인다 — QoQ 영업이익 −$543M 중 43%는 규제크레딧 소멸, 나머지는 opex 급증이고, 매출이 $5.85B 늘 때 매출총이익은 $27M밖에 안 늘었다(증분 마진 0.5%). GAAP 순이익 $1.11B의 대부분은 영업 밖 SpaceX 평가익이다. 하우스 추정은 FY26E 약 $1.85·FY27E $2.30 유지.</p>
+  <h3>추정 vs 실제 대사 — 2Q26 (2026-07-22 발표, 10-Q 원문 검증)</h3>
+  <table class="tbl-judge">
+    <thead><tr><th>항목</th><th class="num">컨센 추정</th><th class="num">2Q26 실제</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v"><strong>매출</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">$26.4B~$27.6B (집계별)</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>$28.24B</strong> (<span class="up">+26% YoY</span>, 사상 최대)</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 비트</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>비GAAP EPS</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">$0.50~$0.55 (집계별)</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>$0.33</strong> (GAAP $0.32)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 큰 미스 (<span class="down">−34~40%</span>)</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>영업이익률</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">5.4% (보도 기준)</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>1.4%</strong> (영업이익 $398M, <span class="down">−57% YoY</span>)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 대폭 미스</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>조정 EBITDA</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">~$4B (보도 기준)</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>$3.27B</strong> (마진 11.6%)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 미스</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>인도량</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">~48만대 (예상)</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>480,126대</strong> (사상 최대)</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 기록·부합</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>자동차 GM (신용제외)</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">—</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>16.3%</strong> (전분기 19.2%)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 악화</span></span></td></tr>
+      <tr><td data-label="항목"><span class="v"><strong>FCF</strong></span></td><td data-label="컨센 추정" class="num"><span class="v">일부 추정 −$3.64B</span></td><td data-label="2Q26 실제" class="num"><span class="v"><strong>−$1.09B</strong></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 적자 전환 (추정보단 양호)</span></span></td></tr>
+    </tbody>
+  </table>
+  <p class="fine">컨센 EPS는 집계기관별로 $0.50(Yahoo)/$0.53(CNBC·Electrek)/$0.55(테슬라 회사취합, 23개 하우스)로 엇갈려 범위로 표기한다 — 미스 폭도 −34~40% 범위. 부문 세부(10-Q·덱 원문): 자동차 $20.52B(+23%, 크레딧 $146M 포함) · 에너지 $3.14B(+13%) · 서비스·기타 $4.58B(+50%) · OCF $4.70B(+85%) · capex $5.79B.<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">notateslaapp · 테슬라 회사취합 컨센 (2026.07 어닝 전)</span><span class="evd-sum">회사가 취합한 23개 하우스 컨센: 비GAAP EPS <strong>$0.55</strong>·GAAP $0.36·매출 $27.58B·순익 $1.5B. Yahoo 집계는 $0.50, CNBC·Electrek 인용 컨센은 ~$0.53 — 집계별 상이해 범위 표기.</span><a href="https://www.notateslaapp.com/news/4458/tesla-releases-q2-2026-earnings-estimates-from-analysts" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <h3>마진 브리지 — 영업이익률 4.2%(1Q26) → 1.4%(2Q26)는 어디서 왔나</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>브리지 항목 (QoQ, 10-Q 원문)</th><th class="num">1Q26</th><th class="num">2Q26</th><th class="num">증감</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>매출</strong></td><td class="num">$22.39B</td><td class="num">$28.24B</td><td class="num"><span class="up">+$5.85B</span></td><td>인도 +34%(358K→480K)·세 부문 동반 성장</td></tr>
+      <tr><td><strong>매출총이익</strong></td><td class="num">$4.72B (21.1%)</td><td class="num">$4.75B (16.8%)</td><td class="num"><strong>+$0.03B</strong></td><td><strong>증분 매출 $5.85B의 마진이 0.5%</strong> — 물량이 이익으로 전환되지 않음</td></tr>
+      <tr><td>├ 규제크레딧</td><td class="num">$380M</td><td class="num">$146M</td><td class="num"><span class="down">−$234M</span></td><td>연방 EV 크레딧 만료의 구조적 절벽 — 원가 0 이익의 소멸</td></tr>
+      <tr><td>├ 자동차 GM(신용제외)</td><td class="num">19.2%</td><td class="num">16.3%</td><td class="num"><span class="down">−2.9%p</span></td><td>믹스·보증충당·관세 유예 종료 (가격 인하 아님 — 보도 기준)</td></tr>
+      <tr><td>└ 에너지 마진</td><td class="num">(높은 수준)</td><td class="num">압축</td><td class="num"><span class="down">악화</span></td><td>벤더 셀 이슈 워런티 비용 + 관세 (덱 명시)</td></tr>
+      <tr><td><strong>opex (R&D+SG&A)</strong></td><td class="num">$3.78B</td><td class="num">$4.35B</td><td class="num"><span class="down">+$0.57B</span></td><td>R&D +$425M(AI·Optimus)·SG&A +$149M(SBC 포함)</td></tr>
+      <tr><td><strong>영업이익</strong></td><td class="num">$941M (4.2%)</td><td class="num"><strong>$398M (1.4%)</strong></td><td class="num"><span class="down">−$543M</span></td><td>크레딧 −$234M(43%) + opex +$570M — 두 요인이 사실상 전부</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">+$27M</div><div class="co-lbl"><strong>증분 매출 $5.85B(QoQ)이 만든 증분 매출총이익 — 증분 마진 0.5%.</strong> 사상 최대 매출이 이익으로 전혀 전환되지 않았다는 것, 이것이 이번 실적의 한 줄 요약이자 "이익 없는 성장" 서사의 근거다. YoY로도 크레딧 감소(−$293M)만으로 영업이익 감소(−$524M)의 56%가 설명된다.</div></div>
+  <h3>EPS의 질 — GAAP $0.32를 그대로 믿으면 안 되는 이유</h3>
+  <p style="max-width:84ch;color:var(--ink-2);margin:0 0 13px;">GAAP 순이익 $1,114M에는 영업과 무관한 <strong>SpaceX 지분 평가익 세전 $1,005M(세후 $763M)</strong>이 들어 있다 — 1분기에 $2.0B를 투자한 SpaceX 지분의 평가익이다. 이를 빼면 세전 기준 본업 이익은 사실상 영업이익($398M) 수준으로 얇아진다(하우스 역산, 주당 약 $0.1 초반). 비GAAP $0.33은 SpaceX 평가익을 제외(−$763M)하고 SBC를 가산(+$989M)한 값이라 그나마 본업에 가깝다. 어느 쪽으로 봐도 <strong>분기 이익 체력은 컨센이 기대한 $0.5대의 절반 수준</strong>이며, 캘리포니아 이연법인세 항목 등 일회성 세금 효과도 섞여 있어 이익의 질은 표면 숫자보다 나쁘다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">Tesla 2Q26 셰어홀더 덱 reconciliation (SEC Ex-99.1)</span><span class="evd-sum">GAAP 순이익 $1,114M → 비GAAP $1,153M 조정: SBC 세후 <strong>+$989M</strong>·디지털자산 평가손 +$87M·<strong>SpaceX 평가익 −$763M(세전 −$1,005M)</strong>·세금 항목 −$274M(캘리포니아 이연법인세 밸류에이션 어라운스 해제 포함). 기타수익 $590M에 SpaceX 평가익 반영.</span><a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <h3>실적 흐름 (연결, 공시 실측)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">인도량</th><th class="num">EPS(희석)</th><th class="num">영업이익률</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>FY24</td><td class="num">1.789M대</td><td class="num">$2.04</td><td class="num">약 7%</td><td>인도량 첫 감소·가격 인하기</td></tr>
+      <tr><td><strong>FY25</strong></td><td class="num"><strong>1.636M대</strong> <span class="down">(−8.6%)</span></td><td class="num"><strong>$1.08</strong> <span class="down">(−47%)</span></td><td class="num">5.8%</td><td>2년 연속 감소·EPS 저점·에너지 46.7GWh(+49%)</td></tr>
+      <tr><td><strong>1Q26</strong></td><td class="num">—</td><td class="num">$0.41 <span class="up">(+52%)</span></td><td class="num">4.2%</td><td>매출 $22.4B(+16%)·GAAP GM 21.1% 반등·FCF 음전환</td></tr>
+      <tr><td><strong>2Q26 (10-Q 확정)</strong></td><td class="num"><strong>480,126대</strong> (사상 최대)</td><td class="num">GAAP $0.32 / 비GAAP $0.33 <span class="down">(컨센 −34~40%)</span></td><td class="num"><strong>1.4%</strong> <span class="down">(급락)</span></td><td>매출 $28.24B(+26%) 사상 최대·FCF −$1.09B·capex $5.79B — GAAP 순익엔 SpaceX 평가익 포함</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">출처: SEC 10-K·10-Q(2Q26은 2026-07-23 제출 원문)·실적 보도(근거1·2·11). FY24~2Q26은 확정치. EPS는 GAAP 희석 기준(2Q26은 GAAP/비GAAP 병기). FY24 인도량 1.789M대는 공개 실적 기준 근사.</p>
+  <h3>구조 분해 — 자동차가 규모를, 에너지·소프트웨어가 미래를 만든다</h3>
+  <p style="max-width:84ch;color:var(--ink-2);margin:0 0 13px;">테슬라의 손익은 세 축이다(2Q26 기준). <strong>자동차</strong>: 매출 $20.52B(전사 73%, +23%)로 규모의 축이나 단가·믹스로 마진 변동성이 크다 — 이번 분기 GM(신용제외) 19.2%→16.3% 압축과 규제크레딧 절벽($380M→$146M)이 미스의 진앙이다. <strong>에너지 생성·저장</strong>: $3.14B(+13%, 배치 13.5GWh)로 성장은 이어지나 증가율은 FY25(+49%)보다 둔화했다. <strong>서비스·기타</strong>: $4.58B(<span class="up">+50%</span>)로 FSD·슈퍼차저·보험이 소프트웨어형 이익을 쌓는다 — 세 축 중 가장 빠르다. 여기에 손익계산서 밖의 <strong>로보택시·Optimus 옵션</strong>이 밸류에이션을 지배한다. 이익 회복의 열쇠는 ① 자동차 단가·마진의 바닥 확인, ② 서비스·에너지의 이익 기여 확대, ③ capex(+142%)가 로보택시·로봇 매출로 전환되는 시점, 이 셋이다.</p>
+  <h3>다년 추정 (하우스 하향 반영)</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th class="num">FY25A</th><th class="num">FY26E</th><th class="num">FY27E</th><th class="num">FY29E</th></tr></thead>
+    <tbody>
+      <tr><td>매출</td><td class="num">약 $95B</td><td class="num">$104.2B E</td><td class="num">$119.3B E</td><td class="num">$226B E</td></tr>
+      <tr><td>EPS (희석)</td><td class="num">$1.08</td><td class="num"><strong>약 $1.85 E</strong> (하우스 하향)</td><td class="num"><strong>$2.30 E</strong> (하우스 하향)</td><td class="num">$6.63 E (컨센)</td></tr>
+      <tr><td>EPS 성장</td><td class="num"><span class="down">−47%</span></td><td class="num"><span class="up">+71%</span> E</td><td class="num"><span class="up">+24%</span> E</td><td class="num"><span class="up">고성장</span> E</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">매출·FY29E는 FMP 컨센 실측(7/17 조회 — 어닝 후 하향 개정 진행 가능성). EPS FY26E·FY27E는 2Q 미스를 반영한 하우스 하향치. <strong>1H26 실적 EPS 합산 $0.74</strong>(1Q $0.41 + 2Q $0.33) — FY26E 약 $1.85조차 하반기 $1.11(분기 평균 $0.55)의 급가속을 요구한다. 컨센 FY29E $6.63은 <strong>로보택시·FSD·Optimus의 대규모 매출화를 이미 가정</strong>한 값이라, 실현 지연 시 하향 위험이 이번 분기로 더 커졌다.</p>
+  <h3>컨센서스 델타 — 월가가 실제로 깎기 시작했다</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">하우스</th><th class="num">컨센서스</th><th class="num">델타·방향</th></tr></thead>
+    <tbody>
+      <tr><td>FY26 EPS</td><td class="num">약 $1.85 E</td><td class="num">$2.08~$2.11 (어닝 전 집계)</td><td class="num"><span class="down">약 −11~12%</span> — 컨센 하향 개정 진행</td></tr>
+      <tr><td>FY27 EPS</td><td class="num">$2.30 E</td><td class="num">$2.45 (FMP 7/17 — 스테일)</td><td class="num"><span class="down">−6%</span> — 급락 후 컨센 확인불가</td></tr>
+      <tr><td>NTM EPS (Fwd 12M)</td><td class="num">$2.0 E</td><td class="num">—</td><td class="num">하우스 앵커 모델</td></tr>
+      <tr><td>목표주가 컨센</td><td class="num">—</td><td class="num"><strong>$406.42</strong> (급락 후, 46개 기관·Hold)</td><td class="num"><span class="down">7개 하우스 일괄 하향</span> (7/17 FMP $441.70 대비)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="max-width:84ch;color:var(--ink-2);"><strong>논지: 하우스가 전작에서 먼저 내렸던 방향으로 월가가 실제로 움직이기 시작했다.</strong> 급락 후 하루 만에 7개 하우스가 목표가를 일괄 하향했다 — Truist $430→$370(AI 지출·자본비용), 모건스탠리 $417→$400(로보택시 ROI는 "열린 질문", 성과 없으면 "capex 관용" 축소 경고), Canaccord $450→$410, JPM $475→$445, TD Cowen $490→$460("자율주행 스케일은 when, not if"), Mizuho $480→$450, Cantor $510→$485. 급락 후 평균 목표가 $406.42(46개 기관, Hold 컨센)는 하우스 Base $391(섹션 08)과 정합한다. 하우스 FY26E 약 $1.85는 어닝 전 컨센($2.08~2.11)보다 11~12% 낮은데, 1H26 실적 합산이 $0.74(GAAP 기준 $0.45)에 그쳐 하반기 분기 평균 $0.55의 급가속을 요구한다는 산수와, 크레딧 절벽(분기 −$230M~290M)의 연간화를 반영한 값이다. 체크포인트는 10/22 3Q26(추정)의 ① 자동차 GM(신용제외) 16.3% 바닥 확인 ② FCF 적자 폭·capex 페이스 ③ 로보택시·Optimus 매출화 신호다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">eletric-vehicles.com·MarketBeat·247wallst (2026.07.23~24)</span><span class="evd-sum">급락 후 목표가 하향 7건: Truist $370·MS $400·Canaccord $410·JPM $445·TD Cowen $460·Mizuho $450·Cantor $485 (BofA·Oppenheimer·Needham 유지). MarketBeat 평균 <strong>$406.42</strong>(46명·Hold·최고 $600·최저 $25.28, 7/24 조회). FY26 컨센 $2.08(회사취합 7/17)~$2.11 보도. FY27 급락 후 컨센은 확인불가 — FMP 7/17 $2.45 스테일 표기.</span><a href="https://eletric-vehicles.com/tesla/seven-wall-street-firms-cut-tesla-price-targets-shares-crash-double-digits/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- 08 시나리오 -->
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>시나리오 — Bull / Base / Bear</h2>
+  <p class="deck">시나리오 전제(FY27E EPS $2.30·멀티플 170/210/75배)는 전작과 동일하게 유지하고 기준가만 급락 후 $319.69로 리셋했다 — Base 상방이 +10.5%→+22.3%로 두꺼워진 것은 전적으로 가격 효과다. 하방(Bear −57.8%)은 여전히 '옵션→자동차 디레이팅' 시나리오에 몰려 있다.</p>
+  <table class="tbl-judge">
+    <thead><tr><th>시나리오</th><th class="num">NTM EPS</th><th class="num">× 배수</th><th class="num">환산 주가</th><th class="num">현재가 대비</th><th>전제</th></tr></thead>
+    <tbody>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bull</strong></span></td><td data-label="NTM EPS"><span class="v">$2.8</span></td><td data-label="배수"><span class="v">210배</span></td><td data-label="환산 주가"><span class="v">$588</span></td><td data-label="현재가 대비"><span class="v"><span class="up">+83.9%</span></span></td><td data-label="전제"><span class="v">로보택시(V15 FSD·주 단위 확장)·Optimus 상업화가 '내년 유의미' 궤도에 오르고 에너지저장 고성장이 이어져 옵션 프리미엄 확대 — EPS $2.8 상향 + 밴드 상단(210배) 재평가. 강세 하우스(예: Wedbush $600대) 목표와 정합</span></td></tr>
+      <tr class="self"><td data-label="시나리오"><span class="v"><strong>Base</strong></span></td><td data-label="NTM EPS"><span class="v">$2.30</span></td><td data-label="배수"><span class="v">170배</span></td><td data-label="환산 주가"><span class="v">$391</span></td><td data-label="현재가 대비"><span class="v"><span class="up">+22.3%</span></span></td><td data-label="전제"><span class="v">2Q26 미스에도 하반기 마진이 안정되고 12개월 후 FY27E EPS $2.30 수준 회복, 옵션 프리미엄 멀티플은 소폭 하향(170배)에서 유지 — 컨센 목표주가 대(帶)와 정합</span></td></tr>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bear</strong></span></td><td data-label="NTM EPS"><span class="v">$1.8</span></td><td data-label="배수"><span class="v">75배</span></td><td data-label="환산 주가"><span class="v">$135</span></td><td data-label="현재가 대비"><span class="v"><span class="down">−57.8%</span></span></td><td data-label="전제"><span class="v">로보택시 수익화 지연·NHTSA FSD 조사·자동차 수요/마진 재악화로 시장이 테슬라를 '옵션'이 아닌 고성장 자동차로 재평가 — EPS $1.8·멀티플 75배 디레이팅(약세 하우스 극단 시나리오와 정합)</span></td></tr>
+    </tbody>
+  </table>
+  <h3>민감도 — NTM EPS (인도량·마진·에너지), 배수 170배 고정</h3>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>EPS 가정</th><th class="num">−15% ($1.96)</th><th class="num">기준 ($2.30)</th><th class="num">+15% ($2.65)</th></tr></thead>
+    <tbody>
+      <tr><td>환산 주가</td><td class="num">$333 (<span class="up">+4.2%</span>)</td><td class="num">$391 (<span class="up">+22.3%</span>)</td><td class="num">$450 (<span class="up">+40.9%</span>)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="max-width:84ch;color:var(--ink-2);"><strong>읽는 법:</strong> 이 표는 목표주가가 아니라 <strong>전제가 실현될 때의 조건부 환산 범위</strong>다. 전작과 달라진 점: 전제(EPS·배수)는 그대로인데 기준가가 −9.4% 리셋되며 <strong>스큐가 상방 쪽으로 개선됐다</strong> — Base +22.3%, EPS −15% 민감도조차 +4.2%로 플러스가 됐고, Bear 하방은 −61.8%→−57.8%로 소폭 줄었다. 그럼에도 <strong>진짜 위험은 여전히 EPS가 아니라 배수</strong>다 — EPS ±15%는 +4.2%~+40.9%의 범위인 반면, Bear −57.8%는 시장이 옵션 프리미엄을 마저 걷어내고 자동차(75배 이하)로 재평가할 때의 숫자다. 7/23은 그 방향으로의 <strong>첫 대규모 리셋</strong>(멀티플 176.9→159.8배)이었고, 크레딧 절벽·FCF 적자 지속 예고·NHTSA 조사는 여전히 그쪽 재료다. 급락으로 "옵션이 유지된다" 베팅의 가격은 싸졌지만, 베팅의 성격 자체는 변하지 않았다.</p>
+  <p class="fine">시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다. NTM EPS는 앵커 보간 추정 모델이며 실제 컨센서스 히스토리가 아니다. 배수는 3년 관측 밴드(64~250배) 안에서 잡았다.</p>
+</div>
+
+<!-- 09 피어 비교 -->
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>피어 비교 — 범주가 다른 피어 (TTM 실측)</h2>
+  <p class="deck">2Q26을 반영한 TTM으로 테슬라의 영업이익률은 3.8% — 이제 GM(4.5%)보다도 낮다. 그런데 P/E는 294배(*왜곡)로 범주가 완전히 다르다. 이 비교의 결론은 "비싸다"가 아니라 "자동차 지표로는 값매길 수 없다" — 진짜 렌즈는 포워드 + 옵션이다.</p>
+  <p class="fine" style="margin:0 0 12px;">가로 막대차트 — 분석대상(테슬라)은 강조색, 자동차 피어(GM·포드)는 회색. P/E·시총/OP는 낮을수록 이익 대비 저렴한데, 테슬라 막대가 압도적으로 큰 것은 이익 저점(*왜곡)과 옵션 밸류에이션이 겹친 결과다. 절대액·정성 코멘트는 아래 원표.</p><div class="peer-chart">
+<div class="metric"><div class="mtitle">영업이익률 (OPM, TTM·2Q26 반영)</div>
+<div class="mhint">높을수록 수익성↑</div>
+<div class="brow"><span class="blabel self">테슬라</span><div class="btrack"><div class="bfill self" style="width:84%"></div></div><span class="bval mono">3.8%</span></div>
+<div class="brow"><span class="blabel">제너럴 모터스</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">4.5%</span></div>
+<div class="brow"><span class="blabel">포드</span><div class="btrack"><div class="bfill" style="width:58%"></div></div><span class="bval mono">2.6%</span></div>
+</div>
+<div class="metric"><div class="mtitle">P/E (TTM)</div>
+<div class="mhint">낮을수록 저평가</div>
+<div class="brow"><span class="blabel self">테슬라</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">294.4배</span></div>
+<div class="brow"><span class="blabel">제너럴 모터스</span><div class="btrack"><div class="bfill" style="width:3%"></div></div><span class="bval mono">9.9배</span></div>
+<div class="brow"><span class="blabel">포드</span><div class="btrack"><div class="bfill" style="width:6%"></div></div><span class="bval mono">17.8배</span></div>
+</div>
+<div class="metric"><div class="mtitle">시총 / 영업이익</div>
+<div class="mhint">낮을수록 이익 대비 저렴</div>
+<div class="brow"><span class="blabel self">테슬라</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">313.3배</span></div>
+<div class="brow"><span class="blabel">제너럴 모터스</span><div class="btrack"><div class="bfill" style="width:3%"></div></div><span class="bval mono">9.3배</span></div>
+<div class="brow"><span class="blabel">포드</span><div class="btrack"><div class="bfill" style="width:4%"></div></div><span class="bval mono">11.9배</span></div>
+</div>
+</div><details class="peer-raw"><summary>전체 수치·비교 보기 (절대액·범주 주석)</summary><div class="inner"><table class="tbl-judge"><thead><tr><th>종목</th><th>시가총액</th><th>TTM 매출</th><th>TTM 영업이익</th><th>OPM</th><th>P/E(TTM)</th><th>시총/OP</th></tr></thead><tbody><tr class="self"><td data-label="종목"><span class="v"><strong>테슬라</strong> (TSLA)</span></td><td data-label="시가총액"><span class="v">$1,217.5B</span></td><td data-label="TTM 매출"><span class="v">$101.2B</span></td><td data-label="TTM 영업이익"><span class="v">$3.9B</span></td><td data-label="OPM"><span class="v">3.8%</span></td><td data-label="P/E(TTM)"><span class="v">294.4<span class="fine">*왜곡</span></span></td><td data-label="시총/OP"><span class="v">313.3</span></td></tr><tr><td data-label="종목"><span class="v"><strong>제너럴 모터스</strong> (GM)</span></td><td data-label="시가총액"><span class="v">$70.7B</span></td><td data-label="TTM 매출"><span class="v">$170.2B</span></td><td data-label="TTM 영업이익"><span class="v">$7.6B</span></td><td data-label="OPM"><span class="v">4.5%</span></td><td data-label="P/E(TTM)"><span class="v">9.9</span></td><td data-label="시총/OP"><span class="v">9.3</span></td></tr><tr><td data-label="종목"><span class="v"><strong>포드</strong> (F)</span></td><td data-label="시가총액"><span class="v">$56.3B</span></td><td data-label="TTM 매출"><span class="v">$184.6B</span></td><td data-label="TTM 영업이익"><span class="v">$4.7B</span></td><td data-label="OPM"><span class="v">2.6%</span></td><td data-label="P/E(TTM)"><span class="v">17.8</span></td><td data-label="시총/OP"><span class="v">11.9</span></td></tr></tbody></table><p class="fine" style="margin-top:10px;">TTM은 SEC EDGAR companyfacts 4개 분기 합산(2Q26 포함 — 테슬라 TTM 매출 $101.2B로 $100B 첫 돌파 반영), 시총 = 2026-07-24 집계 시세 × 발행주식수. <strong>*왜곡</strong>: 테슬라 P/E(TTM) 294배는 이익 저점(TTM 기준)에 걸린 착시로, 실제 위치는 Forward 159.8배다(섹션 13). 위 차트의 P/E·시총/OP 막대에서 테슬라가 압도적으로 큰 것은 자동차 피어 대비 극단적 밸류에이션을 뜻하지만, 이는 "비싸다"가 아니라 <strong>자동차 지표로는 값매길 수 없다</strong>는 범주 불일치의 시각화다.</p></div></details>
+  <p style="max-width:84ch;color:var(--ink-2);margin-top:12px;"><strong>왜곡 주석 & 읽는 법:</strong> TTM P/E 294배는 이익 저점에 걸린 <strong>착시</strong>다(<strong>*왜곡</strong>) — 분모가 일시적으로 작아 배수가 폭증했다. 실제 위치는 <strong>Forward 159.8배</strong>(급락 후)이며 그마저도 자동차(GM 9.9배·포드 17.8배)의 9~16배다. 급락 후 새로 보이는 것이 하나 있다 — 2Q26 반영으로 테슬라의 TTM 영업이익률(3.8%)이 <strong>GM(4.5%) 아래로</strong> 내려갔다. 즉 "이익 구조는 자동차 하위권, 밸류는 옵션"이라는 범주 불일치가 오히려 심해졌다. 시장은 테슬라를 자동차가 아니라 자율주행·로봇 플랫폼으로 값매기므로 통짜 P/E로 "싸다/비싸다"를 논하는 것은 무의미하며, 이 종목의 밸류는 옵션의 실현 확률에 대한 판단(섹션 13)이다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">SEC EDGAR·토스 Open API — 하우스 피어 테이블 (2026.07.24 재실측)</span><span class="evd-sum">TTM(SEC companyfacts 4개 분기 합산, 2Q26 포함)·시총=집계 시세×발행주식수. TSLA 시총 $1,217.5B·TTM 매출 $101.2B·영업이익 $3.9B·OPM 3.8%·P/E 294.4(*저점 이익 왜곡)·시총/OP 313.3 · GM $70.7B·$170.2B·$7.6B·4.5%·9.9 · 포드 $56.3B·$184.6B·$4.7B·2.6%·17.8.</span><span class="evd-nolink">공시 실측 기반 하우스 계산 — 원문 링크 없음</span></span></span></p>
+</div>
+
+<!-- 10 수급 -->
+<div class="card prose" id="s10">
+  <h2><span class="idx">10</span>수급 — 인사이더 매도와 심리 수급</h2>
+  <p class="deck">KRX 투자자별 수급은 해당없음(미국 종목). SEC 축에서 최근 180일은 임원 Form 4·144(사전 매도)와 기관 13G가 대부분이고 신규 대량취득 특이신호는 없다. 급락일(7/23) 거래량은 80.2M주(1개월 평균의 1.9배)로 컨빅션 있는 분배였고 공매도는 하루 $4B 수익 보도 — 이 종목의 수급은 기관 매매가 아니라 '로보택시 서사에 대한 시장 신뢰'라는 심리 수급이 지배한다.</p>
+  <p><strong>투자자별 순매수(외국인/기관/개인):</strong> <span class="grade g-na">— 해당없음</span> — KRX 정보데이터시스템은 국내 종목 전용으로 미국 상장 TSLA에는 적용되지 않는다. 대신 SEC 공시(Form 4·144·13G)로 대체한다.</p>
+  <p><strong>인사이더 거래 (SEC Form 4 / Rule 144, 최근 180일):</strong> 최근 공시는 임원·이사의 Form 4(내부자 거래)와 Rule 144(사전 매도 신고), 그리고 S-8(임직원 주식보상 등록)이 다수를 이룬다. 이는 대부분 <strong>사전 설정된 10b5-1 매도 계획</strong>에 따른 정례 매도로 개별 건의 신호성은 약하다(분산·유동성·세금 목적). 조회 기간(2026-01~07) 내 6월 13G/A(기관 지분율 변동 신고) 등이 있으나 신규 5% 이상 대량취득(13D)의 특이 신호는 확인되지 않았다.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">SEC EDGAR · 테슬라 인사이더·기관 공시 (2026.01~07)</span><span class="evd-sum">최근 180일 공시: Form 4·Rule 144(사전 매도 신고) 다수, 13G/13G/A(기관 지분율), S-8·10-K/A. Form 4는 임원 10b5-1 정례 매도로 추정. 신규 13D(5%+ 대량취득)의 특이 신호 없음.</span><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001318605&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>심리 수급 — 이 종목을 움직이는 진짜 수급:</strong> 테슬라 주가의 변동성은 실적보다 <strong>서사</strong>에 크게 반응한다. 7/16 기준 주주들은 회사의 Q&A 포털에 "왜 로보택시·FSD·Optimus의 단기 목표를 계속 못 지키는가"를 최상위 질문으로 올렸고, 7/22 실적이 그 첫 시험이었다 — 답안(EPS −34~40% 미스·OPM 1.4%·FCF 적자)이 나오자 시장은 하루 만에 시총의 14.5%를 걷어냈다. <strong>7/23의 수급 프로필이 그 신뢰 리셋의 실측</strong>이다: 거래량 80.2M주(직전 1개월 평균 약 42M주의 1.9배)의 대량 분배, 공매도 하루 $4B 수익(보도), 그리고 Mag7 전반의 리스크오프 속 최대 낙폭. 다만 이는 '서사의 사망'이 아니라 '서사의 가격 재협상'이다 — 옵션 진척(7개 도시권·Cybercab·Optimus)은 살아 있고, 다음 시험은 10/22 3Q26(추정)이다.<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">토스 캔들·Bloomberg 보도 (2026.07.23~24)</span><span class="evd-sum">7/23 거래량 <strong>80,195,494주</strong> — 직전 1개월(6/10~7/22) 평균 약 42M주의 1.9배. 종가 $319.69(−14.52%). Bloomberg: 테슬라 공매도 세력 하루 <strong>$4B</strong> 수익 보도.</span><a href="https://www.bloomberg.com/news/articles/2026-07-23/tesla-short-sellers-mint-4-billion-profit-as-shares-nosedive" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- 11 반대 논리 -->
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 콜을 바꿀 조건부터</h2>
+  <p class="deck">이 콜은 "급락으로 상방은 회복됐지만 여전히 3년 평균 위 멀티플"의 중립 판단이므로, 아래 조건이 충족되면 비중확대 또는 비중축소로 갱신된다. 상방이 옵션 하나(로보택시·Optimus)에 걸려 있고, 그 옵션의 자금 소요(capex $25B+)가 이제 현금을 실제로 태우기 시작했다는 것이 급락 후의 최대 약점이다.</p>
+  <div class="note" style="border-left-color:var(--accent);background:var(--accent-bg);"><strong style="color:var(--accent);">콜 전환 조건 (중립 → 비중확대 / 비중축소 재판정):</strong><br>
+  ① <strong>밴드 위치 이동</strong> — Fwd P/E 백분위가 40% 이하(밴드 중하단, 약 $265 이하)로 내려오고 이익 회복이 확인되면 <strong>비중확대</strong>로 상향(급락으로 60%까지 접근 — 추가 −17% 구간). 반대로 백분위 75% 이상(과열, 약 $360 초과)으로 되돌거나 Base 상방(+22.3%)이 소진되면 <strong>비중축소</strong>로 하향.<br>
+  ② <strong>로보택시·FSD 수익화</strong> — 하반기에 로보택시 도시 확장(현 7개 대도시권)·차량 확대(현 25~50대 수준 보도)·실질 매출의 진전이 없거나 NHTSA FSD 조사가 리콜·운행 제한으로 이어지면, 주가의 대부분을 차지하는 옵션 프리미엄의 정당성이 흔들려 Bear(멀티플 75배·<span class="down">−57.8%</span>) 경로가 열린다.<br>
+  ③ <strong>마진 바닥 확인 실패</strong> — 3Q26에서 자동차 GM(신용제외) 16.3%이 추가 하락하거나, 크레딧 소멸·opex 증가가 이어지며 OPM이 1%대에 고착되면 '하반기 마진 안정'이라는 Base 전제 자체가 무너진다 — 반대로 마진 바닥이 확인되면 Base 경로가 지켜지고, 급락분의 되돌림이 시작될 수 있다.</div>
+  <p><strong>리스크 1 — 밸류에이션 극단·옵션 붕괴 (Bear 촉발).</strong> 급락 후에도 159.8배 포워드는 자동차의 9~16배이며 주가의 대부분이 아직 매출이 없는 옵션(로보택시·Optimus·FSD)에 대한 값이다. 시장이 이 프리미엄을 마저 걷어내고 테슬라를 '고성장 자동차'로 재평가하면 하락 여지가 여전히 −57.8%다. 7/23이 보여준 것이 바로 이 메커니즘의 예고편이다 — 옵션 서사에 흠집이 나자 하루에 멀티플이 176.9→159.8배로 압축됐다. 크레딧 절벽·FCF 적자 지속 예고·NHTSA 조사는 모두 Bear 방향의 재료로 살아 있다(섹션 08).</p>
+  <p><strong>리스크 2 — 로보택시 실행 지연·규모의 현실.</strong> 로보택시는 7개 대도시권으로 확장됐지만 차량 규모는 <strong>25~50대 수준</strong>(보도 기준)으로 Waymo(2,000~3,000대)의 수십분의 일이고, 머스크 스스로 "목표는 공격적이나 무사고 보장을 위해 속도를 억제한다"고 했다. 하드웨어3 차량의 무감독 FSD 불가(리트로핏 부담)도 여전하다. Optimus는 3Q26 초도 생산이 고객 인도가 아닌 <strong>사내 학습용(Optimus Academy)</strong>이다 — 옵션의 매출화 시점이 계속 뒤로 밀리면 프리미엄이 서서히 빠진다.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·notateslaapp 콜 요약 (2026.07.23)</span><span class="evd-sum">로보택시 차량 <strong>25~50대</strong> vs Waymo 2,000~3,000대(보도). 무감독 38만 마일 무사고. 머스크 "매우 공격적 목표·속도 억제". Optimus 3Q26 프리몬트 초도 생산은 Optimus Academy 학습데이터용 — "우리가 만든 것 중 양산이 가장 어려운 제품, 공급망이 존재하지 않는다".</span><a href="https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>리스크 3 — 자동차 수요·경쟁·정책.</strong> EV 시장 성장은 둔화했고 테슬라 인도량은 2년 연속 줄었으며 중국 인도량이 −9%로 약하다. 비야디 등 중국 업체의 가격 경쟁과 미국 EV 세액공제 정책 변화가 수요·마진의 하방 변수다. 자동차 본업의 순풍이 약해진 상태에서 옵션에 기대는 구조 자체가 취약성이다.</p>
+  <p><strong>리스크 4 — 시장 베타·키맨 리스크.</strong> 7/23이 실증했듯 테슬라는 "먼 미래 이익"을 파는 종목이라 리스크오프 국면에서 멀티플 압축이 가장 크다 — 유가 $100·10년물 18개월 최고·Mag7 −$797B의 날에 Mag7 내 최대 낙폭(−14.5%)이었다. 유가발 인플레가 금리 인하 기대를 계속 밀어내면(실업수당 1969년 이후 최저로 노동시장도 뜨겁다) 초장기 성장주의 할인율 부담은 구조화된다. CEO(머스크)의 정치·경영 분산과 거버넌스도 주가 변동성의 상시 변수다.</p>
+</div>
+
+<!-- 12 다음 이벤트 -->
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>다음 확인 이벤트</h2>
+  <p class="deck">2026-10-22 3Q26 실적(추정)이 다음 앵커다 — 2Q26이 남긴 질문(마진 바닥·FCF 적자 폭·FY26E 경로)에 대한 답과, 로보택시 주(州) 확장·Cybercab·Optimus 진척·NHTSA FSD 조사 결과가 체크포인트다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>확인할 것</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2026-10-22 (추정)</strong></td><td>3Q26 실적 발표 + 컨퍼런스콜</td><td>자동차 GM(신용제외) 16.3%의 바닥 확인/반등 · 3Q EPS(FY26E 약 $1.85 경로 — 하반기 분기 평균 $0.55 필요) · FCF 적자 폭·capex 페이스 · 로보택시/Optimus 매출화 신호<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">notateslaapp · 2Q26 어닝콜 요약 (2026.07.23)</span><span class="evd-sum">경영진은 하반기 체크포인트로 <strong>로보택시 도시 확장·Cybercab 램프·Optimus 3Q26 초도 생산</strong>을 제시. CFO는 capex $25B+·향후 분기 FCF 마이너스 지속을 예고. 3Q26 실적일은 통상 10월 하순 — 2026-10-22는 하우스 추정.</span><a href="https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>수시 (하반기)</td><td>로보택시 확장·Cybercab·Optimus</td><td>현 7개 대도시권(+피닉스·라스베이거스 준비)에서의 도시·차량(현 25~50대 보도) 확대 · Cybercab 양산 램프 · <strong>3Q26 Optimus 프리몬트 초도 생산</strong>(사내 학습용 — 고객 인도 아님) · 콜에서 언급되지 않은 저가 모델의 향방</td></tr>
+      <tr><td>수시</td><td>NHTSA FSD 조사</td><td>조사 범위 확대·리콜/운행 제한 여부 — 로보택시 옵션의 규제 리스크 선행 지표</td></tr>
+      <tr><td>10월 전후 (추정)</td><td>10-Q (3Q26) SEC 제출</td><td>부문 손익 확정(2Q26 비GAAP→GAAP 대사 포함) · 에너지 마진 · 캐펙스 누계 vs 가이던스</td></tr>
+      <tr><td>상시</td><td>미 정책·금리·경쟁 동향</td><td>미 EV 세액공제·자율주행 규제 · 미 10년물 4.6%대 이탈 여부 · 중국 경쟁·인도량</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- 13 밸류에이션 -->
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 리셋 후: 싸졌다, 그러나 싸지는 않다</h2>
+  <p class="deck">Fwd P/E 159.8배 = 3년 백분위 60%, 최근 1년 백분위 0%(1년 최저 멀티플). −14.5%가 옵션 프리미엄의 한 켜를 걷어냈지만, 남은 159.8배도 3년 평균(137.2배) 위이고 자동차 피어의 9~16배다 — 급락은 "저평가 진입"이 아니라 "과열 해소"까지만 왔다.</p>
+  <p><strong>리레이팅 분해:</strong> 현재가 $319.69 = NTM EPS $2.0 × 159.8배다. 하루 만에 멀티플이 176.9→159.8배로 압축됐다 — NTM EPS는 그대로인데 가격만 빠졌으므로 <strong>7/23 급락은 100% 멀티플(옵션 프리미엄)의 리셋</strong>이었다. 3년 평균(137.2배)로 값매기면 $274이므로 아직 자기 평균 대비 <strong>+16.5% 프리미엄</strong>이 남아 있다(전작 +29%). 반대편 극단을 보면, 전통 완성차 배수(GM TTM 9.9배)로 테슬라를 값매기면 주가는 <strong>$20 수준</strong> — <strong>현재가 $320의 약 94%가 자동차가 아닌 옵션값</strong>이라는 구조는 급락 후에도 그대로다.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델 (2026.07.24)</span><span class="evd-sum">Fwd P/E: 현재 <strong>159.8배</strong> · 3년 평균 137.2배(최소 64.4 / 최대 250.4) · 3년 백분위 60% · <strong>최근 1년 평균 205.2배·범위 159.8~250.4·백분위 0%</strong>(1년 최저). NTM EPS(추정) $2.0 유지 — 급락은 전액 멀티플 압축.</span><span class="evd-nolink">가격·앵커 기반 하우스 추정 모델 — 원문 링크 없음</span></span></span></p>
+  <div class="callout"><div class="co-num">백분위 0%</div><div class="co-lbl"><strong>Fwd P/E 159.8배는 최근 1년(범위 159.8~250.4배)의 최저치다.</strong> 1년 내내 이보다 비싸게 거래됐다는 뜻 — 급락이 옵션 프리미엄의 과열분을 걷어냈다. 그러나 3년으로 넓히면 백분위 60%로 여전히 평균(137.2배) 위 — "1년 최저"와 "역사적 저평가"는 다르다.</div></div>
+  <p><strong>역사적 위치와 환산 주가:</strong> 3년 밴드(60·115·170·225배) 기준 현재 NTM EPS $2.0 환산 주가는 60배 = $120 · 115배 = $230 · 평균 137.2배 = $274 · 170배 = $340 · 225배 = $450다. 현재가 $319.69는 <strong>170배 선($340) 아래, 3년 평균($274) 위</strong> — 전작(170배 선 바로 위)에서 한 계단 내려온 밴드 중상단부다. 급락 후 월가 평균 목표가 $406.42(46개 기관, Hold 컨센)와 하우스 Base $391(FY27E $2.30 × 170배, 섹션 08)이 $390~410 대에서 수렴한다 — 시장과 하우스가 보는 '옵션 유지 시 적정 대역'은 비슷하고, 차이는 그 확률 평가다.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델·MarketBeat (2026.07.24)</span><span class="evd-sum">밴드 환산가(NTM EPS $2.0): 60배 $120 · 115배 $230 · 137.2배(평균) $274 · 170배 $340 · 225배 $450. 현재가 $319.69 → 159.8배. 급락 후 평균 목표가 <strong>$406.42</strong>(MarketBeat 46명·Hold).</span><span class="evd-nolink">하우스 계산값 — 원문 링크 없음</span></span></span></p>
+  <p><strong>2차 밸류에이션 (정직 표기):</strong> <strong>FCF 수익률은 음수다</strong> — 2Q26 FCF −$1.09B에 CFO가 향후 분기도 마이너스를 예고해, 시가총액 약 $1.20조 대비 현금흐름 밸류에이션으로는 현재가를 정당화할 수 없다. 이는 "지금 이익·현금이 아니라 옵션을 산다"는 이 종목의 성격을 재확인한다. P/B–ROE 관점도 동일하다 — 높은 P/B에 낮은 ROE(이익 저점)를 결합한 <strong>기대 선반영 구간</strong>이라, 이익이 기대를 따라잡지 못하면 밸류에이션이 먼저 조정된다(7/23이 그 실증이다). 안전판은 현금·단기투자 <strong>$43.5B</strong>(10-Q 실측)와 에너지·서비스의 성장이나, capex $25B+ 국면에선 이 현금도 분기마다 소모되는 방향이다(2Q에만 −$1.2B).</p>
+  <p><strong>결론:</strong> 7/23은 이 종목의 논쟁 구도를 바꾸지 않았고, 논쟁의 <strong>가격</strong>만 바꿨다 — 물량(인도·매출·에너지)의 회복은 진짜였지만 이익의 질(크레딧 절벽·AI 비용·증분 마진 소멸·SpaceX 착시)이 무너졌고, 시장은 하루 만에 옵션 프리미엄의 한 켜(멀티플 −17배 압축, 시총 −$204B)를 걷어냈다. 급락 후 Fwd 159.8배(3년 백분위 60%·1년 백분위 0%)는 과열은 해소했으나 저평가는 아니고, Base 상방 +22.3%는 가격 효과일 뿐 펀더멘털 개선이 아니다. Bear(−57.8%)로 가는 재료(크레딧 소멸의 연간화·FCF 적자 지속·NHTSA 조사)와 되돌림의 재료(1년 최저 멀티플·물량 신기록·FSD/로보택시 진척)가 팽팽하다. <strong>콜: 중립(유지).</strong> 다음 판정은 2026-10-22 3Q26(추정) — 자동차 마진 바닥 확인·FCF 적자 폭·로보택시/Optimus 매출화가 콜 갱신 조건이다(섹션 11).</p>
+</div>
+
+<details class="pe-embed" data-peb="TSLA" open>
+  <summary>
+    <span class="peb-t">📊 테슬라(TSLA) — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 159.8배 · 3년 평균 137.2배 · 백분위 60% (1년 백분위 0%)</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM EPS는 실제 컨센서스 집계가 아니라 리포트·실적 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다(2023~2025 구간은 당시 보도 기반 재구성). 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM EPS 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody class="peb-anchor-rows">
+        <tr><td>'23.6.8</td><td class="num">$3.50</td><td class="num">$3.50</td><td>2023 중순 컨센 — FY23E ~$3.3·FY24E ~$4.5 낙관 구간의 NTM 가중 근사 (당시 보도 기반 재구성)</td></tr>
+        <tr><td>'23.10.27</td><td class="num">$3.00</td><td class="num">$3.00</td><td>3Q23 실적·가격 인하로 마진 압박 — FY24E 하향 (재구성)</td></tr>
+        <tr><td>'24.1.25</td><td class="num">$2.60</td><td class="num">$2.60</td><td>4Q23 후 '2024 성장 눈에 띄게 둔화' 가이던스 — NTM 하향 (재구성)</td></tr>
+        <tr><td>'24.4.23</td><td class="num">$2.20</td><td class="num">$2.20</td><td>1Q24 어닝 쇼크(인도량 급감·마진 붕괴) — 컨센 대폭 하향</td></tr>
+        <tr><td>'24.7.23</td><td class="num">$2.20</td><td class="num">$2.20</td><td>2Q24 — 저점권 NTM 유지 (재구성)</td></tr>
+        <tr><td>'24.10.23</td><td class="num">$2.40</td><td class="num">$2.40</td><td>3Q24 마진 회복 서프라이즈 — NTM 소폭 상향 (재구성)</td></tr>
+        <tr><td>'25.1.29</td><td class="num">$2.80</td><td class="num">$2.80</td><td>4Q24·2025 성장 재개 가이던스(로보택시·저가 모델 기대) — NTM 상향 (재구성)</td></tr>
+        <tr><td>'25.4.22</td><td class="num">$2.00</td><td class="num">$2.00</td><td>1Q25 인도량 감소·마진 약화 — NTM 하향 (재구성)</td></tr>
+        <tr><td>'25.7.23</td><td class="num">$1.80</td><td class="num">$1.80</td><td>2Q25 약세 — NTM 저점 (재구성)</td></tr>
+        <tr><td>'25.10.22</td><td class="num">$1.90</td><td class="num">$1.90</td><td>3Q25 — 소폭 회복 (재구성)</td></tr>
+        <tr><td>'26.1.28</td><td class="num">$2.00</td><td class="num">$2.00</td><td>4Q25로 FY25 EPS $1.08 확정(2년 연속 인도량 감소) — 2026 회복 기대</td></tr>
+        <tr><td>'26.4.23</td><td class="num">$2.10</td><td class="num">$2.10</td><td>1Q26 EPS $0.41(+52% YoY)·마진 반등(GAAP OPM 4.2%) — NTM 상향</td></tr>
+        <tr><td>'26.7.23</td><td class="num">$2.00</td><td class="num">$2.00</td><td>2Q26 EPS $0.33(컨센 $0.50~0.55 미스)·OPM 1.4%·FCF −$1.09B 반영 — 1H26 합산 $0.74로 FY26E 하향 압력, NTM 근사 $2.0 유지. 7/23 급락 종가 $319.69 → Fwd P/E 159.8배(급락은 전액 멀티플 압축)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: US 종목이라 NTM EPS를 달러로 직접 입력(영업이익 환산 없음), 앵커 13개 선형 보간. 발행주식수 3,755,723,871주. 밴드별 현재 환산 주가: 60배 $120 · 115배 $230 · 137.2배(평균) $274 · 170배 $340 · 225배 $450. 앵커의 EPS 추정은 리포트·실적 시점 컨센서스를 근사·재구성한 값이다. 데이터 범위 2023-06-13 ~ 2026-07-23.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>Electrek·IG · 테슬라 FY2025 인도·실적 (2026.01) — 인도량 1.636M대(−8.6%)·EPS $1.08(−47%)·영업이익률 5.8%·에너지저장 46.7GWh(+49%) <a href="https://electrek.co/2026/01/02/tesla-tsla-releases-q4-delivery-results/" target="_blank" rel="noopener">↗</a></li>
+    <li>Tesla · 1Q2026 10-Q·실적 (SEC, 2026.04.23) — 매출 $22.4B(+16%)·자동차 GM 21.1%·GAAP OI $941M(+136%)·OPM 4.2%·EPS $0.41(+52%)·FCF 음전환 <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026026673/tsla-20260331.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>TradingKey·Not a Tesla App · 2Q26 인도·프리뷰 (2026.07, 어닝 전) — 인도량 480,126대(추정 406K 상회)·컨센 매출 ~$26.4B·EPS ~$0.53 <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262021897-tesla-tsla-stock-forecast-july-2026-q2-earnings-margins-cybercab-tradingkey" target="_blank" rel="noopener">↗</a></li>
+    <li>Tesla · 2Q2026 10-Q·셰어홀더 덱 원문 (SEC, 2026.07.22~23) — 총 GM 16.8%·자동차 GM(신용제외) 16.3%·R&D $2,371M(+49%)·SG&A $1,982M·capex $5,789M·FY26 capex "$25B 초과" 명시 <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049270/tsla-20260630.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>eletric-vehicles.com·MarketBeat·247wallst · 급락 후 목표가·컨센 (2026.07.23~24) — 7개 하우스 일괄 하향(Truist $370·MS $400·JPM $445 등)·평균 목표가 $406.42(46명·Hold)·FY26 컨센 $2.08~2.11 <a href="https://eletric-vehicles.com/tesla/seven-wall-street-firms-cut-tesla-price-targets-shares-crash-double-digits/" target="_blank" rel="noopener">↗</a></li>
+    <li>TradingKey·Investing.com · 테슬라 AI 전환·밸류에이션 (2026) — fwd 극단 배수 vs 자동차·빅테크, Ives $600~800·JPM $135, 옵션 프리미엄 논지 <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/261732341-tesla-2026-stock-analysis-ai-robotaxi-valuation-tradingkey" target="_blank" rel="noopener">↗</a></li>
+    <li>(전작 참조) Bloomberg · 반도체 베어마켓 진입 (2026.07.17) — 고밸류 성장주 리스크오프의 선행 국면 <a href="https://www.bloomberg.com/news/articles/2026-07-17/chips-stocks-tumble-into-bear-market-as-105-ai-rally-fizzles" target="_blank" rel="noopener">↗</a></li>
+    <li>하우스 매크로 스냅샷(FRED·토스)·Benzinga·CNBC (2026.07.23~24) — SPY $738.18(−1.23%)·미 10년물 4.63%(18개월 최고 보도)·브렌트 $100 돌파·달러지수 120.53 <a href="https://www.cnbc.com/2026/07/23/brent-crude-tops-100-a-barrel-how-the-next-stop-could-be-120.html" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC EDGAR·토스 Open API — 피어 TTM 실측(TSLA/GM/포드) 2026.07.24 재실측 — TSLA TTM 매출 $101.2B·OPM 3.8%·GM $70.7B·9.9배·포드 $56.3B·17.8배 (원문 링크 없음)</li>
+    <li>토스 Open API·SEC EDGAR·하우스 모델 — 기술 스크리닝·Fwd P/E 밴드·시나리오·수급 공시 (2026.07.24 갱신, 가격 기준 7/23 종가 $319.69) <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001318605&type=4&dateb=&owner=include&count=40" target="_blank" rel="noopener">↗</a></li>
+    <li>Tesla · 2Q26 10-Q·셰어홀더 덱 (SEC Ex-99.1) — 매출 $28,236M(+26%)·영업이익 $398M(1.4%)·규제크레딧 $146M·인도 480,126대·에너지 13.5GWh·FSD 구독 148만·SpaceX 평가익 reconciliation·조정 EBITDA $3,273M <a href="https://www.sec.gov/Archives/edgar/data/1318605/000162828026049213/exhibit991.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance · 급락·capex 보도 (2026.07.23) — TSLA −14% 11개월 저점·FCF −$1.09B(추정 −$3.64B보단 양호)·CFO capex $25B+·MS "로보택시 ROI 열린 질문" <a href="https://finance.yahoo.com/markets/stocks/article/tesla-tumbles-14-to-11-month-low-as-profit-miss-capex-spending-outlook-weighs-on-stock-110300122.html" target="_blank" rel="noopener">↗</a></li>
+    <li>Electrek · 2Q26 실적 분석 (2026.07.22) — 규제크레딧 −67%(연방 EV 크레딧 만료·연비 페널티 폐지)·opex +47%($4.35B)·가격 인하 없는 마진 붕괴 <a href="https://electrek.co/2026/07/22/tesla-tsla-q2-2026-financial-results/" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance·Bloomberg·하우스 US 장중 시황 (2026.07.23~24) — Mag7 −$797B(2025.4월 이후 최악)·알파벳 capex $205B 상향·신규 실업수당 18.7만(1969년 이후 최저)·공매도 $4B 수익·토스 캔들 거래량 80.2M주 <a href="https://report.devindgkim.net/reports/2026-07-24-us-intraday-2026-07-23.html" target="_blank" rel="noopener">↗</a></li>
+    <li>notateslaapp · 2Q26 어닝콜 요약 (2026.07.23) — 로보택시 7개 대도시권·차량 25~50대(보도)·Cybercab 양산 개시·Optimus 3Q26 초도 생산(학습용)·CFO capex $25B+·FCF 마이너스 지속 예고 <a href="https://www.notateslaapp.com/news/4481/summary-of-teslas-2026-q2-earnings-call-cybercab-fsd-ai4-and-more" target="_blank" rel="noopener">↗</a></li>
+    <li>notateslaapp · 테슬라 회사취합 컨센 (2026.07, 어닝 전) — 23개 하우스 비GAAP EPS $0.55·GAAP $0.36·매출 $27.58B (Yahoo $0.50·CNBC $0.53 — 집계별 상이, 범위 표기) <a href="https://www.notateslaapp.com/news/4458/tesla-releases-q2-2026-earnings-estimates-from-analysts" target="_blank" rel="noopener">↗</a></li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM EPS는 리포트·실적 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님, 2023~2025는 재구성). US 종목이라 EPS를 달러로 직접 입력한다. 시총·밴드 환산가는 근사치. 선호도는 정해진 공식(밸류 위치 백분위 + Base 시나리오 상승여력)의 산출이며 목표주가가 아니다. 본 리포트는 전작(2026-07-23, 실적 직후·급락 전)의 후속 신규 발간으로, 7/23 정규장 −14.5% 급락을 반영해 전 섹션을 7/23 종가 기준으로 갱신했고 2Q26 수치는 10-Q·셰어홀더 덱 <strong>원문</strong>으로 검증했다(전작은 실적 보도 기준). 컨센서스 EPS는 집계기관별로 달라($0.50~0.55) 범위로 표기한다. 가격 기준 $319.69(2026-07-23 미 증시 종가).</p>
+  <p>생성: 2026-07-24 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-24 09:23 KST</div></footer>
+
+</div>
+
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러: 검증된 위젯 구조 (구조 변경 금지) ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+
+/* ---- 부트스트랩: PE_DATA 의 키 = <details data-peb> 값 ---- */
+const PE_DATA = {"TSLA": {"rows": [{"d": "2023-06-13", "c": 258.71, "eps": 3.48, "pe": 74.3}, {"d": "2023-06-14", "c": 256.79, "eps": 3.48, "pe": 73.8}, {"d": "2023-06-15", "c": 255.9, "eps": 3.48, "pe": 73.6}, {"d": "2023-06-16", "c": 260.54, "eps": 3.47, "pe": 75.0}, {"d": "2023-06-20", "c": 274.45, "eps": 3.46, "pe": 79.4}, {"d": "2023-06-21", "c": 259.46, "eps": 3.45, "pe": 75.1}, {"d": "2023-06-22", "c": 264.61, "eps": 3.45, "pe": 76.7}, {"d": "2023-06-23", "c": 256.6, "eps": 3.45, "pe": 74.4}, {"d": "2023-06-26", "c": 241.05, "eps": 3.44, "pe": 70.2}, {"d": "2023-06-27", "c": 250.21, "eps": 3.43, "pe": 72.9}, {"d": "2023-06-28", "c": 256.24, "eps": 3.43, "pe": 74.7}, {"d": "2023-06-29", "c": 257.5, "eps": 3.43, "pe": 75.2}, {"d": "2023-06-30", "c": 261.77, "eps": 3.42, "pe": 76.5}, {"d": "2023-07-03", "c": 279.82, "eps": 3.41, "pe": 82.0}, {"d": "2023-07-05", "c": 282.48, "eps": 3.4, "pe": 83.0}, {"d": "2023-07-06", "c": 276.54, "eps": 3.4, "pe": 81.3}, {"d": "2023-07-07", "c": 274.43, "eps": 3.4, "pe": 80.8}, {"d": "2023-07-10", "c": 269.61, "eps": 3.39, "pe": 79.6}, {"d": "2023-07-11", "c": 269.79, "eps": 3.38, "pe": 79.7}, {"d": "2023-07-12", "c": 271.99, "eps": 3.38, "pe": 80.5}, {"d": "2023-07-13", "c": 277.9, "eps": 3.38, "pe": 82.3}, {"d": "2023-07-14", "c": 281.38, "eps": 3.37, "pe": 83.4}, {"d": "2023-07-17", "c": 290.38, "eps": 3.36, "pe": 86.4}, {"d": "2023-07-18", "c": 293.34, "eps": 3.36, "pe": 87.4}, {"d": "2023-07-19", "c": 291.26, "eps": 3.35, "pe": 86.8}, {"d": "2023-07-20", "c": 262.9, "eps": 3.35, "pe": 78.5}, {"d": "2023-07-21", "c": 260.02, "eps": 3.35, "pe": 77.7}, {"d": "2023-07-24", "c": 269.06, "eps": 3.34, "pe": 80.6}, {"d": "2023-07-25", "c": 265.28, "eps": 3.33, "pe": 79.6}, {"d": "2023-07-26", "c": 264.35, "eps": 3.33, "pe": 79.4}, {"d": "2023-07-27", "c": 255.71, "eps": 3.33, "pe": 76.9}, {"d": "2023-07-28", "c": 266.44, "eps": 3.32, "pe": 80.2}, {"d": "2023-07-31", "c": 267.43, "eps": 3.31, "pe": 80.7}, {"d": "2023-08-01", "c": 261.07, "eps": 3.31, "pe": 78.9}, {"d": "2023-08-02", "c": 254.11, "eps": 3.3, "pe": 76.9}, {"d": "2023-08-03", "c": 259.32, "eps": 3.3, "pe": 78.5}, {"d": "2023-08-04", "c": 253.86, "eps": 3.3, "pe": 77.0}, {"d": "2023-08-07", "c": 251.45, "eps": 3.29, "pe": 76.5}, {"d": "2023-08-08", "c": 249.7, "eps": 3.28, "pe": 76.0}, {"d": "2023-08-09", "c": 242.19, "eps": 3.28, "pe": 73.8}, {"d": "2023-08-10", "c": 245.34, "eps": 3.28, "pe": 74.9}, {"d": "2023-08-11", "c": 242.65, "eps": 3.27, "pe": 74.1}, {"d": "2023-08-14", "c": 239.76, "eps": 3.26, "pe": 73.5}, {"d": "2023-08-15", "c": 232.96, "eps": 3.26, "pe": 71.5}, {"d": "2023-08-16", "c": 225.6, "eps": 3.26, "pe": 69.3}, {"d": "2023-08-17", "c": 219.22, "eps": 3.25, "pe": 67.4}, {"d": "2023-08-18", "c": 215.49, "eps": 3.25, "pe": 66.3}, {"d": "2023-08-21", "c": 231.28, "eps": 3.24, "pe": 71.4}, {"d": "2023-08-22", "c": 233.19, "eps": 3.23, "pe": 72.1}, {"d": "2023-08-23", "c": 236.86, "eps": 3.23, "pe": 73.3}, {"d": "2023-08-24", "c": 230.04, "eps": 3.23, "pe": 71.3}, {"d": "2023-08-25", "c": 238.59, "eps": 3.22, "pe": 74.0}, {"d": "2023-08-28", "c": 238.82, "eps": 3.21, "pe": 74.3}, {"d": "2023-08-29", "c": 257.18, "eps": 3.21, "pe": 80.1}, {"d": "2023-08-30", "c": 256.9, "eps": 3.21, "pe": 80.1}, {"d": "2023-08-31", "c": 258.08, "eps": 3.2, "pe": 80.6}, {"d": "2023-09-01", "c": 245.01, "eps": 3.2, "pe": 76.6}, {"d": "2023-09-05", "c": 256.49, "eps": 3.18, "pe": 80.5}, {"d": "2023-09-06", "c": 251.92, "eps": 3.18, "pe": 79.2}, {"d": "2023-09-07", "c": 251.49, "eps": 3.18, "pe": 79.2}, {"d": "2023-09-08", "c": 248.5, "eps": 3.17, "pe": 78.3}, {"d": "2023-09-11", "c": 273.58, "eps": 3.16, "pe": 86.5}, {"d": "2023-09-12", "c": 267.48, "eps": 3.16, "pe": 84.7}, {"d": "2023-09-13", "c": 271.3, "eps": 3.16, "pe": 86.0}, {"d": "2023-09-14", "c": 276.04, "eps": 3.15, "pe": 87.6}, {"d": "2023-09-15", "c": 274.39, "eps": 3.15, "pe": 87.1}, {"d": "2023-09-18", "c": 265.28, "eps": 3.14, "pe": 84.5}, {"d": "2023-09-19", "c": 266.5, "eps": 3.13, "pe": 85.0}, {"d": "2023-09-20", "c": 262.59, "eps": 3.13, "pe": 83.9}, {"d": "2023-09-21", "c": 255.7, "eps": 3.13, "pe": 81.8}, {"d": "2023-09-22", "c": 244.88, "eps": 3.12, "pe": 78.4}, {"d": "2023-09-25", "c": 246.99, "eps": 3.11, "pe": 79.3}, {"d": "2023-09-26", "c": 244.12, "eps": 3.11, "pe": 78.5}, {"d": "2023-09-27", "c": 240.5, "eps": 3.11, "pe": 77.4}, {"d": "2023-09-28", "c": 246.38, "eps": 3.1, "pe": 79.4}, {"d": "2023-09-29", "c": 250.22, "eps": 3.1, "pe": 80.7}, {"d": "2023-10-02", "c": 251.6, "eps": 3.09, "pe": 81.5}, {"d": "2023-10-03", "c": 246.53, "eps": 3.09, "pe": 79.9}, {"d": "2023-10-04", "c": 261.16, "eps": 3.08, "pe": 84.7}, {"d": "2023-10-05", "c": 260.05, "eps": 3.08, "pe": 84.5}, {"d": "2023-10-06", "c": 260.53, "eps": 3.07, "pe": 84.7}, {"d": "2023-10-09", "c": 259.67, "eps": 3.06, "pe": 84.8}, {"d": "2023-10-10", "c": 263.62, "eps": 3.06, "pe": 86.1}, {"d": "2023-10-11", "c": 262.99, "eps": 3.06, "pe": 86.0}, {"d": "2023-10-12", "c": 258.87, "eps": 3.05, "pe": 84.8}, {"d": "2023-10-13", "c": 251.12, "eps": 3.05, "pe": 82.3}, {"d": "2023-10-16", "c": 253.92, "eps": 3.04, "pe": 83.6}, {"d": "2023-10-17", "c": 254.85, "eps": 3.04, "pe": 84.0}, {"d": "2023-10-18", "c": 242.68, "eps": 3.03, "pe": 80.0}, {"d": "2023-10-19", "c": 220.11, "eps": 3.03, "pe": 72.7}, {"d": "2023-10-20", "c": 211.99, "eps": 3.02, "pe": 70.1}, {"d": "2023-10-23", "c": 212.08, "eps": 3.01, "pe": 70.4}, {"d": "2023-10-24", "c": 216.52, "eps": 3.01, "pe": 71.9}, {"d": "2023-10-25", "c": 212.42, "eps": 3.01, "pe": 70.6}, {"d": "2023-10-26", "c": 205.76, "eps": 3.0, "pe": 68.5}, {"d": "2023-10-27", "c": 207.3, "eps": 3.0, "pe": 69.1}, {"d": "2023-10-30", "c": 197.36, "eps": 2.99, "pe": 66.1}, {"d": "2023-10-31", "c": 200.84, "eps": 2.98, "pe": 67.3}, {"d": "2023-11-01", "c": 205.66, "eps": 2.98, "pe": 69.1}, {"d": "2023-11-02", "c": 218.51, "eps": 2.97, "pe": 73.5}, {"d": "2023-11-03", "c": 219.96, "eps": 2.97, "pe": 74.1}, {"d": "2023-11-06", "c": 219.27, "eps": 2.96, "pe": 74.2}, {"d": "2023-11-07", "c": 222.18, "eps": 2.95, "pe": 75.3}, {"d": "2023-11-08", "c": 222.11, "eps": 2.95, "pe": 75.4}, {"d": "2023-11-09", "c": 209.98, "eps": 2.94, "pe": 71.4}, {"d": "2023-11-10", "c": 214.65, "eps": 2.94, "pe": 73.1}, {"d": "2023-11-13", "c": 223.71, "eps": 2.92, "pe": 76.5}, {"d": "2023-11-14", "c": 237.41, "eps": 2.92, "pe": 81.3}, {"d": "2023-11-15", "c": 242.84, "eps": 2.92, "pe": 83.3}, {"d": "2023-11-16", "c": 233.59, "eps": 2.91, "pe": 80.2}, {"d": "2023-11-17", "c": 234.3, "eps": 2.91, "pe": 80.6}, {"d": "2023-11-20", "c": 235.6, "eps": 2.89, "pe": 81.4}, {"d": "2023-11-21", "c": 241.2, "eps": 2.89, "pe": 83.5}, {"d": "2023-11-22", "c": 234.21, "eps": 2.88, "pe": 81.2}, {"d": "2023-11-24", "c": 235.45, "eps": 2.88, "pe": 81.9}, {"d": "2023-11-27", "c": 236.08, "eps": 2.86, "pe": 82.5}, {"d": "2023-11-28", "c": 246.72, "eps": 2.86, "pe": 86.3}, {"d": "2023-11-29", "c": 244.14, "eps": 2.85, "pe": 85.6}, {"d": "2023-11-30", "c": 240.08, "eps": 2.85, "pe": 84.3}, {"d": "2023-12-01", "c": 238.83, "eps": 2.84, "pe": 84.0}, {"d": "2023-12-04", "c": 235.58, "eps": 2.83, "pe": 83.2}, {"d": "2023-12-05", "c": 238.72, "eps": 2.83, "pe": 84.5}, {"d": "2023-12-06", "c": 239.37, "eps": 2.82, "pe": 84.8}, {"d": "2023-12-07", "c": 242.64, "eps": 2.82, "pe": 86.1}, {"d": "2023-12-08", "c": 243.84, "eps": 2.81, "pe": 86.7}, {"d": "2023-12-11", "c": 239.74, "eps": 2.8, "pe": 85.6}, {"d": "2023-12-12", "c": 237.01, "eps": 2.8, "pe": 84.8}, {"d": "2023-12-13", "c": 239.29, "eps": 2.79, "pe": 85.7}, {"d": "2023-12-14", "c": 251.05, "eps": 2.79, "pe": 90.1}, {"d": "2023-12-15", "c": 253.5, "eps": 2.78, "pe": 91.1}, {"d": "2023-12-18", "c": 252.08, "eps": 2.77, "pe": 91.0}, {"d": "2023-12-19", "c": 257.22, "eps": 2.76, "pe": 93.0}, {"d": "2023-12-20", "c": 247.14, "eps": 2.76, "pe": 89.5}, {"d": "2023-12-21", "c": 254.5, "eps": 2.76, "pe": 92.4}, {"d": "2023-12-22", "c": 252.54, "eps": 2.75, "pe": 91.8}, {"d": "2023-12-26", "c": 256.61, "eps": 2.73, "pe": 93.9}, {"d": "2023-12-27", "c": 261.44, "eps": 2.73, "pe": 95.8}, {"d": "2023-12-28", "c": 253.18, "eps": 2.72, "pe": 92.9}, {"d": "2023-12-29", "c": 248.48, "eps": 2.72, "pe": 91.4}, {"d": "2024-01-02", "c": 248.42, "eps": 2.7, "pe": 91.9}, {"d": "2024-01-03", "c": 238.45, "eps": 2.7, "pe": 88.4}, {"d": "2024-01-04", "c": 237.93, "eps": 2.69, "pe": 88.3}, {"d": "2024-01-05", "c": 237.49, "eps": 2.69, "pe": 88.3}, {"d": "2024-01-08", "c": 240.45, "eps": 2.68, "pe": 89.9}, {"d": "2024-01-09", "c": 234.96, "eps": 2.67, "pe": 88.0}, {"d": "2024-01-10", "c": 233.94, "eps": 2.67, "pe": 87.7}, {"d": "2024-01-11", "c": 227.22, "eps": 2.66, "pe": 85.3}, {"d": "2024-01-12", "c": 218.89, "eps": 2.66, "pe": 82.4}, {"d": "2024-01-16", "c": 219.91, "eps": 2.64, "pe": 83.3}, {"d": "2024-01-17", "c": 215.55, "eps": 2.64, "pe": 81.8}, {"d": "2024-01-18", "c": 211.88, "eps": 2.63, "pe": 80.5}, {"d": "2024-01-19", "c": 212.19, "eps": 2.63, "pe": 80.8}, {"d": "2024-01-22", "c": 208.8, "eps": 2.61, "pe": 79.9}, {"d": "2024-01-23", "c": 209.14, "eps": 2.61, "pe": 80.2}, {"d": "2024-01-24", "c": 207.83, "eps": 2.6, "pe": 79.8}, {"d": "2024-01-25", "c": 182.63, "eps": 2.6, "pe": 70.2}, {"d": "2024-01-26", "c": 183.25, "eps": 2.6, "pe": 70.6}, {"d": "2024-01-29", "c": 190.93, "eps": 2.58, "pe": 73.9}, {"d": "2024-01-30", "c": 191.59, "eps": 2.58, "pe": 74.3}, {"d": "2024-01-31", "c": 187.29, "eps": 2.57, "pe": 72.8}, {"d": "2024-02-01", "c": 188.86, "eps": 2.57, "pe": 73.5}, {"d": "2024-02-02", "c": 187.91, "eps": 2.56, "pe": 73.3}, {"d": "2024-02-05", "c": 181.06, "eps": 2.55, "pe": 71.0}, {"d": "2024-02-06", "c": 185.1, "eps": 2.55, "pe": 72.7}, {"d": "2024-02-07", "c": 187.58, "eps": 2.54, "pe": 73.8}, {"d": "2024-02-08", "c": 189.56, "eps": 2.54, "pe": 74.7}, {"d": "2024-02-09", "c": 193.57, "eps": 2.53, "pe": 76.4}, {"d": "2024-02-12", "c": 188.13, "eps": 2.52, "pe": 74.7}, {"d": "2024-02-13", "c": 184.02, "eps": 2.51, "pe": 73.2}, {"d": "2024-02-14", "c": 188.71, "eps": 2.51, "pe": 75.2}, {"d": "2024-02-15", "c": 200.45, "eps": 2.51, "pe": 80.0}, {"d": "2024-02-16", "c": 199.95, "eps": 2.5, "pe": 79.9}, {"d": "2024-02-20", "c": 193.76, "eps": 2.48, "pe": 78.0}, {"d": "2024-02-21", "c": 194.77, "eps": 2.48, "pe": 78.6}, {"d": "2024-02-22", "c": 197.41, "eps": 2.47, "pe": 79.8}, {"d": "2024-02-23", "c": 191.97, "eps": 2.47, "pe": 77.7}, {"d": "2024-02-26", "c": 199.4, "eps": 2.46, "pe": 81.2}, {"d": "2024-02-27", "c": 199.73, "eps": 2.45, "pe": 81.5}, {"d": "2024-02-28", "c": 202.04, "eps": 2.45, "pe": 82.6}, {"d": "2024-02-29", "c": 201.88, "eps": 2.44, "pe": 82.6}, {"d": "2024-03-01", "c": 202.64, "eps": 2.44, "pe": 83.1}, {"d": "2024-03-04", "c": 188.14, "eps": 2.42, "pe": 77.6}, {"d": "2024-03-05", "c": 180.74, "eps": 2.42, "pe": 74.7}, {"d": "2024-03-06", "c": 176.54, "eps": 2.42, "pe": 73.1}, {"d": "2024-03-07", "c": 178.65, "eps": 2.41, "pe": 74.1}, {"d": "2024-03-08", "c": 175.34, "eps": 2.41, "pe": 72.9}, {"d": "2024-03-11", "c": 177.77, "eps": 2.39, "pe": 74.3}, {"d": "2024-03-12", "c": 177.54, "eps": 2.39, "pe": 74.3}, {"d": "2024-03-13", "c": 169.48, "eps": 2.38, "pe": 71.1}, {"d": "2024-03-14", "c": 162.5, "eps": 2.38, "pe": 68.3}, {"d": "2024-03-15", "c": 163.57, "eps": 2.38, "pe": 68.9}, {"d": "2024-03-18", "c": 173.8, "eps": 2.36, "pe": 73.6}, {"d": "2024-03-19", "c": 171.32, "eps": 2.36, "pe": 72.7}, {"d": "2024-03-20", "c": 175.66, "eps": 2.35, "pe": 74.7}, {"d": "2024-03-21", "c": 172.82, "eps": 2.35, "pe": 73.6}, {"d": "2024-03-22", "c": 170.83, "eps": 2.34, "pe": 72.9}, {"d": "2024-03-25", "c": 172.63, "eps": 2.33, "pe": 74.1}, {"d": "2024-03-26", "c": 177.67, "eps": 2.33, "pe": 76.4}, {"d": "2024-03-27", "c": 179.83, "eps": 2.32, "pe": 77.5}, {"d": "2024-03-28", "c": 175.79, "eps": 2.32, "pe": 75.9}, {"d": "2024-04-01", "c": 175.22, "eps": 2.3, "pe": 76.2}, {"d": "2024-04-02", "c": 166.63, "eps": 2.29, "pe": 72.6}, {"d": "2024-04-03", "c": 168.38, "eps": 2.29, "pe": 73.5}, {"d": "2024-04-04", "c": 171.11, "eps": 2.29, "pe": 74.9}, {"d": "2024-04-05", "c": 164.9, "eps": 2.28, "pe": 72.3}, {"d": "2024-04-08", "c": 172.98, "eps": 2.27, "pe": 76.3}, {"d": "2024-04-09", "c": 176.88, "eps": 2.26, "pe": 78.2}, {"d": "2024-04-10", "c": 171.76, "eps": 2.26, "pe": 76.1}, {"d": "2024-04-11", "c": 174.6, "eps": 2.25, "pe": 77.5}, {"d": "2024-04-12", "c": 171.05, "eps": 2.25, "pe": 76.0}, {"d": "2024-04-15", "c": 161.48, "eps": 2.24, "pe": 72.2}, {"d": "2024-04-16", "c": 157.11, "eps": 2.23, "pe": 70.4}, {"d": "2024-04-17", "c": 155.45, "eps": 2.23, "pe": 69.8}, {"d": "2024-04-18", "c": 149.93, "eps": 2.22, "pe": 67.5}, {"d": "2024-04-19", "c": 147.05, "eps": 2.22, "pe": 66.3}, {"d": "2024-04-22", "c": 142.05, "eps": 2.2, "pe": 64.4}, {"d": "2024-04-23", "c": 144.68, "eps": 2.2, "pe": 65.8}, {"d": "2024-04-24", "c": 162.13, "eps": 2.2, "pe": 73.7}, {"d": "2024-04-25", "c": 170.18, "eps": 2.2, "pe": 77.4}, {"d": "2024-04-26", "c": 168.29, "eps": 2.2, "pe": 76.5}, {"d": "2024-04-29", "c": 194.05, "eps": 2.2, "pe": 88.2}, {"d": "2024-04-30", "c": 183.28, "eps": 2.2, "pe": 83.3}, {"d": "2024-05-01", "c": 179.99, "eps": 2.2, "pe": 81.8}, {"d": "2024-05-02", "c": 180.01, "eps": 2.2, "pe": 81.8}, {"d": "2024-05-03", "c": 181.19, "eps": 2.2, "pe": 82.4}, {"d": "2024-05-06", "c": 184.76, "eps": 2.2, "pe": 84.0}, {"d": "2024-05-07", "c": 177.81, "eps": 2.2, "pe": 80.8}, {"d": "2024-05-08", "c": 174.72, "eps": 2.2, "pe": 79.4}, {"d": "2024-05-09", "c": 171.97, "eps": 2.2, "pe": 78.2}, {"d": "2024-05-10", "c": 168.47, "eps": 2.2, "pe": 76.6}, {"d": "2024-05-13", "c": 171.89, "eps": 2.2, "pe": 78.1}, {"d": "2024-05-14", "c": 177.55, "eps": 2.2, "pe": 80.7}, {"d": "2024-05-15", "c": 173.99, "eps": 2.2, "pe": 79.1}, {"d": "2024-05-16", "c": 174.84, "eps": 2.2, "pe": 79.5}, {"d": "2024-05-17", "c": 177.46, "eps": 2.2, "pe": 80.7}, {"d": "2024-05-20", "c": 174.95, "eps": 2.2, "pe": 79.5}, {"d": "2024-05-21", "c": 186.6, "eps": 2.2, "pe": 84.8}, {"d": "2024-05-22", "c": 180.11, "eps": 2.2, "pe": 81.9}, {"d": "2024-05-23", "c": 173.74, "eps": 2.2, "pe": 79.0}, {"d": "2024-05-24", "c": 179.24, "eps": 2.2, "pe": 81.5}, {"d": "2024-05-28", "c": 176.75, "eps": 2.2, "pe": 80.3}, {"d": "2024-05-29", "c": 176.19, "eps": 2.2, "pe": 80.1}, {"d": "2024-05-30", "c": 178.79, "eps": 2.2, "pe": 81.3}, {"d": "2024-05-31", "c": 178.08, "eps": 2.2, "pe": 80.9}, {"d": "2024-06-03", "c": 176.29, "eps": 2.2, "pe": 80.1}, {"d": "2024-06-04", "c": 174.77, "eps": 2.2, "pe": 79.4}, {"d": "2024-06-05", "c": 175.0, "eps": 2.2, "pe": 79.5}, {"d": "2024-06-06", "c": 177.94, "eps": 2.2, "pe": 80.9}, {"d": "2024-06-07", "c": 177.48, "eps": 2.2, "pe": 80.7}, {"d": "2024-06-10", "c": 173.79, "eps": 2.2, "pe": 79.0}, {"d": "2024-06-11", "c": 170.66, "eps": 2.2, "pe": 77.6}, {"d": "2024-06-12", "c": 177.29, "eps": 2.2, "pe": 80.6}, {"d": "2024-06-13", "c": 182.47, "eps": 2.2, "pe": 82.9}, {"d": "2024-06-14", "c": 178.01, "eps": 2.2, "pe": 80.9}, {"d": "2024-06-17", "c": 187.44, "eps": 2.2, "pe": 85.2}, {"d": "2024-06-18", "c": 184.86, "eps": 2.2, "pe": 84.0}, {"d": "2024-06-20", "c": 181.57, "eps": 2.2, "pe": 82.5}, {"d": "2024-06-21", "c": 183.01, "eps": 2.2, "pe": 83.2}, {"d": "2024-06-24", "c": 182.58, "eps": 2.2, "pe": 83.0}, {"d": "2024-06-25", "c": 187.35, "eps": 2.2, "pe": 85.2}, {"d": "2024-06-26", "c": 196.37, "eps": 2.2, "pe": 89.3}, {"d": "2024-06-27", "c": 197.42, "eps": 2.2, "pe": 89.7}, {"d": "2024-06-28", "c": 197.88, "eps": 2.2, "pe": 89.9}, {"d": "2024-07-01", "c": 209.86, "eps": 2.2, "pe": 95.4}, {"d": "2024-07-02", "c": 231.26, "eps": 2.2, "pe": 105.1}, {"d": "2024-07-03", "c": 246.39, "eps": 2.2, "pe": 112.0}, {"d": "2024-07-05", "c": 251.52, "eps": 2.2, "pe": 114.3}, {"d": "2024-07-08", "c": 252.94, "eps": 2.2, "pe": 115.0}, {"d": "2024-07-09", "c": 262.33, "eps": 2.2, "pe": 119.2}, {"d": "2024-07-10", "c": 263.26, "eps": 2.2, "pe": 119.7}, {"d": "2024-07-11", "c": 241.03, "eps": 2.2, "pe": 109.6}, {"d": "2024-07-12", "c": 248.23, "eps": 2.2, "pe": 112.8}, {"d": "2024-07-15", "c": 252.64, "eps": 2.2, "pe": 114.8}, {"d": "2024-07-16", "c": 256.56, "eps": 2.2, "pe": 116.6}, {"d": "2024-07-17", "c": 248.5, "eps": 2.2, "pe": 113.0}, {"d": "2024-07-18", "c": 249.23, "eps": 2.2, "pe": 113.3}, {"d": "2024-07-19", "c": 239.2, "eps": 2.2, "pe": 108.7}, {"d": "2024-07-22", "c": 251.51, "eps": 2.2, "pe": 114.3}, {"d": "2024-07-23", "c": 246.38, "eps": 2.2, "pe": 112.0}, {"d": "2024-07-24", "c": 215.99, "eps": 2.2, "pe": 98.1}, {"d": "2024-07-25", "c": 220.25, "eps": 2.2, "pe": 99.9}, {"d": "2024-07-26", "c": 219.8, "eps": 2.21, "pe": 99.6}, {"d": "2024-07-29", "c": 232.1, "eps": 2.21, "pe": 104.9}, {"d": "2024-07-30", "c": 222.62, "eps": 2.22, "pe": 100.5}, {"d": "2024-07-31", "c": 232.07, "eps": 2.22, "pe": 104.7}, {"d": "2024-08-01", "c": 216.86, "eps": 2.22, "pe": 97.7}, {"d": "2024-08-02", "c": 207.67, "eps": 2.22, "pe": 93.5}, {"d": "2024-08-05", "c": 198.88, "eps": 2.23, "pe": 89.3}, {"d": "2024-08-06", "c": 200.64, "eps": 2.23, "pe": 90.0}, {"d": "2024-08-07", "c": 191.76, "eps": 2.23, "pe": 85.9}, {"d": "2024-08-08", "c": 198.84, "eps": 2.23, "pe": 89.0}, {"d": "2024-08-09", "c": 200.0, "eps": 2.24, "pe": 89.4}, {"d": "2024-08-12", "c": 197.49, "eps": 2.24, "pe": 88.0}, {"d": "2024-08-13", "c": 207.83, "eps": 2.25, "pe": 92.5}, {"d": "2024-08-14", "c": 201.38, "eps": 2.25, "pe": 89.6}, {"d": "2024-08-15", "c": 214.14, "eps": 2.25, "pe": 95.2}, {"d": "2024-08-16", "c": 216.12, "eps": 2.25, "pe": 96.0}, {"d": "2024-08-19", "c": 222.72, "eps": 2.26, "pe": 98.6}, {"d": "2024-08-20", "c": 221.1, "eps": 2.26, "pe": 97.8}, {"d": "2024-08-21", "c": 223.27, "eps": 2.26, "pe": 98.7}, {"d": "2024-08-22", "c": 210.66, "eps": 2.27, "pe": 93.0}, {"d": "2024-08-23", "c": 220.32, "eps": 2.27, "pe": 97.2}, {"d": "2024-08-26", "c": 213.21, "eps": 2.27, "pe": 93.8}, {"d": "2024-08-27", "c": 209.21, "eps": 2.28, "pe": 91.9}, {"d": "2024-08-28", "c": 205.75, "eps": 2.28, "pe": 90.3}, {"d": "2024-08-29", "c": 206.28, "eps": 2.28, "pe": 90.5}, {"d": "2024-08-30", "c": 214.11, "eps": 2.28, "pe": 93.8}, {"d": "2024-09-03", "c": 210.6, "eps": 2.29, "pe": 91.9}, {"d": "2024-09-04", "c": 219.41, "eps": 2.29, "pe": 95.7}, {"d": "2024-09-05", "c": 230.17, "eps": 2.3, "pe": 100.3}, {"d": "2024-09-06", "c": 210.73, "eps": 2.3, "pe": 91.7}, {"d": "2024-09-09", "c": 216.27, "eps": 2.3, "pe": 93.9}, {"d": "2024-09-10", "c": 226.17, "eps": 2.31, "pe": 98.1}, {"d": "2024-09-11", "c": 228.13, "eps": 2.31, "pe": 98.8}, {"d": "2024-09-12", "c": 229.81, "eps": 2.31, "pe": 99.4}, {"d": "2024-09-13", "c": 230.29, "eps": 2.31, "pe": 99.6}, {"d": "2024-09-16", "c": 226.78, "eps": 2.32, "pe": 97.8}, {"d": "2024-09-17", "c": 227.87, "eps": 2.32, "pe": 98.1}, {"d": "2024-09-18", "c": 227.2, "eps": 2.32, "pe": 97.8}, {"d": "2024-09-19", "c": 243.92, "eps": 2.33, "pe": 104.9}, {"d": "2024-09-20", "c": 238.25, "eps": 2.33, "pe": 102.3}, {"d": "2024-09-23", "c": 250.0, "eps": 2.33, "pe": 107.1}, {"d": "2024-09-24", "c": 254.27, "eps": 2.34, "pe": 108.8}, {"d": "2024-09-25", "c": 257.02, "eps": 2.34, "pe": 109.9}, {"d": "2024-09-26", "c": 254.22, "eps": 2.34, "pe": 108.6}, {"d": "2024-09-27", "c": 260.46, "eps": 2.34, "pe": 111.1}, {"d": "2024-09-30", "c": 261.63, "eps": 2.35, "pe": 111.3}, {"d": "2024-10-01", "c": 258.02, "eps": 2.35, "pe": 109.7}, {"d": "2024-10-02", "c": 249.02, "eps": 2.35, "pe": 105.8}, {"d": "2024-10-03", "c": 240.66, "eps": 2.36, "pe": 102.1}, {"d": "2024-10-04", "c": 250.08, "eps": 2.36, "pe": 106.0}, {"d": "2024-10-07", "c": 240.83, "eps": 2.37, "pe": 101.8}, {"d": "2024-10-08", "c": 244.5, "eps": 2.37, "pe": 103.3}, {"d": "2024-10-09", "c": 241.05, "eps": 2.37, "pe": 101.7}, {"d": "2024-10-10", "c": 238.77, "eps": 2.37, "pe": 100.7}, {"d": "2024-10-11", "c": 217.8, "eps": 2.37, "pe": 91.7}, {"d": "2024-10-14", "c": 219.16, "eps": 2.38, "pe": 92.1}, {"d": "2024-10-15", "c": 219.57, "eps": 2.38, "pe": 92.2}, {"d": "2024-10-16", "c": 221.33, "eps": 2.38, "pe": 92.8}, {"d": "2024-10-17", "c": 220.89, "eps": 2.39, "pe": 92.5}, {"d": "2024-10-18", "c": 220.7, "eps": 2.39, "pe": 92.4}, {"d": "2024-10-21", "c": 218.85, "eps": 2.4, "pe": 91.4}, {"d": "2024-10-22", "c": 217.97, "eps": 2.4, "pe": 90.9}, {"d": "2024-10-23", "c": 213.65, "eps": 2.4, "pe": 89.0}, {"d": "2024-10-24", "c": 260.48, "eps": 2.4, "pe": 108.3}, {"d": "2024-10-25", "c": 269.19, "eps": 2.41, "pe": 111.8}, {"d": "2024-10-28", "c": 262.51, "eps": 2.42, "pe": 108.5}, {"d": "2024-10-29", "c": 259.52, "eps": 2.42, "pe": 107.0}, {"d": "2024-10-30", "c": 257.55, "eps": 2.43, "pe": 106.1}, {"d": "2024-10-31", "c": 249.85, "eps": 2.43, "pe": 102.7}, {"d": "2024-11-01", "c": 248.98, "eps": 2.44, "pe": 102.2}, {"d": "2024-11-04", "c": 242.84, "eps": 2.45, "pe": 99.2}, {"d": "2024-11-05", "c": 251.44, "eps": 2.45, "pe": 102.5}, {"d": "2024-11-06", "c": 288.53, "eps": 2.46, "pe": 117.4}, {"d": "2024-11-07", "c": 296.91, "eps": 2.46, "pe": 120.6}, {"d": "2024-11-08", "c": 321.22, "eps": 2.47, "pe": 130.3}, {"d": "2024-11-11", "c": 350.0, "eps": 2.48, "pe": 141.3}, {"d": "2024-11-12", "c": 328.49, "eps": 2.48, "pe": 132.4}, {"d": "2024-11-13", "c": 330.24, "eps": 2.49, "pe": 132.9}, {"d": "2024-11-14", "c": 311.18, "eps": 2.49, "pe": 125.0}, {"d": "2024-11-15", "c": 320.72, "eps": 2.49, "pe": 128.6}, {"d": "2024-11-18", "c": 338.74, "eps": 2.51, "pe": 135.2}, {"d": "2024-11-19", "c": 346.0, "eps": 2.51, "pe": 137.8}, {"d": "2024-11-20", "c": 342.03, "eps": 2.51, "pe": 136.0}, {"d": "2024-11-21", "c": 339.64, "eps": 2.52, "pe": 134.9}, {"d": "2024-11-22", "c": 352.56, "eps": 2.52, "pe": 139.8}, {"d": "2024-11-25", "c": 338.59, "eps": 2.53, "pe": 133.6}, {"d": "2024-11-26", "c": 338.23, "eps": 2.54, "pe": 133.2}, {"d": "2024-11-27", "c": 332.89, "eps": 2.54, "pe": 130.9}, {"d": "2024-11-29", "c": 345.16, "eps": 2.55, "pe": 135.3}, {"d": "2024-12-02", "c": 357.09, "eps": 2.56, "pe": 139.3}, {"d": "2024-12-03", "c": 351.42, "eps": 2.57, "pe": 136.9}, {"d": "2024-12-04", "c": 357.93, "eps": 2.57, "pe": 139.2}, {"d": "2024-12-05", "c": 369.49, "eps": 2.58, "pe": 143.5}, {"d": "2024-12-06", "c": 389.22, "eps": 2.58, "pe": 150.9}, {"d": "2024-12-09", "c": 389.79, "eps": 2.59, "pe": 150.4}, {"d": "2024-12-10", "c": 400.99, "eps": 2.6, "pe": 154.5}, {"d": "2024-12-11", "c": 424.77, "eps": 2.6, "pe": 163.4}, {"d": "2024-12-12", "c": 418.1, "eps": 2.6, "pe": 160.6}, {"d": "2024-12-13", "c": 436.23, "eps": 2.61, "pe": 167.3}, {"d": "2024-12-16", "c": 463.02, "eps": 2.62, "pe": 176.7}, {"d": "2024-12-17", "c": 479.86, "eps": 2.62, "pe": 182.8}, {"d": "2024-12-18", "c": 440.13, "eps": 2.63, "pe": 167.4}, {"d": "2024-12-19", "c": 436.17, "eps": 2.63, "pe": 165.7}, {"d": "2024-12-20", "c": 421.06, "eps": 2.64, "pe": 159.7}, {"d": "2024-12-23", "c": 430.6, "eps": 2.65, "pe": 162.6}, {"d": "2024-12-24", "c": 462.28, "eps": 2.65, "pe": 174.2}, {"d": "2024-12-26", "c": 454.13, "eps": 2.66, "pe": 170.6}, {"d": "2024-12-27", "c": 431.66, "eps": 2.67, "pe": 162.0}, {"d": "2024-12-30", "c": 417.41, "eps": 2.68, "pe": 155.9}, {"d": "2024-12-31", "c": 403.84, "eps": 2.68, "pe": 150.6}, {"d": "2025-01-02", "c": 379.28, "eps": 2.69, "pe": 141.0}, {"d": "2025-01-03", "c": 410.44, "eps": 2.69, "pe": 152.4}, {"d": "2025-01-06", "c": 411.05, "eps": 2.71, "pe": 151.9}, {"d": "2025-01-07", "c": 394.36, "eps": 2.71, "pe": 145.5}, {"d": "2025-01-08", "c": 394.94, "eps": 2.71, "pe": 145.5}, {"d": "2025-01-10", "c": 394.74, "eps": 2.72, "pe": 145.0}, {"d": "2025-01-13", "c": 403.31, "eps": 2.73, "pe": 147.5}, {"d": "2025-01-14", "c": 396.36, "eps": 2.74, "pe": 144.7}, {"d": "2025-01-15", "c": 428.22, "eps": 2.74, "pe": 156.1}, {"d": "2025-01-16", "c": 413.82, "eps": 2.75, "pe": 150.6}, {"d": "2025-01-17", "c": 426.5, "eps": 2.75, "pe": 155.0}, {"d": "2025-01-21", "c": 424.07, "eps": 2.77, "pe": 153.2}, {"d": "2025-01-22", "c": 415.11, "eps": 2.77, "pe": 149.8}, {"d": "2025-01-23", "c": 412.38, "eps": 2.78, "pe": 148.6}, {"d": "2025-01-24", "c": 406.58, "eps": 2.78, "pe": 146.3}, {"d": "2025-01-27", "c": 397.15, "eps": 2.79, "pe": 142.3}, {"d": "2025-01-28", "c": 398.09, "eps": 2.8, "pe": 142.4}, {"d": "2025-01-29", "c": 389.1, "eps": 2.8, "pe": 139.0}, {"d": "2025-01-30", "c": 400.28, "eps": 2.79, "pe": 143.5}, {"d": "2025-01-31", "c": 404.6, "eps": 2.78, "pe": 145.5}, {"d": "2025-02-03", "c": 383.68, "eps": 2.75, "pe": 139.4}, {"d": "2025-02-04", "c": 392.21, "eps": 2.74, "pe": 143.0}, {"d": "2025-02-05", "c": 378.17, "eps": 2.73, "pe": 138.4}, {"d": "2025-02-06", "c": 374.32, "eps": 2.72, "pe": 137.5}, {"d": "2025-02-07", "c": 361.62, "eps": 2.71, "pe": 133.3}, {"d": "2025-02-10", "c": 350.73, "eps": 2.68, "pe": 130.7}, {"d": "2025-02-11", "c": 328.5, "eps": 2.67, "pe": 122.8}, {"d": "2025-02-12", "c": 336.51, "eps": 2.67, "pe": 126.3}, {"d": "2025-02-13", "c": 355.94, "eps": 2.66, "pe": 134.0}, {"d": "2025-02-14", "c": 355.84, "eps": 2.65, "pe": 134.5}, {"d": "2025-02-18", "c": 354.11, "eps": 2.61, "pe": 135.8}, {"d": "2025-02-19", "c": 360.56, "eps": 2.6, "pe": 138.8}, {"d": "2025-02-20", "c": 354.4, "eps": 2.59, "pe": 136.9}, {"d": "2025-02-21", "c": 337.8, "eps": 2.58, "pe": 131.0}, {"d": "2025-02-24", "c": 330.53, "eps": 2.55, "pe": 129.7}, {"d": "2025-02-25", "c": 302.8, "eps": 2.54, "pe": 119.2}, {"d": "2025-02-26", "c": 290.8, "eps": 2.53, "pe": 114.9}, {"d": "2025-02-27", "c": 281.95, "eps": 2.52, "pe": 111.9}, {"d": "2025-02-28", "c": 292.98, "eps": 2.51, "pe": 116.7}, {"d": "2025-03-03", "c": 284.65, "eps": 2.48, "pe": 114.7}, {"d": "2025-03-04", "c": 272.04, "eps": 2.47, "pe": 110.0}, {"d": "2025-03-05", "c": 279.1, "eps": 2.46, "pe": 113.3}, {"d": "2025-03-06", "c": 263.45, "eps": 2.45, "pe": 107.4}, {"d": "2025-03-07", "c": 262.67, "eps": 2.44, "pe": 107.5}, {"d": "2025-03-10", "c": 222.15, "eps": 2.41, "pe": 92.0}, {"d": "2025-03-11", "c": 230.58, "eps": 2.4, "pe": 95.9}, {"d": "2025-03-12", "c": 248.09, "eps": 2.4, "pe": 103.6}, {"d": "2025-03-13", "c": 240.68, "eps": 2.39, "pe": 100.9}, {"d": "2025-03-14", "c": 249.98, "eps": 2.38, "pe": 105.2}, {"d": "2025-03-17", "c": 238.01, "eps": 2.35, "pe": 101.4}, {"d": "2025-03-18", "c": 225.31, "eps": 2.34, "pe": 96.4}, {"d": "2025-03-19", "c": 235.86, "eps": 2.33, "pe": 101.3}, {"d": "2025-03-20", "c": 236.26, "eps": 2.32, "pe": 101.9}, {"d": "2025-03-21", "c": 248.71, "eps": 2.31, "pe": 107.7}, {"d": "2025-03-24", "c": 278.39, "eps": 2.28, "pe": 122.1}, {"d": "2025-03-25", "c": 288.14, "eps": 2.27, "pe": 126.9}, {"d": "2025-03-26", "c": 272.06, "eps": 2.26, "pe": 120.4}, {"d": "2025-03-27", "c": 273.13, "eps": 2.25, "pe": 121.4}, {"d": "2025-03-28", "c": 263.55, "eps": 2.24, "pe": 117.6}, {"d": "2025-03-31", "c": 259.16, "eps": 2.21, "pe": 117.2}, {"d": "2025-04-01", "c": 268.46, "eps": 2.2, "pe": 121.9}, {"d": "2025-04-02", "c": 282.76, "eps": 2.19, "pe": 129.0}, {"d": "2025-04-03", "c": 267.28, "eps": 2.18, "pe": 122.4}, {"d": "2025-04-04", "c": 239.43, "eps": 2.17, "pe": 110.2}, {"d": "2025-04-07", "c": 233.29, "eps": 2.14, "pe": 108.8}, {"d": "2025-04-08", "c": 221.86, "eps": 2.13, "pe": 103.9}, {"d": "2025-04-09", "c": 272.2, "eps": 2.13, "pe": 128.1}, {"d": "2025-04-10", "c": 252.4, "eps": 2.12, "pe": 119.3}, {"d": "2025-04-11", "c": 252.31, "eps": 2.11, "pe": 119.8}, {"d": "2025-04-14", "c": 252.35, "eps": 2.08, "pe": 121.5}, {"d": "2025-04-15", "c": 254.11, "eps": 2.07, "pe": 122.9}, {"d": "2025-04-16", "c": 241.55, "eps": 2.06, "pe": 117.4}, {"d": "2025-04-17", "c": 241.37, "eps": 2.05, "pe": 117.8}, {"d": "2025-04-21", "c": 227.5, "eps": 2.01, "pe": 113.2}, {"d": "2025-04-22", "c": 237.97, "eps": 2.0, "pe": 119.0}, {"d": "2025-04-23", "c": 250.74, "eps": 2.0, "pe": 125.5}, {"d": "2025-04-24", "c": 259.51, "eps": 2.0, "pe": 130.0}, {"d": "2025-04-25", "c": 284.95, "eps": 1.99, "pe": 142.9}, {"d": "2025-04-28", "c": 285.88, "eps": 1.99, "pe": 143.9}, {"d": "2025-04-29", "c": 292.03, "eps": 1.98, "pe": 147.1}, {"d": "2025-04-30", "c": 282.16, "eps": 1.98, "pe": 142.3}, {"d": "2025-05-01", "c": 280.52, "eps": 1.98, "pe": 141.6}, {"d": "2025-05-02", "c": 287.21, "eps": 1.98, "pe": 145.2}, {"d": "2025-05-05", "c": 280.26, "eps": 1.97, "pe": 142.1}, {"d": "2025-05-06", "c": 275.35, "eps": 1.97, "pe": 139.8}, {"d": "2025-05-07", "c": 276.22, "eps": 1.97, "pe": 140.4}, {"d": "2025-05-08", "c": 284.82, "eps": 1.97, "pe": 144.9}, {"d": "2025-05-09", "c": 298.26, "eps": 1.96, "pe": 151.9}, {"d": "2025-05-12", "c": 318.38, "eps": 1.96, "pe": 162.7}, {"d": "2025-05-13", "c": 334.07, "eps": 1.95, "pe": 170.9}, {"d": "2025-05-14", "c": 347.68, "eps": 1.95, "pe": 178.1}, {"d": "2025-05-15", "c": 342.82, "eps": 1.95, "pe": 175.8}, {"d": "2025-05-16", "c": 349.98, "eps": 1.95, "pe": 179.7}, {"d": "2025-05-19", "c": 342.09, "eps": 1.94, "pe": 176.2}, {"d": "2025-05-20", "c": 343.82, "eps": 1.94, "pe": 177.3}, {"d": "2025-05-21", "c": 334.62, "eps": 1.94, "pe": 172.8}, {"d": "2025-05-22", "c": 341.04, "eps": 1.93, "pe": 176.3}, {"d": "2025-05-23", "c": 339.34, "eps": 1.93, "pe": 175.6}, {"d": "2025-05-27", "c": 362.89, "eps": 1.92, "pe": 188.6}, {"d": "2025-05-28", "c": 356.9, "eps": 1.92, "pe": 185.7}, {"d": "2025-05-29", "c": 358.43, "eps": 1.92, "pe": 186.7}, {"d": "2025-05-30", "c": 346.46, "eps": 1.92, "pe": 180.7}, {"d": "2025-06-02", "c": 342.69, "eps": 1.91, "pe": 179.3}, {"d": "2025-06-03", "c": 344.27, "eps": 1.91, "pe": 180.4}, {"d": "2025-06-04", "c": 332.05, "eps": 1.91, "pe": 174.2}, {"d": "2025-06-05", "c": 284.7, "eps": 1.9, "pe": 149.5}, {"d": "2025-06-06", "c": 295.14, "eps": 1.9, "pe": 155.2}, {"d": "2025-06-09", "c": 308.58, "eps": 1.9, "pe": 162.8}, {"d": "2025-06-10", "c": 326.09, "eps": 1.89, "pe": 172.2}, {"d": "2025-06-11", "c": 326.43, "eps": 1.89, "pe": 172.6}, {"d": "2025-06-12", "c": 319.11, "eps": 1.89, "pe": 168.9}, {"d": "2025-06-13", "c": 325.31, "eps": 1.89, "pe": 172.4}, {"d": "2025-06-16", "c": 329.13, "eps": 1.88, "pe": 175.0}, {"d": "2025-06-17", "c": 316.35, "eps": 1.88, "pe": 168.4}, {"d": "2025-06-18", "c": 322.05, "eps": 1.88, "pe": 171.7}, {"d": "2025-06-20", "c": 322.16, "eps": 1.87, "pe": 172.1}, {"d": "2025-06-23", "c": 348.68, "eps": 1.87, "pe": 186.9}, {"d": "2025-06-24", "c": 340.47, "eps": 1.86, "pe": 182.7}, {"d": "2025-06-25", "c": 327.55, "eps": 1.86, "pe": 176.0}, {"d": "2025-06-26", "c": 325.78, "eps": 1.86, "pe": 175.3}, {"d": "2025-06-27", "c": 323.63, "eps": 1.86, "pe": 174.3}, {"d": "2025-06-30", "c": 317.66, "eps": 1.85, "pe": 171.7}, {"d": "2025-07-01", "c": 300.71, "eps": 1.85, "pe": 162.7}, {"d": "2025-07-02", "c": 315.65, "eps": 1.85, "pe": 171.0}, {"d": "2025-07-03", "c": 315.35, "eps": 1.84, "pe": 171.1}, {"d": "2025-07-07", "c": 293.94, "eps": 1.83, "pe": 160.2}, {"d": "2025-07-08", "c": 297.81, "eps": 1.83, "pe": 162.5}, {"d": "2025-07-09", "c": 295.88, "eps": 1.83, "pe": 161.6}, {"d": "2025-07-10", "c": 309.87, "eps": 1.83, "pe": 169.5}, {"d": "2025-07-11", "c": 313.51, "eps": 1.83, "pe": 171.7}, {"d": "2025-07-14", "c": 316.9, "eps": 1.82, "pe": 174.2}, {"d": "2025-07-15", "c": 310.78, "eps": 1.82, "pe": 171.0}, {"d": "2025-07-16", "c": 321.67, "eps": 1.82, "pe": 177.2}, {"d": "2025-07-17", "c": 319.41, "eps": 1.81, "pe": 176.2}, {"d": "2025-07-18", "c": 329.65, "eps": 1.81, "pe": 182.0}, {"d": "2025-07-21", "c": 328.49, "eps": 1.8, "pe": 182.1}, {"d": "2025-07-22", "c": 332.11, "eps": 1.8, "pe": 184.3}, {"d": "2025-07-23", "c": 332.56, "eps": 1.8, "pe": 184.8}, {"d": "2025-07-24", "c": 305.3, "eps": 1.8, "pe": 169.5}, {"d": "2025-07-25", "c": 316.06, "eps": 1.8, "pe": 175.4}, {"d": "2025-07-28", "c": 325.59, "eps": 1.81, "pe": 180.3}, {"d": "2025-07-29", "c": 321.2, "eps": 1.81, "pe": 177.8}, {"d": "2025-07-30", "c": 319.04, "eps": 1.81, "pe": 176.5}, {"d": "2025-07-31", "c": 308.27, "eps": 1.81, "pe": 170.4}, {"d": "2025-08-01", "c": 302.63, "eps": 1.81, "pe": 167.2}, {"d": "2025-08-04", "c": 309.26, "eps": 1.81, "pe": 170.6}, {"d": "2025-08-05", "c": 308.72, "eps": 1.81, "pe": 170.2}, {"d": "2025-08-06", "c": 319.91, "eps": 1.82, "pe": 176.2}, {"d": "2025-08-07", "c": 322.27, "eps": 1.82, "pe": 177.4}, {"d": "2025-08-08", "c": 329.65, "eps": 1.82, "pe": 181.4}, {"d": "2025-08-11", "c": 339.03, "eps": 1.82, "pe": 186.2}, {"d": "2025-08-12", "c": 340.84, "eps": 1.82, "pe": 187.1}, {"d": "2025-08-13", "c": 339.38, "eps": 1.82, "pe": 186.2}, {"d": "2025-08-14", "c": 335.58, "eps": 1.82, "pe": 184.0}, {"d": "2025-08-15", "c": 330.56, "eps": 1.83, "pe": 181.1}, {"d": "2025-08-18", "c": 335.16, "eps": 1.83, "pe": 183.3}, {"d": "2025-08-19", "c": 329.31, "eps": 1.83, "pe": 180.0}, {"d": "2025-08-20", "c": 323.9, "eps": 1.83, "pe": 176.9}, {"d": "2025-08-21", "c": 320.11, "eps": 1.83, "pe": 174.7}, {"d": "2025-08-22", "c": 340.01, "eps": 1.83, "pe": 185.5}, {"d": "2025-08-25", "c": 346.6, "eps": 1.84, "pe": 188.8}, {"d": "2025-08-26", "c": 351.67, "eps": 1.84, "pe": 191.4}, {"d": "2025-08-27", "c": 349.6, "eps": 1.84, "pe": 190.2}, {"d": "2025-08-28", "c": 345.98, "eps": 1.84, "pe": 188.1}, {"d": "2025-08-29", "c": 333.87, "eps": 1.84, "pe": 181.4}, {"d": "2025-09-02", "c": 329.36, "eps": 1.85, "pe": 178.5}, {"d": "2025-09-03", "c": 334.09, "eps": 1.85, "pe": 181.0}, {"d": "2025-09-04", "c": 338.53, "eps": 1.85, "pe": 183.3}, {"d": "2025-09-05", "c": 350.84, "eps": 1.85, "pe": 189.8}, {"d": "2025-09-08", "c": 346.4, "eps": 1.85, "pe": 187.1}, {"d": "2025-09-09", "c": 346.97, "eps": 1.85, "pe": 187.3}, {"d": "2025-09-10", "c": 347.79, "eps": 1.85, "pe": 187.6}, {"d": "2025-09-11", "c": 368.81, "eps": 1.85, "pe": 198.8}, {"d": "2025-09-12", "c": 395.94, "eps": 1.86, "pe": 213.3}, {"d": "2025-09-15", "c": 410.04, "eps": 1.86, "pe": 220.5}, {"d": "2025-09-16", "c": 421.62, "eps": 1.86, "pe": 226.6}, {"d": "2025-09-17", "c": 425.86, "eps": 1.86, "pe": 228.8}, {"d": "2025-09-18", "c": 416.85, "eps": 1.86, "pe": 223.8}, {"d": "2025-09-19", "c": 426.07, "eps": 1.86, "pe": 228.6}, {"d": "2025-09-22", "c": 434.21, "eps": 1.87, "pe": 232.6}, {"d": "2025-09-23", "c": 425.85, "eps": 1.87, "pe": 228.0}, {"d": "2025-09-24", "c": 442.79, "eps": 1.87, "pe": 236.9}, {"d": "2025-09-25", "c": 423.39, "eps": 1.87, "pe": 226.4}, {"d": "2025-09-26", "c": 440.4, "eps": 1.87, "pe": 235.3}, {"d": "2025-09-29", "c": 443.21, "eps": 1.87, "pe": 236.4}, {"d": "2025-09-30", "c": 444.72, "eps": 1.88, "pe": 237.1}, {"d": "2025-10-01", "c": 459.46, "eps": 1.88, "pe": 244.8}, {"d": "2025-10-02", "c": 436.0, "eps": 1.88, "pe": 232.2}, {"d": "2025-10-03", "c": 429.83, "eps": 1.88, "pe": 228.7}, {"d": "2025-10-06", "c": 453.25, "eps": 1.88, "pe": 240.8}, {"d": "2025-10-07", "c": 433.09, "eps": 1.88, "pe": 229.9}, {"d": "2025-10-08", "c": 438.69, "eps": 1.88, "pe": 232.8}, {"d": "2025-10-09", "c": 435.54, "eps": 1.89, "pe": 231.0}, {"d": "2025-10-10", "c": 413.49, "eps": 1.89, "pe": 219.1}, {"d": "2025-10-13", "c": 435.9, "eps": 1.89, "pe": 230.6}, {"d": "2025-10-14", "c": 429.24, "eps": 1.89, "pe": 227.0}, {"d": "2025-10-15", "c": 435.15, "eps": 1.89, "pe": 230.0}, {"d": "2025-10-16", "c": 428.75, "eps": 1.89, "pe": 226.4}, {"d": "2025-10-17", "c": 439.31, "eps": 1.89, "pe": 231.9}, {"d": "2025-10-20", "c": 447.43, "eps": 1.9, "pe": 235.8}, {"d": "2025-10-21", "c": 442.6, "eps": 1.9, "pe": 233.1}, {"d": "2025-10-22", "c": 438.97, "eps": 1.9, "pe": 231.0}, {"d": "2025-10-23", "c": 448.98, "eps": 1.9, "pe": 236.2}, {"d": "2025-10-24", "c": 433.72, "eps": 1.9, "pe": 228.0}, {"d": "2025-10-27", "c": 452.42, "eps": 1.91, "pe": 237.5}, {"d": "2025-10-28", "c": 460.55, "eps": 1.91, "pe": 241.6}, {"d": "2025-10-29", "c": 461.51, "eps": 1.91, "pe": 242.0}, {"d": "2025-10-30", "c": 440.1, "eps": 1.91, "pe": 230.6}, {"d": "2025-10-31", "c": 456.56, "eps": 1.91, "pe": 239.1}, {"d": "2025-11-03", "c": 468.37, "eps": 1.91, "pe": 244.9}, {"d": "2025-11-04", "c": 444.26, "eps": 1.91, "pe": 232.2}, {"d": "2025-11-05", "c": 462.07, "eps": 1.91, "pe": 241.4}, {"d": "2025-11-06", "c": 445.91, "eps": 1.92, "pe": 232.8}, {"d": "2025-11-07", "c": 429.52, "eps": 1.92, "pe": 224.1}, {"d": "2025-11-10", "c": 445.23, "eps": 1.92, "pe": 232.0}, {"d": "2025-11-11", "c": 439.62, "eps": 1.92, "pe": 228.9}, {"d": "2025-11-12", "c": 430.6, "eps": 1.92, "pe": 224.1}, {"d": "2025-11-13", "c": 401.99, "eps": 1.92, "pe": 209.1}, {"d": "2025-11-14", "c": 404.35, "eps": 1.92, "pe": 210.2}, {"d": "2025-11-17", "c": 408.92, "eps": 1.93, "pe": 212.3}, {"d": "2025-11-18", "c": 401.25, "eps": 1.93, "pe": 208.2}, {"d": "2025-11-19", "c": 403.99, "eps": 1.93, "pe": 209.5}, {"d": "2025-11-20", "c": 395.23, "eps": 1.93, "pe": 204.8}, {"d": "2025-11-21", "c": 391.09, "eps": 1.93, "pe": 202.6}, {"d": "2025-11-24", "c": 417.78, "eps": 1.93, "pe": 216.1}, {"d": "2025-11-25", "c": 419.4, "eps": 1.93, "pe": 216.8}, {"d": "2025-11-26", "c": 426.58, "eps": 1.94, "pe": 220.4}, {"d": "2025-11-28", "c": 430.17, "eps": 1.94, "pe": 222.0}, {"d": "2025-12-01", "c": 430.14, "eps": 1.94, "pe": 221.6}, {"d": "2025-12-02", "c": 429.24, "eps": 1.94, "pe": 221.0}, {"d": "2025-12-03", "c": 446.74, "eps": 1.94, "pe": 229.9}, {"d": "2025-12-04", "c": 454.53, "eps": 1.94, "pe": 233.8}, {"d": "2025-12-05", "c": 455.0, "eps": 1.94, "pe": 233.9}, {"d": "2025-12-08", "c": 439.58, "eps": 1.95, "pe": 225.7}, {"d": "2025-12-09", "c": 445.17, "eps": 1.95, "pe": 228.4}, {"d": "2025-12-10", "c": 451.45, "eps": 1.95, "pe": 231.5}, {"d": "2025-12-11", "c": 446.89, "eps": 1.95, "pe": 229.1}, {"d": "2025-12-12", "c": 458.96, "eps": 1.95, "pe": 235.1}, {"d": "2025-12-15", "c": 475.31, "eps": 1.96, "pe": 243.1}, {"d": "2025-12-16", "c": 489.88, "eps": 1.96, "pe": 250.4}, {"d": "2025-12-17", "c": 467.26, "eps": 1.96, "pe": 238.7}, {"d": "2025-12-18", "c": 483.37, "eps": 1.96, "pe": 246.8}, {"d": "2025-12-19", "c": 481.2, "eps": 1.96, "pe": 245.6}, {"d": "2025-12-22", "c": 488.73, "eps": 1.96, "pe": 249.1}, {"d": "2025-12-23", "c": 485.56, "eps": 1.96, "pe": 247.3}, {"d": "2025-12-24", "c": 485.4, "eps": 1.96, "pe": 247.1}, {"d": "2025-12-26", "c": 475.19, "eps": 1.97, "pe": 241.7}, {"d": "2025-12-29", "c": 459.64, "eps": 1.97, "pe": 233.4}, {"d": "2025-12-30", "c": 454.43, "eps": 1.97, "pe": 230.6}, {"d": "2025-12-31", "c": 449.72, "eps": 1.97, "pe": 228.1}, {"d": "2026-01-02", "c": 438.07, "eps": 1.97, "pe": 222.0}, {"d": "2026-01-05", "c": 451.67, "eps": 1.98, "pe": 228.5}, {"d": "2026-01-06", "c": 432.96, "eps": 1.98, "pe": 218.9}, {"d": "2026-01-07", "c": 431.41, "eps": 1.98, "pe": 218.0}, {"d": "2026-01-08", "c": 435.8, "eps": 1.98, "pe": 220.1}, {"d": "2026-01-09", "c": 445.01, "eps": 1.98, "pe": 224.7}, {"d": "2026-01-12", "c": 448.96, "eps": 1.98, "pe": 226.3}, {"d": "2026-01-13", "c": 447.2, "eps": 1.98, "pe": 225.3}, {"d": "2026-01-14", "c": 439.2, "eps": 1.99, "pe": 221.2}, {"d": "2026-01-15", "c": 438.57, "eps": 1.99, "pe": 220.7}, {"d": "2026-01-16", "c": 437.5, "eps": 1.99, "pe": 220.1}, {"d": "2026-01-20", "c": 419.25, "eps": 1.99, "pe": 210.5}, {"d": "2026-01-21", "c": 431.44, "eps": 1.99, "pe": 216.5}, {"d": "2026-01-22", "c": 449.36, "eps": 1.99, "pe": 225.4}, {"d": "2026-01-23", "c": 449.06, "eps": 1.99, "pe": 225.1}, {"d": "2026-01-26", "c": 435.2, "eps": 2.0, "pe": 217.8}, {"d": "2026-01-27", "c": 430.9, "eps": 2.0, "pe": 215.6}, {"d": "2026-01-28", "c": 431.46, "eps": 2.0, "pe": 215.7}, {"d": "2026-01-29", "c": 416.56, "eps": 2.0, "pe": 208.2}, {"d": "2026-01-30", "c": 430.41, "eps": 2.0, "pe": 215.0}, {"d": "2026-02-02", "c": 421.81, "eps": 2.01, "pe": 210.3}, {"d": "2026-02-03", "c": 421.96, "eps": 2.01, "pe": 210.2}, {"d": "2026-02-04", "c": 406.01, "eps": 2.01, "pe": 202.2}, {"d": "2026-02-05", "c": 397.21, "eps": 2.01, "pe": 197.7}, {"d": "2026-02-06", "c": 411.11, "eps": 2.01, "pe": 204.5}, {"d": "2026-02-09", "c": 417.32, "eps": 2.01, "pe": 207.2}, {"d": "2026-02-10", "c": 425.21, "eps": 2.02, "pe": 211.0}, {"d": "2026-02-11", "c": 428.27, "eps": 2.02, "pe": 212.4}, {"d": "2026-02-12", "c": 417.07, "eps": 2.02, "pe": 206.7}, {"d": "2026-02-13", "c": 417.44, "eps": 2.02, "pe": 206.8}, {"d": "2026-02-17", "c": 410.63, "eps": 2.02, "pe": 202.9}, {"d": "2026-02-18", "c": 411.32, "eps": 2.02, "pe": 203.2}, {"d": "2026-02-19", "c": 411.71, "eps": 2.03, "pe": 203.2}, {"d": "2026-02-20", "c": 411.82, "eps": 2.03, "pe": 203.2}, {"d": "2026-02-23", "c": 399.83, "eps": 2.03, "pe": 196.9}, {"d": "2026-02-24", "c": 409.38, "eps": 2.03, "pe": 201.5}, {"d": "2026-02-25", "c": 417.4, "eps": 2.03, "pe": 205.3}, {"d": "2026-02-26", "c": 408.58, "eps": 2.03, "pe": 200.9}, {"d": "2026-02-27", "c": 402.51, "eps": 2.04, "pe": 197.8}, {"d": "2026-03-02", "c": 403.32, "eps": 2.04, "pe": 197.8}, {"d": "2026-03-03", "c": 392.43, "eps": 2.04, "pe": 192.4}, {"d": "2026-03-04", "c": 405.94, "eps": 2.04, "pe": 198.9}, {"d": "2026-03-05", "c": 405.55, "eps": 2.04, "pe": 198.6}, {"d": "2026-03-06", "c": 396.73, "eps": 2.04, "pe": 194.1}, {"d": "2026-03-09", "c": 398.68, "eps": 2.05, "pe": 194.8}, {"d": "2026-03-10", "c": 399.235, "eps": 2.05, "pe": 194.9}, {"d": "2026-03-11", "c": 407.82, "eps": 2.05, "pe": 199.0}, {"d": "2026-03-12", "c": 395.01, "eps": 2.05, "pe": 192.6}, {"d": "2026-03-13", "c": 391.2, "eps": 2.05, "pe": 190.7}, {"d": "2026-03-16", "c": 395.56, "eps": 2.06, "pe": 192.5}, {"d": "2026-03-17", "c": 399.27, "eps": 2.06, "pe": 194.2}, {"d": "2026-03-18", "c": 392.78, "eps": 2.06, "pe": 190.9}, {"d": "2026-03-19", "c": 380.3, "eps": 2.06, "pe": 184.7}, {"d": "2026-03-20", "c": 367.96, "eps": 2.06, "pe": 178.6}, {"d": "2026-03-23", "c": 380.85, "eps": 2.06, "pe": 184.6}, {"d": "2026-03-24", "c": 383.03, "eps": 2.06, "pe": 185.5}, {"d": "2026-03-25", "c": 385.95, "eps": 2.07, "pe": 186.8}, {"d": "2026-03-26", "c": 372.11, "eps": 2.07, "pe": 180.0}, {"d": "2026-03-27", "c": 361.83, "eps": 2.07, "pe": 174.9}, {"d": "2026-03-30", "c": 355.28, "eps": 2.07, "pe": 171.5}, {"d": "2026-03-31", "c": 371.75, "eps": 2.07, "pe": 179.3}, {"d": "2026-04-01", "c": 381.26, "eps": 2.07, "pe": 183.8}, {"d": "2026-04-02", "c": 360.59, "eps": 2.08, "pe": 173.8}, {"d": "2026-04-06", "c": 352.82, "eps": 2.08, "pe": 169.6}, {"d": "2026-04-07", "c": 346.65, "eps": 2.08, "pe": 166.6}, {"d": "2026-04-08", "c": 343.25, "eps": 2.08, "pe": 164.8}, {"d": "2026-04-09", "c": 345.62, "eps": 2.08, "pe": 165.9}, {"d": "2026-04-10", "c": 348.95, "eps": 2.08, "pe": 167.4}, {"d": "2026-04-13", "c": 352.42, "eps": 2.09, "pe": 168.8}, {"d": "2026-04-14", "c": 364.2, "eps": 2.09, "pe": 174.3}, {"d": "2026-04-15", "c": 391.95, "eps": 2.09, "pe": 187.5}, {"d": "2026-04-16", "c": 388.9, "eps": 2.09, "pe": 185.9}, {"d": "2026-04-17", "c": 400.62, "eps": 2.09, "pe": 191.4}, {"d": "2026-04-20", "c": 392.5, "eps": 2.1, "pe": 187.2}, {"d": "2026-04-21", "c": 386.42, "eps": 2.1, "pe": 184.2}, {"d": "2026-04-22", "c": 387.51, "eps": 2.1, "pe": 184.6}, {"d": "2026-04-23", "c": 373.72, "eps": 2.1, "pe": 178.0}, {"d": "2026-04-24", "c": 376.3, "eps": 2.1, "pe": 179.3}, {"d": "2026-04-27", "c": 378.67, "eps": 2.1, "pe": 180.7}, {"d": "2026-04-28", "c": 376.02, "eps": 2.09, "pe": 179.5}, {"d": "2026-04-29", "c": 372.8, "eps": 2.09, "pe": 178.1}, {"d": "2026-04-30", "c": 381.63, "eps": 2.09, "pe": 182.4}, {"d": "2026-05-01", "c": 390.82, "eps": 2.09, "pe": 186.9}, {"d": "2026-05-04", "c": 392.51, "eps": 2.09, "pe": 188.0}, {"d": "2026-05-05", "c": 389.37, "eps": 2.09, "pe": 186.6}, {"d": "2026-05-06", "c": 398.73, "eps": 2.09, "pe": 191.2}, {"d": "2026-05-07", "c": 411.79, "eps": 2.08, "pe": 197.5}, {"d": "2026-05-08", "c": 428.35, "eps": 2.08, "pe": 205.6}, {"d": "2026-05-11", "c": 445.0, "eps": 2.08, "pe": 213.9}, {"d": "2026-05-12", "c": 433.45, "eps": 2.08, "pe": 208.5}, {"d": "2026-05-13", "c": 445.27, "eps": 2.08, "pe": 214.3}, {"d": "2026-05-14", "c": 443.3, "eps": 2.08, "pe": 213.4}, {"d": "2026-05-15", "c": 422.24, "eps": 2.08, "pe": 203.4}, {"d": "2026-05-18", "c": 409.99, "eps": 2.07, "pe": 197.8}, {"d": "2026-05-19", "c": 404.11, "eps": 2.07, "pe": 195.1}, {"d": "2026-05-20", "c": 417.26, "eps": 2.07, "pe": 201.5}, {"d": "2026-05-21", "c": 417.85, "eps": 2.07, "pe": 201.9}, {"d": "2026-05-22", "c": 426.01, "eps": 2.07, "pe": 206.0}, {"d": "2026-05-26", "c": 433.59, "eps": 2.06, "pe": 210.1}, {"d": "2026-05-27", "c": 440.36, "eps": 2.06, "pe": 213.5}, {"d": "2026-05-28", "c": 442.1, "eps": 2.06, "pe": 214.5}, {"d": "2026-05-29", "c": 435.79, "eps": 2.06, "pe": 211.5}, {"d": "2026-06-01", "c": 415.88, "eps": 2.06, "pe": 202.2}, {"d": "2026-06-02", "c": 423.74, "eps": 2.06, "pe": 206.1}, {"d": "2026-06-03", "c": 423.7, "eps": 2.05, "pe": 206.2}, {"d": "2026-06-04", "c": 418.45, "eps": 2.05, "pe": 203.7}, {"d": "2026-06-05", "c": 391.0, "eps": 2.05, "pe": 190.5}, {"d": "2026-06-08", "c": 408.95, "eps": 2.05, "pe": 199.5}, {"d": "2026-06-09", "c": 396.68, "eps": 2.05, "pe": 193.7}, {"d": "2026-06-10", "c": 381.59, "eps": 2.05, "pe": 186.4}, {"d": "2026-06-11", "c": 399.15, "eps": 2.05, "pe": 195.1}, {"d": "2026-06-12", "c": 406.43, "eps": 2.05, "pe": 198.7}, {"d": "2026-06-15", "c": 411.15, "eps": 2.04, "pe": 201.4}, {"d": "2026-06-16", "c": 404.66, "eps": 2.04, "pe": 198.3}, {"d": "2026-06-17", "c": 396.38, "eps": 2.04, "pe": 194.3}, {"d": "2026-06-18", "c": 400.49, "eps": 2.04, "pe": 196.5}, {"d": "2026-06-22", "c": 405.05, "eps": 2.03, "pe": 199.1}, {"d": "2026-06-23", "c": 381.61, "eps": 2.03, "pe": 187.7}, {"d": "2026-06-24", "c": 375.53, "eps": 2.03, "pe": 184.8}, {"d": "2026-06-25", "c": 375.12, "eps": 2.03, "pe": 184.7}, {"d": "2026-06-26", "c": 379.71, "eps": 2.03, "pe": 187.1}, {"d": "2026-06-29", "c": 411.84, "eps": 2.03, "pe": 203.2}, {"d": "2026-06-30", "c": 420.6, "eps": 2.03, "pe": 207.7}, {"d": "2026-07-01", "c": 425.3, "eps": 2.02, "pe": 210.1}, {"d": "2026-07-02", "c": 393.45, "eps": 2.02, "pe": 194.5}, {"d": "2026-07-06", "c": 419.77, "eps": 2.02, "pe": 207.9}, {"d": "2026-07-07", "c": 402.9, "eps": 2.02, "pe": 199.7}, {"d": "2026-07-08", "c": 394.06, "eps": 2.02, "pe": 195.4}, {"d": "2026-07-09", "c": 406.55, "eps": 2.02, "pe": 201.7}, {"d": "2026-07-10", "c": 407.76, "eps": 2.01, "pe": 202.4}, {"d": "2026-07-13", "c": 394.76, "eps": 2.01, "pe": 196.3}, {"d": "2026-07-14", "c": 396.18, "eps": 2.01, "pe": 197.1}, {"d": "2026-07-15", "c": 394.46, "eps": 2.01, "pe": 196.4}, {"d": "2026-07-16", "c": 391.06, "eps": 2.01, "pe": 194.8}, {"d": "2026-07-17", "c": 380.84, "eps": 2.01, "pe": 189.8}, {"d": "2026-07-20", "c": 369.57, "eps": 2.0, "pe": 184.5}, {"d": "2026-07-21", "c": 378.93, "eps": 2.0, "pe": 189.3}, {"d": "2026-07-22", "c": 374.01, "eps": 2.0, "pe": 186.9}, {"d": "2026-07-23", "c": 319.69, "eps": 2.0, "pe": 159.8}], "stats": {"avg": 137.2, "min": 64.4, "max": 250.4, "min_day": "2024-04-22", "max_day": "2025-12-16", "cur": 159.8, "cur_eps": 2.0, "cur_price": 319.69, "percentile": 60}, "stats_1y": {"avg": 205.2, "min": 159.8, "max": 250.4, "min_day": "2026-07-23", "max_day": "2025-12-16", "cur": 159.8, "cur_eps": 2.0, "cur_price": 319.69, "percentile": 0}, "events": [{"d": "2024-04-23", "label": "1Q24 마진 붕괴", "kind": "down"}, {"d": "2025-06-22", "label": "로보택시 오스틴 시범", "kind": "up"}, {"d": "2026-04-23", "label": "1Q26 마진 반등", "kind": "up"}, {"d": "2026-07-22", "label": "2Q26 EPS 미스", "kind": "down"}], "regimes": [{"from": "2023-06-08", "to": "2025-09-30", "label": "인도량·이익 감소기 (2년 연속 역성장)"}, {"from": "2025-10-01", "to": "2026-07-23", "label": "AI·로보택시 옵션 재평가기"}], "cfg": {"currency": "USD", "multiples": [60, 115, 170, 225], "priceMax": 750.0, "priceTick": 150.0, "peMax": 300, "peTick": 60, "epsMax": 4.0, "epsTick": 0.8}, "anchors": [{"d": "2023-06-08", "val": "$3.50", "eps": 3.5, "why": "2023 중순 컨센 — FY23E ~$3.3·FY24E ~$4.5 낙관 구간의 NTM 가중 근사 (당시 보도 기반 재구성)"}, {"d": "2023-10-27", "val": "$3.00", "eps": 3.0, "why": "3Q23 실적·가격 인하로 마진 압박 — FY24E 하향, NTM 근사 $3.0 (재구성)"}, {"d": "2024-01-25", "val": "$2.60", "eps": 2.6, "why": "4Q23 후 '2024 성장 눈에 띄게 둔화' 가이던스 — NTM 하향 (재구성)"}, {"d": "2024-04-23", "val": "$2.20", "eps": 2.2, "why": "1Q24 어닝 쇼크(인도량 급감·마진 붕괴) — 컨센 대폭 하향"}, {"d": "2024-07-23", "val": "$2.20", "eps": 2.2, "why": "2Q24 — 저점권 NTM 유지 (재구성)"}, {"d": "2024-10-23", "val": "$2.40", "eps": 2.4, "why": "3Q24 마진 회복 서프라이즈 — NTM 소폭 상향 (재구성)"}, {"d": "2025-01-29", "val": "$2.80", "eps": 2.8, "why": "4Q24·2025 성장 재개 가이던스(로보택시·저가 모델 기대) — NTM 상향 (재구성)"}, {"d": "2025-04-22", "val": "$2.00", "eps": 2.0, "why": "1Q25 인도량 감소·마진 약화 — NTM 하향 (재구성)"}, {"d": "2025-07-23", "val": "$1.80", "eps": 1.8, "why": "2Q25 약세 — NTM 저점 (재구성)"}, {"d": "2025-10-22", "val": "$1.90", "eps": 1.9, "why": "3Q25 — 소폭 회복 (재구성)"}, {"d": "2026-01-28", "val": "$2.00", "eps": 2.0, "why": "4Q25로 FY25 EPS $1.08 확정(2년 연속 인도량 감소) — 2026 회복 기대 NTM $2.0"}, {"d": "2026-04-23", "val": "$2.10", "eps": 2.1, "why": "1Q26 EPS $0.41(+52% YoY)·마진 반등(GAAP OPM 4.2%) — NTM 상향"}, {"d": "2026-07-23", "val": "$2.00", "eps": 2.0, "why": "2Q26 EPS $0.33(컨센 $0.53 미스)·자동차 GM(신용제외) 19.2→16.3% 압축·FCF −$1.09B 반영. 1H26 합산 $0.74로 FY26E 하향 압력 — NTM 근사 $2.0(FY27E 회복 기대 유지 가정)"}], "meta": {"symbol": "TSLA", "name": "테슬라", "shares": 3755723871, "mode": "eps", "conv": null, "conv_basis": null, "range": ["2023-06-13", "2026-07-23"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+
+</script>
+
+</html>
