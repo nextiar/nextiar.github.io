@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>미국 경제지표 스냅샷 — 2026-07-25 기준</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-25-econ-indicators-snapshot-2026-07-25.html">
+<meta property="og:title" content="미국 경제지표 스냅샷 — 2026-07-25 기준">
+<meta property="og:description" content="경제지표 아카이브 36개 지표 전수 — 6월 물가 월간 하락 반전, 고용 견조(청구건수 5년 바닥), 10년물 4.67%로 5년 상단">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-25-econ-indicators-snapshot-2026-07-25.html">
+<meta name="description" content="경제지표 아카이브 36개 지표 전수 — 6월 물가 월간 하락 반전, 고용 견조(청구건수 5년 바닥), 10년물 4.67%로 5년 상단">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-25-econ-indicators-snapshot-2026-07-25.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 미국 경제지표 스냅샷 (Economic Indicators Snapshot)</div>
+  <h1>미국 경제지표 스냅샷 — 2026-07-25 기준</h1>
+  <p class="sub">경제지표 아카이브(FRED·한국은행 ECOS·관세청 미러) <strong>36개 지표 전수</strong>를 카테고리별로 정리했다. 6월 미 CPI는 전월비 <span class="down">−0.42%</span>로 하락 반전했으나 전년비는 여전히 <strong>+3.46%</strong>, 주간 신규 실업수당청구는 18.7만 건으로 <strong>최근 5년 최저권(백분위 0.4%)</strong>, 미 10년물은 4.67%로 <strong>5년 백분위 98%</strong>다. 물가 둔화 조짐 속 고용 견조·고금리가 공존하는 국면. 모든 수치는 아카이브 실측값이며, 각 지표에 데이터 기준일을 표기했다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성 2026-07-25 · 경제지표 아카이브 36지표 전수 조회(2026-07-25 기준)</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>읽는 법.</strong> 각 표의 <strong>전기비</strong>는 직전 관측 대비(월간 지표는 전월비, 주간은 전주비, 일간은 전영업일비), <strong>전년비</strong>는 약 1년 전 관측 대비, <strong>5년 백분위</strong>는 최근 5년 분포에서 현재값의 위치(100%=5년 최고)다. 등락 색은 <strong>숫자 부호</strong>를 따른다(양수 <span class="up">빨강</span>·음수 <span class="down">파랑</span>) — 좋다/나쁘다는 느낌이 아니다. 0을 넘나드는 <strong>부호 교차 지표(전미활동지수·10Y−2Y 스프레드·무역수지)는 %변화율을 산출하지 않고 포인트/절대액 변화</strong>로만 표기한다(음수 기준의 %는 방향이 왜곡되기 때문). GDP·통화량·고용총계 같은 <strong>수준(level) 지표는 우상향 추세라 백분위가 기계적으로 100% 근처</strong>에 몰린다 — 백분위는 금리·가동률·심리 같은 비율·지수형 지표에서 의미가 크다.
+</div>
+
+<section>
+  <h2><span class="idx">1</span>한눈에 — 물가·고용·금리의 현재 좌표 <span class="chip cool h2-chip">아카이브 36지표 전수</span></h2>
+  <p class="lead">아래 4개 타일은 이 스냅샷의 축이 되는 지표다. 전부 아카이브 실측값·기준일 기준.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">미 CPI 전년비 (6월)</div><div class="val up">+3.46%</div><div class="delta down">전월비 −0.42% 하락 반전 · 기준일 2026-06-01</div></div>
+    <div class="tile"><div class="lbl">미 실업률 (6월)</div><div class="val">4.2<small>%</small></div><div class="delta down">전월비 −0.1%p · 5년 백분위 74.6%</div></div>
+    <div class="tile"><div class="lbl">미 국채 10년물 (7/22)</div><div class="val up">4.67<small>%</small></div><div class="delta up">▲ +0.04%p · 5년 백분위 98.0%</div></div>
+    <div class="tile"><div class="lbl">원/달러 (7/24)</div><div class="val">1,469.4<small>원</small></div><div class="delta down">▼ −11.5원 · 전년비 +90.3원 · 백분위 89.6%</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① <strong>물가</strong> — 6월 CPI <span class="down">−0.42%</span>·근원 CPI <span class="down">−0.02%</span>·PPI <span class="down">−1.26%</span>로 월간 지표가 일제히 하락했다. 다만 전년비는 CPI +3.46%·PCE물가 +4.07%·PPI <span class="up">+10.11%</span>로 여전히 높아, "둔화 조짐은 있으나 레벨은 높은" 국면이다.</div>
+    <div class="tldr-item">② <strong>고용</strong> — 주간 신규 실업수당청구 18.7만 건은 <strong>5년 분포의 바닥(백분위 0.4%)</strong>, 비농업 고용도 전년비 +50.6만 명으로 늘고 있다. 다만 실업률 4.2%는 5년 백분위 74.6%로 저점 대비 올라와 있고, 고용 증가율(+0.32%)은 완만하다.</div>
+    <div class="tldr-item">③ <strong>금리·심리</strong> — 10년물 4.67%(백분위 98.0%)로 장기금리는 5년 상단인데, 미시간대 소비자심리는 44.8로 <strong>5년 백분위 1.7%의 최저권</strong>. 고금리·고물가가 소비심리를 누르는 그림이 데이터에 그대로 보인다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>물가 — 월간 하락 반전, 전년비는 아직 높다</h2>
+  <p class="lead">6월 관측(기준일 2026-06-01)에서 CPI·근원 CPI·PPI가 모두 전월비 하락했다. PCE 물가만 5월 관측(+0.45%)까지 반영돼 한 달 늦다. 물가지수는 수준(level)이라 5년 백분위가 높게 나오는 게 정상이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>소비자물가(CPI)</strong> <span style="color:var(--muted)">지수(1982-84=100)</span></td><td class="num"><strong>332.57</strong></td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−0.42%</span></td><td class="num"><span class="up">+3.46%</span></td><td class="num">98.3%</td></tr>
+      <tr><td><strong>근원 CPI</strong> <span style="color:var(--muted)">지수(1982-84=100)</span></td><td class="num">336.07</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−0.02%</span></td><td class="num"><span class="up">+2.57%</span></td><td class="num">98.3%</td></tr>
+      <tr><td><strong>생산자물가(PPI)</strong> <span style="color:var(--muted)">지수(1982=100)</span></td><td class="num">286.83</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−1.26%</span></td><td class="num"><span class="up">+10.11%</span></td><td class="num">98.3%</td></tr>
+      <tr><td><strong>PCE 물가지수</strong> <span style="color:var(--muted)">지수(2017=100)</span></td><td class="num">131.53</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="up">+0.45%</span></td><td class="num"><span class="up">+4.07%</span></td><td class="num">100.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 6월 월간 물가는 헤드라인·근원·도매가 모두 마이너스로, <strong>디스인플레 조짐이 월간 지표에 나타났다</strong>. 그러나 전년비 축에서 보면 CPI +3.46%·PCE물가 +4.07%로 레벨은 높고, 특히 <strong>PPI 전년비 <span class="up">+10.11%</span></strong>는 소비자물가(+3.46%)와 괴리가 커 도매단 비용 압력이 아직 남아 있음을 시사한다. "한 달의 하락"과 "1년의 누적"이 반대 방향을 가리키는 구간이다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>고용 — 청구건수는 5년 바닥, 증가 속도는 완만</h2>
+  <p class="lead">주간 실업수당청구(7/18 주)만 최신이고 나머지는 5~6월 관측이다. 고용비용지수(ECI)는 분기 지표로 1분기(2026-01-01) 관측이 마지막 — 기준일이 오래됐음을 그대로 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>비농업 고용(총계)</strong> <span style="color:var(--muted)">천명</span></td><td class="num">158,984</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+57</span> (+0.04%)</td><td class="num"><span class="up">+506</span> (+0.32%)</td><td class="num">100.0%</td></tr>
+      <tr><td><strong>실업률</strong> <span style="color:var(--muted)">%</span></td><td class="num"><strong>4.2</strong></td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−0.10%p</span></td><td class="num"><span class="up">+0.10%p</span></td><td class="num">74.6%</td></tr>
+      <tr><td><strong>주간 신규 실업수당청구</strong> <span style="color:var(--muted)">명</span></td><td class="num"><strong>187,000</strong></td><td>2026-07-18</td><td>주간</td><td class="num"><span class="down">−22,000</span> (−10.53%)</td><td class="num"><span class="down">−14.22%</span></td><td class="num">0.4%</td></tr>
+      <tr><td><strong>JOLTS 구인</strong> <span style="color:var(--muted)">천건</span></td><td class="num">7,594</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="up">+0.12%</span></td><td class="num"><span class="up">+3.89%</span></td><td class="num">41.7%</td></tr>
+      <tr><td><strong>고용비용지수(ECI)</strong> <span style="color:var(--muted)">지수</span> <span class="chip">기준일 오래됨</span></td><td class="num">175.62</td><td>2026-01-01 <span style="color:var(--muted)">(1분기)</span></td><td>분기</td><td class="num"><span class="up">+0.90%</span></td><td class="num"><span class="up">+3.43%</span></td><td class="num">100.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 가장 신선한 신호인 <strong>주간 청구건수(7/18 주 18.7만)가 5년 분포의 사실상 바닥(백분위 0.4%)</strong>이라, 해고발(發) 고용 악화 신호는 데이터에 없다. 반면 실업률 4.2%는 1년 전보다 0.1%p 높고 5년 백분위 74.6%로 저점 국면은 지났으며, 비농업 고용 증가율도 전년비 +0.32%로 완만하다 — <strong>"해고는 없지만 채용 확장도 세지 않은" 견조·감속 공존</strong>이 이번 스냅샷의 고용 좌표다. JOLTS 구인(백분위 41.7%)이 중간 수준인 것도 같은 방향이다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>성장·소비 — 소매·소비지출은 강하고, 제조는 미지근</h2>
+  <p class="lead">소매판매·산업생산은 6월, 내구재·소득·소비지출은 5월 관측. 분기 GDP는 1분기(2026-01-01) 관측이 마지막으로 <strong>기준일이 오래됐다</strong> — 2분기 속보가 아직 아카이브에 반영되지 않았다는 뜻이며, 숨기지 않고 그대로 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>소매판매</strong> <span style="color:var(--muted)">백만$</span></td><td class="num"><strong>768,553</strong></td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+0.22%</span></td><td class="num"><span class="up">+6.72%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>개인소비지출(PCE)</strong> <span style="color:var(--muted)">십억$</span></td><td class="num">22,059.8</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="up">+0.71%</span></td><td class="num"><span class="up">+6.29%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>개인소득</strong> <span style="color:var(--muted)">십억$</span></td><td class="num">26,916.4</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="up">+0.68%</span></td><td class="num"><span class="up">+3.82%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>산업생산</strong> <span style="color:var(--muted)">지수(2017=100)</span></td><td class="num">102.64</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+0.08%</span></td><td class="num"><span class="up">+1.14%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>설비가동률</strong> <span style="color:var(--muted)">%</span></td><td class="num">76.09</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−0.01%p</span></td><td class="num"><span class="down">−0.09%p</span></td><td class="num">28.3%</td></tr>
+      <tr><td><strong>내구재 주문</strong> <span style="color:var(--muted)">백만$</span></td><td class="num">332,218</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="down">−4.47%</span></td><td class="num"><span class="down">−3.44%</span></td><td class="num">96.7%</td></tr>
+      <tr><td><strong>시카고연은 전미활동지수(CFNAI)</strong> <span style="color:var(--muted)">지수 · 부호 교차</span></td><td class="num">−0.02</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+0.17p</span></td><td class="num"><span class="up">+0.07p</span></td><td class="num">61.7%</td></tr>
+      <tr><td><strong>명목 GDP</strong> <span style="color:var(--muted)">십억$(연율)</span> <span class="chip">기준일 오래됨</span></td><td class="num">31,865.7</td><td>2026-01-01 <span style="color:var(--muted)">(1분기)</span></td><td>분기</td><td class="num"><span class="up">+1.41%</span></td><td class="num"><span class="up">+6.07%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>실질 GDP</strong> <span style="color:var(--muted)">십억$(2017, 연율)</span> <span class="chip">기준일 오래됨</span></td><td class="num">24,180.4</td><td>2026-01-01 <span style="color:var(--muted)">(1분기)</span></td><td>분기</td><td class="num"><span class="up">+0.52%</span></td><td class="num"><span class="up">+2.68%</span></td><td class="num">100.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>부호 교차 지표 표기.</strong> CFNAI는 0을 넘나드는 지표라 아카이브가 %변화율을 산출하지 않는다(기준값이 음수이면 %의 방향이 왜곡됨). 이 표에서는 <strong>포인트(p) 변화</strong>로 표기했다: 전월 −0.19 → −0.02로 <span class="up">+0.17p</span> 개선, 전년 동월 대비 +0.07p.
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 소비 축은 강하다 — 소매판매 전년비 <span class="up">+6.72%</span>·PCE <span class="up">+6.29%</span>는 소득 증가(+3.82%)를 웃돈다. 반면 제조 축은 미지근하다 — 산업생산 전년비 +1.14%에 그치고, <strong>설비가동률 76.09%는 5년 백분위 28.3%의 하위권</strong>, 내구재 주문은 전년비 <span class="down">−3.44%</span>다. CFNAI −0.02는 "성장이 장기 추세를 소폭 하회"라는 뜻으로, 소비 주도·제조 부진의 비대칭 성장을 요약한다. 1분기 실질 GDP 전년비 +2.68%는 참고치일 뿐 — 기준일이 반년 전이라 현재 국면 판단에는 월간 지표를 우선한다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>금리 — 10년물은 5년 백분위 98%, 커브는 +0.34%p</h2>
+  <p class="lead">일간(미 국채·한국 기준금리)·주간(모기지) 지표라 기준일이 7/22~7/23으로 가장 신선한 묶음이다. 10Y−2Y 스프레드는 부호 교차 지표라 %변화율 없이 %p 변화로만 표기한다. 한국 기준금리는 비교용으로 함께 둔다(출처: 한국은행 ECOS).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>미 국채 10년물</strong> <span style="color:var(--muted)">%</span></td><td class="num"><strong>4.67</strong></td><td>2026-07-22</td><td>일간</td><td class="num"><span class="up">+0.04%p</span></td><td class="num"><span class="up">+0.32%p</span></td><td class="num">98.0%</td></tr>
+      <tr><td><strong>미 국채 2년물</strong> <span style="color:var(--muted)">%</span></td><td class="num">4.31</td><td>2026-07-22</td><td>일간</td><td class="num"><span class="up">+0.05%p</span></td><td class="num"><span class="up">+0.48%p</span></td><td class="num">71.3%</td></tr>
+      <tr><td><strong>10Y−2Y 스프레드</strong> <span style="color:var(--muted)">%p · 부호 교차</span></td><td class="num">+0.34</td><td>2026-07-23</td><td>일간</td><td class="num"><span class="down">−0.02%p</span></td><td class="num"><span class="down">−0.18%p</span></td><td class="num">61.0%</td></tr>
+      <tr><td><strong>30년 모기지금리</strong> <span style="color:var(--muted)">%</span></td><td class="num">6.58</td><td>2026-07-23</td><td>주간</td><td class="num"><span class="up">+0.03%p</span></td><td class="num"><span class="down">−0.16%p</span></td><td class="num">56.3%</td></tr>
+      <tr><td><strong>한국 기준금리</strong> <span style="color:var(--muted)">% · ECOS</span></td><td class="num">2.75</td><td>2026-07-22</td><td>일간</td><td class="num">0.00%p (동결)</td><td class="num"><span class="up">+0.25%p</span></td><td class="num">52.5%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> <strong>10년물 4.67%는 최근 5년 분포의 거의 꼭대기(백분위 98.0%)</strong>다. 2년물(백분위 71.3%)보다 장기 쪽이 상대적으로 더 높은 위치에 있고, 커브(10Y−2Y)는 +0.34%p로 정상(우상향) 기울기를 유지하되 1년 전보다 0.18%p 평탄해졌다. 월간 물가가 하락 반전(§2)했는데도 장기금리가 5년 상단에 머무는 조합은, 채권시장이 물가 한 달치보다 <strong>공급·기간 프리미엄 쪽 부담</strong>을 더 쳐주고 있을 가능성을 시사한다 — 다만 이는 아카이브 수치의 위치 관계에서 읽은 해석이며, 원인 규명은 이 리포트 범위 밖이다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">6</span>주택 — 착공은 6월 급반등, 신규판매는 5년 하위권</h2>
+  <p class="lead">착공·신규·기존판매는 6월 관측. 케이스-쉴러 주택가격은 4월(2026-04-01) 관측이 마지막으로 <strong>기준일이 오래됐다</strong> — 이 지수는 원래 두 달가량 늦게 발표된다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>주택착공</strong> <span style="color:var(--muted)">천호(연율)</span></td><td class="num"><strong>1,427</strong></td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+19.02%</span></td><td class="num"><span class="up">+3.48%</span></td><td class="num">58.3%</td></tr>
+      <tr><td><strong>신규주택판매</strong> <span style="color:var(--muted)">천호(연율)</span></td><td class="num">628</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+1.62%</span></td><td class="num"><span class="down">−5.56%</span></td><td class="num">20.0%</td></tr>
+      <tr><td><strong>기존주택판매</strong> <span style="color:var(--muted)">호(연율)</span></td><td class="num">4,090,000</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="down">−2.39%</span></td><td class="num"><span class="up">+2.76%</span></td><td class="num">69.2%</td></tr>
+      <tr><td><strong>케이스-쉴러 주택가격</strong> <span style="color:var(--muted)">지수(2000=100)</span> <span class="chip">기준일 오래됨</span></td><td class="num">332.68</td><td>2026-04-01</td><td>월간</td><td class="num"><span class="up">+0.77%</span></td><td class="num"><span class="up">+0.84%</span></td><td class="num">100.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 6월 착공이 전월비 <span class="up">+19.02%</span>로 튀었다 — 월간 착공은 원래 변동성이 큰 지표라 한 달 급등으로 추세를 단정하긴 이르지만, 전년비도 +3.48%로 플러스다. 수요 쪽은 갈린다: <strong>신규주택판매는 5년 백분위 20.0%의 하위권</strong>에 전년비 <span class="down">−5.56%</span>로 부진하고, 기존주택판매는 전년비 +2.76%로 소폭 회복. 모기지 6.58%(§5)가 여전히 수요를 누르는 가운데, 집값(케이스-쉴러)은 4월 기준 전년비 +0.84%로 <strong>상승이 거의 멈춘 정체</strong> 상태다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">7</span>환율·무역 — 원화는 5년 상단의 약세권, 무역적자는 확대</h2>
+  <p class="lead">달러지수·원/달러는 일간(7/17·7/24), 미 무역수지는 5월, 한국 반도체 수출은 6월 관측. 한국 지표(ECOS·관세청)는 비교 맥락용으로 함께 둔다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>미 달러지수(Broad)</strong> <span style="color:var(--muted)">지수(2006=100)</span></td><td class="num">120.53</td><td>2026-07-17</td><td>일간</td><td class="num"><span class="up">+0.17%</span></td><td class="num"><span class="down">−0.09%</span></td><td class="num">47.5%</td></tr>
+      <tr><td><strong>원/달러 매매기준율</strong> <span style="color:var(--muted)">원 · ECOS</span></td><td class="num"><strong>1,469.4</strong></td><td>2026-07-24</td><td>일간</td><td class="num"><span class="down">−11.5원</span> (−0.78%)</td><td class="num"><span class="up">+90.3원</span> (+6.55%)</td><td class="num">89.6%</td></tr>
+      <tr><td><strong>미 무역수지</strong> <span style="color:var(--muted)">백만$ · 부호 교차</span></td><td class="num"><span class="down">−77,585</span></td><td>2026-05-01</td><td>월간</td><td class="num"><span class="down">−23,015 (적자 확대)</span></td><td class="num"><span class="down">−10,837 (적자 확대)</span></td><td class="num">23.3%</td></tr>
+      <tr><td><strong>한국 반도체(IC) 수출액</strong> <span style="color:var(--muted)">$ · 관세청</span></td><td class="num">33,567,818,253</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+14.04%</span></td><td class="num"><span class="up">+173.90%</span></td><td class="num">100.0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>부호 교차 지표 표기.</strong> 무역수지는 음수(적자)를 오가는 지표라 아카이브가 %변화율을 산출하지 않는다. 표에는 <strong>절대액 변화(백만$)</strong>로 표기했고, 색은 "적자가 커졌다"는 음(−)의 방향을 따랐다(전월비 230.2억$·전년비 108.4억$ 적자 확대). 반도체 수출 전년비 <strong>+173.90%</strong>는 이례적으로 큰 수치로, 전년 동월 기저가 극단적으로 낮았음을 시사한다 — 아카이브 관측값 그대로이며 별도 검증은 하지 않았다.
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 달러지수는 5년 백분위 47.5%로 <strong>분포의 한가운데</strong>인데 원/달러는 백분위 89.6%로 <strong>5년 상단</strong>이다 — 달러 전반이 강해서라기보다 <strong>원화 고유의 약세</strong>가 크다는 뜻이다(전년비 +90.3원). 직전 관측에선 −11.5원으로 소폭 되돌림. 미 무역적자는 5월 775.9억$로 한 달 새 230.2억$ 확대돼 5년 분포 하위권(백분위 23.3% — 적자가 큰 쪽)에 있다.</p>
+  </div></div>
+</section>
+
+<section>
+  <h2><span class="idx">8</span>통화·신용·심리 — 대출은 늘고, 소비심리는 5년 최저권</h2>
+  <p class="lead">M2·소비자여신은 5월, 은행 총대출은 7/8 주간, 기업대출은 6월 월간 관측. 미시간대 소비자심리는 5월 관측이 마지막이다(이 지표는 발표 지연이 있다).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">최신값</th><th>기준일</th><th>주기</th><th class="num">전기비</th><th class="num">전년비</th><th class="num">5년 백분위</th></tr></thead>
+    <tbody>
+      <tr><td><strong>통화량 M2</strong> <span style="color:var(--muted)">십억$</span></td><td class="num">23,052.3</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="up">+1.09%</span></td><td class="num"><span class="up">+5.58%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>은행 총대출</strong> <span style="color:var(--muted)">십억$</span></td><td class="num">13,857.0</td><td>2026-07-08</td><td>주간</td><td class="num"><span class="up">+0.03%</span></td><td class="num"><span class="up">+6.93%</span></td><td class="num">99.2%</td></tr>
+      <tr><td><strong>기업대출</strong> <span style="color:var(--muted)">십억$</span></td><td class="num">2,894.3</td><td>2026-06-01</td><td>월간</td><td class="num"><span class="up">+0.31%</span></td><td class="num"><span class="up">+7.99%</span></td><td class="num">100.0%</td></tr>
+      <tr><td><strong>소비자여신</strong> <span style="color:var(--muted)">백만$ (≈5.15조$)</span></td><td class="num">5,154,538.9</td><td>2026-05-01</td><td>월간</td><td class="num"><span class="down">−0.004%</span></td><td class="num"><span class="up">+2.10%</span></td><td class="num">98.3%</td></tr>
+      <tr><td><strong>미시간대 소비자심리</strong> <span style="color:var(--muted)">지수</span></td><td class="num"><strong>44.8</strong></td><td>2026-05-01</td><td>월간</td><td class="num"><span class="down">−10.04%</span></td><td class="num"><span class="down">−14.18%</span></td><td class="num">1.7%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>아카이브 메타 정정 반영.</strong> 직전 검증에서 발견된 카탈로그 이상 2건은 수정·재수집이 완료돼 이번 표에 정정 반영했다: <strong>기업대출</strong>은 주기 라벨이 월간으로 바로잡혀 스테일 오탐이 해소됐고(6월 관측, 정상 범위), <strong>소비자여신</strong>은 단위가 백만$로 정정돼 잔액 약 <strong>5.15조$</strong>(FRED TOTALSL 원단위 기준)로 정합적이다.
+  </div>
+  <div class="card" style="margin-top:14px"><div class="prose">
+    <p><strong>해석.</strong> 신용 공급은 죄어들지 않았다 — 은행 총대출 전년비 <span class="up">+6.93%</span>·기업대출 <span class="up">+7.99%</span>·M2 <span class="up">+5.58%</span>로 모두 확장 중이며 5년 분포 상단이다. 소비자여신(약 5.15조$)도 전년비 +2.10%로 완만히 늘고 있다. 그 반대편에서 <strong>미시간대 소비자심리 44.8은 5년 백분위 1.7%의 최저권</strong>에 전월비 −10.04%로 더 떨어졌다. 실제 소비 지출(§4, 전년비 +6% 대)은 강한데 심리는 바닥이라는 괴리 — 물가 레벨(§2)과 고금리(§5)가 체감을 누르고 있다는 해석과 부합하는 배치다.</p>
+  </div></div>
+</section>
+
+<footer>
+  <strong>데이터 기준일에 대하여.</strong>
+  <div class="srclist">
+  <span>· 각 행의 "기준일"은 아카이브 메타의 last_obs_date로, FRED·관세청 관례상 <strong>해당 통계 기간의 시작일</strong>이다(예: 2026-06-01 = "2026년 6월분"). 실제 발표는 기간 종료 후 2~4주(월간)·수개월(분기 확정치) 지연되므로, 기준일이 오늘보다 과거인 것 자체는 정상이다.</span>
+  <span>· <strong>기준일 오래됨</strong> 표시는 아카이브의 스테일 판정(주기별 임계 초과)을 그대로 옮긴 것이다: 고용비용지수·명목 GDP·실질 GDP(1분기), 케이스-쉴러(4월). 직전 검증에서 스테일 오탐이었던 기업대출은 주기 라벨 정정(월간)으로 해소됐다.</span>
+  <span>· 부호 교차 지표(전미활동지수·10Y−2Y 스프레드·무역수지)는 %변화율 대신 포인트/절대액 변화로 표기했다 — 음수 기준의 %변화율은 방향이 왜곡되기 때문이며, 아카이브도 해당 지표의 %를 산출하지 않는다.</span>
+  <span>· 백분위·전년비·전기비는 아카이브 시계열에서 산출된 값이며, 이 리포트는 외부 수치를 추가로 조회하지 않았다.</span>
+  </div>
+  데이터 출처: 미 FRED(공식 지표 미러·개정치 반영), 한국은행 ECOS(기준금리·원/달러), 관세청 품목별 수출입(반도체 수출). 경제지표 아카이브 36개 지표 전수 조회, 2026-07-25 조회 기준.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목·자산의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
