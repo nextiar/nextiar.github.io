@@ -577,6 +577,20 @@ footer a { color: var(--link); }
   #facet-box summary { pointer-events: none; }
   #facet-box summary .hint { display: none; }
 }
+.cal-strip { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.cal-strip-inner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--panel);
+  padding: 9px 14px; margin: 10px 0 2px; text-decoration: none; color: var(--ink); }
+.cal-strip-inner:hover { background: var(--sel); text-decoration: none; }
+.cs-title { font-size: 12px; font-weight: 700; color: var(--ink-2); flex: none; }
+.cs-items { display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; }
+.cs-items b { font-weight: 650; }
+.cs-items .ci { border: 1px solid var(--border); border-radius: 99px; padding: 2px 9px;
+  background: var(--panel-2); white-space: nowrap; }
+.cs-items .ci .dd { color: var(--accent); font-weight: 700; margin-right: 4px; }
+.cs-more { color: var(--muted); font-size: 12px; }
+.cs-go { margin-left: auto; color: var(--accent); font-size: 12px; font-weight: 650; flex: none; }
+@media (max-width: 640px) { .cal-strip { padding: 0 14px; } .cs-go { display: none; } }
 </style>
 </head>
 <body>
@@ -584,6 +598,7 @@ footer a { color: var(--link); }
   <header class="topbar">
     <a class="brand" href="index.html"><span class="brand-mark">▮</span>AI AGENT<span class="brand-sub"> RESEARCH</span></a>
     <nav class="topnav" aria-label="보조 페이지">
+      <a href="calendar.html">캘린더</a>
       <a href="methodology.html">방법론</a>
       <a href="track-record.html">트랙레코드</a>
       <a href="feed.xml">RSS</a>
@@ -625,6 +640,15 @@ footer a { color: var(--link); }
         <span class="lbl">시장 비중 · 리포트 기준</span>
       </div>
     </div>
+  </section>
+
+  <section class="cal-strip" id="cal-strip" hidden aria-label="이번 주 이벤트">
+    <a class="cal-strip-inner" href="calendar.html">
+      <span class="cs-title">이번 주 이벤트</span>
+      <span class="cs-items" id="cs-items"></span>
+      <span class="cs-more" id="cs-more"></span>
+      <span class="cs-go">캘린더 →</span>
+    </a>
   </section>
 
   <section class="rail-sec" id="coverage">
@@ -1521,6 +1545,41 @@ footer a { color: var(--link); }
 
   resort();
   setTab(tab); // 초기 탭(해시 존중) — apply 포함
+
+  /* 이번 주 이벤트 스트립 — data/calendar.json (없거나 실패 시 스트립 비노출)
+     iso()는 로컬 날짜 문자열을 직접 조립한다: toISOString()은 UTC 기준이라 KST(UTC+9)에서
+     today.setHours(0,0,0,0) 이후 그대로 넘기면 항상 하루 전 날짜 문자열이 나와(로컬 자정 =
+     전날 15:00 UTC) 이번 주 윈도우 전체가 하루씩 밀린다 — getFullYear/Month/Date 조합으로 회피. */
+  (function () {
+    fetch("data/calendar.json").then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function (d) {
+      var today = new Date(); today.setHours(0, 0, 0, 0);
+      var end = new Date(today); end.setDate(end.getDate() + 7);
+      var iso = function (dt) {
+        var m = dt.getMonth() + 1, day = dt.getDate();
+        return dt.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
+      };
+      var evs = d.events.filter(function (e) {
+        return e.date >= iso(today) && e.date <= iso(end);
+      }).sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      if (!evs.length) return;
+      var show = evs.slice(0, 6);
+      document.getElementById("cs-items").innerHTML = show.map(function (e) {
+        var dday = Math.round((new Date(e.date + "T00:00:00") - today) / 864e5);
+        var name = e.kind === "earnings"
+          ? "<b>" + e.symbol + "</b>" + (e.hour ? " " + e.hour : "")
+          : e.title.replace(/^미국 /, "");
+        return "<span class=\"ci\"><span class=\"dd\">" + (dday === 0 ? "오늘" : "D-" + dday) +
+          "</span>" + (+e.date.slice(5, 7)) + "/" + (+e.date.slice(8)) + " " + name + "</span>";
+      }).join("");
+      if (evs.length > show.length) {
+        document.getElementById("cs-more").textContent = "+" + (evs.length - show.length);
+      }
+      document.getElementById("cal-strip").hidden = false;
+    }).catch(function (err) { console.error("cal-strip", err); });
+  })();
 })();
 </script>
 <script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
