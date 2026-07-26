@@ -90,7 +90,7 @@ body { margin: 0; background: var(--page); color: var(--ink);
   <p class="tz-note">날짜는 미 동부 기준 · amc=마감 후(KST 다음날 새벽) · bmo=개장 전(KST 당일 밤) · 일정은 변동될 수 있음</p>
   <div class="legend" id="legend"></div>
   <div class="dows grid" id="dows"></div>
-  <div class="grid" id="grid" role="grid" aria-label="월 캘린더"></div>
+  <div class="grid" id="grid" aria-label="월 캘린더"></div>
   <div class="agenda" id="agenda"></div>
   <div class="detail" id="detail" role="region" aria-live="polite"></div>
   <p class="updated" id="updated"></p>
@@ -115,21 +115,31 @@ body { margin: 0; background: var(--page); color: var(--ink);
       (byMonth[ym(e.date)] = byMonth[ym(e.date)] || []).push(e);
     });
     months = Object.keys(byMonth).sort();
+    document.getElementById("legend").innerHTML =
+      CATS.map(function (c) {
+        return "<span><i style=\"background:var(--c-" + c + ")\"></i>" + c + "</span>";
+      }).join("") + "<span><i style=\"background:var(--c-earn)\"></i>실적</span>";
+    document.getElementById("updated").textContent =
+      "데이터 기준: " + (data.updated_at || "").replace("T", " ").slice(0, 16) + " KST";
+    if (!months.length) { // 이벤트가 아예 없는 경우 — render() 의 months[mi] undefined 크래시 방지
+      document.getElementById("prev").disabled = true;
+      document.getElementById("next").disabled = true;
+      document.getElementById("dows").innerHTML = "";
+      document.getElementById("grid").innerHTML =
+        "<p style=\"grid-column:1/-1;color:var(--muted)\">표시할 이벤트가 없습니다.</p>";
+      document.getElementById("agenda").innerHTML =
+        "<p style=\"color:var(--muted)\">표시할 이벤트가 없습니다.</p>";
+      return;
+    }
     var cur = ym(todayISO());
     mi = months.indexOf(cur);
     if (mi < 0) { // 이번 달 데이터 없으면 가장 가까운 달
       mi = 0;
       for (var i = 0; i < months.length; i++) if (months[i] <= cur) mi = i;
     }
-    document.getElementById("legend").innerHTML =
-      CATS.map(function (c) {
-        return "<span><i style=\"background:var(--c-" + c + ")\"></i>" + c + "</span>";
-      }).join("") + "<span><i style=\"background:var(--c-earn)\"></i>실적</span>";
     render();
     document.getElementById("prev").onclick = function () { if (mi > 0) { mi--; render(); } };
     document.getElementById("next").onclick = function () { if (mi < months.length - 1) { mi++; render(); } };
-    document.getElementById("updated").textContent =
-      "데이터 기준: " + (data.updated_at || "").replace("T", " ").slice(0, 16) + " KST";
   }
 
   function chipHTML(e) {
@@ -207,8 +217,13 @@ body { margin: 0; background: var(--page); color: var(--ink);
     .then(build)
     .catch(function (err) {
       console.error("calendar load failed", err);
+      // #grid 는 640px 이하에서 display:none 이라 모바일에서는 안 보임 — #agenda 에도 동일 문구를 넣어야 함
+      var msg = "<p style=\"color:var(--muted)\">캘린더 데이터를 불러오지 못했습니다.</p>";
       document.getElementById("grid").innerHTML =
         "<p style=\"grid-column:1/-1;color:var(--muted)\">캘린더 데이터를 불러오지 못했습니다.</p>";
+      document.getElementById("agenda").innerHTML = msg;
+      document.getElementById("prev").disabled = true;
+      document.getElementById("next").disabled = true;
     });
 })();
 </script>
