@@ -102,7 +102,10 @@ body { margin: 0; background: var(--page); color: var(--ink);
   var DATA = null, byMonth = {}, months = [], mi = -1; // mi = 현재 월 인덱스
 
   function ym(dateStr) { return dateStr.slice(0, 7); }
-  function todayISO() { return new Date().toISOString().slice(0, 10); } // KST 근사 — tz-note 로 고지
+  function todayISO() { // 로컬 날짜 조립 — index.html 위젯(Task 4)과 동일한 방식으로 통일
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
   function label(e) {
     return e.kind === "earnings"
       ? e.symbol + (e.hour ? " " + e.hour : "")
