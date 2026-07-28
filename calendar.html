@@ -200,7 +200,8 @@ body { margin: 0; background: var(--page); color: var(--ink);
     if (!e) return;
     var rows = [["날짜", esc(e.date) + (e.kind === "earnings" && e.hour ? " · " + esc(e.hour) : "")]];
     if (e.kind === "earnings") {
-      rows.push(["분기", e.year && e.quarter ? e.year + " Q" + e.quarter : "—"]);
+      var yr = Number(e.year), q = Number(e.quarter);
+      rows.push(["분기", !isNaN(yr) && !isNaN(q) && e.year && e.quarter ? yr + " Q" + q : "—"]);
       if (e.estimate && (e.estimate.eps != null || e.estimate.revenue != null)) {
         var estEps = e.estimate.eps == null ? NaN : Number(e.estimate.eps);
         var estRev = e.estimate.revenue == null ? NaN : Number(e.estimate.revenue);
