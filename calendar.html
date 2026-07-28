@@ -240,12 +240,18 @@ body { margin: 0; background: var(--page); color: var(--ink);
           var yoy = Number(r.yoy_pct);
           if (!isNaN(yoy)) rows.push(["전년 대비", (yoy > 0 ? "+" : "") + yoy + "%"]);
         }
+        if (r.actual != null && r.prior != null) {
+          var chg = Number(r.actual) - Number(r.prior);
+          if (!isNaN(chg)) {
+            rows.push(["전기 대비", (chg > 0 ? "+" : "") + Number(chg.toFixed(3))]);
+          }
+        }
       }
     }
     var det = document.getElementById("detail");
     det.innerHTML = "<h2>" + (e.kind === "earnings" ? esc(e.symbol) + " 실적 발표" : esc(e.title)) + "</h2>" +
       "<table>" + rows.map(function (r) { return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("") + "</table>" +
-      (e.report && e.report.url && /^(https?:\/\/|\/|[a-z0-9_-]+\.html)/i.test(e.report.url)
+      (e.report && e.report.url && /^(https?:\/\/|\/(?![\/\\])|[a-z0-9_-]+\.html)/i.test(e.report.url)
         ? "<a class=\"rlink\" href=\"" + esc(e.report.url) + "\">분석 리포트 →</a>" : ""); // D단계 슬롯
     det.style.display = "block";
     det.scrollIntoView({ behavior: "smooth", block: "nearest" });
