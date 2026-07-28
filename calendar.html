@@ -101,6 +101,11 @@ body { margin: 0; background: var(--page); color: var(--ink);
   var CATS = ["물가", "고용", "성장", "통화정책", "기타"];
   var DATA = null, byMonth = {}, months = [], mi = -1; // mi = 현재 월 인덱스
 
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+    });
+  }
   function ym(dateStr) { return dateStr.slice(0, 7); }
   function todayISO() { // 로컬 날짜 조립 — index.html 위젯(Task 4)과 동일한 방식으로 통일
     var d = new Date();
@@ -149,7 +154,7 @@ body { margin: 0; background: var(--page); color: var(--ink);
     var cls = e.kind === "earnings" ? "chip earn" : "chip";
     var style = e.kind === "econ" ? " style=\"background:var(--c-" + (CATS.indexOf(e.category) >= 0 ? e.category : "기타") + ")\"" : "";
     var mark = (e.result ? " ✓" : "") + (e.report ? " 📄" : "");
-    return "<button class=\"" + cls + "\"" + style + " data-id=\"" + e.id + "\">" + label(e) + mark + "</button>";
+    return "<button class=\"" + cls + "\"" + style + " data-id=\"" + esc(e.id) + "\">" + esc(label(e)) + mark + "</button>";
   }
 
   function render() {
@@ -193,7 +198,7 @@ body { margin: 0; background: var(--page); color: var(--ink);
     if (!btn || !DATA) return;
     var e = DATA.events.find(function (x) { return x.id === btn.dataset.id; });
     if (!e) return;
-    var rows = [["날짜", e.date + (e.kind === "earnings" && e.hour ? " · " + e.hour : "")]];
+    var rows = [["날짜", esc(e.date) + (e.kind === "earnings" && e.hour ? " · " + esc(e.hour) : "")]];
     if (e.kind === "earnings") {
       rows.push(["분기", e.year && e.quarter ? e.year + " Q" + e.quarter : "—"]);
       if (e.estimate && (e.estimate.eps != null || e.estimate.revenue != null)) {
@@ -201,16 +206,36 @@ body { margin: 0; background: var(--page); color: var(--ink);
           " · 매출 " + (e.estimate.revenue != null ? (e.estimate.revenue / 1e9).toFixed(1) + "B$" : "—")]);
       }
     } else {
-      rows.push(["분류", e.category + " · " + ({fred: "FRED", rule: "규칙 추정", fed: "연준 공식"}[e.source] || e.source)]);
+      rows.push(["분류", esc(e.category) + " · " + esc({fred: "FRED", rule: "규칙 추정", fed: "연준 공식"}[e.source] || e.source)]);
     }
-    rows.push(["상태", e.result ? "발표됨" : "예정"]);
-    if (e.result) {  // C단계 슬롯 — result 채워지면 자동 표시
-      Object.keys(e.result).forEach(function (k) { rows.push([k, String(e.result[k])]); });
+    var st = "예정";
+    if (e.status === "released") {
+      st = e.result ? "발표됨"
+        : (e.source === "rule" ? "발표됨 · 결과 자동 수집 대상 아님" : "발표됨 · 결과 미수집");
+    }
+    rows.push(["상태", st]);
+    if (e.result) {
+      var r = e.result;
+      var n = function (v, d) { return v == null ? "—" : Number(v).toFixed(d == null ? 2 : d); };
+      var pct = function (v) { return v == null ? "" : " (" + (v > 0 ? "+" : "") + v + "%)"; };
+      if (e.kind === "earnings") {
+        rows.push(["EPS", n(r.eps_actual) + " · 컨센 " + n(r.eps_estimate) + pct(r.eps_surprise_pct)]);
+        rows.push(["매출", (r.revenue_actual == null ? "—" : (r.revenue_actual / 1e9).toFixed(1) + "B$")
+          + " · 컨센 " + (r.revenue_estimate == null ? "—" : (r.revenue_estimate / 1e9).toFixed(1) + "B$")
+          + pct(r.revenue_surprise_pct)]);
+      } else if (r.decision) {
+        rows.push(["결정", esc(r.decision) + " · 상단 " + n(r.target_upper) + "% (직전 " + n(r.prior) + "%)"]);
+      } else {
+        rows.push(["실제", n(r.actual, 3) + (r.unit ? " " + esc(r.unit) : "")]);
+        rows.push(["직전", n(r.prior, 3)]);
+        if (r.yoy_pct != null) rows.push(["전년 대비", (r.yoy_pct > 0 ? "+" : "") + r.yoy_pct + "%"]);
+      }
     }
     var det = document.getElementById("detail");
-    det.innerHTML = "<h2>" + (e.kind === "earnings" ? e.symbol + " 실적 발표" : e.title) + "</h2>" +
+    det.innerHTML = "<h2>" + (e.kind === "earnings" ? esc(e.symbol) + " 실적 발표" : esc(e.title)) + "</h2>" +
       "<table>" + rows.map(function (r) { return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("") + "</table>" +
-      (e.report && e.report.url ? "<a class=\"rlink\" href=\"" + e.report.url + "\">분석 리포트 →</a>" : ""); // D단계 슬롯
+      (e.report && e.report.url && /^(https?:\/\/|\/|[a-z0-9_-]+\.html)/i.test(e.report.url)
+        ? "<a class=\"rlink\" href=\"" + esc(e.report.url) + "\">분석 리포트 →</a>" : ""); // D단계 슬롯
     det.style.display = "block";
     det.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
