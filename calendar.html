@@ -202,8 +202,10 @@ body { margin: 0; background: var(--page); color: var(--ink);
     if (e.kind === "earnings") {
       rows.push(["분기", e.year && e.quarter ? e.year + " Q" + e.quarter : "—"]);
       if (e.estimate && (e.estimate.eps != null || e.estimate.revenue != null)) {
-        rows.push(["컨센서스", "EPS " + (e.estimate.eps != null ? e.estimate.eps : "—") +
-          " · 매출 " + (e.estimate.revenue != null ? (e.estimate.revenue / 1e9).toFixed(1) + "B$" : "—")]);
+        var estEps = e.estimate.eps == null ? NaN : Number(e.estimate.eps);
+        var estRev = e.estimate.revenue == null ? NaN : Number(e.estimate.revenue);
+        rows.push(["컨센서스", "EPS " + (isNaN(estEps) ? "—" : estEps) +
+          " · 매출 " + (isNaN(estRev) ? "—" : (estRev / 1e9).toFixed(1) + "B$")]);
       }
     } else {
       rows.push(["분류", esc(e.category) + " · " + esc({fred: "FRED", rule: "규칙 추정", fed: "연준 공식"}[e.source] || e.source)]);
@@ -217,7 +219,12 @@ body { margin: 0; background: var(--page); color: var(--ink);
     if (e.result) {
       var r = e.result;
       var n = function (v, d) { return v == null ? "—" : Number(v).toFixed(d == null ? 2 : d); };
-      var pct = function (v) { return v == null ? "" : " (" + (v > 0 ? "+" : "") + v + "%)"; };
+      var pct = function (v) {
+        if (v == null) return "";
+        var x = Number(v);
+        if (isNaN(x)) return "";
+        return " (" + (x > 0 ? "+" : "") + x + "%)";
+      };
       if (e.kind === "earnings") {
         rows.push(["EPS", n(r.eps_actual) + " · 컨센 " + n(r.eps_estimate) + pct(r.eps_surprise_pct)]);
         rows.push(["매출", (r.revenue_actual == null ? "—" : (r.revenue_actual / 1e9).toFixed(1) + "B$")
@@ -228,7 +235,10 @@ body { margin: 0; background: var(--page); color: var(--ink);
       } else {
         rows.push(["실제", n(r.actual, 3) + (r.unit ? " " + esc(r.unit) : "")]);
         rows.push(["직전", n(r.prior, 3)]);
-        if (r.yoy_pct != null) rows.push(["전년 대비", (r.yoy_pct > 0 ? "+" : "") + r.yoy_pct + "%"]);
+        if (r.yoy_pct != null) {
+          var yoy = Number(r.yoy_pct);
+          if (!isNaN(yoy)) rows.push(["전년 대비", (yoy > 0 ? "+" : "") + yoy + "%"]);
+        }
       }
     }
     var det = document.getElementById("detail");
