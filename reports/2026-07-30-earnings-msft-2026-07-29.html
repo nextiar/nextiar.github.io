@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="MSFT">
+<title>마이크로소프트(MSFT) 4Q FY26 실적 리뷰 — EPS 9.5% 서프라이즈·Azure +43%, 캐펙스 하향이 겁을 풀었다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-30-earnings-msft-2026-07-29.html">
+<meta property="og:title" content="마이크로소프트(MSFT) 4Q FY26 실적 리뷰 — EPS 9.5% 서프라이즈·Azure +43%, 캐펙스 하향이 겁을 풀었다">
+<meta property="og:description" content="4Q FY26 EPS $4.74로 컨센 +9.5%·매출 $90.01B로 +0.7% 동시 상회, Azure +43% 재가속과 2026년 캐펙스 하향으로 시간외 약 +9% — 7/22 비중확대 심층의 첫 검증 통과.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-30-earnings-msft-2026-07-29.html">
+<meta name="description" content="4Q FY26 EPS $4.74로 컨센 +9.5%·매출 $90.01B로 +0.7% 동시 상회, Azure +43% 재가속과 2026년 캐펙스 하향으로 시간외 약 +9% — 7/22 비중확대 심층의 첫 검증 통과.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-30-earnings-msft-2026-07-29.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 실적 리뷰 (Earnings Review)</div>
+  <h1>마이크로소프트(MSFT) 4Q FY26 실적 리뷰 — EPS <span class="up">9.5% 서프라이즈</span>·Azure <span class="up">+43%</span>, 캐펙스 하향이 겁을 풀었다</h1>
+  <p class="sub">2026년 7월 29일(현지) 장 마감 후(amc) 발표. 조정 EPS <strong>$4.74</strong>(컨센 $4.33, <span class="up">+9.5%</span>)·매출 <strong>$90.01B</strong>(컨센 $89.37B, <span class="up">+0.7%</span>)로 상·하단 동시 상회. Azure <span class="up">+43%</span> 재가속에 <strong>2026년 캐펙스 가이던스 하향</strong>이 겹치며 시간외 <span class="up">약 +9%</span>. 발표 직후의 사실 정리와 1차 해석에 집중한 <strong>경량 리뷰</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">🕒 데이터 기준 2026-07-30 오전 KST · 실적일 2026-07-29(amc)</span>
+</header>
+
+<div class="note cool tldr" style="margin-top:20px">
+  <strong class="tldr-h">세 줄 요약</strong>
+  <div class="tldr-item">① <strong>완승 실적</strong> — EPS $4.74로 컨센 $4.33을 <span class="up">+9.5%</span> 상회, 매출 $90.01B로 <span class="up">+0.7%</span> 상회(YoY +18%). 상·하단 동시 비트.</div>
+  <div class="tldr-item">② <strong>Azure가 +43% 재가속</strong>해 FY26 연간 매출이 사상 처음 $100B을 넘었고, CFO는 다음 분기 Azure <strong>+45%(고정환율)</strong> 가이던스를 제시(컨센 ~41%대 상회).</div>
+  <div class="tldr-item">③ 결정타는 <strong>2026년 캐펙스 가이던스 하향</strong> — 주가를 짓눌러 온 'AI 과잉투자' 공포가 풀리며 시간외 <span class="up">약 +9%</span>. 우리 7/22 심층(<span class="up">비중확대</span>·밴드 바닥)의 첫 검증 지점을 통과했다.</div>
+</div>
+
+<section>
+  <h2><span class="idx">1</span>결과 vs 컨센 <span class="chip h2-chip">상·하단 동시 비트</span></h2>
+  <p class="lead">C단계 결과 데이터(단일 소스) 그대로다. 서프라이즈는 (실제−컨센)/컨센. 등락 색은 국내 관례(호재 <span class="up">빨강</span>).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">실제</th><th class="num">컨센서스</th><th class="num">서프라이즈</th></tr></thead>
+    <tbody>
+      <tr><td><strong>조정 EPS</strong></td><td class="num">$4.74</td><td class="num">$4.3274</td><td class="num"><span class="up">+9.5%</span></td></tr>
+      <tr><td><strong>매출</strong></td><td class="num">$90.01B</td><td class="num">$89.37B</td><td class="num"><span class="up">+0.7%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 매출 서프라이즈는 <span class="up">+0.7%</span>로 얌전했지만 <strong>수익성(EPS) 서프라이즈가 +9.5%</strong>로 크게 벌어졌다 — 고마진 클라우드·소프트웨어 믹스가 개선되며 컨센이 잡지 못한 레버리지가 나왔다는 뜻이다. 매출은 전년 대비 <strong>약 +18%</strong> 성장(공개 보도 기준). 톱라인이 컨센을 살짝만 넘고도 바텀라인이 크게 튀는 조합은, 성장의 <strong>질</strong>이 좋았다는 전형적 신호다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>가이던스·세그먼트 핵심 <span class="chip cool h2-chip">Azure $100B 돌파</span></h2>
+  <p class="lead">공개 마감 보도(CNBC·Fortune·Investing.com) 기준. 매체별로 엇갈리는 세부 수치는 제외하고 다수 매체가 일치한 값만 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">값 / 방향</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Azure 및 기타 클라우드</strong></td><td class="num"><span class="up">+43% YoY</span></td><td>컨센 ~40% 상회. FY26 연간 Azure 매출 사상 첫 <strong>$100B 돌파</strong>(+41%)</td></tr>
+      <tr><td><strong>Productivity &amp; Business Processes</strong></td><td class="num"><span class="up">$37.85B (+14.3%)</span></td><td>Office·Dynamics·LinkedIn</td></tr>
+      <tr><td><strong>More Personal Computing</strong></td><td class="num"><span class="down">$12.9B (−4%)</span></td><td>PC·디바이스 부진 지속</td></tr>
+      <tr><td>FQ1 FY27 매출 가이던스</td><td class="num">$89.85~90.95B</td><td>YoY 약 +16%</td></tr>
+      <tr><td>FQ1 Azure 가이던스</td><td class="num"><span class="up">+45%(고정환율)</span></td><td>StreetAccount 컨센 ~41.4% 상회(CFO Amy Hood)</td></tr>
+      <tr><td><strong>2026년 캐펙스</strong></td><td class="num"><span class="up">종전 추정 대비 하향</span></td><td>이번 주가 반응의 핵심 촉매</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 시장이 겁내던 건 성장이 아니라 <strong>AI 캐펙스의 회수 시점</strong>이었다. 이번 발표는 정반대 조합을 냈다 — Azure는 <span class="up">+43%</span>로 오히려 재가속했는데, 회사는 <strong>2026년 캐펙스 전망을 종전보다 낮췄다</strong>. "성장은 지키면서 투자 부담은 덜겠다"는 메시지라, AI 지출 우려에 눌린 밸류에이션 디레이팅을 되돌리는 방향으로 작동했다. 반면 More Personal Computing <span class="down">−4%</span>는 PC·디바이스의 구조적 정체를 재확인시켰지만, 클라우드 서사에 가려 주가엔 영향이 제한적이었다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>시장 반응 <span class="chip h2-chip">시간외 약 +9%</span></h2>
+  <p class="lead">발표는 현지 장 마감 후(amc). 아래 현재가는 토스증권 Open API 조회값이며, 발표 전후 등락폭은 공개 마감 보도 기준이다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">토스 조회 현재가 (MSFT)</div><div class="val up">$424.84</div><div class="delta">발표 직후 강세 반영 · NASDAQ</div></div>
+    <div class="tile"><div class="lbl">발표 직후 반응(보도)</div><div class="val up">약 +9%</div><div class="delta up">시간외 급등</div></div>
+    <div class="tile"><div class="lbl">촉매</div><div class="val up">캐펙스 하향</div><div class="delta">+ Azure +43% 비트</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 실적 발표 직후 MSFT는 <strong>시간외에서 약 <span class="up">+9%</span></strong> 뛰었다(공개 보도 기준). 트리거는 ① 강한 다음 분기 매출 가이던스, ② <strong>2026년 캐펙스 하향</strong>, ③ Azure <span class="up">+43%</span> 비트의 3종 세트였다. 참고로 같은 주 알파벳·테슬라는 캐펙스 확대가 주가를 눌렀던 터라, MSFT의 "성장 유지 + 투자 절제" 조합이 상대적으로 더 돋보였다. 토스 조회 현재가 <strong>$424.84</strong>는 이 강세가 반영된 수준으로 보이나, 정확한 발표 전 종가 대비 폭은 실시간 시세로 교차확인을 권한다(리뷰 시점 데이터 기준 2026-07-30 오전 KST).</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>컨센서스 방향 <span class="chip cool h2-chip">강한 매수 유지</span></h2>
+  <p class="lead">Finnhub 애널리스트 추천 추세·다음 실적 추정(데이터 기준 2026년 7월). 발표 직후 정식 컨센 개정은 진행 중이라 방향만 관찰한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>기준월</th><th class="num">Strong Buy</th><th class="num">Buy</th><th class="num">Hold</th><th class="num">Sell</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2026-07</strong></td><td class="num">23</td><td class="num">40</td><td class="num">5</td><td class="num">0</td></tr>
+      <tr><td>2026-06</td><td class="num">23</td><td class="num">38</td><td class="num">5</td><td class="num">0</td></tr>
+      <tr><td>2026-05</td><td class="num">24</td><td class="num">36</td><td class="num">6</td><td class="num">0</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 발표 전부터 매수 우위가 압도적이었다 — 7월 기준 Strong Buy 23·Buy 40에 매도 의견은 <strong>0</strong>이고, net-buy 방향은 전월 대비 <strong>유지</strong>(±5%p 이내). 이번 완승 실적으로 하향 리스크는 낮고 목표주가 상향 쪽 개정이 나올 개연성이 높다(한 애널리스트는 이번 4Q를 "서사를 바꾼(narrative changing)" 실적으로 평가). 다음 확인 이벤트는 <strong>1Q FY27 실적(추정 2026-10-27, 추정 EPS $4.73·매출 $91.45B)</strong>이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>커버리지 연결 <span class="chip cool h2-chip">7/22 심층 검증</span></h2>
+  <p class="lead">사이트의 기존 MSFT 심층 리포트와 이번 실적의 관계.</p>
+  <div class="card">
+    <div class="prose">
+      <p>우리는 1주 전 <strong><a href="/reports/2026-07-22-microsoft-msft-deep.html">마이크로소프트(MSFT) 심층 — Azure +40%·RPO +99%인데 Fwd P/E 20배, 3년 밴드의 바닥(2026-07-22, <span class="up">비중확대</span>)</a></strong>에서, "펀더멘털은 강해졌는데 멀티플만 3년 밴드 백분위 5%까지 압축됐다"며 <strong>첫 검증 지점을 7/29 4Q FY26 실적</strong>으로 못박았다.</p>
+      <p><strong>판정 영향.</strong> 이번 결과는 그 논지를 <strong>지지</strong>한다 — Azure 재가속(+43%)으로 성장 우려는 해소됐고, 시장이 진짜 겁내던 <strong>AI 캐펙스는 2026년 가이던스 하향</strong>으로 완화됐다. 밴드 바닥에서 잡은 <span class="up">비중확대</span> 콜의 리스크/리워드가 실적으로 1차 검증된 셈이다. 다만 이 리뷰는 경량 사실 정리이며, <strong>밸류에이션 재산정(3년 밴드 갱신·PQC)은 컨센 개정이 반영된 뒤 심층 리포트에서 별도로 다룬다.</strong></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>데이터 출처.</strong></p>
+  <div class="srclist">
+    <span>· 실적 수치(EPS·매출·컨센·서프라이즈): 러너 C단계 결과 데이터(단일 소스)</span>
+    <span>· 세그먼트·가이던스·캐펙스: <a href="https://www.cnbc.com/2026/07/29/microsoft-msft-q4-earnings-report-2026.html" target="_blank" rel="noopener">CNBC</a> · <a href="https://fortune.com/2026/07/29/microsoft-azure-100-billion-annual-revenue-earnings-revenue-cloud-ai/" target="_blank" rel="noopener">Fortune</a> · <a href="https://www.investing.com/news/earnings/microsoft-beats-on-profit-and-revenue-shares-rise-after-hours-4821565" target="_blank" rel="noopener">Investing.com</a></span>
+    <span>· 현재가: 토스증권 Open API (조회 시점 2026-07-30 오전 KST) · 애널리스트 추세·다음 실적 추정: Finnhub(2026-07)</span>
+  </div>
+  <p style="margin-top:12px">본 리포트는 개인용 투자 리서치 자료로 <strong>정보 제공 목적</strong>이며, 특정 종목의 매매를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다. 수치는 발표 직후 잠정치로 확정 재무제표·컨센 개정에 따라 달라질 수 있다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-07-30 08:35 KST</div></footer>
+</div>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
