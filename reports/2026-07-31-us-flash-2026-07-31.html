@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>긴급 US 장 초반 — 애플 −9% vs 아마존 +14%, '실적 승자 선별'의 밤…그리고 애플이 지목한 메모리</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌃</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-07-31-us-flash-2026-07-31.html">
+<meta property="og:title" content="긴급 US 장 초반 — 애플 −9% vs 아마존 +14%, 실적 승자 선별의 밤과 애플이 지목한 메모리">
+<meta property="og:description" content="지수 약보합 이면의 극단 갈림 — 애플은 공급 제약 가이던스로 급락, AWS 37%는 AI 회수 증명. 애플의 &#x27;메모리 원가&#x27; 발언이 한국 슈퍼사이클의 수요 증거인 이유">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-07-31-us-flash-2026-07-31.html">
+<meta name="description" content="지수 약보합 이면의 극단 갈림 — 애플은 공급 제약 가이던스로 급락, AWS 37%는 AI 회수 증명. 애플의 &#x27;메모리 원가&#x27; 발언이 한국 슈퍼사이클의 수요 증거인 이유">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-07-31-us-flash-2026-07-31.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 긴급 US 장 초반 특별판 (US Flash)</div>
+  <h1>긴급 US 장 초반 — <span class="down">애플 −9%</span> vs <span class="up">아마존 +14%</span>, '실적 승자 선별'의 밤…그리고 애플이 지목한 <span class="up">메모리</span></h1>
+  <p class="sub">2026년 7월 31일(금) 미 세션 <strong>개장 40분(KST 23:12) 기준</strong> 긴급 분석. 지수는 약보합(S&amp;P 프록시 −0.5%)인데 체감이 나쁜 이유는 <strong>애플의 −9% 급락</strong>이다 — 실적은 비트했지만 가이던스가 "공급 제약"으로 꺾였다. 반대편에서 <strong>아마존은 AWS 37% 성장으로 +14% 폭등</strong> — 어제 MSFT 에 이어 "AI 투자는 회수된다"의 두 번째 증거다. 그리고 애플이 급락 사유로 콕 집은 것이 <strong>메모리 공급 부족과 원가 급등</strong>이라는 점이, 오늘 +17% 폭등한 한국 시장에 가장 중요한 문장이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">🌃 긴급 장중판 2026-07-31 23:12 KST 작성 · 미 세션 마감(내일 05:00 KST) 전 수치는 변동 · 확정판은 내일 06:00 아침 시황</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>데이터 정직성 고지.</strong> 개별 종목 가격·등락·거래대금은 토스증권 Open API 23:12 실측(장 초반 40분), 실적 수치·가이던스는 당일 보도 인용(근거 팝업). 장중 리포트이므로 <strong>마감 수치와 다를 수 있고</strong>, 확정 분석은 내일 06:00 정규 아침 시황이 대체한다.</div>
+
+<div class="note cool tldr">
+  <strong class="tldr-h">세 줄 요약</strong>
+  <div class="tldr-item">① 지수는 약보합(SPY −0.5%·QQQ −0.4%)인데 내부는 극단 — <strong>애플 −9.6%</strong>(비트에도 가이던스 9~11% &lt; 컨센 12%, "공급 제약" 지목) vs <strong>아마존 +13.8%</strong>(AWS +36.7%, 18분기 최고 — 매출 $200.6B).</div>
+  <div class="tldr-item">② 애플 급락의 원인이 한국엔 순풍일 수 있다 — 쿡은 <strong>선단 칩·메모리 부족이 "매우 심각"</strong>하고 <strong>메모리 원가 인플레가 마진 압축의 100% 이상</strong>이라 했다. 이는 메모리 가격 급등의 실수요 증거로, 삼성전자·SK하이닉스 슈퍼사이클 서사를 강화한다(단, 마이크론 −3.8%는 단기 차익 흐름 — ③).</div>
+  <div class="tldr-item">③ 오늘 밤 관전: 애플 낙폭 확대 여부(시총 이탈 규모), AWS 랠리의 지속(클라우드 3사 회수 증명 완성), 그리고 <strong>내일 국내 개장</strong> — +17% 폭등 다음날 애플發 메모리 서사가 추가 순풍인지, 차익 매물 빌미인지.</div>
+</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 40분 한눈에 <span class="chip h2-chip">지수 약보합 · 개별주 극단</span></h2>
+  <p class="lead">토스증권 Open API 23:12 실측. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">S&amp;P 500 (SPY 프록시)</div><div class="val down">−0.47%</div><div class="delta">738.18$ · 지수는 승자·패자 상쇄</div></div>
+    <div class="tile"><div class="lbl">나스닥 100 (QQQ 프록시)</div><div class="val down">−0.35%</div><div class="delta">681.10$</div></div>
+    <div class="tile"><div class="lbl">애플</div><div class="val down">301.54$</div><div class="delta down">▼ −9.56% · 거래대금 상위<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">CNBC · 실적 반응 (2026.07.31)</span><span class="evd-sum">"애플 <strong>−9%</strong>, 아마존 <strong>+14%</strong> — 투자자들이 실적 후 AI 승자를 고르는 중." 애플은 비트에도 가이던스로 급락.</span><a href="https://www.cnbc.com/2026/07/31/apple-aapl-amazon-amzn-stock-today.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">아마존</div><div class="val up">267.92$</div><div class="delta up">▲ +13.76% · AWS 홈런</div></div>
+    <div class="tile"><div class="lbl">마이크론</div><div class="val down">841.06$</div><div class="delta down">▼ −3.84% · 거래대금 1위 (2.9조원)</div></div>
+    <div class="tile"><div class="lbl">미 10년물 / 원·달러</div><div class="val">4.67%</div><div class="delta">환율 1,450.10원 — 원화 강세 전환</div></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>어닝 갈림의 해부 — 같은 밤, 정반대 판정 <span class="chip cool h2-chip">AAPL vs AMZN</span></h2>
+  <div class="tbl-scroll"><table>
+    <tr><th></th><th>애플 (−9.6%)</th><th>아마존 (+13.8%)</th></tr>
+    <tr><td><strong>실적 자체</strong></td><td>비트 — EPS $2.02·매출 $109.4B, 아이폰 +22%·맥 +29%·GM 50.1%<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">Investing.com·TradingKey (2026.07.31)</span><span class="evd-sum">EPS <strong>$2.02</strong>·매출 <strong>$109.42B</strong> 로 컨센 상회. 아이폰 <strong>+22% y/y</strong>·맥 +29%·총마진 50.1%. 그러나 시장의 초점은 가이던스.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262066627-us-stock-apple-aapl-ipad-mac-tim-cook-dram-nand-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>비트 — 매출 $200.6B(컨센 $196.5B), AWS $42.2B<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">Yahoo Finance·Reuters (2026.07.31)</span><span class="evd-sum">매출 <strong>$200.6B</strong>. AWS <strong>+36.7% ($42.2B)</strong> — <strong>18분기 만의 최고 성장</strong>, 예상(~$40.5B) 상회. "홈런 분기" 평가. 시총 $340B+ 증가 경로.</span><a href="https://finance.yahoo.com/markets/stocks/article/amazon-stock-soars-as-e-commerce-giants-aws-cloud-business-booms-in-home-run-quarter-122456315.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    <tr><td><strong>운명을 가른 것</strong></td><td>다음 분기 가이던스 <span class="down">9~11%</span> &lt; 컨센 12% — 원인은 수요가 아니라 <strong>공급</strong>: 선단 칩·메모리 부족("매우 심각" — 쿡), 메모리 원가 인플레가 <strong>분기 마진 압축의 100% 이상</strong>, FX −2.5%p<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">SiliconANGLE·Reuters 계열 보도 (2026.07.30~31)</span><span class="evd-sum">가이던스 <strong>9~11% vs 컨센 12%</strong>. 쿡: 칩·메모리 부족 <strong>"very significant"</strong>·대응 수단 제한적. 메모리 원가 상승이 q/q 마진 압축의 <strong>100% 이상</strong>. 쿡의 CEO 로서 마지막 실적 발표라는 보도도.</span><a href="https://siliconangle.com/2026/07/30/apples-stock-slides-blames-supply-chain-constraints-weak-guidance/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>capex 를 $200B→<strong>$220B 로 올렸는데도</strong> 주가가 폭등 — AWS 재가속이 "AI 지출은 회수된다"를 증명했기 때문(근거3). JPMorgan 목표가 $365 로 신고가 전망<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">TradingKey · JPM 코멘트 (2026.07.31)</span><span class="evd-sum">"아마존 +13% — JPMorgan, <strong>목표가 $365</strong> 로 사상 최고가 경신 전망." capex 상향(→$220B)에도 회수 증거가 이겼다.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262067651-stock-us-amzon-amzn-price-aws-ai-msti-google-microsoft-nvidia-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    <tr><td><strong>메시지</strong></td><td colspan="2">시장은 이제 "AI 관련이면 산다"가 아니라 <strong>회수 증거가 있는 곳만 산다</strong> — 이번 주 승자(MSFT·AMZN·GOOGL)와 패자(META·AAPL)의 공통 분모는 실적이 아니라 <strong>서사의 증명 가능성</strong>이다. 어제 MSFT 심층에서 쓴 프레임 그대로다(<a href="/reports/2026-07-30-microsoft-msft-deep.html">MSFT 심층</a>).</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>메모리의 역설 — 애플의 급락 사유가 한국의 순풍인 이유 <span class="chip h2-chip">국내 직결</span></h2>
+  <div class="card prose">
+    <p><strong>애플의 문장을 그대로 읽으면:</strong> "메모리를 구하지 못해 성장이 제약되고, 메모리 가격이 올라 마진이 눌린다"(근거4). 이것은 수요 둔화가 아니라 <strong>공급자 우위 시장의 전형적 증언</strong>이다 — 사는 쪽(애플)이 아프다는 것은 파는 쪽(삼성전자·SK하이닉스)의 가격결정력이 실재한다는 뜻이고, 오늘 코스피 +17% 폭등(<a href="/reports/2026-07-31-kr-close-2026-07-31.html">마감 시황</a>)의 슈퍼사이클 서사를 수요 측에서 재확인해 준다.</p>
+    <p><strong>그런데 마이크론은 왜 −3.8%인가.</strong> 미 메모리 대표주가 거래대금 1위(2.9조 원)로 밀리는 것은 두 갈래로 읽힌다 — ① 이번 주 폭등(반도체 랠리)의 단기 차익실현 ② 애플 발언을 "고객 이탈/주문 조정 리스크"로 읽는 시각. 장 초반 40분으로는 판별 불가 — <strong>마감까지 낙폭이 확대되면 ②, 축소되면 ①</strong>이 우세한 해석이다(정직: 현재로선 관찰만). SNDK −5.8% 등 스토리지 계열도 동반 약세다.</p>
+    <p><strong>대형 AI 는 견조.</strong> MSFT +1.1%(어제 +15% 랠리 연장선)·NVDA +0.1%·GOOGL +3.5% — 팔리는 것은 AI 전체가 아니라 <strong>공급 제약의 피해자(애플)와 증명 없는 지출(META −16% 여진)</strong>뿐이다.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 지수 약보합의 배경 <span class="chip cool h2-chip">GDP 미스 · 원화 강세</span></h2>
+  <div class="card prose">
+    <p><strong>미 2분기 GDP 1.5% — 컨센 하회.</strong> 어제(7/30) 발표된 GDP 속보치가 예상을 밑돌며 애플 약세와 겹쳐 장 초반 심리를 눌렀다<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">FX Leaders (2026.07.30)</span><span class="evd-sum">"<strong>1.5% GDP 미스</strong>가 애플 실적 불안과 겹치며 주가 하락." (GDP 발표 이벤트는 하우스 캘린더 7/30 자동 기록 — 결과는 다음 러너가 채움)</span><a href="https://www.fxleaders.com/news/2026/07/30/why-is-apple-aapl-stock-down-today-shares-slip-to-dollar332-as-15-gdp-miss-meets-q3-earnings-jitters/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> — 성장 둔화 신호는 어제 매파 FOMC 여진(금리 4.67%)과 만나 "스태그" 단어를 다시 소환할 수 있는 조합이다.</p>
+    <p><strong>원/달러 1,450.10원 — 원화 강세 전환.</strong> 전일 1,466.20 에서 16원 급락(원화 강세). 코스피 +17% 폭등이 부른 외국인 자금 유입의 흔적으로, 내일 국내 개장의 수급 우호 신호다(ECOS 고시 기준).</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘 밤·내일 아침 관전 포인트 <span class="chip cool h2-chip">체크리스트 3</span></h2>
+  <div class="card prose">
+    <h3>① 애플 낙폭의 마감 — 시총 이탈 규모</h3>
+    <p>−9%대가 유지되면 시총 ~$4,000억 급 이탈로 어제 META 에 이어 "빅테크 개별 리스크" 2연타 — 지수 방어가 계속되는지(승자 상쇄)가 핵심. 마감 확정치는 내일 06:00 아침 시황이 정리한다.</p>
+    <h3>② 메모리주 마감 방향 — ①번 해석 판정</h3>
+    <p>마이크론·샌디스크가 낙폭을 줄이며 마감하면 "차익실현"으로 종결 — 확대되면 애플發 주문 조정 우려가 실체화되는 것이며, 이 경우 내일 국내 메모리(오늘 +17% 주역)에 차익 빌미가 된다.</p>
+    <h3>③ 내일(토) 아침 — 주간 국내 총정리와 다음 주</h3>
+    <p>내일 09:00 주간 국내 시황(토요일 슬롯)이 사상 최대 폭락→사상 최대 폭등의 한 주를 총정리한다. 다음 주 예정 이벤트(고용보고서 등)는 <a href="/calendar.html">이벤트 캘린더</a> 참조 — 발표 결과는 자동 기록된다.</p>
+    <div class="note" style="margin-top:16px"><strong>리스크 관리 관점.</strong> 이틀 연속 ±15%대 변동(코스피 −6%→+17%)과 빅테크 개별주 ±10~14% 급변은 방향과 무관하게 <strong>변동성 자체가 위험</strong>인 구간이다. 본 리포트는 정보용이며 매매 권유가 아니다.</div>
+  </div>
+</section>
+
+<footer>
+  <div>데이터: 토스증권 Open API(23:12 KST 실측 — 개별주·ETF 프록시·거래대금) · 한국은행 ECOS(환율)·FRED(미 10년물, 기준일 7/30) · 실적·가이던스 CNBC·Yahoo·Reuters·TradingKey·SiliconANGLE 보도(2026.07.30~31). 각 수치 출처는 본문 근거 팝업.</div>
+  <div style="margin-top:6px">생성 2026-07-31 23:12 KST (미 세션 장중) · 긴급 특별판 — 마감 확정치는 내일 06:00 아침 시황에서 갱신. 정보용 · 매매 권유 아님 · 추정 표기.</div>
+  <div class="srclist" style="margin-top:10px">
+  <span>근거1 애플 −9%·아마존 +14% 갈림 — <a href="https://www.cnbc.com/2026/07/31/apple-aapl-amazon-amzn-stock-today.html">CNBC</a></span>
+  <span>근거2 애플 실적 비트 상세 — <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262066627-us-stock-apple-aapl-ipad-mac-tim-cook-dram-nand-tradingkey">TradingKey</a>, <a href="https://ca.investing.com/news/stock-market-news/apple-stock-drops-after-earnings-beat-what-it-means-for-investors-now-93CH-4768189">Investing.com</a></span>
+  <span>근거3 AWS +36.7%·18분기 최고·capex $220B — <a href="https://finance.yahoo.com/markets/stocks/article/amazon-stock-soars-as-e-commerce-giants-aws-cloud-business-booms-in-home-run-quarter-122456315.html">Yahoo Finance</a>, <a href="https://www.investing.com/news/stock-market-news/amazon-jumps-as-aws-growth-soothes-fears-over-rising-ai-spending-4827202">Reuters</a></span>
+  <span>근거4 가이던스 9~11%·공급 제약·메모리 원가 — <a href="https://siliconangle.com/2026/07/30/apples-stock-slides-blames-supply-chain-constraints-weak-guidance/">SiliconANGLE</a>, <a href="https://whbl.com/2026/07/31/apple-slides-as-supply-snags-cloud-outlook-putting-iphone-demand-in-focus/">Reuters/WHBL</a></span>
+  <span>근거5 JPM 목표 $365 — <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262067651-stock-us-amzon-amzn-price-aws-ai-msti-google-microsoft-nvidia-tradingkey">TradingKey</a></span>
+  <span>근거6 GDP 1.5% 미스 — <a href="https://www.fxleaders.com/news/2026/07/30/why-is-apple-aapl-stock-down-today-shares-slip-to-dollar332-as-15-gdp-miss-meets-q3-earnings-jitters/">FX Leaders</a></span>
+  <span>참조 — <a href="/reports/2026-07-31-kr-close-2026-07-31.html">오늘 KR 마감 시황</a> · <a href="/reports/2026-07-30-microsoft-msft-deep.html">MSFT 심층</a> · <a href="/calendar.html">이벤트 캘린더</a></span>
+  </div>
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
