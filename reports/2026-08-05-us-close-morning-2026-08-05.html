@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 유가 급락·AI 랠리로 다우 5만4천 첫 돌파, 반도체는 메모리·로직·장비 동반 강세</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-05-us-close-morning-2026-08-05.html">
+<meta property="og:title" content="US 마감 시황 — 유가 급락·AI 랠리로 다우 5만4천 첫 돌파, 반도체는 메모리·로직·장비 동반 강세">
+<meta property="og:description" content="간밤 뉴욕은 유가 약 −5% 급락·팔란티어 +29% 어닝으로 다우 5만4천 첫 돌파·에스앤피500 신고가, 반도체는 메모리·로직·장비가 한 방향으로 동반 강세 — 오늘 삼성전자·SK하이닉스 전이 여부가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-05-us-close-morning-2026-08-05.html">
+<meta name="description" content="간밤 뉴욕은 유가 약 −5% 급락·팔란티어 +29% 어닝으로 다우 5만4천 첫 돌파·에스앤피500 신고가, 반도체는 메모리·로직·장비가 한 방향으로 동반 강세 — 오늘 삼성전자·SK하이닉스 전이 여부가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-05-us-close-morning-2026-08-05.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 유가 급락·AI 랠리로 <span class="up">다우 5만4천 첫 돌파</span>, 반도체는 메모리·로직·장비 <span class="up">동반 강세</span></h1>
+  <p class="sub">2026년 8월 5일(수) 국내 장 시작 전 기준 · 전일 미 증시(8/4 화 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했다 — 국제유가가 호르무즈 긴장 완화 기대에 <strong>약 <span class="down">−5%</span></strong> 급락하며 인플레·금리 부담을 덜었고, <strong>팔란티어 <span class="up">+29%</span> 어닝 서프라이즈</strong>가 AI 트레이드에 불을 붙였다. <strong>다우가 사상 처음 5만4천을 넘겼고 S&amp;P500은 약 2개월 만에 신고가</strong>를 새로 썼다. 지난달 지수를 흔들던 반도체는 이번엔 <strong>메모리·로직·장비가 한 방향으로 강세</strong>였다 — 오늘 국내 삼성전자·SK하이닉스가 이 온기를 얼마나 받느냐가 관건이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-05 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-05 오전).</strong> 원/달러 <strong>1,429.90원</strong>(전일 1,433.60 → 원화 강세, 외국인 수급 우호) · 미 국채 10년물 ≈4.64%(8/4 마감 보도)/4.70%(FRED 08-03 확정) · 한국 기준금리 2.75% · 달러지수 119.70. 간밤 미 위험선호가 뚜렷이 살아나며 반도체 전반이 동반 강세였다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 온 · 반도체 전면 강세</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도(종가·등락) 및 토스증권 Open API(미 ETF 프록시), 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/4 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · 유가 −5%·AI가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,737</div><div class="delta up">▲ +1.79% · 약 2개월 만 신고가</div></div>
+    <div class="tile"><div class="lbl">다우 산업</div><div class="val up">54,000+</div><div class="delta up">▲ +1.71% · 사상 첫 5만4천</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">반도체 온기</div><div class="delta">간밤 SOX +5%대 → 삼성·하이닉스 갭업 여부</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong> — 국제유가가 호르무즈 긴장 완화 기대에 <span class="down">약 −5%</span> 급락하며 인플레·금리 부담을 덜었고, <strong>다우 <span class="up">+1.71%</span>로 사상 첫 5만4천</strong>·S&amp;P500 약 2개월 만 신고가를 썼다.</div>
+    <div class="tldr-item">② <strong>팔란티어 <span class="up">+29%</span> 어닝 서프라이즈</strong>가 AI 트레이드에 불을 붙여 <strong>필라델피아 반도체지수(SOX)가 <span class="up">약 +5.8~6%</span></strong> 급등했다. 지난달과 달리 <strong>메모리(마이크론)·로직(브로드컴·엔비디아·마벨)·장비가 한 방향</strong>이었다.</div>
+    <div class="tldr-item">③ 오늘 국내 장은 <strong>간밤 반도체 전면 강세의 심리적 read-through</strong>가 삼성전자·SK하이닉스로 얼마나 전이되는지, 원화 강세에 외국인 순매수가 붙는지가 방향을 가른다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 유가 급락·어닝·AI가 밀어올린 광범위 상승</h2>
+  <p class="lead">국제유가가 호르무즈 해협 긴장 완화 기대에 급락하며 인플레·금리 부담을 덜었고, S&amp;P500 기업의 <strong>약 85%가 실적 컨센을 상회</strong>한 어닝 시즌이 위험선호를 뒷받침했다. 지수 레벨에선 이견 없는 '리스크 온' 하루.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/4 마감</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,737</td><td class="num"><span class="up">+1.79%</span></td><td>약 2개월 만 신고가<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">8/4 미 증시 마감 · 공개 보도 (2026-08-04)</span><span class="evd-sum">화요일 S&amp;P500 <strong>+1.79%, 7,737</strong>로 약 2개월 만 신고가. 다우는 <strong>+1.71%(약 +900p)</strong>로 사상 처음 <strong>54,000</strong> 돌파, 나스닥 종합 <strong>약 +2.6%</strong>. 유가 급락·강한 어닝·호르무즈 재개 기대가 배경.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">기록적</td><td class="num"><span class="up">약 +2.6%</span></td><td>빅테크·AI 주도 (종가 레벨은 매체별 상이 → 미표기)</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">54,000+</td><td class="num"><span class="up">+1.71%</span></td><td>+약 900p · 사상 첫 5만4천</td></tr>
+      <tr><td>WTI 유가</td><td class="num"><span class="down">약 −5%</span></td><td class="num">—</td><td>호르무즈 긴장 완화 기대<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">유가·호르무즈 · 공개 보도 (2026-08-04)</span><span class="evd-sum">WTI가 <strong>약 5%</strong> 하락. 중재국이 이란과의 합의로 미국의 대규모 공습을 피하고 <strong>호르무즈 해협 재개</strong>에 진전을 볼 것이란 기대가 유가를 눌렀고, 이는 인플레·금리 부담을 낮춰 성장주에 우호적으로 작용했다.</span><a href="https://ts2.tech/en/stock-market-today-04-08-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>6월 JOLTS 구인건수</td><td class="num"><span class="down">둔화</span></td><td class="num">예상 7.25M</td><td>전월 7.59M · 노동수요 완화(실제 확정치 매체별 상이 → 미표기)<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">8/4 미 경제지표 · 이코노믹 캘린더 (2026-08-04)</span><span class="evd-sum">화요일 발표 지표는 <strong>6월 JOLTS 구인건수</strong>(예상 7.25M vs 전월 7.59M)·<strong>6월 무역수지·6월 공장주문</strong>. 보도상 구인·공장주문이 <strong>완화(둔화)</strong> 방향으로 나와 금리 인하 기대를 지지. 확정 수치는 매체별로 엇갈려 본문에 단정치 미표기.</span><a href="https://x.com/marketsday/status/2083905616574357923" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.64%</td><td class="num">−약 4bp</td><td>유가·지표 둔화에 하락 (마감 보도)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 <strong>유가 급락</strong>이었다. WTI가 호르무즈 긴장 완화 기대에 약 <span class="down">−5%</span> 밀리며 인플레·금리 경로 부담이 줄었고, 밸류에이션에 민감한 성장주가 그 수혜를 받았다. 여기에 <strong>실적 서프라이즈</strong>(S&amp;P500 기업 약 85%가 컨센 상회)와 <strong>6월 JOLTS·공장주문 둔화</strong>가 겹치며 "노동수요는 식지만 경기는 견조" 조합이 금리 인하 기대를 지지했다.</p>
+      <p><strong>주도주.</strong> 이날의 주인공은 <strong>팔란티어(PLTR) <span class="up">+29%</span></strong>였다 — 2분기 실적이 "압도적"으로 나오며 2년여 만의 최대 일간 상승. 이 서프라이즈가 <strong>엔비디아·AMD·메모리·스토리지 칩</strong>까지 AI 트레이드 전반의 심리를 끌어올렸다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Palantir +29% · 공개 보도 (2026-08-04)</span><span class="evd-sum">팔란티어가 <strong>약 +29%</strong> 급등, 2분기 "블로우아웃" 실적으로 2년여 만 최대 상승. 이 강세가 엔비디아·AMD·스토리지 칩으로 온기를 확산시켰고 <strong>필라델피아 반도체지수(SOX)를 약 +6%</strong> 밀어올렸다. (AMD·암젠은 장 마감 후 실적 발표 → 정규장 등락엔 발표 전 기대가 반영.)</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 다이버전스 점검 — 이번엔 메모리·로직·장비가 <span class="up">한 방향</span></h2>
+  <p class="lead">지난달(7월) 시황은 "지수는 오르는데 메모리만 급락"하는 <strong>다이버전스</strong>가 핵심이었다. 이번 8/4 세션은 정반대다 — <strong>필라델피아 반도체지수(SOX)가 약 <span class="up">+5.8~6%</span></strong> 급등하며 하위 섹터(메모리·로직·장비)가 <strong>한 방향으로</strong> 올랐다. 국내와 직결되는 만큼 하위까지 갈라서 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터</th><th>간밤 대표주(미국)</th><th class="num">방향</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리 (DRAM/HBM)</strong></td><td>마이크론(MU)·인텔(INTC)</td><td class="num"><span class="up">강세</span></td><td>삼성전자(005930)·SK하이닉스(000660) 심리 직결 — 지난달 급락의 진앙, 이번엔 온기<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">메모리·SOX 강세 · 공개 보도 (2026-08-04)</span><span class="evd-sum">팔란티어發 온기가 칩·테크로 번지며 <strong>SOX 약 +6%</strong>, <strong>인텔·마이크론·엔비디아</strong>가 상승 동력. 마이크론 상승폭은 매체별로 대략 +5~8% 범위로 보도돼 단정치 대신 "강세"로 표기(수치 미확정은 지어내지 않음).</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>로직·AI 가속기</strong></td><td>브로드컴(AVGO)·마벨(MRVL)·엔비디아(NVDA)</td><td class="num"><span class="up">+7.1% / +14% / +2%</span></td><td>브로드컴은 우리 커버(<a href="/">AVGO 리포트</a>) — AI 커스텀 실리콘 수요, HBM 견인 → SK하이닉스 read-through<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">로직·AI 칩 강세 · 공개 보도 (2026-08-04)</span><span class="evd-sum">브로드컴 <strong>+7.1%</strong>·마벨 <strong>+14%</strong>·엔비디아 <strong>약 +2%</strong>. AI 커스텀 실리콘·네트워킹 수요 기대가 로직 전반을 견인. AMD는 정규장 <strong>+7~9%</strong>로 보도되나 장 마감 후 실적을 발표해 등락 폭은 발표 전 기대치.</span><a href="https://ts2.tech/en/stock-market-today-04-08-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>장비 (WFE)</strong></td><td>ASML·어플라이드(AMAT)·램리서치(LRCX)·KLA</td><td class="num"><span class="up">동반 강세</span></td><td>한미반도체·주성엔지니어링·삼성전기 밸류체인 참고 — 개별 8/4 등락폭은 확인 어려워 미표기<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">반도체 장비 사이클 · 공개 보도 (2026)</span><span class="evd-sum">2026년 WFE(웨이퍼 가공장비) 투자가 <strong>1,450~1,500억 달러</strong> 규모로 전망되며 AMAT·ASML·LRCX·KLA가 AI용 로직·메모리 증설 수혜로 신고가권. 다만 8/4 개별 종목 등락폭은 매체별로 명확히 확인되지 않아 "동반 강세"로만 표기.</span><a href="https://www.msn.com/en-us/money/topstocks/applied-materials-asml-lam-hit-record-highs-lead-chip-gear-stocks-rally/ar-AA25TsfV" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>AI 소프트웨어</strong></td><td>팔란티어(PLTR)</td><td class="num"><span class="up">+29%</span></td><td>반도체는 아니나 이날 AI 트레이드 심리의 방아쇠 — 국내 AI 소프트/데이터 테마에도 간접 온기</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 방향이 다수 매체에서 일치하는 종목만 수치를 표기했다. <strong>마이크론(대략 +5~8%)·AMD(정규장 +7~9%, 실적은 장후 발표)</strong>처럼 매체별로 폭이 엇갈리는 값과, <strong>개별 장비주의 8/4 등락폭</strong>은 단정치를 지어내지 않고 "강세/동반 강세"로만 남겼다. 나스닥 종합은 종가 레벨이 매체별로 상이해 등락률(약 +2.6%)만 표기한다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 지난달 국내 증시를 흔든 핵심이 <strong>메모리·HBM 밸류에이션 논쟁</strong>과 "반도체를 한 덩어리로 보지 말라"는 다이버전스였다. 이번 8/4는 <strong>메모리·로직·장비가 함께 오른 드문 세션</strong>이라, 오늘 국내 삼성전자·SK하이닉스에 <strong>모처럼 우호적인 심리적 read-through</strong>가 될 수 있다. 특히 <strong>브로드컴(+7.1%)·마벨(+14%)</strong>로 대표되는 AI 커스텀 실리콘·네트워킹 수요는 HBM 밸류체인(SK하이닉스)과 직결되는 방향이다. 다만 SOX 급등의 상당 부분이 <strong>팔란티어 어닝發 심리</strong>에 기댄 만큼, 온기가 국내 개장까지 유지될지는 지켜봐야 한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·통계청 KOSIS(물가·생산) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,429.90원</td><td class="num">1,433.60원</td><td>8/4 · ECOS <span class="down">(원화 강세 3.7원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>8/3 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">4.70%</td><td class="num">4.75%</td><td>8/3 · FRED DGS10</td></tr>
+      <tr><td>미 10년물 (8/4 마감 보도)</td><td class="num">≈4.64%</td><td class="num">−약 4bp</td><td>8/4 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">119.70</td><td class="num">119.68</td><td>7/31 · FRED DTWEXBGS</td></tr>
+      <tr><td>한국 CPI (YoY)</td><td class="num"><span class="up">+2.79%</span></td><td class="num">—</td><td>2026-07 · KOSIS(지수 119.77)</td></tr>
+      <tr><td>한국 전산업생산 (YoY)</td><td class="num"><span class="up">+4.23%</span></td><td class="num">—</td><td>2026-06 · KOSIS</td></tr>
+      <tr><td>미 ETF 프록시 (토스)</td><td class="num"><span class="up">SPY +1.8% · QQQ +3.4%</span></td><td class="num">—</td><td>8/4 · 토스 Open API(현물 지수와 세션 타이밍 차 유의)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 8/3 확정치(4.70%)와 8/4 마감 보도치(≈4.64%). 시황 해석엔 간밤(8/4) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. <strong>원화가 3.7원 강세</strong>로 돌아 외국인 수급에 우호적 방향이고, 7월 CPI는 <span class="up">+2.79%</span>로 물가 부담이 극단적이진 않다. 국내 지수(KOSPI 6,257.45·KOSDAQ 737.35)는 8/3 KRX 확정치 기준으로, 당일 등락률은 소스 아카이브 값이라 본 시황에선 방향 해석의 근거로 쓰지 않는다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/5) 국내 장 시사점 <span class="chip cool h2-chip">모처럼 우호적, 다만 확인 필요</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>유가 급락·팔란티어 어닝으로 다우 5만4천·S&amp;P 신고가</strong>를 쓰고 <strong>반도체가 메모리·로직·장비 전면 강세</strong>였던 만큼, 지난달 두들겨 맞은 <strong>삼성전자·SK하이닉스가 이 온기를 얼마나 갭업으로 받아내느냐</strong>가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 지난달 국내 반도체는 <strong>메모리 홀로 급락 → 다이버전스</strong>가 시장을 흔든 국면이었다. 이번 8/4는 <strong>SOX가 약 +6%로 하위 섹터가 한 방향</strong>으로 오른 드문 세션이라, 방향만 놓고 보면 국내 대형 반도체에 우호적이다. 다만 상승 동력의 상당 부분이 <strong>팔란티어 어닝發 심리</strong>와 <strong>유가 급락</strong>이라는 이벤트성 요인이라, 추세 전환으로 단정하기엔 이르다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 SOX 강세를 개장 갭·초반 거래대금으로 얼마나 반영하는지, ② <strong>브로드컴(+7.1%)·마벨(+14%)</strong>發 AI 커스텀 실리콘·네트워킹 온기가 HBM 밸류체인(하이닉스)·국내 장비주(한미반도체·주성엔지니어링)로 선별 확산되는지, ③ 원/달러 원화 강세에 <strong>외국인 순매수</strong>가 실제로 붙는지, ④ 장 마감 후 나온 <strong>AMD 실적</strong>의 애프터마켓 반응과, 오늘 밤 예정된 <strong>미 ISM 서비스업 PMI</strong>가 위험선호를 이어갈지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 8/4 S&amp;P +1.79%(7,737)·다우 +1.71%(5만4천 첫 돌파)·나스닥 약 +2.6% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html">Yahoo Finance</a>, <a href="https://ts2.tech/en/stock-market-today-04-08-2026/">TS2</a></span>
+  <span>근거2 WTI 약 −5%·호르무즈 긴장 완화 기대 — <a href="https://ts2.tech/en/stock-market-today-04-08-2026/">TS2</a></span>
+  <span>근거3 8/4 지표: 6월 JOLTS(예상 7.25M·전월 7.59M)·무역수지·공장주문 — <a href="https://x.com/marketsday/status/2083905616574357923">Markets Today(이코노믹 캘린더)</a></span>
+  <span>근거4 팔란티어 +29% 2분기 블로우아웃·SOX 약 +6% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html">Yahoo Finance</a>, <a href="https://www.barchart.com/story/news/3630962/nasdaq-futures-climb-as-tech-rally-continues-after-palantir-boost-u-s-jolts-report-and-spacex-earnings-on-tap">Barchart</a></span>
+  <span>근거5 메모리·SOX 강세(인텔·마이크론·엔비디아 동력) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-4-dow-sp-500-nasdaq-100140227.html">Yahoo Finance</a></span>
+  <span>근거6 브로드컴 +7.1%·마벨 +14%·엔비디아 +2% 로직/AI 강세 — <a href="https://ts2.tech/en/stock-market-today-04-08-2026/">TS2</a></span>
+  <span>근거7 WFE 1,450~1,500억달러·장비주 신고가권 — <a href="https://www.msn.com/en-us/money/topstocks/applied-materials-asml-lam-hit-record-highs-lead-chip-gear-stocks-rally/ar-AA25TsfV">MSN/Investing</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도(Yahoo Finance·TS2·Barchart 등), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 통계청 KOSIS(CPI·전산업생산). 2026-08-05 오전 조회 기준(전일 8/4 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-05 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
