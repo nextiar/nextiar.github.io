@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 하루 만에 뒤집힌 반도체, 외국인 매도 사이드카에 코스피 6,300 붕괴</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-06-kr-close-2026-08-06.html">
+<meta property="og:title" content="코스피 마감 시황 — 하루 만에 뒤집힌 반도체, 외국인 매도 사이드카에 코스피 6,300 붕괴">
+<meta property="og:description" content="전날 +3.76% 급등하던 코스피가 간밤 미국 반도체 매도세 전이로 −4%대 급반전, 외국인 2.5~2.8조 매도에 매도 사이드카 발동하며 6,300이 무너졌다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-06-kr-close-2026-08-06.html">
+<meta name="description" content="전날 +3.76% 급등하던 코스피가 간밤 미국 반도체 매도세 전이로 −4%대 급반전, 외국인 2.5~2.8조 매도에 매도 사이드카 발동하며 6,300이 무너졌다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-06-kr-close-2026-08-06.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 마감 시황 심층 (KR Market Close)</div>
+  <h1>코스피 마감 시황 — 하루 만에 뒤집힌 반도체, <span class="down">외국인 매도 사이드카</span>에 코스피 6,300 붕괴</h1>
+  <p class="sub">2026년 8월 6일(목) 마감 기준. 전날 <strong><span class="up">+3.76%</span> 급등</strong>하며 이틀째 오르던 코스피가 <strong>3거래일 만에 급락 반전</strong>했다. 간밤 미국 <strong>메모리·반도체 매도세</strong>가 아시아로 번지며 <strong>SK하이닉스 <span class="down">−8%대</span>·삼성전자 <span class="down">−5~6%대</span></strong>가 지수를 끌어내렸고, 장중 낙폭이 5%를 넘어서자 <strong>유가증권시장에 매도 사이드카</strong>가 발동됐다. 개인이 <span class="up">3조 원 넘게</span> 받았지만 외국인·기관의 대량 매도를 막지 못했다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-06 16:00 KST · 평일 마감 시황 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (기준일 표기).</strong> 원/달러 <strong>1,428.2원</strong>(전일 1,429.9 → 원화 소폭 강세, 08-05 ECOS) · 한국 기준금리 <strong>2.75%</strong>(08-03 ECOS) · 미 국채 10년물 4.63%(08-04 FRED DGS10) · 달러지수 119.70(07-31 FRED). <strong>지수 확정치는 익일(08-07) KRX 반영</strong>이라, 당일 지수·개별주는 토스 ETF 프록시·실시간 시세와 공개 마감 보도를 병기했다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">반도체發 급락 · 사이드카</span></h2>
+  <p class="lead">지수는 <strong>당일 프록시·마감 보도</strong>, 개별주·거래대금은 <strong>토스증권 Open API 실시간(08-06 조회)</strong>, 전일 확정 지수는 KRX(macro_snapshot) 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (08-06, 마감 보도)</div><div class="val down">6,292.90</div><div class="delta down">▼ −4.63% · −305p · 6,300 붕괴</div></div>
+    <div class="tile"><div class="lbl">코스닥 (08-06, 장중 보도)</div><div class="val down">788선</div><div class="delta down">▼ −1.4%대 · 대형주 대비 선방</div></div>
+    <div class="tile"><div class="lbl">수급 (08-06, 보도)</div><div class="val down">외국인 −2.5~2.8조</div><div class="delta">기관 −0.38조 · 개인 <span class="up">+3.1조</span></div></div>
+    <div class="tile"><div class="lbl">원/달러 (08-05, ECOS)</div><div class="val up">1,428.2원</div><div class="delta up">▲ 원화 강세 (전일 1,429.9)</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 전날 <span class="up">+3.76%</span> 급등하던 코스피가 <strong>하루 만에 <span class="down">−4%대</span>로 급반전</strong>, 장중 6,300이 무너지며 <strong>매도 사이드카</strong>가 발동됐다. 간밤 <strong>미국 메모리·반도체 매도세</strong>가 방아쇠였다.</div>
+    <div class="tldr-item">② 지수를 누른 건 <strong>대형 반도체</strong>다 — 토스 실시간 기준 <strong>SK하이닉스 <span class="down">−9.95%</span>·삼성전자 <span class="down">−6.5%</span>·삼성전기 <span class="down">−8.48%</span></strong>. 업종별로도 IT·전기전자가 최하위, 반면 <strong>철강·금속·음식료는 <span class="up">상승</span></strong>해 순환매 흔적이 남았다.</div>
+    <div class="tldr-item">③ <strong>외국인이 2.5~2.8조 원, 기관이 약 0.4조 원을 던졌고</strong> 개인이 <span class="up">3.1조 원</span>을 홀로 받았다. 밸류에이션 부담이 커진 AI 반도체에 대한 차익실현·경계가 핵심이며, 내일은 <strong>반등 여부와 외국인 되돌림</strong>이 관전 포인트다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 대형 반도체가 끌어내린 하루</h2>
+  <p class="lead">전일(08-05)은 KRX 확정 기준 <strong>코스피 6,598.26(<span class="up">+3.76%</span>)·코스닥 799.59(<span class="up">+2.42%</span>)</strong>였다. 당일(08-06) 지수는 확정치가 익일 반영되므로 <strong>공개 마감 보도·ETF 프록시</strong>를 쓴다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 프록시</th><th class="num">값</th><th class="num">등락</th><th>메모 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피 (08-06)</strong></td><td class="num">6,292.90</td><td class="num"><span class="down">−4.63%</span></td><td>−305.36p, 장중 6,300 붕괴·사이드카<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 −4.63%·사이드카 · 이투데이 (2026-08-06)</span><span class="evd-sum">6일 코스피 전 거래일 대비 <strong>305.36p(4.63%) 내린 6,292.90</strong>, 장중 5% 넘게 폭락하며 유가증권시장 <strong>매도 사이드카</strong> 발동. 문화일보는 장중 6,300 붕괴로 보도.</span><a href="https://www.etoday.co.kr/news/view/2611740" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥 (08-06)</strong></td><td class="num">788선</td><td class="num"><span class="down">−1.4%대</span></td><td>장중 788.14(−11.45p) 보도, 대형주 대비 낙폭 제한<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스닥 장중 −1.43% · 뉴스웨이/세계일보 (2026-08-06)</span><span class="evd-sum">같은 시각 코스닥지수 전장보다 <strong>11.45p(1.43%) 내린 788.14</strong>. 코스닥은 코스피 대비 낙폭이 제한됐다(장중 보도치, 종가 확정은 익일).</span><a href="https://segye.com/newsView/20260806510636" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>KODEX 200 (프록시)</td><td class="num">98,900원</td><td class="num"><span class="down">하락</span></td><td>토스 08-06 조회 · 코스피200 추종 ETF</td></tr>
+      <tr><td>KODEX 레버리지 (프록시)</td><td class="num">92,200원</td><td class="num"><span class="down">−10.27%</span></td><td>코스피200 2배 → 지수 낙폭 약 −5% 시사(토스 08-06)</td></tr>
+      <tr><td>코스피 (08-05 확정)</td><td class="num">6,598.26</td><td class="num"><span class="up">+3.76%</span></td><td>전일 KRX 확정치(macro_snapshot)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>업종 흐름.</strong> 낙폭은 반도체가 몰린 업종에 집중됐다 — 마감 보도 기준 <strong>정보기술 <span class="down">−15%대</span>·전기전자 <span class="down">−6.9%</span>·의료정밀 <span class="down">−5.9%</span></strong>가 최하위였다. 반대로 <strong>금속(<span class="up">+2.9%</span>)·철강소재(<span class="up">+2.4%</span>)·음식료담배(<span class="up">+1.2%</span>)</strong>는 올라, 지수가 급락하는 와중에도 <strong>반도체 밖으로의 순환매</strong> 흔적이 남았다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">업종별 등락 · 뉴스웨이 (2026-08-06)</span><span class="evd-sum">정보기술 <strong>−15.40%</strong>·전기전자 −6.85%·의료정밀 −5.85% 하락, 금속 <strong>+2.93%</strong>·철강소재 +2.43%·음식료담배 +1.17% 상승. 반도체 집중 업종의 낙폭이 지수를 지배.</span><a href="https://www.newsway.co.kr/news/view?ud=2026080610402847123" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>거래대금 상위(토스 08-06 실시간).</strong> 매매는 대형 반도체에 쏠렸다. 삼성전자 <strong>6,542억 원(<span class="down">−6.5%</span>)</strong>, SK하이닉스 <strong>2,057억 원(<span class="down">−9.95%</span>)</strong>, 삼성전기 <strong>636억 원(<span class="down">−8.48%</span>)</strong> 순으로, 상위 종목 대부분이 하락 속 대량 거래였다. 그 사이 <strong>OCI홀딩스(<span class="up">+5.28%</span>)·한화에어로스페이스(<span class="up">+3.07%</span>)</strong>는 상승해 방산·소재로의 대피가 확인됐다.</p>
+    </div>
+  </div>
+  <div class="tbl-scroll" style="margin-top:14px">
+  <table>
+    <thead><tr><th>거래대금 상위 (08-06 실시간)</th><th class="num">현재가</th><th class="num">등락</th><th class="num">거래대금</th></tr></thead>
+    <tbody>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">230,000</td><td class="num"><span class="down">−6.5%</span></td><td class="num">6,542억</td></tr>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,502,000</td><td class="num"><span class="down">−9.95%</span></td><td class="num">2,057억</td></tr>
+      <tr><td><strong>삼성전기</strong> (009150)</td><td class="num">1,241,000</td><td class="num"><span class="down">−8.48%</span></td><td class="num">636억</td></tr>
+      <tr><td>삼성전자우 (005935)</td><td class="num">172,100</td><td class="num"><span class="down">−6.41%</span></td><td class="num">351억</td></tr>
+      <tr><td>OCI홀딩스 (010060)</td><td class="num">259,000</td><td class="num"><span class="up">+5.28%</span></td><td class="num">284억</td></tr>
+      <tr><td>NAVER (035420)</td><td class="num">225,000</td><td class="num"><span class="down">−1.74%</span></td><td class="num">220억</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 개별주 등락률은 <strong>토스 실시간 조회(08-06)</strong> 기준이다. 공개 마감 보도는 조회 시각·매체별로 <strong>삼성전자 −5~6%대·SK하이닉스 −8~10%대</strong>로 폭이 조금씩 다르나 <strong>방향(하락)은 모두 일치</strong>한다. 매체별로 방향이 엇갈리는 종목·수치는 지어내지 않고 제외했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 외국인·기관 '팔자', 개인 홀로 방어 <span class="chip cool h2-chip">개인 +3조</span></h2>
+  <p class="lead">KRX Open API는 투자자별 순매수를 제공하지 않아, 당일 총액은 <strong>공개 마감 보도</strong>로 정리하고 개별 스마트머니 신호는 <strong>DART 5%룰 대량보유(fund_flows)</strong>로 보강한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자 (08-06)</th><th class="num">순매수 방향</th><th>메모 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="down">−2.5~2.8조</span></td><td>대량 순매도, 지수 급락 주도(매체별 2.5~2.8조)<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">투자자별 수급 · 이투데이/문화일보 (2026-08-06)</span><span class="evd-sum">이투데이: 외국인 <strong>2조8,145억</strong>·기관 <strong>3,833억</strong> 순매도, 개인 <strong>3조1,112억</strong> 순매수(장중). 문화일보는 외국인 <strong>2.5조</strong> 순매도로 보도 — 매체별 폭이 달라 범위로 표기.</span><a href="https://www.etoday.co.kr/news/view/2611740" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="down">−약 0.38조</span></td><td>순매도(약 3,833억, 이투데이)</td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="up">+약 3.1조</span></td><td>홀로 순매수, 낙폭 방어(약 3조1,112억)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">개인 순매수 · 머니투데이 (2026-08-06)</span><span class="evd-sum">"어젠 차익실현, 오늘은 줍줍" — 하락장에서 <strong>개인이 나홀로 방어</strong>. 전일 급등엔 차익실현하던 개인이 당일 급락엔 대량 순매수로 전환.</span><a href="https://www.mt.co.kr/stock/2026/08/06/2026080611354879023" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>스마트머니 신호(DART 5%룰).</strong> SK하이닉스 최대주주 <strong>SK스퀘어</strong>는 08-05자 보고에서 지분율 <strong>20.01%</strong>(−0.09%p, 특별관계자 등 지분 변동)로 소폭 감소를 신고했다 — 방향성 있는 매집·처분이라기보다 특별관계자 변동에 가깝다. 앞선 대량보유 이력에선 <strong>Capital Research가 2월(5.05%→처분)·6월(3.53%, −1.52%p)에 걸쳐 지속 축소</strong>했고, BlackRock은 2월 5.00%로 단순투자 매수를 신고한 바 있다. 최근의 외국계 기관 지분 축소 흐름이 당일 외국인 매도와 결이 맞는다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">SK하이닉스 5%룰 대량보유 · DART (2026)</span><span class="evd-sum">SK스퀘어 <strong>20.01%</strong>(2026-08-05, −0.09%p). Capital Research 2026-06-09 <strong>3.53%</strong>(−1.52%p)·2026-02-09 5.05%(−1.79%p) 처분, BlackRock 2026-02-20 <strong>5.00%</strong>(+0.01%p) 단순투자 매수. KRX 수급 미제공분의 대체 신호.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805000440" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>해석.</strong> 전날 급등에 차익을 실현하던 개인이 이날 급락엔 <strong>3조 원 넘게 순매수</strong>로 방향을 틀었다. 그러나 개인 매수가 외국인·기관 합산 약 3조 원의 매도를 상쇄하지 못하면서 지수는 하방으로 밀렸다. <strong>수급의 무게중심이 외국인</strong>에 있다는 점에서, 반등의 열쇠도 결국 외국인 매도의 진정 여부에 달렸다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원화 강세에도 간밤 미국 반도체 잔영이 압도</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,428.2원</td><td class="num">1,429.9원</td><td>08-05 · ECOS <span class="up">(원화 강세 1.7원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>08-03 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">4.63%</td><td class="num">—</td><td>08-04 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">119.70</td><td class="num">—</td><td>07-31 · FRED DTWEXBGS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>간밤 미국 잔영이 방아쇠.</strong> 이날 급락의 직접 원인은 국내 재료가 아니라 <strong>간밤 미 증시의 반도체·기술주 조정</strong>이다. 미국에서 <strong>메모리·AI 반도체 매도세</strong>가 강해지며 투자심리가 훼손됐고, 그 잔영이 아시아 개장과 함께 삼성전자·SK하이닉스로 전이됐다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">아시아 메모리 동반 약세 · TradingKey (2026-08-06)</span><span class="evd-sum">미 반도체·기술주의 급격한 되돌림에 <strong>일본·한국 증시 동반 약세</strong> — SK하이닉스 하락, 키오시아 등 메모리 관련주가 함께 밀림. 전 세션 강세였던 칩주의 차익실현 성격.</span><a href="https://www.tradingkey.com/analysis/stocks/more/262080930-japan-south-korea-stocks-kospi-nikkei-softbank-sk-hynix-kioxia-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 웨스턴디지털·샌디스크 등 메모리 관련 실적·가이던스에 대한 실망이 배경으로 거론됐으나, <strong>구체 수치는 매체별로 확정되지 않아 본문에서 제외</strong>한다.</p>
+      <p><strong>환율은 우호적이나 역부족.</strong> 원/달러는 1,428.2원으로 전일 대비 소폭 <strong>원화 강세</strong>(외국인 수급엔 통상 우호적)였고 미 10년물도 4.6%대에서 큰 변동은 없었다. 그럼에도 <strong>밸류에이션 부담이 커진 AI 반도체에 대한 차익실현 압력</strong>이 우호적 매크로를 압도했다 — 이날의 급락은 금리·환율보다 <strong>반도체 심리</strong>의 이야기였다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(다음 거래일) 관전 포인트 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 하루 만에 <span class="up">+3.76%</span>→<span class="down">−4%대</span>로 뒤집힌 극단적 변동성 국면에서, 내일은 <strong>대형 반도체의 낙폭 진정과 외국인 매도의 되돌림 여부</strong>가 방향을 가른다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>SK하이닉스·삼성전자</strong>가 오늘 낙폭을 되돌리는지(간밤 미 반도체 흐름의 재전이 여부) — 지수 반등의 핵심 축이다. ② <strong>외국인 순매도</strong>가 진정되고 개인 순매수의 방어가 이어지는지 — 오늘은 개인 <span class="up">+3조</span>가 외국인 매도를 상쇄하지 못했다. ③ <strong>철강·금속·음식료 등 비(非)반도체 순환매</strong>가 하루짜리인지, 방어 흐름으로 자리 잡는지. ④ <strong>원/달러 원화 강세</strong>가 유지되며 외국인 복귀의 마중물이 되는지. ⑤ 예정된 대내외 지표·실적 일정은 <a href="/calendar.html">캘린더</a>에서 확인.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 리포트는 08-06(목) 마감 기준 조회·공개 보도를 정리한 것이다. KRX 지수 확정치는 익일(08-07) 반영되므로 당일 지수·개별주는 프록시·실시간·마감 보도를 병기했고, 매체별로 방향이 엇갈리는 개별 수치는 제외했다. 개별 종목은 시황 맥락으로 언급했을 뿐 투자의견(콜)이 아니다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 −4.63%·6,292.90·매도 사이드카 — <a href="https://www.etoday.co.kr/news/view/2611740">이투데이</a>, <a href="https://www.munhwa.com/article/11607689">문화일보</a></span>
+  <span>근거2 코스닥 장중 −1.43%·788.14 — <a href="https://segye.com/newsView/20260806510636">세계일보</a></span>
+  <span>근거3 업종별 등락(정보기술 −15.40%·금속 +2.93% 등) — <a href="https://www.newsway.co.kr/news/view?ud=2026080610402847123">뉴스웨이</a></span>
+  <span>근거4 외국인 −2.5~2.8조·기관 −3,833억 순매도 — <a href="https://www.etoday.co.kr/news/view/2611740">이투데이</a>, <a href="https://www.munhwa.com/article/11607689">문화일보</a></span>
+  <span>근거5 개인 +3.1조 나홀로 순매수 — <a href="https://www.mt.co.kr/stock/2026/08/06/2026080611354879023">머니투데이</a></span>
+  <span>근거6 SK하이닉스 5%룰 대량보유(SK스퀘어 20.01% 등) — <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260805000440">DART</a></span>
+  <span>근거7 미·아시아 메모리 동반 약세 — <a href="https://www.tradingkey.com/analysis/stocks/more/262080930-japan-south-korea-stocks-kospi-nikkei-softbank-sk-hynix-kioxia-tradingkey">TradingKey</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(실시간 시세·거래대금·ETF 프록시), 국내 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), DART(5%룰 대량보유). 지수 확정치는 08-05 KRX(macro_snapshot), 당일(08-06) 지수·개별주는 프록시·실시간·보도 병기. <strong>작성·발간: 2026-08-06 16:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
