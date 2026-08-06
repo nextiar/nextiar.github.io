@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 지수는 유가·금리에 눌려 소폭 하락, 그 안에서 메모리는 실적 호조에도 홀로 붕괴</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-07-us-close-morning-2026-08-07.html">
+<meta property="og:title" content="US 마감 시황 — 지수는 유가·금리에 눌려 소폭 하락, 그 안에서 메모리는 실적 호조에도 홀로 붕괴">
+<meta property="og:description" content="간밤 미 증시는 유가 83달러·10년물 4.67% 상승에 소폭 하락했으나, 웨스턴디지털 −19%·샌디스크 −13%가 실적 호조에도 눈높이 미달 가이던스에 급락하며 메모리만 홀로 붕괴 — 오늘 국내 삼성전자·SK하이닉스로의 전이가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-07-us-close-morning-2026-08-07.html">
+<meta name="description" content="간밤 미 증시는 유가 83달러·10년물 4.67% 상승에 소폭 하락했으나, 웨스턴디지털 −19%·샌디스크 −13%가 실적 호조에도 눈높이 미달 가이던스에 급락하며 메모리만 홀로 붕괴 — 오늘 국내 삼성전자·SK하이닉스로의 전이가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-07-us-close-morning-2026-08-07.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 지수는 유가·금리에 눌려 소폭 하락, 그 안에서 <span class="down">메모리는 실적 호조에도 홀로 붕괴</span></h1>
+  <p class="sub">2026년 8월 7일(금) 국내 장 시작 전 기준 · 전일 미 증시(8/6 목 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>소폭 하락</strong>했다 — 국제 유가가 배럴당 <strong>83달러</strong>로 오르고 10년물 국채금리가 <strong>4.67%</strong>까지 상승하며 다우가 <span class="down">−0.85%</span> 밀렸다. 그러나 지수보다 중요한 건 그 이면이었다 — <strong>웨스턴디지털 <span class="down">−19.1%</span>·샌디스크 <span class="down">−13.3%</span></strong>가 <strong>실적 컨센을 상회하고도</strong> '눈높이 미달' 가이던스에 급락하며 메모리·스토리지 섹터 전반을 끌어내렸다. 반면 엔비디아로 대표되는 <strong>AI 로직은 상대적으로 선방</strong>했다. 오늘 국내 장의 최대 변수는 이 <strong>간밤 메모리 조정이 KOSPI를 6,600까지 밀어올린 삼성전자·SK하이닉스로 어떻게 전이되느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-07 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-07 오전).</strong> 원/달러 <strong>1,424.8원</strong>(전일 1,428.2 → 원화 강세, 외국인 수급 우호) · 미 국채 10년물 4.67%(8/6 마감 보도, FRED 확정 8/5 4.63%) · 한국 기준금리 2.75% · 달러지수 119.70. 간밤 미 위험선호는 유가·금리에 눌렸고, 반도체 내부는 메모리와 로직이 정반대로 갈렸다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">숨 고르기 · 메모리는 붕괴</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/6 마감)</div><div class="val down">숨 고르기</div><div class="delta">유가 83달러·금리 4.67% 부담에 지수 소폭 하락</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,709.96</div><div class="delta down">▼ −0.18%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">26,348.35</div><div class="delta down">▼ −0.06% · 로직이 하방 방어</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">메모리 −19%</div><div class="delta">WDC·샌디스크發 → 삼성·하이닉스 압력</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 소폭 하락</strong> — 국제 유가가 <span class="up">83달러</span>로 오르고 10년물이 <strong>4.67%</strong>까지 상승하며 다우가 <span class="down">−0.85%(−464p)</span> 밀렸다. 다만 고용 지표(감원 2년래 최저)는 온건해 위험선호가 크게 훼손되진 않았다.</div>
+    <div class="tldr-item">② 그러나 <strong>메모리는 홀로 붕괴</strong>했다 — <strong>웨스턴디지털 <span class="down">−19.1%</span>·샌디스크 <span class="down">−13.3%</span></strong>가 실적은 컨센을 상회하고도 '눈높이 미달' 가이던스에 급락, 스토리지·메모리 섹터를 끌어내렸다. 반면 엔비디아 등 <strong>AI 로직은 상대적 선방</strong> → <strong>메모리 vs 로직 다이버전스</strong>가 뚜렷했다.</div>
+    <div class="tldr-item">③ 오늘 국내 장은 KOSPI가 <strong>6,600 부근까지 급등(8/5 <span class="up">+3.76%</span>)</strong>한 뒤라, 간밤 메모리發 조정이 삼성전자·SK하이닉스로 전이되는지가 방향을 가른다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 유가·금리 상승이 누른 숨 고르기</h2>
+  <p class="lead">국제 유가 상승(배럴당 83달러)과 10년물 금리 상승(4.67%)이 밸류에이션에 부담으로 작용하며 지수가 소폭 물러섰다. 다우가 <strong>−0.85%</strong>로 가장 약했고, 나스닥은 로직·엔비디아가 메모리 약세를 상쇄하며 <strong>거의 보합</strong>에 그쳤다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/6 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,709.96</td><td class="num"><span class="down">−0.18%</span></td><td>−13.59p, 사상 최고 부근서 후퇴<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">미 증시 마감 · Yahoo Finance (2026-08-06)</span><span class="evd-sum">8/6 종가 S&amp;P 500 <strong>7,709.96(−0.18%)</strong>·나스닥 <strong>26,348.35(−0.06%)</strong>·다우 <strong>53,885.10(−0.85%, −464.02p)</strong>. 유가 상승·10년물 4.67%가 지수를 눌렀고, 다우가 5일 상승세를 마감했다.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-6-dow-sp-nasdaq-091620000.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,348.35</td><td class="num"><span class="down">−0.06%</span></td><td>−15.09p, 로직이 하방 방어</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,885.10</td><td class="num"><span class="down">−0.85%</span></td><td>−464.02p, 5일 상승세 마감</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.67%</td><td class="num"><span class="up">상승</span></td><td>유가·수급에 상승(8/6 마감 보도)<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">유가·금리·고용 · Yahoo Finance (2026-08-06)</span><span class="evd-sum">국제 유가가 <strong>배럴당 83달러</strong>로 상승, 10년물 국채금리 <strong>4.67%</strong>·30년물 5.21%로 올랐다. 주간 신규 실업수당 청구는 <strong>19.9만건</strong>(8/1 주), 챌린저 감원은 2년래 최저로 고용은 온건했다.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-6-dow-sp-nasdaq-091620000.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>주간 신규실업수당</td><td class="num">19.9만건</td><td class="num">8/1 주</td><td>감원 2년래 최저 — 고용 온건</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 하락의 방아쇠는 <strong>유가와 금리</strong>였다. 호르무즈 해협 관련 지정학 불확실성에 국제 유가가 <span class="up">83달러</span>로 오르자 물가 재점화 우려가 자극됐고, 10년물이 <strong>4.67%</strong>까지 상승하며 밸류에이션이 높은 구간의 지수에 부담을 줬다. 다만 지수 하락폭 자체는 크지 않았고, 고용(챌린저 감원 2년래 최저·신규청구 19.9만건)은 견조해 <strong>연착륙 서사는 유지</strong>됐다.</p>
+      <p><strong>지수 안의 온도 차.</strong> 다우가 −0.85%로 가장 약한 반면 나스닥은 −0.06%로 사실상 보합이었다. AI 로직(엔비디아 등)이 상대적으로 버티며 <strong>메모리 급락을 상쇄</strong>한 결과다. "지수는 조용했지만 그 안은 요란했던" 하루로, 진짜 이야기는 다음 섹션의 반도체 내부에 있다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 이면의 균열 — 메모리 vs 로직·장비 다이버전스</h2>
+  <p class="lead">이날의 핵심은 지수 상단이 아니라 반도체 <strong>내부</strong>에 있었다. <strong>메모리(NAND·HBM·DRAM)는 실적 호조에도 붕괴</strong>한 반면, AI 로직(GPU)은 상대적으로 선방하며 하위 섹터가 정반대로 갈렸다. 하나의 '반도체'가 아니라 메모리·로직·장비를 갈라 봐야 하는 국면이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (간밤 미국)</th><th class="num">방향</th><th>하위 섹터</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>웨스턴디지털</strong> (WDC)</td><td class="num"><span class="down">−19.1%</span></td><td>메모리·스토리지(HDD·NAND)</td><td>실적 컨센 상회에도 <strong>가이던스 눈높이 미달</strong> → 급락<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">메모리·스토리지 급락 · TradingKey/MarketScreener (2026-08-06)</span><span class="evd-sum">샌디스크·웨스턴디지털은 8/5 장 마감 후 실적을 발표, 매출·EPS 모두 컨센을 상회했으나(샌디스크 매출 89.7억달러 vs 예상 84억) <strong>차기 분기 가이던스가 시장의 높은 눈높이에 못 미쳐</strong> 8/6 급락. 웨스턴디지털 <strong>−19.1%</strong>·샌디스크 <strong>−13.3%</strong>로 스토리지·메모리 섹터 전반을 끌어내렸다.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262082159-us-stock-sndk-wdc-skhy-mu-ai-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>샌디스크</strong> (SNDK)</td><td class="num"><span class="down">−13.3%</span></td><td>메모리(NAND)</td><td>컨센 상회에도 차익실현 — "실적이 아니라 눈높이의 문제"</td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="down">하락(장초반 ~−3%)</span></td><td>메모리(DRAM/HBM)</td><td>마이크론 커버 <span class="chip cool">중립</span> 콜과 정합 — 피크 멀티플 경계</td></tr>
+      <tr><td><strong>SK하이닉스</strong> ADR</td><td class="num"><span class="down">하락(장초반 ~−6%)</span></td><td>메모리(HBM)</td><td>SK하이닉스 커버 직접 연결 — 국내 read-through 최대</td></tr>
+      <tr><td>엔비디아 (NVDA)</td><td class="num"><span class="up">장초반 강세</span></td><td>AI 로직(GPU)</td><td>SpaceX 전량 채택 보도 — 로직 상대 우위<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">로직·엔비디아 · 장중 시황 노트 (2026-08-06)</span><span class="evd-sum">엔비디아는 SpaceX가 AI 서비스에 엔비디아 칩을 <strong>전량 채택</strong>하겠다는 소식에 장초반 강세를 보이며 로직 쪽 심리를 지지했다. 반면 AMD는 장초반 약세로, 로직 안에서도 종목별 편차가 있었다. (장초반 보도 기준 — 종가 등락률은 매체별 편차가 있어 방향만 표기)</span><a href="https://www.schwab.com/learn/story/stock-market-update-open" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>AMD</td><td class="num"><span class="down">장초반 약세</span></td><td>로직(GPU/CPU)</td><td>로직 안에서도 종목별 편차</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> WDC·샌디스크 등락은 <strong>8/6 종가 보도 기준</strong>이며 다수 매체가 방향·폭에서 일치했다. 반면 <strong>마이크론·SK하이닉스 ADR은 장초반(프리마켓~장중) 보도치</strong>라 정확한 종가 등락률은 매체별로 편차가 있어 <strong>방향만</strong> 표기했다. 엔비디아·AMD도 장초반 기준이라 방향만 표기한다 — 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 이번 급락의 진짜 메시지는 <strong>"실적이 아니라 눈높이"</strong>다. WDC·샌디스크는 매출·EPS 모두 컨센을 상회했는데도, 이미 주가에 반영된 AI 메모리 슈퍼사이클 기대치를 가이던스가 채우지 못하자 두 자릿수로 무너졌다. 이는 최근 한국 증시를 흔든 <strong>메모리·HBM 밸류에이션 논쟁</strong>과 정확히 같은 결이다 — 펀더멘털이 나빠서가 아니라 <strong>밸류에이션이 이미 완벽을 가정</strong>하고 있어서다.</p>
+      <p><strong>다이버전스의 방향.</strong> 반대로 <strong>엔비디아로 대표되는 AI 로직</strong>은 SpaceX 전량 채택 같은 신규 수요 촉매로 상대적으로 버텼다. "반도체를 한 덩어리로 보지 말라"는 우리 커버 리포트들의 결론과 맞닿는다 — 오늘 국내에서도 메모리(삼성·하이닉스)와 로직·부품·장비를 <strong>구분해서</strong> 봐야 한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·KRX(지수)·KOSIS(물가) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,424.8원</td><td class="num">1,428.2원</td><td>8/6 · ECOS <span class="down">(원화 강세 3.4원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>8/4 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">4.63%</td><td class="num">4.63%</td><td>8/5 · FRED DGS10</td></tr>
+      <tr><td>미 10년물 (8/6 마감 보도)</td><td class="num">≈4.67%</td><td class="num">—</td><td>8/6 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">119.70</td><td class="num">119.68</td><td>7/31 · FRED DTWEXBGS</td></tr>
+      <tr><td><strong>KOSPI (직전 확정)</strong></td><td class="num">6,598.26</td><td class="num"><span class="up">+3.76%</span></td><td>8/5 · KRX Open API</td></tr>
+      <tr><td>한국 CPI (총지수)</td><td class="num"><span class="up">+2.79% YoY</span></td><td class="num">—</td><td>2026-07 · KOSIS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 8/5 확정치(4.63%)와 8/6 마감 보도치(≈4.67%). 시황 해석엔 간밤(8/6) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. KOSPI 값은 스냅샷에 담긴 <strong>직전 KRX 확정치(8/5)</strong>로, 8/6 종가는 다음 스냅샷에 반영된다. 환율은 원화가 소폭 강세로 돌아 외국인 수급엔 우호적 방향이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/7) 국내 장 시사점 <span class="chip h2-chip">메모리 전이 주시</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 미 메모리 급락(<strong>WDC <span class="down">−19%</span>·샌디스크 <span class="down">−13%</span></strong>)이 <strong>KOSPI를 6,600까지 밀어올린 삼성전자·SK하이닉스로 전이되는지</strong>가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> KOSPI는 직전 확정치 기준 <span class="up">+3.76%(8/5)</span> 급등하며 6,600 부근에 있다 — 메모리·HBM 주도의 강세장이었다. 그만큼 간밤 미 메모리 조정은 <strong>반등 지속에 부담</strong>이다. 다만 결정적인 건 이번 하락이 <strong>실적 부진이 아니라 '눈높이 미달'</strong>에서 나왔다는 점이다. WDC·샌디스크는 컨센을 상회했음에도, 완벽을 가정한 밸류에이션이 가이던스 앞에서 조정받았다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">메모리 read-through · TradingKey (2026-08-06)</span><span class="evd-sum">8/6 미 스토리지·메모리 섹터가 동반 하락. 웨스턴디지털·샌디스크 급락이 <strong>SK하이닉스·마이크론 등 메모리 전반</strong>으로 번지며 "AI 자본지출·수익화" 우려를 재점화. 국내 삼성전자·SK하이닉스에 직접적인 심리적 read-through로 작용할 수 있다.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262082159-us-stock-sndk-wdc-skhy-mu-ai-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 WDC·샌디스크 급락을 얼마나 반영하는지(개장 갭·초반 거래대금), ② 엔비디아로 대표되는 <strong>AI 로직 강세</strong>가 국내 부품·장비주로 선별 확산되는지, ③ 원/달러 원화 강세에 <strong>외국인 순매수</strong>가 실제로 붙는지, ④ 유가 83달러·10년물 4.67% 상승이 이어지며 위험선호를 계속 누를지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감·장중 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 8/6 지수 마감(S&amp;P 7,709.96 −0.18%·나스닥 26,348.35 −0.06%·다우 53,885.10 −0.85%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-6-dow-sp-nasdaq-091620000.html">Yahoo Finance</a>, <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-6-2026">TheStreet</a></span>
+  <span>근거2 유가 83달러·10년물 4.67%·신규청구 19.9만건·감원 2년래 최저 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-6-dow-sp-nasdaq-091620000.html">Yahoo Finance</a></span>
+  <span>근거3 WDC −19.1%·샌디스크 −13.3%(컨센 상회·가이던스 미달) — <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262082159-us-stock-sndk-wdc-skhy-mu-ai-tradingkey">TradingKey</a>, <a href="https://www.marketscreener.com/news/sandisk-western-digital-drag-on-chip-stocks-as-lofty-expectations-eclipse-strong-earnings-ce7f50ddd88cf326">MarketScreener</a></span>
+  <span>근거4 엔비디아 장초반 강세(SpaceX 전량 채택)·AMD 약세 — <a href="https://www.schwab.com/learn/story/stock-market-update-open">Charles Schwab</a></span>
+  <span>근거5 메모리 섹터 read-through(SK하이닉스·마이크론 하락) — <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262082159-us-stock-sndk-wdc-skhy-mu-ai-tradingkey">TradingKey</a></span>
+  </div>
+  데이터 출처: 미 증시 마감·장중 공개 보도(Yahoo Finance·TheStreet·TradingKey·MarketScreener·Charles Schwab), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX Open API(KOSPI), 통계청 KOSIS(CPI), 토스증권 Open API(미 ETF 프록시). 2026-08-07 오전 조회 기준(전일 8/6 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-07 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
