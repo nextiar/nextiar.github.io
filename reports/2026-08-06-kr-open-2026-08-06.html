@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 개장 점검 — 어제 +3.76% 반등, 하루 만에 반도체發 하락 갭으로 시험대</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-06-kr-open-2026-08-06.html">
+<meta property="og:title" content="코스피 개장 점검 — 어제 +3.76% 반등, 하루 만에 반도체發 하락 갭으로 시험대">
+<meta property="og:description" content="어제 +3.76% 급반등한 KOSPI가 간밤 미국 메모리 약세(SanDisk 실적 후 급락)에 하루 만에 반도체 주도 하락 갭으로 출발 — 지수는 보합인데 메모리만 약한 다이버전스.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-06-kr-open-2026-08-06.html">
+<meta name="description" content="어제 +3.76% 급반등한 KOSPI가 간밤 미국 메모리 약세(SanDisk 실적 후 급락)에 하루 만에 반도체 주도 하락 갭으로 출발 — 지수는 보합인데 메모리만 약한 다이버전스.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-06-kr-open-2026-08-06.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 개장 점검 심층 (KR Market Open)</div>
+  <h1>코스피 개장 점검 — 어제 <span class="up">+3.76%</span> 반등, 하루 만에 <span class="down">반도체發 하락 갭</span>으로 시험대</h1>
+  <p class="sub">2026년 8월 6일(목) 09:30 개장 30분 점검. 어제(8/5) KOSPI가 <strong><span class="up">+3.76%</span> 급반등(6,598.26)</strong>했지만, 오늘은 <strong>KOSPI 프록시(KODEX 200) <span class="down">−3.17%</span>·반도체 주도 하락 갭</strong>으로 출발했다. 방아쇠는 <strong>간밤 미국 메모리 약세</strong> — SanDisk 실적 발표 후 급락·마이크론 하락으로, 어제 반등의 지속성이 개장부터 시험받고 있다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 작성·발간 2026-08-06 09:30 KST · 평일 개장 점검 슬롯 (kr-open)</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>⚠️ 09:30 기준 장중 수치 — 마감 시황(16:00)에서 확정치로 갱신.</strong> 지수 절대 레벨은 <strong>토스 ETF 프록시(KODEX 200·TIGER 200 등, "프록시" 표기)</strong>를 쓴다 — KRX Open API 확정치는 익일 반영이라 당일 장중 지수가 없다. 실시간 시세는 <strong>2026-08-06 09:31 KST 조회</strong> 기준이며 개장 초 변동성이 크다. 전일·과거 지수와 환율·금리는 소스별 확정 기준일을 함께 표기한다.</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">하락 갭 · 반도체 주도</span></h2>
+  <p class="lead">지수 프록시·개별 시세는 토스증권 Open API 실측(09:31 KST 조회), 환율·금리는 한국은행 ECOS·미 FRED 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">개장 방향</div><div class="val down">하락 갭</div><div class="delta">반도체發 · 어제 <span class="up">+3.76%</span> 반등 되돌림</div></div>
+    <div class="tile"><div class="lbl">KOSPI 프록시 (KODEX 200)</div><div class="val down">100,985</div><div class="delta down">▼ −3.17%<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">토스 Open API 실측 · KODEX 200(069500) (2026-08-06 09:31 KST)</span><span class="evd-sum">KOSPI 대표 프록시 <strong>KODEX 200 100,985원 −3.17%</strong>, <strong>TIGER 200(102110) −3.31%</strong>로 개장 하락 갭. KRX 지수 확정치는 익일 반영이라 당일 장중은 프록시로 대체.</span><span class="evd-nolink">외부 링크 없음 · 토스 Open API 실측</span></span></span></div></div>
+    <div class="tile"><div class="lbl">KOSDAQ 프록시 (레버리지 역산)</div><div class="val down">≈ −1.3%</div><div class="delta down">KODEX 코스닥150레버리지(2x) −2.67%</div></div>
+    <div class="tile"><div class="lbl">SK하이닉스 (000660)</div><div class="val down">1,557,000</div><div class="delta down">▼ −6.65% · 낙폭 최대</div></div>
+    <div class="tile"><div class="lbl">삼성전자 (005930)</div><div class="val down">239,500</div><div class="delta down">▼ −2.64%</div></div>
+    <div class="tile"><div class="lbl">원/달러 (ECOS 8/5)</div><div class="val">1,428.2<small>원</small></div><div class="delta up">전일 1,429.9 · 원화 소폭 강세</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 어제 <strong>KOSPI <span class="up">+3.76%</span>(6,598.26) 급반등</strong>이 하루 만에 시험대에 — 오늘 개장 <strong>KOSPI 프록시 <span class="down">−3.17%</span></strong>, 반도체 주도 하락 갭으로 출발했다. <strong>SK하이닉스 <span class="down">−6.65%</span>·삼성전기 <span class="down">−7.22%</span>·SK스퀘어 <span class="down">−8.84%</span></strong>가 낙폭을 이끈다.</div>
+    <div class="tldr-item">② 방아쇠는 <strong>간밤 미국 메모리 약세</strong> — <strong>SanDisk 실적 발표 후 급락·마이크론 하락</strong>, 미국 상장 한국물(EWY <span class="down">−1.51%</span>·KORU <span class="down">−4.71%</span>)도 약했다. 다만 미 지수 자체는 토스 실측상 <strong>보합~혼조(SPY <span class="up">+0.14%</span>·QQQ <span class="down">−0.14%</span>)</strong> — "지수는 잠잠, 메모리만 약세"의 다이버전스.</div>
+    <div class="tldr-item">③ 개장 초 <strong>KODEX 200선물인버스2X <span class="up">+5.74%</span>·KODEX 인버스 <span class="up">+3.35%</span></strong>가 거래대금 상위에 진입 — <strong>하락 베팅 쏠림</strong>. SK하이닉스 155만원선·삼성전자 24만원선의 낙폭 축소 여부가 오늘 방향키다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 → 개장 연결 — 메모리 약세의 '번역' <span class="chip cool h2-chip">US 시황 별도</span></h2>
+  <p class="lead">간밤 미 증시 마감은 <strong>오늘 06:00 발간한 <a href="/us-close-morning-2026-08-06" style="color:var(--accent);font-weight:650;text-decoration:none;">US 마감 시황 심층 ↗</a></strong>에서 상세히 다뤘다. 여기선 중복 서술 대신 <strong>"그게 오늘 국내 개장에 어떻게 번역되는가"</strong>에 집중한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 미국 (8/5 마감, 토스 실측)</th><th class="num">방향</th><th>오늘 국내 개장으로의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500 (SPY)</strong></td><td class="num"><span class="up">+0.14%</span></td><td>지수 레벨은 사실상 <strong>보합</strong> — 위험선호 붕괴는 아님<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">토스 Open API 실측 · SPY/QQQ (2026-08-06 09:31 KST, 8/5 미 마감 반영)</span><span class="evd-sum">SPY <strong>770.86$ +0.14%</strong>, QQQ <strong>716.33$ −0.14%</strong>. 미 지수 자체는 보합~혼조로, 오늘 국내 하락 갭은 지수 전반이 아니라 <strong>메모리·반도체 국지 약세</strong>의 전이가 핵심.</span><span class="evd-nolink">외부 링크 없음 · 토스 Open API 실측</span></span></span></td></tr>
+      <tr><td><strong>나스닥 100 (QQQ)</strong></td><td class="num"><span class="down">−0.14%</span></td><td>빅테크도 보합권 — "AI 트레이드 냉각" 헤드라인은 <strong>메모리 국지</strong> 이야기</td></tr>
+      <tr><td><strong>SanDisk (SNDK)</strong></td><td class="num"><span class="down">−7.33%</span></td><td>장 마감 후 <strong>FY26 4분기 실적 발표</strong> → 메모리 셀오프 방아쇠<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">SanDisk 실적·메모리 셀오프 보도 (2026-08-05)</span><span class="evd-sum">SanDisk가 8/5 <strong>장 마감 후 FY2026 4분기·연간 실적</strong>을 공개, 주가는 실적 전후로 급락(토스 실측 <strong>−7.33%</strong>). 시장은 이를 "AI 데이터센터 투자發 성장 사이클이 지속 가능한가"의 척도로 해석 — 메모리 밸류에이션 논쟁의 연장.</span><a href="https://247wallst.com/investing/2026/07/31/sandisk-is-down-45-in-a-month-should-memory-investors-switch-to-micron-or-sk-hynix-now/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>마이크론 (MU)</strong></td><td class="num"><span class="down">−1.95%</span></td><td>메모리 동반 약세 → <strong>삼성전자·SK하이닉스 심리적 read-through</strong></td></tr>
+      <tr><td>SK하이닉스 ADR (SKHY)</td><td class="num"><span class="down">−3.23%</span></td><td>간밤 미국서 이미 약세 → 오늘 국내 개장 갭다운으로 이어짐</td></tr>
+      <tr><td>iShares 한국 ETF (EWY) / KORU(3x)</td><td class="num"><span class="down">−1.51% / −4.71%</span></td><td>간밤 외국인 심리가 <strong>한국물에 부정적</strong>이었음을 시사<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">토스 Open API 실측 · EWY/KORU (2026-08-06 09:31 KST)</span><span class="evd-sum">미국 상장 한국 대표 ETF <strong>EWY 166.57$ −1.51%</strong>, 3배 레버리지 <strong>KORU 17.57$ −4.71%</strong>. 간밤 미국 세션에서 한국물이 이미 약세로 거래돼, 오늘 개장 하락 갭의 선행 신호로 읽힌다.</span><span class="evd-nolink">외부 링크 없음 · 토스 Open API 실측</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>핵심 번역.</strong> 오늘 국내 하락 갭은 "미국 증시가 무너져서"가 아니다 — 미 지수는 <strong>보합~혼조</strong>였다. 진짜 원인은 <strong>메모리 국지 약세</strong>다. 마감 후 실적을 낸 <strong>SanDisk가 급락(<span class="down">−7.33%</span>)</strong>하고 마이크론이 밀리면서, "AI 투자 사이클發 메모리 초호황이 지속되느냐"는 밸류에이션 논쟁이 재점화됐다. 이 심리가 <strong>삼성전자·SK하이닉스</strong>로 곧장 전이되며 개장 갭을 만들었다.</p>
+      <p><strong>왜 어제 반등이 취약했나.</strong> 어제(8/5) KOSPI <span class="up">+3.76%</span> 반등은 <strong>8/3 −4.88%(6,273) 급락의 되돌림</strong> 성격이 컸다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">KOSPI 8/3 급락·8/5 반등 · KRX 확정치 + 마감 보도 (2026-08-03~08-05)</span><span class="evd-sum">8/3 KOSPI <strong>−4.88%(6,273)</strong>, 삼성전자·SK하이닉스 <strong>−8%</strong> 동반 급락. 이후 8/5 <strong>+3.76%(6,598.26)</strong> 급반등(삼성 +3.13%·SK하이닉스 +6.72%), KOSDAQ +2.42%(799.59). 반도체 밸류 논쟁으로 <strong>일간 ±4~9% 스윙</strong>이 반복되는 극단적 변동성 국면.</span><a href="https://en.sedaily.com/news/2026/08/03/samsung-sk-hynix-tumble-8-percent-as-kospi-drops-below-6200" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 펀더멘털 개선이 아니라 낙폭과대 반발에 가까웠던 만큼, 간밤 메모리 악재 하나에 되돌림이 다시 되돌려지는 구조였다. 8월 들어 <strong>일간 ±4~9% 스윙이 반복</strong>되는 극단적 변동성 국면임을 감안해야 한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>개장 30분 흐름 심층 — 반도체 쏠림·거래대금·급등락 <span class="chip h2-chip">사이드카 없음</span></h2>
+  <p class="lead">개장 직후 거래대금 상위는 <strong>반도체 대형주가 1·2위를 독식</strong>하며 방향을 결정했다. 급등락 최상단은 개장 초 소형·저유동 종목이 섞여(거래대금 미미) 대표성이 낮으므로 <strong>거래대금 상위 중심</strong>으로 정리한다. 09:31 KST 현재 <strong>사이드카·서킷브레이커 발동은 없다.</strong></p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>거래대금 상위 (KR 실시간)</th><th class="num">현재가</th><th class="num">등락률</th><th>성격 / 개장 메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,557,000</td><td class="num"><span class="down">−6.65%</span></td><td>거래대금 1위 · 메모리·HBM 대장, 낙폭 최대<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">토스 Open API 실측 · KR 거래대금·급등락 랭킹 (2026-08-06 09:31 KST)</span><span class="evd-sum">개장 거래대금 <strong>1위 SK하이닉스(−6.65%)·2위 삼성전자(−2.64%)</strong>로 반도체가 상위를 독식. 인버스형 ETF(<strong>인버스2X +5.74%·인버스 +3.35%</strong>)가 거래대금 상위(9위·4위)에 진입. 급등락 최상단은 저유동 소형 종목이 섞여 본문 제외.</span><span class="evd-nolink">외부 링크 없음 · 토스 Open API 실측</span></span></span></td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">239,500</td><td class="num"><span class="down">−2.64%</span></td><td>거래대금 2위 · 하이닉스 대비 낙폭 절반, 상대적 방어</td></tr>
+      <tr><td><strong>삼성전기</strong> (009150)</td><td class="num">1,245,000</td><td class="num"><span class="down">−7.22%</span></td><td>반도체 기판·부품 · 낙폭 확대</td></tr>
+      <tr><td><strong>SK스퀘어</strong> (402340)</td><td class="num">1,017,000</td><td class="num"><span class="down">−8.84%</span></td><td>SK하이닉스 지주 성격 → 낙폭 증폭</td></tr>
+      <tr><td>KODEX 200선물인버스2X (252670)</td><td class="num">92</td><td class="num"><span class="up">+5.74%</span></td><td>거래대금 상위 진입 · <strong>하락 베팅 쏠림</strong></td></tr>
+      <tr><td>KODEX 인버스 (114800)</td><td class="num">1,109</td><td class="num"><span class="up">+3.35%</span></td><td>인버스 계열 동반 상위 — 지수 하락과 정합</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 위 수치는 <strong>2026-08-06 09:31 KST 토스 Open API 실측(장중)</strong>이며 개장 초 변동성이 크다 — 확정 등락은 마감 시황(16:00)에서 갱신한다. 급등락 랭킹 최상단(상한가 인근)은 <strong>거래대금이 미미한 저유동 종목</strong>이 섞여 시장 대표성이 낮아 개별 종목명은 싣지 않았다. 매체별로 방향이 엇갈리는 개별 수급 총액도 배제한다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>주도 vs 부진.</strong> 부진의 축은 명확하다 — <strong>반도체·반도체 소재/부품</strong>(SK하이닉스 <span class="down">−6.65%</span>·삼성전기 <span class="down">−7.22%</span>·SK스퀘어 <span class="down">−8.84%</span>)이 지수를 끌어내렸다. 반면 개장 초 상승 종목엔 <strong>심텍(222800, KOSDAQ) <span class="up">+5.72%</span>·금호타이어(073240) <span class="up">+7.52%</span></strong> 등 반도체 밖 개별 이슈주가 눈에 띄었으나, 거래대금 규모가 대형 반도체주에 크게 못 미쳐 <strong>지수 방향을 돌리진 못했다</strong>. 즉 "반도체가 밀고 나머지는 관망"의 전형적 갭다운 개장이다.</p>
+      <p><strong>흐름 성격.</strong> 삼성전자(<span class="down">−2.64%</span>)가 SK하이닉스(<span class="down">−6.65%</span>) 대비 낙폭이 절반 수준인 점은, 시장이 이번 약세를 <strong>메모리(특히 HBM) 밸류에이션 논쟁</strong>으로 좁혀 보고 있음을 시사한다 — 지수 전반의 공포보다는 종목·업종 선별 매도에 가깝다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 — 방향은 있으나 '총액'은 아직 <span class="chip cool h2-chip">확정 T+1</span></h2>
+  <p class="lead">개장 30분 시점의 수급 <strong>총액</strong>은 확정 데이터가 없다(KRX 확정 수급·외국인 순매수는 익일 반영, Open API 미제공). 따라서 <strong>방향의 프록시 신호</strong>만 정직하게 읽는다 — 미확인 순매수 금액은 싣지 않는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>초기 신호</th><th>읽기</th><th>정직성 표기</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인 방향</strong></td><td>간밤 <strong>EWY <span class="down">−1.51%</span>·KORU <span class="down">−4.71%</span></strong> → 미국서 한국물 이미 약세, 개장 순매도 압력 시사</td><td><span class="chip under">? 순매수 총액 확인불가 (T+1)</span></td></tr>
+      <tr><td><strong>인버스/레버리지 쏠림</strong></td><td><strong>인버스2X <span class="up">+5.74%</span>·인버스 <span class="up">+3.35%</span></strong>가 거래대금 상위 진입, <strong>레버리지(122630) <span class="down">−6.17%</span></strong> → 하락 베팅 우위</td><td>토스 실측 · 방향 신호</td></tr>
+      <tr><td><strong>전일 수급 연속성</strong></td><td>어제 <span class="up">+3.76%</span> 반등은 낙폭과대 반발 성격 → 오늘 갭다운으로 <strong>반등 연속성 시험 실패</strong> 구간</td><td>KRX 확정치 + 개장 실측</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 외국인 순매수 총액은 장중 확정치가 없으므로 <strong>방향 프록시</strong>(미국 상장 한국 ETF·인버스형 ETF 쏠림)로 대신 읽는다. 현재 신호는 모두 <strong>하방</strong>을 가리킨다 — 다만 원/달러가 소폭 원화 강세(1,428.2, 전일 1,429.9)라 <strong>환율은 외국인 수급에 우호적 방향</strong>이어서, 낙폭이 커지면 저가 매수 유입 여지도 있다. 확정 수급은 마감 시황(16:00)에서 <strong>대량보유(DART 5%룰) 신호와 함께</strong> 갱신한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3개 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 관찰 레벨 — 어제 상승분의 '절반 되돌림'.</strong> 어제 KOSPI가 <span class="up">+3.76%</span>(약 +239p) 올랐으니, <strong>그 절반을 되돌리는 6,470선 부근</strong>이 1차 심리 지지다. 프록시로는 <strong>KODEX 200이 −3% 갭을 좁히느냐 vs 더 벌리느냐</strong>가 관전 포인트. 개별로는 <strong>SK하이닉스 155만원선</strong> 사수 여부, 삼성전자가 24만원을 지키며 하이닉스보다 방어하는 <strong>디커플링</strong>이 이어지는지를 본다.</p>
+      <p><strong>② 예정 이벤트 — 캘린더로 확인.</strong> 오늘·이번 주 예정된 국내외 지표·실적 발표는 <strong><a href="/calendar.html" style="color:var(--accent);font-weight:650;text-decoration:none;">이벤트 캘린더 ↗</a></strong>에서 확인한다. 특히 <strong>메모리 밸류 논쟁의 다음 촉매</strong>(미 반도체 실적·물가 지표)가 언제 나오는지가 이 변동성 국면의 방향을 좌우한다 — 캘린더의 발표 일정과 대조하며 대응한다.</p>
+      <p><strong>③ 전환 신호 — 세 가지가 함께 와야.</strong> 하방 쏠림이 풀리는 신호는 (ⅰ) <strong>인버스2X·인버스의 거래대금 순위 하락</strong>(하락 베팅 청산), (ⅱ) <strong>SK하이닉스 낙폭이 −6%대 → −3%대로 축소</strong>되며 삼성전자와 함께 저점을 높이는 흐름, (ⅲ) 장중 <strong>외국인 순매수 전환 보도</strong>다. 이 셋이 동반될 때 비로소 '반등 재개'로 읽고, 하나만으로는 데드캣 바운스 경계를 유지한다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 <strong>2026-08-06 09:30~09:31 KST 개장 30분 점검</strong>으로, 장중 실측 수치는 마감까지 크게 바뀔 수 있다. 지수 절대 레벨은 ETF 프록시, 수급 총액은 익일 확정(T+1)이라 방향 프록시로 대체했다. 확정치는 오늘 <strong>마감 시황(16:00)</strong>에서 갱신한다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1·근거6 개장 지수 프록시·거래대금·급등락 랭킹(SK하이닉스 −6.65%·인버스2X +5.74% 등) — 토스증권 Open API 실측 (2026-08-06 09:31 KST 조회)</span>
+  <span>근거2·근거4 간밤 미 지수·메모리·한국물 ETF(SPY +0.14%·QQQ −0.14%·SanDisk −7.33%·EWY −1.51%·KORU −4.71%) — 토스증권 Open API 실측 (8/5 미 마감 반영)</span>
+  <span>근거3 SanDisk 실적 후 메모리 셀오프 — <a href="https://247wallst.com/investing/2026/07/31/sandisk-is-down-45-in-a-month-should-memory-investors-switch-to-micron-or-sk-hynix-now/">24/7 Wall St.</a></span>
+  <span>근거5 KOSPI 8/3 −4.88%(6,273)·8/5 +3.76%(6,598.26) 반등 — <a href="https://en.sedaily.com/news/2026/08/03/samsung-sk-hynix-tumble-8-percent-as-kospi-drops-below-6200">Seoul Economic Daily</a>, <a href="https://www.cnbc.com/2026/07/31/south-korea-kospi-samsung-sk-hynix-meltdown-record-rebound.html">CNBC</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(지수 ETF 프록시·개별 시세·랭킹, 09:31 KST 조회), 한국은행 ECOS(기준금리 8/3·원달러 8/5), 미 FRED(10년물 8/4·달러지수 7/31), KRX Open API(전일 지수 확정치 8/5), 미 마감 공개 보도. <strong>당일 지수는 ETF 프록시(익일 KRX 확정), 수급 총액은 T+1 확정</strong>이라 방향 프록시로 대체했다. 관련: <a href="/us-close-morning-2026-08-06">US 마감 시황(오늘 06:00)</a> · <a href="/calendar.html">이벤트 캘린더</a>. <strong>작성·발간: 2026-08-06 09:30 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-08-06 09:38 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
