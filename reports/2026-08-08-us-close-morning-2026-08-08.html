@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 7월 고용 깜짝 감소에 3대 지수 사상 최고, 금리 하락·메모리 슈퍼사이클이 국내 반도체에 우호</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-08-us-close-morning-2026-08-08.html">
+<meta property="og:title" content="US 마감 시황 — 7월 고용 &#x27;깜짝 감소&#x27;에 3대 지수 사상 최고, 금리 하락·메모리 슈퍼사이클이 국내 반도체에 우호">
+<meta property="og:description" content="7월 비농업 고용 감소(−2.3만)에 Fed 인상 우려가 걷히며 3대 지수 사상 최고·금리 하락, 메모리·로직·장비 슈퍼사이클 유지로 국내 반도체엔 우호적 배경.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-08-us-close-morning-2026-08-08.html">
+<meta name="description" content="7월 비농업 고용 감소(−2.3만)에 Fed 인상 우려가 걷히며 3대 지수 사상 최고·금리 하락, 메모리·로직·장비 슈퍼사이클 유지로 국내 반도체엔 우호적 배경.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-08-us-close-morning-2026-08-08.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 7월 고용 '깜짝 감소'에 3대 지수 <span class="up">사상 최고</span>, 금리 하락·메모리 슈퍼사이클이 국내 반도체에 우호</h1>
+  <p class="sub">2026년 8월 8일(토) 국내 장 마감 후 기준 · 전일 미 증시(8/7 금 마감) 반영. 간밤 뉴욕 3대 지수는 <strong><span class="up">동반 사상 최고</span></strong>로 마감했다 — 7월 비농업 고용이 <strong>−2.3만 명(예상 +8.3만)</strong>으로 감소하며 "Fed가 서둘러 금리를 올릴 이유가 사라졌다"는 안도가 위험선호를 밀어올렸다. 국채금리는 하락(10년물 4.65%·2년물 4.2% 부근)했고, 반도체는 <strong>메모리·로직·장비 모두 슈퍼사이클</strong> 논리가 유지됐다. 오늘 국내 관점의 핵심은 <strong>금리 하락·원화 강세·HBM 부족 지속이 8/6 급락(코스피 −4.58%)을 소화 중인 삼성전자·SK하이닉스로 어떻게 이어지느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-08 09:00 KST · 화~토 자동 발간 슬롯(토=금 US마감)</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-08 오전).</strong> 원/달러 <strong>1,418.8원</strong>(전일 1,424.8 → 원화 강세 6.0원, 외국인 수급 우호) · 미 국채 10년물 4.65%(8/7 마감 보도, FRED 확정 4.69%) · 한국 기준금리 2.75% · 달러지수 119.70. 간밤 미 위험선호가 살아났고 금리·달러가 함께 눌린 국면이다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">리스크 온 · 나쁜 고용이 호재</span></h2>
+  <p class="lead">미 지수는 토스증권 Open API 및 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/7 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 사상 최고 · 약한 고용이 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,757.64</div><div class="delta up">▲ +0.62% · 사상 최고</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,690.62</div><div class="delta up">▲ +1.3% · 빅테크 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 관전</div><div class="val up">금리↓·원화↑</div><div class="delta">HBM 슈퍼사이클 read-through vs 8/6 국내 급락 소화</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 사상 최고</strong> — 7월 비농업 고용이 <span class="down">−2.3만 명</span>(예상 +8.3만)으로 <strong>수개월 만의 감소</strong>, 실업률은 4.1%로 하락. "Fed 인상 필요성 소멸·인하 여지" 해석에 S&amp;P +0.62%·나스닥 +1.3%.</div>
+    <div class="tldr-item">② 국채금리는 하락(10년물 <span class="down">4.65%</span>·2년물 <span class="down">4.2% 부근</span>)했고 달러도 눌렸다 — 전형적인 '나쁜 뉴스가 좋은 뉴스' 국면. 다만 유가 강세(호르무즈 긴장)로 에너지가 강한 것이 크로스커런트.</div>
+    <div class="tldr-item">③ 반도체는 <strong>메모리·로직·장비 모두 슈퍼사이클</strong> 논리 유지(HBM 공급 부족 2027년 이후까지). 금리 하락·원화 강세와 겹쳐 국내 삼성전자·SK하이닉스·장비주에 우호적 read-through이나, 국내는 <span class="down">8/6 코스피 −4.58%</span> 자체 약세를 소화 중이라 방향은 개장 수급에 달렸다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 약한 고용이 밀어올린 사상 최고</h2>
+  <p class="lead">7월 고용보고서가 <strong>감소</strong>로 나오며 금리 인상 우려가 걷혔고, 지수는 사상 최고로 마감했다. S&amp;P 500은 <strong>주간 +3.6%</strong>·나스닥 <strong>+5.2%</strong>로 2주 연속 상승했다. 지수 레벨에선 이견 없는 '리스크 온' 하루였다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/7 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,757.64</td><td class="num"><span class="up">+0.62%</span></td><td>사상 최고 · 주간 +3.6%<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">3대 지수 사상 최고 · Yahoo Finance (2026-08-07)</span><span class="evd-sum">약한 7월 고용을 '인상 필요 없음'으로 해석하며 <strong>S&amp;P +0.62%(7,757.64)·나스닥 +1.3%(26,690.62)·다우 +0.28%(54,036.93)</strong> 사상 최고 마감. 주간 S&amp;P +3.6%·나스닥 +5.2%·다우 약 +3%로 2주 연속 상승.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-7-nasdaq-dow-sp-500-july-jobs-report-surprises-100009572.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,690.62</td><td class="num"><span class="up">+1.3%</span></td><td>빅테크·반도체가 견인 · 주간 +5.2%</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">54,036.93</td><td class="num"><span class="up">+0.28%</span></td><td>+151.83p</td></tr>
+      <tr><td>7월 비농업 고용</td><td class="num"><span class="down">−2.3만</span></td><td class="num">예상 +8.3만</td><td>수개월 만의 감소<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 7월 고용보고서 · BLS (2026-08-07)</span><span class="evd-sum">7월 비농업 고용 <strong>−2.3만 명</strong>(컨센 +8.3만, WSJ). 실업률 <strong>4.1%</strong>(전월 4.2%), 경제활동참가율 <strong>61.4%</strong>(5년래 최저). 5·6월 합산 <strong>−10.3만 명</strong> 하향 수정. 지방정부 교육 −5만·소매 −1.9만, 헬스케어는 증가.</span><a href="https://www.bls.gov/news.release/archives/empsit_08072026.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>실업률</td><td class="num">4.1%</td><td class="num">전월 4.2%</td><td>참가율 61.4%로 하락(5년래 최저)</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num"><span class="down">≈4.65%</span></td><td class="num">하락</td><td>2년물 4.2% 부근으로 동반 하락<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">국채금리 하락 · CNBC (2026-08-07)</span><span class="evd-sum">고용 부진에 <strong>10년물 4.65%</strong>, 2년물은 장중 최대 9bp 내려 <strong>4.2% 부근</strong>. 인상 베팅이 후퇴하고 9월 인하 기대가 강화. 달러도 동반 약세.</span><a href="https://www.cnbc.com/2026/08/07/treasury-yields-steady-ahead-of-key-nonfarm-payrolls-jobless-data.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 역설적으로 <strong>약한 고용</strong>이었다. 7월 비농업 고용이 <span class="down">−2.3만 명</span>으로 예상(+8.3만)을 크게 밑돌고 5·6월도 합산 <span class="down">−10.3만 명</span> 하향 수정되면서, 시장은 이를 "Fed가 서둘러 금리를 올릴 이유가 사라졌고 오히려 인하 여지가 생겼다"로 읽었다. 국채금리가 내리고 밸류에이션에 민감한 성장주가 앞서 나갔다.</p>
+      <p><strong>크로스커런트.</strong> 다만 하루의 결이 마냥 매끄럽지는 않았다. 호르무즈 해협 관련 지정학 긴장으로 <strong>유가가 오르며 에너지 섹터가 강했고</strong>, 개장 초반엔 관망세도 있었다. 개별 종목·섹터의 <strong>당일 등락률은 매체별 방향이 엇갈려</strong> 본문에서는 지수·매크로 등 다수 매체가 일치한 수치만 확정치로 싣고, 불명확한 개별 수치는 지어내지 않는다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">섹터 크로스커런트 · 데이터 정직성 (2026-08-07)</span><span class="evd-sum">유가 강세로 <strong>에너지 섹터가 상대적 강세</strong>였다는 보도와, 지수를 사상 최고로 본 다수 보도 사이에 <strong>일부 개별 종목의 당일 등락 방향이 엇갈렸다</strong>. 방향이 일치하지 않는 개별 수치는 본문에서 제외한다(스킬 §데이터 정직성).</span><span class="evd-nolink">교차 보도 상충 — 특정 수치 인용 보류</span></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 다이버전스 — 메모리 vs 로직 vs 장비 <span class="chip cool h2-chip">국내 직결</span></h2>
+  <p class="lead">국내와 직결되는 반도체는 하위까지 갈라서 본다. 결론부터: 이날 반도체는 <strong>세 축 모두 강세 논리가 유지</strong>됐다 — 메모리(DRAM/HBM) 공급 부족, AI 로직 수요, 장비 자본지출 확대가 동시에 진행 중이다. 아래는 <strong>당일 시황 맥락</strong>이며 특정 종목 투자의견(콜)이 아니다(우리 커버 종목 없음).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 축</th><th>간밤 미국 흐름</th><th class="num">방향</th><th>국내 연결 (시황 맥락)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리 (DRAM/HBM)</strong></td><td>HBM 공급 부족 2027년 이후까지 지속 경고 · 마이크론 분기 매출 $50B 가이던스</td><td class="num"><span class="up">슈퍼사이클</span></td><td>삼성전자·SK하이닉스에 가장 직접적 read-through(HBM 점유 SK 50%대·삼성 30%대)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">메모리 슈퍼사이클·HBM 부족 · Tom's Hardware (2026-08)</span><span class="evd-sum">삼성·SK하이닉스가 <strong>AI發 메모리 부족이 2027년 이후까지</strong> 이어질 수 있다고 경고. 고객사가 수년치 물량을 선예약. HBM은 2026년 DRAM 웨어퍼의 23%를 소진, HBM4가 하반기 주류화. HBM 점유율 SK 50~55%·삼성 35~40%·마이크론 5~10%.</span><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/samsung-and-sk-hynix-warn-ai-driven-memory-shortages-could-last-until-2027-and-beyond-as-hbm-demand-explodes-customers-already-reserving-supply-years-ahead-while-the-wider-dram-market-begins-to-tighten" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>로직 (GPU/AP/파운드리)</strong></td><td>AI 자본지출 가속 지속 · TSMC YTD +46% · 브로드컴 당분기 AI 반도체 매출 YoY +200%($16B) 가이던스</td><td class="num"><span class="up">강세</span></td><td>국내 팹리스·파운드리 심리 및 소부장 밸류체인에 우호</td></tr>
+      <tr><td><strong>장비 (Equipment)</strong></td><td>PHLX 반도체 ETF(SOXQ) YTD 약 +99% · 5월 글로벌 반도체 매출 $120.6B(YoY +104%, 15개월 연속 최고)</td><td class="num"><span class="up">확장</span></td><td>메모리 증설·HBM 후공정 장비 수요 → 국내 장비주(본더·검사 등) 참고</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 위 표의 반도체 흐름은 <strong>YTD·업황 지표 등 다수 매체가 일치한 값</strong>과 공급 부족 가이던스에 근거한다. <strong>개별 반도체주의 8/7 당일 등락률</strong>은 매체별 방향이 엇갈리는 경우가 있어 본문에 싣지 않았다 — 확인이 필요하면 토스 실시간 시세로 교차 확인한다. 지어낸 수치는 없다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 최근 국내 증시를 흔든 핵심이 <strong>메모리·HBM 사이클의 지속성</strong> 논쟁이다. 간밤 미국 쪽 메시지는 세 축 모두 "사이클이 아직 꺾이지 않았다"였다 — HBM은 2027년 이후까지 공급이 빠듯하고, 로직·장비 자본지출도 가속 중이다. 여기에 <strong>금리 하락·원화 강세</strong>가 겹치면 외국인 수급과 성장주 멀티플에 우호적이다. 다만 이는 <strong>펀더멘털 배경</strong>일 뿐, 국내 반도체 대형주는 8/6 급락(코스피 −4.58%)의 되돌림 여부라는 <strong>자체 수급 이슈</strong>를 별도로 안고 있다. "반도체를 한 덩어리로 보지 말고 메모리·로직·장비를 갈라 보라"는 것이 이날의 실전 교훈이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·국내 지수</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·KRX(국내 지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,418.8원</td><td class="num">1,424.8원</td><td>8/8 · ECOS <span class="down">(원화 강세 6.0원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 10년물 (8/7 마감 보도)</strong></td><td class="num">≈4.65%</td><td class="num">하락</td><td>8/7 · 마감 보도(고용 부진에 하락)</td></tr>
+      <tr><td>미 10년물 (FRED 확정)</td><td class="num">4.69%</td><td class="num">—</td><td>FRED DGS10(확정은 T+1 시차)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">119.70</td><td class="num">—</td><td>FRED DTWEXBGS</td></tr>
+      <tr><td>KOSPI</td><td class="num">6,296.38</td><td class="num"><span class="down">−4.58%</span></td><td>8/6 확정 · KRX</td></tr>
+      <tr><td>KOSDAQ</td><td class="num">801.67</td><td class="num"><span class="up">+0.26%</span></td><td>8/6 확정 · KRX</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 미 10년물은 표에 <strong>두 값</strong>으로 보인다 — 8/7 마감 보도치(≈4.65%, 고용 부진에 하락)와 FRED 일일 확정치(4.69%, 확정에 하루 시차). 시황 해석엔 간밤 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 환율은 원화가 6원 강세로 돌아 외국인 수급에 우호적 방향이다. 국내 지수는 8/6 확정치 기준으로 코스피가 큰 폭 하락한 뒤라, 오늘은 그 되돌림과 간밤 미 호재의 힘겨루기다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘 국내 장 시사점 <span class="chip cool h2-chip">호재 vs 자체 수급</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 약한 고용 → 금리 하락 → 사상 최고로 위험선호가 살아났고 메모리·로직·장비 슈퍼사이클 논리도 유지됐다. 이 <strong>우호적 배경</strong>이 8/6 급락(코스피 <span class="down">−4.58%</span>)을 소화 중인 <strong>국내 반도체·성장주의 되돌림</strong>으로 이어질지가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 미 금리 하락과 원화 강세(1,418.8원)는 신흥국·성장주 자금에 우호적이고, HBM 공급 부족이 2027년 이후까지 이어진다는 메시지는 삼성전자·SK하이닉스의 이익 서사에 긍정적 배경이다. 반대로 국내는 전일 확정 기준 코스피가 하루 −4.58% 밀린 뒤라, 간밤 호재가 <strong>실제 외국인 순매수·거래대금 회복</strong>으로 확인되기 전까지는 변동성 국면으로 본다. 유가 강세(호르무즈 긴장)는 정유·조선엔 결이 갈리는 변수다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 메모리 슈퍼사이클 우호 신호를 개장 갭·초반 거래대금으로 반영하는지, ② 원화 강세·미 금리 하락에 <strong>외국인 순매수</strong>가 실제로 붙는지, ③ 로직·장비 강세가 국내 소부장·후공정 장비주로 선별 확산되는지, ④ 다음 미 <strong>CPI·소매판매</strong>를 앞두고 '나쁜 뉴스=좋은 뉴스' 해석이 유지되는지, ⑤ 유가·달러 방향(에너지·환헤지)이 업종별로 어떻게 갈리는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 관련 참고용으로, 간밤 미 증시 마감(8/7)·매크로 스냅샷을 정리한 것이다. 지수·매크로 수치는 다수 매체·공식 발표가 일치한 값만 실었고, 방향이 엇갈리는 개별 종목 당일 등락은 제외했다. 개장 후 실제 흐름은 다를 수 있으며 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 3대 지수 사상 최고(S&amp;P 7,757.64 +0.62%·나스닥 26,690.62 +1.3%·다우 54,036.93 +0.28%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-7-nasdaq-dow-sp-500-july-jobs-report-surprises-100009572.html">Yahoo Finance</a></span>
+  <span>근거2 7월 비농업 고용 −2.3만(예상 +8.3만)·실업률 4.1%·5·6월 −10.3만 수정 — <a href="https://www.bls.gov/news.release/archives/empsit_08072026.htm">美 노동통계국(BLS)</a></span>
+  <span>근거3 국채금리 하락(10년 4.65%·2년 4.2% 부근)·9월 인하 기대 — <a href="https://www.cnbc.com/2026/08/07/treasury-yields-steady-ahead-of-key-nonfarm-payrolls-jobless-data.html">CNBC</a></span>
+  <span>근거4 섹터 크로스커런트(유가 강세 에너지)·개별 종목 방향 상충으로 수치 보류 — 교차 보도 상충(특정 수치 미인용)</span>
+  <span>근거5 메모리 슈퍼사이클·HBM 부족 2027년 이후·점유율 SK 50%대 — <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/samsung-and-sk-hynix-warn-ai-driven-memory-shortages-could-last-until-2027-and-beyond-as-hbm-demand-explodes-customers-already-reserving-supply-years-ahead-while-the-wider-dram-market-begins-to-tighten">Tom's Hardware</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도(Yahoo Finance·CNBC)·美 BLS 고용보고서, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX(국내 지수). 2026-08-08 오전 조회 기준(전일 8/7 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-08 09:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
