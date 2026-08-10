@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 지수는 유가·CPI 경계에 보합, 엔비디아는 '자금조달 구조' 헤드라인에 홀로 후퇴</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-11-us-close-morning-2026-08-11.html">
+<meta property="og:title" content="US 마감 시황 — 지수는 유가·CPI 경계에 보합, 엔비디아는 &#x27;자금조달 구조&#x27; 헤드라인에 홀로 후퇴">
+<meta property="og:description" content="간밤 뉴욕은 유가 급등·수요일 CPI 대기에 3대 지수 보합, 엔비디아는 자금조달 구조 헤드라인에 −3% 후퇴 — 반도체 비중이 절반인 국내 장의 로직 되돌림 전이가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-11-us-close-morning-2026-08-11.html">
+<meta name="description" content="간밤 뉴욕은 유가 급등·수요일 CPI 대기에 3대 지수 보합, 엔비디아는 자금조달 구조 헤드라인에 −3% 후퇴 — 반도체 비중이 절반인 국내 장의 로직 되돌림 전이가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-11-us-close-morning-2026-08-11.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 지수는 유가·CPI 경계에 <span class="down">보합</span>, 엔비디아는 '자금조달 구조' 헤드라인에 <span class="down">홀로 후퇴</span></h1>
+  <p class="sub">2026년 8월 11일(화) 국내 장 시작 전 기준 · 전일 미 증시(8/10 월 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>사실상 보합(소폭 하락)</strong>으로 한 주를 열었다 — <strong>중동發 유가 급등</strong>과 <strong>수요일(8/12) 미 CPI 대기</strong>가 위험선호를 눌렀고, 국채 10년물은 <strong><span class="up">4.70%</span>로 상승</strong>했다. 지수 이면에서 <strong>엔비디아가 <span class="down">약 −3%</span></strong> 후퇴했는데, 이는 실적·수요 악화가 아니라 <strong>5,000억 달러 AI 인프라 자금조달 구조 보도</strong>에 따른 되돌림 성격이 강했다. 반면 반도체 '톱픽' 애널리스트 코멘트는 마이크론 등 메모리 심리를 떠받쳤다. 오늘 국내 장의 관전 포인트는 이 <strong>엔비디아 후퇴가 반도체 비중이 절반에 달하는 삼성전자·SK하이닉스로 어떻게 읽히느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-11 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-11 오전).</strong> 원/달러 <strong>1,420.1원</strong>(전일 1,418.8 → 원화 소폭 약세) · 미 국채 10년물 <strong>4.70%</strong>(8/10 마감 보도, FRED 확정 8/7 4.65%) · 한국 기준금리 2.75% · 달러지수 119.06(8/7 FRED). 간밤 미 증시는 방향성보다 <strong>유가·CPI 대기</strong>가 지배했고, 반도체 내부는 로직·메모리가 서로 다른 촉매로 움직였다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">보합 · 유가·CPI 대기</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도(Yahoo Finance·CNBC), 미 ETF 프록시(SPY·QQQ)는 토스증권 Open API, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/10 마감)</div><div class="val down">리스크 오프(약)</div><div class="delta">유가 급등·CPI 대기 → 3대 지수 소폭 하락</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,753.11</div><div class="delta down">▼ −0.06%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">26,605.36</div><div class="delta down">▼ −0.32% · 엔비디아 후퇴</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">엔비디아 −3%</div><div class="delta">로직 되돌림 → 삼성·하이닉스 read-through</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>사실상 보합(소폭 하락)</strong> — 중동 호르무즈 해협 재개 지연으로 <strong>국제유가가 급등</strong>하고 국채 10년물이 <span class="up">4.70%</span>로 오르며, <strong>수요일 CPI</strong>를 앞둔 관망세가 지수를 눌렀다.</div>
+    <div class="tldr-item">② 반도체 안에서 <strong>촉매가 갈렸다</strong> — <strong>엔비디아 <span class="down">약 −3%</span></strong>는 5,000억 달러 AI 인프라 자금조달 구조 보도에 따른 되돌림, 인텔은 <strong>150억 달러 증자 계획</strong>에 약세였던 반면, 마이크론·엔비디아는 '2026 반도체 톱픽' 애널리스트 코멘트가 메모리 심리를 지지했다.</div>
+    <div class="tldr-item">③ 오늘 국내 장은 삼성전자·SK하이닉스가 <strong>코스피 시총의 절반 안팎</strong>을 차지하는 구조라, 간밤 엔비디아 후퇴와 HBM4 수율 뉴스가 방향을 가른다.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 유가가 밀어올린 '관망 보합'</h2>
+  <p class="lead">한 주의 시작은 방향성보다 <strong>대기</strong>였다. 중동發 유가 급등이 인플레·금리 상방 리스크를 자극했고, 투자자들은 <strong>수요일(8/12) CPI</strong>가 9월 연준 결정의 서사를 바꿀 수 있다는 점에 무게를 뒀다. S&amp;P500 기업의 80% 이상이 이미 실적을 낸 터라 실적 모멘텀도 소강 국면이었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/10 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,753.11</td><td class="num"><span class="down">−0.06%</span></td><td>−4.53p, 사실상 보합<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴욕 3대 지수 종가 · Yahoo Finance (2026-08-10)</span><span class="evd-sum">S&amp;P500 <strong>7,753.11(−0.06%, −4.53p)</strong>, 나스닥 <strong>26,605.36(−0.32%, −85.26p)</strong>, 다우 <strong>53,975.98(−0.11%, −60.95p)</strong>. 유가 상승이 지수를 눌렀고 CPI 대기 관망세가 짙었다.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-august-10-dow-sp-500-nasdaq-104358890.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,605.36</td><td class="num"><span class="down">−0.32%</span></td><td>−85.26p, 엔비디아 후퇴가 부담</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,975.98</td><td class="num"><span class="down">−0.11%</span></td><td>−60.95p</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num"><span class="up">4.701%</span></td><td class="num">+4bp↑</td><td>유가 상승·CPI 경계<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 국채 금리 · CNBC (2026-08-10)</span><span class="evd-sum">10년물 <strong>4.701%(+4bp 이상)</strong>, 2년물 4.241%(+3bp), 30년물 5.242%(+3bp)로 동반 상승. 유가 상승에 인플레·금리 상방 압력이 붙었고 수요일 CPI가 9월 연준 결정 기대를 재편할 변수로 지목.</span><a href="https://www.cnbc.com/2026/08/10/us-treasury-yields-investors-eye-key-inflation-data-.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>국제유가 · 호르무즈</td><td class="num"><span class="up">급등</span></td><td class="num">—</td><td>이란 조건 제시에 해협 재개 지연<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">유가·에너지 · TheStreet (2026-08-10)</span><span class="evd-sum">주말 중동 협상 진전 부재로 국제유가 급등. 이란이 호르무즈 해협 재개 전 미국이 여러 조건을 충족해야 한다고 주장. 유가 레벨은 매체별로 80달러대 초반~후반으로 <strong>보도 편차</strong>가 있어 본문은 방향(급등)만 표기하고 정확한 수치는 확정치 확인 전까지 제외.</span><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-10-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 지수 등락 폭 자체는 <span class="down">−0.1% 안팎</span>으로 미미했지만, 그 밑에서 두 힘이 팽팽했다. 하나는 <strong>유가 급등</strong> — 이란이 호르무즈 해협 재개 조건을 내걸며 협상이 지연되자 국제유가가 뛰었고, 이는 인플레·금리 상방 리스크로 번져 국채 10년물을 <span class="up">4.70%</span>까지 밀어올렸다. 다른 하나는 <strong>수요일 CPI 대기</strong> — 물가 지표가 9월 연준의 금리 경로 기대를 재편할 수 있어, 방향을 크게 걸기보다 관망하는 하루였다.</p>
+      <p><strong>섹터.</strong> 이날 흐름은 전형적인 '유가 랠리' 색채였다 — 장중 <strong>에너지(XLE)</strong>가 앞장서 오른 반면, 금리에 민감한 <strong>리츠(XLRE)·유틸리티(XLU)</strong>는 뒤처졌다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">섹터 장중 스냅샷 · Investrade Mid-Morning (2026-08-10)</span><span class="evd-sum">장중 <strong>에너지(XLE)가 선두(약 +3%)</strong>, <strong>리츠(XLRE) −1.5%·유틸리티(XLU) −0.9%</strong>로 부진. 장 마무리 무렵 미 상장 종목의 약 57%가 하락. 수치는 <strong>장중 스냅샷</strong>이라 종가 기준과 다를 수 있어 방향성으로만 인용.</span><a href="https://investrade.com/mid-morning-look-august-10-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 유가가 오르면 에너지가 웃고 금리 민감주가 우는 구도가 그대로 나타났다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 이면 — 반도체는 로직·메모리·장비 촉매가 갈렸다</h2>
+  <p class="lead">이날 반도체는 '한 방향 랠리'가 아니라 <strong>종목별 촉매</strong>가 지배했다. 로직 대장은 <strong>자금조달 구조</strong> 헤드라인에 되돌림을 겪었고, 종합 반도체(IDM)는 <strong>증자</strong> 부담에 눌렸으며, 메모리는 <strong>애널리스트 톱픽</strong> 코멘트가 심리를 지지했다. 하위 섹터를 갈라 봐야 국내 read-through가 보인다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (간밤 미국)</th><th class="num">방향</th><th>성격 · 촉매</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="down">약 −3%</span></td><td>AI 로직 — 5,000억$ AI 인프라 자금조달 구조 보도에 되돌림<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">엔비디아·인텔 · Yahoo Finance (2026-08-10)</span><span class="evd-sum">엔비디아가 <strong>약 −3%</strong> 하락 — 5,000억 달러 규모 AI 인프라 <strong>자금조달 패키지</strong> 관련 보도가 배경. 인텔은 <strong>150억 달러 증자(신주 발행) 계획</strong>을 밝히며 약세. 실적·수요 악화보다 자금조달 구조·희석 우려 성격.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-august-10-dow-sp-500-nasdaq-104358890.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>엔비디아 리포트 커버 — 로직 사이클·AI capex 지속성 점검 대상</td></tr>
+      <tr><td><strong>인텔</strong> (INTC)</td><td class="num"><span class="down">약세</span></td><td>IDM — 150억$ 증자(신주 발행) 계획, 희석 우려</td><td>파운드리·로직 밸류체인 참고(직접 커버 아님)</td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="chip cool">톱픽 언급</span></td><td>메모리(DRAM/HBM) — Baird·모건스탠리 '2026 톱픽' 코멘트로 심리 지지</td><td>마이크론 리포트 커버 — HBM 사이클 관점과 정합</td></tr>
+      <tr><td>AMD · 브로드컴</td><td class="num">확인불가</td><td>매체별 방향 보도 상이 — 지어내지 않고 제외</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 엔비디아 <span class="down">−3%</span>·인텔 증자·10년물 4.70%는 다수 매체가 일치했다. 반면 <strong>마이크론의 정확한 등락률</strong>은 아침 강세(톱픽 언급)와 장중 되돌림 보도가 <strong>엇갈려</strong> 수치를 특정하지 않고 방향(심리 지지)만 표기했다. AMD·브로드컴, 국제유가 정확한 배럴 가격도 매체별 편차가 있어 <strong>지어내지 않고 제외</strong>했다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 국내와 직결인가.</strong> 최근 한국 증시는 <strong>삼성전자·SK하이닉스가 코스피 시총의 절반 안팎</strong>까지 커진 구조라, 간밤 미 반도체의 성격을 그대로 수입한다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 반도체 급락·집중도 · KED Global (2026-08-06)</span><span class="evd-sum">8/6 외국인 매도로 <strong>SK하이닉스 −8.27%·삼성전자 −5.69%</strong>, 코스피 −4.58%(6,296.38). 미 반도체·AI주 약세에 눈높이 대비 실적 부담이 겹침. 삼성·하이닉스 합산 비중이 코스피의 약 절반까지 확대.</span><a href="https://www.kedglobal.com/korean-stock-market/newsView/ked202608060013" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 간밤 엔비디아 후퇴는 <strong>수요·실적이 아니라 자금조달 구조 헤드라인</strong>에서 비롯됐다는 점이 중요하다 — 이는 "AI capex 자체가 꺾였다"는 신호가 아니라 자금 조달 방식에 대한 되돌림에 가깝다.</p>
+      <p><strong>메모리 구조 스토리.</strong> 마침 <strong>삼성전자가 6세대 HBM인 HBM4 수율 80%</strong>에 도달해 SK하이닉스가 지배해온 HBM 시장 구도에 변화가 예상된다는 보도가 나왔다(8/10).<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">삼성 HBM4 수율 · Seoul Economic Daily (2026-08-10)</span><span class="evd-sum">삼성전자가 양산 6개월 만에 <strong>HBM4 수율 80%</strong>에 도달, 내년 SK하이닉스를 앞설 가능성이 거론됨. AI 수요로 HBM4 가격 상승·공급 부족이 내년까지 이어질 것이란 전망.</span><a href="https://en.sedaily.com/finance/2026/08/10/samsung-cracks-hbm4-yields-set-to-overtake-sk-hynix-next" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 즉 오늘 국내 메모리는 <strong>간밤 미 로직 되돌림(부담)</strong>과 <strong>HBM4 경쟁 구도 뉴스(개별 촉매)</strong>가 동시에 작용하는 국면이다. "반도체를 한 덩어리로 보지 말라"는 우리 커버 리포트들의 결론이 이날에도 유효하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·통계청 KOSIS(국내 물가·생산) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,420.1원</td><td class="num">1,418.8원</td><td>8/10 · ECOS <span class="up">(원화 약세 1.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>8/10 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (마감 보도)</strong></td><td class="num">≈4.70%</td><td class="num">—</td><td>8/10 · CNBC(4.701%)</td></tr>
+      <tr><td>미 10년물 (FRED 확정)</td><td class="num">4.65%</td><td class="num">4.69%</td><td>8/7 · FRED DGS10(확정은 T+1)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">119.06</td><td class="num">119.51</td><td>8/7 · FRED DTWEXBGS</td></tr>
+      <tr><td>한국 CPI (전년비)</td><td class="num"><span class="up">+2.79%</span></td><td class="num">—</td><td>2026-07 · KOSIS</td></tr>
+      <tr><td>한국 전산업생산 (전년비)</td><td class="num"><span class="up">+4.23%</span></td><td class="num">—</td><td>2026-06 · KOSIS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 8/7 확정치(4.65%)와 8/10 마감 보도치(≈4.70%). 시황 해석엔 간밤(8/10) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 원/달러는 소폭 약세(원화 약세)로, 유가·금리 상승과 함께 <strong>수요일 CPI</strong>가 방향을 크게 흔들 수 있는 대기 국면이다. 국내 KOSPI/KOSDAQ 값은 8/7 확정치 기준(브리핑 스냅샷).</div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/11) 국내 장 시사점 <span class="chip h2-chip">유가·CPI 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>유가 급등·CPI 대기</strong>로 보합에 그쳤고 <strong>엔비디아(<span class="down">−3%</span>)가 자금조달 구조 헤드라인에 후퇴</strong>했으므로, 반도체 비중이 절반에 달하는 국내 지수는 <strong>이 로직 되돌림을 얼마나 반영하느냐</strong>가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 국내 반도체는 8/6 외국인 매도로 <strong>SK하이닉스 <span class="down">−8.27%</span>·삼성전자 <span class="down">−5.69%</span>, 코스피 <span class="down">−4.58%</span></strong>(6,296.38)까지 밀렸다가, 이후 AI 수요 기대에 반등하는 등 변동성이 큰 국면을 지나고 있다. 여기에 8/10 <strong>삼성 HBM4 수율 80%</strong> 보도가 더해져, 메모리는 지수發 압력과 개별 촉매(HBM 경쟁 구도)가 동시에 작동한다. 간밤 미 로직 되돌림이 <strong>수요 악화가 아닌 자금조달 이슈</strong>였다는 점은, 무차별 매도보다 <strong>선별 대응</strong>을 시사한다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 엔비디아 <span class="down">−3%</span>를 얼마나 반영하는지(개장 갭·외국인 초반 수급), ② 삼성 <strong>HBM4 수율</strong> 뉴스가 삼성-하이닉스 간 <strong>상대 강도</strong>로 반영되는지, ③ 유가·10년물(<span class="up">4.70%</span>) 상승이 원/달러(1,420원대 약세)와 맞물려 외국인 수급에 부담을 주는지, ④ <strong>수요일(8/12) 미 CPI</strong>를 앞둔 관망이 국내 거래대금·변동성을 어떻게 누르는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 뉴욕 3대 지수 종가(S&amp;P 7,753.11 −0.06% 등) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-august-10-dow-sp-500-nasdaq-104358890.html">Yahoo Finance</a></span>
+  <span>근거2 미 국채 10년물 4.701%(+4bp)·2년·30년 상승 — <a href="https://www.cnbc.com/2026/08/10/us-treasury-yields-investors-eye-key-inflation-data-.html">CNBC</a></span>
+  <span>근거3 유가 급등·호르무즈 해협 재개 지연 — <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-10-2026">TheStreet</a></span>
+  <span>근거4 섹터 장중 스냅샷(에너지 선두·리츠/유틸 부진) — <a href="https://investrade.com/mid-morning-look-august-10-2026/">Investrade</a></span>
+  <span>근거5 엔비디아 −3%·인텔 150억$ 증자 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-august-10-dow-sp-500-nasdaq-104358890.html">Yahoo Finance</a></span>
+  <span>근거6 KR 8/6 SK하이닉스 −8.27%·삼성 −5.69%·코스피 −4.58%·집중도 — <a href="https://www.kedglobal.com/korean-stock-market/newsView/ked202608060013">KED Global</a></span>
+  <span>근거7 삼성 HBM4 수율 80% 도달 — <a href="https://en.sedaily.com/finance/2026/08/10/samsung-cracks-hbm4-yields-set-to-overtake-sk-hynix-next">Seoul Economic Daily</a></span>
+  </div>
+  데이터 출처: 공개 미 마감 보도(Yahoo Finance·CNBC·TheStreet·Investrade), 토스증권 Open API(미 ETF 프록시 SPY·QQQ), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 통계청 KOSIS(국내 물가·생산), KRX Open API(KOSPI·KOSDAQ). 2026-08-11 오전 조회 기준(전일 8/10 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-11 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
