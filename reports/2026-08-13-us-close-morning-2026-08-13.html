@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 7월 CPI 안도 속 혼조 마감, 그 안에서 메모리·AI는 홀로 강세</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 12px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 4px 14px; }
+.en-abstract summary { cursor: pointer; font-size: 12.5px; font-weight: 650; color: var(--ink-2); padding: 8px 0; }
+.en-abstract[open] summary { margin-bottom: 6px; }
+.en-abstract p { font-size: 12.5px; color: var(--ink-2); margin: 0 0 10px; line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-13-us-close-morning-2026-08-13.html">
+<meta property="og:title" content="US 마감 시황 — 7월 CPI 안도 속 혼조 마감, 그 안에서 메모리·AI는 홀로 강세">
+<meta property="og:description" content="간밤 뉴욕은 7월 CPI 예상 부합 속 혼조 마감했지만 마이크론 약 +5%·엔비디아 +3% 등 메모리·AI는 강세 — 이미 급등한 국내 반도체엔 추가 상승 대 과열이 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-13-us-close-morning-2026-08-13.html">
+<meta name="description" content="간밤 뉴욕은 7월 CPI 예상 부합 속 혼조 마감했지만 마이크론 약 +5%·엔비디아 +3% 등 메모리·AI는 강세 — 이미 급등한 국내 반도체엔 추가 상승 대 과열이 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-13-us-close-morning-2026-08-13.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 7월 CPI 안도 속 <span class="down">혼조</span> 마감, 그 안에서 <span class="up">메모리·AI는 홀로 강세</span></h1>
+  <p class="sub">2026년 8월 13일(목) 국내 장 시작 전 기준 · 전일 미 증시(8/12 수 마감) 반영. 간밤 뉴욕은 <strong>혼조</strong>로 끝났다 — 7월 소비자물가(CPI)가 예상에 부합하며 물가 안도가 이어졌지만, 지수는 <strong>S&amp;P500 <span class="up">+0.26%</span>·나스닥 <span class="up">+0.54%</span>·다우 <span class="down">−0.04%</span></strong>로 방향이 갈렸다. 다만 지수 이면에서 <strong>마이크론 <span class="up">약 +5%</span>·엔비디아 <span class="up">+3%</span> 등 메모리·AI 로직은 강세</strong>였다. 오늘 국내 장은 어제(8/12) 이미 <strong>코스피가 6,500선을 되찾은 +3.7% 급등</strong>을 한 터라, <strong>간밤 미 반도체 강세가 추가 상승을 지지하느냐 vs 단기 과열·차익실현</strong>이 관건이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-13 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-13 오전).</strong> 원/달러 <strong>1,415.0원</strong>(전일 1,415.3 → 원화 소폭 강세) · 미 국채 10년물 <strong>4.682%</strong>(8/12 마감 보도, CPI에도 거의 보합) · 한국 기준금리 2.75% · 달러지수 119.06 · SPY 772.49$(<span class="up">+0.25%</span>). 물가 안도는 확인됐으나 지수는 방향이 갈렸고, 반도체 내부는 오히려 강세로 붙었다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">CPI 안도 · 지수는 혼조</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도(Yahoo Finance·CNBC), 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/12 마감)</div><div class="val down">혼조</div><div class="delta">CPI 부합 안도 · 그러나 지수 방향 갈림</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,748.50</div><div class="delta up">▲ +0.26% (+20.30p)</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,588.49</div><div class="delta up">▲ +0.54% · AI·메모리 견인</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">메모리 +5%</div><div class="delta">간밤 마이크론 강세 → 삼전·하이닉스 우호</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>혼조 마감</strong> — 7월 CPI가 헤드라인 <span class="up">+0.1%</span>(YoY 3.4%, 예상 부합)로 둔화를 확인했지만, S&amp;P500 <span class="up">+0.26%</span>·나스닥 <span class="up">+0.54%</span>·다우 <span class="down">−0.04%</span>로 방향이 갈렸다. 10년물은 <strong>4.68%</strong>로 거의 보합.</div>
+    <div class="tldr-item">② 지수는 밋밋했지만 <strong>반도체·AI 내부는 강세</strong>였다 — <strong>마이크론 <span class="up">약 +5%</span>·엔비디아 <span class="up">+3%</span>·델 <span class="up">약 +10%</span></strong>. 이번엔 로직뿐 아니라 <strong>메모리도 함께 오른</strong> 점이 지난 급락 국면과 다른 신호다.</div>
+    <div class="tldr-item">③ 국내는 어제(8/12) 이미 <strong>코스피 +3.7%·6,500선 탈환, 삼성·SK하이닉스 약 +7% 급등</strong>으로 크게 앞서 달린 상태 — 간밤 미 메모리 강세는 우호적이나, <strong>단기 과열·차익실현</strong> 부담이 오늘의 상수다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>▸ English summary (3-sentence abstract)</summary>
+    <p>Wall Street closed mixed on Aug 12: the S&amp;P 500 rose 0.26% and the Nasdaq gained 0.54%, while the Dow slipped 0.04%, after July CPI matched expectations (+0.1% m/m, 3.4% y/y headline; +0.2% m/m, 2.5% y/y core) and reinforced a "Fed on hold" read; the 10-year yield was little changed near 4.68%.</p>
+    <p>Beneath the flat index tape, semiconductors and AI led — Micron rose roughly 5%, Nvidia about 3% and Dell nearly 10% — notable because this time memory rose alongside logic rather than diverging from it.</p>
+    <p>For Korea, the read-through is supportive but Korean chips already surged the prior session (KOSPI +3.7%, back above 6,500; Samsung and SK Hynix each about +7%), so the key question today is follow-through versus profit-taking after a sharp run. Figures follow the Korean original.</p>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — CPI는 부합, 지수는 방향이 갈렸다</h2>
+  <p class="lead">7월 CPI가 예상에 부합하며 "물가는 식지만 연준 목표(2%)보단 높다"는 그림을 재확인했다. 안도 랠리로 폭발하기보단 <strong>차분한 소화</strong>였고, 지수 레벨에선 나스닥이 앞서고 다우는 소폭 밀리는 혼조였다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/12 종가·값</th><th class="num">전일 대비 / 예상</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,748.50</td><td class="num"><span class="up">+0.26%</span></td><td>+20.30p, AI·메모리가 견인<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴욕 3대 지수 종가 · Yahoo Finance Live (2026-08-12)</span><span class="evd-sum">8/12 종가: <strong>S&amp;P500 7,748.50(+0.26%)·나스닥 26,588.49(+0.54%)·다우 53,770.27(−0.04%)</strong>. CPI 부합 뒤 차분한 상승, 다우만 소폭 하락한 혼조.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-august-12-dow-sp-500-nasdaq-cpi-report-091555133.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,588.49</td><td class="num"><span class="up">+0.54%</span></td><td>+143.04p, 반도체·AI 강세</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,770.27</td><td class="num"><span class="down">−0.04%</span></td><td>−21.58p, 지수 내 유일한 소폭 약세</td></tr>
+      <tr><td>7월 CPI (헤드라인)</td><td class="num"><span class="up">+0.1%</span> MoM</td><td class="num">YoY 3.4% · 예상 부합</td><td>6월 3.5%→둔화<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 7월 CPI · BLS 보도자료 / CNBC (2026-08-12)</span><span class="evd-sum">7월 CPI 헤드라인 <strong>+0.1% MoM·+3.4% YoY</strong>(예상 부합, 6월 3.5%에서 둔화), 근원(식품·에너지 제외) <strong>+0.2% MoM·+2.5% YoY</strong>(전월비 0.1%p 하락). 목표 2%보단 높지만 냉각 지속 → 연준 동결 시나리오 지지.</span><a href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>7월 CPI (근원)</td><td class="num"><span class="up">+0.2%</span> MoM</td><td class="num">YoY 2.5%</td><td>전월비 0.1%p 하락</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.682%</td><td class="num">거의 보합</td><td>CPI 부합에 금리 반응 제한적</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이날의 방아쇠는 <strong>7월 CPI</strong>였다. 헤드라인이 <span class="up">+0.1%</span>(YoY 3.4%)로 예상에 정확히 부합하고 근원도 +0.2%(YoY 2.5%)로 한 단계 더 식으면서, "인플레가 목표(2%)보단 높지만 다시 냉각 궤도"라는 그림이 확인됐다. 서프라이즈가 아니라 <strong>예상대로</strong>였던 만큼 금리는 <span class="down">거의 움직이지 않았고</span>(10년물 4.68%), 지수도 폭발 대신 <strong>차분한 소화</strong>로 반응했다.</p>
+      <p><strong>왜 혼조인가.</strong> 지수 상단은 <strong>나스닥&gt;S&amp;P&gt;다우</strong> 순서였다 — 성장·AI 비중이 큰 나스닥이 앞서고, 경기민감·전통 산업 비중이 큰 다우는 소폭 밀렸다. 즉 "물가 안도"라는 한 재료를 두고도 <strong>성장주 쪽으로 쏠린 하루</strong>였고, 이 쏠림의 진앙이 다음 섹션의 반도체·AI다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 이면의 진짜 이야기 — 반도체는 이번엔 '함께' 올랐다</h2>
+  <p class="lead">밋밋한 지수와 달리 <strong>반도체·AI는 강세</strong>였고, 특히 지난 7월 급락 국면과 달리 <strong>메모리(마이크론)와 로직(엔비디아)이 함께 상승</strong>한 점이 국내에 직결되는 신호다. 국내와 맞닿은 하위 섹터(메모리·로직·장비)로 갈라서 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터 (간밤 미국)</th><th class="num">대표주 · 방향</th><th>성격</th><th>국내 직결 read-through</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리 (DRAM/HBM)</strong></td><td class="num"><strong>마이크론 <span class="up">약 +5%</span></strong></td><td>메모리 사이클</td><td>삼성전자·SK하이닉스에 <strong>가장 직접적</strong> — 이번엔 메모리도 상승<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">간밤 반도체·AI 강세 · CNBC/마감 보도 (2026-08-12)</span><span class="evd-sum">CPI 소화 과정에서 <strong>마이크론 약 +5%·엔비디아 +3.03%·델 약 +10%·인텔 +3.32%</strong> 상승. 세레브라스(+11.63%)·시스코(+2.86%)는 실적 관련 특징주. 이번엔 로직뿐 아니라 <strong>메모리도 함께 오른</strong> 점이 지난 7월 메모리 단독 급락과 대비.</span><a href="https://www.cnbc.com/2026/08/11/stock-market-today-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>AI 로직 / GPU</strong></td><td class="num"><strong>엔비디아 <span class="up">+3.03%</span></strong></td><td>AI 가속기</td><td>AI 투자 사이클 지속 신호 — HBM 수요의 상방</td></tr>
+      <tr><td><strong>CPU / 기타 로직</strong></td><td class="num">인텔 <span class="up">+3.32%</span></td><td>레거시 로직</td><td>반도체 전반 위험선호 회복</td></tr>
+      <tr><td><strong>AI 서버 / 인프라</strong></td><td class="num">델 <span class="up">약 +10%</span></td><td>AI 서버 수요</td><td>서버 수요 강세 = 메모리·HBM 탑재량 상방</td></tr>
+      <tr><td>반도체 장비</td><td class="num">확인 부족</td><td>노광·식각·증착</td><td>이날 장비 대장(ASML·램리서치 등) 방향은 매체별 확인 부족 → 수치 미표기</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 마이크론·엔비디아·델 방향은 다수 매체가 일치했다. 반면 <strong>장비주(램리서치·ASML 등)와 일부 종목은 매체별 방향 보도가 엇갈려</strong> 방향이 명확한 종목만 표기했다 — 불명확한 수치는 지어내지 않았다. 또한 KST 새벽 일부 보도("미 반도체 약세")는 <strong>장중 등락</strong>을 반영한 것으로, <strong>종가</strong> 기준으로는 위 대표주가 상승 마감했다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 지난 7월 국내 증시를 흔든 핵심은 "AI 로직은 좋아도 <strong>메모리는 홀로 급락</strong>"이라는 다이버전스였다. 그런데 간밤엔 <strong>마이크론(메모리)과 엔비디아(로직)가 함께 상승</strong>했다 — 하나의 재료(CPI)에 반도체가 한 방향으로 붙은 하루다. 여기에 <strong>델 약 +10%</strong>의 AI 서버 수요 강세는 서버당 메모리·HBM 탑재량 확대라는 경로로 삼성전자·SK하이닉스 실적 기대와 맞닿는다. 다만 <strong>장비 쪽은 확인 부족</strong>으로 남겨, "반도체를 한 덩어리로만 읽지 말라"는 원칙은 그대로 유지한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·CPI 미러)·마감 보도 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,415.0원</td><td class="num">1,415.3원</td><td>8/13 오전 · ECOS <span class="down">(원화 소폭 강세)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 7월 CPI (헤드라인)</strong></td><td class="num">YoY 3.4%</td><td class="num">6월 3.5%</td><td>8/12 · BLS 보도(FRED 미러는 T+1)<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">CPI 아카이브 · FRED CPIAUCSL 미러 (as_of 2026-06)</span><span class="evd-sum">아카이브(FRED 미러) 최신 확정은 <strong>6월(YoY 약 3.46%)</strong>까지 — 7월치는 8/12 BLS 발표 직후라 미러 반영 전. 본문 7월 수치는 <strong>BLS 보도·마감 기사 기준</strong>으로 표기하고, 시계열 위치는 미러 확정치로 교차확인.</span><span class="evd-nolink">아카이브 조회값(원문 링크 없음): 6월 확정 YoY ≈ 3.46%</span></span></span></td></tr>
+      <tr><td>미 7월 CPI (근원)</td><td class="num">YoY 2.5%</td><td class="num">−0.1%p</td><td>8/12 · BLS 보도</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈4.682%</td><td class="num">거의 보합</td><td>8/12 · 마감 보도</td></tr>
+      <tr><td>달러지수</td><td class="num">119.06</td><td class="num">—</td><td>8/13 오전 · 스냅샷</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> CPI가 예상에 <strong>부합</strong>(서프라이즈 아님)했기에 금리(10년물 4.68%)와 달러는 크게 움직이지 않았다 — 안도는 있으나 새 촉매는 아니라는 뜻이다. FRED 미러의 CPI 확정 시계열은 6월(YoY ≈3.46%)까지라, 7월 수치는 <strong>BLS 보도치</strong>로 표기하고 기준일을 명시했다. 원/달러는 소폭이나마 원화 강세로, 외국인 수급엔 미세하게 우호적 방향이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/13) 국내 장 시사점 <span class="chip h2-chip">과열 vs 추세</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 미 메모리·AI 강세(마이크론 <span class="up">+5%</span>·엔비디아 <span class="up">+3%</span>)는 우호적이지만, 국내는 이미 <strong>어제(8/12) 코스피 +3.7%·6,500선 탈환, 삼성·SK하이닉스 약 +7% 급등</strong>으로 크게 앞서 달린 터라 <strong>추가 상승의 연장 vs 단기 과열·차익실현</strong>이 오늘의 갈림길이다.</p>
+      <p><strong>맥락.</strong> 어제 국내 증시는 <strong>외국인의 반도체 집중 매수</strong> 속에 코스피가 4%대 급등하며 장중 <strong>매수 사이드카</strong>가 발동됐고, 삼성전자·SK하이닉스가 나란히 약 +7% 뛰며 지수를 6,500선 위로 끌어올렸다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">KR 8/12 급등 · 국내 마감 보도 (2026-08-12)</span><span class="evd-sum">8/12 코스피 <strong>+3.7% 급등·6,500선 탈환</strong>, 장중 <strong>매수 사이드카</strong> 발동. <strong>삼성전자·SK하이닉스 약 +7%</strong>, 외국인이 반도체를 집중 매수하며 지수를 견인.</span><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUFdxUjVLaUhmaDIwYmdIYmVtUkNlOHAwVnNsaWdpaFBHMUNNV3FobGlNaXNTSEl4VXZWaExyVl9OZWNwWWVnTmFTR0xHU2Z4aGZaTXdmZmhqWFlSMEw2SWUyR0lON2xhV1BRNzhadFJNTkEwUm80STQ0b21rWXFuX0FxSEZleWVl" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 간밤 미국에서 <strong>메모리(마이크론)까지 함께 오른</strong> 것은 이 흐름을 뒷받침하지만, 하루 만에 낙폭을 되돌린 급등 뒤라 <strong>피로·과열 부담</strong>도 동시에 커졌다.</p>
+      <p><strong>체크포인트.</strong> ① 간밤 마이크론 <span class="up">+5%</span>·엔비디아 <span class="up">+3%</span>가 <strong>이미 급등한 삼성·SK하이닉스에 추가 상승 여력</strong>으로 붙는지(개장 갭·초반 거래대금), ② 어제 코스피를 밀어올린 <strong>외국인 반도체 순매수</strong>가 오늘도 이어지는지(끊기면 차익실현 압력), ③ 델·엔비디아發 <strong>AI 서버·HBM 수요 강세</strong>가 국내 부품·소부장으로 선별 확산되는지, ④ CPI 부합 이후 시장의 시선이 옮겨갈 <strong>다음 매크로 이벤트</strong>(연준 인사 발언·PPI·소매판매) 앞에서 위험선호가 유지되는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 이 리포트는 <strong>특정 커버 종목이 없는 시황</strong>이며(본문의 개별 종목 언급은 시황 맥락일 뿐 투자의견 콜이 아니다), 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 뉴욕 3대 지수 8/12 종가(S&amp;P 7,748.50·나스닥 26,588.49·다우 53,770.27) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-august-12-dow-sp-500-nasdaq-cpi-report-091555133.html">Yahoo Finance Live</a></span>
+  <span>근거2 미 7월 CPI 헤드라인 +0.1%·YoY 3.4% / 근원 +0.2%·YoY 2.5% — <a href="https://www.bls.gov/news.release/cpi.nr0.htm">BLS 보도자료</a>, <a href="https://www.cnbc.com/2026/08/12/cpi-inflation-report-july-2026.html">CNBC</a></span>
+  <span>근거3 마이크론 약 +5%·엔비디아 +3.03%·델 약 +10%·인텔 +3.32% — <a href="https://www.cnbc.com/2026/08/11/stock-market-today-live-updates.html">CNBC(8/12 마감)</a></span>
+  <span>근거4 CPI 아카이브(FRED CPIAUCSL 미러, 6월 확정 YoY ≈3.46%) — 토스-리서치 economic_indicator (원문 링크 없음)</span>
+  <span>근거5 KR 8/12 코스피 +3.7%·6,500선 탈환·삼성·SK하이닉스 약 +7%·매수 사이드카 — <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUFdxUjVLaUhmaDIwYmdIYmVtUkNlOHAwVnNsaWdpaFBHMUNNV3FobGlNaXNTSEl4VXZWaExyVl9OZWNwWWVnTmFTR0xHU2Z4aGZaTXdmZmhqWFlSMEw2SWUyR0lON2xhV1BRNzhadFJNTkEwUm80STQ0b21rWXFuX0FxSEZleWVl">Chosunbiz(Google News)</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세 스냅샷), 미 마감 공개 보도(Yahoo·CNBC), 미 BLS(7월 CPI), 미 FRED(CPI 미러·미 10년물), 한국은행 ECOS(기준금리·원/달러). 2026-08-13 오전 조회 기준(전일 8/12 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-13 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
