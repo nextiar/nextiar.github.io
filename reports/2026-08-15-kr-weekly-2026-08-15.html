@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>한국 증시 주간 시황 — 코스피 한 주 +11.5% 급등, 외국인 매수가 7,000선을 터치시켰다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-15-kr-weekly-2026-08-15.html">
+<meta property="og:title" content="한국 증시 주간 시황 — 코스피 한 주 +11.5% 급등, 외국인 매수가 7,000선을 터치시켰다">
+<meta property="og:description" content="외국인 순매수가 코스피를 한 주 +11.5% 끌어올려 7,000선을 터치시켰고, 다음 주는 매수 지속 여부와 과열 경계론이 대결한다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-15-kr-weekly-2026-08-15.html">
+<meta name="description" content="외국인 순매수가 코스피를 한 주 +11.5% 끌어올려 7,000선을 터치시켰고, 다음 주는 매수 지속 여부와 과열 경계론이 대결한다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-15-kr-weekly-2026-08-15.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 주간 시황 총정리 (KR Weekly Wrap)</div>
+  <h1>한국 증시 주간 시황 — 코스피 한 주 <span class="up">+11.5%</span> 급등, <span class="up">외국인 매수</span>가 7,000선을 터치시켰다</h1>
+  <p class="sub">2026년 8월 15일(토) 작성 · 지난 한 주(8/10 월~8/14 금) 마감 기준. 코스피는 <strong>5거래일 연속 상승</strong>하며 6,258.77 → <strong>6,977.94</strong>로 한 주 <span class="up">+11.5%</span> 급등, 금요일 장중 <strong>7,000선을 15일 만에 터치</strong>했다가 반납했다. 코스닥도 <span class="up">+8.2%</span>로 동반 강세. 엔진은 <strong>외국인 순매수</strong>였다 — 금요일 하루 유가증권시장에서만 <strong>3조원 넘게</strong> 쓸어담았다. 다만 급등 속도가 가파른 만큼 <strong>밸류에이션 경계론</strong>과 간밤 미 소비둔화 신호가 다음 주의 변수다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-15 09:00 KST · 토요일 주간 총정리 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-15 오전 조회).</strong> 원/달러 <strong>1,414.9원</strong>(8/14 ECOS, 전일 1,415.0 → 1,410원대 중반 유지) · 한국 기준금리 <strong>2.75%</strong>(8/12 ECOS) · 미 국채 10년물 4.63%(8/13 FRED) · 달러지수 119.06(8/07 FRED). 지수는 8/14 KRX 확정치(코스피 6,977.94·코스닥 864.65) 기준.</div>
+
+<section>
+  <h2><span class="idx">1</span>한 주 한눈에 <span class="chip h2-chip">외국인發 급반등 · 7,000선 터치</span></h2>
+  <p class="lead">지수·환율·금리는 KRX 확정치와 한국은행 ECOS·미 FRED 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다. 주간 등락률은 직전 거래일(8/7 금) 종가 대비다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">이번 주 코스피 (8/10~8/14)</div><div class="val up">6,977.94</div><div class="delta up">▲ 주간 +11.5% · 5거래일 연속 상승</div></div>
+    <div class="tile"><div class="lbl">코스닥</div><div class="val up">864.65</div><div class="delta up">▲ 주간 +8.2%</div></div>
+    <div class="tile"><div class="lbl">외국인 순매수 (8/14 유가증권)</div><div class="val up">+3.04조</div><div class="delta up">한 주 내내 '사자' · 급등 엔진</div></div>
+    <div class="tile"><div class="lbl">원/달러 (8/14)</div><div class="val">1,414.9원</div><div class="delta">1,410원대 중반 유지 · 원화 안정</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 한 주 <strong><span class="up">+11.5%</span></strong>(6,258.77→6,977.94) 급등하며 <strong>5거래일 연속 상승</strong>, 금요일 장중 <strong>7,000선을 15일 만에 터치</strong>했다가 소폭 반납했다. 코스닥도 <span class="up">+8.2%</span>로 동반 강세.</div>
+    <div class="tldr-item">② 랠리의 엔진은 <strong>외국인 순매수</strong> — 금요일 하루만 유가증권시장에서 <strong>3조375억원</strong>을 순매수했고, "셀 코리아 종료"·"미 반도체 거품이 한국으로 이동"(씨티) 같은 내러티브가 매수를 정당화했다.</div>
+    <div class="tldr-item">③ 주도는 <strong>전기·전자(반도체)</strong>였고 삼성전자·SK하이닉스가 앞장섰다. 다만 <strong>단기 25% 급등에 따른 과열·밸류에이션 경계론</strong>과 간밤 미국의 <strong>소비둔화 신호</strong>가 다음 주의 최대 변수다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>Korea weekly wrap (Aug 10–14, 2026).</strong> The KOSPI surged <strong>+11.5%</strong> on the week to 6,977.94 — five straight up days — and briefly touched the 7,000 level intraday on Friday for the first time in fifteen sessions before easing back. The KOSDAQ rose <strong>+8.2%</strong> to 864.65.</p>
+      <p>The rally's engine was <strong>foreign buying</strong>: foreigners net-bought roughly <strong>KRW 3.04tn</strong> on the KOSPI on Friday alone and were net buyers all week, encouraged by an "end of Sell Korea" narrative and a Citi note arguing the US semiconductor froth is rotating into Korean equities. Electronics and semiconductors led, with Samsung Electronics and SK hynix out front.</p>
+      <p>Key risk: the pace has been extreme (about +25% off recent lows), fueling valuation-caution calls, while an overnight US retail-sales miss dented consumer sentiment. Next week's watch points are whether foreign inflows persist and hold the 7,000 line, and whether overnight US semiconductor weakness (Applied Materials −5%) spills into memory names.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>주간 지수·업종 — 승자와 패자</h2>
+  <p class="lead">지수는 KRX 확정치(8/14) 기준, 주간 등락률은 8/7 금 종가 대비다. 업종 등락은 8/14 마감 기준으로, 이번 주 주도(반도체·통신)와 부진(제약·바이오)의 방향을 대표한다 — 주간 업종 확정치는 KRX Open API 미제공이라 마감일 기준으로 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수</th><th class="num">8/14 종가</th><th class="num">주간 등락(8/7 대비)</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong></td><td class="num">6,977.94</td><td class="num"><span class="up">+11.5%</span></td><td>6,258.77→6,977.94 · 5거래일 연속 상승<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 주간 급등 · 헤럴드경제 (2026-08-14)</span><span class="evd-sum">코스피가 8/14 <strong>+2.42%</strong> 6,977.94로 마감, 장중 7,000선을 터치했다. <strong>일주일새 약 10%대 급등</strong>했고 주역은 외국인. 직전 거래일(8/7) 종가 6,258.77 대비 <strong>+11.5%</strong>.</span><a href="https://biz.heraldcorp.com/article/10841843" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥</strong></td><td class="num">864.65</td><td class="num"><span class="up">+8.2%</span></td><td>798.81→864.65 · 5거래일 연속 상승<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스닥 종가 · KBS·머니투데이 (2026-08-07·08-14)</span><span class="evd-sum">코스닥은 8/7 <strong>798.81</strong>에서 8/14 <strong>864.65</strong>(+0.38%)로 마감, 주간 <strong>+8.2%</strong>. 개인 매수가 지수를 떠받쳤다. KRX 확정치 기준.</span><a href="https://www.mt.co.kr/stock/2026/08/07/2026080715213474738" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>KODEX 200 (ETF 프록시)</td><td class="num">110,060</td><td class="num"><span class="up">+12.2%</span></td><td>98,090→110,060 · 대형주 쏠림(프록시)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-scroll" style="margin-top:14px">
+  <table>
+    <thead><tr><th>업종 (8/14 마감)</th><th class="num">등락</th><th>성격 · 주간 흐름</th></tr></thead>
+    <tbody>
+      <tr><td><strong>통신</strong></td><td class="num"><span class="up">+5.30%</span></td><td>주간 승자 — 방어·배당 매력 + 순환매<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">8/14 업종별 등락 · 파이낸셜뉴스 마감시황 (2026-08-14)</span><span class="evd-sum">8/14 유가증권시장 업종별로 <strong>통신 +5.30%·운송장비/부품 +2.65%·음식료/담배 +2.57%·전기전자 +2.33%·제조 +2.06%</strong> 강세. 마감일 기준 업종 등락으로, 주간 주도 방향을 대표한다.</span><a href="https://www.fnnews.com/news/202608141600425206" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>전기·전자(반도체)</strong></td><td class="num"><span class="up">+2.33%</span></td><td>주간 주도 — 삼성전자·SK하이닉스·삼성전기 강세, 외국인 집중</td></tr>
+      <tr><td>운송장비·부품</td><td class="num"><span class="up">+2.65%</span></td><td>현대차 등 자동차 강세</td></tr>
+      <tr><td>음식료·담배</td><td class="num"><span class="up">+2.57%</span></td><td>내수·방어주 순환매</td></tr>
+      <tr><td><strong>제약·바이오</strong></td><td class="num"><span class="down">약세</span></td><td>주간 패자 — 코스닥 제약지수 <strong>1만선 반납</strong><span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">제약지수 약세 · 의약뉴스 (2026-08-14)</span><span class="evd-sum">8/14 코스피·코스닥 <strong>제약지수가 동반 하락</strong>하며 코스닥 제약지수가 <strong>1만 선을 반납</strong>했다. 반도체·대형주로 매수가 쏠리며 바이오는 순환매에서 소외됐다.</span><a href="https://www.medipharmhealth.co.kr/news/articleView.html?idxno=90000" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 주간 업종 확정 등락률은 KRX Open API 가 제공하지 않아 <strong>8/14 마감 기준 업종 등락</strong>으로 대표했다(주간 방향과 정합). 개별 종목의 <strong>주간</strong> 등락률은 매체별·구간별로 수치가 엇갈려 지어내지 않고 <strong>방향만</strong> 서술한다. 삼성전자(8/14 종가 274,500원 <span class="up">+2.42%</span>)·SK하이닉스(1,667,000원 <span class="up">+4.64%</span>)는 <strong>토스증권 8/14 종가</strong> 기준(일간).
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>주간 수급 — 외국인이 판을 뒤집었다</h2>
+  <p class="lead">이번 주 랠리의 핵심은 단 하나, <strong>외국인의 귀환</strong>이다. 여름 내내 이어지던 '셀 코리아'가 이번 주 방향을 틀었고, 그 규모가 지수를 5일 연속 밀어올렸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>주체</th><th class="num">방향 (이번 주)</th><th>내용 · 신호</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="up">대규모 순매수</span></td><td>한 주 내내 '사자'. <strong>8/14 하루 유가증권 +3조375억</strong> — 반도체·대형주 집중<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">외국인 3조 순매수 · 뉴데일리·머니투데이 (2026-08-14)</span><span class="evd-sum">8/14 유가증권시장에서 외국인이 <strong>3조375억원</strong>을 순매수하며 코스피를 6,977로 끌어올렸다. 이번 주 내내 외국인 순매수가 이어져 '셀 코리아 종료' 논쟁이 붙었다.</span><a href="https://biz.newdaily.co.kr/site/data/html/2026/08/14/2026081400226.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="down">코스피 매도 우위</span></td><td>코스피에선 차익실현 매물, <strong>코스닥은 개인 매수</strong>가 지수 방어<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">코스닥 개인 매수 · 파이낸셜뉴스 (2026-08-14)</span><span class="evd-sum">8/14 코스닥은 <strong>개인 매수</strong>에 힘입어 상승 마감(+0.38%). 코스피에서는 외국인이 사고 개인·기관이 파는 구도가 이어졌다.</span><a href="https://www.fnnews.com/news/202608141600425206" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>기관</td><td class="num">혼조</td><td>코스피에서 대체로 매도·중립 — 외국인 매수를 상쇄하는 정도</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> KRX Open API 는 <strong>투자자별 순매수 수급을 제공하지 않아</strong>, 위 수급은 <strong>공개 마감 보도치</strong>를 인용했다(8/14 외국인 +3조375억은 다수 매체 일치). DART 5%룰 대량보유(fund_flows)로 교차확인했으나 이번 주 삼성전자·SK하이닉스에 <strong>신규 대량 매집 공시는 없었다</strong>(삼성물산 19.69%·SK스퀘어 20.01% 등 기존 지분 유지). 즉 이번 주 매수는 <strong>공시 대상 밖의 외국인 장내 순매수</strong>로 읽힌다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 외국인 수급은 코스피 대형주(특히 반도체)의 방향을 좌우한다. 이번 주 <strong>씨티그룹</strong>은 "미국 반도체의 거품이 상대적으로 싼 <strong>한국 증시로 이동</strong>하고 있다"는 리포트를 내며 외국인 매수 논리를 뒷받침했다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">씨티 "거품 이동" · 이데일리 마켓톡스 (2026-08-14)</span><span class="evd-sum">씨티그룹은 미국 증시의 반도체 과열 자금이 <strong>밸류에이션이 낮은 한국 증시로 이동</strong>하고 있다고 진단했다. 코스피와 필라델피아 반도체지수(SOX)의 동반 상승을 "버블인가"라는 질문과 함께 짚었다.</span><a href="https://www.edaily.co.kr/news/read?newsId=01" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 같은 리포트가 <strong>버블 여부</strong>를 함께 물었다는 점에서, 수급 논리와 밸류에이션 경계가 동시에 작동하는 국면이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>한 주의 사건 타임라인</h2>
+  <p class="lead">요일별 지수 흐름은 <strong>KODEX 200 ETF 프록시(일간 종가)</strong>로 대표한다 — KRX 지수 확정치는 익일 반영이라 주중 일별 지수는 프록시로, 8/14 종가만 확정치(코스피 6,977.94)로 표기한다. 이벤트는 공개 보도 기준.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>날짜</th><th class="num">KODEX 200 종가(프록시)</th><th class="num">전일비</th><th>그날의 사건</th></tr></thead>
+    <tbody>
+      <tr><td><strong>8/10 (월)</strong></td><td class="num">98,265</td><td class="num"><span class="up">+0.18%</span></td><td>반도체 반등 지속 속 강보합 출발, 외국인 순매수 개시</td></tr>
+      <tr><td><strong>8/11 (화)</strong></td><td class="num">99,265</td><td class="num"><span class="up">+1.02%</span></td><td>외국인 매수 확대, 대형주 중심 상승 폭 확대</td></tr>
+      <tr><td><strong>8/12 (수)</strong></td><td class="num">103,250</td><td class="num"><span class="up">+4.01%</span></td><td>급등 가속 — 반도체·전기전자 주도, 기준금리 2.75% 동결 확인(ECOS)</td></tr>
+      <tr><td><strong>8/13 (목)</strong></td><td class="num">107,270</td><td class="num"><span class="up">+3.89%</span></td><td>7,000선 근접, 외국인 매수 지속·미 10년물 4.63%</td></tr>
+      <tr><td><strong>8/14 (금)</strong></td><td class="num">110,060</td><td class="num"><span class="up">+2.60%</span></td><td>코스피 <strong>6,977.94(+2.42%)</strong> 마감, 장중 <strong>7,000 터치</strong> 후 반납·외국인 3조 순매수·씨티 "거품 이동" 리포트</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>흐름 해석.</strong> 주 초반(월·화)은 <strong>완만한 반등</strong>이었으나, <strong>수요일부터 상승이 가팔라졌다</strong>(프록시 +4.0%·+3.9%). 외국인 매수가 누적되며 대형 반도체가 지수를 끌어올렸고, 목요일 7,000선 근접→금요일 장중 터치로 이어졌다. 프록시(KODEX 200) 주간 <span class="up">+12.2%</span>가 코스피 확정 <span class="up">+11.5%</span>보다 다소 높은 것은 <strong>대형주 쏠림</strong>(지수 상위 종목이 더 많이 올랐음)을 반영한다.</p>
+      <p><strong>간밤 미국(8/14~15 새벽).</strong> 주말을 앞둔 뉴욕은 <strong>3대 지수 동반 하락</strong>했다 — <strong>7월 소매판매(소비) 부진</strong>과 어플라이드머티어리얼즈 <span class="down">−5%</span>대 하락, 미-이란 갈등發 유가 상승이 겹쳤다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">뉴욕증시 하락 · 연합뉴스·뉴스핌 (2026-08-15)</span><span class="evd-sum">8/14 뉴욕증시는 <strong>소매판매 부진</strong>에 3대 지수가 하락 마감(S&amp;P500 약 −0.2%). <strong>어플라이드머티어리얼즈 −5%대</strong>, 미-이란 갈등에 따른 유가 상승도 부담. 다만 S&amp;P500은 주간 기준 3주 연속 상승세는 유지.</span><a href="https://www.newspim.com/news/view/20260814001037" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 미 반도체 장비주 약세는 다음 주 국내 반도체 모멘텀에 부담 요인이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 주(8/17~8/21) 관전 포인트 <span class="chip h2-chip">과열 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 이번 주 급등은 <strong>외국인 수급</strong>이 만든 것이라, 다음 주 핵심은 <strong>①외국인 매수가 이어져 7,000선을 안착시키느냐</strong> vs <strong>②단기 25% 급등의 과열이 되돌림을 부르느냐</strong>의 대결이다.</p>
+      <p><strong>체크포인트.</strong></p>
+      <p>① <strong>외국인 순매수 연속성 · 7,000선 방어.</strong> "셀 코리아 종료"가 진짜인지, 아니면 <strong>8월 반등 착시</strong>인지가 다음 주 수급으로 판가름 난다. 외국인 매수가 끊기면 급등 종목부터 되돌림 위험.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">셀 코리아 종료 논쟁 · 다음/이데일리 (2026-08-14)</span><span class="evd-sum">이번 주 외국인 매수를 두고 "셀 코리아가 끝났나"라는 이슈체크와, 반대로 "8월 반등 착시를 경계하라"는 소외론이 동시에 제기됐다. 방향은 다음 주 외국인 수급이 확인.</span><a href="https://www.g-enews.com/article/Securities/2026/08/2026081417252900" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p>② <strong>밸류에이션 과열 경계.</strong> 코스피가 저점 대비 <strong>약 25% 급등</strong>하자 "순식간 폭등" 경고가 나왔고, 씨티는 코스피·SOX 동반 급등을 <strong>"버블인가"</strong>라고 물었다. 미국 <strong>버핏지표 238%</strong>(사상 최고)와 함께 글로벌 위험선호의 피로도를 점검할 구간.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">과열 경고·버핏지표 · 에너지경제·뉴시스 (2026-08-14~15)</span><span class="evd-sum">코스피가 <strong>순식간 25% 폭등</strong>하자 과열 경고가 나왔고, 미 <strong>'버핏지표(시총/GDP)'가 238%</strong>로 사상 최고를 찍으며 글로벌 증시 과열 논쟁이 커졌다.</span><a href="https://www.newsis.com/view/NISX20260814_0003" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p>③ <strong>반도체 모멘텀 · 미 장비주 전이.</strong> 간밤 <strong>어플라이드머티어리얼즈 −5%</strong> 등 미 반도체 장비 약세와 소비둔화 신호가 삼성전자·SK하이닉스로 얼마나 전이되는지가 지수 방향의 관건. 이번 주 주도주였던 만큼 반도체가 흔들리면 지수 전체가 흔들린다.</p>
+      <p>④ <strong>매크로.</strong> 원/달러 <strong>1,410원대</strong> 흐름(원화 안정=외국인 우호), 미 <strong>소비둔화(7월 소매판매 부진)</strong>의 추가 확인, 그리고 그 다음 주로 다가온 <strong>잭슨홀 심포지엄(8/27~29)</strong> 대기 심리. 미-이란 지정학·유가도 리스크.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 리포트는 8/15(토) 오전 조회 기준으로 지난 한 주(8/10~14) 국내 증시를 정리한 것이다. 지수 확정치(8/14)는 KRX, 주중 일별 흐름은 KODEX 200 ETF 프록시, 수급·개별 종목 등락은 공개 마감 보도를 인용했다. 특정 종목의 매수·매도를 권유하지 않으며, 급등 뒤 변동성이 커질 수 있음에 유의한다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 8/14 +2.42% 6,977.94·주간 급등·외국인 주역 — <a href="https://biz.heraldcorp.com/article/10841843">헤럴드경제</a></span>
+  <span>근거2 코스닥 8/7 798.81 → 8/14 864.65 — <a href="https://www.mt.co.kr/stock/2026/08/07/2026080715213474738">머니투데이</a></span>
+  <span>근거3 8/14 업종별 등락(통신 +5.30% 등) — <a href="https://www.fnnews.com/news/202608141600425206">파이낸셜뉴스</a></span>
+  <span>근거4 코스닥 제약지수 1만선 반납 — <a href="https://www.medipharmhealth.co.kr/news/articleView.html?idxno=90000">의약뉴스</a></span>
+  <span>근거5 8/14 외국인 3조375억 순매수 — <a href="https://biz.newdaily.co.kr/site/data/html/2026/08/14/2026081400226.html">뉴데일리</a>, <a href="https://www.mt.co.kr/stock/2026/08/14/2026081415441735876">머니투데이</a></span>
+  <span>근거6 코스닥 개인 매수로 상승 마감 — <a href="https://www.fnnews.com/news/202608141600425206">파이낸셜뉴스</a></span>
+  <span>근거7 씨티 "미 반도체 거품 한국으로 이동" — <a href="https://www.edaily.co.kr/news/read?newsId=01">이데일리 마켓톡스</a></span>
+  <span>근거8 뉴욕증시 소매판매 부진에 하락·AMAT −5% — <a href="https://www.newspim.com/news/view/20260814001037">뉴스핌</a>, <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1tR2lsZENkeHhlc3A4LVBvOUpuWmU0bHNZb2dLTTNaWVlOclZTYjFfYnhNZ0VaYW1Bb1VTZnB0LTNPenBNazlUWmt2dHhjdjg">연합뉴스</a></span>
+  <span>근거9 "셀 코리아 종료" vs "8월 반등 착시" 논쟁 — <a href="https://www.g-enews.com/article/Securities/2026/08/2026081417252900">글로벌이코노믹</a></span>
+  <span>근거10 코스피 25% 급등 과열 경고·버핏지표 238% — <a href="https://www.newsis.com/view/NISX20260814_0003">뉴시스</a></span>
+  </div>
+  데이터 출처: KRX Open API(지수 확정치 8/14), 토스증권 Open API(KODEX 200 프록시·종목 시세), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 공개 마감 보도(수급·업종·개별 종목). 2026-08-15 오전 조회 기준(지난 한 주 8/10~8/14 정리). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-15 09:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
