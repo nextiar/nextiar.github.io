@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 개장 점검 — 간밤 미 증시 이틀째 조정에도, 삼전닉스가 끌어올린 7,100선 회복</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { border: 1px solid var(--border); border-radius: 10px; padding: 0; margin: 0 0 16px; background: var(--card); }
+.en-abstract summary { cursor: pointer; font-size: 12.5px; font-weight: 650; color: var(--accent); padding: 11px 15px; list-style: none; }
+.en-abstract summary::-webkit-details-marker { display: none; }
+.en-abstract[open] summary { border-bottom: 1px solid var(--border); }
+.en-abstract .en-body { padding: 12px 15px 14px; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-18-kr-open-2026-08-18.html">
+<meta property="og:title" content="코스피 개장 점검 — 간밤 미 증시 이틀째 조정에도, 삼전닉스가 끌어올린 7,100선 회복">
+<meta property="og:description" content="코스피가 광복절 연휴 뒤 첫날 +2.15% 갭업으로 17거래일 만에 7,100선을 회복 — 간밤 미 증시 이틀째 조정에도 SK하이닉스·삼성전자가 주도했으나 코스닥은 약세로 갈렸다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-18-kr-open-2026-08-18.html">
+<meta name="description" content="코스피가 광복절 연휴 뒤 첫날 +2.15% 갭업으로 17거래일 만에 7,100선을 회복 — 간밤 미 증시 이틀째 조정에도 SK하이닉스·삼성전자가 주도했으나 코스닥은 약세로 갈렸다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-18-kr-open-2026-08-18.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · KR 개장 점검 심층 (KOSPI/KOSDAQ Opening Check)</div>
+  <h1>코스피 개장 점검 — 간밤 미 증시 <span class="down">이틀째 조정</span>에도, 삼전닉스가 끌어올린 <span class="up">7,100선 회복</span></h1>
+  <p class="sub">2026년 8월 18일(화) 09:30 기준 · 광복절 연휴(8/15 토·8/17 월 대체공휴일) 뒤 <strong>첫 거래일</strong>. 직전 거래일은 8/14(금)이다. 코스피는 <strong><span class="up">+2.15%</span> 갭업(7,127.77 개장)</strong>으로 <strong>17거래일 만에 7,100선</strong>을 되찾았다 — 간밤 뉴욕 3대 지수가 이틀째 밀렸음에도, <strong>SK하이닉스·삼성전자('삼전닉스')</strong>가 거래대금·상승을 동시에 주도했다. 반면 <strong>코스닥은 개장 직후 상승분을 반납하며 약세로 반전</strong>, 대형 반도체 쏠림이 뚜렷하다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-18 09:30 KST · 평일 개장 점검 슬롯(kr-open)</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>이 수치는 09:30 기준 장중 값이다.</strong> 지수 절대 레벨은 개장 직후 언론 보도치와 토스 ETF <strong>프록시(KODEX 200)</strong>를 병기했고, 확정치는 <strong>오늘 16:00 마감 시황</strong>에서 갱신한다. KRX Open API 확정 지수는 익일 반영되어 당일값이 없다. 실시간 랭킹·프록시는 <strong>09:30 조회</strong>, 환율·금리는 ECOS/FRED 8/14 확정치다(각 항목 기준일 명기).
+</div>
+
+<div class="note cool" style="margin-top:14px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,414.9원</strong>(8/14 ECOS 확정, 전일 1,415.0 → 사실상 보합) · 미 국채 10년물 4.68%(8/14 FRED) · 한국 기준금리 2.75% · 달러지수 119.06(8/7 FRED). 원화가 크게 흔들리지 않은 가운데 <strong>위험선호는 반도체發로 국내에 국한</strong>돼 나타나는 하루다.</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">갭업 · 대형 반도체 쏠림</span></h2>
+  <p class="lead">지수는 개장 직후 보도치와 토스 ETF 프록시 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>). 코스피·코스닥은 <strong>갭 방향이 정반대</strong>로 갈렸다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (개장 보도, 09:02)</div><div class="val up">7,127.77</div><div class="delta up">▲ +2.15% · 갭업, 17거래일 만 7,100선</div></div>
+    <div class="tile"><div class="lbl">KODEX 200 프록시 (09:30 조회)</div><div class="val up">113,860원</div><div class="delta up">▲ +3.45% · KOSPI200 반도체 비중 강세</div></div>
+    <div class="tile"><div class="lbl">코스닥 (개장→장초반)</div><div class="val down">약세 반전</div><div class="delta down">개장 +0.22%(866.59) 뒤 하락 전환</div></div>
+    <div class="tile"><div class="lbl">간밤 뉴욕 (8/17 마감)</div><div class="val down">이틀째 조정</div><div class="delta down">S&amp;P −0.2% · 나스닥 −0.3%</div></div>
+    <div class="tile"><div class="lbl">원/달러 (8/14 ECOS)</div><div class="val">1,414.9원</div><div class="delta">전일 1,415.0 · 사실상 보합</div></div>
+    <div class="tile"><div class="lbl">갭 방향</div><div class="val up">GAP UP</div><div class="delta">반도체 대형주 주도 · 코스닥은 소외</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 <strong><span class="up">+2.15%</span> 갭업(7,127.77)</strong>으로 <strong>17거래일 만에 7,100선</strong>을 회복했다 — 간밤 미 증시가 이틀째 밀렸는데도 <strong>SK하이닉스·삼성전자가 거래대금과 상승을 동시에 주도</strong>한 반도체 디커플링 장세다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 개장 · 한국경제/서울경제 (2026-08-18 09:02)</span><span class="evd-sum">코스피 <strong>+2.15% 7,127.77 개장</strong>, 17거래일 만에 7,100선 회복. 조선비즈는 "美 증시 약세에도 반도체·대형주 호재에 2%대 상승 출발"로 전했다.</span><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0TzZLOGMwOVdHMDNKc3V5SkJ4ZVpGU0pTSElTbC12NHdlaFZ6dTZlMkgyQWhWT1E3a0V0a3dyTUFkNEhwN2lQSHhNT1BST2ZYcWRQSllCbUxfUQ" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">② 그러나 <strong>코스닥은 정반대</strong>였다 — 개장 <span class="up">+0.22%</span>(866.59)로 출발한 뒤 곧 하락 반전. <strong>지수 상승이 대형 반도체에 극단적으로 쏠린</strong> 국면임을 드러낸다.</div>
+    <div class="tldr-item">③ 오늘의 핵심은 <strong>이 갭업이 종가까지 유지되느냐</strong>다 — 레버리지 ETF 거래대금 상위·곱버스 급락은 개인의 <strong>롱 쏠림</strong>을 보여주지만, 간밤 미 조정과 코스닥 약세는 되돌림 리스크를 남긴다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3-min read)</summary>
+    <div class="en-body">
+      On the first session after Korea's Liberation Day long weekend (markets closed Aug 15 &amp; 17), the KOSPI gapped up <strong>+2.15% to 7,127.77</strong> at the open, reclaiming the 7,100 line for the first time in 17 trading days. The rally was led almost entirely by large-cap chips — <strong>SK Hynix (+7.5%) and Samsung Electronics (+4.0%)</strong> topped turnover — even though Wall Street fell for a second straight day overnight (S&amp;P −0.2%, Nasdaq −0.3%, Dow −0.2%). The KOSDAQ diverged, opening +0.22% then turning negative, underscoring an extreme large-cap tilt. Leverage-ETF turnover and a sharp drop in the 2x-inverse ETF point to bullish retail positioning, building on strong foreign net buying (+₩1.8tn on Aug 14). The key question into the close is whether the gap-up holds; watch the 7,100 level, the KOSPI-vs-KOSDAQ divergence, and whether foreign buying is confirmed. All figures are 09:30 intraday reads and will be finalized in the 16:00 close report. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤→개장 연결 — 미 조정을 어떻게 번역할 것인가 <span class="chip cool h2-chip">디커플링</span></h2>
+  <p class="lead">간밤 미 증시 상세는 <strong>당일 06:00 US 마감 시황</strong>에서 다뤘다 — 여기서는 중복 대신 <strong>오늘 국내 개장으로의 번역</strong>에 집중한다. → <a href="/reports/2026-08-18-us-close-morning-2026-08-18.html">US 마감 시황(2026-08-18) 바로가기 ↗</a></p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 뉴욕 (8/17 마감)</th><th class="num">종가</th><th class="num">전일 대비</th><th>오늘 개장에의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,785.76</td><td class="num"><span class="down">−0.2%</span></td><td rowspan="3" style="vertical-align:middle">지수는 <strong>이틀째 조정</strong>이었으나, 국내는 이를 따르지 않고 <strong>반도체 강세로 디커플링</strong><span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">뉴욕증시 8/17 마감 · TheStreet (2026-08-17)</span><span class="evd-sum">다우 <strong>−107.58p(−0.2%) 53,732.41</strong>, S&amp;P500 <strong>−13.23p(−0.2%) 7,785.76</strong>, 나스닥 <strong>−73.86p(−0.3%) 26,729.16</strong>. 유가 상승·약한 소매판매·중동 긴장이 상단을 눌러 이틀째 조정.</span><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-17-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,729.16</td><td class="num"><span class="down">−0.3%</span></td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,732.41</td><td class="num"><span class="down">−0.2%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 미 조정과 갈렸나.</strong> 국내 반도체 대형주는 간밤 <strong>프리마켓에서 삼전닉스가 달아올랐다</strong>는 보도와 함께 강세로 출발했다. 매체들은 이를 "반도체 쩐의 전쟁"(메모리·HBM 투자 사이클 기대)과 <strong>연휴 동안 눌렸던 매수세의 캐치업</strong>으로 해석한다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">매일경제 마켓 / 연합인포맥스 (2026-08-18 08:33)</span><span class="evd-sum">"뉴욕증시 빠졌지만 반도체 불기둥…프리마켓서 달아오른 삼전닉스, 7천피 재도전". 연합인포맥스도 "반도체 쩐의 전쟁과 뉴욕증시 이틀째 조정"을 이날 주요뉴스로 배치. 개별 종목의 프리마켓 등락 수치는 매체별로 엇갈려 본문 수치화는 배제한다.</span><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFB2QkRWWjdPTkpJeERuQllFeFR0cHVmQUtPYlFKcDhSd0ZsWFRTU05qS2tLUElKTHJUWDRNX2EzWGhCODhCajZXN3JWWUNvMGIyckE" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>연휴 공백 요인.</strong> 국내 장은 <strong>8/14(금) 이후 3거래일 닫혀 있었다</strong>(8/15 광복절·8/17 대체공휴일). 그사이 미 증시는 소폭 조정에 그쳤고, 국내는 8/14 강세(코스피 <span class="up">+2.42%</span> 확정)의 여운과 그동안 반영하지 못한 반도체 뉴스가 <strong>개장 갭업으로 한꺼번에 터진</strong> 성격이 있다. 다만 갭업의 상당분이 <strong>수급·심리 캐치업</strong>이라면 장중 되돌림 여지는 남는다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>30분 흐름 심층 — 거래대금은 반도체가 독식 <span class="chip h2-chip">SK하이닉스·삼성전자</span></h2>
+  <p class="lead">토스 <strong>실시간 거래대금 랭킹(09:30 조회, 캐시 없음)</strong> 기준. 개장 30분 흐름은 "지수를 누가 밀었나"가 명확하다 — <strong>거래대금 1·2위가 SK하이닉스·삼성전자</strong>다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>순위</th><th>종목</th><th class="num">등락률</th><th class="num">거래대금</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>SK하이닉스</strong> (000660)</td><td class="num"><span class="up">+7.47%</span></td><td class="num">2.76조</td><td>메모리·HBM 대장, 개장 주도</td></tr>
+      <tr><td>2</td><td><strong>삼성전자</strong> (005930)</td><td class="num"><span class="up">+4.00%</span></td><td class="num">1.67조</td><td>시총 1위, 지수 견인</td></tr>
+      <tr><td>3</td><td>삼성전기 (009150)</td><td class="num"><span class="up">+0.44%</span></td><td class="num">0.39조</td><td>부품, 상승은 제한적</td></tr>
+      <tr><td>4</td><td>KODEX 레버리지 (122630)</td><td class="num"><span class="up">+6.94%</span></td><td class="num">0.31조</td><td>2배 롱 ETF — 지수 상승 베팅 쏠림</td></tr>
+      <tr><td>5</td><td>SK스퀘어 (402340)</td><td class="num"><span class="up">+7.27%</span></td><td class="num">0.26조</td><td>하이닉스 지분 지주, 동반 강세</td></tr>
+      <tr><td>6</td><td>KODEX 200 (069500)</td><td class="num"><span class="up">+3.45%</span></td><td class="num">0.25조</td><td>KOSPI200 프록시</td></tr>
+      <tr><td>7</td><td>LG전자 (066570)</td><td class="num"><span class="up">+1.39%</span></td><td class="num">0.21조</td><td>대형 IT·가전</td></tr>
+      <tr><td>8</td><td>KODEX 인버스 (114800)</td><td class="num"><span class="down">−3.26%</span></td><td class="num">0.18조</td><td>1배 숏 ETF 하락 = 시장 강세 방증</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>주도/부진.</strong> <strong>주도 = 대형 반도체</strong>(SK하이닉스·삼성전자·SK스퀘어)로, 개장 거래대금의 압도적 비중을 차지했다. <strong>부진 = 코스닥·중소형</strong> — KOSDAQ150 레버리지(233740)는 <span class="up">+0.06%</span>로 사실상 제자리, 코스닥 지수는 개장 후 하락 반전했다. <strong>사이드카·서킷브레이커 발동 보도는 없다</strong>(상승 방향, 발동 요건과 무관).
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>급등락 특징주(신중 표기).</strong> 상한가·급등 상위는 대부분 <strong>중소형 개별주</strong>이며 매체별 배경 보도가 엇갈려 <strong>개별 종목 수치는 본문에서 배제</strong>한다. 신규 상장주 <strong>인제니아테라퓨틱스</strong>는 코스닥 상장일 <span class="down">10%대 급락 출발</span>로 보도됐고(머니투데이), 스카이랩스가 수요예측을 진행 중이다 — 개별 이슈일 뿐 지수 흐름과는 분리해서 본다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">머니투데이 (2026-08-18 09:26)</span><span class="evd-sum">"인제니아테라퓨틱스, 코스닥 상장일 <strong>10%대 급락 출발</strong>". 신규 상장 종목 특유의 변동으로, 시장 방향과는 별개다.</span><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5KblVCMzI4eEhxeFZyTGFlTzFMdy1zQnA5ZExqWjdpaVoxZ3UzUnhtVF9fdUdPSDY0MG91OXViQW1ZcHVKTVk5eGJ6eTlnbnlWVGJIMWVpcFRIcUN0ekZFakp2bHIzNDRy" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 — 외국인은 '확인 대기', 개인은 '롱 쏠림' <span class="chip cool h2-chip">정직 표기</span></h2>
+  <p class="lead">개장 30분 시점의 <strong>투자자별 순매수 확정치는 아직 없다</strong>(KRX 확정은 익일, 장중 총액은 미확정). 검증되지 않은 총액은 싣지 않고, <strong>ETF 방향성</strong>과 <strong>직전 거래일 연속성</strong>으로 초기 신호를 읽는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>신호</th><th>관측</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인 방향</strong></td><td><span class="muted">? 09:30 확정치 확인불가</span></td><td>직전 8/14 <strong>외국인 1.8조 순매수</strong> 연속성 주목 — 반도체 강세는 정황상 우호적이나 <strong>오늘 총액은 미확정</strong><span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">파이낸셜뉴스 (2026-08-14 오후시황)</span><span class="evd-sum">8/14 코스피 강세장에서 <strong>외국인 약 1조8,000억원 순매수</strong>. 오늘(8/18) 개장 시점 외국인 순매수 총액은 확정 보도 전이라 본문 수치화하지 않는다.</span><a href="https://www.fnnews.com/news/202608141353252146" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>레버리지 쏠림</strong></td><td>KODEX 레버리지 <span class="up">+6.94%</span> 거래대금 4위</td><td>개인 <strong>2배 롱 베팅</strong>이 개장 거래대금 상위 — 상승에 올라타는 쏠림</td></tr>
+      <tr><td><strong>인버스 방향</strong></td><td>인버스 <span class="down">−3.26%</span> · 곱버스(0197X0) <span class="down">−14.61%</span></td><td>숏 ETF 동반 급락 = 시장 강세를 역으로 확인</td></tr>
+      <tr><td><strong>전일 연속성</strong></td><td>8/14 코스피 <span class="up">+2.42%</span> 확정</td><td>연휴 전 강세 + 반도체 뉴스 캐치업이 갭업으로 이어짐</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 장 초반 투자자별 순매수 <strong>총액은 확정 전</strong>이라 싣지 않았다("? 확인불가"). 대신 확인 가능한 <strong>레버리지/인버스 ETF 등락(09:30 실시간)</strong>과 <strong>직전 거래일 확정 수급</strong>으로 방향만 읽는다. 곱버스(<strong>KODEX 200선물인버스2X</strong>) <span class="down">−14.6%</span>는 그 자체로 지수 강세의 거울상이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3 <span class="chip h2-chip">관찰 레벨 · 전환 신호</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 관찰 레벨 — 7,100선 '종가' 사수 여부.</strong> 코스피는 개장에 <strong>7,100</strong>을 17거래일 만에 회복했다. 갭업은 종종 장중 되돌려지므로, <strong>7,100선을 종가까지 지키는지</strong>가 오늘 강세의 진정성을 가른다. 실시간 확인은 <strong>KODEX 200 프록시(현재 <span class="up">+3.45%</span>)</strong>의 추세로 대신한다 — 프록시가 상승분을 반납하기 시작하면 지수 되돌림의 선행 신호다.</p>
+      <p><strong>② 예정 이벤트 — 캘린더로 점검.</strong> 미 소매판매·물가·엔비디아 등 반도체 실적 이벤트가 이번 주 위험선호를 좌우한다. 발표 일정과 결과는 <a href="/calendar.html">이벤트 캘린더 ↗</a>에서 확인한다. 오늘은 <strong>미 증시가 이틀째 조정</strong>인 만큼, 국내 반도체 강세가 이벤트 앞에서 유지될지가 관건이다.</p>
+      <p><strong>③ 전환 신호 — 세 가지를 본다.</strong> ⓐ <strong>코스피 vs 코스닥 다이버전스</strong>: 대형 반도체 쏠림이 풀려 코스닥이 동반 반등하면 강세의 '폭'이 넓어지는 긍정 신호, 반대로 코스닥 약세가 심화되면 쏠림 피로. ⓑ <strong>외국인 순매수 확정</strong>: 오후 확정치에서 8/14의 순매수(1.8조)가 이어지는지. ⓒ <strong>곱버스·인버스 되돌림</strong>: 급락했던 숏 ETF가 반등하기 시작하면 지수 상단 저항 신호다. 세 신호는 <strong>16:00 마감 시황</strong>에서 확정치로 재점검한다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 <strong>8/18 09:30 개장 30분 시점</strong> 조회 기준이며, 지수·수급은 장중 값으로 <strong>16:00 마감 시황에서 확정치로 갱신</strong>된다. 개별 종목은 시황 맥락으로만 언급했을 뿐 투자의견이 아니며, 매체별로 방향이 엇갈린 개별 종목 수치는 배제했다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 +2.15% 7,127.77 개장·17거래일 만 7,100선 회복 — <a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0TzZLOGMwOVdHMDNKc3V5SkJ4ZVpGU0pTSElTbC12NHdlaFZ6dTZlMkgyQWhWT1E3a0V0a3dyTUFkNEhwN2lQSHhNT1BST2ZYcWRQSllCbUxfUQ">한국경제/서울경제</a>, <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxNMHdZNzVKYXhVdUoxVEc4Q3pOZU9ZQlRRN1JVZGRlUXl0RlN0QkRzNTRfeThyYUV2R2hQelppNG5EYjZxX0hKY1B6MWR3VVpPOFBWM0dMamFvalpkX2NpOWpfQ2hKSGJycThyMEFfNlJ2cW5RZDdRU2ttRGJqQlowdWltb1NIVTlo">조선비즈</a></span>
+  <span>근거2 뉴욕증시 8/17 마감(다우 −0.2%·S&amp;P −0.2%·나스닥 −0.3%, 이틀째 조정) — <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-17-2026">TheStreet</a></span>
+  <span>근거3 "뉴욕증시 빠졌지만 반도체 불기둥·프리마켓 삼전닉스"·"반도체 쩐의 전쟁, 뉴욕증시 이틀째 조정" — <a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFB2QkRWWjdPTkpJeERuQllFeFR0cHVmQUtPYlFKcDhSd0ZsWFRTU05qS2tLUElKTHJUWDRNX2EzWGhCODhCajZXN3JWWUNvMGIyckE">매일경제 마켓</a>, <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBZVFBVd3I4WUNIazJVZGVrajZCQkViamE5Wm5YdGZlckVINVdTTndpaWU0bDVXNkwxOEdGMzFNNEFIVEpRRDh3TnJtcHNwTEppQVBoeGpHZXpyOUxsWE8xVzNvbmJaT0gxRVdMbEZKa2o">연합인포맥스</a></span>
+  <span>근거4 인제니아테라퓨틱스 코스닥 상장일 10%대 급락 출발 — <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5KblVCMzI4eEhxeFZyTGFlTzFMdy1zQnA5ZExqWjdpaVoxZ3UzUnhtVF9fdUdPSDY0MG91OXViQW1ZcHVKTVk5eGJ6eTlnbnlWVGJIMWVpcFRIcUN0ekZFakp2bHIzNDRy">머니투데이</a></span>
+  <span>근거5 8/14 외국인 약 1.8조 순매수 — <a href="https://www.fnnews.com/news/202608141353252146">파이낸셜뉴스</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(실시간 거래대금 랭킹·ETF 프록시, 09:30 조회), 개장 직후 국내 공개 보도(연합·한경·서울경제·조선비즈·매경·머니투데이), 미 마감 공개 보도(TheStreet), 한국은행 ECOS(기준금리·원/달러 8/14 확정), 미 FRED(미 10년물 8/14·달러지수 8/7). <strong>기준: 2026-08-18 09:30 KST(개장 30분 점검) — 지수·수급 확정치는 16:00 마감 시황에서 갱신</strong>. KRX Open API 확정 지수는 익일 반영되어 당일 장중값은 프록시·보도치로 표기했다.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
