@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 금리·유가가 밀어낸 반도체 급락, 필라델피아 반도체 지수 −5%대</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-19-us-close-morning-2026-08-19.html">
+<meta property="og:title" content="US 마감 시황 — 금리·유가가 밀어낸 반도체 급락, 필라델피아 반도체 지수 −5%대">
+<meta property="og:description" content="간밤 미 증시는 30년물 금리 19년 최고·유가 급등에 동반 하락, 필라델피아 반도체 지수가 약 −5.4% 무너지며 반도체가 진앙 — 오늘 국내 삼성·하이닉스 read-through가 핵심.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-19-us-close-morning-2026-08-19.html">
+<meta name="description" content="간밤 미 증시는 30년물 금리 19년 최고·유가 급등에 동반 하락, 필라델피아 반도체 지수가 약 −5.4% 무너지며 반도체가 진앙 — 오늘 국내 삼성·하이닉스 read-through가 핵심.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-19-us-close-morning-2026-08-19.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 금리·유가가 밀어낸 <span class="down">반도체 급락</span>, 필라델피아 반도체 지수 <span class="down">−5%대</span></h1>
+  <p class="sub">2026년 8월 19일(수) 국내 장 시작 전 기준 · 전일 미 증시(8/18 화 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 하락</strong>했다 — 미 30년물 국채금리가 <strong>19년 만의 최고</strong>로 뛰고 국제 유가가 중동 긴장에 <span class="up">급등</span>하며 위험선호가 식었고, 그 압력은 <strong>반도체에 집중</strong>돼 필라델피아 반도체 지수가 <span class="down">약 −5.4%</span> 무너졌다. 오늘 국내 장의 최대 변수는 이 <strong>간밤 반도체 매도가 6거래일 만에 하락 전환한 삼성전자·SK하이닉스로 어떻게 이어지느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-19 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-19 오전).</strong> 원/달러 <strong>1,415.2원</strong>(전일 1,414.9 → 소폭 원화 약세) · 미 국채 10년물 4.70%(8/18 마감 보도) · 30년물 5.29%(19년 최고) · 한국 기준금리 2.75% · 달러지수 118.9. 간밤 미 위험선호는 금리·유가에 눌렸고 압력은 반도체로 쏠렸다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · 반도체 급락</span></h2>
+  <p class="lead">미 지수·개별주는 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/18 마감)</div><div class="val down">리스크 오프</div><div class="delta">3대 지수 동반 하락 · 금리·유가가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,691.76</div><div class="delta down">▼ −0.69%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">26,289.71</div><div class="delta down">▼ −1.33% · 기술주 약세 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">SOX −5.4%</div><div class="delta">간밤 반도체 매도 → 삼성·하이닉스 압력</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 하락</strong> — 미 <strong>30년물 국채금리가 5.29%로 19년 만의 최고</strong>에 이르고, 트럼프의 대이란 강경 발언으로 <strong>국제 유가가 급등</strong>(WTI $84대)하며 위험선호가 식었다.</div>
+    <div class="tldr-item">② 압력은 <strong>반도체에 집중</strong>됐다 — 필라델피아 반도체 지수 <span class="down">약 −5.4%</span>, 마이크론·인텔·SK하이닉스 ADR 등 <strong>메모리·로직·장비가 한꺼번에</strong> 밀렸다. 7월 말 AI 밸류 논쟁의 여진이 금리 상승과 겹친 국면이다.</div>
+    <div class="tldr-item">③ 국내 증시는 전일(8/18) <strong>6거래일 만에 하락 전환</strong>(코스피 −1.6%, 6,800선)한 터라, 간밤 반도체 약세가 <strong>삼성전자·SK하이닉스로 전이되는지</strong>가 오늘 방향을 가른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">English summary</span><span class="ena-s">3-min read</span></summary>
+    <div class="inner">
+      <p>US stocks fell across the board on Tuesday, Aug 18, 2026. The Dow slipped <strong>−0.22%</strong> (53,343.40), the S&amp;P 500 lost <strong>−0.69%</strong> (7,691.76), and the Nasdaq dropped <strong>−1.33%</strong> (26,289.71). The selling was led by semiconductors: the Philadelphia Semiconductor Index fell roughly <strong>−5.4%</strong>, with memory, logic, and equipment names all lower.</p>
+      <p>Two macro forces drove the risk-off tone. The 30-year Treasury yield reached <strong>5.29%</strong>, its highest in about 19 years, while oil surged on Middle East tension (WTI near $84, Brent near $91) after President Trump's hardline remarks on Iran and the Strait of Hormuz.</p>
+      <p>For Korea, the read-through matters most for memory. Kospi had already turned lower on Aug 18 (−1.6%, back below 6,900) after six straight up days, and the overnight chip rout adds pressure on Samsung Electronics and SK hynix at the open. Watch the open gap, foreign flows against a slightly weaker won, and whether high US yields keep compressing growth multiples.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 금리·유가에 눌린 광범위 하락</h2>
+  <p class="lead">이날의 방아쇠는 <strong>장기 국채금리와 유가</strong>였다. 미 30년물이 19년 만의 최고로 뛰며 밸류에이션이 높은 성장·기술주를 눌렀고, 중동 긴장에 유가가 급등하며 위험선호를 추가로 식혔다. 지수 레벨에선 이견 없는 '리스크 오프' 하루.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/18 종가·수준</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,691.76</td><td class="num"><span class="down">−0.69%</span></td><td>광범위 하락, 기술주가 낙폭 주도<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴욕증시 마감 · Yahoo Finance (2026-08-18)</span><span class="evd-sum">8/18 종가 다우 <strong>53,343.40(−0.22%)</strong>, S&amp;P500 <strong>7,691.76(−0.69%)</strong>, 나스닥 <strong>26,289.71(−1.33%)</strong>. 국채금리 상승·유가 급등에 기술주가 특히 약세.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-18-dow-sp-500-nasdaq-080822735.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,289.71</td><td class="num"><span class="down">−1.33%</span></td><td>반도체·빅테크 매도가 견인</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,343.40</td><td class="num"><span class="down">−0.22%</span></td><td>낙폭은 상대적으로 제한</td></tr>
+      <tr><td>미 30년물 국채</td><td class="num">≈5.29%</td><td class="num"><span class="up">19년 최고</span></td><td>장기금리 급등이 성장주 압박<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">美 장기채 금리 상승 · 연합뉴스/아시아경제 (2026-08-18)</span><span class="evd-sum">미 30년물 국채금리가 <strong>약 5.29%</strong>로 <strong>19년 만의 최고</strong> 수준까지 상승. 장기 조달비용 상승이 밸류 높은 기술·AI 주에 직접적 부담으로 작용해 3대 지수 동반 하락.</span><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1yVXJvallESWUxT3NEa0pUMlNZeGtPaV9nUE1ZWWs2MVh3ek03ZzRxUTE0OEJHV3FnZDRza09pUFRFWUxQTU5iU01wdDJ0Z1pOQnlyNGtUWTRhVk1oQVdNVQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 10년물 국채</td><td class="num">≈4.70%</td><td class="num">—</td><td>8/18 마감 보도(FRED 확정 4.72%·8/17)</td></tr>
+      <tr><td>WTI 원유</td><td class="num">$84.47</td><td class="num"><span class="up">+0.87%</span></td><td>중동 긴장 · Brent $91 근접</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 하락의 방아쇠는 <strong>장기금리</strong>였다. 미 30년물이 5.29%로 <strong>19년 만의 최고</strong>에 이르자, 할인율에 민감한 성장·기술주부터 밀렸다. 여기에 <strong>유가 급등</strong>이 겹쳤다 — 트럼프 대통령이 이란에 대한 추가 경제 압박과 호르무즈 해협 관련 강경 발언을 내놓으며 국제 유가가 2주 만의 최고로 올랐고, 미 전략비축유(SPR)는 1982년 이후 최저라는 보도까지 나왔다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">유가·중동 긴장 · Yahoo Finance (2026-08-18)</span><span class="evd-sum">WTI <strong>$84.47(+0.87%)</strong>·Brent <strong>$91 근접</strong>. 트럼프 대통령의 대이란 강경 발언과 호르무즈 해협 관련 경고로 유가가 2주여 만의 최고로 상승, 미 SPR은 1982년 이후 최저로 보도. 인플레·비용 우려가 위험선호를 추가로 눌렀다.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-18-dow-sp-500-nasdaq-080822735.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>성격.</strong> 이날은 특정 실적·가이던스 이슈보다 <strong>매크로(금리·유가)가 주도한 리스크 오프</strong>였다. 그래서 낙폭이 반도체·빅테크 등 고밸류 성장주에 집중됐고, 다우(경기·가치 비중)는 상대적으로 선방했다. 지수 하단을 실제로 무너뜨린 건 아래 3번에서 다룰 <strong>반도체</strong>다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 하단의 진앙 — 반도체 급락(메모리·로직·장비 동반)</h2>
+  <p class="lead">이날의 진짜 이야기는 <strong>반도체</strong>에 있었다. 지난 7월 사례처럼 '메모리만 홀로' 빠진 다이버전스가 아니라, <strong>금리·유가라는 매크로 충격에 메모리·로직·장비가 한꺼번에</strong> 밀린 하루다 — 필라델피아 반도체 지수(SOX)가 <span class="down">약 −5.4%</span> 무너졌다. 다만 낙폭은 <strong>메모리·한국 연계주에서 더 컸다</strong>.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (간밤 미국)</th><th class="num">방향</th><th>하위 섹터</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>필라델피아 반도체(SOX)</strong></td><td class="num"><span class="down">≈ −5.4%</span></td><td>반도체 전반</td><td>메모리·로직·장비 동반 약세<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">필라델피아 반도체 지수 · 연합뉴스 (2026-08-19 보도)</span><span class="evd-sum">간밤 뉴욕에서 <strong>필라델피아 반도체 지수(필리 지수)가 약 5%대</strong> 급락(연합 보도 −5.44%). 장기금리 상승·유가 급등이라는 매크로 충격이 고밸류 반도체 섹터에 집중됐다.</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9RV1pJUGt6V1djdnpHWko1Z2tqV0c2ZHAwNmR3X1hidEl3UGthRURoQnVzTFEtYUJjNldETFIxd2tDNUNGbUdxVXNRaGMxYmhPZ0Z4ajY4R1poZ0V2Tjd1Zk4tR1NsRlAycFJXcnRyeUc?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="down">≈ −5%</span></td><td>메모리(DRAM/HBM)</td><td>마이크론 리포트 <span class="chip cool">중립</span>과 정합 — 피크 멀티플 경계</td></tr>
+      <tr><td><strong>SK하이닉스 ADR</strong></td><td class="num"><span class="down">≈ −6%</span></td><td>메모리(DRAM/HBM)</td><td>SK하이닉스 심층과 직결 — 오늘 국내 본주 read-through<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">메모리 매도 심화 · Yahoo Finance (2026-08-18)</span><span class="evd-sum">간밤 미 세션에서 <strong>마이크론·SK하이닉스 ADR 등 메모리주가 5~6%대</strong> 하락하며 AI 칩 매도가 심화. 7월 말 이후 이어진 AI 인프라 투자 '피크' 논쟁의 여진이 금리 상승과 겹친 형국.</span><a href="https://finance.yahoo.com/markets/article/micron-sk-hynix-stocks-sink-as-ai-chip-sell-off-deepens-125622548.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="down">≈ −2%</span></td><td>AI 로직/GPU</td><td>8/26 실적 앞두고 조정 — 로직도 매크로 압력엔 예외 아님</td></tr>
+      <tr><td><strong>브로드컴</strong> (AVGO)</td><td class="num"><span class="down">≈ −2%</span></td><td>AI 로직/커스텀</td><td>브로드컴 리포트 연결 — 낙폭은 메모리보다 얕음</td></tr>
+      <tr><td>인텔 (INTC)</td><td class="num"><span class="down">≈ −6%</span></td><td>로직/파운드리</td><td>개별 악재 겹쳐 낙폭 확대</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 개별 반도체주 등락률은 <strong>간밤 공개 마감 보도(Yahoo Finance 라이브) 기준</strong>의 근사치이며(개장 후 토스 실시간 시세로 교차확인 권장), 방향은 다수 매체가 <strong>일제히 하락</strong>으로 일치했다. <strong>AMD</strong>는 "큰 폭 하락"으로만 보도돼 매체별 정확한 낙폭이 엇갈려 <strong>수치를 표기하지 않았다</strong> — 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>메모리 vs 로직 vs 장비.</strong> 세 하위 섹터가 모두 빠졌지만 결이 달랐다. <strong>메모리</strong>(마이크론·SK하이닉스 ADR, −5~6%)가 가장 크게 밀린 건 7월 말부터 이어진 <strong>AI 인프라 투자 '피크' 논쟁·중국 CXMT 증설 우려</strong>가 금리 충격과 겹쳤기 때문이다. <strong>로직</strong>(엔비디아·브로드컴, −2%대)은 낙폭이 상대적으로 얕아, 실적 모멘텀(엔비디아 8/26)이 완충 역할을 했다. <strong>장비</strong>는 메모리 자본지출 민감도가 커 메모리와 함께 약세로 분류된다.</p>
+      <p><strong>왜 중요한가.</strong> 국내 지수의 무게중심이 삼성전자·SK하이닉스 <strong>메모리</strong>에 쏠려 있어, 간밤 낙폭이 가장 큰 구간이 정확히 <strong>우리 시장의 핵심</strong>과 겹친다. "반도체를 한 덩어리로 보지 말라"는 커버 리포트들의 결론대로, 오늘은 <strong>메모리(더 큰 압력) vs 로직(상대적 방어)</strong>을 갈라 보는 것이 실전적이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·유가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·마감 보도(유가) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,415.2원</td><td class="num">1,414.9원</td><td>8/19 오전 · 스냅샷 <span class="up">(원화 소폭 약세 0.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">2.75%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">4.72%</td><td class="num">4.68%</td><td>8/17 · FRED DGS10 (5년 98%p)</td></tr>
+      <tr><td>미 10년물 (8/18 마감 보도)</td><td class="num">≈4.70%</td><td class="num">—</td><td>8/18 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td><strong>미 30년물 (마감 보도)</strong></td><td class="num">≈5.29%</td><td class="num"><span class="up">19년 최고</span></td><td>8/18 · 마감 보도</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">118.90</td><td class="num">—</td><td>8/19 오전 · 스냅샷</td></tr>
+      <tr><td>WTI 원유</td><td class="num">$84.47</td><td class="num"><span class="up">+0.87%</span></td><td>8/18 · 마감 보도(Brent $91 근접)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 8/17 확정치(4.72%)와 8/18 마감 보도치(≈4.70%). 핵심은 <strong>장기금리(특히 30년물 5.29%·19년 최고)의 레벨 부담</strong>이다. FRED 기준 10년물은 최근 5년 <strong>98%p</strong>로 사실상 다년 최고 구간. 환율은 원화가 소폭 약세로, 외국인 수급엔 미미하게 비우호적 방향이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/19) 국내 장 시사점 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 금리·유가에 눌려 하락했고 <strong>반도체(SOX <span class="down">−5.4%</span>)가 진앙</strong>이었던 만큼, 6거래일 만에 하락 전환한 <strong>삼성전자·SK하이닉스가 간밤 메모리 낙폭을 얼마나 반영하느냐</strong>가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 최근 반도체 대형주 주도로 강하게 올라 코스피가 장중 <strong>7,200선</strong>까지 갔지만, 8/18에는 <strong>미 국채금리 상승 부담에 6거래일 만에 하락 전환(코스피 −1.6%, 6,800선 후퇴)</strong>했다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 증시 하락 전환 · 머니투데이/YTN (2026-08-18)</span><span class="evd-sum">8/18 코스피가 <strong>엿새 만에 하락</strong> 전환(장중 7,200선→6,800선, 약 −1.6%). '19년 만의 최고' 미 국채금리와 외국인 순매수 둔화가 발목을 잡았다는 분석. 전일까지는 외국인이 '삼전·하이닉스'를 집중 매수하며 지수를 끌어올린 상태였다.</span><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBONkJKS2E5dmFHVkZpRlFlMTIyVkFzTEdxVWtsT1V4eElxUnIwVDhxaXg4TmRBNWpnckwzbjZwTi1wTExSV05acHJPZ2k0amlOTFctQ2FJTk8yS0hWN3hwZjdyc0Q4bDJq0gFuQVVfeXFMT3J4RDZBNmtnYTZETVliQ3pXUlNkcmtoWC0xRmNKU21BaXdBbWF4a2hNWUREYWNRXzlILTdJR3pBamxKcmQwZ21NTHk1N0lTckVWY1JFR3JZSjJqT0l6TGJkUXh2blNNYkhvSXFkdEE?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 전일까지 외국인이 삼성전자·SK하이닉스를 집중 매수하며 지수를 밀어올린 만큼, 간밤 미 메모리 약세는 이 수급의 지속에 부담이다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 메모리 낙폭(마이크론·하이닉스 ADR <span class="down">−5~6%</span>)을 개장 갭·초반 거래대금으로 얼마나 반영하는지, ② 낙폭이 상대적으로 얕았던 <strong>로직(엔비디아·브로드컴 −2%대)</strong>과 메모리의 차별화가 국내 소부장·팹리스로도 나타나는지, ③ 원/달러 소폭 약세·<strong>19년 최고 미 장기금리</strong> 부담 속에서 <strong>외국인 순매수</strong>가 이어지는지, ④ 유가 급등이 이어질 경우 정유·조선 등 <strong>수혜 섹터로의 순환매</strong> 여부.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반한 근사치이며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 8/18 마감 다우 53,343.40(−0.22%)·S&amp;P500 7,691.76(−0.69%)·나스닥 26,289.71(−1.33%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-18-dow-sp-500-nasdaq-080822735.html">Yahoo Finance</a></span>
+  <span>근거2 미 30년물 국채금리 5.29%·19년 만의 최고 — <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1yVXJvallESWUxT3NEa0pUMlNZeGtPaV9nUE1ZWWs2MVh3ek03ZzRxUTE0OEJHV3FnZDRza09pUFRFWUxQTU5iU01wdDJ0Z1pOQnlyNGtUWTRhVk1oQVdNVQ?oc=5">아시아경제(연합)</a></span>
+  <span>근거3 유가 급등(WTI $84.47·Brent $91 근접)·중동 긴장·SPR 1982년 이후 최저 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-august-18-dow-sp-500-nasdaq-080822735.html">Yahoo Finance</a></span>
+  <span>근거4 필라델피아 반도체 지수 약 −5%대(연합 −5.44%) — <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9RV1pJUGt6V1djdnpHWko1Z2tqV0c2ZHAwNmR3X1hidEl3UGthRURoQnVzTFEtYUJjNldETFIxd2tDNUNGbUdxVXNRaGMxYmhPZ0Z4ajY4R1poZ0V2Tjd1Zk4tR1NsRlAycFJXcnRyeUc?oc=5">연합인포맥스</a></span>
+  <span>근거5 마이크론·SK하이닉스 ADR 등 메모리 5~6% 하락·AI 칩 매도 심화 — <a href="https://finance.yahoo.com/markets/article/micron-sk-hynix-stocks-sink-as-ai-chip-sell-off-deepens-125622548.html">Yahoo Finance</a></span>
+  <span>근거6 코스피 8/18 엿새 만에 하락 전환(−1.6%, 6,800선)·미 국채금리 영향 — <a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBONkJKS2E5dmFHVkZpRlFlMTIyVkFzTEdxVWtsT1V4eElxUnIwVDhxaXg4TmRBNWpnckwzbjZwTi1wTExSV05acHJPZ2k0amlOTFctQ2FJTk8yS0hWN3hwZjdyc0Q4bDJq0gFuQVVfeXFMT3J4RDZBNmtnYTZETVliQ3pXUlNkcmtoWC0xRmNKU21BaXdBbWF4a2hNWUREYWNRXzlILTdJR3pBamxKcmQwZ21NTHk1N0lTckVWY1JFR3JZSjJqT0l6TGJkUXh2blNNYkhvSXFkdEE?oc=5">머니투데이</a></span>
+  </div>
+  데이터 출처: 미 마감 공개 보도(Yahoo Finance 라이브), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물 DGS10·달러지수), 국내 마감 보도(연합·머니투데이·YTN), macro-briefing 스냅샷(원/달러·달러지수·SPY). 2026-08-19 오전 조회 기준(전일 8/18 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-19 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
