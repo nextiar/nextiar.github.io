@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 엔비디아 실적 서프라이즈로 3대 지수 동반 상승, 소프트웨어까지 랠리</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 4px 16px; }
+.en-abstract summary { cursor: pointer; font-size: 12.5px; font-weight: 650; color: var(--ink-2); padding: 9px 0; list-style: none; }
+.en-abstract summary::-webkit-details-marker { display: none; }
+.en-abstract summary::before { content: "▸ "; color: var(--muted); }
+.en-abstract[open] summary::before { content: "▾ "; }
+.en-abstract .en-body { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; padding: 4px 0 12px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-28-us-close-morning-2026-08-28.html">
+<meta property="og:title" content="US 마감 시황 — 엔비디아 실적 서프라이즈로 3대 지수 동반 상승, 소프트웨어까지 랠리">
+<meta property="og:description" content="간밤 뉴욕은 엔비디아 실적 서프라이즈(+8.7%)로 3대 지수 동반 상승·소프트웨어까지 랠리, 오늘 국내 장은 엔비디아 데이터센터 +116% 가이던스의 삼성·SK하이닉스 HBM read-through가 핵심.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-28-us-close-morning-2026-08-28.html">
+<meta name="description" content="간밤 뉴욕은 엔비디아 실적 서프라이즈(+8.7%)로 3대 지수 동반 상승·소프트웨어까지 랠리, 오늘 국내 장은 엔비디아 데이터센터 +116% 가이던스의 삼성·SK하이닉스 HBM read-through가 핵심.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-28-us-close-morning-2026-08-28.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 엔비디아 실적 서프라이즈로 3대 지수 동반 상승, <span class="up">소프트웨어까지 랠리</span></h1>
+  <p class="sub">2026년 8월 28일(금) 국내 장 시작 전 기준 · 전일 미 증시(8/27 목 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했다 — 전일 장 마감 후 나온 <strong>엔비디아 회계 2분기 실적이 매출·가이던스 모두 컨센을 크게 넘겨</strong> 주가가 <strong><span class="up">+8.7%</span></strong> 급등했고, 옥타·세일즈포스·크라우드스트라이크 등 <strong>소프트웨어까지 랠리</strong>에 가세하며 나스닥이 <span class="up">+1.57%</span> 앞장섰다. 다만 '반도체 축제' 안에서도 <strong>마블·AMD는 하락</strong>해 방향이 갈렸다. 오늘 국내 장의 핵심은 엔비디아 <strong>데이터센터 매출 +116%·차기 성장 가이던스가 삼성전자·SK하이닉스 HBM 수요로 어떻게 읽히느냐</strong>이며, 오늘밤 <strong>잭슨홀 신임 의장 기조연설</strong>이 상단을 누른다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-28 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-28 오전).</strong> 원/달러 <strong>1,384.60원</strong>(전일 1,383.10 → 원화 소폭 약세) · 미 국채 10년물 <strong>4.66%</strong>(지난주 급등 후 안정) · 한국 기준금리 <strong>3.00%</strong>(한은 연속 인상) · 달러지수 118.06 · 미 CPI(7월) 전년比 <span class="up">+3.30%</span>(물가 여전히 뜨거움). 간밤 미 위험선호는 엔비디아發로 강하게 살아났다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 온 · 엔비디아發</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도(Yahoo Finance 라이브) 및 토스증권 Open API, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (8/27 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · 엔비디아가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,730.99</div><div class="delta up">▲ +0.72%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,541.35</div><div class="delta up">▲ +1.57% · SW·반도체 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">HBM read-through</div><div class="delta">엔비디아 DC +116% → 삼성·하이닉스</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong> — 전일 마감 후 나온 <strong>엔비디아 실적</strong>이 매출 <strong>$96.2B</strong>·차기 분기 가이던스 <strong>$105.8~110.1B</strong>로 컨센을 넘기며 주가 <span class="up">+8.7%</span>, 옥타·세일즈포스·크라우드스트라이크 등 <strong>소프트웨어까지 랠리</strong>에 가세했다.</div>
+    <div class="tldr-item">② 다만 '반도체 축제' 안에서도 방향은 갈렸다 — 엔비디아·브로드컴·인텔은 올랐지만 <strong>마블 <span class="down">−1.5%</span>·AMD는 하락</strong>했고, <strong>메모리(마이크론)</strong> 등락은 매체 간 수치가 엇갈려 <strong>확인불가</strong>로 남긴다(지어내지 않음).</div>
+    <div class="tldr-item">③ 오늘 국내 장은 엔비디아 <strong>데이터센터 매출 +116%·차기 성장 가이던스</strong>가 삼성전자·SK하이닉스 <strong>HBM 수요 read-through</strong>로 이어질지가 핵심. 단 <strong>잭슨홀 워시 의장 기조연설(오늘밤)</strong>·<strong>한은 추가 금리인상(3.00%)</strong>·원화 약세가 상단을 누른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <div class="en-body">
+      US stocks closed broadly higher on Thu 8/27: S&amp;P 500 +0.72% (7,730.99), Nasdaq +1.57% (26,541.35), Dow +0.20% (53,569.44). The trigger was Nvidia's post-close earnings beat — revenue of $96.2B and a Q3 guide of $105.8–110.1B — sending the stock up about 8.7%, with a software rally (Okta, Salesforce, CrowdStrike) piling on. But dispersion ran under the surface: Nvidia, Broadcom and Intel gained while Marvell and AMD fell, and Micron's move was inconsistent across outlets, so we leave it unverified rather than invent a figure. For Korea, the key read-through is Nvidia's +116% data-center growth and forward guidance into Samsung Electronics / SK Hynix HBM demand, weighed against tonight's Jackson Hole keynote and the Bank of Korea's back-to-back rate hike (3.00%). Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 엔비디아가 밀어올린 광범위 상승</h2>
+  <p class="lead">전일 장 마감 후 발표된 엔비디아 실적이 AI 수요 지속 우려를 덜어주며 위험선호가 살아났다. 지수 레벨에선 이견 없는 '리스크 온'이었고, 소프트웨어가 함께 붙으며 나스닥이 앞장섰다. 그날 매크로 이벤트는 주간 실업수당청구(견조)와 <strong>잭슨홀 심포지엄 개막</strong>이었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">8/27 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,730.99</td><td class="num"><span class="up">+0.72%</span></td><td>+55.29p · 광범위 상승</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,541.35</td><td class="num"><span class="up">+1.57%</span></td><td>+411.15p · SW·반도체 견인<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">8/27 미 증시 마감 · Yahoo Finance 라이브 (2026-08-27)</span><span class="evd-sum">엔비디아 실적 호조에 3대 지수 동반 상승. S&amp;P500 <strong>+0.72%</strong>·나스닥 <strong>+1.57%</strong>·다우 <strong>+0.20%</strong>. 소프트웨어 랠리(IGV +6%)가 기술주 강세를 확대. 투자자는 잭슨홀 심포지엄을 대기.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-27-dow-sp-500-nasdaq-082144520.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,569.44</td><td class="num"><span class="up">+0.20%</span></td><td>+105.56p · 상대적 소폭</td></tr>
+      <tr><td>필라델피아 반도체(SOX)</td><td class="num"><span class="up">≈+1.6%</span></td><td class="num">—</td><td>상승하나 지수 대비 완만 — 내부 분산</td></tr>
+      <tr><td>초기 실업수당청구(8/22주)</td><td class="num">203K</td><td class="num">−4K</td><td>노동시장 견조<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">미 노동부 · 주간 실업수당청구 (2026-08-27 발표)</span><span class="evd-sum">8/22 주간 계절조정 신규 청구 <strong>203,000건</strong>(전주比 −4,000). 노동시장이 여전히 견조함을 시사. 같은 주 <strong>잭슨홀 심포지엄(8/27~29)</strong> 개막, 신임 의장 기조연설은 8/28(금) 미 동부 오전 예정.</span><a href="https://www.dol.gov/ui/data.pdf" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.66%</td><td class="num">—</td><td>지난주 급등(장기물 다년 고점) 후 안정</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 전일 장 마감 후 나온 <strong>엔비디아 실적</strong>이었다. 매출 <strong>$96.2B</strong>로 컨센(약 $92.3B)을 넘겼고, 차기 분기 가이던스도 <strong>$105.8~110.1B</strong>로 시장 기대를 상회했다. 데이터센터 매출이 전년比 <strong><span class="up">+116%</span></strong>로 사상 최대를 새로 쓰며 "AI 성장 둔화" 우려를 덜어준 것이 핵심이다. 주가는 시간외 하락 출발 후 정규장에서 <span class="up">+8.7%</span>로 반전했다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">엔비디아 회계 2분기 실적·주가 반응 (2026-08-27)</span><span class="evd-sum">엔비디아 매출 <strong>$96.2B</strong>(컨센 $92.3B), 데이터센터 매출 <strong>$89.02B(+116.6% YoY)</strong>. 차기 분기 가이던스 <strong>$105.8~110.1B</strong>. 주가는 초기 하락 후 <strong>약 +8.7%</strong> 급등, 장기 성장 가이던스가 심리를 지지.</span><a href="https://fortune.com/2026/08/27/nvidia-stock-q2-earnings-call-i-think-the-whole-market-was-like-whoa-analyst-says/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>소프트웨어 랠리.</strong> 이날 강세는 반도체에 그치지 않았다 — <strong>옥타 <span class="up">+28.6%</span>·세일즈포스 <span class="up">+22.6%</span>·크라우드스트라이크 <span class="up">+20.5%</span></strong> 등 실적을 내놓은 소프트웨어주가 급등하며 IGV(소프트웨어 ETF)가 <span class="up">+6%</span> 뛰었다. AI 수혜가 하드웨어에서 <strong>애플리케이션·보안 소프트웨어로 확산</strong>되는 그림이 지수 폭을 넓혔다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">8/27 소프트웨어·반도체 개별 등락 · Yahoo Finance 라이브 (2026-08-27)</span><span class="evd-sum">소프트웨어 급등: <strong>옥타 +28.63%·세일즈포스 +22.58%·크라우드스트라이크 +20.50%</strong>(IGV +6%). 반도체는 <strong>브로드컴 +4%·인텔 +4.36%</strong> 상승 vs <strong>마블 −1.49%·AMD 하락</strong>으로 분산. SOX 약 +1.6%.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-27-dow-sp-500-nasdaq-082144520.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 이면 — 반도체 안에서도 갈린 방향 (로직 vs 메모리 vs 장비)</h2>
+  <p class="lead">엔비디아發 훈풍이 '반도체 축제'로 보도됐지만, 하위 섹터로 갈라 보면 방향은 <strong>한 덩어리가 아니었다</strong>. 국내와 직결되는 지점을 로직(AI 가속기)·메모리(DRAM/HBM)·장비로 나눠 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (간밤 미국)</th><th class="num">방향</th><th>하위 섹터</th><th>우리 국내 read-through</th></tr></thead>
+    <tbody>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="up">+8.7%</span></td><td>로직 · AI 가속기</td><td>DC +116%·차기 가이던스 → <strong>삼성전자·SK하이닉스 HBM 수요</strong>에 긍정 신호</td></tr>
+      <tr><td><strong>브로드컴</strong> (AVGO)</td><td class="num"><span class="up">+4%</span></td><td>커스텀 실리콘(ASIC)</td><td>맞춤형 AI 칩 수요 — 국내 파운드리·패키징 밸류체인 참고</td></tr>
+      <tr><td><strong>인텔</strong> (INTC)</td><td class="num"><span class="up">+4.36%</span></td><td>로직 · 파운드리</td><td>로직 쪽 온기 — 국내 직접 연결은 제한적</td></tr>
+      <tr><td><strong>마블</strong> (MRVL)</td><td class="num"><span class="down">−1.49%</span></td><td>커스텀 실리콘 · 네트워킹</td><td>로직 내 <strong>래거드</strong> — "AI = 무차별 강세" 아님<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">8/27 반도체 개별 등락 · Yahoo Finance 라이브 (2026-08-27)</span><span class="evd-sum">엔비디아 +8.7%·브로드컴 +4%·인텔 +4.36% 상승 vs <strong>마블 −1.49%·AMD 하락</strong>. SOX 약 +1.6%로 지수 대비 완만 — 반도체 내부 분산이 뚜렷.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-27-dow-sp-500-nasdaq-082144520.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>AMD</strong></td><td class="num"><span class="down">하락(수치 제외)</span></td><td>로직 · AI 가속기</td><td>방향만 표기 — 매체별 수치 상충으로 지어내지 않음</td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num">확인불가</td><td>메모리 (DRAM/HBM)</td><td>매체 간 등락 수치 <strong>상충 → 제외</strong>. 메모리 read-through는 마이크론 자체 tape 보다 <strong>엔비디아 HBM 수요 가이던스</strong>로 판단</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도(Yahoo Finance 라이브) 기준</strong>이며, 엔비디아·브로드컴·인텔·마블은 다수 소스가 방향·수치에서 일치했다. <strong>AMD·마이크론</strong>은 매체별로 수치·방향 보도가 엇갈려 — AMD는 방향만, 마이크론은 <strong>확인불가</strong>로 남겼다. 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 국내 증시의 핵심 변수는 <strong>HBM·AI 메모리 수요의 지속성</strong>이다. 간밤 마이크론의 개별 등락은 확인불가지만, 더 중요한 신호는 <strong>엔비디아의 데이터센터 매출 <span class="up">+116%</span>와 차기 성장 가이던스</strong>다 — 이는 HBM을 공급하는 <strong>삼성전자·SK하이닉스</strong>에 직접적인 수요 read-through가 된다. 반면 마블·AMD의 약세는 "AI 반도체를 한 덩어리로 보지 말라"는 신호로, <strong>로직 안에서도 승자와 패자가 갈린다</strong>는 우리의 일관된 관점과 맞닿는다. 장비주는 이날 미 세션에서 별도 유의미한 보도가 확인되지 않아 <strong>미보도</strong>로 둔다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·물가·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정치 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,384.60원</td><td class="num">1,383.10원</td><td>8/28 · ECOS <span class="up">(원화 약세 1.5원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">인상</td><td>8/27 · 한은(연속 인상)</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈4.66%</td><td class="num">—</td><td>8/28 스냅샷 · 지난주 급등 후 안정</td></tr>
+      <tr><td><strong>달러지수(스냅샷)</strong></td><td class="num">118.06</td><td class="num">—</td><td>8/28 · 매크로 스냅샷</td></tr>
+      <tr><td><strong>미 CPI (전년比)</strong></td><td class="num"><span class="up">+3.30%</span></td><td class="num">—</td><td>7월 · FRED(CPIAUCSL)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">미 소비자물가(CPI) · FRED 아카이브 (기준일 2026-07-01)</span><span class="evd-sum">미 CPI 지수 <strong>332.813</strong>, 전년比 <strong>+3.30%</strong>. 최근 5년 분포 상 <strong>98 백분위</strong>로 물가는 여전히 높은 편. 월간 갱신·개정치 반영(FRED 미러). 이 '뜨거운 물가'가 잭슨홀 정책 톤의 배경.</span><span class="evd-nolink">출처: 경제지표 아카이브(FRED CPIAUCSL) · 원문 링크 없음</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 지난주 미 <strong>장기 국채금리 급등</strong>(30년물 다년 고점)이 반도체·성장주를 눌렀는데, 이번 주 들어 <strong>10년물이 4.66% 부근에서 안정</strong>되며 위험선호가 되살아날 여지를 열었다. 다만 <strong>CPI 전년比 +3.30%</strong>로 물가가 여전히 높아, 오늘밤 <strong>잭슨홀 기조연설</strong>에서 물가·정책 독립성에 대한 톤이 금리 경로의 방향을 다시 흔들 수 있다. 환율은 원화가 소폭 약세로, 외국인 수급엔 중립~부담 요인이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(8/28) 국내 장 시사점 <span class="chip cool h2-chip">HBM read-through · 잭슨홀 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>엔비디아 실적 서프라이즈</strong>로 위험선호가 강하게 살아났고, <strong>데이터센터 +116%·차기 가이던스</strong>는 삼성전자·SK하이닉스 <strong>HBM 수요에 긍정적</strong>이다 — 다만 오늘밤 <strong>잭슨홀 기조연설</strong>과 <strong>한은 연속 금리인상</strong>이 상단을 누른다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 이미 <strong>8/27 KOSPI <span class="up">+1.53%</span> 6,912.37·KOSDAQ 837.65</strong>로 엔비디아 훈풍을 선반영했으나, <strong>한은의 연속 기준금리 인상(3.00%)</strong>에 상승폭을 줄이며 <strong>7,000선</strong>을 눈앞에 두고 마감했다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 마감 · 코스피 8/27 종가 (2026-08-27)</span><span class="evd-sum">8/27 KOSPI <strong>6,912.37(+1.53%)</strong>·KOSDAQ <strong>837.65</strong>. 엔비디아 호실적 기대에 반도체 강세로 3일 연속 상승했으나 <strong>한은 연속 금리인상</strong>에 상승폭 축소, 7,000선 회복은 다음 과제로.</span><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1rV20xbkRueUM0QlFYUTVDYmFlTDBhRUtnV2pDc3g5V0s3VXRZa2N1Tk1Pc3J1R1VpVEZNRkVOLWhBanluYnc5amNqNTNSUzRaQm00VG81VWVKTHM" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 간밤 미 세션에서 엔비디아 실적이 <strong>확정</strong>된 만큼, 오늘은 그 확인이 추가 상승 동력이 될지 vs 이미 반영됐는지가 관건이다.</p>
+      <p><strong>체크포인트.</strong> ① 엔비디아 <strong>DC +116%·HBM 수요 가이던스</strong>가 삼성전자·SK하이닉스 개장 갭·거래대금으로 얼마나 붙는지, ② 미 <strong>소프트웨어 랠리</strong>(옥타·세일즈포스·크라우드스트라이크)가 국내 소프트웨어·AI 응용주로 선별 확산되는지, ③ 원/달러 원화 약세 속 <strong>외국인 수급</strong> 방향, ④ 오늘밤 <strong>잭슨홀 신임 의장 기조연설</strong>(미 동부 오전)의 물가·정책 독립성 톤 — 이 네 가지가 오늘과 다음 주 방향을 가른다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 종목 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 신임 Fed 의장 성명 등 인물·직함 관련 사실은 보도 기준으로 인용했다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 8/27 3대 지수 마감(S&amp;P +0.72%·나스닥 +1.57%·다우 +0.20%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-27-dow-sp-500-nasdaq-082144520.html">Yahoo Finance</a></span>
+  <span>근거2 엔비디아 매출 $96.2B·DC +116%·주가 약 +8.7% — <a href="https://fortune.com/2026/08/27/nvidia-stock-q2-earnings-call-i-think-the-whole-market-was-like-whoa-analyst-says/">Fortune</a>, <a href="https://www.kiplinger.com/investing/live/nvidia-earnings-live-updates-and-commentary-august-2026">Kiplinger</a></span>
+  <span>근거3 소프트웨어 급등(옥타·세일즈포스·크라우드스트라이크)·반도체 분산(마블/AMD 하락) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-august-27-dow-sp-500-nasdaq-082144520.html">Yahoo Finance</a></span>
+  <span>근거4 주간 실업수당청구 203K·잭슨홀 8/27~29·의장 기조연설 8/28 — <a href="https://www.dol.gov/ui/data.pdf">미 노동부</a>, <a href="https://www.regardsofwallstreet.com/news/jackson-hole-2026-dates-schedule-warsh-first-speech">Regards of Wallstreet</a></span>
+  <span>근거5 미 CPI 전년比 +3.30%(7월·5년 98백분위) — 경제지표 아카이브(FRED CPIAUCSL)</span>
+  <span>근거6 KOSPI 8/27 +1.53% 6,912.37·한은 연속 인상 — <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1rV20xbkRueUM0QlFYUTVDYmFlTDBhRUtnV2pDc3g5V0s3VXRZa2N1Tk1Pc3J1R1VpVEZNRkVOLWhBanluYnc5amNqNTNSUzRaQm00VG81VWVKTHM">연합뉴스(Google News)</a></span>
+  </div>
+  데이터 출처: 미 증시 마감 공개 보도(Yahoo Finance 라이브·Fortune·Kiplinger), 미 노동부(실업수당청구), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 CPI·10년물·달러지수), 토스증권 Open API(미 ETF·시세 스냅샷). 2026-08-28 오전 조회 기준(전일 8/27 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-28 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
