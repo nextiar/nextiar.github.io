@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>주간 시황 (8/24–28) — 엔비디아 '역대급' 실적에도 좁은 한 주, 잭슨홀 매파 워시에 반도체·금리가 흔들렸다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0; }
+.en-abstract summary { cursor: pointer; font-size: 12px; font-weight: 650; color: var(--accent); padding: 10px 14px; list-style: none; }
+.en-abstract summary::-webkit-details-marker { display: none; }
+.en-abstract[open] summary { border-bottom: 1px solid var(--border); }
+.en-abstract .en-body { padding: 12px 14px; font-size: 12.5px; color: var(--ink-2); line-height: 1.7; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-31-weekly-wrap-2026-08-31.html">
+<meta property="og:title" content="주간 시황 (8/24–28) — 엔비디아 &#x27;역대급&#x27; 실적에도 좁은 한 주, 잭슨홀 매파 워시에 반도체·금리가 흔들렸다">
+<meta property="og:description" content="미 지수는 주간 소폭 상승했으나 엔비디아 실적 후 마진 우려·워시 매파 연설에 후반 되밀렸고, 코스피는 +1.4% 반등에도 외국인 순매도로 7,000선 회복에 재차 실패했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-31-weekly-wrap-2026-08-31.html">
+<meta name="description" content="미 지수는 주간 소폭 상승했으나 엔비디아 실적 후 마진 우려·워시 매파 연설에 후반 되밀렸고, 코스피는 +1.4% 반등에도 외국인 순매도로 7,000선 회복에 재차 실패했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-31-weekly-wrap-2026-08-31.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 주간 시황 정리 (Weekly Wrap)</div>
+  <h1>주간 시황 (8/24–28) — 엔비디아 '역대급' 실적에도 좁은 한 주, <span class="down">잭슨홀 매파 워시</span>에 반도체·금리가 흔들렸다</h1>
+  <p class="sub">2026년 8월 31일(월) 국내 장 시작 전 기준 · 지난 한 주(8/24~28) 정리. 미 3대 지수는 <strong>주간 소폭 상승</strong>으로 마쳤지만, 주 후반 흐름은 반대였다 — <strong>엔비디아가 분기 매출 $96B로 시장 기대를 넘겼음에도</strong> 마진 가이던스·메모리 원가 부담에 반도체가 팔렸고, 금요일 <strong>제롬 파월의 후임 케빈 워시 연준 의장의 잭슨홀 첫 매파 연설</strong>이 9월 '인하'가 아닌 '동결·인상' 쪽으로 시장을 밀었다. 국내 <strong>코스피는 주간 <span class="up">+1.4%</span></strong>로 반등했으나 외국인 대량 순매도에 <strong>7,000선 회복엔 또 실패</strong>했다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-08-31 06:00 KST · 월요일 주간 정리 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-08-31 오전).</strong> 원/달러 <strong>1,380.3원</strong>(직전 1,384.6 → 원화 강세, 외국인 수급엔 우호) · 한국 기준금리 3.00% · 미 국채 10년물 4.67%(FRED 8/27 확정) · 달러지수 118.06(FRED 8/21) · SPY 769.35$(<span class="down">−0.23%</span>, 8/28). 미 연준 정책금리는 <strong>3.50~3.75%</strong>로 유지 중이며, 시장의 다음 관전 포인트는 9월 15~16일 FOMC와 그 직전의 8월 고용지표다.</div>
+
+<section>
+  <h2><span class="idx">1</span>한 주 한눈에 <span class="chip cool h2-chip">지수는 소폭 상승 · 후반은 매파</span></h2>
+  <p class="lead">주간 지수는 토스증권 Open API 및 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다. 주간 등락률은 매체별로 소폭 차이가 있어 반올림 수치로 표기한다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">지난주 종합 (8/24~28)</div><div class="val up">좁은 상승</div><div class="delta">엔비디아 통과 → 워시 매파에 후반 되밀림</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500 (8/28 종가)</div><div class="val up">7,711.76</div><div class="delta up">주간 ▲ 약 +0.5%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합 (8/28 종가)</div><div class="val up">26,402.42</div><div class="delta up">주간 ▲ 약 +0.9%</div></div>
+    <div class="tile"><div class="lbl">KOSPI (8/28 종가)</div><div class="val up">6,788.88</div><div class="delta up">주간 ▲ 약 +1.4% · 7,000선 재실패</div></div>
+    <div class="tile"><div class="lbl">원/달러 (8/28)</div><div class="val down">1,380.3원</div><div class="delta down">직전比 −4.3원 · 원화 강세</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 미 3대 지수는 <strong>주간 소폭 상승</strong>(S&amp;P 약 <span class="up">+0.5%</span>·나스닥 약 <span class="up">+0.9%</span>·다우 약 <span class="up">+0.5%</span>)으로 마감했지만, <strong>금요일 하락으로 상승분을 상당 부분 반납</strong>했다. 주도 섹터는 커뮤니케이션서비스·기술이었다.</div>
+    <div class="tldr-item">② 주간 최대 이벤트였던 <strong>엔비디아 실적(8/26 장마감 후)</strong>은 매출 <span class="up">$96.2B</span>·데이터센터 <span class="up">+117%</span>로 기대를 넘겼으나, <strong>마진 가이던스 하향(메모리 원가)</strong>에 주가는 이후 <span class="down">−4%대</span>로 밀렸다 — 'AI 수요는 견고, 밸류·원가는 부담'의 전형.</div>
+    <div class="tldr-item">③ 금요일 <strong>케빈 워시 연준 의장의 잭슨홀 매파 연설</strong>이 9월 인상 확률을 끌어올리며 위험선호를 눌렀다. 국내 <strong>코스피는 주간 <span class="up">+1.4%</span></strong> 반등했으나 <strong>외국인 순매도</strong>에 7,000선 회복은 재차 무산됐다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>▸ English summary (abstract)</summary>
+    <div class="en-body">
+      U.S. equities closed the week of Aug 24–28, 2026 modestly higher (S&amp;P 500 ≈ +0.5%, Nasdaq ≈ +0.9%, Dow ≈ +0.5%), led by Communication Services and Technology, but gave back much of the advance on Friday. The week's marquee event, Nvidia's fiscal Q2 report after Wednesday's close, beat on revenue ($96.2B, data-center +117%) yet the stock later fell about 4% as guidance flagged gross-margin pressure from rising memory costs. On Friday, new Fed Chair Kevin Warsh's first Jackson Hole keynote struck a hawkish tone, lifting September rate-hike odds and pressuring risk appetite. Korea's KOSPI rallied ≈ +1.4% on the week to 6,788.88 but again failed to reclaim 7,000 amid heavy foreign net selling; the won firmed to 1,380.3 per dollar. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>주간 지수·섹터 요약 — 오르되 후반에 되밀린 한 주</h2>
+  <p class="lead">주초 위험선호가 우위였으나, 엔비디아 실적 소화와 잭슨홀 매파 연설이 겹친 <strong>주 후반에 반도체·성장주가 되밀렸다</strong>. 아래 종가는 8/28(금) 마감 보도치, 주간 등락률은 반올림값이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 섹터</th><th class="num">8/28 종가</th><th class="num">주간 등락(약)</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,711.76</td><td class="num"><span class="up">+0.5%</span></td><td>3주 만에 상승 마감했으나 금요일 <span class="down">−0.25%</span>로 되밀림<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">주간 US 마감 · CNBC/주간 리캡 (2026-08-28)</span><span class="evd-sum">주간 S&amp;P500 약 <strong>+0.5%</strong>·나스닥 <strong>+0.9%</strong>·다우 <strong>+0.5%</strong>. 커뮤니케이션서비스(+1.4%)·기술(+1.3%)이 주도. 금요일엔 워시 매파 연설에 S&amp;P 500 7,711.76(<strong>−0.25%</strong>)로 하락 마감.</span><a href="https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,402.42</td><td class="num"><span class="up">+0.9%</span></td><td>금요일 반도체 약세로 <span class="down">−0.52%</span> · 엔비디아·인텔 부진</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">—</td><td class="num"><span class="up">+0.5%</span></td><td>정확한 금요일 종가는 매체별 상충 → 수치 생략</td></tr>
+      <tr><td>커뮤니케이션서비스</td><td class="num">—</td><td class="num"><span class="up">+1.4%</span></td><td>주간 섹터 1위</td></tr>
+      <tr><td>기술(Technology)</td><td class="num">—</td><td class="num"><span class="up">+1.3%</span></td><td>주간 2위 · 단 반도체 하위는 후반 되밀림</td></tr>
+      <tr><td><strong>KOSPI</strong></td><td class="num">6,788.88</td><td class="num"><span class="up">+1.4%</span></td><td>8/28 하루는 <span class="down">−1.79%</span>(KRX 확정) · 7,000선 재실패</td></tr>
+      <tr><td>KOSDAQ</td><td class="num">838.41</td><td class="num">—</td><td>8/28 <span class="up">+0.09%</span>(KRX 확정)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 주간 등락률은 매체별로 소수점에서 갈려 <strong>반올림값(약 ±0.1%p)</strong>으로 표기했다. 다우의 8/28 정확 종가와 월요일(8/24) 개별 지수 방향은 <strong>매체별 보도가 상충</strong>해(같은 날 "S&amp;P 상승 마감"과 "반도체 급락으로 하락" 기사가 공존) 확정 수치 대신 <strong>주간 방향만</strong> 표기하고 개별 일간 종가는 생략했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>한 주의 사건 타임라인 — 엔비디아·PCE·잭슨홀</h2>
+  <p class="lead">이번 주 흐름은 세 축이 갈랐다 — ① 주중 엔비디아 실적, ② 수요일 발표된 7월 PCE 물가, ③ 금요일 워시 의장의 잭슨홀 데뷔 연설. 요일별로 정리한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>요일</th><th>이벤트</th><th>시장 함의</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월 8/24</strong></td><td>미국, 대이란 신규 제재 발표 · 반도체주 주초 약세</td><td>지정학·칩 변동성으로 출발. 같은 날 지수 방향은 매체별 상충 → 확정 표기 보류</td></tr>
+      <tr><td><strong>수 8/26</strong></td><td><strong>7월 PCE 물가</strong> 발표 — 소득은 견조하나 <strong>물가는 예상보다 소폭 상방</strong>, 실질소비는 정체<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">7월 PCE · 해설 보도 (2026-08-26)</span><span class="evd-sum">7월 PCE 보고서는 '엇갈린 신호' — 소득 증가는 건전했으나 실질소비는 거의 정체, <strong>인플레이션은 월가 예상보다 다소 뜨겁게</strong> 나왔다. 연준의 인하 기대를 후퇴시키는 재료.</span><a href="https://www.wichitaliberty.org/economics/july-2026-pce-inflation-report/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>인하 기대 후퇴, 매파 재료 누적</td></tr>
+      <tr><td><strong>수 8/26 (장마감 후)</strong></td><td><strong>엔비디아 회계 2분기 실적</strong> — 매출 <span class="up">$96.2B</span>(예상 $92.2B)·데이터센터 <span class="up">+117% $89B</span>·EPS $2.22, 3분기 가이던스 <span class="up">$108B</span><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">엔비디아 FY2Q 실적 · Fortune/CNBC (2026-08-26)</span><span class="evd-sum">매출 <strong>$96.2B</strong>(전년비 2배 이상)·데이터센터 <strong>+117% $89B</strong>·조정 EPS <strong>$2.22</strong>(예상 $2.10). 3분기 가이던스 <strong>$108B</strong>(중국 매출 0 가정). 다만 <strong>총마진을 4분기 71~72%</strong>로 하향(메모리 원가) 안내. 젠슨 황: "AI는 변곡점… 컴퓨트가 곧 매출, 수요는 가속 중".</span><a href="https://fortune.com/2026/08/26/nvidia-results-q2-earnings/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>실적은 서프라이즈, 그러나 마진 하향에 주가는 이후 되밀림</td></tr>
+      <tr><td><strong>금 8/28</strong></td><td><strong>케빈 워시 연준 의장 잭슨홀 첫 키노트</strong> — "인플레 지표가 더 우려스럽다, 물가안정에 할 일이 남았다"<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">잭슨홀 · 워시 매파 · Seoul Economic Daily (2026-08-30)</span><span class="evd-sum">워시 의장은 인플레 지표가 "더 우려스럽다"며 연준이 물가안정에 "할 일이 남았다"고 밝혔다. 잭슨홀 연설로 <strong>9월 인상 확률이 57.5%</strong>까지(20%p 이상) 상승. 미 10년물 4.72%·30년물 5.2%로 상방, 위험선호 위축.</span><a href="https://en.sedaily.com/finance/2026/08/30/kospi-stalls-below-7000-as-fed-chair-warsh-turns-hawkish" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>9월 '인하'가 아닌 '동결·인상' 쪽으로 재편 → 반도체·성장주 매도</td></tr>
+      <tr><td><strong>금 8/28</strong></td><td>반도체 매도 — 엔비디아 <span class="down">−4.45%</span>, 마벨 <span class="down">−10.3%</span>(실적 호조·가이던스 상향에도 하락)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">금요일 US 마감 · Yahoo Finance (2026-08-28)</span><span class="evd-sum">나스닥 종합 26,402.42(<strong>−0.52%</strong>), 반도체가 낙폭 주도 — <strong>엔비디아 −4.45%</strong>, <strong>마벨 −10.3%</strong>(실적 상회·전망 상향에도 하락). 워시 잭슨홀 발언을 '단기 매파'로 해석.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>'좋은 실적'도 매파 금리 앞에선 차익실현 빌미</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>승자와 패자 — 그리고 국내 수급</h2>
+  <p class="lead">한 주를 관통한 테마는 <strong>"AI 수요는 견고, 그러나 금리·원가·밸류는 부담"</strong>이었다. 실적 자체보다 <strong>마진·금리 민감도</strong>가 주가 방향을 갈랐고, 국내는 외국인 순매도가 지수 상단을 눌렀다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th>대상</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip">패자</span></td><td><strong>마벨(MRVL)</strong></td><td>금요일 <span class="down">−10.3%</span> — 실적 상회·전망 상향에도 매도. '좋은 뉴스에 파는' 후반 심리를 상징</td></tr>
+      <tr><td><span class="chip">패자</span></td><td><strong>엔비디아(NVDA)</strong></td><td>실적 서프라이즈에도 마진 가이던스(메모리 원가)에 <span class="down">−4.45%</span>(금). 방향은 다수 매체 일치</td></tr>
+      <tr><td><span class="chip cool">승자</span></td><td>커뮤니케이션서비스·기술 섹터</td><td>주간 각각 <span class="up">+1.4%·+1.3%</span>로 섹터 1·2위 — 지수 상승분을 견인</td></tr>
+      <tr><td><span class="chip cool">승자</span></td><td><strong>KOSPI(코스피)</strong></td><td>주간 <span class="up">+1.4%</span> 반등 — 다만 8/28 하루는 <span class="down">−1.79%</span>, 7,000선 회복 실패</td></tr>
+      <tr><td><span class="chip cool">버팀목</span></td><td>삼성전자·SK하이닉스</td><td>대규모 자사주 매입 프로그램이 하방 지지 — '기타법인' 순매수가 7거래일 연속 일 1조원 초과<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 수급·자사주 · Seoul Economic Daily (2026-08-30)</span><span class="evd-sum">8/20~28 외국인 <strong>순매도 7.67조원</strong>·개인 2.80조원·연기금도 순매도. 반면 삼성전자·SK하이닉스의 <strong>자사주 매입</strong>과 '기타법인'의 일 1조원 초과 순매수가 7거래일 연속 하방을 지지. 코스피는 8/18 장중 7,216 고점 후 7,000선에서 반복 실패.</span><a href="https://en.sedaily.com/finance/2026/08/30/kospi-stalls-below-7000-as-fed-chair-warsh-turns-hawkish" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><span class="chip">역풍</span></td><td>외국인·연기금 수급</td><td>8/20~28 외국인 <span class="down">−7.67조원</span>·개인 <span class="down">−2.80조원</span> 순매도 — 지수 상단의 뚜껑</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 국내가 7,000선을 못 넘나.</strong> 코스피는 8/18 장중 <strong>7,216</strong>까지 올랐지만, 이후 매번 7,000선 부근에서 밀렸다. 배경은 ① 미 국채금리 상방(10년물 4.6~4.7%대)과 ② AI 수익성 논쟁, ③ 트럼프 행정부의 <strong>반도체 관세 가능성</strong>이다. 국내 대장주(삼성·하이닉스)의 자사주 매입이 하방은 받쳤으나, <strong>외국인 8조원 가까운 순매도</strong>를 이기진 못했다. 원/달러가 1,380원대로 <strong>원화 강세</strong>로 돈 점은 외국인 복귀 유인이지만, 아직 매수 전환으로 확인되진 않았다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 주(9/1~9/5) 관전 포인트 <span class="chip h2-chip">고용지표 주간</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 잭슨홀에서 매파로 돌아선 연준을 앞에 두고, 다음 주는 <strong>9월 FOMC(9/15~16) 직전의 마지막 고용지표</strong>가 방향을 가른다 — 노동시장이 <strong>반등하면 인상 우려, 더 식으면 인하 기대</strong>가 되살아나는 비대칭 구간이다.</p>
+      <p><strong>일정.</strong> ① <strong>9/1(화) ISM 제조업 PMI</strong> — 제조업 경기 온도계. ② <strong>9/4(금) 8월 고용보고서(비농업 신규고용)</strong> — 이번 주의 하이라이트이자 9월 FOMC 전 마지막 고용 확인. 7월엔 비농업 고용이 <span class="down">−23,000</span>으로 감소(정부 고용 −53,000)했던 터라, 8월의 반등 여부가 핵심이다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">다음 주 일정 · TradingKey Week Ahead (2026-08)</span><span class="evd-sum">9/4(금) <strong>8월 비농업 고용</strong>은 9월 FOMC 전 마지막 고용 확인. 7월엔 비농업 <strong>−23,000</strong>(정부 −53,000). ISM 제조업은 9/1. 실적은 <strong>브로드컴·델·팔로알토네트웍스</strong> 등 예정.</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262140230-nonfarm-payrolls-broadcom-dell-palo-alto-networks-earnings-august-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> ③ 실적은 <strong>브로드컴·델·팔로알토네트웍스</strong> 등 AI·엔터프라이즈 라인이 대기.</p>
+      <p><strong>체크포인트.</strong> ① 8월 고용이 반등하면 워시 연준의 <strong>9월 인상 시나리오</strong>가 힘을 얻어 금리·달러 상방 → 국내 외국인 수급 부담. ② 반대로 고용이 더 식으면 인하 기대가 되살아나 위험선호 회복. ③ <strong>브로드컴 등 AI 실적</strong>이 엔비디아發 '마진 우려'를 상쇄하는지. ④ 원/달러 원화 강세가 이어져 <strong>외국인이 순매수로 전환</strong>하는지 — 국내 지수의 7,000선 재도전 조건.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 리포트는 국내 장 시작 전(월요일 오전) 기준으로 <strong>지난 한 주(8/24~28)</strong> 미·한 증시와 매크로를 정리한 것이다. 개별 종목 등락은 공개 마감 보도에 기반하며, 매체별로 방향이 엇갈린 수치(다우 8/28 종가·월요일 개별 지수 등)는 지어내지 않고 제외했다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 주간 지수·섹터(S&amp;P +0.5%·나스닥 +0.9%·다우 +0.5%, 커뮤니케이션·기술 주도) — <a href="https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html">CNBC</a>, <a href="https://myweeklystock.substack.com/p/weekly-market-recap-aug-24-28-the">My Weekly Stock</a></span>
+  <span>근거2 7월 PCE 물가 예상보다 상방·소비 정체 — <a href="https://www.wichitaliberty.org/economics/july-2026-pce-inflation-report/">Wichita Liberty</a>, <a href="https://www.heygotrade.com/en/news/weekly-economic-outlook-2026-08-24/">Gotrade Weekly Outlook</a></span>
+  <span>근거3 엔비디아 FY2Q 매출 $96.2B·데이터센터 +117%·3Q 가이던스 $108B·마진 하향 — <a href="https://fortune.com/2026/08/26/nvidia-results-q2-earnings/">Fortune</a>, <a href="https://www.cnbc.com/2026/08/26/nvidia-nvda-earnings-report-q2-2027-live-updates.html">CNBC</a></span>
+  <span>근거4 워시 잭슨홀 매파 연설·9월 인상 확률 57.5% — <a href="https://en.sedaily.com/finance/2026/08/30/kospi-stalls-below-7000-as-fed-chair-warsh-turns-hawkish">Seoul Economic Daily</a></span>
+  <span>근거5 금요일 반도체 매도(엔비디아 −4.45%·마벨 −10.3%)·나스닥 −0.52% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html">Yahoo Finance</a></span>
+  <span>근거6 KR 외국인 순매도 7.67조원·삼성·하이닉스 자사주 지지·7,000선 재실패 — <a href="https://en.sedaily.com/finance/2026/08/30/kospi-stalls-below-7000-as-fed-chair-warsh-turns-hawkish">Seoul Economic Daily</a></span>
+  <span>근거7 다음 주 8월 고용(9/4)·ISM(9/1)·브로드컴/델/팔로알토 실적 — <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262140230-nonfarm-payrolls-broadcom-dell-palo-alto-networks-earnings-august-tradingkey">TradingKey Week Ahead</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·KOSPI/KOSDAQ 확정치·SPY/QQQ), KRX Open API(국내 지수), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 공개 마감·주간 보도. 2026-08-31 오전 조회 기준(지난 한 주 8/24~28 정리). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-08-31 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
