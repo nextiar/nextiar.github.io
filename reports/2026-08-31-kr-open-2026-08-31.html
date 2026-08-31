@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 개장 점검 — '매파 워시' 쇼크에 3%대 급락 출발, 개장 30분 낙폭 절반 되돌린 반도체</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 12px 0 0; font-size: 12.5px; color: var(--ink-2); }
+.en-abstract summary { cursor: pointer; font-size: 11.5px; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+.en-abstract p { margin: 10px 0 0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-08-31-kr-open-2026-08-31.html">
+<meta property="og:title" content="코스피 개장 점검 — &#x27;매파 워시&#x27; 쇼크에 3%대 급락 출발, 개장 30분 낙폭 절반 되돌린 반도체">
+<meta property="og:description" content="간밤 워시 연준 의장 매파 발언에 코스피 −2.58% 갭 하락 출발했으나 개장 30분 만에 반도체가 낙폭을 절반 되돌리며 프록시 −1.6%대로 완화 — 외국인 매도 지속 여부가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-08-31-kr-open-2026-08-31.html">
+<meta name="description" content="간밤 워시 연준 의장 매파 발언에 코스피 −2.58% 갭 하락 출발했으나 개장 30분 만에 반도체가 낙폭을 절반 되돌리며 프록시 −1.6%대로 완화 — 외국인 매도 지속 여부가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-08-31-kr-open-2026-08-31.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 개장 점검 심층 (KR Market Open)</div>
+  <h1>코스피 개장 점검 — '매파 워시' 쇼크에 <span class="down">3%대 급락 출발</span>, 개장 30분 낙폭 절반 되돌린 반도체</h1>
+  <p class="sub">2026년 8월 31일(월) 09:30 기준 · 간밤 미 증시(8/28 금 마감) 반영. 잭슨홀에서 나온 <strong>케빈 워시 연준 의장의 매파 발언</strong>으로 9월 금리인상 경계가 커지며 뉴욕 3대 지수가 하락 마감했고, 오늘 코스피는 <strong>−2.58%(6,613.58)로 갭 하락 출발</strong>해 장 초반 <strong><span class="down">−3%대(6,557선)</span></strong>까지 밀렸다. 다만 개장 30분 사이 <strong>반도체가 낙폭을 절반가량 되돌리며</strong> 프록시 기준 지수 하락률이 <span class="down">−1.6%대</span>로 좁혀졌다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 작성 2026-08-31 09:31 KST · 평일 09:30 개장 점검 자동 발간 슬롯</span>
+  <div class="note" style="margin-top:14px"><strong>09:30 기준 장중 수치 안내.</strong> 본 리포트의 지수·종목 등락은 <strong>2026-08-31 09:31 KST 조회</strong>한 장중 수치(개장 30분)이며, 확정치가 아니다 — <strong>당일 마감 시황(16:00)에서 확정치로 갱신</strong>한다. 국내 지수 절대 레벨은 KRX 확정치가 익일 반영되므로 당일은 <strong>토스 ETF 프록시(KODEX 200 등, "프록시" 표기)</strong>와 언론 보도 개장치를 병기한다.</div>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (직전 확정치 기준).</strong> 원/달러 <strong>1,380.30원</strong>(전일 1,384.60 → 8/28 ECOS 확정) · 미 국채 10년물 <strong>4.67%</strong>(8/27 FRED) · 한국 기준금리 3.00%(8/28) · 달러지수 118.06(8/21 FRED). 간밤 미국은 <strong>워시 의장 매파 발언 → 9월 인상 베팅 급증</strong>으로 금리 부담이 재부각됐고, 이 부담이 오늘 국내 개장 갭 하락의 방아쇠였다.</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">리스크 오프 · 갭 하락</span></h2>
+  <p class="lead">지수 절대 레벨은 KRX 확정치가 익일 반영되므로 당일은 <strong>토스 ETF 프록시(09:31 조회)</strong>와 언론 보도 개장치를 함께 표기한다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">개장 30분 (8/31 09:30)</div><div class="val down">리스크 오프</div><div class="delta">갭 하락 출발 → 반도체가 낙폭 축소 주도</div></div>
+    <div class="tile"><div class="lbl">KOSPI (KODEX 200 프록시)</div><div class="val down">−1.63%</div><div class="delta down">개장 −2.58%(6,613.58)·장초반 저점 −3.4%</div></div>
+    <div class="tile"><div class="lbl">KOSDAQ (개장 보도)</div><div class="val down">−2.00%</div><div class="delta down">821.67 출발 · 장초반 −3%대(코스닥150 레버리지 프록시 −6.49%)</div></div>
+    <div class="tile"><div class="lbl">원/달러 (8/28 ECOS)</div><div class="val">1,380.30</div><div class="delta">전일 1,384.60 · 당일 장중 환율 별도</div></div>
+    <div class="tile"><div class="lbl">간밤 미국 (8/28 금 마감)</div><div class="val down">S&amp;P −0.25%</div><div class="delta down">매파 워시 · 나스닥 −0.52%</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 간밤 <strong>워시 연준 의장의 잭슨홀 매파 발언</strong>(9월 인상 경계) 여파로 <strong><span class="down">−2.58%(6,613.58)</span> 갭 하락 출발</strong>, 장 초반 6,557선(−3.4%)까지 밀렸다 — 코스닥도 <span class="down">−2.00%</span>로 개장해 3%대까지 하락.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스피 개장 −2.58% · 머니투데이/뉴시스 (2026-08-31 09:01)</span><span class="evd-sum">코스피 <strong>175.30p(−2.58%) 내린 6,613.58</strong> 개장. 장 초반 낙폭이 −3.4%(약 6,557)까지 확대. 간밤 워시 의장 매파 발언·미 반도체 관세 확대 우려가 배경.</span><a href="https://www.mt.co.kr/stock/2026/08/31/2026083108490014427" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">② 그러나 <strong>개장 30분 사이 반도체가 낙폭을 절반가량 되돌렸다</strong> — SK하이닉스는 <span class="down">−4%</span> 부근 출발에서 09:31 <span class="down">−1.63%</span>로, 삼성전자도 <span class="down">−1.75%</span>로 좁혀지며 KODEX 200 프록시 하락률이 <span class="down">−1.6%대</span>로 완화됐다.</div>
+    <div class="tldr-item">③ 초반 수급은 <strong>외국인·기관 동반 순매도, 개인 순매수</strong> 보도로, KODEX 인버스가 거래대금 상위(<span class="up">+1.65%</span>)에 오르는 등 <strong>인버스·레버리지 회전</strong>이 두드러진 방어적 개장이다. 오늘 대응은 "매파 쇼크의 1차 반영 vs 반도체 되돌림 지속" 사이 균형이 핵심.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <p>The KOSPI gapped down at Monday's open (Aug 31), falling 2.58% to 6,613.58 and touching roughly −3.4% (about 6,557) early, after Fed Chair Kevin Warsh's hawkish Jackson Hole remarks lifted September rate-hike odds and pressured Friday's US session (S&amp;P 500 −0.25%, Nasdaq −0.52%). The KOSDAQ opened −2.00% at 821.67 and slid into the −3% range. Within the first 30 minutes, however, chipmakers halved the drop — SK Hynix narrowed from around −4% to −1.63% and Samsung Electronics to −1.75% by 09:31, easing the KODEX 200 proxy to about −1.6%. Early flows showed foreign and institutional net selling versus retail buying, with heavy turnover in inverse/leverage ETFs signaling defensive positioning. Figures follow the Korean original.</p>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 → 개장 연결 — '매파 워시'의 번역 <span class="chip cool h2-chip">US 마감 상호 링크</span></h2>
+  <p class="lead">간밤 미 증시 상세는 오늘 06:00 발간한 <strong><a href="/reports/2026-08-31-weekly-wrap-2026-08-31.html">US 주간 마감 시황 리포트</a></strong>에 정리돼 있다 — 여기서는 중복 서술 대신 <strong>"오늘 국내 개장에의 번역"</strong>에 집중한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 미국 (8/28 금 마감)</th><th class="num">종가</th><th class="num">등락</th><th>오늘 국내 장에의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,711.76</td><td class="num"><span class="down">−0.25%</span></td><td>주간으로는 상승 마감이나 금요일은 하락 — 위험선호 후퇴가 아시아로 전이</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,402.42</td><td class="num"><span class="down">−0.52%</span></td><td>반도체주가 전일 상승분 반납 → 국내 반도체 갭 하락으로 직결<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">US 마감 8/28 · Yahoo Finance (2026-08-28)</span><span class="evd-sum">연준 워시 의장이 잭슨홀에서 인플레 우려를 강조하며 <strong>9월 인상 베팅이 급증</strong>, 3대 지수 하락 마감. S&amp;P 500 −0.25%(7,711.76)·나스닥 −0.52%(26,402.42)·다우 −0.02%(53,559.99). 반도체주가 전일 상승분을 반납.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,559.99</td><td class="num"><span class="down">−0.02%</span></td><td>대형주는 보합권 — 충격은 금리·성장주에 집중</td></tr>
+      <tr><td>연준 워시 의장 발언</td><td class="num">매파</td><td class="num">9월 인상 경계 ↑</td><td>달러·금리 상단 부담 → 원화·외국인 수급에 역풍</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>번역 포인트 ①.</strong> 이번 하락의 성격은 <strong>실적·펀더멘털 훼손이 아니라 통화정책 재평가</strong>다. 워시 의장이 잭슨홀에서 인플레 경계를 강조하자 <strong>9월 금리인상 가능성</strong>이 시장에 다시 반영됐고, 금리·달러 상단이 열리며 밸류에이션이 높은 성장주(반도체 포함)가 먼저 반응했다. 국내 개장 갭 하락은 이 흐름의 <strong>1차 동조</strong>다.</p>
+      <p><strong>번역 포인트 ②.</strong> 다만 간밤 미국 반도체는 "폭락"이 아니라 <strong>전일 상승분 반납</strong> 수준이었다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">US 마감 8/28 · Yahoo Finance (2026-08-28)</span><span class="evd-sum">반도체주가 전 세션 상승분을 되돌리며 지수 하락을 주도, 워시 의장 매파 톤이 9월 인상 기대를 강화. 폭락이 아닌 되돌림 성격.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 그래서 국내 반도체가 개장 직후 <span class="down">−4%</span> 부근에서 <strong>빠르게 낙폭을 되돌린</strong> 것은, 시장이 이번 조정을 "구조적 악재"보다 "매크로 헤드라인 충격"으로 해석하기 시작했다는 초기 신호로 읽힌다. 여기에 <strong>반도체 자사주 매입이 하단을 지지</strong>한다는 국내 증권가 코멘트도 되돌림에 힘을 보탰다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">개장 시황·9월 밴드 · 이투데이/연합인포맥스 (2026-08-31)</span><span class="evd-sum">코스피가 잭슨홀 충격에 3%대 급락, 6,500선 후퇴. 국내 증권가는 <strong>9월 코스피 밴드 6,600~8,000</strong>을 제시하며 "반도체 자사주 매입이 하단을 지지"한다고 코멘트. 미 반도체 관세 확대 우려도 약세 요인.</span><a href="https://www.etoday.co.kr/news/view/2619819" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>30분 흐름 심층 — 주도·부진 업종과 거래대금 상위 <span class="chip h2-chip">반도체 되돌림</span></h2>
+  <p class="lead">거래대금·급등락은 토스증권 Open API <strong>market_rankings(2026-08-31 09:31 KST 실시간)</strong> 기준. 개장 30분 거래대금 상위는 <strong>반도체 양대장(하이닉스·삼성전자)과 지수 ETF(레버리지·인버스)</strong>가 장악했다 — 지수 방향에 베팅이 집중된 전형적 급변동 개장 구조다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (거래대금 상위)</th><th class="num">등락(09:31)</th><th>성격</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num"><span class="down">−1.63%</span></td><td>메모리·HBM</td><td>개장 <span class="down">−4%</span> 부근 → 09:31 −1.63%로 <strong>낙폭 축소 주도</strong>. 거래대금 1위(약 1.05조원)<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">SK하이닉스 개장 −4% · 서울신문 (2026-08-31 09:02)</span><span class="evd-sum">"매파 워시 쇼크"에 코스피 급락, <strong>SK하이닉스 −4%</strong> 부근 출발 보도. 이후 09:31 토스 실시간 −1.63%로 낙폭 축소.</span><a href="https://www.mt.co.kr/stock/2026/08/31/2026083108490014427" target="_blank" rel="noopener">원문(개장 시황) ↗</a></span></span></td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num"><span class="down">−1.75%</span></td><td>메모리·파운드리</td><td>거래대금 2위(약 0.90조원). 하이닉스와 동반 되돌림</td></tr>
+      <tr><td><strong>삼성SDI</strong> (006400)</td><td class="num"><span class="up">+1.75%</span></td><td>2차전지</td><td>반도체 약세 속 <strong>나홀로 강세</strong> — 업종 로테이션 초기 신호</td></tr>
+      <tr><td><strong>삼성전기</strong> (009150)</td><td class="num"><span class="down">−2.39%</span></td><td>부품(MLCC)</td><td>거래대금 상위 · 반도체 밸류체인 동반 약세</td></tr>
+      <tr><td>KODEX 레버리지 (122630)</td><td class="num"><span class="down">−3.41%</span></td><td>KOSPI 2x</td><td>지수 방향 베팅 — 하락 확대 시 낙폭 2배</td></tr>
+      <tr><td>KODEX 인버스 (114800)</td><td class="num"><span class="up">+1.65%</span></td><td>KOSPI 역방향</td><td>거래대금 상위 진입 — <strong>방어·헤지 수요</strong> 유입 신호</td></tr>
+      <tr><td>KODEX 코스닥150 레버리지 (233740)</td><td class="num"><span class="down">−6.49%</span></td><td>KOSDAQ150 2x</td><td>코스닥150 프록시 ≈ <span class="down">−3.2%</span> 시사 — 코스닥 낙폭이 코스피보다 큼</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 위 등락률은 <strong>09:31 조회 장중값</strong>으로 확정치가 아니다. 급등락 랭킹 상위는 대부분 <strong>소형·개별 이슈 종목(상·하한가)</strong>이라 지수 내러티브와 무관해 표에서 제외하고, <strong>지수를 실제로 움직인 거래대금 상위</strong>만 실었다. 언론별로 방향이 엇갈리는 개별 종목 수치는 싣지 않았다. <strong>사이드카·서킷브레이커 등 별도 장중 이벤트는 09:30 기준 발동 보도가 확인되지 않았다</strong>(개장 30분 하락률이 서킷브레이커 요건에 미달).
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>업종 그림.</strong> <strong>주도(방어)는 2차전지·일부 방어주</strong>였다 — 삼성SDI가 반도체 약세 속 <span class="up">+1.75%</span>로 홀로 오르며 로테이션 수요를 흡수했다. <strong>부진은 반도체·증권주</strong>로, 금리 인상 경계는 밸류에이션 부담이 큰 반도체와 증권주에 직접 타격이다("증권주도 미끌" 보도).<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">코스닥 개장 −2.00%·증권주 약세 · 아시아경제/머니투데이 (2026-08-31)</span><span class="evd-sum">코스닥 <strong>16.74p(−2.00%) 내린 821.67</strong> 개장 후 장초반 3%대 하락. 워시 매파 발언에 코스피·증권주 동반 약세("증권주도 미끌") 보도.</span><a href="https://view.asiae.co.kr/article/2026083109233271919" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 개장 30분 안에 반도체가 되돌림을 주도했다는 점이 <strong>오늘 장의 성격</strong>을 규정한다 — 일방적 투매가 아니라 <strong>매크로 충격에 대한 저가 매수 시험</strong>이 동시에 진행 중이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 — 외국인 방향·인버스 쏠림·전일 연속성 <span class="chip h2-chip">방어적</span></h2>
+  <p class="lead">개장 직후 수급은 확정 총액이 아닌 <strong>보도·프록시 기준</strong>이라 정직하게 표기한다. 당일 외국인·기관 확정 순매수액은 <strong>장 마감 후 KRX 반영</strong>이므로 여기서는 방향성만 인용한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>수급 신호</th><th>초기 방향</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인 (개장 보도)</strong></td><td class="num"><span class="down">순매도</span></td><td>매파 발언·달러 강세 국면에서 위험자산 축소 — 금요일 코스피에서 <strong>외국인 1.7조 순매도</strong>가 이어진 연속선<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">금요일 외국인 순매도 · 한국경제 (2026-08-28)</span><span class="evd-sum">8/28 코스피가 반도체 약세에 6,800선을 내주며 <strong>외국인이 약 1.7조원 순매도</strong>. 오늘(8/31) 개장에서도 외국인·기관 동반 순매도 방향이 이어진다는 보도.</span><a href="https://www.hankyung.com/article/2026082897216" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관 (개장 보도)</strong></td><td class="num"><span class="down">순매도</span></td><td>외국인과 동반 매도 — 개인이 순매수로 방어(초기 소액, 확정 아님)</td></tr>
+      <tr><td><strong>인버스/레버리지 회전</strong></td><td class="num">인버스 유입</td><td>KODEX 인버스 거래대금 상위·<span class="up">+1.65%</span> — <strong>헤지·하락 베팅 수요</strong> 뚜렷</td></tr>
+      <tr><td><strong>전일(8/28) 연속성</strong></td><td class="num"><span class="down">약세 지속</span></td><td>금요일 코스피 −1.79%(6,788.88 확정)·반도체 약세가 주말 워시 발언으로 증폭</td></tr>
+      <tr><td>신용융자 잔고</td><td class="num">급증</td><td>레버리지 심리 확대 — 변동성 국면에서 <strong>추가 확산보다 압축</strong> 전망(증권가)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 수급의 핵심은 <strong>외국인·기관 동반 순매도 vs 개인·저가매수의 힘겨루기</strong>다. 금요일 외국인 <strong>1.7조 순매도</strong>가 오늘까지 이어지면 반도체 되돌림이 오후에 다시 밀릴 수 있고, 반대로 <strong>인버스 유입이 정점을 지나 되돌려지면</strong> 낙폭 축소가 마감까지 이어질 수 있다. 당일 외국인·기관 <strong>확정 순매수액은 마감 후 반영</strong>되므로, 개장 시점에서는 방향(순매도)만 확인 가능하고 <strong>총액은 "확인불가"</strong>로 둔다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3개 <span class="chip h2-chip">관찰 레벨 · 이벤트</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 관찰 레벨 — 반도체 되돌림의 지속 여부.</strong> 개장 30분 되돌림의 진위는 <strong>SK하이닉스·삼성전자가 오전 중 개장가(−4%/−2%대) 위로 자리를 지키는지</strong>로 판별된다. KODEX 200 프록시가 <span class="down">−1.6%대</span>를 지지선으로 삼아 추가 하락을 막으면 "매크로 헤드라인 충격의 1차 소화"로, 다시 −3%대로 밀리면 "외국인 매도 우위 재개"로 해석한다. 코스피 지수로는 6,557선(장초반 저점)이 1차 지지, 6,788(8/28 종가) 회복이 반등 확인선이다.</p>
+      <p><strong>② 예정 이벤트 — 이번 주 매크로 캘린더.</strong> 이번 주는 <strong>미 8월 고용지표·한국 8월 수출·브로드컴 실적</strong>이 줄줄이 대기한다 — 워시 매파 발언 이후라 <strong>고용·물가 데이터에 대한 민감도가 극대화</strong>된 국면이다. 개별 발표 일정과 과거 결과는 <strong><a href="/calendar.html">이벤트 캘린더</a></strong>에서 확인한다. 특히 미 고용이 견조하면 9월 인상 베팅이 더 강해져 반도체·성장주에 추가 부담이 될 수 있다.</p>
+      <p><strong>③ 전환 신호 — 원화·인버스·자사주.</strong> ㉠ <strong>원/달러</strong>가 매파 발언에도 1,380원대에서 추가 급등(원화 약세)하지 않으면 외국인 매도 강도가 완화될 여지, ㉡ <strong>KODEX 인버스 거래대금이 정점을 찍고 감소</strong>하면 하락 베팅 소진 → 반등 전환 신호, ㉢ <strong>반도체 자사주 매입</strong>이 하단을 지지한다는 증권가 코멘트대로 6,600선 부근에서 매수세가 붙는지가 9월 밴드(6,600~8,000) 하단 방어의 관건이다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">9월 코스피 밴드 6,600~8,000 · 연합인포맥스/마켓인 (2026-08-31)</span><span class="evd-sum">증권가는 9월 코스피 밴드로 <strong>6,600~8,000</strong>을 제시. "반도체 자사주 매입이 하단을 지지"하며 "바닥이 단단해진다"는 코멘트. 미 반도체 관세 확대 우려는 상단 제약.</span><a href="https://www.etoday.co.kr/news/view/2619819" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 <strong>8/31 09:30 개장 30분 시점</strong>의 장중 수치·초기 보도를 정리한 사전 대응용이며, 확정치가 아니다. 개장 후 실제 흐름은 크게 달라질 수 있고, <strong>확정 지수·수급은 당일 마감 시황(16:00)에서 갱신</strong>한다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 US 마감 8/28: 워시 매파·S&amp;P −0.25%·나스닥 −0.52%·반도체 상승분 반납 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-august-28-dow-sp-500-nasdaq-dip-fed-warsh-jackson-hole-speech-081514091.html">Yahoo Finance</a></span>
+  <span>근거2 코스피 개장 −2.58%(6,613.58)·장초반 −3.4% — <a href="https://www.mt.co.kr/stock/2026/08/31/2026083108490014427">머니투데이</a></span>
+  <span>근거3 3%대 급락·9월 밴드 6,600~8,000·자사주 하단 지지 — <a href="https://www.etoday.co.kr/news/view/2619819">이투데이</a></span>
+  <span>근거4 코스닥 개장 −2.00%(821.67)·증권주 약세 — <a href="https://view.asiae.co.kr/article/2026083109233271919">아시아경제</a></span>
+  <span>근거5 8/28 외국인 코스피 1.7조 순매도 — <a href="https://www.hankyung.com/article/2026082897216">한국경제</a></span>
+  <span>근거6 SK하이닉스 개장 −4% 부근(매파 워시 쇼크) — <a href="https://www.mt.co.kr/stock/2026/08/31/2026083108490014427">머니투데이(개장 시황)</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(ETF 프록시·거래대금·종목 시세, 2026-08-31 09:31 KST 실시간 조회), 국내 개장 공개 보도(머니투데이·이투데이·아시아경제·한국경제·서울신문), 한국은행 ECOS(기준금리·원/달러, 8/28 확정), 미 FRED(미 10년물 8/27·달러지수 8/21). KRX 지수 확정치는 익일 반영이라 당일 지수는 <strong>토스 ETF 프록시("프록시" 표기)</strong>와 언론 개장치를 병기했다. 간밤 미 마감 상세는 <a href="/reports/2026-08-31-weekly-wrap-2026-08-31.html">US 주간 마감 시황</a> 참조. <strong>09:30 기준 장중 수치 — 마감 시황(16:00)에서 확정치 갱신.</strong> <strong>작성: 2026-08-31 09:31 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-08-31 09:36 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
