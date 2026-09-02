@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 개장 점검 — 간밤 뉴욕 사흘째 하락·유가·금리 급등에 3% 갭다운 출발</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-02-kr-open-2026-09-02.html">
+<meta property="og:title" content="코스피 개장 점검 — 간밤 뉴욕 사흘째 하락·유가·금리 급등에 3% 갭다운 출발">
+<meta property="og:description" content="코스피 −3.08%(6,625.47)·코스닥 −2.25%(802.80) 갭다운 출발 — 간밤 뉴욕 사흘째 하락과 유가·금리 급등이 반도체發 위험회피로 번졌다(09:30 장중).">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-02-kr-open-2026-09-02.html">
+<meta name="description" content="코스피 −3.08%(6,625.47)·코스닥 −2.25%(802.80) 갭다운 출발 — 간밤 뉴욕 사흘째 하락과 유가·금리 급등이 반도체發 위험회피로 번졌다(09:30 장중).">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-02-kr-open-2026-09-02.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 개장 점검 심층 (KR Open Check)</div>
+  <h1>코스피 개장 점검 — 간밤 뉴욕 사흘째 하락·유가·금리 급등에 <span class="down">3% 갭다운 출발</span></h1>
+  <p class="sub">2026년 9월 2일(수) 개장 30분 점검. 코스피는 전일 종가(6,835.80) 대비 <strong><span class="down">−3.08%</span> 급락한 6,625.47</strong>로, 코스닥은 <strong><span class="down">−2.25%</span> 내린 802.80</strong>으로 출발했다. 방아쇠는 <strong>간밤 뉴욕 3대 지수 사흘째 하락</strong> — 미·이란 지정학 긴장 속에 국제유가와 미 국채금리가 뛰며 위험자산을 눌렀고, 필라델피아반도체지수가 −2.1% 밀리자 개장과 함께 <strong>'전자닉스'(삼성전자·SK하이닉스)가 동반 약세</strong>로 갭을 벌렸다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 09:30 기준 장중 수치 — 마감 시황(16:00)에서 확정치 갱신 · 실시간 랭킹 09:30 KST 조회</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>헤더 고지.</strong> 본 리포트의 지수·종목 등락은 <strong>09:30 기준 장중 수치</strong>다. 국내 지수 확정치는 KRX 익일 반영이라 당일 절대 레벨은 개장 보도치와 토스 ETF <strong>프록시</strong>(KODEX 200 등)로 교차 표기하며, <strong>확정치는 오늘 16:00 마감 시황에서 갱신</strong>한다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">위험회피 · 큰 폭 하락 갭</span></h2>
+  <p class="lead">지수 개장치는 공개 개장 보도(연합인포맥스·뉴시스·서울파이낸스), 실시간 종목·ETF 등락은 토스증권 Open API(09:30 KST 조회), 매크로는 한국은행 ECOS·미 FRED·KRX 확정치 기준. 전일 종가는 09-01 KRX 확정치.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">개장 방향 (09:00)</div><div class="val down">큰 폭 하락 갭</div><div class="delta">간밤 뉴욕 사흘째 하락·유가·금리發</div></div>
+    <div class="tile"><div class="lbl">코스피 개장</div><div class="val down">6,625.47</div><div class="delta down">▼ −3.08% (−210.33p)<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 개장 · 연합인포맥스 (2026-09-02 09:02)</span><span class="evd-sum">코스피가 지정학적 긴장에 <strong>3.08% 급락한 6,625.47</strong>로 개장. 전일 종가 6,835.80(09-01 KRX 확정) 대비 −210.33p.</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9uUFpKWXgtZTRsaDI0cnRXMHA3Y0FXX3ZLVnZKZEZjUkU4OG9JeFpxblhyZ21UeWhfYy1yWnM5UDlBelNXWHc4a0twZFJiU3FwVlVCZnQwUkhaUGFZQU5uREVQcUd5VUNJb09UWGNNTHjSAXRBVV95cUxOQ05WQ3gxemF5eXFBaEpYQWtHc1loNG44STU0Ql9VMXFZTVRUcl9hMW93eTZRdnZsOENxb2tlbWhIVlpNdG5nY1FUbWdZNWdMUkZkMk9ua3YzZTZsZ1UwaWpGQVdQNWhOMXBPV1NNQmstRmdZeQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">코스닥 개장</div><div class="val down">802.80</div><div class="delta down">▼ −2.25% (−18.45p)<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스닥 개장 · 서울파이낸스 (2026-09-02 09:02)</span><span class="evd-sum">코스닥이 <strong>18.45p(2.25%) 내린 802.80</strong>으로 출발. 전일 종가 821.25(09-01 KRX 확정, −1.56%)에 이은 이틀째 약세. 개장 직후 796선까지 낙폭이 확대되는 흐름도 보도됐다(장중).</span><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE56VUdaQnYwVi1EYUhSN3BlZWczUFFRVnZQRXpTeEUtVS13eFAwNjRhb09hZzgwa3F3QWt2LTk4dUVja1NwYTVGSFZYaGRIN3NCRjhGanNjWW52WTNRblg2WEotYms5NERjcXc?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val">1,373.6원</div><div class="delta up">전일 1,376.5 · 원화 소폭 강세<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">원/달러 · 한국은행 ECOS (2026-09-01 기준)</span><span class="evd-sum">원/달러 <strong>1,373.6원</strong>(직전 1,376.5원). ECOS 확정 기준일 09-01. 원화가 소폭 강세지만, 간밤 달러·유가·금리 동반 상승 국면이라 방향의 지속성은 개장 후 외국인 수급으로 확인이 필요하다.</span><span class="evd-nolink">ECOS 매크로 스냅샷(조회 09:30 KST) — 익일 확정 반영</span></span></span></div></div>
+    <div class="tile"><div class="lbl">간밤 뉴욕 (9/1 마감)</div><div class="val down">사흘째 하락</div><div class="delta down">나스닥 −1.03% · SOX −2.1%</div></div>
+    <div class="tile"><div class="lbl">국내 프록시 (09:30)</div><div class="val down">KODEX 200 −2.55%</div><div class="delta down">레버리지 −5.19% · 인버스2X <span class="up">+6.57%</span></div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 <strong><span class="down">−3.08%</span>(6,625.47)</strong>·코스닥은 <strong><span class="down">−2.25%</span>(802.80)</strong>로 큰 폭 갭다운 출발. 방아쇠는 국내 요인이 아니라 <strong>간밤 뉴욕 사흘째 하락</strong>과 유가·금리 급등이라는 대외 매크로 충격이다.</div>
+    <div class="tldr-item">② 개장 거래대금 상위는 <strong>SK하이닉스 <span class="down">−2.65%</span>·삼성전자 <span class="down">−3.06%</span></strong>가 양대 축이고, 그 뒤로 지수 ETF가 채웠다 — 지수를 끌어내린 주체가 <strong>대형 반도체</strong>임을 거래대금이 확인한다.</div>
+    <div class="tldr-item">③ 온북 신호는 명확한 <strong>하락 베팅</strong>이다 — 레버리지 ETF <span class="down">−5% 안팎</span> vs 인버스2X <span class="up">+6.57%</span>. 다만 외국인 순매도 <strong>총액은 KRX 익일 반영이라 현재 확인불가</strong>(? 확정치는 16:00 마감 시황).</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">English summary</span><span class="ena-s">Auto-translated · figures follow KR original</span></summary>
+    <div class="inner">
+      <p>The KOSPI gapped down <strong>−3.08% to 6,625.47</strong> and the KOSDAQ opened <strong>−2.25% at 802.80</strong> at the 9:00 KST open on Sep 2, 2026. The trigger was external: a third straight decline on Wall Street overnight (Nasdaq −1.03%, Philadelphia Semiconductor Index −2.1%) as U.S.–Iran geopolitical tension pushed oil and Treasury yields higher.</p>
+      <p>By early turnover, <strong>Samsung Electronics (−3.06%) and SK hynix (−2.65%)</strong> led the value traded, confirming large-cap memory as the drag. On-book positioning was decisively bearish — leverage ETFs fell ~5% while the 2x inverse ETF rose +6.57%.</p>
+      <p>Foreign net-sell totals are <strong>not yet confirmable</strong> (KRX finalizes intraday flows next day); watch KOSPI's 6,600 defense and any sidecar/circuit-breaker triggers into the 16:00 close. These are intraday figures as of 09:30 KST and will be revised at the market-close report. <strong>Figures follow the Korean original.</strong></p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 → 개장 연결 <span class="chip cool h2-chip">대외 매크로 충격의 번역</span></h2>
+  <p class="lead">간밤 미 증시 마감은 오늘 06:00 발간한 <a href="/reports/2026-09-02-us-close-morning-2026-09-02.html">US 마감 시황 리포트</a>에서 상세히 다뤘다 — 여기서는 중복 서술 대신 <strong>"오늘 국내 개장에 무엇으로 번역됐는가"</strong>에 집중한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 뉴욕 (9/1 마감)</th><th class="num">등락</th><th>→ 오늘 국내 개장에의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num"><span class="down">−1.03%</span></td><td>기술주 매도 심리 이전 → 코스피 대형 반도체 갭다운<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">뉴욕증시 9월 첫 거래일 · 중부일보(CBCI) (2026-09-01 마감)</span><span class="evd-sum">9월 첫 거래일 3대 지수 일제히 하락 — 다우 <strong>−0.79%(52,766.88)</strong>, S&amp;P500 <strong>−0.71%(7,631.47)</strong>, 나스닥 <strong>−1.03%(26,099.77)</strong>. 필라델피아반도체지수 −2.1%로 구성 종목 전부 하락.</span><a href="https://www.cbci.co.kr/news/articleView.html?idxno=603007" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>필라델피아 반도체(SOX)</td><td class="num"><span class="down">−2.1%</span></td><td>구성 종목 전부 하락 → 삼성전자·SK하이닉스 동반 약세의 직접 read-through</td></tr>
+      <tr><td>국제유가·미 10년물</td><td class="num"><span class="up">동반 급등</span></td><td>인플레·할인율 부담 재부각 → 성장주·고밸류에 역풍<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">간밤 하락 원인 · 연합인포맥스 (2026-09-02 05:53)</span><span class="evd-sum">뉴욕 3대 지수 사흘째 하락 — "금리도 유가도 안 도와준다". 미·이란 지정학 긴장 속 국제유가·미 국채금리가 함께 올라 투자심리를 압박. 인플레 우려가 재부각.</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE04d1Z6bkhXR3NQV253ZDJwTm9xbmJWRm5NUzFoS3BuSHpEOXI0SkZ6T0hlaC0yRGlianBOTXFieHpfUzMxSWdGS195TnFPLWI0bU1NSUYtRWFLNXVOR3FWc3B4SFFBYk5ncVpRSFI5TXQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>글로벌 국채금리</td><td class="num"><span class="up">한·미·일 급등</span></td><td>일본 10년물 3% 돌파(30년 최고) → 아시아 위험자산 전반 긴장<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">글로벌 국채금리 급등 · 다음/증시전략 (2026-09-02 07:10)</span><span class="evd-sum">한·미·일 국채금리 동반 급등. <strong>일본 10년물 금리가 3%를 돌파해 약 30년 만의 최고</strong>. 채권 매도세가 위험자산 전반의 밸류에이션 부담으로 전이.</span><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTFBVUVhaS0tDRVFzdHdlWmZIcGVJZkpwWVlZOXJnaXR4VjQ3SnRBdFBpQVdMQmgtaE9Lc3RTNk9GTG1NUW1vcnNfVTFzRkpWNWM?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>한 줄 번역.</strong> 오늘 국내 갭다운은 <strong>"국내 이벤트 없는 대외 매크로 전이"</strong>다. 간밤 뉴욕이 <strong>사흘째</strong> 밀렸고(다우 <span class="down">−0.79%</span>·S&amp;P500 <span class="down">−0.71%</span>·나스닥 <span class="down">−1.03%</span>), 그 안에서 <strong>필라델피아 반도체가 −2.1%로 구성 종목 전부 하락</strong>했다. 반도체 비중이 큰 코스피 구조상 이 조합은 개장 갭으로 거의 직결됐다.</p>
+      <p><strong>왜 반등이 아니라 갭다운인가.</strong> 이번 하락의 근본 동인은 실적·펀더멘털이 아니라 <strong>금리·유가라는 할인율 변수</strong>다. 일본 10년물이 3%를 뚫으며 글로벌 채권 매도가 확산되자, 밸류에이션이 높아진 반도체·성장주가 먼저 조정 압력을 받았다. 국내 장에는 이를 상쇄할 자체 호재(실적·정책)가 개장 시점엔 부재해, 지수가 대외 악재를 그대로 흡수했다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>개장 30분 흐름 심층 — 반도체가 끌어내린 거래대금 <span class="chip h2-chip">전자닉스 동반 약세</span></h2>
+  <p class="lead">개장 거래대금 상위·실시간 등락은 토스증권 Open API(09:30 KST 조회, 캐시 없음). 개별 급등락주 중 <strong>매체별로 방향·수치가 엇갈리는 소형주는 지어내지 않고 제외</strong>했고, 온북 확인이 되는 대형주·지수 ETF 중심으로 정리한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>거래대금 상위 (개장)</th><th class="num">등락 (09:30)</th><th class="num">거래대금</th><th>성격 / 읽는 법</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num"><span class="down">−2.65%</span></td><td class="num">7,560억</td><td>거래대금 1위 · 대형 반도체 매도 축</td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num"><span class="down">−3.06%</span></td><td class="num">5,149억</td><td>거래대금 2위 · 지수 최대 하락 기여<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">'전자닉스' 동반 약세 · KB Think (2026-09-02 09:13)</span><span class="evd-sum">"매크로 공포에 코스피 3% 급락 출발 — <strong>'전자닉스'(삼성전자·SK하이닉스) 동반 약세</strong>." 시가총액 상위 반도체가 지수 낙폭을 주도한다는 개장 보도.</span><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1CZVRfZjRrcmotN2FPR1NGY2hQVkk5X1JZa1pBTlJ4VkNRcXJYZ04zZW05cGJIMFhleENZLWpRREN6ZGRIM210UlpDTXVjRFlESk5La3JkWG9qMllwemhhSjYxdlMzWlJPOVBxeTJYNUVJZw?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>KODEX 레버리지 (122630)</td><td class="num"><span class="down">−5.19%</span></td><td class="num">2,409억</td><td>코스피200 2배 — 지수 낙폭의 배수 반영</td></tr>
+      <tr><td>KODEX 200 (069500)</td><td class="num"><span class="down">−2.55%</span></td><td class="num">2,224억</td><td>코스피 <strong>프록시</strong> — 지수 확정 전 온북 대용치</td></tr>
+      <tr><td>삼성전기 (009150)</td><td class="num"><span class="down">−0.06%</span></td><td class="num">2,032억</td><td>부품주 상대적 선방 — 반도체 대비 낙폭 얕음</td></tr>
+      <tr><td>KODEX 200선물인버스2X (252670)</td><td class="num"><span class="up">+6.57%</span></td><td class="num">1,190억</td><td>하락 베팅 유입 — 인버스 상위 랭크</td></tr>
+      <tr><td>KODEX 인버스 (114800)</td><td class="num"><span class="up">+2.74%</span></td><td class="num">1,105억</td><td>인버스 계열 동반 상위 — 방어·베팅 수요</td></tr>
+      <tr><td>SK스퀘어 (402340)</td><td class="num"><span class="down">−4.59%</span></td><td class="num">1,007억</td><td>반도체 지주 — 하이닉스 약세에 연동</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 위 등락률은 <strong>09:30 KST 실시간 조회치</strong>이며 마감까지 크게 바뀔 수 있다. 개장 직후 급등·급락 상위에 오른 개별 소형주는 <strong>매체별 보도 방향이 엇갈려</strong> 본문에서 뺐다 — 확정 흐름은 16:00 마감 시황에서 정리한다. 지수 절대 레벨(6,625.47 등)은 개장 보도치이며, 온북 대용은 KODEX 200 <strong>프록시</strong>(−2.55%)로 병기했다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>흐름 심층.</strong> 개장 거래대금 1·2위가 <strong>SK하이닉스·삼성전자</strong>라는 점이 핵심이다. 지수를 끌어내린 주체가 특정 테마가 아니라 <strong>시가총액 최상단의 반도체</strong>라는 뜻으로, 코스피 −3%의 대부분이 이 둘에서 나왔다. 그다음 거래대금은 레버리지·인버스·KODEX 200 등 <strong>지수 방향 ETF</strong>가 채워, 개별 종목 스토리보다 <strong>지수 자체를 사고파는(방향 베팅) 하루</strong>의 성격이 강하다.</p>
+      <p><strong>사이드카·서킷브레이커.</strong> 09:30 시점 기준 <strong>프로그램매매 호가효력정지(사이드카)·서킷브레이커 발동 보도는 확인되지 않았다</strong>. −3%대 갭다운은 컸지만 발동 요건(코스피200 선물 ±5% 1분 지속 등)에는 미치지 않은 것으로 보인다 — 장중 재확인이 필요하며, 발동 시 16:00 마감 시황에 기록한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 <span class="chip h2-chip">온북=하락 베팅 · 외인 총액 확인불가</span></h2>
+  <p class="lead">국내 투자자별 순매수 <strong>확정 총액은 KRX가 익일 반영</strong>이라 개장 시점엔 정확한 금액을 알 수 없다(? 확인불가). 여기서는 ① 온북으로 확인되는 방향 신호와 ② 보도가 일치하는 정황만 정직하게 싣고, 확정치는 16:00 마감 시황으로 넘긴다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>초기 수급 신호</th><th>판정</th><th>근거 / 한계</th></tr></thead>
+    <tbody>
+      <tr><td>인버스/레버리지 쏠림</td><td><span class="down">하락 베팅 우위</span></td><td>인버스2X <span class="up">+6.57%</span>·인버스 <span class="up">+2.74%</span>가 거래대금 상위, 레버리지 <span class="down">−5.19%</span> — <strong>온북으로 확인되는 방향</strong></td></tr>
+      <tr><td>외국인 순매도 총액</td><td><span class="chip cool">? 확인불가</span></td><td>KRX 확정치 익일 반영 — 개장 시점 정확 금액 없음. 매체는 대외 매크로發 매도 우위 정황을 전하나 <strong>수치는 배제</strong><span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">개장 배경 · 서울경제TV (2026-09-02 09:26)</span><span class="evd-sum">"코스피 3%대 급락 출발 — 유가·금리 급등 충격." 대외 매크로가 위험회피를 부른 개장. 다만 개장 30분 시점의 외국인·기관 <strong>순매수 확정 금액은 매체마다 제각각이라 본문에서 제외</strong>했다.</span><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE1hbEptc1BnUUlXVWw3RmdKMTRvbnU2Tm83QnlsTTNQMURRWFZlNVRhYVdaUG1SZk9XbVJCLTRfM3d1dDYyd1VrU2R5ZGROa0x5Uk1BWjdKVGJKTEJDRjEwbU04TTc?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>전일(9/1) 마감 연속성</td><td><span class="down">약세 이어짐</span></td><td>코스닥은 전일 −1.56% 마감에 이어 이틀째 약세. 코스피는 전일 +0.23%(6,835.80)로 강보합 마감했으나 <strong>대외 충격에 하루 만에 반전</strong></td></tr>
+      <tr><td>원화 방향</td><td><span class="up">소폭 강세</span></td><td>원/달러 1,373.6원(전일 1,376.5) — 수급엔 우호적 방향이나 <strong>달러·유가 동반 강세라 지속성은 미확인</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 개장 30분의 <strong>가장 신뢰할 만한 수급 신호는 인버스·레버리지 ETF의 쏠림</strong>이다 — 이건 토스 온북 실시간으로 확인되는 사실이라 방향을 왜곡할 수 없다. 반면 "외국인이 얼마를 팔았다"는 <strong>구체적 금액은 개장 직후 매체마다 다르고 KRX 확정도 익일</strong>이라, 이 리포트는 <strong>숫자를 싣지 않는다</strong>. 확정 순매수·투자자별 동향은 오늘 16:00 마감 시황에서 KRX 기준으로 갱신한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3개 <span class="chip h2-chip">관찰 레벨 · 전환 신호</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 코스피 6,600선 방어 여부 (관찰 레벨).</strong> 개장 6,625.47에서 <strong>6,600선</strong>이 장중 심리적 지지대다. 이 레벨을 장중 지켜내면 "대외 악재 1회 반영 후 관망", 이탈해 낙폭이 확대되면 "패닉 매도 국면"으로 성격이 갈린다. 반대로 <strong>6,700선 회복</strong>은 갭 일부 메우기 신호. 지수 확정 전이라 <strong>KODEX 200 프록시</strong>(−2.55%)의 낙폭 축소/확대를 병행해 관찰한다.</p>
+      <p><strong>② 예정 이벤트 — 금리·유가가 주도권 (캘린더 연동).</strong> 이번 하락의 근원이 <strong>금리·유가</strong>인 만큼, 오늘 이후의 미 국채금리·국제유가 방향과 지정학(미·이란) 헤드라인이 국내 반등 여부를 좌우한다. 주간 발표 지표·실적 일정은 <a href="/calendar.html">이벤트 캘린더</a>에서 확인한다 — 대외 금리 이벤트가 소화될 때까지 변동성 확대를 기본 시나리오로 둔다.</p>
+      <p><strong>③ 전환 신호 — '전자닉스'의 낙폭 축소 + 인버스 되돌림.</strong> 오늘 지수를 끌어내린 주체가 삼성전자·SK하이닉스인 만큼, <strong>이 둘의 장중 낙폭 축소</strong>가 반등의 1차 트리거다. 여기에 <strong>인버스2X(+6.57%)의 상승폭 되돌림</strong>이 동반되면 하락 베팅 청산 신호로 읽을 수 있다. 원/달러가 강세 방향을 유지하며 외국인 순매도가 완화되는지도 오후에 교차 확인한다(확정은 16:00 마감 시황).</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 <strong>09:30 개장 30분 점검</strong> 기준으로, 모든 지수·종목 수치는 장중 값이며 마감까지 크게 달라질 수 있다. 확정치·투자자별 수급은 오늘 16:00 마감 시황에서 갱신한다. 개별 종목은 시황 맥락으로 언급했을 뿐 투자의견(콜)이 아니며, 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 개장 6,625.47(−3.08%) — <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9uUFpKWXgtZTRsaDI0cnRXMHA3Y0FXX3ZLVnZKZEZjUkU4OG9JeFpxblhyZ21UeWhfYy1yWnM5UDlBelNXWHc4a0twZFJiU3FwVlVCZnQwUkhaUGFZQU5uREVQcUd5VUNJb09UWGNNTHjSAXRBVV95cUxOQ05WQ3gxemF5eXFBaEpYQWtHc1loNG44STU0Ql9VMXFZTVRUcl9hMW93eTZRdnZsOENxb2tlbWhIVlpNdG5nY1FUbWdZNWdMUkZkMk9ua3YzZTZsZ1UwaWpGQVdQNWhOMXBPV1NNQmstRmdZeQ?oc=5">연합인포맥스</a></span>
+  <span>근거2 코스닥 개장 802.80(−2.25%) — <a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE56VUdaQnYwVi1EYUhSN3BlZWczUFFRVnZQRXpTeEUtVS13eFAwNjRhb09hZzgwa3F3QWt2LTk4dUVja1NwYTVGSFZYaGRIN3NCRjhGanNjWW52WTNRblg2WEotYms5NERjcXc?oc=5">서울파이낸스</a></span>
+  <span>근거3 원/달러 1,373.6원 — 한국은행 ECOS(macro_snapshot, 09-01 기준)</span>
+  <span>근거4 뉴욕 3대 지수·SOX 하락(9/1 마감) — <a href="https://www.cbci.co.kr/news/articleView.html?idxno=603007">중부일보(CBCI)</a></span>
+  <span>근거5 간밤 하락 원인(유가·금리·지정학) — <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE04d1Z6bkhXR3NQV253ZDJwTm9xbmJWRm5NUzFoS3BuSHpEOXI0SkZ6T0hlaC0yRGlianBOTXFieHpfUzMxSWdGS195TnFPLWI0bU1NSUYtRWFLNXVOR3FWc3B4SFFBYk5ncVpRSFI5TXQ?oc=5">연합인포맥스</a></span>
+  <span>근거6 일본 10년물 3% 돌파(30년 최고) — <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTFBVUVhaS0tDRVFzdHdlWmZIcGVJZkpwWVlZOXJnaXR4VjQ3SnRBdFBpQVdMQmgtaE9Lc3RTNk9GTG1NUW1vcnNfVTFzRkpWNWM?oc=5">다음/증시전략</a></span>
+  <span>근거7 '전자닉스' 동반 약세 — <a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1CZVRfZjRrcmotN2FPR1NGY2hQVkk5X1JZa1pBTlJ4VkNRcXJYZ04zZW05cGJIMFhleENZLWpRREN6ZGRIM210UlpDTXVjRFlESk5La3JkWG9qMllwemhhSjYxdlMzWlJPOVBxeTJYNUVJZw?oc=5">KB Think</a></span>
+  <span>근거8 개장 배경(유가·금리 급등 충격) — <a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE1hbEptc1BnUUlXVWw3RmdKMTRvbnU2Tm83QnlsTTNQMURRWFZlNVRhYVdaUG1SZk9XbVJCLTRfM3d1dDYyd1VrU2R5ZGROa0x5Uk1BWjdKVGJKTEJDRjEwbU04TTc?oc=5">서울경제TV</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(실시간 종목·ETF 등락·거래대금, 09:30 KST 조회·캐시 없음), 국내 개장 공개 보도(지수 개장치), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX 확정치(전일 지수 종가). 지수 확정치는 KRX 익일 반영 — 당일 절대 레벨은 개장 보도치·KODEX 200 프록시로 병기했고, <strong>확정치는 오늘 16:00 마감 시황에서 갱신</strong>한다. 상호 링크: 간밤 미 증시는 오늘 06:00 <a href="/reports/2026-09-02-us-close-morning-2026-09-02.html">US 마감 시황</a> 참조. <strong>작성: 2026-09-02 09:30 KST · 평일 09:30 개장 점검 슬롯</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-09-02 09:43 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
