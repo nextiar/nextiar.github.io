@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 월러의 '동결' 시사에 3대 지수 반등, 그러나 브로드컴은 사상 최고 실적에도 되밀렸다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 12px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card);
+  font-size: 12.5px; color: var(--ink-2); }
+.en-abstract > summary { cursor: pointer; padding: 10px 14px; font-weight: 650; color: var(--ink); font-size: 12px; letter-spacing: 0.02em; }
+.en-abstract[open] > summary { border-bottom: 1px solid var(--grid); }
+.en-abstract .en-body { padding: 12px 14px; line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-04-us-close-morning-2026-09-04.html">
+<meta property="og:title" content="US 마감 시황 — 월러의 &#x27;동결&#x27; 시사에 3대 지수 반등, 그러나 브로드컴은 사상 최고 실적에도 되밀렸다">
+<meta property="og:description" content="월러 이사의 9월 FOMC 동결 시사로 미 3대 지수가 반등했으나, 브로드컴이 AI 매출 +221% 폭증에도 시간외 되밀리며 반도체 눈높이 피로가 오늘 국내 삼성전자·SK하이닉스 심리의 변수로 부상했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-04-us-close-morning-2026-09-04.html">
+<meta name="description" content="월러 이사의 9월 FOMC 동결 시사로 미 3대 지수가 반등했으나, 브로드컴이 AI 매출 +221% 폭증에도 시간외 되밀리며 반도체 눈높이 피로가 오늘 국내 삼성전자·SK하이닉스 심리의 변수로 부상했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-04-us-close-morning-2026-09-04.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 월러의 '동결' 시사에 3대 지수 반등, 그러나 <span class="down">브로드컴은 사상 최고 실적에도 되밀렸다</span></h1>
+  <p class="sub">2026년 9월 4일(금) 국내 장 시작 전 기준 · 전일 미 증시(9/3 목 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했다 — 연준의 크리스토퍼 <strong>월러 이사가 9월 FOMC '금리 동결'을 시사</strong>하며 그간 짓눌렀던 <strong>추가 인상 우려</strong>가 완화됐고, 10년물 금리가 내리자 다우가 한 달 만의 최대 상승폭을 기록했다. 다만 지수 이면에서 <strong>반도체는 로직·메모리·장비로 방향이 갈렸고</strong>, 장 마감 후 <strong>브로드컴은 AI 매출 <span class="up">+221%</span> 폭증에도 시간외에서 되밀렸다</strong>. 오늘 국내 장은 이 <strong>'AI 실적은 좋은데 주가는 안 오르는' 피로감이 삼성전자·SK하이닉스로 어떻게 번지느냐</strong>가 관건이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-09-04 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-09-04 오전 조회).</strong> 원/달러 <strong>1,369.40원</strong>(직전 1,370.30 → 원화 소폭 강세) · 미 국채 10년물 <strong>≈4.74%</strong>(9/3 마감 보도, 약 −3bp) · 한국 기준금리 3.00% · 달러지수 118.75 · SPY(미 대형주 ETF) 773.17$. 간밤 미 위험선호는 살아났으나 반도체 내부는 방향이 갈렸다. <em>지수·개별주 등락은 공개 마감 보도, 금리·환율은 build_briefing 스냅샷 기준.</em></div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">리스크 온 · 반도체는 갈림</span></h2>
+  <p class="lead">미 지수·개별주 등락은 공개 마감 보도, 금리·환율은 build_briefing 매크로 스냅샷(미 FRED·한국은행 ECOS) 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (9/3 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · 월러 '동결' 시사가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,747.71</div><div class="delta up">▲ +1.06%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,584.06</div><div class="delta up">▲ +1.40% · 빅테크 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">AVGO 시간외 ↓</div><div class="delta">AI 실적 호조에도 되밀림 → 반도체 심리 read-through</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong> — 연준 <strong>월러 이사가 9월 FOMC 금리 동결을 시사</strong>(디스인플레 진전 언급)하며 추가 <strong>인상</strong> 우려가 완화됐고, 다우는 <span class="up">+1.18%</span>로 약 한 달 만의 최대폭 상승, 나스닥 <span class="up">+1.40%</span>.</div>
+    <div class="tldr-item">② 8월 <strong>ISM 서비스업 PMI 55.4</strong>(전월 54.1·예상 상회, 2월 이후 최고)로 경기 서프라이즈가 위험선호를 뒷받침했고, 10년물은 <span class="down">≈4.74%</span>로 소폭 하락했다.</div>
+    <div class="tldr-item">③ 그러나 반도체 안은 <strong>로직·메모리·장비로 방향이 갈렸고</strong>, 장 마감 후 <strong>브로드컴이 AI 매출 <span class="up">+221%</span> 폭증에도 기대치를 살짝 넘긴 데 그쳐 시간외에서 되밀렸다</strong> — 오늘 국내 반도체 심리의 최대 변수다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3-sentence abstract)</summary>
+    <div class="en-body">
+      U.S. equities rallied on Sept 3, 2026, with the S&amp;P 500 +1.06% (7,747.71), Nasdaq +1.40% (26,584.06) and the Dow +1.18% (53,686.11) — its best day in about a month — after Fed Governor Waller signaled he leans toward holding rates at the September FOMC, easing rate-hike fears; the 10-year yield eased to roughly 4.74%. A firm August ISM Services PMI of 55.4 (vs 54.1 prior, a six-month high) supported risk appetite, while Nvidia (+~1%) led on an AI acquisition. Beneath the index, semis diverged across logic, memory and equipment, and after the close Broadcom sank in extended trading despite AI revenue soaring 221% — a cautionary read-through for Korea's Samsung Electronics and SK Hynix into today's session, with the next catalyst the Aug CPI on Sept 11. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 월러 '동결' 시사 + 서비스업 서프라이즈</h2>
+  <p class="lead">상승의 방아쇠는 <strong>통화정책 안도</strong>였다. 최근 미 시장은 인하가 아니라 <strong>'인상이냐 동결이냐'</strong>를 저울질하던 국면인데, 월러 이사가 동결 쪽에 무게를 실으며 인상 확률이 낮아졌다. 여기에 8월 서비스업 지표가 호조를 보이며 '경기는 견조하되 물가는 식는' 골디락스 서사가 강화됐다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">9/3 종가·값</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,747.71</td><td class="num"><span class="up">+1.06%</span></td><td>+81.11p, 광범위 상승</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,584.06</td><td class="num"><span class="up">+1.40%</span></td><td>+366.23p, 빅테크 견인</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,686.11</td><td class="num"><span class="up">+1.18%</span></td><td>+624.16p, 약 한 달 만 최대폭</td></tr>
+      <tr><td>8월 ISM 서비스업 PMI</td><td class="num"><span class="up">55.4</span></td><td class="num">전월 54.1</td><td>예상 상회·2월 이후 최고, 26개월 연속 확장<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">ISM 8월 서비스업 PMI · ISM 보도자료 (2026-09-03)</span><span class="evd-sum">서비스업 PMI <strong>55.4%</strong>(7월 54.1 대비 +1.3%p), 26개월 연속 확장. 세부: 기업활동 <strong>61.7</strong>·공급자배송 51.3·재고 56.7. 블룸버그 컨센 상회.</span><a href="https://www.prnewswire.com/news-releases/services-pmi-at-55-4-august-2026-ism-services-pmi-report-302868046.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>주간 신규 실업수당 청구</td><td class="num">20.6만건</td><td class="num">예상 20.5만</td><td>계속수당 178만, 노동시장 완만한 냉각</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.74%</td><td class="num"><span class="down">약 −3bp</span></td><td>인상 우려 완화에 하락</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 방아쇠는 <strong>월러 이사의 발언</strong>이었다. 그는 "3개월 인플레이션이 2월 4.76%에서 꾸준히 내려왔다"며 <strong>디스인플레 진전</strong>을 언급하고, 특별한 서프라이즈가 없다면 <strong>9월 16일 FOMC에서 동결에 기울겠다</strong>고 밝혔다. 이 발언으로 9월 <strong>인상</strong> 확률이 시장 반영 기준 약 63%에서 50% 안팎으로 낮아졌고, 금리 부담이 줄며 밸류에이션에 민감한 성장주가 앞장섰다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">Waller 금리 동결 시사 · CNBC (2026-09-03)</span><span class="evd-sum">연준 <strong>월러 이사</strong>, 향후 인플레 지표에 서프라이즈가 없다면 <strong>9월 회의에서 동결에 기울겠다</strong>고 발언. 단 "물가가 뜨겁게 나오면 인상도 고려". 8월 CPI(9/11 발표)가 분수령. 시장은 인상 우려 완화로 해석해 상승.</span><a href="https://www.cnbc.com/2026/09/03/fed-governor-waller-indicates-he-will-support-holding-rates-steady-at-september-meeting.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>결이 다른 점.</strong> 지금 연준의 논쟁은 '인하 폭'이 아니라 <strong>'인상 대 동결'</strong>이라는 점을 유념해야 한다. 월러도 "물가가 뜨겁게 나오면 인상을 고려하겠다"고 단서를 달았다 — 즉 이번 상승은 <strong>완화 기대가 아니라 '최악(추가 인상)을 피했다'는 안도 랠리</strong>다. 다음 분수령은 <strong>9월 11일 8월 CPI</strong>이며, 여기서 물가가 재점화되면 안도는 빠르게 되돌려질 수 있다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>지수 이면의 균열 — 반도체 로직·메모리·장비 다이버전스</h2>
+  <p class="lead">이날의 진짜 이야기는 지수 상단이 아니라 반도체 <strong>내부</strong>에 있었다. AI 로직은 M&amp;A 재료로 강세, 커스텀 ASIC(브로드컴)은 <strong>사상 최고 실적에도 시간외 급락</strong>, 메모리·장비는 매체별로 방향이 엇갈렸다. "반도체=한 덩어리"가 아니라 하위 섹터가 갈라지는 국면이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분</th><th>종목 (간밤 미국)</th><th class="num">방향</th><th>국내 read-through</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI 로직/GPU</strong></td><td>엔비디아 (NVDA)</td><td class="num"><span class="up">약 +1%</span></td><td>AI 스타트업 인수(허깅페이스, 약 130억달러 보도) 재료 — AI 투자 사이클 지속 신호<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">간밤 특징주 · Yahoo Finance 마감 (2026-09-03)</span><span class="evd-sum">엔비디아 <strong>약 +1%</strong>, 허깅페이스 인수(약 130억달러) 보도가 재료. 테슬라 +7%·비트코인 +5.26%·금 +2.40% 등 위험선호 자산 동반 강세. 개별 등락은 마감 보도 기준.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-3-dow-sp-500-nasdaq-futures-081525933.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>커스텀 ASIC</strong></td><td>브로드컴 (AVGO)</td><td class="num"><span class="down">시간외 ↓</span></td><td>Q3 AI 반도체 매출 <span class="up">+221%</span>·Q4 가이던스 상향에도 <strong>기대치를 소폭 웃돈 데 그쳐 시간외 되밀림</strong> — HBM·ASIC 밸류체인 심리에 경계 신호<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">Broadcom Q3 FY26 실적 · Yahoo Finance / Fool (2026-09-03)</span><span class="evd-sum">브로드컴 Q3 매출 <strong>296억달러</strong>(+86% YoY)·조정 EPS 3.32달러, AI 반도체 매출 <strong>+221% → 167억달러</strong>. Q4 AI 매출 217억달러(+236%) 가이드. 그러나 컨센을 매출 0.5%·EPS 2.5%만 상회해 <strong>시간외 하락</strong> — 눈높이가 이미 높았다.</span><a href="https://finance.yahoo.com/markets/stocks/articles/broadcom-q3-beats-street-only-155716232.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>메모리 (DRAM/HBM)</strong></td><td>마이크론 (MU)</td><td class="num">확인불가</td><td>"9월 최대 AI 수혜주" 서사는 부각됐으나, 매체별 등락 방향이 <strong>엇갈려 수치는 표기하지 않음</strong> — 삼성·하이닉스 직접 read-through는 유보<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">데이터 정직성 메모 (2026-09-03)</span><span class="evd-sum">마이크론은 9/3 <strong>매체별 등락 방향 보도가 엇갈려</strong> 개별 수치를 지어내지 않고 제외한다. "메모리가 9월 AI 최대 수혜주가 될 수 있다"는 논평 서사만 정성적으로 반영. 확정 수치는 토스 실시간 시세로 교차확인 권장.</span><span class="evd-nolink">방향 상충 — 단일 원문 링크 생략(데이터 정직성)</span></span></span></td></tr>
+      <tr><td><strong>장비</strong></td><td>—</td><td class="num">중립</td><td>9/3 세션엔 장비주 단일 방향의 뚜렷한 시그널 없음 — 브로드컴發 ASIC 투자 톤이 다음 관전 포인트</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 엔비디아·브로드컴 방향은 다수 매체가 일치했다. <strong>마이크론 등 메모리는 매체별 방향 보도가 엇갈려 수치를 표기하지 않았다</strong> — 불명확한 값은 지어내지 않는다. 브로드컴은 정규장 마감 <strong>후</strong> 실적을 냈으므로 되밀림은 <strong>시간외(연장) 거래</strong> 기준이며, 오늘 정규장 반영 여부는 별개다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 한국 증시의 최대 동력이 바로 <strong>HBM·AI 반도체</strong>다. 간밤의 핵심 메시지는 "AI 실적이 좋아도 주가는 안 오를 수 있다"는 <strong>눈높이 피로</strong>다 — 브로드컴은 AI 매출이 3배 넘게 뛰었는데도 컨센을 살짝 웃돈 데 그쳐 시간외에서 밀렸다. 이는 오늘 <strong>삼성전자·SK하이닉스</strong>에 "실적 서프라이즈의 기준선이 높아졌다"는 심리적 read-through가 된다. 반대로 엔비디아發 AI 투자 사이클 지속 신호는 우호적이어서, "반도체를 한 덩어리로 보지 말라"는 결론이 다시 확인된다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·지수 프록시</h2>
+  <p class="lead">build_briefing 매크로 스냅샷(미 FRED·한국은행 ECOS·토스 미 ETF) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정치 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,369.40원</td><td class="num">1,370.30원</td><td>9/4 오전 · ECOS <span class="down">(원화 소폭 강세)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 10년물 (9/3 마감 보도)</strong></td><td class="num">≈4.74%</td><td class="num"><span class="down">약 −3bp</span></td><td>9/3 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td>미 10년물 (스냅샷)</td><td class="num">4.79%</td><td class="num">—</td><td>build_briefing 스냅샷치</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">118.75</td><td class="num">—</td><td>build_briefing 스냅샷</td></tr>
+      <tr><td>SPY (미 대형주 ETF, 토스)</td><td class="num">773.17$</td><td class="num"><span class="up">+1.05%</span></td><td>지수 프록시 — 현물 지수와 세션 타이밍 차 있음</td></tr>
+      <tr><td>KOSPI (직전 국내 마감)</td><td class="num">6,562.72</td><td class="num"><span class="down">−3.99%</span></td><td>09-02 확정치 · build_briefing<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 지수 · 뉴스 아카이브 (2026-09-03)</span><span class="evd-sum">직전 국내장(9/3)은 장중 코스피 6,500선을 깨고 <strong>V자 반등</strong>하는 극단적 변동성 후 강보합권 마감, 코스닥은 하락. 중동(이란·미국) 긴장·기관 물량이 변수로 거론. 스냅샷 확정치는 09-02 기준이라 표에 그대로 두고 9/3 흐름은 정성 기술.</span><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5NZ1VXOFp1aVZHVHgtMjlrbEZhMm9BUGs3b1RlSTdzZWlVdlNtZUpCTHRfMl9Hdk4wYTlQbkwwNVhDLWZYaE9FYXFOT1hFRmc?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>KOSDAQ (직전 국내 마감)</td><td class="num">803.98</td><td class="num"><span class="down">−2.10%</span></td><td>09-02 확정치 · build_briefing</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 두 값</strong>으로 보인다 — 9/3 마감 보도치(≈4.74%)와 스냅샷치(4.79%). 시황 해석엔 간밤 보도치를, 매크로 추세엔 스냅샷/FRED 확정치를 쓴다. 국내 지수는 스냅샷 확정치가 <strong>09-02 기준</strong>이라, 9/3의 장중 급락·V자 반등은 본문에 정성적으로만 반영했다(수치 재계산 금지). 환율은 원화가 소폭 강세로 외국인 수급에 우호적 방향이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(9/4) 국내 장 시사점 <span class="chip h2-chip">안도 랠리 + 반도체 눈높이 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>월러 '동결' 시사</strong>로 금리 부담이 줄며 3대 지수가 반등했지만, 마감 후 <strong>브로드컴이 AI 매출 폭증에도 되밀린</strong> 탓에, 오늘 국내 장은 <strong>위험선호 회복(우호)과 반도체 눈높이 피로(부담)</strong> 사이에서 삼성전자·SK하이닉스가 어느 쪽을 따르느냐가 핵심이다.</p>
+      <p><strong>맥락.</strong> 직전 국내장(9/3)은 장중 코스피가 <strong>6,500선을 깼다 V자 반등</strong>하는 극단적 변동성을 보였고, 중동(이란·미국) 긴장과 기관 물량이 변수로 거론됐다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 변동성 장세 · 뉴스 아카이브 (2026-09-03)</span><span class="evd-sum">9/3 코스피는 장중 6,500선 붕괴 후 <strong>V자 반등</strong>해 강보합 마감, 코스닥은 하락. 오후 급락엔 중동 지정학·기관 매물이 지목. 한·중·일 동반 변동성 장세.</span><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5NZ1VXOFp1aVZHVHgtMjlrbEZhMm9BUGs3b1RlSTdzZWlVdlNtZUpCTHRfMl9Hdk4wYTlQbkwwNVhDLWZYaE9FYXFOT1hFRmc?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 여기에 간밤 미 위험선호 회복이 겹치면 개장 초 반등 시도가 나올 수 있으나, 브로드컴發 반도체 눈높이 피로가 상단을 누를 수 있다. <strong>변동성이 큰 국면</strong>임을 전제로 접근한다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 <strong>엔비디아發 AI 사이클 지속(우호)</strong>과 <strong>브로드컴 시간외 되밀림(부담)</strong> 중 어느 신호를 반영하는지(개장 갭·초반 거래대금), ② 10년물 하락·달러 약세가 국내 <strong>외국인 순매수</strong>로 실제 연결되는지, ③ 원/달러 원화 강세 흐름의 지속 여부, ④ <strong>9월 11일 미 8월 CPI</strong>를 앞두고 '인상 대 동결' 저울질 속 위험선호가 유지되는지, ⑤ 중동 지정학 리스크의 재부각 여부.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 종목 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 월러 이사 9월 FOMC '동결' 시사(디스인플레 진전·인상 확률 63%→50%) — <a href="https://www.cnbc.com/2026/09/03/fed-governor-waller-indicates-he-will-support-holding-rates-steady-at-september-meeting.html">CNBC</a></span>
+  <span>근거2 8월 ISM 서비스업 PMI 55.4(전월 54.1·2월 이후 최고) — <a href="https://www.prnewswire.com/news-releases/services-pmi-at-55-4-august-2026-ism-services-pmi-report-302868046.html">ISM/PR Newswire</a></span>
+  <span>근거3 9/3 마감 지수·특징주(S&amp;P +1.06%·나스닥 +1.40%·다우 +1.18%·엔비디아 약 +1%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-september-3-dow-sp-500-nasdaq-futures-081525933.html">Yahoo Finance</a></span>
+  <span>근거4 브로드컴 Q3 AI 매출 +221% → 167억달러, 컨센 소폭 상회에 시간외 하락 — <a href="https://finance.yahoo.com/markets/stocks/articles/broadcom-q3-beats-street-only-155716232.html">Yahoo Finance</a>, <a href="https://www.fool.com/investing/2026/09/03/broadcom-ai-revenue-soared-221-profits-tripled-why-is-the-stock-flat/">The Motley Fool</a></span>
+  <span>근거5 마이크론 등 메모리 방향 상충 — 데이터 정직성 원칙에 따라 수치 제외(단일 원문 링크 생략)</span>
+  <span>근거6 9/3 국내장 변동성(코스피 6,500선 붕괴 후 V자 반등·중동 긴장) — <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5NZ1VXOFp1aVZHVHgtMjlrbEZhMm9BUGs3b1RlSTdzZWlVdlNtZUpCTHRfMl9Hdk4wYTlQbkwwNVhDLWZYaE9FYXFOT1hFRmc?oc=5">뉴스 아카이브(Daum/시황종합)</a></span>
+  </div>
+  데이터 출처: build_briefing 매크로 스냅샷(미 FRED·한국은행 ECOS·토스 미 ETF), 미 마감 공개 보도(Yahoo Finance·CNBC), ISM 보도자료, 뉴스 아카이브(stock_news). 2026-09-04 오전 조회 기준(전일 9/3 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-09-04 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다. <strong>정보용이며 투자 권유가 아님.</strong>
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
