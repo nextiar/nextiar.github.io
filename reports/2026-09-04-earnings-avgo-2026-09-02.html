@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="AVGO">
+<title>브로드컴(AVGO) 2026 3분기 실적 리뷰 — AI 반도체 3배 성장했는데 주가는 왜 빠졌나</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+/* 영문 요약 드롭다운 (.en-abstract) — 기본 접힘 */
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none;
+  display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-04-earnings-avgo-2026-09-02.html">
+<meta property="og:title" content="브로드컴(AVGO) 2026 3분기 실적 리뷰 — AI 반도체 3배 성장했는데 주가는 왜 빠졌나">
+<meta property="og:description" content="AI 반도체 매출이 전년비 +221% 폭증했으나 4분기 가이던스($34.8B)가 눈높이를 밑돌아 시간외 −6.5% — 실적은 견조, 문제는 기대치.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-04-earnings-avgo-2026-09-02.html">
+<meta name="description" content="AI 반도체 매출이 전년비 +221% 폭증했으나 4분기 가이던스($34.8B)가 눈높이를 밑돌아 시간외 −6.5% — 실적은 견조, 문제는 기대치.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-04-earnings-avgo-2026-09-02.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 실적 리뷰 (Earnings Review) · 경량</div>
+  <h1>브로드컴(AVGO) 2026 3분기 실적 리뷰 — AI 반도체 <span class="up">3배</span> 성장했는데 주가는 왜 빠졌나</h1>
+  <p class="sub">2026년 9월 2일(장 마감 후) 발표 · FY2026 3분기(5~7월). EPS는 컨센을 <strong>소폭 상회</strong>했으나 매출은 <strong>소폭 하회</strong>했고, AI 반도체 매출이 전년비 <span class="up">+221%</span> 폭증했음에도 주가는 <strong>시간외 약 <span class="down">−6.5%</span></strong> 하락했다. 핵심은 "결과가 나빠서"가 아니라 <strong>4분기 가이던스($34.8B)가 시장의 높아진 기대에 못 미쳤기</strong> 때문이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 작성 2026-09-04 KST · 발표 2026-09-02(AMC)</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>한눈에.</strong> EPS $3.32(컨센 대비 <span class="up">+0.6%</span>) · 매출 $295.9억(컨센 대비 <span class="down">−1.2%</span>, 전년비 <span class="up">+86%</span>) · AI 반도체 $167억(<span class="up">+221% YoY</span>). 4분기 가이던스 총매출 $348억·AI $217억 제시. 실적은 견조했으나 <strong>가이던스가 상향된 눈높이를 채우지 못해</strong> 시간외 급락. 애널리스트 컨센(매수 우위)은 발표 후에도 방향 유지.
+</div>
+
+<section>
+  <h2><span class="idx">1</span>결과 vs 컨센 <span class="chip cool h2-chip">EPS 상회 · 매출 하회</span></h2>
+  <p class="lead">아래 실제/컨센/서프라이즈는 발표 집계값(단일 소스)이다. 컨센서스 매출 기준은 집계처마다 달라(일부 매체는 $293.6억을 컨센으로 제시해 "매출 상회"로 보도) 서프라이즈 부호가 엇갈릴 수 있다 — 본 리뷰는 아래 표의 컨센 기준을 일관되게 적용한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">실제</th><th class="num">컨센서스</th><th class="num">서프라이즈</th></tr></thead>
+    <tbody>
+      <tr><td><strong>조정 EPS</strong></td><td class="num"><strong>$3.32</strong></td><td class="num">$3.3013</td><td class="num"><span class="up">+0.6%</span></td></tr>
+      <tr><td><strong>매출</strong></td><td class="num"><strong>$295.9억</strong><br><small>($29,591M)</small></td><td class="num">$299.5억<br><small>($29,949M)</small></td><td class="num"><span class="down">−1.2%</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:12px">
+    <strong>읽는 법.</strong> EPS는 컨센을 <span class="up">+0.6%</span> 근소 상회했고, 매출은 <span class="down">−1.2%</span>로 위 컨센 기준선에는 소폭 못 미쳤다. 다만 매출은 <strong>전년 동기 대비 +86%</strong>(전년 $159.5억 → $295.9억) 성장한 기록적 분기다. "미스"는 절대 규모의 문제가 아니라 <strong>시장 기대치가 그만큼 높았다</strong>는 뜻에 가깝다.
+  </div>
+
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>Broadcom (AVGO) — FY2026 Q3.</strong> Adjusted EPS came in at $3.32, about 0.6% above consensus, while revenue of $29.59bn was roughly 1.2% below the consensus line used here — yet still up 86% year over year, a record quarter.</p>
+      <p>AI semiconductor revenue surged to $16.7bn, up 221% year over year and 54% sequentially, and infrastructure software added $8.8bn (+29%). Despite the beat on earnings, shares fell about 6.5% after hours because Q4 total-revenue guidance of $34.8bn fell short of elevated expectations.</p>
+      <p>Management guided Q4 AI semiconductor revenue to $21.7bn and raised full-year FY2026 AI revenue to $58bn, while flagging secured supply for roughly $115bn of AI revenue in FY2027. The sell-side consensus stayed net-bullish after the print.</p>
+      <p>Next checkpoints: the Q4 report (est. 2026-12-09), whether AI momentum sustains against the very high bar, and infrastructure-software stability around $8.7bn.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>가이던스·세그먼트 핵심 <span class="chip h2-chip">AI가 전부</span></h2>
+  <p class="lead">발표 자료·컨퍼런스콜 기준. 세그먼트는 <strong>반도체 솔루션</strong>과 <strong>인프라 소프트웨어(VMware 포함)</strong> 두 축이며, 이번 분기의 서사는 사실상 AI 반도체 하나로 요약된다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">AI 반도체 매출</div><div class="val up">$167억</div><div class="delta up">▲ +221% YoY · +54% QoQ</div></div>
+    <div class="tile"><div class="lbl">반도체 솔루션</div><div class="val">$208억</div><div class="delta up">▲ +127% YoY</div></div>
+    <div class="tile"><div class="lbl">인프라 SW(VMware)</div><div class="val">$88억</div><div class="delta up">▲ +29% YoY · 매출의 약 30%</div></div>
+    <div class="tile"><div class="lbl">4Q 총매출 가이던스</div><div class="val down">$348억</div><div class="delta">AI $217억(+236% YoY) 포함 · 눈높이 하회</div></div>
+  </div>
+  <div class="tbl-scroll" style="margin-top:16px">
+  <table>
+    <thead><tr><th>항목</th><th class="num">수치</th><th>메모 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI 반도체 매출(3Q)</strong></td><td class="num">$167억</td><td>+221% YoY, +54% QoQ · XPU 6개 고객(구글·앤스로픽·오픈AI 등)<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">Broadcom FY26 3Q 실적 · The Motley Fool (2026-09-02)</span><span class="evd-sum">AI 반도체 매출 <strong>$167억</strong>(YoY +221%, QoQ +54%). XPU 고객 6곳(구글·앤스로픽·오픈AI 포함)의 수요. 전체 매출 $295.9억, 조정 EPS $3.32.</span><a href="https://www.fool.com/investing/2026/09/02/broadcom-earnings-ai-chip-sales-tripled-here-s-the-usd34-8-billion-number-investors-need-to-watch/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>반도체 솔루션(3Q)</td><td class="num">$208억</td><td>+127% YoY · AI 가속기·네트워킹 주도</td></tr>
+      <tr><td>인프라 소프트웨어(3Q)</td><td class="num">$88억</td><td>+29% YoY · 총매출의 약 30% · ARR +15%<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">Broadcom 3Q 세그먼트 · Quartr/투자보도 (2026-09-02)</span><span class="evd-sum">인프라 소프트웨어 매출 <strong>$88억</strong>(YoY +29%), 총매출의 약 30%, 매출총이익률 94%, ARR +15%. 4분기엔 약 $87억으로 안정 가이던스.</span><a href="https://quartr.com/events/broadcom-inc-avgo-q3-2026_3gmytThR" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>4Q 총매출 가이던스</strong></td><td class="num">$348억</td><td>시장 눈높이 대비 하회 → 시간외 약세 촉발</td></tr>
+      <tr><td>4Q AI 반도체 가이던스</td><td class="num">$217억</td><td>+236% YoY</td></tr>
+      <tr><td>FY26 AI 매출(상향)</td><td class="num">$580억</td><td>+186% YoY로 연간 가이던스 상향<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">Broadcom 가이던스 · 실적 보도 (2026-09-02)</span><span class="evd-sum">4분기 총매출 <strong>$348억</strong>, AI 반도체 <strong>$217억</strong>(+236% YoY) 가이던스. FY26 AI 매출 가이던스를 <strong>$580억</strong>(+186% YoY)으로 상향. 경영진은 FY27 약 $1,150억·FY28 약 $2,300억 AI 매출을 뒷받침할 공급을 확보했다고 언급.</span><a href="https://www.fool.com/investing/2026/09/02/broadcom-earnings-ai-chip-sales-tripled-here-s-the-usd34-8-billion-number-investors-need-to-watch/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>FY27/FY28 AI 공급 언급</td><td class="num">$1,150억<br>/ $2,300억</td><td>경영진, 해당 규모 AI 매출 뒷받침 공급 확보 발언(가이던스 아님)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이번 분기 매출의 약 <strong>56%</strong>(=167/296)가 AI 반도체에서 나왔다. AI 반도체는 QoQ로도 <span class="up">+54%</span> 뛰며 가속이 이어졌고, 인프라 소프트웨어는 매출총이익률 94%의 안정적 현금창출원(약 30% 비중)으로 뒤를 받쳤다. 문제는 <strong>기대치</strong>였다. 6개 대형 고객·FY27~28 공급 언급 등 <strong>중장기 서사는 오히려 강해졌지만</strong>, 시장이 단기 4분기 매출에 걸어둔 눈높이가 $348억보다 높았던 탓에 "좋은 실적, 아쉬운 가이드"라는 전형적 조합이 나왔다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>시장 반응 <span class="chip under h2-chip">시간외 −6.5%</span></h2>
+  <p class="lead">발표 시점(9/2 장 마감 후)과 작성 시점(9/4)의 주가를 함께 본다. 발표 직후 시간외에서 낙폭이 컸다.</p>
+  <div class="grid tiles">
+    <div class="tile"><div class="lbl">발표 전 종가 (9/2 정규장)</div><div class="val">$367.24</div><div class="delta">실적 발표는 이 종가 직후(AMC)</div></div>
+    <div class="tile"><div class="lbl">발표 직후 시간외</div><div class="val down">약 −6.5%</div><div class="delta down">▼ 4Q 가이던스 실망 반영</div></div>
+    <div class="tile"><div class="lbl">현재가 (9/4, 토스 조회)</div><div class="val">$356.68</div><div class="delta down">▼ 발표 전 종가 대비 −2.9%</div></div>
+    <div class="tile"><div class="lbl">방향</div><div class="val down">차익 실현</div><div class="delta">호실적에도 눈높이 미달 → 되돌림</div></div>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>정직 표기.</strong> 발표 전 종가($367.24)와 시간외 −6.5%는 공개 마감 보도 기준<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">AVGO 실적 후 주가 · Yahoo Finance (2026-09-02)</span><span class="evd-sum">브로드컴이 3분기 실적 발표 후 시간외에서 <strong>약 6.5%</strong> 하락. 9/2 정규장 종가는 <strong>$367.24</strong>(−0.66%). 4분기 가이던스 $348억이 기대에 못 미친 점이 주된 하락 요인으로 지목됨.</span><a href="https://finance.yahoo.com/video/broadcoms-price-sinks-over-6-after-releasing-q3-earnings-204118312.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>이며, 현재가 <strong>$356.68</strong>은 2026-09-04 토스증권 Open API 조회값이다. 발표 전 종가 대비 <span class="down">약 −2.9%</span>로, 시간외 낙폭의 일부는 이후 만회됐다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>컨센서스 방향 <span class="chip cool h2-chip">매수 우위 유지</span></h2>
+  <p class="lead">발표 후 애널리스트 방향을 관찰한다. 데이터 기준일을 함께 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>항목</th><th class="num">값</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>추천 분포</strong></td><td class="num">적극매수 17 · 매수 35<br>홀드 5 · 매도 0</td><td>2026-09-01 · Finnhub (방향 <strong>유지</strong>)</td></tr>
+      <tr><td>다음 실적(추정)</td><td class="num">EPS $3.95<br>매출 $357억</td><td>예정 2026-12-09 · Finnhub 추정</td></tr>
+      <tr><td>셀사이드 톤(발표 후)</td><td class="num"><span class="up">긍정</span></td><td>2026-09-03 · UBS "FY27·28 AI 전망 강세·수요 가시성"<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">UBS 코멘트 · Yahoo/Finnhub (2026-09-03)</span><span class="evd-sum">UBS는 브로드컴이 FY27·FY28 매출 전망과 수요 가시성에 대해 <strong>강세(bullish) 코멘트</strong>를 냈다고 전함. 발표 후에도 셀사이드 톤은 긍정적으로 유지.</span><a href="https://finnhub.io/api/news?id=1929c83f981822090b16b53afee4c9c2572fd3eead74ff90e857092239edb7eb" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>정리.</strong> 발표 직후 주가는 빠졌지만 셀사이드 컨센 분포(매수 우위)와 톤은 <strong>발표 전과 방향이 같다</strong>. 단기 가이던스 실망과 중장기 AI 서사 강화가 공존하는 국면 — 컨센의 무게중심은 여전히 후자에 실려 있다. 다음 확인 이벤트는 <strong>4분기 실적(예정 2026-12-09)</strong>이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>커버리지 연결 <span class="chip cool h2-chip">기존 심층: 중립</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p>이 종목은 <a href="/reports/2026-07-19-broadcom-avgo-deep.html" style="color:var(--accent);text-decoration:none;font-weight:650;">2026-07-19 심층 리포트 ↗</a>에서 <strong>선행 P/E 24배로 내려온 커스텀 실리콘 챔피언</strong>으로 다루며 <strong>중립</strong> 콜을 냈다. 이번 실적은 그 판단의 두 축을 각각 건드린다 — <strong>펀더멘털(AI 반도체 폭증·FY27~28 공급 확보)은 강화 방향</strong>, <strong>단기 밸류에이션 부담(높아진 눈높이가 소폭의 가이던스 미달에도 −6.5% 반응)은 중립 콜의 경계 논리와 정합</strong>이다.</p>
+      <p><strong>판정 영향(경량 리뷰 한도).</strong> 이번 리뷰는 사실 정리·1차 해석에 한정하며 심층 콜을 변경하지 않는다. 실적 자체는 심층의 "질 좋은 성장" 논지를 지지하는 쪽이나, 밸류에이션 재판정은 컨센 개정이 진행된 뒤 별도 심층에서 다룬다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>참고.</strong> 실적 직후는 컨센서스 개정이 진행 중이라 밸류에이션(PQC·P/E 밴드)의 신뢰도가 낮다. 심층 밸류에이션 업데이트는 <strong>컨센 개정 후 별도 리포트</strong>로 다룬다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 AI 반도체 $167억(+221% YoY, +54% QoQ)·XPU 6고객 — <a href="https://www.fool.com/investing/2026/09/02/broadcom-earnings-ai-chip-sales-tripled-here-s-the-usd34-8-billion-number-investors-need-to-watch/">The Motley Fool</a></span>
+  <span>근거2 인프라 SW $88억(+29%)·ARR +15%·GM 94% — <a href="https://quartr.com/events/broadcom-inc-avgo-q3-2026_3gmytThR">Quartr</a></span>
+  <span>근거3 4Q 가이던스 $348억·AI $217억·FY26 AI $580억 상향 — <a href="https://www.fool.com/investing/2026/09/02/broadcom-earnings-ai-chip-sales-tripled-here-s-the-usd34-8-billion-number-investors-need-to-watch/">The Motley Fool</a></span>
+  <span>근거4 발표 전 종가 $367.24·시간외 약 −6.5% — <a href="https://finance.yahoo.com/video/broadcoms-price-sinks-over-6-after-releasing-q3-earnings-204118312.html">Yahoo Finance</a></span>
+  <span>근거5 UBS "FY27·28 AI 전망 강세" 발표 후 톤 — <a href="https://finnhub.io/api/news?id=1929c83f981822090b16b53afee4c9c2572fd3eead74ff90e857092239edb7eb">Yahoo/Finnhub</a></span>
+  </div>
+  데이터 출처: 실적 발표 집계값(EPS·매출 실제/컨센/서프라이즈), 토스증권 Open API(현재가 $356.68 · 2026-09-04 조회), 공개 실적 보도(The Motley Fool·Yahoo Finance·Quartr·CNBC), Finnhub(추천 분포·다음 실적 추정·발표 후 톤). 서프라이즈는 표의 컨센 기준으로 산출했으며, 집계처에 따라 부호가 달라질 수 있음을 본문에 명시했다. <strong>작성: 2026-09-04 KST · 발표: 2026-09-02(AMC)</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-09-04 06:19 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
