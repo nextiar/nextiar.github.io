@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — '너무 좋은 8월 고용'에 매파 우려, 3대 지수 동반 하락</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 14px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card);
+  padding: 4px 16px; font-size: 13px; }
+.en-abstract summary { cursor: pointer; font-size: 12px; font-weight: 650; color: var(--accent); padding: 8px 0; }
+.en-abstract p { color: var(--ink-2); font-size: 13px; margin: 6px 0 12px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-05-us-close-morning-2026-09-05.html">
+<meta property="og:title" content="US 마감 시황 — &#x27;너무 좋은 8월 고용&#x27;에 매파 우려, 3대 지수 동반 하락">
+<meta property="og:description" content="8월 비농업 고용이 컨센을 크게 웃돌자 연준 인상 경계로 3대 지수가 동반 하락했고, 매파 재료는 월요일 국내 장이 새로 소화할 몫으로 남았다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-05-us-close-morning-2026-09-05.html">
+<meta name="description" content="8월 비농업 고용이 컨센을 크게 웃돌자 연준 인상 경계로 3대 지수가 동반 하락했고, 매파 재료는 월요일 국내 장이 새로 소화할 몫으로 남았다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-05-us-close-morning-2026-09-05.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — '너무 좋은 8월 고용'에 매파 우려, <span class="down">3대 지수 동반 하락</span></h1>
+  <p class="sub">2026년 9월 5일(토) 오전 기준 · 전일 미 증시(9/4 금 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 하락</strong>했다 — 8월 비농업 고용이 <strong>+16.2만 명</strong>으로 컨센서스(약 5만 명)를 크게 웃돌자, 호재가 아니라 <strong>연준 긴축(금리 인상) 경계</strong>로 읽히며 국채금리가 뛰고 위험자산이 눌렸다. '너무 좋아서 실망스러운 고용'이라는 역설적 하루였다. 이날 미 증시 마감은 <strong>9/4 국내 장 마감 이후</strong>에 나왔으므로, 강세로 끝난 코스피가 아직 소화하지 못한 재료다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-09-05 오전 KST · 화~토 US마감 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-09-05 오전 · build_briefing).</strong> 원/달러 <strong>1,359.50원</strong>(전일 1,369.40 → 원화 강세, 외국인 수급 우호) · 미 국채 10년물 <strong>4.77%</strong>(FRED 스냅샷, 고용 서프라이즈로 상승 압력) · 한국 기준금리 3.00% · 달러지수 118.75 · SPY 770.19$ (<span class="down">−0.39%</span>). 간밤 미 위험선호는 '강한 고용 → 매파' 논리로 후퇴했다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · 매파 고용</span></h2>
+  <p class="lead">미 지수·개별종목은 공개 마감 보도(연합인포맥스·뉴스핌·Yahoo Finance·TheStreet), 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (9/4 마감)</div><div class="val down">리스크 오프</div><div class="delta">3대 지수 동반 하락 · 매파 고용이 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,718.60</div><div class="delta down">▼ −0.38%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">26,506.99</div><div class="delta down">▼ −0.29%</div></div>
+    <div class="tile"><div class="lbl">8월 비농업 고용</div><div class="val up">+16.2만</div><div class="delta">컨센 ≈5만 크게 상회 · 실업률 4.1% 유지</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 하락</strong> — 8월 비농업 고용이 <span class="up">+16.2만 명</span>(컨센 약 5만)으로 대폭 상회하고 실업률은 4.1%로 유지되자, 강한 고용이 <strong>연준 금리 인상 경계</strong>로 해석되며 국채금리가 뛰고 주식이 눌렸다.</div>
+    <div class="tldr-item">② 채권시장이 즉각 반응해 <strong>2년물 금리가 4.37%로 상승(2025년 1월 이후 최고)</strong>, 연방기금선물의 인상 베팅이 강해졌다. '고용 호조 = 위험자산 악재'라는 역설이 하루를 지배했다.</div>
+    <div class="tldr-item">③ 이 마감은 <strong>9/4 국내 장 종료 뒤</strong>에 나왔다 — 코스피는 이날 반도체 강세로 <span class="up">+1%대(6,687.21)</span> 반등했지만, 간밤 매파 쇼크는 <strong>월요일(9/7) 국내 장이 새로 소화</strong>할 재료다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3–5 sentences)</summary>
+    <p>Wall Street's three major indices all fell on Friday, Sept 4, 2026: the S&amp;P 500 −0.38% to 7,718.60, the Nasdaq −0.29% to 26,506.99, and the Dow −0.51% (−271.86 pts) to 53,414.25. The trigger was a hawkish jobs surprise — August nonfarm payrolls rose +162k versus a ~53k consensus while unemployment held at 4.1% — which lifted rate-hike expectations rather than cheering growth. The 2-year Treasury yield rose about 4bp to 4.37%, its highest since January 2025, and fed funds futures leaned toward a possible hike. This close landed after Korea's Sept 4 session, where the KOSPI had already rallied about 1% to 6,687.21 on chip strength; the hawkish shock is therefore a fresh input for Monday's (Sept 7) Korean session. Figures follow the Korean original.</p>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 강한 고용이 밀어내린 광범위 하락</h2>
+  <p class="lead">8월 고용이 예상을 크게 웃돌며(임금·성장 견조) 오히려 <strong>연준 긴축 경계</strong>가 커졌다. 국채금리가 뛰자 밸류에이션에 민감한 성장주와 지수가 눌렸고, 개별 악재로 <strong>룰루레몬이 두 자릿수 급락</strong>했다. 지수 레벨에선 이견 없는 '리스크 오프' 하루.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">9/4 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,718.60</td><td class="num"><span class="down">−0.38%</span></td><td>금리 상승에 광범위 약세<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">미 9/4 마감 · Yahoo Finance / TheStreet (2026-09-04)</span><span class="evd-sum">S&amp;P 500 <strong>7,718.60(−0.38%)</strong>, 나스닥 <strong>26,506.99(−0.29%)</strong>, 다우 <strong>53,414.25(−271.86p, −0.51%)</strong>. 강한 8월 고용에 국채금리가 뛰며 3대 지수 동반 하락.</span><a href="https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-futures-climb-090500873.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,506.99</td><td class="num"><span class="down">−0.29%</span></td><td>성장주·대형 기술주 부담</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">53,414.25</td><td class="num"><span class="down">−0.51%</span></td><td>−271.86p</td></tr>
+      <tr><td>8월 비농업 고용</td><td class="num"><span class="up">+16.2만</span></td><td class="num">컨센 ≈5만</td><td>매파 서프라이즈<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 8월 고용보고서 · 마감 보도 (2026-09-04)</span><span class="evd-sum">8월 비농업 고용 <strong>+16.2만 명</strong>(다우존스 폴 컨센 약 5.3만 대폭 상회), 실업률 <strong>4.1%</strong> 유지(예상 부합). FRED 아카이브 PAYEMS 기준 전월대비 +162천, UNRATE 4.1%(기준일 2026-08, 월간).</span><a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 2년물</td><td class="num">≈4.37%</td><td class="num"><span class="up">+4bp</span></td><td>2025년 1월 이후 최고<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">국채금리·연준 기대 · TheStreet (2026-09-04)</span><span class="evd-sum">고용 발표 후 국채금리 상승 — <strong>2년물 +4bp 4.37%(2025년 1월 이후 최고)</strong>. 강한 고용에 <strong>연준 인상 확률이 상승</strong>(연방기금선물), 위험자산에 부담. 10년물도 상승.</span><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-04-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 하락의 방아쇠는 <strong>8월 고용보고서</strong>였다. 통상 강한 고용은 호재지만, 이번엔 <span class="up">+16.2만</span> vs 컨센 약 5만이라는 <strong>큰 상방 서프라이즈</strong>가 "연준이 곧 금리를 올릴 수 있다"는 매파 시나리오에 불을 붙였다. 채권이 먼저 움직여 <strong>2년물 4.37%</strong>로 뛰자, 금리 민감 자산이 눌렸다. 국내 매체들도 이를 <strong>'너무 좋아서 실망스러운 고용'</strong>으로 요약했다.</p>
+      <p><strong>개별 악재.</strong> 매크로와 별개로 <strong>룰루레몬이 약 <span class="down">−17%</span> 급락</strong>했다 — 실적 가이던스(매출·이익 전망) 하향이 원인으로, 나이키·언더아머·온러닝 등 스포츠·의류주 전반에 압력이 번졌다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">룰루레몬 급락 · 마켓 리캡 (2026-09-04)</span><span class="evd-sum">룰루레몬이 매출·이익 전망 하향에 <strong>약 −17%</strong> 급락, 스포츠·의류 섹터 심리에 부담. 매크로(고용)와 무관한 종목 고유 이슈.</span><a href="https://www.alainguillot.com/stock-market-recap-september-4-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 지수 하락은 매크로가, 일부 소비재 약세는 이 개별 재료가 겹쳤다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체·AI 다이버전스 — 메모리 · 로직 · 장비를 갈라 본다</h2>
+  <p class="lead">국내와 직결되는 반도체는 한 덩어리로 보면 오독한다. <strong>로직(커스텀 AI ASIC)·메모리(HBM/DRAM)·장비</strong>를 나눠 이번 주 흐름을 정리하되, <strong>개별 미 반도체주의 9/4 종가 등락은 매체별 방향이 엇갈려</strong> 수치를 확정하지 않고 제외한다(데이터 정직성).</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터</th><th>이번 주 확인된 사실</th><th>국내 직결 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>로직 · 커스텀 AI</strong></td><td>브로드컴(AVGO) FY26 3분기(8/2 종료) 매출 <span class="up">+86%</span>, <strong>AI 반도체 매출 $16.7B(+221% YoY, +54% QoQ)</strong>, 순이익 $13.09B·EPS $2.68. 다만 4분기 가이던스 <strong>≈$34.8B</strong>가 컨센($35.03B)을 밑돌아 주가 <span class="down">−5%</span>.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">Broadcom FY26 Q3 · IR/CNBC (2026-09-02~03)</span><span class="evd-sum">브로드컴 3분기 <strong>AI 반도체 매출 $16.7B(+221% YoY)</strong>, 전사 매출 +86%. 그러나 4분기 가이던스 <strong>≈$34.8B &lt; 컨센 $35.03B</strong>로 <strong>주가 −5%</strong>(9/3 반응). 경영진은 FY27 AI 매출 $115B 목표 언급. 커스텀 실리콘(구글·메타·OpenAI) 수요는 견조하나 가이던스 눈높이가 관건.</span><a href="https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>커스텀 ASIC 밸류체인(파운드리·후공정·기판) — '눈높이가 높아진 AI'의 경계 신호</td></tr>
+      <tr><td><strong>메모리 (HBM/DRAM)</strong></td><td>아시아 세션(9/4 낮)에서 <strong>日 닛케이 5거래일 만 상승 등 AI·반도체 반등</strong>. 다만 <strong>미국 개별 메모리주(마이크론 등) 9/4 종가 방향은 매체별 상충</strong> → 수치 확정 제외.</td><td>삼성전자·SK하이닉스 — 아시아 반등 심리 vs 간밤 매파 금리 상승이 상충하는 국면</td></tr>
+      <tr><td><strong>장비</strong></td><td>메모리 자본지출·투자 사이클에 민감. 이번 주 미 장비주 개별 등락은 확정 보도 부족으로 <span class="chip cool">확인불가</span> 처리.</td><td>국내 반도체 장비·부품주 — 로직 강세와 메모리 불확실성 사이에서 선별 필요</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 이날 <strong>개별 미 반도체주 종가 등락</strong>은 한 매체는 칩주 반등(엔비디아·마이크론·AMD 상승)으로, 다른 매체는 반도체가 지수를 눌렀다고 보도하는 등 <strong>방향이 엇갈렸다</strong> — 그래서 개별 종목 수치는 <strong>지어내지 않고 제외</strong>했다. 대신 <strong>날짜·수치가 명확한 브로드컴 실적</strong>(로직)과 <strong>아시아 반도체 반등</strong>(메모리 심리)만 확정 사실로 사용한다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 브로드컴은 실적 자체(AI 매출 +221%)는 압도적이었지만 <strong>가이던스가 시장 눈높이를 살짝 밑돌자 −5%</strong>였다 — "좋아도 기대보다 덜 좋으면 판다"는 AI 밸류에이션 피로의 전형이다. 이 논리는 <strong>HBM 밸류에이션 논쟁</strong>을 안고 있는 삼성전자·SK하이닉스에도 그대로 적용된다. 반면 <strong>로직·커스텀 AI 수요 자체는 견조</strong>하다는 점, 아시아 반도체가 9/4 낮 반등했다는 점은 하방을 받치는 요소다. 결론은 하나 — <strong>반도체를 한 덩어리로 보지 말고 메모리·로직·장비를 갈라서 보라</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·고용</h2>
+  <p class="lead">build_briefing 실측(미 FRED·한국은행 ECOS)과 FRED 경제지표 아카이브 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,359.50원</td><td class="num">1,369.40원</td><td>9/5 · ECOS <span class="up">(원화 강세 9.9원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">—</td><td>9/5 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 스냅샷)</strong></td><td class="num">4.77%</td><td class="num">—</td><td>9/5 오전 · FRED DGS10(고용 서프라이즈로 상승 압력)</td></tr>
+      <tr><td>미 2년물 (9/4 마감 보도)</td><td class="num">≈4.37%</td><td class="num"><span class="up">+4bp</span></td><td>9/4 · 마감 보도(2025-01 이후 최고)</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">118.75</td><td class="num">—</td><td>9/5 오전 · build_briefing</td></tr>
+      <tr><td>미 8월 비농업 고용 (FRED PAYEMS)</td><td class="num">159,075천</td><td class="num"><span class="up">+162천</span></td><td>기준일 2026-08 · 월간 · FRED</td></tr>
+      <tr><td>미 8월 실업률 (FRED UNRATE)</td><td class="num">4.1%</td><td class="num">4.1%</td><td>기준일 2026-08 · 월간 · FRED</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 이번 사이클의 핵심은 <strong>'강한 고용 = 매파'</strong> 프레임이다. 실업률이 4.1%로 낮게 유지되고 고용이 컨센을 크게 웃돌면서, 시장은 완화가 아니라 <strong>긴축 지속·인상 가능성</strong>에 무게를 실었다. 2년물이 2025년 1월 이후 최고로 뛴 것이 그 증거다. 다만 국내엔 <strong>원/달러 원화 강세</strong>가 외국인 수급에 우호적이라는 상쇄 요인이 있다. FRED 월간 고용지표는 <strong>기준일 2026-08</strong>로, 9/4 마감 보도치와 동일한 방향(+16.2만)이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>돌아오는 국내 장(월 9/7) 시사점 <span class="chip h2-chip">매파 재료 소화</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 코스피는 9/4에 이미 <strong>반도체 강세로 <span class="up">+1%대(6,687.21)</span></strong> 반등했지만, 그 뒤 나온 <strong>간밤 미 매파 고용·금리 상승</strong>은 아직 반영되지 않았다 — <strong>월요일(9/7) 국내 장이 이 온도 차를 어떻게 소화하느냐</strong>가 관건이다.</p>
+      <p><strong>맥락.</strong> 9/4 국내 증시는 <strong>미 금리 부담 완화 기대</strong> 속에 코스피가 <strong>반도체주 강세로 6,687.21(+1%대)</strong> 마감하고 코스닥은 5거래일 만에 반등했다. 삼성전자·SK하이닉스의 <strong>자사주 매입</strong>이 지수 방어판 역할을 했고, VKOSPI(변동성지수)는 40선 아래로 내려 심리가 다소 진정됐다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 9/4 마감 · 뉴스 아카이브(연합/더나은미래/비즈니스포스트)</span><span class="evd-sum">9/4 코스피 <strong>6,687.21(+1%대)</strong>, 코스닥 5거래일 만 반등. <strong>반도체주 강세</strong>·삼성전자·SK하이닉스 <strong>자사주 매입 방어</strong>, VKOSPI 40선 아래로 진정. 단, 이 마감은 미 고용 발표(한국시간 밤) 이전이라 매파 쇼크 미반영.</span><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFBxdktJTEJRdk9xblF3QjVwM1dmb3d1d1FaRXQtdEhjNVA2NHRfTVFjOU9NWnIxMTlkMGRoZFVic1ZFX25GbGUyQlRlYTRIeEpHcFE?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 그러나 이 마감은 <strong>미 고용 발표 이전</strong>이라, 간밤 매파 재료는 다음 개장에 새로 부딪힌다.</p>
+      <p><strong>체크포인트.</strong> ① 간밤 <strong>미 2년물 4.37% 상승·인상 경계</strong>가 외국인 수급과 성장주 멀티플에 주는 부담, ② 삼성전자·SK하이닉스가 <strong>브로드컴식 '좋아도 눈높이 미달이면 판다'</strong> 논리에 얼마나 노출되는지(HBM 밸류에이션), ③ 아시아 반도체 반등 심리가 <strong>매파 금리 상승</strong>을 이겨낼지, ④ <strong>원/달러 원화 강세</strong>에 외국인 순매수가 실제로 붙는지, ⑤ 룰루레몬발 소비주 약세가 국내 소비·의류주 심리로 번지는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 토요일 오전 조회 기준으로, 전일(9/4 금) 미 증시 마감·매크로 스냅샷을 정리한 것이다. 오늘·내일은 국내 증시 휴장이며, 다음 정규장은 <strong>월요일(9/7)</strong>이다. 개별 미 반도체주 9/4 종가 등락은 매체별 방향이 엇갈려 수치를 확정하지 않았다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 9/4 마감 S&amp;P 7,718.60(−0.38%)·나스닥 26,506.99(−0.29%)·다우 53,414.25(−0.51%) — <a href="https://finance.yahoo.com/markets/stocks/articles/nasdaq-p-500-futures-climb-090500873.html">Yahoo Finance</a>, <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-04-2026">TheStreet</a></span>
+  <span>근거2 8월 비농업 고용 +16.2만(컨센 ≈5만)·실업률 4.1% 유지 — <a href="https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-4-133716564.html">Yahoo Finance</a> · FRED PAYEMS/UNRATE(기준일 2026-08)</span>
+  <span>근거3 미 2년물 +4bp 4.37%(2025-01 이후 최고)·연준 인상 경계 — <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-sept-04-2026">TheStreet</a></span>
+  <span>근거4 룰루레몬 약 −17% 급락(가이던스 하향)·스포츠의류 압력 — <a href="https://www.alainguillot.com/stock-market-recap-september-4-2026/">Alain Guillot Recap</a></span>
+  <span>근거5 브로드컴 FY26 Q3 AI반도체 $16.7B(+221% YoY)·Q4 가이던스 $34.8B&lt;컨센 $35.03B로 −5% — <a href="https://www.cnbc.com/2026/09/02/broadcom-avgo-q3-earnings-report-2026.html">CNBC</a>, <a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial">Broadcom IR</a></span>
+  <span>근거6 KR 9/4 코스피 6,687.21(+1%대)·코스닥 5거래일만 반등·삼성/SK 자사주 방어·VKOSPI 40 아래 — 뉴스 아카이브(연합뉴스TV·<a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFBxdktJTEJRdk9xblF3QjVwM1dmb3d1d1FaRXQtdEhjNVA2NHRfTVFjOU9NWnIxMTlkMGRoZFVic1ZFX25GbGUyQlRlYTRIeEpHcFE?oc=5">더나은미래</a>·비즈니스포스트)</span>
+  </div>
+  데이터 출처: build_briefing(미 ETF·금리·환율 스냅샷), 미 마감 공개 보도(Yahoo Finance·TheStreet·연합인포맥스·뉴스핌), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 금리·비농업 고용·실업률), Broadcom IR·CNBC. 2026-09-05 오전 조회 기준(전일 9/4 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. 개별 미 반도체주 9/4 등락은 매체별 방향 상충으로 <strong>지어내지 않고 제외</strong>했다. <strong>작성·발간: 2026-09-05 오전 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
