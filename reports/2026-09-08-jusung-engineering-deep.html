@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="036930">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주성엔지니어링(036930) — 수주잔고 2,336억은 확인됐다, 그런데 시총은 9.5조가 됐다</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+/* ---- 콜 furniture 타일: 파스텔 4색 틴트 (메인과 동일) ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+
+/* ---- Key Takeaways (30초 요약층) ---- */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+/* ---- 스티키 미니 목차 ---- */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ---- 섹션 카드 + 번호 배지 헤더 (STYLE-GUIDE v1.4.0) ---- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+/* ---- 킬러 스탯 콜아웃 ---- */
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+/* ---- 경고 노트(중요) vs 참고(.fine 가라앉힘) ---- */
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+
+/* [1b] What's Changed + [1c] 영문 요약 위젯 */
+.wc { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: rgba(42,120,214,0.06);
+  border-radius: 0 12px 12px 0; padding: 14px 18px 12px; }
+.wc .wc-head { font-size: 11px; letter-spacing: 0.14em; font-weight: 750; color: var(--accent); margin-bottom: 10px; }
+.wc .wc-head a { color: var(--accent); font-weight: 650; letter-spacing: 0; }
+.wc .wc-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  padding: 6px 0; border-top: 1px solid var(--border); font-size: 13.5px; }
+.wc .wc-row:first-of-type { border-top: 0; }
+.wc .wc-lbl { flex: 0 0 118px; font-size: 12px; color: var(--muted); font-weight: 650; }
+.wc .wc-val { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 650; }
+.wc .wc-old { color: var(--muted); font-weight: 500; }
+.wc .wc-arrow { color: var(--muted); font-weight: 400; padding: 0 2px; }
+.wc .wc-why { font-size: 12px; color: var(--ink-2); flex-basis: 100%; padding-left: 128px; }
+.wc .wc-keep { display: inline-block; background: var(--card); border: 1px solid var(--border-2);
+  color: var(--ink-2); border-radius: 999px; padding: 0 8px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+  margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none;
+  display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+/* peer-chart (report-widgets.html) */
+.peer-chart .metric { margin: 0 0 20px; }
+.peer-chart .mtitle { font-size: 14px; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+.peer-chart .mhint { font-size: 11.5px; color: var(--muted); margin: 0 0 10px; }
+.peer-chart .brow { display: flex; align-items: center; gap: 8px; margin: 0 0 7px; }
+.peer-chart .blabel { width: 84px; flex: 0 0 84px; font-size: 12.5px; color: var(--ink-2); text-align: right; }
+.peer-chart .blabel.self { color: var(--accent); font-weight: 700; }
+.peer-chart .btrack { flex: 1; height: 20px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+.peer-chart .bfill { height: 100%; border-radius: 5px; background: var(--border-2); }
+.peer-chart .bfill.self { background: var(--accent); }
+.peer-chart .bval { width: 60px; flex: 0 0 60px; font-size: 12.5px; color: var(--ink); font-weight: 600; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-08-jusung-engineering-deep.html">
+<meta property="og:title" content="주성엔지니어링(036930) — 수주잔고 2,336억은 확인됐다, 그런데 시총은 9.5조가 됐다">
+<meta property="og:description" content="전작이 제시한 콜 전환 조건 ①(수주잔고 1,500억)은 반기보고서 2,336억으로 충족. 그러나 주가 +26%로 Forward P/E 101.6배(백분위 94%) — 하우스 NTM 900억을 인정해도 Base −58.7%. 실적 증거와 그 증거를 넘어선 가격이 함께 도착했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-08-jusung-engineering-deep.html">
+<meta name="description" content="전작이 제시한 콜 전환 조건 ①(수주잔고 1,500억)은 반기보고서 2,336억으로 충족. 그러나 주가 +26%로 Forward P/E 101.6배(백분위 94%) — 하우스 NTM 900억을 인정해도 Base −58.7%. 실적 증거와 그 증거를 넘어선 가격이 함께 도착했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-08-jusung-engineering-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 2026-09-08</div>
+  <h1>주성엔지니어링(036930) — 수주잔고 2,336억은 확인됐다, 그런데 시총은 9.5조가 됐다</h1>
+  <p class="sub">전작(8/11·비중축소)이 콜을 바꿀 첫 조건으로 꼽은 수주잔고 1,500억은 반기보고서에서 2,336억으로 충족됐다. 그러나 그 사이 주가는 +26% 올라 Forward P/E는 90.8배에서 101.6배가 됐다 — 실적 회복의 증거와 그 증거를 이미 넘어선 가격이 함께 도착했다.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">3년 밴드 백분위 94%·피어 4사 TTM 평균 42배의 2.4배. 하우스 NTM 영업이익 900억(컨센 −5%)을 인정해도 Base 환산가는 84,747원(−58.7%)이며, FY27 컨센 상단(영업이익 1,500억)으로도 현재가는 P/E 61배다.</p>
+</header>
+
+<!-- 콜 furniture (rating.py 산출 — 결정론적) -->
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">P/E 백분위 94% ≥ 75%(고평가) · Base −58.7% ≤ 0%(상방 소진)</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · P/E 위치</div>
+    <div class="val">205,000<small>원</small></div>
+    <div class="delta">Fwd P/E 101.6배 (3년 평균 33.2배) · 백분위 94% <span class="chip">과열</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−58.7%</div>
+    <div class="delta">Bull <span class="up">+11.6%</span> / Bear <span class="down">−80.3%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 3Q26 잠정실적(10월 말 추정) · 3Q26 분기보고서 수주잔고(11월 중순)</div>
+  </div>
+</div>
+
+<figure class="skew-bar">
+<div class="rr-title">RISK-REWARD</div>
+<svg viewBox="0 0 720 168" role="img" aria-label="Risk-Reward 스큐 바: 현재가 205,000원를 0%로 두고 Bear −80.3%(40,356원), Base −58.7%(84,747원), Bull +11.6%(228,683원)를 수평축에 표시.">
+<line x1="96" y1="92" x2="624" y2="92" stroke="var(--grid)" stroke-width="2"/>
+<rect x="96.0" y="86" width="461.4" height="12" rx="6" fill="var(--down)" opacity="0.16"/>
+<line x1="96.0" y1="80" x2="96.0" y2="104" stroke="var(--down)" stroke-width="2.5"/>
+<rect x="557.4" y="86" width="66.6" height="12" rx="6" fill="var(--up)" opacity="0.14"/>
+<line x1="624.0" y1="80" x2="624.0" y2="104" stroke="var(--up)" stroke-width="2.5"/>
+<line x1="557.4" y1="52" x2="557.4" y2="126" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="rr-zero" x="557.4" y="146" text-anchor="middle" font-size="12.5" fill="var(--muted)">현재가 0%<tspan class="rr-price"> · 205,000원</tspan></text>
+<polygon points="96.0,101 88.5,87 103.5,87" fill="var(--down)"/>
+<circle cx="220.1" cy="92" r="7" fill="var(--accent)" stroke="var(--card)" stroke-width="2.5"/>
+<polygon points="624.0,83 616.5,97 631.5,97" fill="var(--up)"/>
+<text class="rr-lbl" x="96.0" y="44" text-anchor="middle" font-size="13.5"><tspan fill="var(--down)" font-weight="650">▼ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bear</tspan><tspan fill="var(--down)" font-weight="750"> −80.3%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> (40,356원)</tspan></text>
+<text class="rr-lbl" x="220.1" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--accent)" font-weight="650">● </tspan><tspan fill="var(--ink-2)" font-weight="650">Base</tspan><tspan fill="var(--down)" font-weight="750"> −58.7%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> (84,747원)</tspan></text>
+<text class="rr-lbl" x="624.0" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--up)" font-weight="650">▲ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bull</tspan><tspan fill="var(--up)" font-weight="750"> +11.6%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> (228,683원)</tspan></text>
+</svg>
+<figcaption class="rr-cap"><strong>읽는 법:</strong> Base 상방 <span class="down">−58.7%</span>과 Bear 하방 <span class="down">−80.3%</span>의 비대칭이 위험-보상 스큐다. 목표주가가 아니라 조건부 환산 범위다.</figcaption>
+</figure>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식(P/E 밴드 백분위 + Base 시나리오 상승여력)으로 낸 방향성이며 <strong>목표주가가 아닙니다</strong>. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위입니다. 가격 데이터 기준일은 <strong>2026-09-08 종가 205,000원</strong>입니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 비중축소 유지 — 그러나 이유가 완전히 바뀌었다.</strong> 전작은 "수주잔고 654억으로 시총 7.5조를 설명할 수 없다"였다. 반기보고서에서 <strong>수주잔고가 2,336억</strong>으로 3.6배 뛰며 그 논지는 해소됐다. 문제는 같은 기간 주가가 <span class="up">+26.2%</span> 올라 Forward P/E가 90.8배→<strong>101.6배</strong>(3년 백분위 94%)가 됐다는 것이다.</li>
+    <li><strong>실적 회복의 증거는 실재한다.</strong> 반도체 장비 수주잔고 2,144억 + 디스플레이 193억, 가동률 <strong>98.06%</strong>, 회사 스스로 "하반기부터 수주잔고의 매출 반영"을 공언했다. 하우스는 NTM 영업이익을 850억→<strong>900억</strong>(컨센 −5%)으로 올리고 FY27E 영업이익 1,250억을 제시한다 — 컨센(1,300~1,500억) 하단이다.</li>
+    <li><strong>그 증거를 가격이 이미 넘어섰다.</strong> NTM 900억을 인정하고 피어 4사 평균 42배를 주면 Base 환산가는 <strong>84,747원(−58.7%)</strong>이다. FY27 컨센 상단(영업이익 1,500억)을 통째로 믿어도 현재가는 <strong>FY27E P/E 61배</strong>다. Bull(+11.6%)이 성립하려면 컨센 상단 이익 <em>그리고</em> 85배 유지가 동시에 필요하다.</li>
+    <li><strong>전작 정정 두 가지를 기록한다.</strong> ① 전작이 제시한 "콜 전환 조건 ① 수주잔고 1,500억"은 충족됐다 — 그런데 콜 공식은 백분위·Base로만 산출되므로 조건 서술이 공식과 어긋나 있었다(11에서 재정의). ② 전작 다년 추정표의 EPS 열은 <strong>10배 과대 표기</strong>였다(FY25A 6,583원 → 실제 약 658원). 07에서 정정한다.</li>
+  </ol>
+</div>
+
+<!-- What's Changed — 전작 대비 -->
+<div class="wc" id="whats-changed">
+  <div class="wc-head">WHAT'S CHANGED — 전작 대비 ·
+    <a href="/reports/2026-08-11-jusung-engineering-deep.html">전작: 2026-08-11 심층 ↗</a></div>
+  <div class="wc-row">
+    <span class="wc-lbl">콜</span>
+    <span class="wc-val"><span class="wc-old">비중축소</span><span class="wc-arrow">→</span>비중축소<span class="wc-keep">유지</span></span>
+    <span class="wc-why">백분위 92%→94%로 오히려 상승, Base도 음(−) 확대 — 공식 요건 그대로. 단, 전작의 중심 논지(수주잔고 부족)는 해소됨</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">Base 상승여력</span>
+    <span class="wc-val mono"><span class="wc-old">−42.7%</span><span class="wc-arrow">→</span><span class="down">−58.7%</span></span>
+    <span class="wc-why">NTM 850억→900억 상향(+6%)보다 주가 상승(+26.2%)이 크고, 피어 배수도 52배→42배로 낮아짐 — Bull +11.6% / Bear −80.3%</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">FY26E 영업이익</span>
+    <span class="wc-val mono"><span class="wc-old">200억</span><span class="wc-arrow">→</span>320억</span>
+    <span class="wc-why">수주잔고 2,336억(6/30)의 하반기 인도 반영 — 여전히 컨센(560~600억)의 절반 수준. 상세는 섹션 07</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">수주잔고 (공시)</span>
+    <span class="wc-val mono"><span class="wc-old">654억</span><span class="wc-arrow">→</span><span class="up">2,336억</span></span>
+    <span class="wc-why">1Q26 분기보고서(3/31) → 반기보고서(6/30). 전작 콜 전환 조건 ①(1,500억) 충족 — 섹션 11 참조</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">전작 이후 주가</span>
+    <span class="wc-val mono">162,400<span class="wc-arrow">→</span>205,000 (<span class="up">+26.2%</span>)</span>
+    <span class="wc-why">트랙레코드 기준가(8/11 close_at_publish) 대비 — 같은 기간 Fwd P/E는 90.8→101.6배. 전작 콜은 4주 기준 틀렸다(10 참조)</span>
+  </div>
+</div>
+
+<details class="en-abstract">
+  <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+  <div class="inner" lang="en">
+    <p><strong>Jusung Engineering (036930) — Underweight, maintained.</strong> The reason has changed. Our previous note argued that a KRW 65.4bn order backlog could not support a KRW 7.5tn market capitalisation; the half-year report now shows the backlog at <strong>KRW 233.6bn</strong>, 3.6 times higher, and factory utilisation at 98.06%. That thesis is resolved.</p>
+    <p>What replaced it is price. The shares rose 26.2% since our note, lifting the forward P/E from 90.8x to <strong>101.6x</strong> — the 94th percentile of the three-year band and 2.4 times the 42x TTM average of four peers. We raise our NTM operating profit to KRW 90bn (5% below consensus) and introduce FY27E operating profit of KRW 125bn, the low end of the KRW 130–150bn broker range.</p>
+    <p>Even so, a peer multiple on our NTM estimate yields KRW 84,747 (−58.7%), and the top of the FY27 consensus still implies 61x FY27 earnings at today's price. The bull case (+11.6%) needs both top-of-range earnings and a sustained 85x multiple.</p>
+    <p>Two corrections to our prior note are recorded: its backlog trigger for a rating change was met but was inconsistent with the rating formula, and its EPS table was overstated tenfold.</p>
+    <p class="ena-note">Figures follow the Korean original.</p>
+  </div>
+</details>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업종</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-09-08 기준)</strong><br>KOSPI 6,995.39 (+4.61%, 09-07 확정치) · KOSDAQ 822.19 (+1.07%, 09-07 확정치)<br>원/달러 1,355.20원 (전일 1,359.50) · 기준금리 3.00%<br>미 10년물 4.77% · 달러지수 118.75 · SPY 769.00$ (−0.15%) — <a href="https://report.devindgkim.net/reports/2026-09-08-us-close-morning-2026-09-08.html" style="color:var(--accent);">당일 US 시황</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 밸류에이션·시나리오는 <strong>원/달러 1,355.20원 · 미 10년물 4.77% · 기준금리 3.00%</strong> 가정 위에서 계산했다(하우스 매크로 가정 상속). 전작 대비 기준금리는 2.75%→3.00%로 올랐고 미 10년물도 4.65%→4.77%다 — 성장주 할인율이 높아진 환경에서 KOSPI가 7,000선을 앞두고 있다는 점(위험선호 극단)을 배수 해석에 감안해야 한다.</p>
+
+<!-- 01 업종 지표 -->
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — 메모리 사이클은 여전히 뜨겁고, 이번엔 회사 백로그도 따라왔다</h2>
+  <p class="deck">전작에서 비어 있던 칸 하나(회사 수주잔고)가 채워졌다 — 업황과 회사 사이의 간극은 좁혀졌고, 남은 간극은 회사와 가격 사이다.</p>
+  <p class="desc">반도체 장비 업종 지표 3개 + 회사 고유 지표 2개. 데이터 기준 2026-09-08(각 항목에 기준일 병기). 산업 지표는 sector_map 반도체 축(운영 지표: HBM 웨이퍼 잠식률·GPU 렌탈가 / 매크로: 반도체 수출)에서 골랐다.</p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>지표</th><th class="num">실측값 (기준일)</th><th>방향</th><th>읽는 법 / 논지 연결</th></tr></thead>
+    <tbody>
+      <tr><td data-label="지표"><span class="v">회사 수주잔고 (합계)<br><span style="font-size:10.5px;color:var(--muted);">실측(반기보고서)</span></span></td><td data-label="실측값 (기준일)" class="num"><span class="v"><strong>2,336억원</strong><br><span style="font-size:10.5px;">(2026-06-30, 반기보고서 8/14)</span></span></td><td data-label="방향"><span class="v"><span class="up">3.6배 급증</span></span></td><td data-label="읽는 법 / 논지 연결"><span class="v">반도체 2,144억 + 디스플레이 193억. 수주총액 3,212억 − 기납품 875억. FY25 매출 3,107억의 <strong>0.75배(약 9개월치)</strong> — 전작 0.21배에서 회복. 시총 9.5조 대비로는 41배(전작 115배). 전작의 중심 논지가 여기서 해소됐다<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="지표"><span class="v">HBM 웨이퍼 잠식률<br><span style="font-size:10.5px;color:var(--muted);">실측(TrendForce)</span></span></td><td data-label="실측값 (기준일)" class="num"><span class="v"><strong>22%</strong> (2026년 말 전망)<br><span style="font-size:10.5px;">(2026-06-02 보도자료 · 25년 말 18%→27년 말 30%)</span></span></td><td data-label="방향"><span class="v"><span class="up">범용 DRAM 공급 억제</span></span></td><td data-label="읽는 법 / 논지 연결"><span class="v">HBM이 DRAM 웨이퍼를 잠식할수록 범용 DRAM 가격은 지지되고, 메모리 3사는 신규 팹(SK하이닉스 M15X·용인)으로 대응한다 — <strong>ALD 증착 장비 발주의 구조적 배경</strong>. 이 지표가 꺾이면 06 항목 6의 전제가 무너진다<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">TrendForce 보도자료 · "Tight DRAM Supply Gives Suppliers Greater Pricing Power in HBM…" (2026.06.02)</span><span class="evd-sum">상위 3사 HBM 웨이퍼 투입 비중 — 2025년 말 약 <strong>18%</strong>, 2026년 말 <strong>22%</strong>, 2027년 말 <strong>30%</strong>. 2025년 하반기 이후 범용 DRAM 가격 급등이 타이트한 수급을 반영. HBM4 2027년 공급 협상으로 이동, 2027년 HBM 계약가 "multiples higher" 전망.</span><a href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="지표"><span class="v">GPU 렌탈가 (H100 중앙값)<br><span style="font-size:10.5px;color:var(--muted);">실측(웹 집계)</span></span></td><td data-label="실측값 (기준일)" class="num"><span class="v"><strong>$3.38/hr</strong><br><span style="font-size:10.5px;">(2026-09-05 · 전년 대비 +33% 보도)</span></span></td><td data-label="방향"><span class="v"><span class="up">AI 수요 &gt; 공급</span></span></td><td data-label="읽는 법 / 논지 연결"><span class="v">3년 된 칩의 렌탈가가 오르는 것은 GPU·메모리 capacity가 부족하다는 뜻이다. 메모리 capex의 최종 수요가 살아 있다는 간접 증거 — 다만 이 지표는 <strong>2027~28년 발주</strong>를 말해주지, 이 회사의 향후 12개월 인도를 말해주지 않는다<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">shattered.io · "H100 / H200 / B200 Cloud GPU Pricing 2026" (2026.09.05 갱신)</span><span class="evd-sum">H100 시간당 렌탈 중앙값 약 <strong>$3.38</strong>(AIMultiple 지수; Vast.ai $1.49 ~ Azure $6.98). H200 $3.59~4.59, B200 스팟 $5.63~5.66(8월 중순, BofA). "H100 pricing rose through most of 2026" — 한 분석은 <strong>전년 대비 +33%</strong>. 메모리가 병목.</span><a href="https://shattered.io/h100-h200-b200-cloud-gpu-pricing-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="지표"><span class="v">한국 반도체(IC) 수출액<br><span style="font-size:10.5px;color:var(--muted);">실측(관세청 · 아카이브)</span></span></td><td data-label="실측값 (기준일)" class="num"><span class="v"><strong>$327억</strong> (2026년 7월)<br><span style="font-size:10.5px;">(YoY +166% · MoM −2.5% · 5년 백분위 98%)</span></span></td><td data-label="방향"><span class="v"><span class="up">고점권 유지</span></span></td><td data-label="읽는 법 / 논지 연결"><span class="v">메모리 가격·물량이 동시에 오른 결과다. 5개월 연속 증가 뒤 7월 첫 감소(−2.5%) — 사이클 정점 여부는 8~9월 수치로 판별. 고객사(메모리 3사)의 현금흐름이 장비 발주 여력을 결정하므로 이 지표가 장비주의 매크로 축이다<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">관세청 품목별 수출입 · 한국 반도체(IC, HS 8542) 수출액 — 지표 아카이브 (기준일 2026-07, 월간)</span><span class="evd-sum">2026년 7월 <strong>$327.2억</strong>(전월 $335.6억 대비 −2.5%, 전년동월 대비 <strong>+166%</strong>). 2026년 2월 $194.5억 → 6월 $335.6억까지 5개월 연속 증가 후 7월 소폭 감소. 5년 분포 백분위 98%. 데이터 기준일 2026-07-01(월간, 관세청).</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></span></td></tr>
+      <tr><td data-label="지표"><span class="v">태양전지 장비 수주<br><span style="font-size:10.5px;color:var(--muted);">실측(반기보고서)</span></span></td><td data-label="실측값 (기준일)" class="num"><span class="v"><strong>0</strong> (수주·잔고 모두 없음)<br><span style="font-size:10.5px;">(2026-06-30)</span></span></td><td data-label="방향"><span class="v"><span class="down">2분기 연속 0</span></span></td><td data-label="읽는 법 / 논지 연결"><span class="v">전작과 동일. 디스플레이 장비 수주잔고 193억이 새로 잡혔지만 태양광은 여전히 개점휴업 — 매출의 98%가 반도체 장비다(반기 1,126억/1,148억). 단일 사이클 노출 구조는 그대로다<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">2,336억 vs 9.5조</div><div class="co-lbl"><strong>공시 수주잔고 vs 시가총액 — 전작 654억 vs 7.5조에서 양쪽 다 올랐다.</strong> 수주잔고는 3.6배, 시총은 1.27배. 비율(시총/잔고)은 115배→41배로 개선됐지만, 원익IPS(시총 5.9조·TTM 매출 0.9조)와 나란히 놓으면 주성은 매출이 4분의 1인 회사가 시총은 1.6배다. 개선된 것과 여전히 비싼 것을 구분해야 한다.</div></div>
+</div>
+
+<!-- 02 분석 경로 -->
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 지정 종목 심층 (전작 후속 · 세 번째 노트)</h2>
+  <p class="deck">4주 전 전작(비중축소)의 후속 — 반기보고서·IR·급등이라는 세 개의 새 사실이 생겼고, 그중 반기보고서가 전작 논지를 뒤집었다.</p>
+  <div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>전작과의 관계 — 무엇이 달라졌나:</strong> 이 리포트는 <a href="/reports/2026-08-11-jusung-engineering-deep.html" target="_blank" rel="noopener">2026-08-11 주성엔지니어링 심층(비중축소)</a>의 후속이자, <a href="/reports/2026-07-19-jusung-engineering-deep.html" target="_blank" rel="noopener">2026-07-19 초회 심층</a>까지 포함한 세 번째 노트다. 그 사이 확정된 사실 — <strong>반기보고서(8/14) 수주잔고 2,336억·가동률 98.06%·지역별 매출 최초 공시</strong>, 기업설명회(8/24) 이후 증권업계 컨센 형성(FY27 영업이익 1,300~1,500억), 4주간 주가 +26.2% — 를 반영해 전 수치를 갱신했다. <strong>콜은 유지(비중축소)이나 논지는 교체</strong>됐다: "백로그가 없다"에서 "백로그는 확인됐고 가격이 그것을 넘어섰다"로. 전작의 오류 두 건(전환 조건 설계·EPS 표기)은 07·11에 정정 기록한다.</div>
+  <p>검증에 동원한 1차 데이터: DART 반기보고서(2026.06) 원문(수주상황·가동률·생산실적·<strong>지역별·내수/수출 매출</strong>·시설투자)·2Q26 잠정실적 공정공시·5%룰 대량보유 보고, 토스 Open API 시세·캔들 780일, KRX Open API 일별 확정치, FnGuide 컨센서스(추정기관 2곳), 관세청 반도체 수출 아카이브, TrendForce·GPU 렌탈가 공개 자료, 공개 보도 6건. 방법은 전작과 같다 — <strong>서사와 공시 숫자를 분리해 각각 검증하고 그 간극을 논지로 삼는다.</strong> 이번엔 공시 숫자가 서사 쪽으로 움직였고, 가격은 그보다 더 멀리 갔다.</p>
+</div>
+
+<!-- 03 왜 지금인가 -->
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 트리거 3개와 경고 1개</h2>
+  <p class="deck">백로그 3.6배·컨센 형성·외국인 매수가 4주 안에 겹쳤다. 경고는 하나다 — 그 셋이 만든 주가가 이미 셋을 다 반영하고도 남는다.</p>
+  <p><strong>트리거 1 — 수주잔고 654억 → 2,336억: 전작 논지의 해소.</strong> 반기보고서(8/14) 수주상황: 반도체 제조장비 수주총액 3,019억·기납품 875억·<strong>잔고 2,144억</strong>, 디스플레이 제조장비 잔고 193억, 합계 <strong>2,336억</strong>(6/30 기준). 3월 말 654억에서 한 분기 만에 <span class="up">+1,682억</span>이다. 회사는 "주요 고객사의 신규 공장 인프라 구축과 장비 반입의 시차"로 상반기 매출이 줄었고 "하반기부터 수주잔고의 매출 반영으로 우상향"을 예상한다고 밝혔다. 전작이 "SK하이닉스 54조 서사가 회사 공시에 없다"고 쓴 지 3일 만에 공시가 나온 셈이다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 흑자 턴어라운드…2300억 수주잔고로 하반기 '맑음'" (2026.08)</span><span class="evd-sum">2분기 말 수주잔고 <strong>2,336억3,500만원</strong>(1분기 말 대비 약 1,590억 증가), 반도체 장비 2,143억5,800만원. 회사: "주요 고객사의 신규 반도체 생산 공장 인프라 구축과 장비 반입의 시차가 발생했고, 인도 기준 매출 인식의 지연으로 상반기 매출이 전년 대비 감소", "<strong>하반기부터 수주 잔고의 매출 반영으로 우상향</strong>이 예상". 용인 제2연구소 1,048억(2028년 6월 완공).</span><a href="https://www.thelec.kr/news/articleView.html?idxno=61156" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>트리거 2 — 컨센서스가 생겼다: FY27 영업이익 1,300~1,500억.</strong> 8/24 기업설명회 이후 증권업계 컨센이 FY26 매출 3,500억대·영업이익 560~600억, <strong>FY27 매출 5,700~6,000억·영업이익 1,300~1,500억</strong>으로 형성됐다. FnGuide 추정기관도 1곳→2곳으로 늘었고 Fwd12M EPS는 2,024원→2,128원이다. 북미 메모리 업체향 ALD 양산 장비(연말)와 CXMT 10나노급 전환 투자가 새 수주 축으로 언급된다. 전작이 "컨센을 방패로 쓸 수 없다"고 한 조건은 부분적으로 해소됐다 — 2곳은 여전히 얇지만, 0에 가까운 1곳과는 다르다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">이비엔(EBN) · "'차세대 장비 호조' 주성엔지니어링, 내년 영업익 2배 청사진" (2026.09.08)</span><span class="evd-sum">증권업계 컨센서스: <strong>2026년 매출 3,500억원대·영업이익 560~600억원대</strong>, <strong>2027년 매출 5,700~6,000억원대·영업이익 1,300~1,500억원대</strong>. 2분기 연결 매출 599억·영업이익 14억(OPM 2.4%) 흑자전환. 고객사 SK하이닉스 M15X 증설·CXMT 10나노급 전환 투자, <strong>북미 메모리 업체향 ALD 양산 장비(연말)</strong> 신규 공급. 태양광·디스플레이·DTC·TGV 장비 개발 중.</span><a href="https://www.ebn.co.kr/news/articleView.html?idxno=1723242" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 주성엔지니어링 (2026.09.07 기준, 09.08 조회)</span><span class="evd-sum">FY25A EPS 755원 · FY26E EPS <strong>974원</strong>(PER 192.15배) · Fwd12M EPS <strong>2,128원</strong>(PER 87.96배) · FY26E BPS 14,429원(PBR 12.97배) · 목표주가 <strong>205,000원</strong> · 투자의견 3.50 · <strong>추정기관 2개사</strong> · 외국인지분율 8.80% · 52주 283,000/26,350원 · 시총 87,013억(9/7 종가 187,200원 기준).</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=036930" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>트리거 3 — 외국인이 사고 있다, 가격으로 확인된다.</strong> 9/2~9/7 나흘간 주가는 173,700원→187,200원, 9/8 205,000원까지 <span class="up">1주 +18.5%·1개월 +60.4%</span>다. 9/7 거래대금 2,001억, 9/4 +6.13%·9/7 +4.99%로 이틀 연속 급등했고, 주간 코스닥 외국인 순매수 상위에 반복 등장했다. FnGuide 외국인지분율은 8.80%다. 5%룰 공시상 미래에셋 6.93%(8/3) 이후 신규 보고는 없다 — 이번 랠리의 주체는 공시 의무선(5%) 아래의 외국인·기관 다수로 보인다.<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">잡포스트 · "주성엔지니어링 19만원 눈앞, 이틀째 급등…반도체 장비주에 다시 불붙었다" (2026.09.07)</span><span class="evd-sum">9/7 오후 3시 187,200원(+4.99%), 장중 고점 189,800원, 거래량 107만주·거래대금 <strong>2,001억원</strong>, 직전 거래일 +6.13%. "메모리 업체의 실적과 설비투자 전망이 개선될 경우 반도체 제조장비 업체의 수주 기대도 함께 높아질 수 있다". 52주 최고 283,000/최저 26,350원.</span><a href="https://www.job-post.co.kr/news/articleView.html?idxno=226463" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">DART · 주식등의 대량보유상황보고서(약식) — 미래에셋자산운용 (2026.08.03, 2026.07.07)</span><span class="evd-sum">미래에셋자산운용 지분율 <strong>5.83%(7/7 신규, +2.82%p) → 6.93%(8/3, +1.10%p)</strong>. 삼성자산운용 7/6 6.00%(−1.04%p). 황철주 외 3/10 31.34%(+1.26%p). 8/3 이후 신규 보고 없음(9/8 조회).</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260803000357" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>경고 1 — 세 트리거가 모두 가격에 들어갔고, 그 가격은 이익 회복을 넘어섰다.</strong> 수주잔고 2,336억이 전량 12개월 안에 인도돼도 그것은 FY24 호황기 매출(4,094억)의 57%다. 그 위에 FY27 컨센 상단(영업이익 1,500억)을 얹어도 현재가는 FY27E P/E 61배다. 전작에서 배수(Fwd P/E 90.8배)가 문제였다면 지금은 <strong>101.6배</strong>이고, 3년 백분위는 92%→94%로 올랐다. 트리거는 진짜인데, 진짜 트리거가 이미 지불된 가격이 이 종목의 위험이다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델 · build_series.py (2026.09.08 계산)</span><span class="evd-sum">Fwd P/E 현재 <strong>101.6배</strong> · 3년 평균 33.2배 · 3년 백분위 <strong>94%</strong>(범위 12.8~166.2) · 최근 1년 평균 59.6배·백분위 82%. NTM EPS(추정) 2,018원 — FnGuide Fwd12M EPS 2,128원 대비 −5.2%. 3년 백분위 75% 해당 P/E 28.7배 → 환산가 약 57,900원. 밴드 환산가 25배 50,450 · 45배 90,810 · 65배 131,170 · 85배 171,530원.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></p>
+</div>
+
+<!-- 04 기술 스크리닝 -->
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 재현 가능한 수치</h2>
+  <p class="deck">1개월 +60.4%·골든크로스·거래대금 2,000억대 — 전작(4/5 미충족)과 정반대로 기술 지표는 진입 신호다. 그래서 더 조심해야 한다.</p>
+  <p class="desc">기준: 하우스 발굴 1차 필터(거래대금 배수 ≥1.5배 또는 1개월 +15% / 52주고가 −25% 이내 / MA20&gt;60 / 투자유의 0건). 데이터 기준 2026-09-08 종가.</p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>항목</th><th class="num">측정값</th><th>판정</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v">수익률 (1주 / 1개월 / 3개월)</span></td><td data-label="측정값" class="num"><span class="v"><span class="up">+18.5%</span> / <span class="up">+60.4%</span> / +6.9%</span></td><td data-label="판정"><span class="v">● 충족</span></td><td data-label="비고"><span class="v">1개월 +60%는 반기보고서(8/14)·IR(8/24) 이후의 재평가 — 3개월 +6.9%는 6월 고점(283,000원) 이후 급락분을 아직 회복 중이라는 뜻</span></td></tr>
+      <tr><td data-label="항목"><span class="v">거래대금 배수 (최근5일/이전20일)</span></td><td data-label="측정값" class="num"><span class="v">1.0배</span></td><td data-label="판정"><span class="v">○ 미충족</span></td><td data-label="비고"><span class="v">일평균 2,094억원 — 절대 유동성은 코스닥 최상위권이나 최근 5일이 이전 20일보다 뜨겁지는 않다(랠리가 한 달 내내 이어져 배수가 1에 수렴)</span></td></tr>
+      <tr><td data-label="항목"><span class="v">52주 고가 대비</span></td><td data-label="측정값" class="num"><span class="v">−27.6%</span></td><td data-label="판정"><span class="v">○ 미충족</span></td><td data-label="비고"><span class="v">6/12 고점 283,000원 대비. 필터(−25% 이내)를 근소하게 벗어남 — 고점은 ALG 첫 출하(5/18) 직후 테마 급등의 산물이었다</span></td></tr>
+      <tr><td data-label="항목"><span class="v">이동평균 배열</span></td><td data-label="측정값" class="num"><span class="v">MA20 &gt; MA60</span></td><td data-label="판정"><span class="v">● 충족</span></td><td data-label="비고"><span class="v">최근 골든크로스 — 전작 역배열(MA20&lt;MA60)에서 전환. 추세 지표는 상승 쪽</span></td></tr>
+      <tr><td data-label="항목"><span class="v">투자유의·경고</span></td><td data-label="측정값" class="num"><span class="v">0건</span></td><td data-label="판정"><span class="v">● 충족</span></td><td data-label="비고"><span class="v">토스 투자유의 조회 기준</span></td></tr>
+      <tr><td data-label="항목"><span class="v">시가총액 (근사)</span></td><td data-label="측정값" class="num"><span class="v">≈9.5조원</span></td><td data-label="판정"><span class="v">— 해당없음</span></td><td data-label="비고"><span class="v">46,481,121주 × 205,000원. 전작 7.5조 → 9.5조</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;">집계: 긍정 3 · 부정 2(해당없음 1 제외) — 기술적으로는 <strong>진입 신호</strong>다. 이 리포트의 비중축소 콜은 기술 판단과 반대 방향이며, 밸류에이션·실적 판단이 기술 지표보다 우선한다는 하우스 규칙에 따른 것이다. 기술 신호가 강할 때 밸류 콜이 틀리는 기간이 길어질 수 있다는 점은 11에 적는다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">토스 Open API · screen.py 기술 스크리닝 (2026.09.08 계산)</span><span class="evd-sum">1주 +18.5% / 1개월 +60.4% / 3개월 +6.9%. 52주 고가 대비 −27.6%. MA20&gt;MA60(최근 골든크로스). 거래대금 배수 1.0배(최근 일평균 2,094억원). 투자유의 0건. 시총 근사 9.5조원.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></p>
+</div>
+
+<!-- 05 PQC -->
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC 분석 — 가격·물량·비용</h2>
+  <p class="deck">가동률 98%에 생산은 반기 5대 — 소수의 고가 장비를 꽉 차게 만들고 있는데, 인도가 밀려 매출은 −24%다. 이 착시는 하반기에 풀린다.</p>
+  <p class="desc">P = 제품 판가·믹스, Q = 출하·생산능력, C = 원가·영업레버리지. 판정 등급: ● 충족 / ◐ 부분 충족 / ○ 미충족 / — 해당없음 / ? 확인불가.</p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>축</th><th>판정</th><th>핵심 근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="축"><span class="v"><strong>P (가격)</strong> — 판가·믹스</span></td><td data-label="판정"><span class="v">◐ 부분 충족</span></td><td data-label="핵심 근거"><span class="v">반기보고서에도 장비 대당 판가는 공시되지 않는다(프로젝트별 수주 단가). 대신 두 가지 간접 증거가 새로 생겼다. ① 세계 첫 ALG 통합 장비 출하(5/18) — ALD 대비 막질이 치밀한 상위 제품이며 회사는 이를 고부가 믹스로 설명한다. ② 1Q26 매출총이익률 52.2%(DQN 보도) — 매출이 반토막 난 분기에도 GPM이 유지됐다는 것은 저가 덤핑이 아니라는 뜻이다. 다만 ALG의 대당 단가·프리미엄 폭은 검증 자료가 없어 <strong>부분 충족</strong>에 그친다. (장비별 매출 구성이나 ALG 수주액이 공시되면 판정 가능)<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 차세대 반도체용 ALG 통합 장비 세계 첫 출하" (2026.05.18)</span><span class="evd-sum">글로벌 반도체 기업에 <strong>ALG 트랜지스터 풀 인테그레이션 장비</strong> 세계 첫 출하 — 고객사·공급 규모 비공개. "ALD 대비 막질이 치밀하고 단단하다". 북미·아시아·유럽·중동 기업과 협업 중, 디스플레이·태양광 장비로 확장.</span><a href="https://www.thelec.kr/news/articleView.html?idxno=56778" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">한국금융신문 · "[DQN] 주성엔지니어링, 수주 75% 줄었는데 PBR은 14배" (2026.06.25)</span><span class="evd-sum">수주잔고 2022년 말 3,036억 → 2026년 1분기 747억(개별 기준 서술, −75%), 계약부채 1,208억(2024말) → 248억(1Q26). PBR 14.2배(원익IPS 7.4·유진테크 7.6·테스 7.0·PSK 8.7). 1Q26 매출총이익률 52.2%. <strong>고객 집중 — 반도체 2개사 84%, 중국 64%</strong>. "선행지표가 아직 뚜렷하게 돌아서지 않았다".</span><a href="https://www.fntimes.com/html/view.php?ud=202606241338252814141825007d_18" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="축"><span class="v"><strong>Q (물량)</strong> — 출하·생산능력</span></td><td data-label="판정"><span class="v">◐ 부분 충족</span></td><td data-label="핵심 근거"><span class="v">반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592시간 중 22,153.9시간)로 1Q 97.46%보다 더 찼다. 그런데 반도체 장비 생산실적은 <strong>반기 5대</strong>(FY25 18대·FY24 41대)다 — 가동률과 대수가 따로 노는 것은 장비 1대의 공정 시간이 길어졌거나(ALG 통합 장비처럼 대형·고가), 개조·이설이 제외된 집계이기 때문이다. 매출은 1H 1,148억(YoY −24%)이지만 수주잔고 2,336억이 향후 인도 물량의 상한을 규정한다. <strong>물량의 증거(잔고)는 확보됐고, 인도(매출)는 아직</strong>이다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="축"><span class="v"><strong>C (비용)</strong> — 원가·레버리지</span></td><td data-label="판정"><span class="v">○ 미충족</span></td><td data-label="핵심 근거"><span class="v">영업이익률 FY24 23.7% → FY25 10.1% → 1H26 <strong>−4.9%</strong>(매출 1,147.6억·영업손실 −56.1억). 매출이 줄어도 R&D는 줄이지 않았다 — FY25 R&D 1,069억(매출의 34%)이 고정비로 남아 역레버리지가 극대화됐다. 2Q OPM 2.4%는 방향만 맞다. 피어(원익IPS 8.0%·유진테크 15.5%·AMAT 30.8%·LRCX 34.1%) 대비 수익성은 최하위이며, 하반기 인도가 몰려야 고정비 레버리지가 정방향으로 돈다.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">블로터 · "[소부장 레이더] 'R&D 베팅' 주성엔지니어링, 영업이익률 30% 전망" (2026.05.27)</span><span class="evd-sum">"지난해 매출의 3분의 1에 달하는 <strong>1,069억원을 R&D에</strong> 과감히 투입"(FY25 매출 3,107억 대비 약 34%). 한국투자증권: <strong>2026년 매출 4,030억·영업이익 1,150억</strong>(OPM 28~30%) 전망 — 증권업계 컨센(560~600억)의 약 2배인 개별 상단 추정. 북미 빅테크·TSMC 공급 시작으로 고객 다변화.</span><a href="https://www.bloter.net/news/articleView.html?idxno=663577" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">DART·SEC 공시 합산 · peer_table.py TTM 실측 (2026.09.08 계산)</span><span class="evd-sum">주성엔지니어링 시총 9.6조·TTM 매출 0.23조·영업이익 −148억·OPM −6.6%·P/E 1,318배(왜곡) / 원익IPS 5.9조·OPM 8.0%·P/E 34.1·시총/OP 79.8 / 유진테크 3.3조·15.5%·29.5·54.9 / AMAT $369.7B·30.8%·40.4·38.3 / LRCX $394.7B·34.1%·62.5·54.5. 피어 4사 TTM P/E 평균 <strong>41.6배</strong>.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">98.06% · 5대 · −24%</div><div class="co-lbl"><strong>반기 가동률 · 반기 생산 대수 · 반기 매출 YoY</strong> — 세 숫자가 한 회사의 같은 반기다. 라인은 꽉 차 있고, 대수는 적고, 매출은 줄었다. 인도기준 회계에서 이 조합은 "대형 장비를 만들어 두고 고객 팹 반입을 기다리는 중"으로 읽는 게 가장 자연스럽고, 수주잔고 2,336억이 그 해석을 뒷받침한다. 3Q 매출이 이 해석의 첫 검증이다(12).</div></div>
+</div>
+
+<!-- 06 Growth Sustainability -->
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 지속가능성 6항목</h2>
+  <p class="deck">6항목 중 충족 2·부분 3·미충족 1 — 전작(충족 1·부분 2·미충족 2·확인불가 1)에서 두 칸이 올라왔다. 수주(3)와 지역 공시(4)가 채워졌기 때문이다.</p>
+  <p class="desc">판정 등급: ● 충족 / ◐ 부분 충족 / ○ 미충족 / — 해당없음 / ? 확인불가.</p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="#"><span class="v">1</span></td><td data-label="항목"><span class="v">매출 증가와 공장 가동률 동행</span></td><td data-label="판정"><span class="v">○ 미충족</span></td><td data-label="근거"><span class="v">가동률 98.06%로 최상단인데 반기 매출은 YoY −24.0%다 — 여전히 동행하지 않는다. 다만 전작과 달리 "만들고 못 넘긴" 쪽 해석에 무게가 실린다(잔고 2,336억). 3Q 매출이 가동률을 따라 올라오면 이 항목은 바로 ◐로 바뀐다.</span></td></tr>
+      <tr><td data-label="#"><span class="v">2</span></td><td data-label="항목"><span class="v">설비투자 후 가동률 상승</span></td><td data-label="판정"><span class="v">◐ 부분 충족</span></td><td data-label="근거"><span class="v">용인 제2연구소 <strong>1,048억</strong> 신규시설투자(2025-06-09 공시, 2028년 6월 완공)가 반기보고서 시설투자계획에 있다 — R&D Fab 공간 확보 목적이라 생산 캐파 증설은 아니다. 가동률 98%는 현 캐파가 이미 포화라는 뜻이고, 수주잔고가 다시 배로 늘면 생산 캐파가 병목이 된다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 흑자 턴어라운드…2300억 수주잔고로 하반기 '맑음'" (2026.08)</span><span class="evd-sum">2분기 말 수주잔고 <strong>2,336억3,500만원</strong>(1분기 말 대비 약 1,590억 증가), 반도체 장비 2,143억5,800만원. 회사: "주요 고객사의 신규 반도체 생산 공장 인프라 구축과 장비 반입의 시차가 발생했고, 인도 기준 매출 인식의 지연으로 상반기 매출이 전년 대비 감소", "<strong>하반기부터 수주 잔고의 매출 반영으로 우상향</strong>이 예상". 용인 제2연구소 1,048억(2028년 6월 완공).</span><a href="https://www.thelec.kr/news/articleView.html?idxno=61156" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="#"><span class="v">3</span></td><td data-label="항목"><span class="v">수주가 매출보다 빠르게 증가</span></td><td data-label="판정"><span class="v">● 충족</span></td><td data-label="근거"><span class="v"><strong>전작 ○ → 이번 ●.</strong> 수주잔고 654억(3/31) → 2,336억(6/30), 한 분기 +257%. 같은 분기 매출은 599억이다 — 수주가 매출의 4배 속도로 늘었다. 잔고/FY25 매출 0.21배 → <strong>0.75배</strong>. 이 항목이 전작에서 유일하게 정량 검증 가능하다고 했던 지점이고, 검증 결과는 강세론의 손을 들어줬다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="#"><span class="v">4</span></td><td data-label="항목"><span class="v">미국향 매출 (미국 수혜)</span></td><td data-label="판정"><span class="v">◐ 부분 충족</span></td><td data-label="근거"><span class="v"><strong>전작 ? → 이번 ◐.</strong> 반기보고서가 처음으로 내수/수출·지역별 매출을 공시했다: 반기 <strong>내수 785억(68%) / 수출 363억(32%)</strong>. FY25는 내수 1,098억(35%)/수출 2,009억(65%), FY24는 수출 85%였다 — 반기 들어 국내 고객(SK하이닉스) 비중이 급증하며 <strong>중국 의존이 낮아졌다</strong>. 미국향 별도 수치는 없고 "북미 메모리향 ALD 양산 장비 연말 공급"(EBN)·"북미 빅테크·TSMC 공급 시작"(블로터)은 보도 단계다. (지역별 매출에 북미가 분리 공시되면 ● 판정 가능)<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">이비엔(EBN) · "'차세대 장비 호조' 주성엔지니어링, 내년 영업익 2배 청사진" (2026.09.08)</span><span class="evd-sum">증권업계 컨센서스: <strong>2026년 매출 3,500억원대·영업이익 560~600억원대</strong>, <strong>2027년 매출 5,700~6,000억원대·영업이익 1,300~1,500억원대</strong>. 2분기 연결 매출 599억·영업이익 14억(OPM 2.4%) 흑자전환. 고객사 SK하이닉스 M15X 증설·CXMT 10나노급 전환 투자, <strong>북미 메모리 업체향 ALD 양산 장비(연말)</strong> 신규 공급. 태양광·디스플레이·DTC·TGV 장비 개발 중.</span><a href="https://www.ebn.co.kr/news/articleView.html?idxno=1723242" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">블로터 · "[소부장 레이더] 'R&D 베팅' 주성엔지니어링, 영업이익률 30% 전망" (2026.05.27)</span><span class="evd-sum">"지난해 매출의 3분의 1에 달하는 <strong>1,069억원을 R&D에</strong> 과감히 투입"(FY25 매출 3,107억 대비 약 34%). 한국투자증권: <strong>2026년 매출 4,030억·영업이익 1,150억</strong>(OPM 28~30%) 전망 — 증권업계 컨센(560~600억)의 약 2배인 개별 상단 추정. 북미 빅테크·TSMC 공급 시작으로 고객 다변화.</span><a href="https://www.bloter.net/news/articleView.html?idxno=663577" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="#"><span class="v">5</span></td><td data-label="항목"><span class="v">밸류에이션 체계 전환 (리레이팅)</span></td><td data-label="판정"><span class="v">◐ 부분 충족</span></td><td data-label="근거"><span class="v">시장은 이 회사를 이익 배수가 아니라 기대 배수로 평가한다(Fwd P/E 101.6배·백분위 94%). 이번엔 근거(잔고·컨센)가 일부 채워져 리레이팅의 정당성이 전작보다 높아졌다. 그러나 정착 조건은 같다 — 3Q·4Q 매출로 인도가 확인되고 배수가 피어(42배)와의 거리를 좁혀야 한다. 지금은 배수가 오히려 더 벌어졌다(90.8→101.6배).<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델 · build_series.py (2026.09.08 계산)</span><span class="evd-sum">Fwd P/E 현재 <strong>101.6배</strong> · 3년 평균 33.2배 · 3년 백분위 <strong>94%</strong>(범위 12.8~166.2) · 최근 1년 평균 59.6배·백분위 82%. NTM EPS(추정) 2,018원 — FnGuide Fwd12M EPS 2,128원 대비 −5.2%. 3년 백분위 75% 해당 P/E 28.7배 → 환산가 약 57,900원. 밴드 환산가 25배 50,450 · 45배 90,810 · 65배 131,170 · 85배 171,530원.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></span></td></tr>
+      <tr><td data-label="#"><span class="v">6</span></td><td data-label="항목"><span class="v">산업 TAM 확대 수혜</span></td><td data-label="판정"><span class="v">● 충족</span></td><td data-label="근거"><span class="v">HBM 웨이퍼 잠식률 18%→22%→30%(25~27년 말, TrendForce)와 범용 DRAM 가격 강세가 메모리 3사의 신규 팹 투자를 강제한다. SK하이닉스 M15X·용인, CXMT 10나노급 전환이 ALD 장비 TAM을 키운다. 여기에 이 회사는 ALG(세계 첫 출하)로 상위 노드 진입 옵션까지 갖는다. 이 항목이 강세론의 본체이며, 리포트가 부정하는 것은 TAM이 아니라 <strong>그 TAM이 이미 가격에 얼마나 들어갔는가</strong>다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">TrendForce 보도자료 · "Tight DRAM Supply Gives Suppliers Greater Pricing Power in HBM…" (2026.06.02)</span><span class="evd-sum">상위 3사 HBM 웨이퍼 투입 비중 — 2025년 말 약 <strong>18%</strong>, 2026년 말 <strong>22%</strong>, 2027년 말 <strong>30%</strong>. 2025년 하반기 이후 범용 DRAM 가격 급등이 타이트한 수급을 반영. HBM4 2027년 공급 협상으로 이동, 2027년 HBM 계약가 "multiples higher" 전망.</span><a href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 차세대 반도체용 ALG 통합 장비 세계 첫 출하" (2026.05.18)</span><span class="evd-sum">글로벌 반도체 기업에 <strong>ALG 트랜지스터 풀 인테그레이션 장비</strong> 세계 첫 출하 — 고객사·공급 규모 비공개. "ALD 대비 막질이 치밀하고 단단하다". 북미·아시아·유럽·중동 기업과 협업 중, 디스플레이·태양광 장비로 확장.</span><a href="https://www.thelec.kr/news/articleView.html?idxno=56778" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout"><div class="co-num">0.21배 → 0.75배</div><div class="co-lbl"><strong>수주잔고 ÷ FY25 매출 — 약 2.5개월치에서 9개월치로.</strong> 전작이 "이 숫자가 오르기 전까지 54조 발주는 이 회사 손익계산서에서 확인되지 않는다"고 쓴 그 숫자가 올랐다. 다음 검증은 3Q 분기보고서(11월 중순)에서 이 잔고가 다시 느는지, 아니면 인도로 소진되기 시작하는지다 — 둘 다 긍정 신호이며, 잔고가 정체하고 매출도 안 나오는 경우만 부정이다.</div></div>
+  <p class="desc" style="margin-top:12px;">집계: 충족 2 · 부분 3 · 미충족 1 — 산업 기회(6)와 회사의 수주 실행(3)이 이제 둘 다 공시로 확인된다. 남은 미충족(1)은 인도 시점의 문제이고, 남은 부분 충족(2·4·5)은 캐파·지역·배수의 문제다. "좋은 이야기, 비싼 가격"에서 <strong>"확인된 이야기, 더 비싼 가격"</strong>으로 옮겨 왔다.</p>
+</div>
+
+<!-- 07 어닝 모델 -->
+<div class="card prose" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 잔고 2,336억이 언제 매출이 되는가</h2>
+  <p class="deck">하우스 FY26E 영업이익 320억(전작 200억에서 상향) · NTM 900억(컨센 −5%) · FY27E 1,250억(컨센 하단) — 컨센을 거의 인정하는데도 배수가 안 맞는다.</p>
+  <div class="note"><strong>전작 추정의 사후 대사·정정 (전망 원장):</strong> ① 전작(8/11) FY26E 영업이익 200억·3Q26E 매출 700억/영업이익 50억 — 3Q 실적은 10월 말 발표 전이라 아직 채점 불가. 이번에 FY26E는 320억으로 상향한다(사유 아래). ② <strong>전작 다년 추정표의 EPS 열은 10배 과대 표기 오류였다</strong>(FY25A 6,583원·FY26E 4,213원·FY27E 24,208원으로 기재 — 지배주주순이익을 발행주식수 46,481,121주로 나누면 각각 약 658원·422원·2,420원이다). 7/19 초회 노트의 EPS도 같은 오류다. 배수·시나리오·콜은 별도 스크립트(build_series·scenario_calc)가 계산해 영향이 없었으나, 표를 읽은 독자에게는 오류였다. 이번 표에서 바로잡고 기록한다.</div>
+  <p><strong>구조: "인도 건수×장비 단가", 그리고 이번엔 잔고가 그 상한을 3.6배로 올렸다.</strong> 매출은 진행률이 아닌 <strong>인도기준</strong>으로 인식된다. 분기 매출은 수주잔고(2,336억) 중 그 분기에 고객 팹에 반입·검수된 금액이다. 회사가 밝힌 상반기 부진 사유가 "신규 공장 인프라 구축과 장비 반입의 시차"이므로, 잔고의 상당 부분은 <strong>고객 팹(SK하이닉스 M15X 등)의 반입 준비가 끝나는 시점</strong>에 몰려 인식된다. 장비주의 4Q 인도 집중 계절성과 겹치면 4Q26~1Q27이 인식 피크다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 흑자 턴어라운드…2300억 수주잔고로 하반기 '맑음'" (2026.08)</span><span class="evd-sum">2분기 말 수주잔고 <strong>2,336억3,500만원</strong>(1분기 말 대비 약 1,590억 증가), 반도체 장비 2,143억5,800만원. 회사: "주요 고객사의 신규 반도체 생산 공장 인프라 구축과 장비 반입의 시차가 발생했고, 인도 기준 매출 인식의 지연으로 상반기 매출이 전년 대비 감소", "<strong>하반기부터 수주 잔고의 매출 반영으로 우상향</strong>이 예상". 용인 제2연구소 1,048억(2028년 6월 완공).</span><a href="https://www.thelec.kr/news/articleView.html?idxno=61156" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>분기</th><th class="num">매출</th><th class="num">영업이익</th><th class="num">OPM</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td data-label="분기"><span class="v">FY24A (연간)</span></td><td data-label="매출" class="num"><span class="v">4,093.9억</span></td><td data-label="영업이익" class="num"><span class="v">972.0억</span></td><td data-label="OPM" class="num"><span class="v">23.7%</span></td><td data-label="성격"><span class="v">확정(사업보고서) — 직전 호황, 수출 85%</span></td></tr>
+      <tr><td data-label="분기"><span class="v">FY25A (연간)</span></td><td data-label="매출" class="num"><span class="v">3,106.9억</span></td><td data-label="영업이익" class="num"><span class="v">312.6억</span></td><td data-label="OPM" class="num"><span class="v">10.1%</span></td><td data-label="성격"><span class="v">확정 — 발주 공백, <span class="down">YoY −68%</span>. R&D 1,069억(34%) 유지</span></td></tr>
+      <tr><td data-label="분기"><span class="v">1Q26A</span></td><td data-label="매출" class="num"><span class="v">548.8억</span></td><td data-label="영업이익" class="num"><span class="v"><span class="down">−70.3억</span></span></td><td data-label="OPM" class="num"><span class="v">−12.8%</span></td><td data-label="성격"><span class="v">확정(잠정 4/28) — 영업적자</span></td></tr>
+      <tr><td data-label="분기"><span class="v">2Q26A</span></td><td data-label="매출" class="num"><span class="v">598.8억</span></td><td data-label="영업이익" class="num"><span class="v">14.2억</span></td><td data-label="OPM" class="num"><span class="v">2.4%</span></td><td data-label="성격"><span class="v">확정(잠정 7/29·반기보고서 8/14) — QoQ 흑자전환. 상반기 누계 −56.1억<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">DART · 연결재무제표기준 영업(잠정)실적 공정공시 (2026.07.29)</span><span class="evd-sum">2Q26 매출 <strong>598.8억원</strong>(전년동기 787.9억 대비 −24.0%), 영업이익 <strong>14.2억원</strong>(−78.4%), 순이익 55.0억원(+9.1%). 전분기 영업손실 −70.3억에서 흑자전환. 상반기 누계 매출 1,147.6억·영업손실 <strong>−56.1억</strong>.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729900867" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="분기"><span class="v">3Q26E</span></td><td data-label="매출" class="num"><span class="v">≈850억</span></td><td data-label="영업이익" class="num"><span class="v">≈130억</span></td><td data-label="OPM" class="num"><span class="v">≈15%</span></td><td data-label="성격"><span class="v">하우스 추정 — 잔고 인도 시작(전작 700억/50억에서 상향)</span></td></tr>
+      <tr><td data-label="분기"><span class="v">4Q26E</span></td><td data-label="매출" class="num"><span class="v">≈1,050억</span></td><td data-label="영업이익" class="num"><span class="v">≈250억</span></td><td data-label="OPM" class="num"><span class="v">≈24%</span></td><td data-label="성격"><span class="v">하우스 추정 — 연말 인도 집중, FY24 OPM 수준 회복</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">1Q·2Q는 DART 확정치, FY24·FY25는 사업보고서 확정치. 3Q·4Q는 하우스 추정이며 근거는 ① 6/30 잔고 2,336억 중 약 80%(1,900억)가 하반기에 인도된다는 가정(회사 "하반기 우상향" 발언 + 잔고 인식 시차 1~2분기) ② FY24 호황기 OPM 23.7%가 4Q에 재현되는 고정비 레버리지 ③ 3Q는 인도 초기라 OPM이 그보다 낮다는 가정. FY26E = −56.1(상반기) + 380(하반기) ≈ <strong>320억</strong>, 매출 ≈ 3,050억.</p>
+  <h3 style="font-size:14px;margin:18px 0 8px;">다년 추정 (하우스) — EPS 정정판</h3>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>연도</th><th class="num">매출</th><th class="num">영업이익</th><th class="num">OPM</th><th class="num">지배주주순이익</th><th class="num">EPS</th><th class="num">현재가 P/E</th></tr></thead>
+    <tbody>
+      <tr><td data-label="연도"><span class="v">FY25A</span></td><td data-label="매출" class="num"><span class="v">3,106.9억</span></td><td data-label="영업이익" class="num"><span class="v">312.6억</span></td><td data-label="OPM" class="num"><span class="v">10.1%</span></td><td data-label="지배주주순이익" class="num"><span class="v">≈306억</span></td><td data-label="EPS" class="num"><span class="v">≈658원 <span style="font-size:10.5px;color:var(--muted);">(FnGuide 755원)</span></span></td><td data-label="현재가 P/E" class="num"><span class="v">311배</span></td></tr>
+      <tr><td data-label="연도"><span class="v">FY26E</span></td><td data-label="매출" class="num"><span class="v">≈3,050억</span></td><td data-label="영업이익" class="num"><span class="v">≈320억</span></td><td data-label="OPM" class="num"><span class="v">≈10.5%</span></td><td data-label="지배주주순이익" class="num"><span class="v">≈333억</span></td><td data-label="EPS" class="num"><span class="v">≈717원 <span style="font-size:10.5px;color:var(--muted);">(FnGuide 974원)</span></span></td><td data-label="현재가 P/E" class="num"><span class="v">286배</span></td></tr>
+      <tr><td data-label="연도"><span class="v">FY27E</span></td><td data-label="매출" class="num"><span class="v">≈5,200억</span></td><td data-label="영업이익" class="num"><span class="v">≈1,250억</span></td><td data-label="OPM" class="num"><span class="v">≈24%</span></td><td data-label="지배주주순이익" class="num"><span class="v">≈1,303억</span></td><td data-label="EPS" class="num"><span class="v">≈2,803원</span></td><td data-label="현재가 P/E" class="num"><span class="v"><strong>73배</strong></span></td></tr>
+      <tr><td data-label="연도"><span class="v">FY27 컨센 상단 <span style="font-size:10.5px;color:var(--muted);">(참고)</span></span></td><td data-label="매출" class="num"><span class="v">6,000억</span></td><td data-label="영업이익" class="num"><span class="v">1,500억</span></td><td data-label="OPM" class="num"><span class="v">25%</span></td><td data-label="지배주주순이익" class="num"><span class="v">≈1,563억</span></td><td data-label="EPS" class="num"><span class="v">≈3,363원</span></td><td data-label="현재가 P/E" class="num"><span class="v"><strong>61배</strong></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">FY26E·FY27E는 하우스 추정. 지배주주순이익 = 영업이익 × 전환율 1.0421(DART 실측, 3Q24~2Q26 흑자 6개 분기 합산 — 1Q26·4Q25 적자 분기 제외; 과거 통계이며 전망의 자동 입력이 아니라 EPS 환산 계수로만 쓴다). EPS = 순이익 ÷ 46,481,121주. FY27 급증의 근거는 SK하이닉스 M15X·용인 반입이 2027년 본격화된다는 것이며, 이 가정이 모델의 최대 불확실성이다. NTM(2H26 380억 + 1H27 520억) = <strong>900억</strong>이 밴드 모델의 입력값이다.</p>
+  <h3 style="font-size:14px;margin:18px 0 8px;">컨센서스 델타 — 하우스가 컨센과 다르게 보는 지점</h3>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>항목</th><th class="num">컨센서스</th><th class="num">하우스</th><th>델타와 근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v">NTM 영업이익 (밴드 입력)</span></td><td data-label="컨센서스" class="num"><span class="v">≈950억<br><span style="font-size:10.5px;color:var(--muted);">(FnGuide Fwd12M EPS 2,128원 역산)</span></span></td><td data-label="하우스" class="num"><span class="v">900억</span></td><td data-label="델타와 근거"><span class="v"><span class="down">−5%</span> — 전작 −12%에서 좁혔다. 잔고 2,336억이 12개월 인도 상한을 명확히 했고 회사도 하반기 우상향을 공언했다. 남은 델타는 인도 시차(고객 팹 인프라)와 2곳뿐인 표본 위험이다<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 주성엔지니어링 (2026.09.07 기준, 09.08 조회)</span><span class="evd-sum">FY25A EPS 755원 · FY26E EPS <strong>974원</strong>(PER 192.15배) · Fwd12M EPS <strong>2,128원</strong>(PER 87.96배) · FY26E BPS 14,429원(PBR 12.97배) · 목표주가 <strong>205,000원</strong> · 투자의견 3.50 · <strong>추정기관 2개사</strong> · 외국인지분율 8.80% · 52주 283,000/26,350원 · 시총 87,013억(9/7 종가 187,200원 기준).</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=036930" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="항목"><span class="v">FY26E 영업이익</span></td><td data-label="컨센서스" class="num"><span class="v">560~600억<br><span style="font-size:10.5px;color:var(--muted);">(증권업계, EBN 9/8)</span></span></td><td data-label="하우스" class="num"><span class="v">320억</span></td><td data-label="델타와 근거"><span class="v"><span class="down">−45%</span> — 이 리포트 최대의 델타. 컨센대로면 하반기에만 616~656억(상반기 −56 보전 포함)을 벌어야 하고 이는 FY24 호황기 하반기와 같다. 잔고의 80%를 인도하고 OPM 20%를 내는 하우스 경로로는 380억이 상한이다. 한국투자증권 개별 추정(1,150억)은 잔고 전량 + 신규 수주 즉시 인도 가정이 아니면 산술이 안 맞는다<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">이비엔(EBN) · "'차세대 장비 호조' 주성엔지니어링, 내년 영업익 2배 청사진" (2026.09.08)</span><span class="evd-sum">증권업계 컨센서스: <strong>2026년 매출 3,500억원대·영업이익 560~600억원대</strong>, <strong>2027년 매출 5,700~6,000억원대·영업이익 1,300~1,500억원대</strong>. 2분기 연결 매출 599억·영업이익 14억(OPM 2.4%) 흑자전환. 고객사 SK하이닉스 M15X 증설·CXMT 10나노급 전환 투자, <strong>북미 메모리 업체향 ALD 양산 장비(연말)</strong> 신규 공급. 태양광·디스플레이·DTC·TGV 장비 개발 중.</span><a href="https://www.ebn.co.kr/news/articleView.html?idxno=1723242" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">블로터 · "[소부장 레이더] 'R&D 베팅' 주성엔지니어링, 영업이익률 30% 전망" (2026.05.27)</span><span class="evd-sum">"지난해 매출의 3분의 1에 달하는 <strong>1,069억원을 R&D에</strong> 과감히 투입"(FY25 매출 3,107억 대비 약 34%). 한국투자증권: <strong>2026년 매출 4,030억·영업이익 1,150억</strong>(OPM 28~30%) 전망 — 증권업계 컨센(560~600억)의 약 2배인 개별 상단 추정. 북미 빅테크·TSMC 공급 시작으로 고객 다변화.</span><a href="https://www.bloter.net/news/articleView.html?idxno=663577" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="항목"><span class="v">FY27E 영업이익</span></td><td data-label="컨센서스" class="num"><span class="v">1,300~1,500억</span></td><td data-label="하우스" class="num"><span class="v">1,250억</span></td><td data-label="델타와 근거"><span class="v"><span class="down">−4~−17%</span> — 컨센 하단 근처. 하우스는 FY27을 부정하지 않는다. 문제는 FY27 컨센 상단을 믿어도 현재가가 61배라는 데 있다(13)</span></td></tr>
+      <tr><td data-label="항목"><span class="v">컨센 신뢰도</span></td><td data-label="컨센서스" class="num"><span class="v">추정기관 2곳</span></td><td data-label="하우스" class="num"><span class="v">참고</span></td><td data-label="델타와 근거"><span class="v">전작 1곳 → 2곳. 목표주가 205,000원은 현재가와 같다(상승여력 0%). 투자의견 3.50. 컨센 형성은 됐으나 여전히 얇은 표본이며, 두 기관 목표가가 오늘 주가에 도달했다는 사실 자체가 정보다</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="desc" style="margin-top:12px;"><strong>다음 분기 체크포인트:</strong> ① 3Q26 잠정실적(10월 말)의 매출이 850억을 넘고 OPM이 두 자릿수인가 — 인도 개시의 첫 증거 ② 3Q26 분기보고서(11월 중순)의 수주잔고가 2,336억에서 더 느는가, 아니면 인도로 줄기 시작하는가 ③ 북미 메모리향 ALD 양산 장비 공급(연말)이 공시·보도로 확인되는가 — 지역 다변화(06-4)의 첫 실물 증거.</p>
+</div>
+
+<!-- 08 시나리오 -->
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>시나리오 — Bull / Base / Bear와 민감도</h2>
+  <p class="deck">Bull이 +11.6%뿐이고 Bear는 −80.3% — 전작(+21.2%/−80.6%)보다 상방이 더 줄었다. 이익은 올렸는데 주가가 더 올랐기 때문이다.</p>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>시나리오</th><th>전제 (근거)</th><th class="num">NTM 영업이익</th><th class="num">×배수</th><th class="num">환산가</th><th class="num">현재가 대비</th></tr></thead>
+    <tbody>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bull</strong></span></td><td data-label="전제 (근거)"><span class="v">잔고 2,336억이 4Q26~1Q27에 집중 인도되고 북미 메모리향 ALD 양산 장비(연말)·CXMT 발주가 겹쳐 NTM 1,200억(컨센 상단) — 배수는 3년 밴드 상단권 85배(1년 최고 166배 대비 보수)</span></td><td data-label="NTM 영업이익" class="num"><span class="v">1,200억</span></td><td data-label="×배수" class="num"><span class="v">85배</span></td><td data-label="환산가" class="num"><span class="v">228,683원</span></td><td data-label="현재가 대비" class="num"><span class="v"><span class="up">+11.6%</span></span></td></tr>
+      <tr class="self"><td data-label="시나리오"><span class="v"><strong>Base</strong></span></td><td data-label="전제 (근거)"><span class="v">하우스 NTM 900억(컨센 −5%) 실현 — 배수는 국내·글로벌 피어 4사 TTM 평균 42배(원익IPS 34.1·유진테크 29.5·AMAT 40.4·LRCX 62.5)로 정상화</span></td><td data-label="NTM 영업이익" class="num"><span class="v">900억</span></td><td data-label="×배수" class="num"><span class="v">42배</span></td><td data-label="환산가" class="num"><span class="v">84,747원</span></td><td data-label="현재가 대비" class="num"><span class="v"><span class="down">−58.7%</span></span></td></tr>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bear</strong></span></td><td data-label="전제 (근거)"><span class="v">인도기준 인식이 2027 하반기로 밀리고(고객 팹 인프라 지연) 디스플레이·태양광 부진 지속 — NTM 600억, 배수는 사이클 저점권 30배</span></td><td data-label="NTM 영업이익" class="num"><span class="v">600억</span></td><td data-label="×배수" class="num"><span class="v">30배</span></td><td data-label="환산가" class="num"><span class="v">40,356원</span></td><td data-label="현재가 대비" class="num"><span class="v"><span class="down">−80.3%</span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3 style="font-size:14px;margin:18px 0 8px;">민감도 — NTM 영업이익 (수주잔고 인도 시점, 배수 42배 고정)</h3>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>NTM 영업이익</th><th class="num">765억 (−15%)</th><th class="num">900억 (기준)</th><th class="num">1,035억 (+15%)</th></tr></thead>
+    <tbody>
+      <tr><td data-label="NTM 영업이익"><span class="v">환산가 (현재가 대비)</span></td><td data-label="765억 (−15%)" class="num"><span class="v">72,035원 (<span class="down">−64.9%</span>)</span></td><td data-label="900억 (기준)" class="num"><span class="v">84,747원 (<span class="down">−58.7%</span>)</span></td><td data-label="1,035억 (+15%)" class="num"><span class="v">97,459원 (<span class="down">−52.5%</span>)</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><strong>읽는 법:</strong> 이익을 15% 올려도(1,035억 — 컨센 950억을 9% 상회) 피어 배수에서는 환산가가 현재가의 절반 아래다. 이 주가는 "이익 추정이 틀렸을 가능성"이 아니라 <strong>"배수 100배가 피어 42배로 정상화되지 않는다"</strong>는 가정 위에 서 있다. 전작과 같은 구조인데 폭이 더 커졌다 — 전작은 +15% 이익에 −34%였고 지금은 −52.5%다. Bull(+11.6%)이 성립하려면 컨센 상단 이익과 85배 유지가 동시에 필요하다. 반대로 Bear는 인도 지연과 배수 압축이 함께 오는 경우로, 2025년 발주 공백기에 이미 한 번 벌어졌던 조합이다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다.</p>
+</div>
+
+<!-- 09 피어 비교 -->
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>글로벌 피어 비교 (TTM 실측)</h2>
+  <p class="deck">피어 넷은 TTM P/E 30~63배·영업이익률 8~34%인데, 주성은 TTM 적자다 — 전작보다 피어 배수가 내려와(평균 52→42배) 주성과의 거리는 더 벌어졌다.</p>
+  <div class="peer-chart">
+<div class="metric"><div class="mtitle">영업이익률 (OPM)</div>
+<div class="mhint">높을수록 수익성↑</div>
+<div class="brow"><span class="blabel self">주성엔지니어링</span><div class="btrack"><div class="bfill self" style="width:0%"></div></div><span class="bval mono">-6.6%</span></div>
+<div class="brow"><span class="blabel">원익IPS</span><div class="btrack"><div class="bfill" style="width:23%"></div></div><span class="bval mono">8%</span></div>
+<div class="brow"><span class="blabel">유진테크</span><div class="btrack"><div class="bfill" style="width:45%"></div></div><span class="bval mono">15.5%</span></div>
+<div class="brow"><span class="blabel">어플라이드 머티리얼즈</span><div class="btrack"><div class="bfill" style="width:90%"></div></div><span class="bval mono">30.8%</span></div>
+<div class="brow"><span class="blabel">램 리서치</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">34.1%</span></div>
+</div>
+<div class="metric"><div class="mtitle">P/E (TTM)</div>
+<div class="mhint">낮을수록 저평가</div>
+<div class="brow"><span class="blabel self">주성엔지니어링</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">1317.9배</span></div>
+<div class="brow"><span class="blabel">원익IPS</span><div class="btrack"><div class="bfill" style="width:3%"></div></div><span class="bval mono">34.1배</span></div>
+<div class="brow"><span class="blabel">유진테크</span><div class="btrack"><div class="bfill" style="width:2%"></div></div><span class="bval mono">29.5배</span></div>
+<div class="brow"><span class="blabel">어플라이드 머티리얼즈</span><div class="btrack"><div class="bfill" style="width:3%"></div></div><span class="bval mono">40.4배</span></div>
+<div class="brow"><span class="blabel">램 리서치</span><div class="btrack"><div class="bfill" style="width:5%"></div></div><span class="bval mono">62.5배</span></div>
+</div>
+<div class="metric"><div class="mtitle">시총 / 영업이익</div>
+<div class="mhint">낮을수록 이익 대비 저렴</div>
+<div class="brow"><span class="blabel">원익IPS</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">79.8배</span></div>
+<div class="brow"><span class="blabel">유진테크</span><div class="btrack"><div class="bfill" style="width:69%"></div></div><span class="bval mono">54.9배</span></div>
+<div class="brow"><span class="blabel">어플라이드 머티리얼즈</span><div class="btrack"><div class="bfill" style="width:48%"></div></div><span class="bval mono">38.3배</span></div>
+<div class="brow"><span class="blabel">램 리서치</span><div class="btrack"><div class="bfill" style="width:68%"></div></div><span class="bval mono">54.5배</span></div>
+</div>
+</div>
+  <details class="peer-raw"><summary>원본 수치 표 (절대액·정성 코멘트 포함)</summary>
+  <div class="tbl-scroll">
+  <table class="tbl-judge">
+    <thead><tr><th>종목</th><th class="num">시총</th><th class="num">TTM 매출</th><th class="num">TTM 영업이익</th><th class="num">OPM</th><th class="num">P/E (TTM)</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr class="self"><td data-label="종목"><span class="v">주성엔지니어링</span></td><td data-label="시총" class="num"><span class="v">9.6조원</span></td><td data-label="TTM 매출" class="num"><span class="v">0.23조원</span></td><td data-label="TTM 영업이익" class="num"><span class="v">−148억</span></td><td data-label="OPM" class="num"><span class="v">−6.6%</span></td><td data-label="P/E (TTM)" class="num"><span class="v">1,318배*</span></td><td data-label="비고"><span class="v">Fwd P/E 101.6배(하우스)·88.0배(FnGuide) — TTM은 이익 바닥으로 무의미</span></td></tr>
+      <tr><td data-label="종목"><span class="v">원익IPS (240810)</span></td><td data-label="시총" class="num"><span class="v">5.9조원</span></td><td data-label="TTM 매출" class="num"><span class="v">0.9조원</span></td><td data-label="TTM 영업이익" class="num"><span class="v">0.1조원</span></td><td data-label="OPM" class="num"><span class="v">8.0%</span></td><td data-label="P/E (TTM)" class="num"><span class="v">34.1배</span></td><td data-label="비고"><span class="v">국내 동종 최대 피어 — 매출 4배인데 시총은 주성의 0.6배</span></td></tr>
+      <tr><td data-label="종목"><span class="v">유진테크 (084370)</span></td><td data-label="시총" class="num"><span class="v">3.3조원</span></td><td data-label="TTM 매출" class="num"><span class="v">0.4조원</span></td><td data-label="TTM 영업이익" class="num"><span class="v">0.1조원</span></td><td data-label="OPM" class="num"><span class="v">15.5%</span></td><td data-label="P/E (TTM)" class="num"><span class="v">29.5배</span></td><td data-label="비고"><span class="v">국내 ALD·LPCVD 경쟁사</span></td></tr>
+      <tr><td data-label="종목"><span class="v">어플라이드 머티리얼즈 (AMAT)</span></td><td data-label="시총" class="num"><span class="v">369.7B$</span></td><td data-label="TTM 매출" class="num"><span class="v">31.3B$</span></td><td data-label="TTM 영업이익" class="num"><span class="v">9.7B$</span></td><td data-label="OPM" class="num"><span class="v">30.8%</span></td><td data-label="P/E (TTM)" class="num"><span class="v">40.4배</span></td><td data-label="비고"><span class="v">글로벌 1위 — 규모·수익성 모두 다른 체급</span></td></tr>
+      <tr><td data-label="종목"><span class="v">램 리서치 (LRCX)</span></td><td data-label="시총" class="num"><span class="v">394.7B$</span></td><td data-label="TTM 매출" class="num"><span class="v">21.2B$</span></td><td data-label="TTM 영업이익" class="num"><span class="v">7.2B$</span></td><td data-label="OPM" class="num"><span class="v">34.1%</span></td><td data-label="P/E (TTM)" class="num"><span class="v">62.5배</span></td><td data-label="비고"><span class="v">식각·증착 글로벌 리더</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  </details>
+  <p class="fine" style="margin-top:10px;">*왜곡 주석: 주성엔지니어링의 TTM P/E 1,318배는 분모(TTM 이익 72억)가 0에 근접해 생긴 수학적 산물이며 비교에 쓸 수 없다. 비교는 Forward 기준 — 하우스 Fwd 101.6배는 피어 TTM 평균 41.6배의 2.4배, FnGuide Fwd 88.0배로 봐도 2.1배다. 통화가 섞이므로 절대액은 각자 통화로, 비교는 배수·비율로만 읽는다. 원익IPS·유진테크 P/E가 전작(46.4·52.1배) 대비 내려온 것은 두 회사의 TTM 이익이 늘어난 결과다 — 국내 장비 피어는 이익으로 배수를 눌렀고 주성은 아직 그 단계가 아니다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">DART·SEC 공시 합산 · peer_table.py TTM 실측 (2026.09.08 계산)</span><span class="evd-sum">주성엔지니어링 시총 9.6조·TTM 매출 0.23조·영업이익 −148억·OPM −6.6%·P/E 1,318배(왜곡) / 원익IPS 5.9조·OPM 8.0%·P/E 34.1·시총/OP 79.8 / 유진테크 3.3조·15.5%·29.5·54.9 / AMAT $369.7B·30.8%·40.4·38.3 / LRCX $394.7B·34.1%·62.5·54.5. 피어 4사 TTM P/E 평균 <strong>41.6배</strong>.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></p>
+</div>
+
+<!-- 10 수급 -->
+<div class="card prose" id="s10">
+  <h2><span class="idx">10</span>수급 — 5%룰은 조용하고, 가격은 시끄럽다</h2>
+  <p class="deck">8/3 이후 대량보유 신규 보고가 없는데 주가는 +26%다 — 이번 랠리는 공시 의무선 아래의 외국인·기관 다수가 만들었다.</p>
+  <p><strong>5%룰 대량보유 타임라인:</strong> <strong>미래에셋자산운용</strong>이 7/7 5.83%(신규, <span class="up">+2.82%p</span>) → 8/3 6.93%(<span class="up">+1.10%p</span>)로 매집한 뒤 <strong>추가 보고가 없다</strong>(9/8 조회). <strong>삼성자산운용</strong> 7/6 6.00%(<span class="down">−1.04%p</span>), 최대주주 측(황철주 외) 3/10 31.34%. 즉 5% 이상 대량보유 보고자 구성은 전작과 동일하다 — 이번 4주 랠리는 이들의 추가 매집으로 설명되지 않는다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">DART · 주식등의 대량보유상황보고서(약식) — 미래에셋자산운용 (2026.08.03, 2026.07.07)</span><span class="evd-sum">미래에셋자산운용 지분율 <strong>5.83%(7/7 신규, +2.82%p) → 6.93%(8/3, +1.10%p)</strong>. 삼성자산운용 7/6 6.00%(−1.04%p). 황철주 외 3/10 31.34%(+1.26%p). 8/3 이후 신규 보고 없음(9/8 조회).</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260803000357" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>외국인·거래대금:</strong> FnGuide 외국인지분율 8.80%(9/7). 9/4 +6.13%·9/7 +4.99% 이틀 급등 국면에서 거래대금 2,000억대(9/7 2,001억), 주간 코스닥 외국인 순매수 상위 종목으로 반복 보도됐다. 투자자별 순매수 실측(KRX)은 <strong>? 확인불가</strong> — KRX Open API가 투자자별 매매동향을 제공하지 않아 보도로 대체한다. (KRX 투자자별 거래실적 자료를 별도 확보하면 판정 가능)<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">잡포스트 · "주성엔지니어링 19만원 눈앞, 이틀째 급등…반도체 장비주에 다시 불붙었다" (2026.09.07)</span><span class="evd-sum">9/7 오후 3시 187,200원(+4.99%), 장중 고점 189,800원, 거래량 107만주·거래대금 <strong>2,001억원</strong>, 직전 거래일 +6.13%. "메모리 업체의 실적과 설비투자 전망이 개선될 경우 반도체 제조장비 업체의 수주 기대도 함께 높아질 수 있다". 52주 최고 283,000/최저 26,350원.</span><a href="https://www.job-post.co.kr/news/articleView.html?idxno=226463" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 주성엔지니어링 (2026.09.07 기준, 09.08 조회)</span><span class="evd-sum">FY25A EPS 755원 · FY26E EPS <strong>974원</strong>(PER 192.15배) · Fwd12M EPS <strong>2,128원</strong>(PER 87.96배) · FY26E BPS 14,429원(PBR 12.97배) · 목표주가 <strong>205,000원</strong> · 투자의견 3.50 · <strong>추정기관 2개사</strong> · 외국인지분율 8.80% · 52주 283,000/26,350원 · 시총 87,013억(9/7 종가 187,200원 기준).</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=036930" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>전작 콜의 4주 성적표:</strong> 전작(8/11, 비중축소) 기준가 162,400원 → 205,000원, <span class="up">+26.2%</span>. 같은 기간 KOSDAQ은 854→822(−3.8%)다. <strong>전작 콜은 4주 지평에서 30%p 틀렸다.</strong> 트랙레코드 원장에 그대로 남기며, 콜의 시간지평(NTM)과 4주 성과를 혼동하지 않되 틀린 것을 틀렸다고 적는다. 전작 리스크 1("사이클 초입의 밸류에이션 콜은 자주 틀린다")이 정확히 실현된 형태다.</p>
+  <div class="callout"><div class="co-num">+26.2% vs −3.8%</div><div class="co-lbl"><strong>전작 이후 주성 vs KOSDAQ (8/11→9/8)</strong> — 지수가 빠지는 동안 이 종목만 올랐다. 반기보고서(8/14)와 IR(8/24)이 만든 종목 고유의 재평가이며, 그 재평가의 크기(+26%)가 잔고 증가(+257%)나 이익 추정 상향(NTM +6%)에 비례하는지가 13의 질문이다.</div></div>
+  <p class="fine">대량보유 보고는 5% 이상 지분의 1%p 이상 변동 시 제출 의무가 발생하므로, 5% 미만 기관·개인·외국인의 매매는 이 창으로 보이지 않는다. 보고 시점과 실제 매매 시점 사이에 시차가 있다.</p>
+</div>
+
+<!-- 11 반대 논리 -->
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 무엇이 이 콜을 틀리게 하는가</h2>
+  <p class="deck">전작 콜은 이미 한 번 틀렸다. 같은 이유로 또 틀릴 수 있다 — 장비 사이클 초입에서 배수만 보고 파는 것의 위험을 전작보다 무겁게 적는다.</p>
+  <div class="note"><strong>콜을 바꿀 조건 — 이번엔 공식과 같은 언어로 쓴다.</strong> 전작의 전환 조건 ①("수주잔고 1,500억 이상")은 충족됐지만 콜은 바뀌지 않았다. 콜은 rating.py가 <strong>P/E 백분위와 Base 상승여력</strong>만으로 산출하기 때문이다 — 전작의 조건 서술은 그 공식과 정합하지 않았고, 이는 전작의 설계 결함이다. 이번 조건은 공식의 두 입력으로 직접 쓴다.<br>
+  <strong>(비중축소 → 중립):</strong> 다음 둘 중 하나. ① <strong>3년 P/E 백분위 75% 이하</strong> — 현 NTM EPS 2,018원 기준 P/E 28.7배, 주가 약 <strong>57,900원</strong> 이하(이익 추정이 오르면 이 문턱도 오른다: NTM 1,200억이면 약 77,200원). ② <strong>Base 상승여력 0% 이상</strong> — 피어 배수 42배 기준 NTM 영업이익이 약 <strong>2,180억</strong>(현재가 205,000원 ÷ 42 × 46.48M주 ÷ 1.0421)이어야 한다. 즉 컨센 FY27 상단(1,500억)을 훌쩍 넘는 NTM이 필요하다.<br>
+  <strong>(비중축소 → 비중확대):</strong> ①·② 동시 충족 — 조정과 이익 상향이 함께 올 때. 현실적으로는 3Q·4Q 인도로 NTM이 1,200억+로 확인되면서 주가가 100,000원 아래로 조정되는 조합이다.</div>
+  <p><strong>리스크 1 — 사이클 초입의 밸류에이션 콜은 자주 틀린다 (이 콜의 최대 약점, 전작에서 실제로 실현됨).</strong> 전작 비중축소 이후 4주간 +26.2%다. 장비주는 이익이 바닥일 때 P/E가 세 자릿수로 치솟고 그 상태에서 주가가 몇 배 더 오르는 일이 반복돼 왔다. FY27E 하우스 1,250억이 현실이 되면 현재가 P/E는 73배, 컨센 상단이면 61배다 — <strong>"2027년 실적이면 정당화된다"는 논리가 시장을 지배하는 동안 NTM 지평의 콜은 계속 틀릴 수 있다.</strong> 이 리포트의 비중축소는 12개월 지평이며, 2027 실적으로 61~73배를 지불할 의사가 있는 투자자에게는 다른 결론이 나올 수 있다.</p>
+  <p><strong>리스크 2 — 수주잔고가 한 번 더 뛴다.</strong> 2,336억은 6/30 기준이며 7~9월 신규 수주(북미 메모리향 ALD 양산 장비 등)는 반영되지 않았다. 3Q 분기보고서에서 잔고가 3,500억+로 확인되면 NTM 1,200억(Bull)이 Base가 되고, 08의 표 전체가 상향된다. 06 항목 3이 한 분기 만에 ○→●가 된 전례가 있다.</p>
+  <p><strong>리스크 3 — ALG가 노드 전환의 표준 장비가 되는 경우.</strong> 세계 첫 ALG 통합 장비 출하(5/18)는 고객·규모 비공개다. 만약 이것이 1nm급 트랜지스터 형성의 표준으로 채택되면 이 회사는 "국내 ALD 4위"가 아니라 "글로벌 신공정 독점 장비사"로 재분류되고, 피어 42배가 아니라 램리서치 62배 이상의 배수가 정당화된다. 하우스는 이 시나리오에 확률을 부여하지 않는다(근거 자료 없음) — 그러나 배제하지도 않는다.<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">디일렉(THE ELEC) · "주성엔지니어링, 차세대 반도체용 ALG 통합 장비 세계 첫 출하" (2026.05.18)</span><span class="evd-sum">글로벌 반도체 기업에 <strong>ALG 트랜지스터 풀 인테그레이션 장비</strong> 세계 첫 출하 — 고객사·공급 규모 비공개. "ALD 대비 막질이 치밀하고 단단하다". 북미·아시아·유럽·중동 기업과 협업 중, 디스플레이·태양광 장비로 확장.</span><a href="https://www.thelec.kr/news/articleView.html?idxno=56778" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>리스크 4 — 컨센 표본 2곳은 양방향이다.</strong> 커버리지가 3~5곳으로 늘면서 목표주가가 상향 분포를 그리면 수급과 배수가 함께 움직일 수 있다. 반대로 두 기관의 목표주가(205,000원)에 이미 도달했다는 사실은 추가 상향이 없으면 상방이 닫혔다는 뜻이기도 하다.</p>
+  <p><strong>리스크 5 — 고객·지역 집중은 완화됐지만 사라지지 않았다.</strong> DQN(6/25)이 지적한 "반도체 2개사 84%·중국 64%"는 FY25 기준이고, 반기 들어 국내 68%로 역전됐다 — 중국 리스크가 줄었으나 이번엔 SK하이닉스 단일 고객 집중이 커졌다. M15X 반입 일정 하나가 밀리면 3Q·4Q 하우스 추정(850억·1,050억)이 통째로 다음 분기로 밀린다. 인도기준 회계에서 이것은 "분기 실적 쇼크"로 보인다.<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">한국금융신문 · "[DQN] 주성엔지니어링, 수주 75% 줄었는데 PBR은 14배" (2026.06.25)</span><span class="evd-sum">수주잔고 2022년 말 3,036억 → 2026년 1분기 747억(개별 기준 서술, −75%), 계약부채 1,208억(2024말) → 248억(1Q26). PBR 14.2배(원익IPS 7.4·유진테크 7.6·테스 7.0·PSK 8.7). 1Q26 매출총이익률 52.2%. <strong>고객 집중 — 반도체 2개사 84%, 중국 64%</strong>. "선행지표가 아직 뚜렷하게 돌아서지 않았다".</span><a href="https://www.fntimes.com/html/view.php?ud=202606241338252814141825007d_18" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">DART · 주성엔지니어링 반기보고서 2026.06 — 수주상황·생산실적·매출실적 (2026.08.14)</span><span class="evd-sum">반도체 제조장비 수주총액 <strong>301,891백만원</strong>·기납품액 87,533백만원·수주잔고 <strong>214,358백만원</strong>, 디스플레이 제조장비 수주잔고 19,277백만원 — 합계 수주잔고 <strong>233,635백만원</strong>(기준일 2026-06-30). 태양전지 제조장비는 수주총액·잔고 없음(−). 당반기 평균가동률 <strong>98.06%</strong>(가동가능 22,592.0Hrs / 실제 22,153.9Hrs). 반도체 장비 생산실적 반기 5대(FY25 18대·FY24 41대). 반기 매출 114,761백만원 = 내수 78,476 + 수출 36,285. "매출인식 기준은 진행률을 적용하지 않고 인도기준".</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- 12 다음 이벤트 -->
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>다음 확인 이벤트</h2>
+  <p class="deck">10월 말 3Q 잠정실적의 매출 한 줄이 "잔고가 매출이 되는가"의 첫 답이고, 11월 중순 분기보고서의 잔고가 두 번째 답이다.</p>
+  <div class="tbl-scroll">
+  <div class="tbl-data scrollable"><table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>확인할 것</th></tr></thead>
+    <tbody>
+      <tr><td>9~10월 (수시)</td><td>SK하이닉스 M15X·용인 장비 발주, 북미 메모리향 ALD 양산 장비 공급</td><td>주성 단일판매·공급계약 공시가 뜨는가 — 금액·납기가 07 어닝 모델의 인도 시점 가정을 바꾼다. 북미향은 06-4(지역 다변화)의 첫 실물 증거</td></tr>
+      <tr><td><strong>10월 말 (예년 10/27, 추정)</strong></td><td>3Q26 잠정실적 공정공시</td><td>하우스 추정 매출 850억·영업이익 130억 대비 — <strong>매출 850억+ 및 OPM 두 자릿수면 "잔고→매출 전환" 확인</strong>. 미달이면 Bear(인도 지연) 경로</td></tr>
+      <tr><td><strong>11월 중순 (예년 11/12, 추정)</strong></td><td>3Q26 분기보고서</td><td><strong>수주잔고가 2,336억에서 더 느는가(신규 수주) 또는 인도로 줄기 시작하는가</strong> — 둘 다 긍정. 정체+매출 미달 조합만 부정 · 3Q 가동률 · 지역별 매출(북미 분리 여부) · 태양전지 수주 0 탈출 여부</td></tr>
+      <tr><td>연말 (보도 기준)</td><td>북미 메모리 업체향 ALD 양산 장비 공급</td><td>EBN(9/8) 보도의 실현 여부 — 4Q 매출 인식 또는 잔고 추가 계상 확인</td></tr>
+      <tr><td>수시</td><td>증권사 커버리지 확대·목표주가 갱신</td><td>추정기관 2곳 → 3곳 이상 · 목표주가 205,000원(현재가와 동일)의 상향 여부 — 상향 없으면 컨센 기준 상방 0%</td></tr>
+      <tr><td>수시</td><td>5%룰 대량보유 추가 보고</td><td>미래에셋 6.93% 이후 추가 매집 여부 · 신규 5% 진입자(외국계 포함) 출현 여부 — 이번 랠리 주체의 정체</td></tr>
+      <tr><td>2028년 6월</td><td>용인 제2연구소 완공 (1,048억)</td><td>R&D Fab — 생산 캐파 병목(06-2) 해소 여부는 별도 증설 공시로 확인</td></tr>
+    </tbody>
+  </table></div>
+  </div>
+</div>
+
+<!-- 13 밸류에이션 -->
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 지금 몇 배를 내고 사는 걸까</h2>
+  <p class="deck">Forward P/E 101.6배 · 3년 백분위 94% — 밴드 최상단(85배 = 171,530원)을 20% 넘어선 자리다. 이익이 1.06배 되는 동안 주가는 1.26배가 됐다.</p>
+  <p><strong>리레이팅 분해 (전작 이후 4주):</strong> 주가 162,400원 → 205,000원(<span class="up">+26.2%</span>). 같은 기간 하우스 NTM 영업이익은 850억 → 900억(<span class="up">+5.9%</span>), FnGuide Fwd12M EPS는 2,024원 → 2,128원(<span class="up">+5.1%</span>)이다. <strong>주가 상승의 약 5분의 1만 이익 상향이고 나머지 5분의 4가 배수 확장이다.</strong> 2023년 5월 이후로 넓히면 주가 +1,104%(17,030원→205,000원) 대 NTM 이익 +64%(550억→900억) — 전작과 같은 구조가 더 극단화됐다.</p>
+  <p><strong>역사적 위치:</strong> 현재 Fwd P/E <strong>101.6배</strong>는 3년 평균 33.2배의 3.1배이고 <strong>백분위 94%</strong>(과열 구간)다. 최근 1년으로 좁혀도 평균 59.6배·백분위 82%다. 밴드별 환산 주가는 25배 = 50,450원 · 45배 = 90,810원 · 65배 = 131,170원 · <strong>85배 = 171,530원</strong> — 현재가(205,000원)는 밴드 최상단(85배)보다 20% 위에 있다. 3년 백분위 75%에 해당하는 P/E는 28.7배(≈57,900원)다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">토스 Open API + 하우스 NTM 모델 · build_series.py (2026.09.08 계산)</span><span class="evd-sum">Fwd P/E 현재 <strong>101.6배</strong> · 3년 평균 33.2배 · 3년 백분위 <strong>94%</strong>(범위 12.8~166.2) · 최근 1년 평균 59.6배·백분위 82%. NTM EPS(추정) 2,018원 — FnGuide Fwd12M EPS 2,128원 대비 −5.2%. 3년 백분위 75% 해당 P/E 28.7배 → 환산가 약 57,900원. 밴드 환산가 25배 50,450 · 45배 90,810 · 65배 131,170 · 85배 171,530원.</span><span class="evd-nolink">계산값 — 원문 링크 없음</span></span></span></p>
+  <p><strong>FY27 지평으로 봐도:</strong> 시장이 "2027 실적"을 산다면 그 실적으로 나눠 보자. 하우스 FY27E EPS 2,803원 → 현재가 P/E <strong>73배</strong>, 증권업계 컨센 상단(영업이익 1,500억, EPS ≈3,363원) → <strong>61배</strong>. 램리서치의 TTM P/E가 62.5배다 — 즉 현재가는 <strong>FY27 컨센 상단이 전부 실현된 뒤에도 글로벌 최상위 장비사의 현재 배수</strong>를 요구한다. 2028년 이익까지 끌어와야 피어 배수가 나온다.</p>
+  <p><strong>2차 밸류에이션 (P/B–ROE 교차확인):</strong> FnGuide FY26E BPS 14,429원 기준 현재 <strong>P/B 14.2배</strong>(FnGuide 표기 12.97배는 9/7 종가 기준). 하우스 FY26E 순이익 333억 ÷ 자기자본(46,481,121주 × 14,429원 ≈ 6,707억) ≈ <strong>ROE 5.0%</strong>. FY27E 순이익 1,303억이면 ROE ≈ 17%(자기자본 증가 반영 전). <strong>ROE 5%에 P/B 14배</strong>는 어떤 잔여이익 모형으로도 정당화되지 않으며, FY27 ROE 17%로도 P/B 14배는 성장률 가정이 극단적이어야 성립한다. 6월 DQN이 지적한 PBR 14.2배(피어 7~9배)가 주가 조정에도 그대로 남았다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">FnGuide 기업모니터 · 주성엔지니어링 (2026.09.07 기준, 09.08 조회)</span><span class="evd-sum">FY25A EPS 755원 · FY26E EPS <strong>974원</strong>(PER 192.15배) · Fwd12M EPS <strong>2,128원</strong>(PER 87.96배) · FY26E BPS 14,429원(PBR 12.97배) · 목표주가 <strong>205,000원</strong> · 투자의견 3.50 · <strong>추정기관 2개사</strong> · 외국인지분율 8.80% · 52주 283,000/26,350원 · 시총 87,013억(9/7 종가 187,200원 기준).</span><a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=036930" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">한국금융신문 · "[DQN] 주성엔지니어링, 수주 75% 줄었는데 PBR은 14배" (2026.06.25)</span><span class="evd-sum">수주잔고 2022년 말 3,036억 → 2026년 1분기 747억(개별 기준 서술, −75%), 계약부채 1,208억(2024말) → 248억(1Q26). PBR 14.2배(원익IPS 7.4·유진테크 7.6·테스 7.0·PSK 8.7). 1Q26 매출총이익률 52.2%. <strong>고객 집중 — 반도체 2개사 84%, 중국 64%</strong>. "선행지표가 아직 뚜렷하게 돌아서지 않았다".</span><a href="https://www.fntimes.com/html/view.php?ud=202606241338252814141825007d_18" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>컨센서스와의 거리:</strong> FnGuide 목표주가 205,000원 = 현재가(상승여력 <strong>0.0%</strong>), 추정기관 2곳, 투자의견 3.50. 두 기관의 목표가에 주가가 도달했다. 하우스 Base(84,747원)와의 차이는 배수 가정에서 온다 — 하우스는 피어 평균 42배, 기관 목표가는 Fwd12M EPS 2,128원 기준 약 96배를 함의한다.</p>
+  <p><strong>결론:</strong> 좋은 회사인가 — 전작보다 더 그렇다. 수주잔고는 확인됐고(06-3), 가동률은 98%이며(05), 국내 고객 비중 상승으로 중국 리스크는 줄었다(06-4). 남은 질문 — 이 가격에 남은 상방이 있는가 — 에 대한 하우스의 답은 여전히 <strong>"NTM 지평에서는 없다"</strong>이고, 이번엔 그 답의 근거가 이익 부족이 아니라 <strong>가격 초과</strong>다. 컨센을 거의 인정(NTM −5%, FY27 하단)해도 Base는 −58.7%이고, FY27 컨센 상단으로도 61배다. <strong>콜: 비중축소(유지).</strong> 전작 콜이 4주간 틀렸다는 사실을 기록하며, 11에 공식과 같은 언어로 다시 쓴 전환 조건에 따라 10월 말·11월 중순에 콜을 갱신한다.</p>
+</div>
+
+<details class="pe-embed" data-peb="036930" open>
+  <summary>
+    <span class="peb-t">📊 주성엔지니어링 — Forward P/E 밴드 분석 (3년)</span>
+    <span class="peb-s">현재 101.6배 · 3년 평균 33.2배 · 백분위 94%</span>
+  </summary>
+  <div class="inner">
+    <div class="note" style="margin-top:4px;"><strong>주의:</strong> 아래 NTM 영업이익·EPS는 실제 컨센서스 집계가 아니라 리포트·공시 시점 앵커를 선형 보간한 <strong>추정치</strong>입니다. 밴드의 절대 레벨보다 <strong>추세와 상대 위치</strong>를 읽는 용도로 쓰세요. 2025-01~2026-03은 다운사이클·발주 공백 구간, 2026-04 이후는 저점 통과·수주 회복 리레이팅 구간(음영)입니다.</div>
+    <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM EPS × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+    <div class="chart-box peb-a">
+      <svg viewBox="0 0 980 400" role="img" aria-label="주가와 forward P/E 밴드 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <p class="desc" style="margin-top:16px;">Forward P/E 추이 — 주가 ÷ 추정 NTM EPS. 실선 가로줄은 기간 평균.</p>
+    <div class="chart-box peb-b">
+      <svg viewBox="0 0 980 260" role="img" aria-label="forward P/E 추이 차트"></svg>
+      <div class="tooltip"></div>
+    </div>
+    <div class="tbl-scroll" style="margin-top:16px;">
+    <table>
+      <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 영업이익 추정</th><th class="num">환산 EPS</th><th>근거</th></tr></thead>
+      <tbody class="peb-anchor-rows">
+        <tr><td>'23.5.30</td><td class="num">550억원</td><td class="num">1,233원</td><td>메모리 다운사이클 저점기 — 반도체 장비 발주 위축. FY24 회복 기대 초기의 NTM 영업이익 근사(사후 실적 기반, 당시 컨센 보도 미확보)</td></tr>
+        <tr><td>'24.5.15</td><td class="num">900억원</td><td class="num">2,018원</td><td>FY24 실적 호조 국면 — FY24 확정 영업이익 972억에 수렴하는 NTM 기대. DRAM 신규 투자·ALD 장비 수요 회복(사후 실적 기반 근사)</td></tr>
+        <tr><td>'25.5.15</td><td class="num">500억원</td><td class="num">1,121원</td><td>다운사이클 재진입 — FY25 확정 영업이익 313억(YoY −68%)·매출 3,107억(YoY −24%)의 발주 공백 반영(사후 실적 기반 근사)</td></tr>
+        <tr><td>'26.4.28</td><td class="num">620억원</td><td class="num">1,390원</td><td>1Q26 잠정(DART 2026-04-28) 영업손실 −70.3억 — 사이클 저점 확인. HBM·1c DRAM capex 기대로 FY27 회복을 선반영하나, 적자 분기라 NTM 상향은 제한적</td></tr>
+        <tr><td>'26.7.29</td><td class="num">750억원</td><td class="num">1,681원</td><td>2Q26 잠정(DART 2026-07-29) 영업이익 14.2억 QoQ 흑자전환·매출 598.8억(YoY −24.0%) — 저점 통과 신호. 다만 상반기 누적은 여전히 영업손실 −56.1억</td></tr>
+        <tr><td>'26.8.11</td><td class="num">850억원</td><td class="num">1,906원</td><td>SK하이닉스 용인·청주 54.3조 투자 확정(2026-08-07)으로 ALD 발주 사이클 기대 상향 — 단 하우스는 컨센(FnGuide Fwd12M EPS 2,024원 환산 ≈961억) 대비 −12% 보수. 상반기 영업적자와 장비 인도기준 매출 인식(발주→매출 이연) 리스크를 반영했고, 컨센 추정기관이 1곳뿐이라 표본이 얇다</td></tr>
+        <tr><td>'26.9.8</td><td class="num">900억원</td><td class="num">2,018원</td><td>반기보고서(DART 2026-08-14) 수주잔고 654억→2,336억(3.6배) 확인 + 증권업계 컨센 FY27 영업이익 1,300~1,500억(EBN 9/8) — 하우스 NTM 900억은 FnGuide Fwd12M EPS 2,128원 환산(≈950억) 대비 −5%. 인도기준 인식의 시차를 여전히 보수적으로 반영. 추정기관 2곳으로 표본은 얇다</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine peb-foot" style="margin-top:12px;">환산 가정: NTM 지배주주순이익 = NTM 영업이익 × 전환율 1.0421(DART 실측, 3Q24~2Q26 흑자 6개 분기 합산 — 1Q26·4Q25 적자 분기는 제외; 과거 통계이며 전망의 자동 입력이 아님) ÷ 발행주식수 46,481,121주 · 앵커 사이 선형 보간. '근사' 표기는 당시 컨센서스 보도를 확보하지 못해 사후 실적 기반으로 추정한 값이다. 전작 전환율 0.9785 → 이번 1.0421(2Q26 분기가 편입되고 2Q24가 빠짐)로 같은 NTM 영업이익에 대한 EPS가 6.5% 높게 환산된다 — 배수 비교 시 감안.</p>
+  </div>
+</details>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>DART · 주성엔지니어링 반기보고서 2026.06 (2026.08.14) — 수주잔고 2,336억·가동률 98.06%·생산 5대·내수/수출·지역별 매출·시설투자 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260814002613" target="_blank" rel="noopener">↗</a></li>
+    <li>이비엔(EBN) · "'차세대 장비 호조' 주성엔지니어링, 내년 영업익 2배 청사진" (2026.09.08) — 증권업계 컨센 FY26/FY27·북미 메모리향 ALD·CXMT <a href="https://www.ebn.co.kr/news/articleView.html?idxno=1723242" target="_blank" rel="noopener">↗</a></li>
+    <li>디일렉 · "주성엔지니어링, 흑자 턴어라운드…2300억 수주잔고로 하반기 '맑음'" (2026.08) — 회사의 상반기 부진 사유·하반기 전망 발언 <a href="https://www.thelec.kr/news/articleView.html?idxno=61156" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 연결재무제표기준 영업(잠정)실적 공정공시 (2026.07.29) — 2Q26 매출 598.8억·영업이익 14.2억 <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260729900867" target="_blank" rel="noopener">↗</a></li>
+    <li>DART · 주식등의 대량보유상황보고서 — 미래에셋 6.93%(8/3)·삼성자산 6.00%(7/6)·황철주 외 31.34%(3/10) <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260803000357" target="_blank" rel="noopener">↗</a></li>
+    <li>FnGuide 기업모니터 · 주성엔지니어링 (2026.09.07 기준) — Fwd12M EPS 2,128원·목표주가 205,000원·추정기관 2곳·투자의견 3.50·외국인 8.80% <a href="https://comp.wisereport.co.kr/company/c1010001.aspx?cmp_cd=036930" target="_blank" rel="noopener">↗</a></li>
+    <li>토스 Open API · screen.py 기술 스크리닝 (2026.09.08 계산, 원문 링크 없음)</li>
+    <li>DART·SEC 공시 합산 · peer_table.py TTM 피어 실측 (2026.09.08 계산, 원문 링크 없음)</li>
+    <li>토스 Open API + 하우스 NTM 모델 · build_series.py 밴드 통계·conversion_rate.py 전환율 1.0421 (2026.09.08 계산, 원문 링크 없음)</li>
+    <li>잡포스트 · "주성엔지니어링 19만원 눈앞, 이틀째 급등…" (2026.09.07) — 주가·거래대금·급등 배경 <a href="https://www.job-post.co.kr/news/articleView.html?idxno=226463" target="_blank" rel="noopener">↗</a></li>
+    <li>TrendForce · "Tight DRAM Supply Gives Suppliers Greater Pricing Power in HBM…" (2026.06.02) — HBM 웨이퍼 투입 비중 18/22/30% <a href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener">↗</a></li>
+    <li>shattered.io · "H100/H200/B200 Cloud GPU Pricing 2026" (2026.09.05) — H100 렌탈가 중앙값 $3.38 <a href="https://shattered.io/h100-h200-b200-cloud-gpu-pricing-2026/" target="_blank" rel="noopener">↗</a></li>
+    <li>관세청 품목별 수출입 · 반도체(IC, HS 8542) 수출액 — 하우스 지표 아카이브 (기준일 2026-07-01, 월간; 원문 링크 없음)</li>
+    <li>디일렉 · "주성엔지니어링, 차세대 반도체용 ALG 통합 장비 세계 첫 출하" (2026.05.18) <a href="https://www.thelec.kr/news/articleView.html?idxno=56778" target="_blank" rel="noopener">↗</a></li>
+    <li>블로터 · "[소부장 레이더] 'R&D 베팅' 주성엔지니어링, 영업이익률 30% 전망" (2026.05.27) — R&D 1,069억·한국투자증권 FY26 1,150억 <a href="https://www.bloter.net/news/articleView.html?idxno=663577" target="_blank" rel="noopener">↗</a></li>
+    <li>한국금융신문 · "[DQN] 주성엔지니어링, 수주 75% 줄었는데 PBR은 14배" (2026.06.25) — 고객 집중·PBR 피어 비교 <a href="https://www.fntimes.com/html/view.php?ud=202606241338252814141825007d_18" target="_blank" rel="noopener">↗</a></li>
+  </ol>
+  <p style="margin-top:12px;">방법론: NTM 영업이익은 공시·보도 시점 앵커의 선형 보간 <strong>추정 모델</strong>이다(실제 컨센서스 히스토리 아님). 전환율 1.0421은 DART 실측(3Q24~2Q26 흑자 6개 분기 합산, 적자 분기 제외)이며 과거 통계로 EPS 환산에만 쓴다. 시총·밴드 환산가·ROE 추정은 근사치다. 선호도는 정해진 공식(밸류 위치+시나리오)의 산출이며 목표주가가 아니다. 전작(2026-08-11) 대비 변경(FY26E 200억→320억 상향·NTM 850억→900억·EPS 표기 정정·콜 전환 조건 재정의) 사유는 섹션 07·11에 기록했다. 국내 가격 기준일 2026-09-08 종가 205,000원. 지수·과거 확정치는 KRX Open API, 당일 시세는 토스 Open API. 경제지표는 하우스 아카이브(as_of 병기).</p>
+  <p>생성: 2026-09-08 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 이 리포트의 분석 대상 종목 중 일부를 발간 시점에 보유하고 있습니다. 수량·평가액은 공개하지 않으며, 본 리포트는 무료 정보 제공 목적으로 작성되었습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-09-08 12:39 KST</div></footer>
+
+
+
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM EPS(추정)", fmtE(rows[i].eps), false],
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["Forward P/E", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM EPS 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"036930": {"rows": [{"d": "2023-06-27", "c": 17950.0, "eps": 1296.0, "pe": 13.9}, {"d": "2023-06-28", "c": 18220.0, "eps": 1298.0, "pe": 14.0}, {"d": "2023-06-29", "c": 19380.0, "eps": 1300.0, "pe": 14.9}, {"d": "2023-06-30", "c": 19000.0, "eps": 1302.0, "pe": 14.6}, {"d": "2023-07-03", "c": 19210.0, "eps": 1309.0, "pe": 14.7}, {"d": "2023-07-04", "c": 19360.0, "eps": 1311.0, "pe": 14.8}, {"d": "2023-07-05", "c": 18900.0, "eps": 1314.0, "pe": 14.4}, {"d": "2023-07-06", "c": 18150.0, "eps": 1316.0, "pe": 13.8}, {"d": "2023-07-07", "c": 17750.0, "eps": 1318.0, "pe": 13.5}, {"d": "2023-07-10", "c": 17290.0, "eps": 1325.0, "pe": 13.1}, {"d": "2023-07-11", "c": 17990.0, "eps": 1327.0, "pe": 13.6}, {"d": "2023-07-12", "c": 18230.0, "eps": 1329.0, "pe": 13.7}, {"d": "2023-07-13", "c": 19000.0, "eps": 1331.0, "pe": 14.3}, {"d": "2023-07-14", "c": 18980.0, "eps": 1334.0, "pe": 14.2}, {"d": "2023-07-17", "c": 21450.0, "eps": 1340.0, "pe": 16.0}, {"d": "2023-07-18", "c": 21350.0, "eps": 1343.0, "pe": 15.9}, {"d": "2023-07-19", "c": 21550.0, "eps": 1345.0, "pe": 16.0}, {"d": "2023-07-20", "c": 22200.0, "eps": 1347.0, "pe": 16.5}, {"d": "2023-07-21", "c": 21800.0, "eps": 1349.0, "pe": 16.2}, {"d": "2023-07-24", "c": 23450.0, "eps": 1356.0, "pe": 17.3}, {"d": "2023-07-25", "c": 24400.0, "eps": 1358.0, "pe": 18.0}, {"d": "2023-07-26", "c": 23750.0, "eps": 1361.0, "pe": 17.5}, {"d": "2023-07-27", "c": 26600.0, "eps": 1363.0, "pe": 19.5}, {"d": "2023-07-28", "c": 28850.0, "eps": 1365.0, "pe": 21.1}, {"d": "2023-07-31", "c": 27800.0, "eps": 1372.0, "pe": 20.3}, {"d": "2023-08-01", "c": 29750.0, "eps": 1374.0, "pe": 21.7}, {"d": "2023-08-02", "c": 25900.0, "eps": 1376.0, "pe": 18.8}, {"d": "2023-08-03", "c": 27350.0, "eps": 1378.0, "pe": 19.8}, {"d": "2023-08-04", "c": 27550.0, "eps": 1381.0, "pe": 20.0}, {"d": "2023-08-07", "c": 26450.0, "eps": 1387.0, "pe": 19.1}, {"d": "2023-08-08", "c": 26450.0, "eps": 1390.0, "pe": 19.0}, {"d": "2023-08-09", "c": 25950.0, "eps": 1392.0, "pe": 18.6}, {"d": "2023-08-10", "c": 24750.0, "eps": 1394.0, "pe": 17.8}, {"d": "2023-08-11", "c": 24500.0, "eps": 1396.0, "pe": 17.5}, {"d": "2023-08-14", "c": 24050.0, "eps": 1403.0, "pe": 17.1}, {"d": "2023-08-16", "c": 24050.0, "eps": 1407.0, "pe": 17.1}, {"d": "2023-08-17", "c": 25250.0, "eps": 1410.0, "pe": 17.9}, {"d": "2023-08-18", "c": 25300.0, "eps": 1412.0, "pe": 17.9}, {"d": "2023-08-21", "c": 25150.0, "eps": 1419.0, "pe": 17.7}, {"d": "2023-08-22", "c": 24500.0, "eps": 1421.0, "pe": 17.2}, {"d": "2023-08-23", "c": 24600.0, "eps": 1423.0, "pe": 17.3}, {"d": "2023-08-24", "c": 27150.0, "eps": 1425.0, "pe": 19.0}, {"d": "2023-08-25", "c": 25800.0, "eps": 1428.0, "pe": 18.1}, {"d": "2023-08-28", "c": 24800.0, "eps": 1434.0, "pe": 17.3}, {"d": "2023-08-29", "c": 25300.0, "eps": 1437.0, "pe": 17.6}, {"d": "2023-08-30", "c": 26900.0, "eps": 1439.0, "pe": 18.7}, {"d": "2023-08-31", "c": 27400.0, "eps": 1441.0, "pe": 19.0}, {"d": "2023-09-01", "c": 28050.0, "eps": 1443.0, "pe": 19.4}, {"d": "2023-09-04", "c": 27400.0, "eps": 1450.0, "pe": 18.9}, {"d": "2023-09-05", "c": 27950.0, "eps": 1452.0, "pe": 19.2}, {"d": "2023-09-06", "c": 26800.0, "eps": 1454.0, "pe": 18.4}, {"d": "2023-09-07", "c": 26900.0, "eps": 1457.0, "pe": 18.5}, {"d": "2023-09-08", "c": 27250.0, "eps": 1459.0, "pe": 18.7}, {"d": "2023-09-11", "c": 26700.0, "eps": 1466.0, "pe": 18.2}, {"d": "2023-09-12", "c": 26550.0, "eps": 1468.0, "pe": 18.1}, {"d": "2023-09-13", "c": 26750.0, "eps": 1470.0, "pe": 18.2}, {"d": "2023-09-14", "c": 31700.0, "eps": 1472.0, "pe": 21.5}, {"d": "2023-09-15", "c": 31450.0, "eps": 1475.0, "pe": 21.3}, {"d": "2023-09-18", "c": 29550.0, "eps": 1481.0, "pe": 19.9}, {"d": "2023-09-19", "c": 28300.0, "eps": 1483.0, "pe": 19.1}, {"d": "2023-09-20", "c": 28850.0, "eps": 1486.0, "pe": 19.4}, {"d": "2023-09-21", "c": 27000.0, "eps": 1488.0, "pe": 18.1}, {"d": "2023-09-22", "c": 27700.0, "eps": 1490.0, "pe": 18.6}, {"d": "2023-09-25", "c": 27900.0, "eps": 1497.0, "pe": 18.6}, {"d": "2023-09-26", "c": 27650.0, "eps": 1499.0, "pe": 18.4}, {"d": "2023-09-27", "c": 26900.0, "eps": 1501.0, "pe": 17.9}, {"d": "2023-10-04", "c": 26550.0, "eps": 1517.0, "pe": 17.5}, {"d": "2023-10-05", "c": 27200.0, "eps": 1519.0, "pe": 17.9}, {"d": "2023-10-06", "c": 27450.0, "eps": 1521.0, "pe": 18.0}, {"d": "2023-10-10", "c": 27000.0, "eps": 1530.0, "pe": 17.6}, {"d": "2023-10-11", "c": 28650.0, "eps": 1533.0, "pe": 18.7}, {"d": "2023-10-12", "c": 29450.0, "eps": 1535.0, "pe": 19.2}, {"d": "2023-10-13", "c": 29000.0, "eps": 1537.0, "pe": 18.9}, {"d": "2023-10-16", "c": 28500.0, "eps": 1544.0, "pe": 18.5}, {"d": "2023-10-17", "c": 29300.0, "eps": 1546.0, "pe": 19.0}, {"d": "2023-10-18", "c": 29100.0, "eps": 1548.0, "pe": 18.8}, {"d": "2023-10-19", "c": 27800.0, "eps": 1551.0, "pe": 17.9}, {"d": "2023-10-20", "c": 27350.0, "eps": 1553.0, "pe": 17.6}, {"d": "2023-10-23", "c": 26000.0, "eps": 1559.0, "pe": 16.7}, {"d": "2023-10-24", "c": 27750.0, "eps": 1562.0, "pe": 17.8}, {"d": "2023-10-25", "c": 28150.0, "eps": 1564.0, "pe": 18.0}, {"d": "2023-10-26", "c": 27300.0, "eps": 1566.0, "pe": 17.4}, {"d": "2023-10-27", "c": 25900.0, "eps": 1568.0, "pe": 16.5}, {"d": "2023-10-30", "c": 25200.0, "eps": 1575.0, "pe": 16.0}, {"d": "2023-10-31", "c": 24550.0, "eps": 1577.0, "pe": 15.6}, {"d": "2023-11-01", "c": 25150.0, "eps": 1580.0, "pe": 15.9}, {"d": "2023-11-02", "c": 27800.0, "eps": 1582.0, "pe": 17.6}, {"d": "2023-11-03", "c": 27850.0, "eps": 1584.0, "pe": 17.6}, {"d": "2023-11-06", "c": 31650.0, "eps": 1591.0, "pe": 19.9}, {"d": "2023-11-07", "c": 32250.0, "eps": 1593.0, "pe": 20.2}, {"d": "2023-11-08", "c": 32500.0, "eps": 1595.0, "pe": 20.4}, {"d": "2023-11-09", "c": 31500.0, "eps": 1597.0, "pe": 19.7}, {"d": "2023-11-10", "c": 32700.0, "eps": 1600.0, "pe": 20.4}, {"d": "2023-11-13", "c": 33300.0, "eps": 1606.0, "pe": 20.7}, {"d": "2023-11-14", "c": 34300.0, "eps": 1609.0, "pe": 21.3}, {"d": "2023-11-15", "c": 36850.0, "eps": 1611.0, "pe": 22.9}, {"d": "2023-11-16", "c": 35550.0, "eps": 1613.0, "pe": 22.0}, {"d": "2023-11-17", "c": 35550.0, "eps": 1615.0, "pe": 22.0}, {"d": "2023-11-20", "c": 35450.0, "eps": 1622.0, "pe": 21.9}, {"d": "2023-11-21", "c": 34400.0, "eps": 1624.0, "pe": 21.2}, {"d": "2023-11-22", "c": 34800.0, "eps": 1627.0, "pe": 21.4}, {"d": "2023-11-23", "c": 33000.0, "eps": 1629.0, "pe": 20.3}, {"d": "2023-11-24", "c": 33600.0, "eps": 1631.0, "pe": 20.6}, {"d": "2023-11-27", "c": 33250.0, "eps": 1638.0, "pe": 20.3}, {"d": "2023-11-28", "c": 35150.0, "eps": 1640.0, "pe": 21.4}, {"d": "2023-11-29", "c": 34250.0, "eps": 1642.0, "pe": 20.9}, {"d": "2023-11-30", "c": 35250.0, "eps": 1644.0, "pe": 21.4}, {"d": "2023-12-01", "c": 36500.0, "eps": 1647.0, "pe": 22.2}, {"d": "2023-12-04", "c": 33600.0, "eps": 1653.0, "pe": 20.3}, {"d": "2023-12-05", "c": 31850.0, "eps": 1656.0, "pe": 19.2}, {"d": "2023-12-06", "c": 32050.0, "eps": 1658.0, "pe": 19.3}, {"d": "2023-12-07", "c": 32250.0, "eps": 1660.0, "pe": 19.4}, {"d": "2023-12-08", "c": 32550.0, "eps": 1662.0, "pe": 19.6}, {"d": "2023-12-11", "c": 32050.0, "eps": 1669.0, "pe": 19.2}, {"d": "2023-12-12", "c": 33600.0, "eps": 1671.0, "pe": 20.1}, {"d": "2023-12-13", "c": 33450.0, "eps": 1674.0, "pe": 20.0}, {"d": "2023-12-14", "c": 34000.0, "eps": 1676.0, "pe": 20.3}, {"d": "2023-12-15", "c": 33700.0, "eps": 1678.0, "pe": 20.1}, {"d": "2023-12-18", "c": 34000.0, "eps": 1685.0, "pe": 20.2}, {"d": "2023-12-19", "c": 33600.0, "eps": 1687.0, "pe": 19.9}, {"d": "2023-12-20", "c": 33800.0, "eps": 1689.0, "pe": 20.0}, {"d": "2023-12-21", "c": 33550.0, "eps": 1691.0, "pe": 19.8}, {"d": "2023-12-22", "c": 32900.0, "eps": 1694.0, "pe": 19.4}, {"d": "2023-12-26", "c": 32500.0, "eps": 1703.0, "pe": 19.1}, {"d": "2023-12-27", "c": 34850.0, "eps": 1705.0, "pe": 20.4}, {"d": "2023-12-28", "c": 34200.0, "eps": 1707.0, "pe": 20.0}, {"d": "2024-01-02", "c": 33400.0, "eps": 1718.0, "pe": 19.4}, {"d": "2024-01-03", "c": 32150.0, "eps": 1720.0, "pe": 18.7}, {"d": "2024-01-04", "c": 32350.0, "eps": 1723.0, "pe": 18.8}, {"d": "2024-01-05", "c": 32400.0, "eps": 1725.0, "pe": 18.8}, {"d": "2024-01-08", "c": 32000.0, "eps": 1732.0, "pe": 18.5}, {"d": "2024-01-09", "c": 33150.0, "eps": 1734.0, "pe": 19.1}, {"d": "2024-01-10", "c": 33400.0, "eps": 1736.0, "pe": 19.2}, {"d": "2024-01-11", "c": 34200.0, "eps": 1738.0, "pe": 19.7}, {"d": "2024-01-12", "c": 32500.0, "eps": 1741.0, "pe": 18.7}, {"d": "2024-01-15", "c": 30400.0, "eps": 1747.0, "pe": 17.4}, {"d": "2024-01-16", "c": 29500.0, "eps": 1750.0, "pe": 16.9}, {"d": "2024-01-17", "c": 29750.0, "eps": 1752.0, "pe": 17.0}, {"d": "2024-01-18", "c": 31300.0, "eps": 1754.0, "pe": 17.8}, {"d": "2024-01-19", "c": 33550.0, "eps": 1756.0, "pe": 19.1}, {"d": "2024-01-22", "c": 33950.0, "eps": 1763.0, "pe": 19.3}, {"d": "2024-01-23", "c": 33600.0, "eps": 1765.0, "pe": 19.0}, {"d": "2024-01-24", "c": 34250.0, "eps": 1767.0, "pe": 19.4}, {"d": "2024-01-25", "c": 35100.0, "eps": 1770.0, "pe": 19.8}, {"d": "2024-01-26", "c": 32850.0, "eps": 1772.0, "pe": 18.5}, {"d": "2024-01-29", "c": 33050.0, "eps": 1779.0, "pe": 18.6}, {"d": "2024-01-30", "c": 33600.0, "eps": 1781.0, "pe": 18.9}, {"d": "2024-01-31", "c": 33050.0, "eps": 1783.0, "pe": 18.5}, {"d": "2024-02-01", "c": 31150.0, "eps": 1785.0, "pe": 17.4}, {"d": "2024-02-02", "c": 31500.0, "eps": 1788.0, "pe": 17.6}, {"d": "2024-02-05", "c": 30100.0, "eps": 1794.0, "pe": 16.8}, {"d": "2024-02-06", "c": 29300.0, "eps": 1796.0, "pe": 16.3}, {"d": "2024-02-07", "c": 28750.0, "eps": 1799.0, "pe": 16.0}, {"d": "2024-02-08", "c": 30550.0, "eps": 1801.0, "pe": 17.0}, {"d": "2024-02-13", "c": 31950.0, "eps": 1812.0, "pe": 17.6}, {"d": "2024-02-14", "c": 32000.0, "eps": 1814.0, "pe": 17.6}, {"d": "2024-02-15", "c": 31750.0, "eps": 1817.0, "pe": 17.5}, {"d": "2024-02-16", "c": 31200.0, "eps": 1819.0, "pe": 17.2}, {"d": "2024-02-19", "c": 30900.0, "eps": 1826.0, "pe": 16.9}, {"d": "2024-02-20", "c": 31500.0, "eps": 1828.0, "pe": 17.2}, {"d": "2024-02-21", "c": 31150.0, "eps": 1830.0, "pe": 17.0}, {"d": "2024-02-22", "c": 31900.0, "eps": 1832.0, "pe": 17.4}, {"d": "2024-02-23", "c": 32450.0, "eps": 1834.0, "pe": 17.7}, {"d": "2024-02-26", "c": 33800.0, "eps": 1841.0, "pe": 18.4}, {"d": "2024-02-27", "c": 35100.0, "eps": 1843.0, "pe": 19.0}, {"d": "2024-02-28", "c": 40000.0, "eps": 1846.0, "pe": 21.7}, {"d": "2024-02-29", "c": 36750.0, "eps": 1848.0, "pe": 19.9}, {"d": "2024-03-04", "c": 38050.0, "eps": 1857.0, "pe": 20.5}, {"d": "2024-03-05", "c": 37450.0, "eps": 1859.0, "pe": 20.1}, {"d": "2024-03-06", "c": 37350.0, "eps": 1861.0, "pe": 20.1}, {"d": "2024-03-07", "c": 36650.0, "eps": 1864.0, "pe": 19.7}, {"d": "2024-03-08", "c": 36750.0, "eps": 1866.0, "pe": 19.7}, {"d": "2024-03-11", "c": 35900.0, "eps": 1872.0, "pe": 19.2}, {"d": "2024-03-12", "c": 36100.0, "eps": 1875.0, "pe": 19.3}, {"d": "2024-03-13", "c": 35700.0, "eps": 1877.0, "pe": 19.0}, {"d": "2024-03-14", "c": 34050.0, "eps": 1879.0, "pe": 18.1}, {"d": "2024-03-15", "c": 34100.0, "eps": 1881.0, "pe": 18.1}, {"d": "2024-03-18", "c": 34750.0, "eps": 1888.0, "pe": 18.4}, {"d": "2024-03-19", "c": 33750.0, "eps": 1890.0, "pe": 17.9}, {"d": "2024-03-20", "c": 34450.0, "eps": 1893.0, "pe": 18.2}, {"d": "2024-03-21", "c": 35900.0, "eps": 1895.0, "pe": 18.9}, {"d": "2024-03-22", "c": 35400.0, "eps": 1897.0, "pe": 18.7}, {"d": "2024-03-25", "c": 34900.0, "eps": 1904.0, "pe": 18.3}, {"d": "2024-03-26", "c": 36550.0, "eps": 1906.0, "pe": 19.2}, {"d": "2024-03-27", "c": 37350.0, "eps": 1908.0, "pe": 19.6}, {"d": "2024-03-28", "c": 37150.0, "eps": 1910.0, "pe": 19.4}, {"d": "2024-03-29", "c": 36650.0, "eps": 1913.0, "pe": 19.2}, {"d": "2024-04-01", "c": 35500.0, "eps": 1919.0, "pe": 18.5}, {"d": "2024-04-02", "c": 36750.0, "eps": 1922.0, "pe": 19.1}, {"d": "2024-04-03", "c": 35300.0, "eps": 1924.0, "pe": 18.3}, {"d": "2024-04-04", "c": 37400.0, "eps": 1926.0, "pe": 19.4}, {"d": "2024-04-05", "c": 38400.0, "eps": 1928.0, "pe": 19.9}, {"d": "2024-04-08", "c": 36500.0, "eps": 1935.0, "pe": 18.9}, {"d": "2024-04-09", "c": 35300.0, "eps": 1937.0, "pe": 18.2}, {"d": "2024-04-11", "c": 36000.0, "eps": 1942.0, "pe": 18.5}, {"d": "2024-04-12", "c": 36450.0, "eps": 1944.0, "pe": 18.7}, {"d": "2024-04-15", "c": 36750.0, "eps": 1951.0, "pe": 18.8}, {"d": "2024-04-16", "c": 34950.0, "eps": 1953.0, "pe": 17.9}, {"d": "2024-04-17", "c": 34450.0, "eps": 1955.0, "pe": 17.6}, {"d": "2024-04-18", "c": 34950.0, "eps": 1957.0, "pe": 17.9}, {"d": "2024-04-19", "c": 33250.0, "eps": 1960.0, "pe": 17.0}, {"d": "2024-04-22", "c": 32500.0, "eps": 1966.0, "pe": 16.5}, {"d": "2024-04-23", "c": 32050.0, "eps": 1969.0, "pe": 16.3}, {"d": "2024-04-24", "c": 33150.0, "eps": 1971.0, "pe": 16.8}, {"d": "2024-04-25", "c": 34450.0, "eps": 1973.0, "pe": 17.5}, {"d": "2024-04-26", "c": 35050.0, "eps": 1975.0, "pe": 17.7}, {"d": "2024-04-29", "c": 34150.0, "eps": 1982.0, "pe": 17.2}, {"d": "2024-04-30", "c": 34900.0, "eps": 1984.0, "pe": 17.6}, {"d": "2024-05-02", "c": 35300.0, "eps": 1989.0, "pe": 17.8}, {"d": "2024-05-03", "c": 34350.0, "eps": 1991.0, "pe": 17.3}, {"d": "2024-05-07", "c": 34950.0, "eps": 2000.0, "pe": 17.5}, {"d": "2024-05-08", "c": 34850.0, "eps": 2002.0, "pe": 17.4}, {"d": "2024-05-09", "c": 33600.0, "eps": 2004.0, "pe": 16.8}, {"d": "2024-05-10", "c": 32200.0, "eps": 2007.0, "pe": 16.0}, {"d": "2024-05-13", "c": 32250.0, "eps": 2013.0, "pe": 16.0}, {"d": "2024-05-14", "c": 32400.0, "eps": 2016.0, "pe": 16.1}, {"d": "2024-05-16", "c": 33350.0, "eps": 2015.0, "pe": 16.5}, {"d": "2024-05-17", "c": 32750.0, "eps": 2013.0, "pe": 16.3}, {"d": "2024-05-20", "c": 32750.0, "eps": 2006.0, "pe": 16.3}, {"d": "2024-05-21", "c": 32700.0, "eps": 2003.0, "pe": 16.3}, {"d": "2024-05-22", "c": 33600.0, "eps": 2001.0, "pe": 16.8}, {"d": "2024-05-23", "c": 33300.0, "eps": 1998.0, "pe": 16.7}, {"d": "2024-05-24", "c": 33650.0, "eps": 1996.0, "pe": 16.9}, {"d": "2024-05-27", "c": 33450.0, "eps": 1988.0, "pe": 16.8}, {"d": "2024-05-28", "c": 33500.0, "eps": 1986.0, "pe": 16.9}, {"d": "2024-05-29", "c": 33750.0, "eps": 1983.0, "pe": 17.0}, {"d": "2024-05-30", "c": 32850.0, "eps": 1981.0, "pe": 16.6}, {"d": "2024-05-31", "c": 32750.0, "eps": 1978.0, "pe": 16.6}, {"d": "2024-06-03", "c": 32600.0, "eps": 1971.0, "pe": 16.5}, {"d": "2024-06-04", "c": 31850.0, "eps": 1969.0, "pe": 16.2}, {"d": "2024-06-05", "c": 33450.0, "eps": 1966.0, "pe": 17.0}, {"d": "2024-06-07", "c": 35500.0, "eps": 1961.0, "pe": 18.1}, {"d": "2024-06-10", "c": 34200.0, "eps": 1954.0, "pe": 17.5}, {"d": "2024-06-11", "c": 33850.0, "eps": 1951.0, "pe": 17.3}, {"d": "2024-06-12", "c": 36050.0, "eps": 1949.0, "pe": 18.5}, {"d": "2024-06-13", "c": 36100.0, "eps": 1947.0, "pe": 18.5}, {"d": "2024-06-14", "c": 34400.0, "eps": 1944.0, "pe": 17.7}, {"d": "2024-06-17", "c": 34750.0, "eps": 1937.0, "pe": 17.9}, {"d": "2024-06-18", "c": 35700.0, "eps": 1934.0, "pe": 18.5}, {"d": "2024-06-19", "c": 36600.0, "eps": 1932.0, "pe": 18.9}, {"d": "2024-06-20", "c": 35050.0, "eps": 1929.0, "pe": 18.2}, {"d": "2024-06-21", "c": 34800.0, "eps": 1927.0, "pe": 18.1}, {"d": "2024-06-24", "c": 33800.0, "eps": 1920.0, "pe": 17.6}, {"d": "2024-06-25", "c": 33900.0, "eps": 1917.0, "pe": 17.7}, {"d": "2024-06-26", "c": 34100.0, "eps": 1915.0, "pe": 17.8}, {"d": "2024-06-27", "c": 34700.0, "eps": 1912.0, "pe": 18.1}, {"d": "2024-06-28", "c": 37350.0, "eps": 1910.0, "pe": 19.6}, {"d": "2024-07-01", "c": 38300.0, "eps": 1902.0, "pe": 20.1}, {"d": "2024-07-02", "c": 37650.0, "eps": 1900.0, "pe": 19.8}, {"d": "2024-07-03", "c": 37800.0, "eps": 1897.0, "pe": 19.9}, {"d": "2024-07-04", "c": 37150.0, "eps": 1895.0, "pe": 19.6}, {"d": "2024-07-05", "c": 35250.0, "eps": 1892.0, "pe": 18.6}, {"d": "2024-07-08", "c": 35100.0, "eps": 1885.0, "pe": 18.6}, {"d": "2024-07-09", "c": 35800.0, "eps": 1883.0, "pe": 19.0}, {"d": "2024-07-10", "c": 35550.0, "eps": 1880.0, "pe": 18.9}, {"d": "2024-07-11", "c": 36250.0, "eps": 1878.0, "pe": 19.3}, {"d": "2024-07-12", "c": 35000.0, "eps": 1875.0, "pe": 18.7}, {"d": "2024-07-15", "c": 34600.0, "eps": 1868.0, "pe": 18.5}, {"d": "2024-07-16", "c": 34600.0, "eps": 1865.0, "pe": 18.5}, {"d": "2024-07-17", "c": 33000.0, "eps": 1863.0, "pe": 17.7}, {"d": "2024-07-18", "c": 31150.0, "eps": 1861.0, "pe": 16.7}, {"d": "2024-07-19", "c": 31550.0, "eps": 1858.0, "pe": 17.0}, {"d": "2024-07-22", "c": 30000.0, "eps": 1851.0, "pe": 16.2}, {"d": "2024-07-23", "c": 30250.0, "eps": 1848.0, "pe": 16.4}, {"d": "2024-07-24", "c": 30400.0, "eps": 1846.0, "pe": 16.5}, {"d": "2024-07-25", "c": 27950.0, "eps": 1843.0, "pe": 15.2}, {"d": "2024-07-26", "c": 28550.0, "eps": 1841.0, "pe": 15.5}, {"d": "2024-07-29", "c": 28550.0, "eps": 1834.0, "pe": 15.6}, {"d": "2024-07-30", "c": 27500.0, "eps": 1831.0, "pe": 15.0}, {"d": "2024-07-31", "c": 28550.0, "eps": 1829.0, "pe": 15.6}, {"d": "2024-08-01", "c": 29650.0, "eps": 1826.0, "pe": 16.2}, {"d": "2024-08-02", "c": 26550.0, "eps": 1824.0, "pe": 14.6}, {"d": "2024-08-05", "c": 23200.0, "eps": 1816.0, "pe": 12.8}, {"d": "2024-08-06", "c": 25100.0, "eps": 1814.0, "pe": 13.8}, {"d": "2024-08-07", "c": 25850.0, "eps": 1811.0, "pe": 14.3}, {"d": "2024-08-08", "c": 26900.0, "eps": 1809.0, "pe": 14.9}, {"d": "2024-08-09", "c": 27500.0, "eps": 1806.0, "pe": 15.2}, {"d": "2024-08-12", "c": 27900.0, "eps": 1799.0, "pe": 15.5}, {"d": "2024-08-13", "c": 27400.0, "eps": 1797.0, "pe": 15.3}, {"d": "2024-08-14", "c": 28150.0, "eps": 1794.0, "pe": 15.7}, {"d": "2024-08-16", "c": 29450.0, "eps": 1789.0, "pe": 16.5}, {"d": "2024-08-19", "c": 28300.0, "eps": 1782.0, "pe": 15.9}, {"d": "2024-08-20", "c": 29800.0, "eps": 1779.0, "pe": 16.7}, {"d": "2024-08-21", "c": 29050.0, "eps": 1777.0, "pe": 16.3}, {"d": "2024-08-22", "c": 28250.0, "eps": 1775.0, "pe": 15.9}, {"d": "2024-08-23", "c": 28100.0, "eps": 1772.0, "pe": 15.9}, {"d": "2024-08-26", "c": 27750.0, "eps": 1765.0, "pe": 15.7}, {"d": "2024-08-27", "c": 27300.0, "eps": 1762.0, "pe": 15.5}, {"d": "2024-08-28", "c": 28050.0, "eps": 1760.0, "pe": 15.9}, {"d": "2024-08-29", "c": 26900.0, "eps": 1757.0, "pe": 15.3}, {"d": "2024-08-30", "c": 26900.0, "eps": 1755.0, "pe": 15.3}, {"d": "2024-09-02", "c": 26000.0, "eps": 1748.0, "pe": 14.9}, {"d": "2024-09-03", "c": 25250.0, "eps": 1745.0, "pe": 14.5}, {"d": "2024-09-04", "c": 23750.0, "eps": 1743.0, "pe": 13.6}, {"d": "2024-09-05", "c": 23350.0, "eps": 1740.0, "pe": 13.4}, {"d": "2024-09-06", "c": 22800.0, "eps": 1738.0, "pe": 13.1}, {"d": "2024-09-09", "c": 22700.0, "eps": 1730.0, "pe": 13.1}, {"d": "2024-09-10", "c": 22300.0, "eps": 1728.0, "pe": 12.9}, {"d": "2024-09-11", "c": 22250.0, "eps": 1725.0, "pe": 12.9}, {"d": "2024-09-12", "c": 24400.0, "eps": 1723.0, "pe": 14.2}, {"d": "2024-09-13", "c": 24850.0, "eps": 1720.0, "pe": 14.4}, {"d": "2024-09-19", "c": 24100.0, "eps": 1706.0, "pe": 14.1}, {"d": "2024-09-20", "c": 24750.0, "eps": 1703.0, "pe": 14.5}, {"d": "2024-09-23", "c": 24950.0, "eps": 1696.0, "pe": 14.7}, {"d": "2024-09-24", "c": 25450.0, "eps": 1693.0, "pe": 15.0}, {"d": "2024-09-25", "c": 25650.0, "eps": 1691.0, "pe": 15.2}, {"d": "2024-09-26", "c": 26850.0, "eps": 1689.0, "pe": 15.9}, {"d": "2024-09-27", "c": 27050.0, "eps": 1686.0, "pe": 16.0}, {"d": "2024-09-30", "c": 26800.0, "eps": 1679.0, "pe": 16.0}, {"d": "2024-10-02", "c": 27050.0, "eps": 1674.0, "pe": 16.2}, {"d": "2024-10-04", "c": 27050.0, "eps": 1669.0, "pe": 16.2}, {"d": "2024-10-07", "c": 27600.0, "eps": 1662.0, "pe": 16.6}, {"d": "2024-10-08", "c": 27150.0, "eps": 1659.0, "pe": 16.4}, {"d": "2024-10-10", "c": 27150.0, "eps": 1654.0, "pe": 16.4}, {"d": "2024-10-11", "c": 27150.0, "eps": 1652.0, "pe": 16.4}, {"d": "2024-10-14", "c": 27550.0, "eps": 1644.0, "pe": 16.8}, {"d": "2024-10-15", "c": 28450.0, "eps": 1642.0, "pe": 17.3}, {"d": "2024-10-16", "c": 27750.0, "eps": 1639.0, "pe": 16.9}, {"d": "2024-10-17", "c": 28300.0, "eps": 1637.0, "pe": 17.3}, {"d": "2024-10-18", "c": 27600.0, "eps": 1634.0, "pe": 16.9}, {"d": "2024-10-21", "c": 27400.0, "eps": 1627.0, "pe": 16.8}, {"d": "2024-10-22", "c": 27000.0, "eps": 1625.0, "pe": 16.6}, {"d": "2024-10-23", "c": 28500.0, "eps": 1622.0, "pe": 17.6}, {"d": "2024-10-24", "c": 27050.0, "eps": 1620.0, "pe": 16.7}, {"d": "2024-10-25", "c": 26950.0, "eps": 1617.0, "pe": 16.7}, {"d": "2024-10-28", "c": 27050.0, "eps": 1610.0, "pe": 16.8}, {"d": "2024-10-29", "c": 31050.0, "eps": 1607.0, "pe": 19.3}, {"d": "2024-10-30", "c": 29850.0, "eps": 1605.0, "pe": 18.6}, {"d": "2024-10-31", "c": 31000.0, "eps": 1603.0, "pe": 19.3}, {"d": "2024-11-01", "c": 32700.0, "eps": 1600.0, "pe": 20.4}, {"d": "2024-11-04", "c": 32400.0, "eps": 1593.0, "pe": 20.3}, {"d": "2024-11-05", "c": 32150.0, "eps": 1590.0, "pe": 20.2}, {"d": "2024-11-06", "c": 30750.0, "eps": 1588.0, "pe": 19.4}, {"d": "2024-11-07", "c": 30600.0, "eps": 1585.0, "pe": 19.3}, {"d": "2024-11-08", "c": 30700.0, "eps": 1583.0, "pe": 19.4}, {"d": "2024-11-11", "c": 29700.0, "eps": 1576.0, "pe": 18.9}, {"d": "2024-11-12", "c": 27550.0, "eps": 1573.0, "pe": 17.5}, {"d": "2024-11-13", "c": 28650.0, "eps": 1571.0, "pe": 18.2}, {"d": "2024-11-14", "c": 27550.0, "eps": 1568.0, "pe": 17.6}, {"d": "2024-11-15", "c": 28600.0, "eps": 1566.0, "pe": 18.3}, {"d": "2024-11-18", "c": 27700.0, "eps": 1558.0, "pe": 17.8}, {"d": "2024-11-19", "c": 27650.0, "eps": 1556.0, "pe": 17.8}, {"d": "2024-11-20", "c": 28150.0, "eps": 1553.0, "pe": 18.1}, {"d": "2024-11-21", "c": 28550.0, "eps": 1551.0, "pe": 18.4}, {"d": "2024-11-22", "c": 29200.0, "eps": 1549.0, "pe": 18.9}, {"d": "2024-11-25", "c": 29700.0, "eps": 1541.0, "pe": 19.3}, {"d": "2024-11-26", "c": 30250.0, "eps": 1539.0, "pe": 19.7}, {"d": "2024-11-27", "c": 28650.0, "eps": 1536.0, "pe": 18.6}, {"d": "2024-11-28", "c": 28950.0, "eps": 1534.0, "pe": 18.9}, {"d": "2024-11-29", "c": 27900.0, "eps": 1531.0, "pe": 18.2}, {"d": "2024-12-02", "c": 26000.0, "eps": 1524.0, "pe": 17.1}, {"d": "2024-12-03", "c": 28000.0, "eps": 1521.0, "pe": 18.4}, {"d": "2024-12-04", "c": 27900.0, "eps": 1519.0, "pe": 18.4}, {"d": "2024-12-05", "c": 29400.0, "eps": 1517.0, "pe": 19.4}, {"d": "2024-12-06", "c": 28350.0, "eps": 1514.0, "pe": 18.7}, {"d": "2024-12-09", "c": 27900.0, "eps": 1507.0, "pe": 18.5}, {"d": "2024-12-10", "c": 27800.0, "eps": 1504.0, "pe": 18.5}, {"d": "2024-12-11", "c": 27900.0, "eps": 1502.0, "pe": 18.6}, {"d": "2024-12-12", "c": 29650.0, "eps": 1499.0, "pe": 19.8}, {"d": "2024-12-13", "c": 30200.0, "eps": 1497.0, "pe": 20.2}, {"d": "2024-12-16", "c": 29850.0, "eps": 1490.0, "pe": 20.0}, {"d": "2024-12-17", "c": 30200.0, "eps": 1487.0, "pe": 20.3}, {"d": "2024-12-18", "c": 30050.0, "eps": 1485.0, "pe": 20.2}, {"d": "2024-12-19", "c": 29500.0, "eps": 1482.0, "pe": 19.9}, {"d": "2024-12-20", "c": 29000.0, "eps": 1480.0, "pe": 19.6}, {"d": "2024-12-23", "c": 29650.0, "eps": 1472.0, "pe": 20.1}, {"d": "2024-12-24", "c": 30350.0, "eps": 1470.0, "pe": 20.6}, {"d": "2024-12-26", "c": 29700.0, "eps": 1465.0, "pe": 20.3}, {"d": "2024-12-27", "c": 28750.0, "eps": 1463.0, "pe": 19.7}, {"d": "2024-12-30", "c": 29450.0, "eps": 1455.0, "pe": 20.2}, {"d": "2025-01-02", "c": 29750.0, "eps": 1448.0, "pe": 20.5}, {"d": "2025-01-03", "c": 31300.0, "eps": 1445.0, "pe": 21.7}, {"d": "2025-01-06", "c": 32550.0, "eps": 1438.0, "pe": 22.6}, {"d": "2025-01-07", "c": 31750.0, "eps": 1435.0, "pe": 22.1}, {"d": "2025-01-08", "c": 33300.0, "eps": 1433.0, "pe": 23.2}, {"d": "2025-01-09", "c": 33400.0, "eps": 1431.0, "pe": 23.3}, {"d": "2025-01-10", "c": 32700.0, "eps": 1428.0, "pe": 22.9}, {"d": "2025-01-13", "c": 32750.0, "eps": 1421.0, "pe": 23.1}, {"d": "2025-01-14", "c": 33450.0, "eps": 1418.0, "pe": 23.6}, {"d": "2025-01-15", "c": 34450.0, "eps": 1416.0, "pe": 24.3}, {"d": "2025-01-16", "c": 35250.0, "eps": 1413.0, "pe": 24.9}, {"d": "2025-01-17", "c": 34700.0, "eps": 1411.0, "pe": 24.6}, {"d": "2025-01-20", "c": 34500.0, "eps": 1404.0, "pe": 24.6}, {"d": "2025-01-21", "c": 35100.0, "eps": 1401.0, "pe": 25.1}, {"d": "2025-01-22", "c": 33500.0, "eps": 1399.0, "pe": 24.0}, {"d": "2025-01-23", "c": 32650.0, "eps": 1396.0, "pe": 23.4}, {"d": "2025-01-24", "c": 33050.0, "eps": 1394.0, "pe": 23.7}, {"d": "2025-01-31", "c": 31700.0, "eps": 1377.0, "pe": 23.0}, {"d": "2025-02-03", "c": 29050.0, "eps": 1369.0, "pe": 21.2}, {"d": "2025-02-04", "c": 29100.0, "eps": 1367.0, "pe": 21.3}, {"d": "2025-02-05", "c": 29950.0, "eps": 1364.0, "pe": 22.0}, {"d": "2025-02-06", "c": 31750.0, "eps": 1362.0, "pe": 23.3}, {"d": "2025-02-07", "c": 31800.0, "eps": 1359.0, "pe": 23.4}, {"d": "2025-02-10", "c": 32450.0, "eps": 1352.0, "pe": 24.0}, {"d": "2025-02-11", "c": 31400.0, "eps": 1349.0, "pe": 23.3}, {"d": "2025-02-12", "c": 31000.0, "eps": 1347.0, "pe": 23.0}, {"d": "2025-02-13", "c": 31350.0, "eps": 1345.0, "pe": 23.3}, {"d": "2025-02-14", "c": 33850.0, "eps": 1342.0, "pe": 25.2}, {"d": "2025-02-17", "c": 34200.0, "eps": 1335.0, "pe": 25.6}, {"d": "2025-02-18", "c": 34450.0, "eps": 1332.0, "pe": 25.9}, {"d": "2025-02-19", "c": 38900.0, "eps": 1330.0, "pe": 29.3}, {"d": "2025-02-20", "c": 38200.0, "eps": 1327.0, "pe": 28.8}, {"d": "2025-02-21", "c": 36600.0, "eps": 1325.0, "pe": 27.6}, {"d": "2025-02-24", "c": 35550.0, "eps": 1318.0, "pe": 27.0}, {"d": "2025-02-25", "c": 35400.0, "eps": 1315.0, "pe": 26.9}, {"d": "2025-02-26", "c": 35450.0, "eps": 1313.0, "pe": 27.0}, {"d": "2025-02-27", "c": 34600.0, "eps": 1310.0, "pe": 26.4}, {"d": "2025-02-28", "c": 33250.0, "eps": 1308.0, "pe": 25.4}, {"d": "2025-03-04", "c": 33850.0, "eps": 1298.0, "pe": 26.1}, {"d": "2025-03-05", "c": 33300.0, "eps": 1295.0, "pe": 25.7}, {"d": "2025-03-06", "c": 31900.0, "eps": 1293.0, "pe": 24.7}, {"d": "2025-03-07", "c": 31850.0, "eps": 1291.0, "pe": 24.7}, {"d": "2025-03-10", "c": 32500.0, "eps": 1283.0, "pe": 25.3}, {"d": "2025-03-11", "c": 32250.0, "eps": 1281.0, "pe": 25.2}, {"d": "2025-03-12", "c": 33150.0, "eps": 1278.0, "pe": 25.9}, {"d": "2025-03-13", "c": 33150.0, "eps": 1276.0, "pe": 26.0}, {"d": "2025-03-14", "c": 33850.0, "eps": 1273.0, "pe": 26.6}, {"d": "2025-03-17", "c": 37900.0, "eps": 1266.0, "pe": 29.9}, {"d": "2025-03-18", "c": 38250.0, "eps": 1263.0, "pe": 30.3}, {"d": "2025-03-19", "c": 38950.0, "eps": 1261.0, "pe": 30.9}, {"d": "2025-03-20", "c": 40300.0, "eps": 1259.0, "pe": 32.0}, {"d": "2025-03-21", "c": 42350.0, "eps": 1256.0, "pe": 33.7}, {"d": "2025-03-24", "c": 42450.0, "eps": 1249.0, "pe": 34.0}, {"d": "2025-03-25", "c": 40200.0, "eps": 1246.0, "pe": 32.3}, {"d": "2025-03-26", "c": 41150.0, "eps": 1244.0, "pe": 33.1}, {"d": "2025-03-27", "c": 40450.0, "eps": 1241.0, "pe": 32.6}, {"d": "2025-03-28", "c": 38750.0, "eps": 1239.0, "pe": 31.3}, {"d": "2025-03-31", "c": 38150.0, "eps": 1232.0, "pe": 31.0}, {"d": "2025-04-01", "c": 38700.0, "eps": 1229.0, "pe": 31.5}, {"d": "2025-04-02", "c": 38400.0, "eps": 1227.0, "pe": 31.3}, {"d": "2025-04-03", "c": 38200.0, "eps": 1224.0, "pe": 31.2}, {"d": "2025-04-04", "c": 36200.0, "eps": 1222.0, "pe": 29.6}, {"d": "2025-04-07", "c": 34050.0, "eps": 1214.0, "pe": 28.0}, {"d": "2025-04-08", "c": 34700.0, "eps": 1212.0, "pe": 28.6}, {"d": "2025-04-09", "c": 35050.0, "eps": 1209.0, "pe": 29.0}, {"d": "2025-04-10", "c": 36800.0, "eps": 1207.0, "pe": 30.5}, {"d": "2025-04-11", "c": 36050.0, "eps": 1205.0, "pe": 29.9}, {"d": "2025-04-14", "c": 36000.0, "eps": 1197.0, "pe": 30.1}, {"d": "2025-04-15", "c": 36050.0, "eps": 1195.0, "pe": 30.2}, {"d": "2025-04-16", "c": 34100.0, "eps": 1192.0, "pe": 28.6}, {"d": "2025-04-17", "c": 34800.0, "eps": 1190.0, "pe": 29.2}, {"d": "2025-04-18", "c": 35000.0, "eps": 1187.0, "pe": 29.5}, {"d": "2025-04-21", "c": 35950.0, "eps": 1180.0, "pe": 30.5}, {"d": "2025-04-22", "c": 34700.0, "eps": 1178.0, "pe": 29.5}, {"d": "2025-04-23", "c": 37450.0, "eps": 1175.0, "pe": 31.9}, {"d": "2025-04-24", "c": 36200.0, "eps": 1173.0, "pe": 30.9}, {"d": "2025-04-25", "c": 36800.0, "eps": 1170.0, "pe": 31.4}, {"d": "2025-04-28", "c": 34900.0, "eps": 1163.0, "pe": 30.0}, {"d": "2025-04-29", "c": 35250.0, "eps": 1160.0, "pe": 30.4}, {"d": "2025-04-30", "c": 33600.0, "eps": 1158.0, "pe": 29.0}, {"d": "2025-05-02", "c": 34050.0, "eps": 1153.0, "pe": 29.5}, {"d": "2025-05-07", "c": 33950.0, "eps": 1141.0, "pe": 29.8}, {"d": "2025-05-08", "c": 33900.0, "eps": 1138.0, "pe": 29.8}, {"d": "2025-05-09", "c": 34200.0, "eps": 1136.0, "pe": 30.1}, {"d": "2025-05-12", "c": 35650.0, "eps": 1128.0, "pe": 31.6}, {"d": "2025-05-13", "c": 35150.0, "eps": 1126.0, "pe": 31.2}, {"d": "2025-05-14", "c": 36300.0, "eps": 1123.0, "pe": 32.3}, {"d": "2025-05-15", "c": 35500.0, "eps": 1121.0, "pe": 31.7}, {"d": "2025-05-16", "c": 35100.0, "eps": 1122.0, "pe": 31.3}, {"d": "2025-05-19", "c": 33550.0, "eps": 1124.0, "pe": 29.8}, {"d": "2025-05-20", "c": 33000.0, "eps": 1125.0, "pe": 29.3}, {"d": "2025-05-21", "c": 33000.0, "eps": 1126.0, "pe": 29.3}, {"d": "2025-05-22", "c": 31800.0, "eps": 1126.0, "pe": 28.2}, {"d": "2025-05-23", "c": 31150.0, "eps": 1127.0, "pe": 27.6}, {"d": "2025-05-26", "c": 31600.0, "eps": 1129.0, "pe": 28.0}, {"d": "2025-05-27", "c": 31450.0, "eps": 1130.0, "pe": 27.8}, {"d": "2025-05-28", "c": 32000.0, "eps": 1131.0, "pe": 28.3}, {"d": "2025-05-29", "c": 32200.0, "eps": 1132.0, "pe": 28.4}, {"d": "2025-05-30", "c": 31400.0, "eps": 1133.0, "pe": 27.7}, {"d": "2025-06-02", "c": 31400.0, "eps": 1135.0, "pe": 27.7}, {"d": "2025-06-04", "c": 31600.0, "eps": 1136.0, "pe": 27.8}, {"d": "2025-06-05", "c": 32600.0, "eps": 1137.0, "pe": 28.7}, {"d": "2025-06-09", "c": 32550.0, "eps": 1140.0, "pe": 28.5}, {"d": "2025-06-10", "c": 30950.0, "eps": 1141.0, "pe": 27.1}, {"d": "2025-06-11", "c": 32250.0, "eps": 1142.0, "pe": 28.2}, {"d": "2025-06-12", "c": 32000.0, "eps": 1143.0, "pe": 28.0}, {"d": "2025-06-13", "c": 31050.0, "eps": 1143.0, "pe": 27.2}, {"d": "2025-06-16", "c": 31200.0, "eps": 1146.0, "pe": 27.2}, {"d": "2025-06-17", "c": 31800.0, "eps": 1147.0, "pe": 27.7}, {"d": "2025-06-18", "c": 31750.0, "eps": 1147.0, "pe": 27.7}, {"d": "2025-06-19", "c": 31650.0, "eps": 1148.0, "pe": 27.6}, {"d": "2025-06-20", "c": 31500.0, "eps": 1149.0, "pe": 27.4}, {"d": "2025-06-23", "c": 30250.0, "eps": 1151.0, "pe": 26.3}, {"d": "2025-06-24", "c": 31550.0, "eps": 1152.0, "pe": 27.4}, {"d": "2025-06-25", "c": 32100.0, "eps": 1153.0, "pe": 27.8}, {"d": "2025-06-26", "c": 32700.0, "eps": 1153.0, "pe": 28.3}, {"d": "2025-06-27", "c": 31800.0, "eps": 1154.0, "pe": 27.6}, {"d": "2025-06-30", "c": 31050.0, "eps": 1157.0, "pe": 26.8}, {"d": "2025-07-01", "c": 30700.0, "eps": 1157.0, "pe": 26.5}, {"d": "2025-07-02", "c": 30850.0, "eps": 1158.0, "pe": 26.6}, {"d": "2025-07-03", "c": 31550.0, "eps": 1159.0, "pe": 27.2}, {"d": "2025-07-04", "c": 30550.0, "eps": 1160.0, "pe": 26.3}, {"d": "2025-07-07", "c": 30200.0, "eps": 1162.0, "pe": 26.0}, {"d": "2025-07-08", "c": 30650.0, "eps": 1163.0, "pe": 26.4}, {"d": "2025-07-09", "c": 30100.0, "eps": 1164.0, "pe": 25.9}, {"d": "2025-07-10", "c": 30250.0, "eps": 1164.0, "pe": 26.0}, {"d": "2025-07-11", "c": 30100.0, "eps": 1165.0, "pe": 25.8}, {"d": "2025-07-14", "c": 30200.0, "eps": 1167.0, "pe": 25.9}, {"d": "2025-07-15", "c": 30400.0, "eps": 1168.0, "pe": 26.0}, {"d": "2025-07-16", "c": 30400.0, "eps": 1169.0, "pe": 26.0}, {"d": "2025-07-17", "c": 30350.0, "eps": 1170.0, "pe": 25.9}, {"d": "2025-07-18", "c": 30150.0, "eps": 1170.0, "pe": 25.8}, {"d": "2025-07-21", "c": 30250.0, "eps": 1173.0, "pe": 25.8}, {"d": "2025-07-22", "c": 29800.0, "eps": 1174.0, "pe": 25.4}, {"d": "2025-07-23", "c": 29500.0, "eps": 1174.0, "pe": 25.1}, {"d": "2025-07-24", "c": 29150.0, "eps": 1175.0, "pe": 24.8}, {"d": "2025-07-25", "c": 28900.0, "eps": 1176.0, "pe": 24.6}, {"d": "2025-07-28", "c": 29750.0, "eps": 1178.0, "pe": 25.3}, {"d": "2025-07-29", "c": 29150.0, "eps": 1179.0, "pe": 24.7}, {"d": "2025-07-30", "c": 29550.0, "eps": 1180.0, "pe": 25.0}, {"d": "2025-07-31", "c": 27250.0, "eps": 1181.0, "pe": 23.1}, {"d": "2025-08-01", "c": 26350.0, "eps": 1181.0, "pe": 22.3}, {"d": "2025-08-04", "c": 27050.0, "eps": 1184.0, "pe": 22.9}, {"d": "2025-08-05", "c": 27100.0, "eps": 1184.0, "pe": 22.9}, {"d": "2025-08-06", "c": 27650.0, "eps": 1185.0, "pe": 23.3}, {"d": "2025-08-07", "c": 27450.0, "eps": 1186.0, "pe": 23.1}, {"d": "2025-08-08", "c": 27950.0, "eps": 1187.0, "pe": 23.6}, {"d": "2025-08-11", "c": 28300.0, "eps": 1189.0, "pe": 23.8}, {"d": "2025-08-12", "c": 27950.0, "eps": 1190.0, "pe": 23.5}, {"d": "2025-08-13", "c": 28400.0, "eps": 1191.0, "pe": 23.9}, {"d": "2025-08-14", "c": 28450.0, "eps": 1191.0, "pe": 23.9}, {"d": "2025-08-18", "c": 27600.0, "eps": 1194.0, "pe": 23.1}, {"d": "2025-08-19", "c": 27300.0, "eps": 1195.0, "pe": 22.8}, {"d": "2025-08-20", "c": 26800.0, "eps": 1196.0, "pe": 22.4}, {"d": "2025-08-21", "c": 26400.0, "eps": 1197.0, "pe": 22.1}, {"d": "2025-08-22", "c": 26500.0, "eps": 1198.0, "pe": 22.1}, {"d": "2025-08-25", "c": 26900.0, "eps": 1200.0, "pe": 22.4}, {"d": "2025-08-26", "c": 26850.0, "eps": 1201.0, "pe": 22.4}, {"d": "2025-08-27", "c": 26550.0, "eps": 1201.0, "pe": 22.1}, {"d": "2025-08-28", "c": 27400.0, "eps": 1202.0, "pe": 22.8}, {"d": "2025-08-29", "c": 27400.0, "eps": 1203.0, "pe": 22.8}, {"d": "2025-09-01", "c": 26300.0, "eps": 1205.0, "pe": 21.8}, {"d": "2025-09-02", "c": 26700.0, "eps": 1206.0, "pe": 22.1}, {"d": "2025-09-03", "c": 26700.0, "eps": 1207.0, "pe": 22.1}, {"d": "2025-09-04", "c": 27800.0, "eps": 1208.0, "pe": 23.0}, {"d": "2025-09-05", "c": 27650.0, "eps": 1208.0, "pe": 22.9}, {"d": "2025-09-08", "c": 27800.0, "eps": 1211.0, "pe": 23.0}, {"d": "2025-09-09", "c": 28050.0, "eps": 1211.0, "pe": 23.2}, {"d": "2025-09-10", "c": 28300.0, "eps": 1212.0, "pe": 23.3}, {"d": "2025-09-11", "c": 28750.0, "eps": 1213.0, "pe": 23.7}, {"d": "2025-09-12", "c": 28650.0, "eps": 1214.0, "pe": 23.6}, {"d": "2025-09-15", "c": 29750.0, "eps": 1216.0, "pe": 24.5}, {"d": "2025-09-16", "c": 30250.0, "eps": 1217.0, "pe": 24.9}, {"d": "2025-09-17", "c": 29900.0, "eps": 1218.0, "pe": 24.6}, {"d": "2025-09-18", "c": 30950.0, "eps": 1218.0, "pe": 25.4}, {"d": "2025-09-19", "c": 32400.0, "eps": 1219.0, "pe": 26.6}, {"d": "2025-09-22", "c": 32350.0, "eps": 1221.0, "pe": 26.5}, {"d": "2025-09-23", "c": 32000.0, "eps": 1222.0, "pe": 26.2}, {"d": "2025-09-24", "c": 32500.0, "eps": 1223.0, "pe": 26.6}, {"d": "2025-09-25", "c": 32100.0, "eps": 1224.0, "pe": 26.2}, {"d": "2025-09-26", "c": 30700.0, "eps": 1225.0, "pe": 25.1}, {"d": "2025-09-29", "c": 31300.0, "eps": 1227.0, "pe": 25.5}, {"d": "2025-09-30", "c": 30900.0, "eps": 1228.0, "pe": 25.2}, {"d": "2025-10-01", "c": 31250.0, "eps": 1228.0, "pe": 25.4}, {"d": "2025-10-02", "c": 31050.0, "eps": 1229.0, "pe": 25.3}, {"d": "2025-10-10", "c": 32550.0, "eps": 1235.0, "pe": 26.3}, {"d": "2025-10-13", "c": 32250.0, "eps": 1238.0, "pe": 26.1}, {"d": "2025-10-14", "c": 30800.0, "eps": 1239.0, "pe": 24.9}, {"d": "2025-10-15", "c": 31800.0, "eps": 1239.0, "pe": 25.7}, {"d": "2025-10-16", "c": 31850.0, "eps": 1240.0, "pe": 25.7}, {"d": "2025-10-17", "c": 31000.0, "eps": 1241.0, "pe": 25.0}, {"d": "2025-10-20", "c": 31450.0, "eps": 1243.0, "pe": 25.3}, {"d": "2025-10-21", "c": 30800.0, "eps": 1244.0, "pe": 24.8}, {"d": "2025-10-22", "c": 30650.0, "eps": 1245.0, "pe": 24.6}, {"d": "2025-10-23", "c": 30200.0, "eps": 1245.0, "pe": 24.2}, {"d": "2025-10-24", "c": 31000.0, "eps": 1246.0, "pe": 24.9}, {"d": "2025-10-27", "c": 31200.0, "eps": 1249.0, "pe": 25.0}, {"d": "2025-10-28", "c": 30400.0, "eps": 1249.0, "pe": 24.3}, {"d": "2025-10-29", "c": 32000.0, "eps": 1250.0, "pe": 25.6}, {"d": "2025-10-30", "c": 31000.0, "eps": 1251.0, "pe": 24.8}, {"d": "2025-10-31", "c": 30700.0, "eps": 1252.0, "pe": 24.5}, {"d": "2025-11-03", "c": 31250.0, "eps": 1254.0, "pe": 24.9}, {"d": "2025-11-04", "c": 31850.0, "eps": 1255.0, "pe": 25.4}, {"d": "2025-11-05", "c": 30400.0, "eps": 1256.0, "pe": 24.2}, {"d": "2025-11-06", "c": 30850.0, "eps": 1256.0, "pe": 24.6}, {"d": "2025-11-07", "c": 29250.0, "eps": 1257.0, "pe": 23.3}, {"d": "2025-11-10", "c": 30000.0, "eps": 1259.0, "pe": 23.8}, {"d": "2025-11-11", "c": 30200.0, "eps": 1260.0, "pe": 24.0}, {"d": "2025-11-12", "c": 30450.0, "eps": 1261.0, "pe": 24.1}, {"d": "2025-11-13", "c": 30400.0, "eps": 1262.0, "pe": 24.1}, {"d": "2025-11-14", "c": 29300.0, "eps": 1262.0, "pe": 23.2}, {"d": "2025-11-17", "c": 29900.0, "eps": 1265.0, "pe": 23.6}, {"d": "2025-11-18", "c": 29100.0, "eps": 1266.0, "pe": 23.0}, {"d": "2025-11-19", "c": 28100.0, "eps": 1266.0, "pe": 22.2}, {"d": "2025-11-20", "c": 28300.0, "eps": 1267.0, "pe": 22.3}, {"d": "2025-11-21", "c": 26700.0, "eps": 1268.0, "pe": 21.1}, {"d": "2025-11-24", "c": 26550.0, "eps": 1270.0, "pe": 20.9}, {"d": "2025-11-25", "c": 26450.0, "eps": 1271.0, "pe": 20.8}, {"d": "2025-11-26", "c": 26750.0, "eps": 1272.0, "pe": 21.0}, {"d": "2025-11-27", "c": 27100.0, "eps": 1273.0, "pe": 21.3}, {"d": "2025-11-28", "c": 27350.0, "eps": 1273.0, "pe": 21.5}, {"d": "2025-12-01", "c": 29350.0, "eps": 1276.0, "pe": 23.0}, {"d": "2025-12-02", "c": 30350.0, "eps": 1276.0, "pe": 23.8}, {"d": "2025-12-03", "c": 30600.0, "eps": 1277.0, "pe": 24.0}, {"d": "2025-12-04", "c": 29500.0, "eps": 1278.0, "pe": 23.1}, {"d": "2025-12-05", "c": 29250.0, "eps": 1279.0, "pe": 22.9}, {"d": "2025-12-08", "c": 29250.0, "eps": 1281.0, "pe": 22.8}, {"d": "2025-12-09", "c": 29050.0, "eps": 1282.0, "pe": 22.7}, {"d": "2025-12-10", "c": 28750.0, "eps": 1283.0, "pe": 22.4}, {"d": "2025-12-11", "c": 28700.0, "eps": 1283.0, "pe": 22.4}, {"d": "2025-12-12", "c": 28150.0, "eps": 1284.0, "pe": 21.9}, {"d": "2025-12-15", "c": 27700.0, "eps": 1286.0, "pe": 21.5}, {"d": "2025-12-16", "c": 26850.0, "eps": 1287.0, "pe": 20.9}, {"d": "2025-12-17", "c": 27350.0, "eps": 1288.0, "pe": 21.2}, {"d": "2025-12-18", "c": 27050.0, "eps": 1289.0, "pe": 21.0}, {"d": "2025-12-19", "c": 26900.0, "eps": 1290.0, "pe": 20.9}, {"d": "2025-12-22", "c": 27900.0, "eps": 1292.0, "pe": 21.6}, {"d": "2025-12-23", "c": 27900.0, "eps": 1293.0, "pe": 21.6}, {"d": "2025-12-24", "c": 27300.0, "eps": 1293.0, "pe": 21.1}, {"d": "2025-12-26", "c": 27950.0, "eps": 1295.0, "pe": 21.6}, {"d": "2025-12-29", "c": 28100.0, "eps": 1297.0, "pe": 21.7}, {"d": "2025-12-30", "c": 27700.0, "eps": 1298.0, "pe": 21.3}, {"d": "2026-01-02", "c": 30450.0, "eps": 1300.0, "pe": 23.4}, {"d": "2026-01-05", "c": 31200.0, "eps": 1303.0, "pe": 24.0}, {"d": "2026-01-06", "c": 32450.0, "eps": 1303.0, "pe": 24.9}, {"d": "2026-01-07", "c": 31000.0, "eps": 1304.0, "pe": 23.8}, {"d": "2026-01-08", "c": 34950.0, "eps": 1305.0, "pe": 26.8}, {"d": "2026-01-09", "c": 33400.0, "eps": 1306.0, "pe": 25.6}, {"d": "2026-01-12", "c": 32700.0, "eps": 1308.0, "pe": 25.0}, {"d": "2026-01-13", "c": 33100.0, "eps": 1309.0, "pe": 25.3}, {"d": "2026-01-14", "c": 33100.0, "eps": 1310.0, "pe": 25.3}, {"d": "2026-01-15", "c": 32450.0, "eps": 1310.0, "pe": 24.8}, {"d": "2026-01-16", "c": 31950.0, "eps": 1311.0, "pe": 24.4}, {"d": "2026-01-19", "c": 31650.0, "eps": 1313.0, "pe": 24.1}, {"d": "2026-01-20", "c": 31200.0, "eps": 1314.0, "pe": 23.7}, {"d": "2026-01-21", "c": 30900.0, "eps": 1315.0, "pe": 23.5}, {"d": "2026-01-22", "c": 31350.0, "eps": 1316.0, "pe": 23.8}, {"d": "2026-01-23", "c": 31650.0, "eps": 1317.0, "pe": 24.0}, {"d": "2026-01-26", "c": 33500.0, "eps": 1319.0, "pe": 25.4}, {"d": "2026-01-27", "c": 36550.0, "eps": 1320.0, "pe": 27.7}, {"d": "2026-01-28", "c": 38350.0, "eps": 1320.0, "pe": 29.0}, {"d": "2026-01-29", "c": 38800.0, "eps": 1321.0, "pe": 29.4}, {"d": "2026-01-30", "c": 41350.0, "eps": 1322.0, "pe": 31.3}, {"d": "2026-02-02", "c": 40850.0, "eps": 1324.0, "pe": 30.8}, {"d": "2026-02-03", "c": 44900.0, "eps": 1325.0, "pe": 33.9}, {"d": "2026-02-04", "c": 48000.0, "eps": 1326.0, "pe": 36.2}, {"d": "2026-02-05", "c": 44150.0, "eps": 1327.0, "pe": 33.3}, {"d": "2026-02-06", "c": 47050.0, "eps": 1327.0, "pe": 35.4}, {"d": "2026-02-09", "c": 51900.0, "eps": 1330.0, "pe": 39.0}, {"d": "2026-02-10", "c": 49150.0, "eps": 1331.0, "pe": 36.9}, {"d": "2026-02-11", "c": 48900.0, "eps": 1331.0, "pe": 36.7}, {"d": "2026-02-12", "c": 49500.0, "eps": 1332.0, "pe": 37.2}, {"d": "2026-02-13", "c": 51000.0, "eps": 1333.0, "pe": 38.3}, {"d": "2026-02-19", "c": 55000.0, "eps": 1337.0, "pe": 41.1}, {"d": "2026-02-20", "c": 55800.0, "eps": 1338.0, "pe": 41.7}, {"d": "2026-02-23", "c": 53000.0, "eps": 1341.0, "pe": 39.5}, {"d": "2026-02-24", "c": 52900.0, "eps": 1341.0, "pe": 39.4}, {"d": "2026-02-25", "c": 52500.0, "eps": 1342.0, "pe": 39.1}, {"d": "2026-02-26", "c": 56100.0, "eps": 1343.0, "pe": 41.8}, {"d": "2026-02-27", "c": 56100.0, "eps": 1344.0, "pe": 41.8}, {"d": "2026-03-03", "c": 59000.0, "eps": 1347.0, "pe": 43.8}, {"d": "2026-03-04", "c": 53800.0, "eps": 1348.0, "pe": 39.9}, {"d": "2026-03-05", "c": 66800.0, "eps": 1348.0, "pe": 49.5}, {"d": "2026-03-06", "c": 67100.0, "eps": 1349.0, "pe": 49.7}, {"d": "2026-03-09", "c": 59900.0, "eps": 1351.0, "pe": 44.3}, {"d": "2026-03-10", "c": 70000.0, "eps": 1352.0, "pe": 51.8}, {"d": "2026-03-11", "c": 67000.0, "eps": 1353.0, "pe": 49.5}, {"d": "2026-03-12", "c": 66100.0, "eps": 1354.0, "pe": 48.8}, {"d": "2026-03-13", "c": 66100.0, "eps": 1354.0, "pe": 48.8}, {"d": "2026-03-16", "c": 64100.0, "eps": 1357.0, "pe": 47.2}, {"d": "2026-03-17", "c": 61100.0, "eps": 1358.0, "pe": 45.0}, {"d": "2026-03-18", "c": 62900.0, "eps": 1358.0, "pe": 46.3}, {"d": "2026-03-19", "c": 61000.0, "eps": 1359.0, "pe": 44.9}, {"d": "2026-03-20", "c": 72800.0, "eps": 1360.0, "pe": 53.5}, {"d": "2026-03-23", "c": 71500.0, "eps": 1362.0, "pe": 52.5}, {"d": "2026-03-24", "c": 77400.0, "eps": 1363.0, "pe": 56.8}, {"d": "2026-03-25", "c": 73600.0, "eps": 1364.0, "pe": 54.0}, {"d": "2026-03-26", "c": 71300.0, "eps": 1365.0, "pe": 52.3}, {"d": "2026-03-27", "c": 70000.0, "eps": 1365.0, "pe": 51.3}, {"d": "2026-03-30", "c": 64200.0, "eps": 1368.0, "pe": 46.9}, {"d": "2026-03-31", "c": 60700.0, "eps": 1368.0, "pe": 44.4}, {"d": "2026-04-01", "c": 65100.0, "eps": 1369.0, "pe": 47.5}, {"d": "2026-04-02", "c": 60800.0, "eps": 1370.0, "pe": 44.4}, {"d": "2026-04-03", "c": 62200.0, "eps": 1371.0, "pe": 45.4}, {"d": "2026-04-06", "c": 61000.0, "eps": 1373.0, "pe": 44.4}, {"d": "2026-04-07", "c": 60500.0, "eps": 1374.0, "pe": 44.0}, {"d": "2026-04-08", "c": 68000.0, "eps": 1375.0, "pe": 49.5}, {"d": "2026-04-09", "c": 63800.0, "eps": 1375.0, "pe": 46.4}, {"d": "2026-04-10", "c": 63400.0, "eps": 1376.0, "pe": 46.1}, {"d": "2026-04-13", "c": 63300.0, "eps": 1378.0, "pe": 45.9}, {"d": "2026-04-14", "c": 63600.0, "eps": 1379.0, "pe": 46.1}, {"d": "2026-04-15", "c": 70600.0, "eps": 1380.0, "pe": 51.2}, {"d": "2026-04-16", "c": 72300.0, "eps": 1381.0, "pe": 52.4}, {"d": "2026-04-17", "c": 70400.0, "eps": 1382.0, "pe": 51.0}, {"d": "2026-04-20", "c": 91500.0, "eps": 1384.0, "pe": 66.1}, {"d": "2026-04-21", "c": 118900.0, "eps": 1385.0, "pe": 85.9}, {"d": "2026-04-22", "c": 120400.0, "eps": 1385.0, "pe": 86.9}, {"d": "2026-04-23", "c": 116200.0, "eps": 1386.0, "pe": 83.8}, {"d": "2026-04-24", "c": 123900.0, "eps": 1387.0, "pe": 89.3}, {"d": "2026-04-27", "c": 126000.0, "eps": 1389.0, "pe": 90.7}, {"d": "2026-04-28", "c": 130500.0, "eps": 1390.0, "pe": 93.9}, {"d": "2026-04-29", "c": 125900.0, "eps": 1393.0, "pe": 90.4}, {"d": "2026-04-30", "c": 126000.0, "eps": 1396.0, "pe": 90.2}, {"d": "2026-05-04", "c": 126600.0, "eps": 1409.0, "pe": 89.8}, {"d": "2026-05-06", "c": 127600.0, "eps": 1415.0, "pe": 90.2}, {"d": "2026-05-07", "c": 135100.0, "eps": 1419.0, "pe": 95.2}, {"d": "2026-05-08", "c": 138900.0, "eps": 1422.0, "pe": 97.7}, {"d": "2026-05-11", "c": 163800.0, "eps": 1431.0, "pe": 114.4}, {"d": "2026-05-12", "c": 156000.0, "eps": 1434.0, "pe": 108.8}, {"d": "2026-05-13", "c": 168000.0, "eps": 1438.0, "pe": 116.9}, {"d": "2026-05-14", "c": 168000.0, "eps": 1441.0, "pe": 116.6}, {"d": "2026-05-15", "c": 140200.0, "eps": 1444.0, "pe": 97.1}, {"d": "2026-05-18", "c": 182200.0, "eps": 1453.0, "pe": 125.4}, {"d": "2026-05-19", "c": 176900.0, "eps": 1457.0, "pe": 121.5}, {"d": "2026-05-20", "c": 178500.0, "eps": 1460.0, "pe": 122.3}, {"d": "2026-05-21", "c": 185200.0, "eps": 1463.0, "pe": 126.6}, {"d": "2026-05-22", "c": 224000.0, "eps": 1466.0, "pe": 152.8}, {"d": "2026-05-26", "c": 234500.0, "eps": 1479.0, "pe": 158.6}, {"d": "2026-05-27", "c": 229000.0, "eps": 1482.0, "pe": 154.5}, {"d": "2026-05-28", "c": 208000.0, "eps": 1485.0, "pe": 140.1}, {"d": "2026-05-29", "c": 200000.0, "eps": 1488.0, "pe": 134.4}, {"d": "2026-06-01", "c": 185500.0, "eps": 1498.0, "pe": 123.9}, {"d": "2026-06-02", "c": 196900.0, "eps": 1501.0, "pe": 131.2}, {"d": "2026-06-04", "c": 250500.0, "eps": 1507.0, "pe": 166.2}, {"d": "2026-06-05", "c": 210000.0, "eps": 1510.0, "pe": 139.0}, {"d": "2026-06-08", "c": 182800.0, "eps": 1520.0, "pe": 120.3}, {"d": "2026-06-09", "c": 191700.0, "eps": 1523.0, "pe": 125.9}, {"d": "2026-06-10", "c": 199000.0, "eps": 1526.0, "pe": 130.4}, {"d": "2026-06-11", "c": 245500.0, "eps": 1529.0, "pe": 160.5}, {"d": "2026-06-12", "c": 231000.0, "eps": 1533.0, "pe": 150.7}, {"d": "2026-06-15", "c": 225000.0, "eps": 1542.0, "pe": 145.9}, {"d": "2026-06-16", "c": 226500.0, "eps": 1545.0, "pe": 146.6}, {"d": "2026-06-17", "c": 220000.0, "eps": 1548.0, "pe": 142.1}, {"d": "2026-06-18", "c": 212500.0, "eps": 1552.0, "pe": 137.0}, {"d": "2026-06-19", "c": 193100.0, "eps": 1555.0, "pe": 124.2}, {"d": "2026-06-22", "c": 197900.0, "eps": 1564.0, "pe": 126.5}, {"d": "2026-06-23", "c": 184200.0, "eps": 1567.0, "pe": 117.5}, {"d": "2026-06-24", "c": 182400.0, "eps": 1571.0, "pe": 116.1}, {"d": "2026-06-25", "c": 166900.0, "eps": 1574.0, "pe": 106.1}, {"d": "2026-06-26", "c": 165600.0, "eps": 1577.0, "pe": 105.0}, {"d": "2026-06-29", "c": 176600.0, "eps": 1586.0, "pe": 111.3}, {"d": "2026-06-30", "c": 201000.0, "eps": 1590.0, "pe": 126.4}, {"d": "2026-07-01", "c": 242000.0, "eps": 1593.0, "pe": 151.9}, {"d": "2026-07-02", "c": 227500.0, "eps": 1596.0, "pe": 142.5}, {"d": "2026-07-03", "c": 192600.0, "eps": 1599.0, "pe": 120.4}, {"d": "2026-07-06", "c": 181700.0, "eps": 1609.0, "pe": 113.0}, {"d": "2026-07-07", "c": 175600.0, "eps": 1612.0, "pe": 108.9}, {"d": "2026-07-08", "c": 160000.0, "eps": 1615.0, "pe": 99.1}, {"d": "2026-07-09", "c": 178400.0, "eps": 1618.0, "pe": 110.3}, {"d": "2026-07-10", "c": 191900.0, "eps": 1621.0, "pe": 118.4}, {"d": "2026-07-13", "c": 182500.0, "eps": 1631.0, "pe": 111.9}, {"d": "2026-07-14", "c": 192600.0, "eps": 1634.0, "pe": 117.9}, {"d": "2026-07-15", "c": 209500.0, "eps": 1637.0, "pe": 128.0}, {"d": "2026-07-16", "c": 187900.0, "eps": 1640.0, "pe": 114.6}, {"d": "2026-07-20", "c": 167900.0, "eps": 1653.0, "pe": 101.6}, {"d": "2026-07-21", "c": 169200.0, "eps": 1656.0, "pe": 102.2}, {"d": "2026-07-22", "c": 162000.0, "eps": 1659.0, "pe": 97.6}, {"d": "2026-07-23", "c": 163900.0, "eps": 1662.0, "pe": 98.6}, {"d": "2026-07-24", "c": 141000.0, "eps": 1666.0, "pe": 84.7}, {"d": "2026-07-27", "c": 149900.0, "eps": 1675.0, "pe": 89.5}, {"d": "2026-07-28", "c": 128800.0, "eps": 1678.0, "pe": 76.7}, {"d": "2026-07-29", "c": 116100.0, "eps": 1681.0, "pe": 69.0}, {"d": "2026-07-30", "c": 98300.0, "eps": 1699.0, "pe": 57.9}, {"d": "2026-07-31", "c": 124500.0, "eps": 1716.0, "pe": 72.6}, {"d": "2026-08-03", "c": 127800.0, "eps": 1768.0, "pe": 72.3}, {"d": "2026-08-04", "c": 136000.0, "eps": 1785.0, "pe": 76.2}, {"d": "2026-08-05", "c": 142900.0, "eps": 1802.0, "pe": 79.3}, {"d": "2026-08-06", "c": 133400.0, "eps": 1819.0, "pe": 73.3}, {"d": "2026-08-07", "c": 127800.0, "eps": 1837.0, "pe": 69.6}, {"d": "2026-08-10", "c": 144800.0, "eps": 1888.0, "pe": 76.7}, {"d": "2026-08-11", "c": 162400.0, "eps": 1906.0, "pe": 85.2}, {"d": "2026-08-12", "c": 174000.0, "eps": 1910.0, "pe": 91.1}, {"d": "2026-08-13", "c": 179300.0, "eps": 1914.0, "pe": 93.7}, {"d": "2026-08-14", "c": 177800.0, "eps": 1918.0, "pe": 92.7}, {"d": "2026-08-18", "c": 179300.0, "eps": 1934.0, "pe": 92.7}, {"d": "2026-08-19", "c": 171600.0, "eps": 1938.0, "pe": 88.6}, {"d": "2026-08-20", "c": 177300.0, "eps": 1942.0, "pe": 91.3}, {"d": "2026-08-21", "c": 168600.0, "eps": 1946.0, "pe": 86.7}, {"d": "2026-08-24", "c": 166000.0, "eps": 1958.0, "pe": 84.8}, {"d": "2026-08-25", "c": 178800.0, "eps": 1962.0, "pe": 91.1}, {"d": "2026-08-26", "c": 173400.0, "eps": 1966.0, "pe": 88.2}, {"d": "2026-08-27", "c": 179100.0, "eps": 1970.0, "pe": 90.9}, {"d": "2026-08-28", "c": 176800.0, "eps": 1974.0, "pe": 89.6}, {"d": "2026-08-31", "c": 177000.0, "eps": 1986.0, "pe": 89.1}, {"d": "2026-09-01", "c": 173000.0, "eps": 1990.0, "pe": 86.9}, {"d": "2026-09-02", "c": 173700.0, "eps": 1994.0, "pe": 87.1}, {"d": "2026-09-03", "c": 168000.0, "eps": 1998.0, "pe": 84.1}, {"d": "2026-09-04", "c": 178300.0, "eps": 2002.0, "pe": 89.1}, {"d": "2026-09-07", "c": 187200.0, "eps": 2014.0, "pe": 93.0}, {"d": "2026-09-08", "c": 205000.0, "eps": 2018.0, "pe": 101.6}], "stats": {"avg": 33.2, "min": 12.8, "max": 166.2, "min_day": "2024-08-05", "max_day": "2026-06-04", "cur": 101.6, "cur_eps": 2018.0, "cur_price": 205000.0, "percentile": 94}, "stats_1y": {"avg": 59.6, "min": 20.8, "max": 166.2, "min_day": "2025-11-25", "max_day": "2026-06-04", "cur": 101.6, "cur_eps": 2018.0, "cur_price": 205000.0, "percentile": 82}, "events": [{"d": "2026-05-22", "label": "테마 급등 고점권", "kind": "up"}, {"d": "2026-07-29", "label": "2Q26 QoQ 흑전", "kind": "neutral"}, {"d": "2026-07-30", "label": "급락 저점", "kind": "down"}, {"d": "2026-08-07", "label": "SK하이닉스 54.3조", "kind": "up"}, {"d": "2026-09-07", "label": "수주잔고 3.6배 재평가", "kind": "up"}], "regimes": [{"from": "2025-01-01", "to": "2026-03-31", "label": "다운사이클·발주 공백"}, {"from": "2026-04-01", "to": "2026-09-08", "label": "저점 통과·수주 회복 리레이팅"}], "cfg": {"currency": "KRW", "multiples": [25, 45, 65, 85], "priceMax": 300000, "priceTick": 60000, "peMax": 200, "peTick": 40, "epsMax": 2500, "epsTick": 500}, "anchors": [{"d": "2023-05-30", "val": "0.1조원", "eps": 1233.09, "why": "메모리 다운사이클 저점기 — 반도체 장비 발주 위축. FY24 회복 기대 초기의 NTM 영업이익 근사(사후 실적 기반, 당시 컨센 보도 미확보)"}, {"d": "2024-05-15", "val": "0.1조원", "eps": 2017.79, "why": "FY24 실적 호조 국면 — FY24 확정 영업이익 972억에 수렴하는 NTM 기대. DRAM 신규 투자·ALD 장비 수요 회복(사후 실적 기반 근사)"}, {"d": "2025-05-15", "val": "0.1조원", "eps": 1120.99, "why": "다운사이클 재진입 — FY25 확정 영업이익 313억(YoY −68%)·매출 3,107억(YoY −24%)의 발주 공백 반영(사후 실적 기반 근사)"}, {"d": "2026-04-28", "val": "0.1조원", "eps": 1390.03, "why": "1Q26 잠정(DART 2026-04-28) 영업손실 −70.3억 — 사이클 저점 확인. HBM·1c DRAM capex 기대로 FY27 회복을 선반영하나, 적자 분기라 NTM 상향은 제한적"}, {"d": "2026-07-29", "val": "0.1조원", "eps": 1681.49, "why": "2Q26 잠정(DART 2026-07-29) 영업이익 14.2억 QoQ 흑자전환·매출 598.8억(YoY −24.0%) — 저점 통과 신호. 다만 상반기 누적은 여전히 영업손실 −56.1억"}, {"d": "2026-08-11", "val": "0.1조원", "eps": 1905.69, "why": "SK하이닉스 용인·청주 54.3조 투자 확정(2026-08-07)으로 ALD 발주 사이클 기대 상향 — 단 하우스는 컨센(FnGuide Fwd12M EPS 2,024원 환산 ≈961억) 대비 −12% 보수. 상반기 영업적자와 장비 인도기준 매출 인식(발주→매출 이연) 리스크를 반영했고, 컨센 추정기관이 1곳뿐이라 표본이 얇다"}, {"d": "2026-09-08", "val": "0.1조원", "eps": 2017.79, "why": "반기보고서(DART 2026-08-14) 수주잔고 654억→2,336억(3.6배) 확인 + 증권업계 컨센 FY27 영업이익 1,300~1,500억(EBN 9/8) — 하우스 NTM 900억은 FnGuide Fwd12M EPS 2,128원 환산(≈950억) 대비 −5%. 인도기준 인식의 시차를 여전히 보수적으로 반영. 추정기관 2곳으로 표본은 얇다"}], "meta": {"symbol": "036930", "name": "주성엔지니어링", "shares": 46481121, "mode": "op_krw", "conv": 1.0421, "conv_basis": "최근 6개 흑자 분기 합산 (3Q24~2Q26), 지배주주 귀속 순이익 ÷ 영업이익 = 1.0421 (DART 실측, 2026-09-08)", "range": ["2023-06-27", "2026-09-08"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
