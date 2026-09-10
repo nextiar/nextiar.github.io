@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 네 마녀의 날 외국인 2.4조 '팔자'에 코스피 약보합, 코스닥은 소부장·2차전지로 홀로 상승</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-10-kr-close-2026-09-10.html">
+<meta property="og:title" content="코스피 마감 시황 — 네 마녀의 날 외국인 2.4조 &#x27;팔자&#x27;에 코스피 약보합, 코스닥은 소부장·2차전지로 홀로 상승">
+<meta property="og:description" content="선물·옵션 동시만기일 외국인 약 2.4조 순매도에 코스피는 −0.25%(7,033.92)로 7,000선을 방어, 코스닥은 반도체 소부장·2차전지 강세로 +0.79%(836.92) 홀로 상승했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-10-kr-close-2026-09-10.html">
+<meta name="description" content="선물·옵션 동시만기일 외국인 약 2.4조 순매도에 코스피는 −0.25%(7,033.92)로 7,000선을 방어, 코스닥은 반도체 소부장·2차전지 강세로 +0.79%(836.92) 홀로 상승했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-10-kr-close-2026-09-10.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 마감 시황 심층 (KR Close Wrap)</div>
+  <h1>코스피 마감 시황 — 네 마녀의 날 외국인 2.4조 '팔자'에 <span class="down">코스피 약보합</span>, 코스닥은 소부장·2차전지로 <span class="up">홀로 상승</span></h1>
+  <p class="sub">2026년 9월 10일(목) 국내 장 마감 기준. 선물·옵션 <strong>동시만기일('네 마녀의 날')</strong>을 맞아 외국인이 코스피에서만 <strong>약 2조4천억원</strong>을 순매도하며 지수를 눌렀다. 코스피는 장 초반 <span class="down">−1.2%</span>대까지 밀렸다가 개인·기관의 방어로 낙폭을 줄여 <strong>7,033.92(<span class="down">−0.25%</span>)</strong>로 7,000선을 지켰다. 반면 코스닥은 <strong>반도체 소부장·2차전지</strong>가 이끌며 <strong>836.92(<span class="up">+0.79%</span>)</strong>로 홀로 올랐다 — 대형주와 성장주의 온도차가 뚜렷한 하루. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-09-10 16:00 KST · 평일 마감 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-09-10 마감 기준).</strong> 원/달러 <strong>약 1,339원</strong>(9/10 오후, 전일 확정 1,341.1원 대비 소폭 등락) · 미 국채 10년물 4.80%(FRED 9/8 확정) · 한국 기준금리 3.00% · 달러지수 118.07. 간밤 미 증시는 강보합(S&amp;P500 프록시 SPY <span class="up">+0.25%</span>)이었으나, 국내는 동시만기 수급과 유가 부담에 눌렸다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">동시만기 · 지수 vs 성장주 갈림</span></h2>
+  <p class="lead">지수 종가·등락은 다수 마감 보도가 일치한 값을 쓰고, 토스증권 KODEX 프록시로 교차확인했다. 수급·환율은 마감 보도 및 한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (9/10 종가)</div><div class="val down">7,033.92</div><div class="delta down">▼ −17.72p (−0.25%) · 7,000선 방어<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 마감 · 머니투데이/아시아경제 (2026-09-10)</span><span class="evd-sum">코스피는 전장 대비 <strong>17.72p(−0.25%) 내린 7,033.92</strong>에 마감. 토스 KODEX 200(069500) 프록시도 112,100→111,865(<strong>−0.21%</strong>)로 방향·폭이 일치.</span><a href="https://www.mt.co.kr/stock/2026/09/10/2026091015293242265" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">코스닥 (9/10 종가)</div><div class="val up">836.92</div><div class="delta up">▲ +6.55p (+0.79%)<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스닥 마감 · 아시아경제/이투데이 (2026-09-10)</span><span class="evd-sum">코스닥은 <strong>6.55p(+0.79%) 오른 836.92</strong>에 마감(전일 확정 830.37 + 6.55). 토스 KODEX 코스닥150 프록시는 대형 성장주 우위로 <strong>+1.7%</strong>까지 강했다.</span><a href="https://view.asiae.co.kr/article/2026091015345518581" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">수급 (코스피)</div><div class="val down">외국인 −2.4조</div><div class="delta">개인·기관 순매수로 방어</div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val">≈1,339원</div><div class="delta">전일 확정 1,341.1원 · 좁은 등락</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 오늘은 <strong>선물·옵션 동시만기일(네 마녀의 날)</strong>. 외국인이 코스피에서만 <strong><span class="down">약 2조4천억원</span> 순매도</strong>하며 지수를 눌렀고, 개인(+3,802억)·기관(+4,435억)의 매수가 <strong>7,000선을 방어</strong>했다.</div>
+    <div class="tldr-item">② <strong>코스피 −0.25%(7,033.92) vs 코스닥 +0.79%(836.92)</strong> — 삼성전자·SK하이닉스·LG엔솔 등 대형주는 약세, 반면 <strong>반도체 소부장·2차전지 성장주</strong>가 코스닥을 끌어올려 온도차가 컸다.</div>
+    <div class="tldr-item">③ 간밤 미 증시 강보합에도 국내가 밀린 건 <strong>동시만기 수급·유가 부담·외국인 매도</strong> 탓. 내일(9/11)은 만기 되돌림과 외국인 방향, 미 물가지표·FOMC 경계가 관전 포인트다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>KOSPI closed at 7,033.92 (−0.25%) on quadruple-witching day.</strong> Foreign investors dumped roughly KRW 2.4tn on the main board, but retail (+KRW 380bn) and institutions (+KRW 444bn) net-bought to defend the 7,000 level after an intraday dip near −1.2%.</p>
+      <p>The KOSDAQ diverged sharply, rising 0.79% to 836.92, led by semiconductor materials/equipment and secondary-battery growth names — Jusung Engineering jumped about 7%. Large caps (Samsung Electronics −0.19%, SK hynix −0.16%, LG Energy Solution −1.62%, Samsung Biologics −2.00%) lagged.</p>
+      <p>Macro: USD/KRW near 1,339, US 10Y at 4.80%, overnight US equities firm (SPY +0.25%). The next session hinges on post-expiry flow normalization, whether foreign selling persists, and caution ahead of US inflation data and the September FOMC.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 대형주는 쉬고, 성장주가 달렸다</h2>
+  <p class="lead">코스피는 장 초반 외국인 매도에 <span class="down">−1.2%</span>대(6,960선)까지 밀렸으나 개인·기관 매수로 낙폭을 절반 이하로 줄였다. 지수를 누른 건 시가총액 상위 대형주, 지수를 받친 건 코스닥 소부장·2차전지였다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">9/10 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong></td><td class="num">7,033.92</td><td class="num"><span class="down">−0.25%</span></td><td>−17.72p · 장중 저점 −1.2%대에서 낙폭 축소</td></tr>
+      <tr><td><strong>코스닥</strong></td><td class="num">836.92</td><td class="num"><span class="up">+0.79%</span></td><td>+6.55p · 소부장·2차전지 주도</td></tr>
+      <tr><td>삼성전자 (005930)</td><td class="num">269,000</td><td class="num"><span class="down">−0.19%</span></td><td>대형주 약세 · 토스 시세 26.8만원대 교차확인<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">대형주 마감 · 국제뉴스 (2026-09-10)</span><span class="evd-sum">삼성전자 <strong>−0.19%(26.9만원)</strong>, SK하이닉스 <strong>−0.16%(185.3만원)</strong>, LG에너지솔루션 <strong>−1.62%</strong>, 삼성바이오로직스 <strong>−2.00%</strong> 등 시총 상위가 일제히 약세. 토스 시세(삼성 26.8만·하이닉스 185.4만)와 방향 일치.</span><a href="https://www.gukjenews.com/news/articleView.html?idxno=3691192" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>SK하이닉스 (000660)</td><td class="num">1,853,000</td><td class="num"><span class="down">−0.16%</span></td><td>거래대금 1위(약 12조) · 지수 영향 큼</td></tr>
+      <tr><td>LG에너지솔루션 / 삼성바이오로직스</td><td class="num">—</td><td class="num"><span class="down">−1.62% / −2.00%</span></td><td>2차전지·바이오 대형주도 하락</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 오늘 지수 흐름은 <strong>"대형주 vs 성장주"의 갈림</strong>으로 요약된다. 코스피는 거래대금 1·2위인 SK하이닉스·삼성전자가 약보합에 머물고 LG엔솔·삼성바이오 등 다른 대형주가 <span class="down">1~2%</span> 밀리며 지수를 눌렀다. 반면 코스닥은 <strong>반도체 소부장·2차전지 성장주</strong>가 강세를 보이며 지수를 <span class="up">+0.79%</span> 끌어올렸다. 대형 지수는 쉬고, 중소형 성장주로 수급이 옮겨간 하루다.</p>
+      <p><strong>거래 구조.</strong> 이날 거래대금 상위는 <strong>SK하이닉스(약 12조)·삼성전자(약 7.6조)</strong>가 압도했고, 그 뒤를 KODEX 200·레버리지·TIGER 200 등 지수형 ETF가 채웠다 <span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">거래대금 랭킹 · 토스증권 Open API (2026-09-10)</span><span class="evd-sum">거래대금 1위 SK하이닉스 <strong>약 11.98조</strong>, 2위 삼성전자 <strong>약 7.58조</strong>, 3~5위 KODEX 200·KODEX 레버리지·TIGER 200. 개별 성장주 중엔 <strong>주성엔지니어링</strong>이 상위(약 1.13조)에 올라 특징주로 부각.</span><span class="evd-nolink">토스증권 Open API market_rankings(1d) · 원문 링크 없음</span></span></span> — 동시만기일 특유의 지수형 물량이 집중된 구조다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 외국인 '팔자', 개인·기관 방어 + 특징주</h2>
+  <p class="lead">동시만기일을 맞아 외국인이 코스피에서 대규모 순매도로 지수를 눌렀고, 개인·기관이 이를 받아내며 7,000선을 지켰다. 개별 성장주에선 반도체 장비 대표주가 특징주로 부각됐다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자주체 (코스피)</th><th class="num">순매매</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="down">−약 2.4조</span></td><td>동시만기·유가 부담에 대량 매도, 지수 하방 압력<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">코스피 수급 · 국제뉴스/오피니언뉴스 (2026-09-10)</span><span class="evd-sum">코스피 외국인 <strong>약 2조4,807억원 순매도</strong>(오피니언뉴스는 "약 2.5조"로 보도), 기관 <strong>+4,435억</strong>·개인 <strong>+3,802억</strong> 순매수. 매체별로 순매도 총액 수치엔 편차(일부 2.9조 보도)가 있어 방향은 일치·규모는 범위로 표기.</span><a href="https://www.gukjenews.com/news/articleView.html?idxno=3691192" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="up">+약 0.44조</span></td><td>순매수로 방어 가담</td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="up">+약 0.38조</span></td><td>낙폭 확대 구간에서 저가 매수</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> KRX Open API 는 투자자별 수급을 <strong>당일 제공하지 않고</strong>(확정치 T+1), 공매도·수급 상세도 미제공이다. 따라서 위 순매매는 <strong>마감 보도 기준</strong>이며, 매체별로 외국인 순매도 총액이 2.4조~2.9조로 엇갈려 <strong>방향은 일치·규모는 범위</strong>로 표기했다. 확정 수급·대량보유(5%룰) 신호는 익일 KRX·DART 로 교차확인이 필요하다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>특징주 — 주성엔지니어링(036930).</strong> 반도체 장비주 <strong>주성엔지니어링</strong>이 <span class="up">+7.0%</span>(장중 최고 <span class="up">+9.4%</span>)로 급등하며 코스닥 강세를 상징했다. 거래대금도 약 1.13조로 개별 종목 중 상위에 올랐다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">주성엔지니어링·코스닥 소부장 · 중앙이코노미/CBC (2026-09-10)</span><span class="evd-sum">주성엔지니어링 장중 <strong>+9.44%(226,000원)</strong>, 종가 기준 토스 시세 <strong>221,000원(+7.02%)</strong>. 코스닥에서 반도체 소부장·2차전지(에코프로·심텍 등)가 동반 강세를 보이며 지수를 견인.</span><a href="https://www.joongangenews.com/news/articleView.html?idxno=547163" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 대형 메모리(삼성·하이닉스)가 쉬는 사이 <strong>장비·소재로 수급이 순환</strong>한 셈이다.</p>
+      <p><strong>대량보유 신호.</strong> 오늘 마감 시점 기준으로 커버 대상 종목에서 확인된 신규 DART 5%룰 대량보유 변동은 별도로 표기할 만한 것이 없었다 — 확정 수급·지분 변동은 익일 반영분으로 재확인한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원/달러·금리·간밤 미국 잔영</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·토스증권 Open API(미 ETF 프록시) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>해 스테일 여부가 보이도록 한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong> (9/10 오후 보도)</td><td class="num">≈1,339원</td><td class="num">1,341.1원</td><td>9/10 마감 보도 · 좁은 등락<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">원/달러 · 머니투데이 (2026-09-10)</span><span class="evd-sum">원/달러는 9/10 오후 <strong>1,339원 안팎</strong>에서 등락. 전일(9/9) 확정치는 1,341.1원(직전 1,342.6원). 매체별 오후 스냅샷 시점 차로 1,336~1,341원 범위 보도.</span><a href="https://www.mt.co.kr/economy/2026/09/10/2026091015363438905" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>원/달러 (ECOS 확정)</strong></td><td class="num">1,341.1원</td><td class="num">1,342.6원</td><td>9/9 · 한국은행 ECOS</td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>9/7 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong> (FRED 확정)</td><td class="num">4.80%</td><td class="num">4.78%</td><td>9/8 · FRED DGS10</td></tr>
+      <tr><td>달러지수</td><td class="num">118.07</td><td class="num">118.13</td><td>9/4 · FRED DTWEXBGS</td></tr>
+      <tr><td>간밤 미 증시 (SPY/QQQ 프록시)</td><td class="num"><span class="up">+0.25% / +0.07%</span></td><td class="num">—</td><td>9/10 조회 · 토스 Open API</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 간밤 미 증시는 <strong>강보합</strong>(S&amp;P500 프록시 SPY <span class="up">+0.25%</span>, 나스닥 프록시 QQQ <span class="up">+0.07%</span>)으로 우호적이었지만, 국내는 <strong>동시만기 수급 + 유가 부담 + 외국인 매도</strong>가 겹쳐 간밤 잔영을 살리지 못했다. 미 10년물이 4.80%로 다소 높은 수준을 유지하는 점, 원/달러가 1,330원대 후반에 머무는 점은 외국인 수급에 뚜렷한 우호 신호를 주지 못했다. 미 지표의 국내 영향 확인은 <code>docs/research-websites-guide.md</code> §5B, FRED 시리즈 매핑은 §2를 따랐다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(9/11) 관전 포인트 <span class="chip cool h2-chip">만기 되돌림 · 물가 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 동시만기라는 <strong>일회성 수급 이벤트</strong>가 지나간 만큼, 내일은 외국인 매도가 만기 물량이었는지(되돌림) 아니면 방향성 매도인지가 갈림길이며, 대형주 vs 코스닥 성장주의 온도차가 이어질지가 핵심이다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>동시만기 되돌림</strong> — 오늘 외국인 −2.4조가 프로그램·만기 청산이었다면 내일 순매수 전환 가능성, 방향성 매도였다면 추가 하방 압력. ② <strong>대형 반도체(삼성·하이닉스)</strong>가 오늘의 약보합에서 방향을 잡는지, 그리고 오늘 강했던 <strong>코스닥 소부장·2차전지</strong>가 순환매를 이어가는지. ③ <strong>원/달러 1,330원대</strong> 안착 여부 — 원화가 강세로 돌면 외국인 복귀에 우호적. ④ <strong>미 물가지표·9월 FOMC</strong>를 앞둔 경계감 — 미 10년물 4.80% 부담이 위험선호를 제약하는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 시황은 9/10 국내 장 마감(오후 4시대) 조회 기준으로, 지수 종가·수급은 마감 보도에 기반한다. KRX 투자자별 확정 수급은 익일(T+1) 반영되며, 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다. 언급된 개별 종목(삼성전자·SK하이닉스·주성엔지니어링 등)은 시황 맥락일 뿐 투자의견 콜이 아니다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 7,033.92(−0.25%) 마감 — <a href="https://www.mt.co.kr/stock/2026/09/10/2026091015293242265">머니투데이</a>, <a href="https://view.asiae.co.kr/article/2026091015483540319">아시아경제</a></span>
+  <span>근거2 코스닥 836.92(+0.79%) 마감 — <a href="https://view.asiae.co.kr/article/2026091015345518581">아시아경제</a>, <a href="https://www.etoday.co.kr/news/view/2624144">이투데이</a></span>
+  <span>근거3 대형주 약세(삼성 −0.19%·하이닉스 −0.16%·LG엔솔 −1.62%·삼바 −2.00%) — <a href="https://www.gukjenews.com/news/articleView.html?idxno=3691192">국제뉴스</a></span>
+  <span>근거4 거래대금 랭킹(하이닉스·삼성전자·지수 ETF) — 토스증권 Open API market_rankings(1d)</span>
+  <span>근거5 외국인 약 2.4조 순매도·개인/기관 순매수 — <a href="https://www.gukjenews.com/news/articleView.html?idxno=3691192">국제뉴스</a>, <a href="http://www.opinionnews.co.kr/news/articleView.html?idxno=144281">오피니언뉴스</a></span>
+  <span>근거6 주성엔지니어링 +7%(장중 +9.4%)·코스닥 소부장 강세 — <a href="https://www.joongangenews.com/news/articleView.html?idxno=547163">중앙이코노미뉴스</a>, <a href="https://www.cbci.co.kr/news/articleView.html?idxno=605283">CBC뉴스</a></span>
+  <span>근거7 원/달러 약 1,339원(9/10) — <a href="https://www.mt.co.kr/economy/2026/09/10/2026091015363438905">머니투데이</a></span>
+  <span>참고 네 마녀의 날·유가 부담·개장 급락 — <a href="https://www.mt.co.kr/stock/2026/09/10/2026091009340091360">머니투데이</a>, <a href="https://www.businesskorea.co.kr/news/articleView.html?idxno=276607">Businesskorea</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(시세·거래대금 랭킹·미 ETF 프록시), 국내 마감 공개 보도(머니투데이·아시아경제·이투데이·국제뉴스·오피니언뉴스·중앙이코노미·CBC), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수). 지수·수급 확정치는 KRX·ECOS 익일(T+1) 반영분으로 재확인 대상이다. 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-09-10 16:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
