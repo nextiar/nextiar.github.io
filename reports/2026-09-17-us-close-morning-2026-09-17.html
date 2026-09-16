@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 연준 3년 만에 첫 인상(3.75~4.00%), 다우 −1.2%·나스닥은 보합…금융 급락 vs 반도체 방어</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 14px; }
+.en-abstract > summary { cursor: pointer; padding: 11px 0; font-size: 12.5px; font-weight: 650; color: var(--ink-2); list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract > summary::before { content: "▸ "; color: var(--muted); }
+.en-abstract[open] > summary::before { content: "▾ "; }
+.en-abstract .en-body { padding: 0 0 13px; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-17-us-close-morning-2026-09-17.html">
+<meta property="og:title" content="US 마감 시황 — 연준 3년 만에 첫 인상(3.75~4.00%), 다우 −1.2%·나스닥은 보합…금융 급락 vs 반도체 방어">
+<meta property="og:description" content="연준이 2023년 이후 처음으로 25bp 인상(3.75~4.00%)하고 연내 추가 인상까지 시사하자 다우가 631p 급락했지만 나스닥은 보합·반도체는 방어했고, 5% 국채금리·강달러의 국내 반도체株 전이 여부가 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-17-us-close-morning-2026-09-17.html">
+<meta name="description" content="연준이 2023년 이후 처음으로 25bp 인상(3.75~4.00%)하고 연내 추가 인상까지 시사하자 다우가 631p 급락했지만 나스닥은 보합·반도체는 방어했고, 5% 국채금리·강달러의 국내 반도체株 전이 여부가 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-17-us-close-morning-2026-09-17.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 연준 3년 만에 첫 인상(3.75~4.00%), 다우 <span class="down">−1.2%</span>·나스닥은 보합…<span class="down">금융 급락</span> vs <span class="up">반도체 방어</span></h1>
+  <p class="sub">2026년 9월 17일(목) 국내 장 시작 전 기준 · 전일 미 증시(9/16 수 마감) 반영. 간밤 뉴욕은 <strong>연방준비제도가 2023년 이후 처음으로 기준금리를 25bp 올려 3.75~4.00%</strong>로 인상하고 <strong>연내 추가 인상까지 시사</strong>하자 <strong>다우가 631p(<span class="down">−1.2%</span>) 급락</strong>했다. 다만 <strong>나스닥은 <span class="down">−0.01%</span> 보합</strong>으로, 금리에 민감한 <strong>금융이 지수를 끌어내리는 동안 반도체·빅테크는 상대적으로 버텼다</strong>. 미 10년물은 다시 <strong>5.0%</strong>로 올라섰고, 이란發 유가(WTI $105+)가 인플레를 재점화한 국면이다. 오늘 국내 장의 관건은 이 <strong>고금리·강달러 부담이 삼성전자·SK하이닉스 등 반도체株로 어떻게 전이되느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-09-17 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-09-17 오전).</strong> 원/달러 <strong>1,353.30원</strong>(전일 1,345.30 → 원화 약세 8.0원, 강달러 부담) · 미 국채 10년물 <strong>5.00%</strong>(9/16 마감 보도, FRED 확정은 T+1) · 한국 기준금리 3.00% · 달러지수 118.21 · SPY(미 S&P500 ETF) 754.05$(<span class="down">−0.44%</span>). 간밤 위험선호는 <strong>금리 인상·5% 국채금리에 눌렸다</strong>.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · 금융 급락</span></h2>
+  <p class="lead">미 지수는 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 및 build_briefing 스냅샷 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (9/16 마감)</div><div class="val down">리스크 오프</div><div class="delta">연준 3년 만의 첫 인상 · 5% 국채금리</div></div>
+    <div class="tile"><div class="lbl">다우 산업</div><div class="val down">51,461.90</div><div class="delta down">▼ −1.21% (−631p) · 골드만 주도 하락</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">25,978.42</div><div class="delta down">▼ −0.01% · 사실상 보합, 반도체 방어</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">10년물 5.0%</div><div class="delta">고금리·강달러 → 반도체株 전이 여부</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>연준이 2023년 이후 처음으로 25bp 인상</strong>(3.75~4.00%, 12–0 만장일치)하고 점도표가 <strong>연내 1회 추가 인상</strong>을 가리키자 위험선호가 눌렸다 — <strong>다우 <span class="down">−1.21%</span></strong>, S&amp;P500 <span class="down">−0.45%</span>.</div>
+    <div class="tldr-item">② 다만 하락은 균질하지 않았다 — <strong>금융이 지수를 끌어내린</strong> 반면(골드만삭스가 다우 최대 낙폭), <strong>나스닥은 <span class="down">−0.01%</span> 보합</strong>으로 <strong>반도체·빅테크가 상대적으로 방어</strong>했다.</div>
+    <div class="tldr-item">③ 미 10년물이 다시 <strong>5.0%</strong>로 오르고 <strong>이란發 유가(WTI $105+)</strong>가 인플레를 재점화한 터라, 오늘 국내 장은 <strong>고금리·강달러 부담 vs 반도체 이익 사이클</strong>의 줄다리기가 방향을 가른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (for non-Korean readers)</summary>
+    <div class="en-body">
+      On Sept 16, 2026 the Federal Reserve, under new Chair Kevin Warsh, raised its policy rate 25bp to 3.75%–4.00% — its first hike since 2023 — in a 12–0 vote, with the updated dot plot signaling one more hike likely in 2026. The Dow fell 1.21% (−631pts) to 51,461.90, led lower by financials (Goldman Sachs the biggest Dow drag), while the S&amp;P 500 slipped 0.45% to 7,551.81. The Nasdaq Composite was essentially flat (−0.01% to 25,978.42) as semiconductors and megacap tech proved relatively resilient. The 10-year Treasury yield climbed back to ~5.0% and the 2-year to ~4.72%, with WTI crude above $105 amid the Iran conflict keeping inflation sticky (Fed's 2026 core PCE projection nudged up to 3.4%). For Korea, the key read-through is whether higher-for-longer US rates and a stronger dollar pressure Samsung Electronics and SK Hynix, whose memory/HBM up-cycle story remains the domestic swing factor. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 3년 만의 첫 금리 인상이 누른 하루</h2>
+  <p class="lead">이날의 방아쇠는 명확했다 — <strong>연준의 25bp 인상과 매파적 점도표</strong>. 케빈 워시 신임 의장은 "이번 여름 물가 지표는 기저 흐름이 의미 있게 개선됐다고 말해주지 않는다"며 <strong>연내 추가 인상</strong> 가능성을 열어뒀다. 지수 레벨은 하락이 뚜렷했으나 낙폭은 섹터별로 크게 갈렸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">9/16 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>다우 산업</strong></td><td class="num">51,461.90</td><td class="num"><span class="down">−1.21%</span></td><td>−631.21p · 골드만삭스가 최대 낙폭<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">9/16 미 증시 마감 · 공개 보도 (2026-09-16)</span><span class="evd-sum">다우 <strong>−631.21p(−1.21%)</strong> 51,461.90, S&amp;P500 <strong>−0.45%</strong> 7,551.81, 나스닥 <strong>−0.01%</strong> 25,978.42. 다우 하락은 <strong>골드만삭스</strong>가 주도. 연준 인상·워시 매파 발언이 배경.</span><a href="https://www.cnbc.com/2026/09/15/stock-market-today-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,551.81</td><td class="num"><span class="down">−0.45%</span></td><td>금융·경기민감 약세, 기술은 방어</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">25,978.42</td><td class="num"><span class="down">−0.01%</span></td><td>사실상 보합 — 반도체·빅테크 상대 강세</td></tr>
+      <tr><td>연준 기준금리(상단)</td><td class="num">4.00%</td><td class="num"><span class="up">+25bp</span></td><td>2023년 이후 첫 인상, 12–0 만장일치<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">9월 FOMC · CNBC (2026-09-16)</span><span class="evd-sum">연준이 기준금리를 3.5~3.75%에서 <strong>3.75~4.00%</strong>로 25bp 인상(2023년 7월 이후 첫 인상, <strong>12–0</strong>). 점도표상 18명 중 12명이 연내 1회 추가 인상(2026년 적정금리 평균 <strong>4.125%</strong>)을 예상, 근원 PCE 전망은 3.3%→<strong>3.4%</strong>로 상향.</span><a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈5.00%</td><td class="num"><span class="up">상승</span></td><td>인상 후 다시 5% 상회<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">국채금리 · CNBC (2026-09-16)</span><span class="evd-sum">연준 인상·워시 인플레 경계 발언 후 <strong>10년물이 5.008%</strong>로 다시 5% 위로, <strong>2년물은 +5bp 4.717%</strong>. 고금리 장기화 기대가 성장주 할인율을 끌어올리는 압력.</span><a href="https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 2년물</td><td class="num">≈4.72%</td><td class="num"><span class="up">+5bp</span></td><td>정책 경로 민감 구간</td></tr>
+      <tr><td>WTI 유가</td><td class="num">$105+</td><td class="num"><span class="up">고공</span></td><td>이란 분쟁·호르무즈 해협 차단<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">유가·인플레 · CNBC (2026-09-16)</span><span class="evd-sum">미–이란 충돌 재격화로 <strong>WTI가 배럴당 $105</strong>를 상회, 호르무즈 해협이 사실상 봉쇄. 워시 의장은 "연준이 유가 같은 가격 충격을 단독으로 막을 순 없지만, 2·3차 파급을 막겠다"고 언급. 에너지發 인플레가 인상의 배경.</span><a href="https://www.cnbc.com/2026/09/16/oil-prices-treasury-yields-consumers-iran.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 시장이 인상 자체는 상당 부분 선반영(인상 확률이 발표 전 90%대)했으나, 실제로 발목을 잡은 것은 <strong>점도표의 '연내 1회 추가 인상'과 근원 PCE 전망 상향(3.3%→3.4%)</strong>이었다. "이번이 마지막"이 아니라 "고금리가 더 오래"라는 메시지가, 밸류에이션이 높은 성장주와 금리 민감 섹터를 동시에 눌렀다.</p>
+      <p><strong>인상의 근본 원인은 유가·인플레.</strong> 미–이란 분쟁 재격화로 <strong>WTI가 $105를 넘고 호르무즈 해협이 막히면서</strong> 에너지發 인플레가 재점화됐고, 물가가 3%대 후반에서 끈적해졌다. 워시 의장은 유가 충격의 2·3차 파급을 차단하는 것이 연준의 역할이라며 매파 기조를 정당화했다. 이 조합이 <strong>10년물을 다시 5%로</strong> 밀어올린 핵심이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>섹터·테마 다이버전스 — 금융은 급락, 반도체는 버텼다</h2>
+  <p class="lead">지수 하락의 진짜 구조는 '<strong>금리 민감 섹터 급락 vs 성장·반도체 방어</strong>'였다. 다우가 −1.2% 빠지는 동안 나스닥이 보합에 그친 것이 이 분화를 압축한다. 국내와 직결되는 반도체는 <strong>메모리·로직·장비</strong>로 갈라서 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>섹터 / 종목 (간밤 미국)</th><th class="num">방향</th><th>성격</th><th>국내 연결(read-through)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>금융</strong> (골드만삭스 등)</td><td class="num"><span class="down">약세 주도</span></td><td>금리·경기 민감</td><td>다우 최대 낙폭 — 고금리 장기화·경기 둔화 우려 반영</td></tr>
+      <tr><td><strong>반도체·빅테크</strong></td><td class="num"><span class="up">상대 방어</span></td><td>나스닥 보합 견인</td><td>AI·메모리 사이클 기대가 금리 역풍을 상쇄</td></tr>
+      <tr><td>브로드컴 (AVGO) · 로직/AI</td><td class="num">보합권</td><td>AI 커스텀 실리콘</td><td>로직·AI 가속기 수요는 견조 — 국내 파운드리·후공정 참고<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">반도체 개별주 · 공개 시세 요약 (2026-09-16)</span><span class="evd-sum">9/16 <strong>브로드컴 약 $339.51(+0.07%)·마이크론 약 $926.55(−0.11%)</strong>로 대형 반도체는 <strong>보합권</strong>. 나스닥 보합과 정합. 엔비디아의 9/16 종가 변동은 매체별 확인이 엇갈려 <strong>수치 표기는 제외</strong>(9/15 종가 $212.17만 확인).</span><a href="https://finance.yahoo.com/news/nvidia-micron-stocks-climb-wall-142535246.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>마이크론 (MU) · 메모리</td><td class="num">보합권</td><td>DRAM/HBM</td><td>삼성전자·SK하이닉스에 직접 read-through — 메모리 업턴 스토리 유지</td></tr>
+      <tr><td>에너지</td><td class="num">혼조 <span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">섹터 등락 · 단일 매체 인용 (2026-09-16)</span><span class="evd-sum">한 매체(블룸버그 데이터 인용)는 9/16 금융 −2.06%·에너지 −3.14%·IT −0.32%·유틸리티 −0.19%로 전했으나, 유가 급등 속 에너지 급락은 <strong>매체 간 교차확인이 어려워</strong> 정밀 수치는 <strong>확인불가</strong>로 남긴다. 방향(금융 최약세·기술 방어)만 채택.</span><span class="evd-nolink">교차확인 불가 — 정밀 수치 미채택</span></span></span></td><td>지정학</td><td>유가 급등에도 개별 섹터 등락은 단일 출처 — 수치 미채택</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 개별 반도체주 등락은 <strong>공개 시세 요약 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 대형주는 대체로 <strong>보합권</strong>이었다. 엔비디아의 9/16 종가 변동과 일부 섹터 정밀 등락률은 <strong>매체별로 엇갈려 수치를 표기하지 않았다</strong> — 방향이 명확한 것만 채택한다. 지수 종가는 마감 보도치를 우선한다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>메모리 vs 로직 vs 장비, 왜 갈라 보나.</strong> 오늘 국내 장의 핵심 변수인 반도체는 하위 섹터마다 금리·사이클 민감도가 다르다. ① <strong>메모리(마이크론↔삼성·SK하이닉스)</strong>는 HBM·DRAM 가격과 AI 투자 지속성에 좌우되는데, 간밤 마이크론이 보합을 지킨 것은 "메모리 업턴 스토리가 아직 훼손되지 않았다"는 신호다. ② <strong>로직/AI 가속기(브로드컴·엔비디아)</strong>는 AI 캐펙스 수요가 금리 역풍을 상쇄하며 상대적으로 견조했다 — 국내 파운드리·후공정 밸류체인에 우호적 방향. ③ <strong>장비</strong>는 메모리 자본지출에 후행하므로, 메모리주 방향을 확인한 뒤 선별해야 한다. 요컨대 "반도체를 한 덩어리로 보지 말라"는 것이 간밤 시그널의 핵심이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·유가</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·build_briefing 스냅샷 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정치 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,353.30원</td><td class="num">1,345.30원</td><td>9/17 오전 · ECOS <span class="up">(원화 약세 8.0원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">—</td><td>ECOS</td></tr>
+      <tr><td><strong>미 연준 기준금리(상단)</strong></td><td class="num">4.00%</td><td class="num">3.75%</td><td>9/16 FOMC · <span class="up">+25bp</span></td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈5.00%</td><td class="num">—</td><td>9/16 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td>미 2년물</td><td class="num">≈4.72%</td><td class="num">—</td><td>9/16 · 마감 보도</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">118.21</td><td class="num">—</td><td>build_briefing · FRED</td></tr>
+      <tr><td>SPY (미 S&amp;P500 ETF)</td><td class="num">754.05$</td><td class="num"><span class="down">−0.44%</span></td><td>build_briefing · 토스 Open API(보조 지표)</td></tr>
+      <tr><td>WTI 유가</td><td class="num">$105+</td><td class="num">—</td><td>9/16 · 마감 보도(이란 분쟁)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 이번 국면의 매크로는 <strong>세 가지가 한 방향</strong>으로 몰렸다 — ① 연준 인상으로 미 단기금리 상승, ② 이란發 유가로 인플레·10년물 5% 재돌파, ③ 원/달러 원화 약세(강달러). 강달러·고금리는 외국인 수급엔 부담이지만, <strong>원화 약세는 반도체 등 수출주 채산성엔 우호적</strong>이라 방향이 상쇄되는 지점이 있다. FRED 일일 시계열은 확정에 하루 시차가 있어, 10년물은 <strong>9/16 마감 보도치(≈5.0%)</strong>를 시황 해석에 쓰고 추세는 FRED 확정치로 보정한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(9/17) 국내 장 시사점 <span class="chip h2-chip">고금리·강달러 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 연준의 3년 만의 첫 인상·5% 국채금리로 위험선호가 눌렸지만 <strong>나스닥이 보합을 지키며 반도체·빅테크는 방어</strong>했다 — 오늘 국내 장은 <strong>고금리·강달러 부담이 삼성전자·SK하이닉스로 얼마나 전이되느냐</strong>가 방향을 가른다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 앞서 <strong>9/16 코스피가 <span class="up">+1.37%</span>(6,717.97) 반등</strong>하며 나흘 연속 하락을 끊었는데, 연준 결정을 앞두고 <strong>삼성전자 <span class="up">+2.01%</span>(253,500원)·SK하이닉스 <span class="up">+4.08%</span>(1,759,000원)</strong>로 반도체가 저가 매수를 이끌었다("메모리 업턴 스토리 유효" 기대).<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">KR 반도체 반등 · 코리아중앙데일리 (2026-09-16)</span><span class="evd-sum">9/16 코스피 <strong>+1.37%(6,717.97)</strong>로 4일 연속 하락 마감, <strong>삼성전자 +2.01%·SK하이닉스 +4.08%</strong>가 견인. 원화 약세 속 반도체 저가 매수. 단일 매체 보도 기준.</span><a href="https://www.koreajoongangdaily.com/business/kospi-snaps-fourday-slide-as-chip-giants-draw-bargain-hunters/12878868" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 이는 <strong>연준 발표 전</strong> 흐름이라, 간밤 매파 인상·5% 금리를 오늘 개장이 어떻게 소화할지가 관건이다. (build_briefing 아카이브의 코스피/코스닥 확정치는 9/15 기준으로 하루 시차가 있어, 9/16 종가는 마감 보도치를 병기했다.)</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 <strong>5% 국채금리·매파 점도표</strong>를 개장 갭·초반 거래대금으로 얼마나 반영하는지, ② 브로드컴·엔비디아로 대표되는 <strong>AI 로직 수요</strong>가 국내 파운드리·후공정·부품주로 선별 확산되는지, ③ <strong>원화 약세(강달러)</strong>가 외국인 순매도를 부르는지 vs 수출주 채산성 기대로 상쇄되는지, ④ 이란發 유가·인플레가 이어지며 <strong>다음 미 CPI·연내 추가 인상 경로</strong>가 위험선호를 계속 누르는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 종목 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 연준 25bp 인상(3.75~4.00%)·연내 추가 인상 점도표·근원 PCE 3.4% — <a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html">CNBC</a>, <a href="https://finance.yahoo.com/economy/policy/live/federal-reserve-meeting-live-updates-chairman-kevin-warsh-143452661.html">Yahoo Finance</a></span>
+  <span>근거2 10년물 5.008%·2년물 4.717% — <a href="https://www.cnbc.com/2026/09/16/treasury-yield-bond-market-fed-decision.html">CNBC</a></span>
+  <span>근거3 WTI $105+·이란 분쟁·호르무즈 봉쇄 — <a href="https://www.cnbc.com/2026/09/16/oil-prices-treasury-yields-consumers-iran.html">CNBC</a></span>
+  <span>근거4 다우 −631.21p(−1.21%)·S&amp;P −0.45%·나스닥 −0.01%·골드만 주도 하락 — <a href="https://www.cnbc.com/2026/09/15/stock-market-today-live-updates.html">CNBC Live</a></span>
+  <span>근거5 9/16 코스피 +1.37%·삼성 +2.01%·SK하이닉스 +4.08% — <a href="https://www.koreajoongangdaily.com/business/kospi-snaps-fourday-slide-as-chip-giants-draw-bargain-hunters/12878868">Korea JoongAng Daily</a></span>
+  <span>근거6 브로드컴 +0.07%·마이크론 −0.11% 보합권 — <a href="https://finance.yahoo.com/news/nvidia-micron-stocks-climb-wall-142535246.html">Yahoo Finance</a></span>
+  <span>근거7 섹터 정밀 등락률 — 단일 매체 인용, 교차확인 불가로 수치 미채택(방향만 채택)</span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도(CNBC·Yahoo Finance), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 금리·달러지수), build_briefing 매크로 스냅샷. 2026-09-17 오전 조회 기준(전일 9/16 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-09-17 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
