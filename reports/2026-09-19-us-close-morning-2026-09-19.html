@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 10년물 5% 문턱에도 반도체가 지수를 떠받친 혼조 마감</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 12px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+.en-abstract > summary { cursor: pointer; padding: 10px 14px; font-size: 12.5px; font-weight: 650; color: var(--ink-2); list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract > summary::before { content: "▸ "; color: var(--muted); }
+.en-abstract[open] > summary::before { content: "▾ "; }
+.en-abstract .en-body { padding: 0 14px 13px; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-09-19-us-close-morning-2026-09-19.html">
+<meta property="og:title" content="US 마감 시황 — 10년물 5% 문턱에도 반도체가 지수를 떠받친 혼조 마감">
+<meta property="og:description" content="연준의 3년여 만의 금리 인상(3.75~4.00%) 소화 국면에서 10년물이 5% 문턱까지 올랐지만 나스닥은 반도체 강세로 +0.39% 오르며 혼조 마감—고금리 vs AI 힘겨루기가 다음 국내 장의 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-09-19-us-close-morning-2026-09-19.html">
+<meta name="description" content="연준의 3년여 만의 금리 인상(3.75~4.00%) 소화 국면에서 10년물이 5% 문턱까지 올랐지만 나스닥은 반도체 강세로 +0.39% 오르며 혼조 마감—고금리 vs AI 힘겨루기가 다음 국내 장의 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-09-19-us-close-morning-2026-09-19.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 10년물 5% 문턱에도 <span class="up">반도체가 지수를 떠받친</span> 혼조 마감</h1>
+  <p class="sub">2026년 9월 19일(토) 국내 장 시작 전 기준 · 전일 미 증시(9/18 금 마감) 반영. 간밤 뉴욕은 <strong>혼조 마감</strong>했다 — <strong>연준의 3년여 만의 금리 인상(9/16, 3.75~4.00%)</strong> 충격을 소화하는 국면에서 미 국채 10년물이 <strong>5% 문턱</strong>까지 올라섰지만, <strong>나스닥은 반도체 강세에 힘입어 <span class="up">+0.39%</span></strong> 오르며 지수를 떠받쳤다. 반면 <strong>다우는 <span class="down">−0.18%</span></strong>로 밀렸다. 이날은 분기 <strong>세 마녀의 날</strong>(약 7조 달러 옵션 만기)이었다. 오늘 국내 장(다음 개장은 월요일)의 핵심은 <strong>고금리 부담과 AI·반도체 모멘텀의 힘겨루기</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-09-19 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-09-19 오전).</strong> 원/달러 <strong>1,380.30원</strong>(전일 1,368.30 → 원화 약세) · 미 국채 10년물 <strong>≈4.94%</strong>(5% 문턱, 9/18 마감 보도) · 미 정책금리 <strong>3.75~4.00%</strong>(9/16 FOMC 인상) · 한국 기준금리 3.00% · 달러지수 118.21. 간밤 미 위험선호는 반도체가 주도했고, 고금리·강달러가 맞서는 구도다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">혼조 · 반도체가 견인</span></h2>
+  <p class="lead">미 지수·금리는 공개 마감 보도(Yahoo Finance·연합인포맥스), 환율·한국 금리는 한국은행 ECOS, 미 ETF·시세는 토스증권 Open API 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (9/18 금 마감)</div><div class="val up">반도체가 견인</div><div class="delta">금리 인상 소화 · 나스닥 홀로 뚜렷한 상승</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,650.50</div><div class="delta up">▲ +0.17%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,522.55</div><div class="delta up">▲ +0.39% · 반도체 주도</div></div>
+    <div class="tile"><div class="lbl">다우 산업</div><div class="val down">51,682.64</div><div class="delta down">▼ −0.18% · 주간 −1.5%↑</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>혼조 마감</strong> — <strong>연준이 9/16 3년여 만에 25bp 인상</strong>(3.75~4.00%)한 여파를 소화하며 10년물이 <strong>5% 문턱</strong>까지 올랐지만, <strong>나스닥 <span class="up">+0.39%</span></strong>·S&amp;P <span class="up">+0.17%</span>가 오르고 다우만 <span class="down">−0.18%</span> 밀렸다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">9/18 뉴욕 마감 · Yahoo Finance Live (2026-09-18)</span><span class="evd-sum">S&amp;P 500 <strong>7,650.50(+0.17%)</strong>·나스닥 <strong>26,522.55(+0.39%)</strong>·다우 <strong>51,682.64(−0.18%)</strong>. 10년물은 5% 부근(당일 +5bp). 주간으론 다우 −1.5%↑, S&amp;P 소폭 하락, 나스닥은 플러스로 마감.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-september-18-dow-sp-500-nasdaq-080504071.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">② 상승의 엔진은 <strong>반도체</strong>였다 — "10년물 5%에도 반도체는 질주"라는 마감 보도처럼, <strong>고금리 역풍 속에서도 AI·반도체가 지수를 홀로 떠받쳤다.</strong><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">뉴욕증시 반도체 강세 · 연합인포맥스 (2026-09-19 05:08 KST)</span><span class="evd-sum">"[뉴욕증시-1보] 美 10년물 5%에도 반도체는 질주…혼조 마감." 금리 부담에도 AI 반도체가 지수를 견인. AI 수요 낙관(엔비디아 내년 물량 약 2배, 브로드컴 AI 반도체 매출 급증)이 배경.</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE1yOVBnMDQ0N0YtblJyS0QzRHBXWEpRNVBHeVNjcDluZlNlXzQ5di11OE1NU3ptaVVRNWF3bWplV05YMkdLUGRXSHdGZWI2U1FVTGRoUGRncWdXc1AtWTVWb2d0d0Z2QjNLQ1NJc2kwbzA?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">③ 국내는 이미 <strong>금리 인상을 '불확실성 해소'로 소화</strong>했다 — 9/18 KOSPI가 <strong><span class="up">+2.66%</span></strong> 반등하고 <strong>외국인이 8거래일 만에 순매수</strong>로 돌아섰다. 다음 국내 장(월)의 관건은 이 반도체 모멘텀이 고금리·강달러를 계속 이겨낼지다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <div class="en-body">
+      Wall Street closed mixed on Friday, Sept 18, 2026, as markets digested the Fed's first rate hike in over three years (Sept 16, to 3.75–4.00%). The 10-year Treasury yield pushed toward 5%, yet the Nasdaq still rose <strong>+0.39%</strong> and the S&amp;P 500 gained <strong>+0.17%</strong>, while the Dow slipped <strong>−0.18%</strong> (down ~1.5% for the week). Semiconductors were the engine — chips "kept running even with the 10-year near 5%," underpinned by AI-demand optimism (Nvidia guiding to ~2x chip volume next year; Broadcom's AI revenue surging). It was quarterly triple-witching (~$7T of options expiring). Korea had already taken the hike as "uncertainty resolved": on Friday KOSPI jumped +2.66% and foreigners bought for the first time in eight sessions, led by Samsung Electronics and SK Hynix. The next Korean session (Monday) hinges on whether AI/semis can keep outrunning higher rates and a weaker won. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 금리 인상 소화, 반도체가 지수 방어</h2>
+  <p class="lead">이번 주 시장의 뼈대는 <strong>9/16 FOMC</strong>였다. 연준은 2023년 이후 처음으로 25bp 인상해 정책금리를 <strong>3.75~4.00%</strong>로 올렸고, 유가발 물가 재점화(근원 PCE ≈3%대)를 이유로 들었다. 금요일 뉴욕은 그 충격을 소화하며 <strong>반도체 주도로 나스닥·S&amp;P가 상승</strong>, 다우만 하락한 혼조였다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">9/18 종가·수준</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,650.50</td><td class="num"><span class="up">+0.17%</span></td><td>반도체·기술이 방어</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,522.55</td><td class="num"><span class="up">+0.39%</span></td><td>주간 플러스 마감</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">51,682.64</td><td class="num"><span class="down">−0.18%</span></td><td>주간 −1.5%↑ 부진</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.94~5.0%</td><td class="num"><span class="down">▲ +5bp</span></td><td>금리 인상·추가 인상 베팅에 상승<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">9/16 FOMC 금리 인상 · CNBC (2026-09-16)</span><span class="evd-sum">연준이 정책금리를 <strong>25bp 인상해 3.75~4.00%</strong>로. 2023년 이후 첫 인상이자 3년여 만. 만장일치. 유가 급등발 물가 재점화(근원 PCE ≈3.4%, 헤드라인 상향)가 명분. 점도표는 <strong>연내 추가 25bp</strong> 가능성(연말 ≈4.1%), 2027년 동결, 2028~29년 인하 시사.</span><a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>세 마녀의 날</td><td class="num">≈$7조</td><td class="num">옵션 만기</td><td>분기 만기로 변동성·거래대금 확대<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">분기 옵션 만기 · Investing.com 한국어 (2026-09-18)</span><span class="evd-sum">"세 마녀의 날, 미 증시 <strong>7조 달러 옵션 만기</strong>." 주식·지수·ETF 옵션이 동시 만기하는 분기 이벤트로 장 막판 거래대금·변동성이 커지는 날. 방향성보다 수급 왜곡에 유의.</span><a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5WM0Iyd2VHc2pMRWNDU3o4cEVkSjhrUE1KNG5JdnY3aHVCR285NklLUnFmcERHSW9vLUhrNUlQbXZYSjFCUVV1cF9QMVhRb0FaZ3RnZTg3REszRk04LVFMM1h6S081cEEybVhmQmYwcHBjRWxnZ1I4?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이번 주의 방아쇠는 <strong>9/16 FOMC 인상</strong>이었다. 연준이 3년여 만에 금리를 올려 정책금리를 <strong>3.75~4.00%</strong>로 끌어올렸고, 점도표는 연내 추가 인상 가능성까지 열어뒀다. 이에 10년물이 <strong>5% 문턱</strong>까지 오르며 밸류에이션에 민감한 성장주엔 원론적 역풍이었다. 그럼에도 금요일 지수가 버틴 것은 <strong>반도체·AI가 금리 부담을 상쇄</strong>했기 때문이다.</p>
+      <p><strong>온도차.</strong> 지수 안에서 온도차가 뚜렷했다 — <strong>나스닥(<span class="up">+0.39%</span>)</strong>은 반도체 주도로 올랐지만 경기·금융·산업 비중이 큰 <strong>다우(<span class="down">−0.18%</span>)</strong>는 밀렸고, 주간으로도 다우가 −1.5% 넘게 빠지며 가장 부진했다. 고금리 국면에서 <strong>'AI 성장주 vs 경기민감·가치주'</strong> 구도가 재부각된 셈이다. 한편 <strong>유가는 배럴당 100달러 아래로</strong> 내리고 <strong>비트코인은 6% 넘게 급등해 8만1천 달러</strong>를 웃돌았으며, <strong>사이버보안주</strong>(크라우드스트라이크·팔로알토·옥타)가 AI 안전성 이슈 속 주간 강세를 보였다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">9/18 시장 색깔 · Yahoo Finance Live (2026-09-18)</span><span class="evd-sum">유가 100달러 아래로 하락, 비트코인 +6%로 8.1만 달러 상회(숏 청산). 사이버보안주(CrowdStrike·Palo Alto·Okta) 주간 강세. 애플 아이폰18 프로 출시(가격 +$100), 버핏의 버크셔 회장직 사임 등도 이날 화제.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-september-18-dow-sp-500-nasdaq-080504071.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 다이버전스 — 메모리 · 로직 · 장비로 갈라 보기</h2>
+  <p class="lead">국내 증시와 가장 직결되는 섹터는 반도체다. 간밤 강세를 <strong>메모리 / AI 로직 / 장비</strong>로 나눠 보면, 이번 랠리의 연료는 "AI 투자 사이클 지속" 기대였다 — 엔비디아가 <strong>내년 칩 판매를 약 2배</strong>로 보고, 브로드컴 AI 반도체 매출이 급증했다는 <strong>수요 낙관</strong>이 근원이다. 개별 종목의 <strong>금요일 정확한 등락률은 매체별로 편차가 있어 지어내지 않고 방향만</strong> 적는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터</th><th>간밤(9/18) 방향</th><th>동인</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI 로직·설계</strong><br><span style="font-size:11px;color:var(--muted)">엔비디아·브로드컴</span></td><td class="num"><span class="up">강세</span></td><td>AI 칩 수요 낙관(엔비디아 내년 물량 ≈2배, 브로드컴 AI 매출 급증)</td><td>엔비디아·브로드컴 커버 심층의 <strong>AI 사이클 지속</strong> 논지와 정합</td></tr>
+      <tr><td><strong>메모리(DRAM/HBM)</strong><br><span style="font-size:11px;color:var(--muted)">마이크론</span></td><td class="num"><span class="up">강세</span></td><td>HBM·AI 서버 수요, 배당 확대 기대 등 우호 재료</td><td>마이크론 커버 심층과 연결 — <strong>삼성전자·SK하이닉스에 긍정 read-through</strong></td></tr>
+      <tr><td><strong>반도체 장비</strong><br><span style="font-size:11px;color:var(--muted)">ASML·램리서치 등</span></td><td class="num"><span class="chip cool">방향 혼재</span></td><td>AI capex 지속은 우호적이나 금요일 개별 방향은 매체별 편차 — <strong>확인불가로 제외</strong></td><td>주성엔지니어링 등 국내 장비 밸류체인 커버 참고</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 반도체 <strong>섹터 방향(강세)</strong>은 다수 매체가 일치했으나, 개별 종목의 <strong>금요일 정확한 등락률</strong>은 보도별로 편차가 있어 <strong>수치를 특정하지 않고</strong> 방향만 표기했다. AI 로직·메모리는 강세로 일치, 장비 일부는 방향이 엇갈려 <strong>확인불가</strong>로 남긴다 — 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 이번엔 <strong>메모리와 AI 로직이 같은 방향(강세)</strong>이었다는 점이 핵심이다. 7월 국면(마이크론 급락·메모리만 약세)과 달리, 간밤엔 반도체 하위 섹터가 <strong>대체로 한 방향</strong>으로 움직였고 이는 오늘 <strong>삼성전자·SK하이닉스에 긍정적 심리 read-through</strong>다. 실제로 9/18 국내 장에서 삼성전자·SK하이닉스가 강세를 보이며 코스피 반등을 이끌었다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">KR 반도체 강세·외국인 복귀 · v.daum/연합 (2026-09-18)</span><span class="evd-sum">9/18 코스피 <strong>+2.66%</strong> 마감, <strong>외국인 8거래일 만에 순매수</strong> 전환. 반도체(삼성전자·SK하이닉스) 강세가 반등 주도, 6,900선 턱밑. 젠슨 황 발언 등 AI 모멘텀이 심리 지지.</span><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5qUTZQNldZaE5IOGNmd0FrazNTRWw1QllfUmpWa1JsWjlqX2FwVjVBSjB2SHhuZnItN1k3SEV5NGM1MG9LcGYyS3Z6RzFhUE0?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 <strong>장비주</strong>는 금요일 방향이 갈려, "반도체를 한 덩어리로 보지 말라"는 우리 커버 리포트들의 결론은 여전히 유효하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율 (기준일 표기)</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED/마감 보도(미 금리)·토스증권 Open API(미 ETF) 기준. <strong>소스별 확정 시점(기준일)</strong>이 달라 스테일 여부가 보이도록 함께 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,380.30원</td><td class="num">1,368.30원</td><td>9/18 · ECOS <span class="up">(원화 약세 12원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 정책금리(상단)</strong></td><td class="num">4.00%</td><td class="num">3.75%</td><td>9/16 · FOMC 인상(+25bp)</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈4.94~5.0%</td><td class="num">▲ +5bp</td><td>9/18 · 마감 보도(5% 문턱)</td></tr>
+      <tr><td>달러지수</td><td class="num">118.21</td><td class="num">—</td><td>스냅샷 · 토스/FRED</td></tr>
+      <tr><td>KOSPI</td><td class="num">6,715.41</td><td class="num"><span class="down">−0.04%</span></td><td>9/17 확정치 · ECOS(9/18 실제 <span class="up">+2.66%</span>는 보도치)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 미 금리가 두 축으로 움직였다 — <strong>정책금리(9/16 인상, 3.75~4.00%)</strong>와 <strong>시장금리(10년물 5% 문턱)</strong>가 함께 위로 향해 강달러(원/달러 1,380원)를 자극했다. 원화 약세·고금리는 외국인 수급에 원론적 부담이지만, 9/18엔 <strong>AI·반도체 모멘텀이 이를 눌러 외국인이 순매수로 복귀</strong>했다. KOSPI 스냅샷 값(6,715, 9/17 확정)과 9/18 실제 마감(+2.66%, 보도치)은 <strong>ECOS 확정 시차(T+1)</strong> 때문에 어긋나 보이는 것으로, 둘 다 기준일을 명시했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 국내 장(월) 시사점 <span class="chip h2-chip">고금리 vs AI 힘겨루기</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>금리 인상 충격을 반도체로 상쇄</strong>했고, 국내는 이미 9/18에 <strong>'불확실성 해소'로 +2.66% 반등</strong>했다 — 다음 국내 장(월)의 관건은 이 <strong>AI·반도체 모멘텀이 고금리·강달러를 계속 이겨낼지</strong>다.</p>
+      <p><strong>맥락.</strong> 9/18 국내 장은 <strong>외국인이 8거래일 만에 순매수로 돌아서며 코스피가 2.66% 급반등</strong>, 6,900선 턱밑까지 올랐다. 삼성전자·SK하이닉스 등 반도체가 주도했고 젠슨 황의 AI 발언이 심리를 지지했다. 다만 <strong>UBS는 고금리 환경을 반영해 코스피 목표치를 약 10% 하향</strong>했고, 원/달러가 1,380원으로 오른 점은 위험선호 지속의 걸림돌이다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">UBS 코스피 목표 하향 · Investing.com 한국어 (2026-09-18)</span><span class="evd-sum">UBS가 <strong>고금리 환경을 반영해 코스피 목표치를 약 10% 하향</strong> 조정. 금리 인상·강달러가 밸류에이션 상단을 누르는 요인으로 지목. 반면 단기 심리는 AI·반도체 모멘텀이 지지하는 엇갈린 구도.</span><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9rdFZia3JRNV9JVzdjTmxZY2RISTdsZ2NIR05QVlJsY1FxMUZoRzQtNWp3T0hfeTBJSHdKQWdtcGY5anZ6dDRNWS1CckZxUU1EVmIxbDFXeDlHc0QxNC1EUmFwQTNIdm1CQXprQjNzcUU?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>체크포인트.</strong> ① <strong>반도체(삼성전자·SK하이닉스)</strong>가 간밤 미 반도체 강세를 이어받아 상승 탄력을 유지하는지, ② <strong>외국인 순매수</strong>가 하루로 끝나지 않고 이어지는지(강달러·고금리 부담과의 힘겨루기), ③ AI 로직·메모리 강세가 <strong>국내 장비·부품(주성엔지니어링 등)</strong>으로 선별 확산되는지, ④ <strong>추석 연휴</strong>를 앞둔 거래대금 위축 속 <strong>세 마녀의 날 수급 왜곡</strong>의 잔여 영향, ⑤ 10년물 5% 문턱 고착 여부와 추가 인상 베팅의 방향.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 오늘(9/19 토)은 국내 증시 휴장이며 다음 개장은 월요일이다. 지수·금리는 공개 마감 보도에, 개별 반도체주 방향은 다수 매체 일치분에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 9/16 FOMC 25bp 인상(3.75~4.00%)·점도표 연내 추가 가능성 — <a href="https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html">CNBC</a></span>
+  <span>근거2 9/18 뉴욕 마감 지수(S&amp;P +0.17%·나스닥 +0.39%·다우 −0.18%)·10년물 5% 부근·주간 다우 −1.5% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-september-18-dow-sp-500-nasdaq-080504071.html">Yahoo Finance</a></span>
+  <span>근거3 "美 10년물 5%에도 반도체는 질주"(혼조 마감) — <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE1yOVBnMDQ0N0YtblJyS0QzRHBXWEpRNVBHeVNjcDluZlNlXzQ5di11OE1NU3ptaVVRNWF3bWplV05YMkdLUGRXSHdGZWI2U1FVTGRoUGRncWdXc1AtWTVWb2d0d0Z2QjNLQ1NJc2kwbzA?oc=5">연합인포맥스</a></span>
+  <span>근거4 세 마녀의 날 · 미 증시 약 7조 달러 옵션 만기 — <a href="https://news.google.com/rss/articles/CBMid0FVX3lxTE5WM0Iyd2VHc2pMRWNDU3o4cEVkSjhrUE1KNG5JdnY3aHVCR285NklLUnFmcERHSW9vLUhrNUlQbXZYSjFCUVV1cF9QMVhRb0FaZ3RnZTg3REszRk04LVFMM1h6S081cEEybVhmQmYwcHBjRWxnZ1I4?oc=5">Investing.com 한국어</a></span>
+  <span>근거5 유가 100달러 하회·비트코인 +6%·사이버보안 주간 강세 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-september-18-dow-sp-500-nasdaq-080504071.html">Yahoo Finance</a></span>
+  <span>근거6 9/18 코스피 +2.66%·외국인 8거래일 만 순매수·반도체 주도 — <a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE5qUTZQNldZaE5IOGNmd0FrazNTRWw1QllfUmpWa1JsWjlqX2FwVjVBSjB2SHhuZnItN1k3SEV5NGM1MG9LcGYyS3Z6RzFhUE0?oc=5">v.daum(연합)</a></span>
+  <span>근거7 UBS 코스피 목표치 약 10% 하향(고금리 반영) — <a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9rdFZia3JRNV9JVzdjTmxZY2RISTdsZ2NIR05QVlJsY1FxMUZoRzQtNWp3T0hfeTBJSHdKQWdtcGY5anZ6dDRNWS1CckZxUU1EVmIxbDFXeDlHc0QxNC1EUmFwQTNIdm1CQXprQjNzcUU?oc=5">Investing.com 한국어</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도(Yahoo Finance·CNBC), 국내 뉴스 아카이브(연합인포맥스·Investing.com 한국어 등, Google News RSS), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 금리·달러지수). 2026-09-19 오전 조회 기준(전일 9/18 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-09-19 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
