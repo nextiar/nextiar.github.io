@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — AI 불안 진정, 메모리·장비가 주도한 반도체 반등</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 14px; }
+.en-abstract > summary { cursor: pointer; font-size: 12px; font-weight: 650; color: var(--accent); padding: 10px 0; list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract > summary::before { content: "▸ "; }
+.en-abstract[open] > summary::before { content: "▾ "; }
+.en-abstract .en-body { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; padding: 0 0 12px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-22-us-close-morning-2026-10-22.html">
+<meta property="og:title" content="US 마감 시황 — AI 불안 진정, 이번엔 메모리·장비가 주도한 반도체 반등">
+<meta property="og:description" content="간밤 뉴욕 3대 지수 동반 상승(나스닥 +1.05%) — 스페이스X·SMCI 호실적이 AI 투자 불안을 누르고 메모리·장비가 주도한 반도체 반등, 국내 삼성·하이닉스에 우호적 read-through.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-22-us-close-morning-2026-10-22.html">
+<meta name="description" content="간밤 뉴욕 3대 지수 동반 상승(나스닥 +1.05%) — 스페이스X·SMCI 호실적이 AI 투자 불안을 누르고 메모리·장비가 주도한 반도체 반등, 국내 삼성·하이닉스에 우호적 read-through.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-22-us-close-morning-2026-10-22.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — AI 불안 진정, 이번엔 <span class="up">메모리·장비가 주도한 반도체 반등</span></h1>
+  <p class="sub">2026년 10월 22일(목) 국내 장 시작 전 기준 · 전일 미 증시(10/21 수 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했다 — 스페이스X·슈퍼마이크로의 호실적 가이던스가 <strong>AI 인프라 수요 둔화 우려</strong>를 눌렀고, 나스닥이 <span class="up">+1.05%</span>로 앞장섰다. 특히 <strong>메모리(마이크론·SK하이닉스 ADR·웨스턴디지털)와 장비(ASML)</strong>가 로직보다 강하게 반등해, 직전 며칠의 'AI 거품' 매도와는 정반대 색이었다. 오늘 국내 장의 핵심은 이 <strong>메모리·장비 강세가 전일 +3%대 반등한 삼성전자·SK하이닉스로 이어지느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-10-22 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-10-22 오전).</strong> 미 국채 10년물 <strong>≈5.13%대</strong>(10/21 마감 보도, 매체별 +1~3bp 소폭 상승) · 2년물 <strong>≈4.80%대</strong> · 10Y−2Y 스프레드 약 +33bp(정상화 유지) · 당일 미 공식 지표는 한산했고 민간 <strong>MBA 모기지 신청 −5.3%</strong>(10/16 주간)가 눈에 띄었다. 간밤 위험선호는 분명히 '리스크 온'이었다. <em>※ FRED 일일 확정치는 build_briefing(FRED API) 일시 오류로 이번 회차엔 마감 보도치를 1차 소스로 사용 — 데이터 기준일을 표에 함께 표기한다.</em></div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 온 · 반도체 반등</span></h2>
+  <p class="lead">미 지수·금리는 공개 마감 보도 및 FRED 시리즈 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (10/21 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · AI 수요 우려 진정</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,757.17</div><div class="delta up">▲ +0.58%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,702.86</div><div class="delta up">▲ +1.05% · 기술주 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">메모리 강세</div><div class="delta">간밤 美 메모리·장비 반등 → 삼성·하이닉스 read-through</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong>(나스닥 <span class="up">+1.05%</span>) — <strong>스페이스X 상장 후 첫 흑자</strong>와 <strong>슈퍼마이크로의 대폭 상향 가이던스</strong>가 'AI 인프라 과잉투자' 불안을 눌렀다. 섹터는 기술(XLK <span class="up">+1.68%</span>)·산업재가 주도.</div>
+    <div class="tldr-item">② 반도체 안에서 이번엔 <strong>메모리·장비가 로직보다 강했다</strong> — 마이크론·SK하이닉스 ADR·웨스턴디지털 등 메모리가 2~4%대, ASML <span class="up">+3.2%</span>로 장비도 동반 반등. 직전 며칠의 메모리 약세와 정반대 색.</div>
+    <div class="tldr-item">③ 전일 국내 코스피는 '삼전닉스' <span class="up">+6%대</span>에 힘입어 <span class="up">+3.29%</span>(5,735.66) 반등했는데, 간밤 美 메모리·장비 강세는 <strong>이 반등에 우호적</strong>이다. 다만 변동성 국면이라 수급 공백(하이닉스 자사주 종료) 변수도 상존.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <div class="en-body">
+      US stocks closed higher on Wed Oct 21, 2026: the Nasdaq led with +1.05% (26,702.86), the S&amp;P 500 rose +0.58% (7,757.17) and the Dow added +0.69% (52,856). Strong results from SpaceX — its first profit as a public company — and a sharply raised Super Micro revenue guide revived confidence in the AI infrastructure build-out, lifting Technology (XLK +1.68%) and Industrials while defensives (Healthcare, Staples, Utilities) lagged. Within semis the rebound was led by memory and equipment: Micron, SK Hynix's ADR and Western Digital gained 2–4%, and ASML rose about +3.2%, a reversal of the prior sessions' memory weakness. Treasury yields ticked up modestly (10Y ≈5.13%, 2Y ≈4.80%). For Korea, the overnight memory/equipment strength is a supportive read-through for Samsung Electronics and SK Hynix, which rose ~6% as the KOSPI rebounded +3.29% on Oct 21 — though two-way volatility and the end of SK Hynix's buyback remain risks. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 호실적이 누른 'AI 과잉투자' 불안</h2>
+  <p class="lead">강한 3분기 실적과 유가 하락이 겹치며 위험선호가 살아났다. 섹터는 <strong>기술(XLK <span class="up">+1.68%</span>)·산업재(XLI <span class="up">+0.91%</span>)</strong>가 주도했고, <strong>헬스케어·필수소비재·유틸리티 등 방어주는 상대적으로 부진</strong>했다. 지수 레벨에선 이견 없는 '리스크 온' 하루.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">10/21 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,757.17</td><td class="num"><span class="up">+0.58%</span></td><td>+45.15p · 광범위 상승</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,702.86</td><td class="num"><span class="up">+1.05%</span></td><td>+278.04p · 기술주 견인</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,856.09</td><td class="num"><span class="up">+0.69%</span></td><td>+360.21p<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">미 3대 지수 마감 · 마감 보도 (2026-10-21)</span><span class="evd-sum">10/21(수) 뉴욕 3대 지수 동반 상승. <strong>S&amp;P500 7,757.17(+0.58%)·나스닥 26,702.86(+1.05%)·다우 52,856(+0.69%)</strong>. 강한 3분기 실적과 유가 하락이 심리를 지지했다.</span><a href="https://investrade.com/market-review-october-21-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>섹터 리더</td><td class="num"><span class="up">기술·산업재</span></td><td class="num">XLK +1.68%</td><td>AI 인프라 수요 낙관 복원</td></tr>
+      <tr><td>섹터 래거드</td><td class="num"><span class="down">방어주</span></td><td class="num">—</td><td>헬스케어·필수소비재·유틸리티</td></tr>
+      <tr><td>MBA 모기지 신청 (10/16 주)</td><td class="num"><span class="down">−5.3%</span></td><td class="num">구매지수 −7.3%</td><td>당일 공식 지표 한산 속 민간 읽을거리<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">MBA 모기지 신청 · 마감 리뷰 (2026-10-21)</span><span class="evd-sum">10/16 종료 주 MBA 종합지수 <strong>−5.3%(188.6)</strong>, 구매지수 <strong>−7.3%</strong>. 당일 미 공식 경제지표 발표는 한산해 민간 지표가 주요 읽을거리였다.</span><a href="https://investrade.com/market-review-october-21-2026/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 <strong>개별 호실적</strong>이었다. 직전 며칠 시장을 눌렀던 테마는 "AI 인프라 투자가 자금조달·수익성 측면에서 과하다"는 의구심이었는데, 간밤 <strong>스페이스X가 상장 후 첫 흑자</strong>를 내며 <span class="up">약 +8%</span> 급등했고<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">스페이스X 첫 흑자 · Yahoo Finance (2026-10-21)</span><span class="evd-sum">스페이스X가 상장 기업으로서 <strong>첫 분기 흑자</strong>를 보고하며 당일 <strong>약 +8%</strong> 급등(장중·프리마켓 기준 매체별 7~10% 보도). 기술주 전반의 위험선호를 자극했다. 일부 매체의 '테슬라와 합병 검토설'은 확정 보도가 아니어서 본문 수치로 쓰지 않는다.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-21-dow-sp-500-nasdaq-100000105.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> <strong>슈퍼마이크로(SMCI)</strong>가 분기 매출 가이던스를 종전 145~155억 달러에서 <strong>185~195억 달러로 대폭 상향</strong>하면서, AI 서버·인프라 수요가 식지 않았다는 증거가 됐다.</p>
+      <p><strong>금리·유가.</strong> 미 10년물은 <span class="up">≈5.13%대</span>로 소폭 올랐으나(매체별 +1~3bp) 레벨 변화는 제한적이었고, 유가 하락이 소비·심리에 우호적으로 작용했다. 반면 헬스케어·필수소비재·유틸리티 등 <strong>방어 섹터는 상대적으로 소외</strong>돼, 돈이 성장·경기민감 쪽으로 다시 돈 하루였다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 — 메모리·로직·장비로 갈라 보기 <span class="chip h2-chip">국내 직결</span></h2>
+  <p class="lead">이날 반도체는 '한 덩어리 강세'가 아니라 <strong>메모리·장비가 로직을 앞선</strong> 반등이었다. 직전 며칠 메모리가 먼저 눌렸던 터라 되돌림 강도도 메모리에서 더 컸다. 국내와 직결되는 섹터인 만큼 하위로 갈라서 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터 (간밤 미국)</th><th class="num">방향</th><th>대표 종목·근거</th><th>우리 사이트 · 국내 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리 (DRAM/HBM/NAND)</strong></td><td class="num"><span class="up">+2~4%</span></td><td>마이크론·SK하이닉스 ADR <span class="up">+4%대</span>·샌디스크 ~3%·웨스턴디지털/씨게이트 +2%대<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">메모리주 반등 · 마감 보도 (2026-10-21)</span><span class="evd-sum">메모리 칩주 동반 강세 — <strong>SK하이닉스 ADR +4%대, 마이크론·샌디스크 ~3%, 웨스턴디지털·씨게이트 +2%대</strong>. AI 수요 지속 기대가 메모리 가격 사이클 낙관을 되살렸다.</span><a href="https://finance.biggo.com/news/fe26fa56-4880-402c-aa44-2a0cac01411d" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td><strong>삼성전자·SK하이닉스에 가장 직접적</strong> — HBM/DRAM 가격·수요 심리 read-through</td></tr>
+      <tr><td><strong>로직 (AI 컴퓨트)</strong></td><td class="num"><span class="up">+2~3%</span></td><td>AMD <span class="up">+3%대</span>·엔비디아 +2%대·마벨 ~2%·SMH ETF ~2%<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">AI 칩 반등 · 마감 보도 (2026-10-21)</span><span class="evd-sum">AI 불안 완화에 <strong>AMD +3%대, 엔비디아 +2%대, 마벨 ~2%, VanEck 반도체 ETF(SMH) ~2%</strong> 상승. 재무·수익성 우려로 눌렸던 섹터가 실적 호조로 신뢰를 회복.</span><a href="https://smallcapsdaily.com/chip-stocks-rebound-as-ai-fears-ease-lifting-nvidia-amd-and-micron/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>국내는 팹리스·파운드리·후공정으로 간접 — 메모리 대비 연동 약함</td></tr>
+      <tr><td><strong>장비·후공정</strong></td><td class="num"><span class="up">+3%대</span></td><td>ASML <span class="up">+3.2%</span>(10/21)·엔비디아+앰코 첨단 패키징 2028년까지 300%+ 증설 계획<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">ASML·패키징 장비 · The Motley Fool / 마감 보도 (2026-10-21)</span><span class="evd-sum">ASML 주가 <strong>+3.2%</strong>. 10/14 발표한 3분기 실적에서 노광장비 <strong>113대 판매(전년 66대)</strong>, 경영진은 "AI 하드웨어 수요가 <strong>2028년까지 공급을 초과</strong>"한다고 언급. 엔비디아·앰코는 첨단 패키징 능력을 2028년까지 300%+ 늘릴 계획.</span><a href="https://www.fool.com/investing/2026/10/21/asml-has-incredible-news-for-nvidia-stock-and-micron-stock-investors/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>HBM 본더·증착 등 <strong>국내 장비 밸류체인</strong>에 긍정적 신호(한미반도체 등 — 직접 콜 아님)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 메모리·로직·장비 방향은 다수 매체가 일치했다. 매체별로 정확한 등락률이 ±1%p 엇갈리는 종목은 <strong>구간(예: +2~4%)으로만</strong> 표기하고 소수점 수치를 지어내지 않았다. 스페이스X '합병 검토설' 등 확정되지 않은 보도는 수치로 쓰지 않았다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 최근 한국 증시를 널뛰게 만든 핵심 변수가 바로 이 <strong>메모리·HBM 사이클과 AI 투자 지속성</strong> 논쟁이다. 간밤에는 <strong>메모리가 로직을 앞서 반등</strong>했고 장비(ASML)까지 "수요가 2028년까지 공급 초과"라는 메시지를 보탰다. 이는 오늘 국내 <strong>삼성전자·SK하이닉스</strong>에 <strong>심리적으로 우호적인 read-through</strong>다. 다만 "반도체를 한 덩어리로 보지 말라"는 원칙은 유효하다 — 국내는 메모리 비중이 절대적이라 간밤 메모리 강세의 전이 강도가 로직·장비보다 중요하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율 <span class="chip cool h2-chip">기준일 표기</span></h2>
+  <p class="lead">미 금리는 FRED 시리즈·마감 보도 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다. 이번 회차는 build_briefing(FRED API)가 일시 응답 오류라 <strong>마감 보도치를 1차 소스</strong>로 썼음을 밝힌다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">방향</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈5.13%대</td><td class="num"><span class="up">+1~3bp</span></td><td>10/21 · 마감 보도(매체별 5.13~5.15%)<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">미 국채 금리 · 마감 보도 (2026-10-21)</span><span class="evd-sum">10/21 미 10년물 <strong>약 5.13%대</strong>(매체별 5.13~5.145%, 전일 대비 +1~3bp), 2년물 <strong>약 4.80%대</strong>. 레벨 변화는 제한적이었고 장중 지표가 한산했다.</span><a href="https://tradingeconomics.com/united-states/government-bond-yield" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>미 2년물</strong></td><td class="num">≈4.80%대</td><td class="num"><span class="up">+1~4bp</span></td><td>10/21 · 마감 보도</td></tr>
+      <tr><td>10Y − 2Y 스프레드</td><td class="num">≈ +33bp</td><td class="num">정상(우상향)</td><td>10/21 · 양 금리 차</td></tr>
+      <tr><td>MBA 모기지 신청</td><td class="num"><span class="down">−5.3%</span></td><td class="num">구매 −7.3%</td><td>10/16 주 · MBA</td></tr>
+      <tr><td>당일 미 공식 지표</td><td class="num">한산</td><td class="num">—</td><td>10/21 · 발표 경제지표 적음</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 금리는 레벨(10년물 5%대 초반)이 높지만 간밤 변동 자체는 미미해, 이날 상승은 <strong>금리보다 개별 실적(스페이스X·SMCI)과 AI 수요 재신뢰</strong>가 주도했다. 당일 미 공식 경제지표가 한산했던 점은 금리·물가 재료의 영향력을 줄였다. 원/달러·한국은행 ECOS 실측치는 build_briefing 복구 후 다음 회차에 정식 반영한다(이번 회차 미표기 — 스테일 값을 지어내지 않음).
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(10/22) 국내 장 시사점 <span class="chip h2-chip">반등 지속 vs 수급 공백</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕이 <strong>메모리·장비 주도로 반도체를 끌어올린</strong> 만큼, 전일 '삼전닉스' <span class="up">+6%대</span>로 반등한 <strong>삼성전자·SK하이닉스가 그 온기를 이어가느냐</strong>가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 전일(10/21) <strong>코스피가 <span class="up">+3.29%</span>로 반등해 5,735.66</strong>에 마감했다 — AI 투심 개선에 삼성전자·SK하이닉스가 6%대로 급등하며 장중 <strong>매수 사이드카</strong>까지 발동됐다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">KR 코스피 반등 · 연합뉴스/인더스트리뉴스 (2026-10-21)</span><span class="evd-sum">10/21 코스피 <strong>+3.29%, 5,735.66</strong> 마감(하루 만에 5,700선 회복). 외국인 매수세와 '삼전닉스' <strong>+6%대</strong> 급등이 견인, 장중 반도체 강세에 <strong>매수 사이드카 발동</strong>. 다만 '폭락→급등' 널뛰기로 불안도 병존.</span><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE04akJkZFJwTXY2dUM1ckxla1Z6c3BGR1phRlc2Y3dtcVZMZGEycERpRWdMX3E0YlpMczk3QXVvdGQwSDFvaG9Ea05LVXV1N1JBeUgtb1VVOWNvRWNqa0doWA?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 간밤 미 메모리·장비 강세는 이 반등에 <strong>우호적</strong>이다.</p>
+      <p><strong>다만 수급.</strong> <strong>SK하이닉스가 약 40조 원 규모 자사주 매입을 종료</strong>해 그간 하방을 받쳐온 매수 주체가 빠지면서 '수급 공백' 우려가 제기된다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">SK하이닉스 자사주 매입 종료 · 조선비즈 (2026-10-21)</span><span class="evd-sum">SK하이닉스가 <strong>약 40조 원 규모 자사주 매입을 종료</strong>. 그간 주가를 떠받친 수급 주체가 빠지며 증시 '수급 공백' 우려가 제기됐다. 간밤 미 메모리 강세의 전이 강도와 함께 지켜볼 변수.</span><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQUFyTURyazJGbXJiWmw4TXh1SGJFNEZNRDhSc0Z4aEloR1dxWlZwdGNkQ2RNU1pCdGZVZDBKbld4YXo0ZmhxU2tlcDU4eE5NYWdGUExDVHhidXU5bTVuejlPQmlEbTNXUm1KTUlUcXAxdFVjcnRQT1RMREFKZWozTTBaU3RxaHho?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 최근 코스피는 '폭락→급등'을 반복하는 <strong>고변동 국면</strong>이라, 간밤 호재가 '반쪽 반등'에 그칠 가능성도 열어둬야 한다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 美 메모리·ASML 강세를 개장 갭·초반 거래대금으로 얼마나 반영하는지, ② <strong>로직·장비(한미반도체 등 밸류체인)</strong>로 선별 확산되는지, ③ 자사주 매입 종료 뒤 <strong>외국인·기관 수급</strong>이 공백을 메우는지, ④ 금리(10년물 5%대 초반)·유가 안정이 위험선호를 뒷받침하는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 미 3대 지수 10/21 마감(S&amp;P +0.58%·나스닥 +1.05%·다우 +0.69%) — <a href="https://investrade.com/market-review-october-21-2026/">Investrade Market Review</a></span>
+  <span>근거2 MBA 모기지 신청 −5.3%(10/16 주)·당일 공식 지표 한산 — <a href="https://investrade.com/market-review-october-21-2026/">Investrade Market Review</a></span>
+  <span>근거3 스페이스X 상장 후 첫 흑자·약 +8% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-21-dow-sp-500-nasdaq-100000105.html">Yahoo Finance</a></span>
+  <span>근거4 메모리주 반등(SK하이닉스 ADR +4%대·마이크론·WDC) — <a href="https://finance.biggo.com/news/fe26fa56-4880-402c-aa44-2a0cac01411d">BigGo Finance</a></span>
+  <span>근거5 AI 로직 반등(AMD +3%대·엔비디아 +2%대·SMH) — <a href="https://smallcapsdaily.com/chip-stocks-rebound-as-ai-fears-ease-lifting-nvidia-amd-and-micron/">SmallCaps Daily</a></span>
+  <span>근거6 ASML +3.2%·3분기 노광 113대·수요 2028년까지 공급 초과 — <a href="https://www.fool.com/investing/2026/10/21/asml-has-incredible-news-for-nvidia-stock-and-micron-stock-investors/">The Motley Fool</a></span>
+  <span>근거7 미 10년물 ≈5.13%대·2년물 ≈4.80%대 — <a href="https://tradingeconomics.com/united-states/government-bond-yield">Trading Economics</a></span>
+  <span>근거8 코스피 10/21 +3.29%·5,735.66·매수 사이드카 — <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE04akJkZFJwTXY2dUM1ckxla1Z6c3BGR1phRlc2Y3dtcVZMZGEycERpRWdMX3E0YlpMczk3QXVvdGQwSDFvaG9Ea05LVXV1N1JBeUgtb1VVOWNvRWNqa0doWA?oc=5">연합뉴스(Google News)</a></span>
+  <span>근거9 SK하이닉스 약 40조 자사주 매입 종료·수급 공백 — <a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQUFyTURyazJGbXJiWmw4TXh1SGJFNEZNRDhSc0Z4aEloR1dxWlZwdGNkQ2RNU1pCdGZVZDBKbld4YXo0ZmhxU2tlcDU4eE5NYWdGUExDVHhidXU5bTVuejlPQmlEbTNXUm1KTUlUcXAxdFVjcnRQT1RMREFKZWozTTBaU3RxaHho?oc=5">조선비즈(Google News)</a></span>
+  </div>
+  데이터 출처: 미 마감 공개 보도(지수·섹터·개별주), FRED/마감 보도(미 금리), 토스증권 Open API 뉴스 아카이브(국내 시황), Trading Economics·The Motley Fool·Yahoo Finance·BigGo·Investrade. 2026-10-22 오전 조회 기준(전일 10/21 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했으며, build_briefing(FRED API) 일시 오류로 FRED 일일 확정치 대신 마감 보도치를 1차 소스로 썼다. <strong>작성·발간: 2026-10-22 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
