@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="report-symbols" content="SPCX">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스페이스X(SPCX) — AI가 벌기 시작했다, 그래도 가격은 2028년을 산다</title>
+<style>
+:root {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+    --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+    --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+    --up: #ff7676; --down: #5aa2f7;
+    --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+    --tile1-bg: #101a27; --tile1-bd: #263a52;
+    --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+    --tile3-bg: #161629; --tile3-bd: #32325a;
+    --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+    --thead-bg: #121a25;
+    --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+  }
+}
+:root[data-theme="dark"] {
+  --page: #0a0d11; --card: #0f141b; --border: #1d2632; --border-2: #2b3644;
+  --ink: #dfe5ec; --ink-2: #9daab7; --muted: #7a8895;
+  --accent: #97a6f0; --accent-ink: #0a0d11; --accent-bg: rgba(151,166,240,0.12);
+  --up: #ff7676; --down: #5aa2f7;
+  --hot: #ff7676; --hot-bg: rgba(255,118,118,0.10);
+  --tile1-bg: #101a27; --tile1-bd: #263a52;
+  --tile2-bg: #0e1d17; --tile2-bd: #1f4234;
+  --tile3-bg: #161629; --tile3-bd: #32325a;
+  --tile4-bg: #0e1c23; --tile4-bd: #1e3d4b;
+  --thead-bg: #121a25;
+  --grid: #1d2632; --axis: #2b3644; --tip-bg: rgba(15,20,27,0.97);
+}
+:root[data-theme="light"] {
+  --page: #ffffff; --card: #ffffff; --border: #e4e7ec; --border-2: #ccd3dc;
+  --ink: #1b222c; --ink-2: #47515e; --muted: #62707f;
+  --accent: #3d55c4; --accent-ink: #ffffff; --accent-bg: rgba(61,85,196,0.08);
+  --up: #b52f2f; --down: #2361b8;
+  --hot: #b52f2f; --hot-bg: rgba(181,47,47,0.07);
+  --tile1-bg: #edf4fc; --tile1-bd: #cadcf1;
+  --tile2-bg: #eaf7f0; --tile2-bd: #c3e4d3;
+  --tile3-bg: #f3f1fc; --tile3-bd: #d7d3ef;
+  --tile4-bg: #e9f5fa; --tile4-bd: #c3e0ed;
+  --thead-bg: #e9eef4;
+  --grid: #e4e7ec; --axis: #ccd3dc; --tip-bg: rgba(255,255,255,0.98);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font-size: 14.5px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 44px 24px 72px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 650; }
+header h1 { font-size: 30px; line-height: 1.28; margin: 8px 0 6px; letter-spacing: -0.015em; text-wrap: balance; font-weight: 750; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; max-width: 72ch; }
+
+/* ---- 콜 furniture 타일: 파스텔 4색 틴트 (메인과 동일) ---- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 12px; }
+.tile { border-radius: 12px; padding: 16px 18px 14px; border: 1px solid var(--border); background: var(--card); }
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+.tile .lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; font-weight: 650; }
+.tile .val { font-size: 25px; font-weight: 700; letter-spacing: -0.01em; margin: 3px 0 2px;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.tile .val .pref { font-family: -apple-system, system-ui, "Apple SD Gothic Neo", Pretendard, sans-serif; }
+.tile .delta { font-size: 12px; color: var(--ink-2); }
+.tile .delta.hot { color: var(--hot); font-weight: 600; }
+.tile .val.up, .tile .delta.up { color: var(--up); }
+.tile .val.down, .tile .delta.down { color: var(--down); }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  border-radius: 99px; padding: 1px 9px; font-size: 11.5px; font-weight: 650; }
+
+/* ---- Key Takeaways (30초 요약층) ---- */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+.kt li:last-child { margin-bottom: 2px; }
+
+/* ---- 스티키 미니 목차 ---- */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ---- 섹션 카드 + 번호 배지 헤더 (STYLE-GUIDE v1.4.0) ---- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 24px 18px; }
+.card h2 { font-size: 19px; margin: 0 0 0; letter-spacing: -0.01em; font-weight: 750;
+  display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.card h3 { font-size: 14px; margin: 20px 0 8px; font-weight: 700; }
+.card .desc { font-size: 12.5px; color: var(--muted); margin: 0 0 14px; }
+.prose p { margin: 0 0 13px; color: var(--ink-2); max-width: 84ch; }
+.prose strong { color: var(--ink); }
+
+/* ---- 킬러 스탯 콜아웃 ---- */
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+
+/* ---- 경고 노트(중요) vs 참고(.fine 가라앉힘) ---- */
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 10px 10px 0;
+  padding: 11px 15px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+th { text-align: left; color: var(--muted); font-weight: 650; font-size: 11.5px; letter-spacing: 0.02em;
+  background: var(--thead-bg); border-bottom: 1px solid var(--axis); padding: 7px 10px; }
+th:first-child { border-radius: 6px 0 0 0; } th:last-child { border-radius: 0 6px 0 0; }
+td { border-bottom: 1px solid var(--grid); padding: 7px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+td.num, th.num { text-align: right; }
+td strong { color: var(--ink); font-weight: 650; }
+.tbl-scroll { overflow-x: auto; }
+details { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details summary { cursor: pointer; padding: 14px 20px; font-weight: 650; font-size: 14px; list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "\25B8 "; color: var(--muted); }
+details[open] summary::before { content: "\25BE "; }
+details .inner { padding: 0 20px 18px; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 16px; }
+footer ol { margin: 8px 0 0 18px; padding: 0; }
+footer li { margin-bottom: 3px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+.pref { font-weight: 800; white-space: nowrap; letter-spacing: -0.01em; }
+.pref-over    { color: var(--up, #b52f2f); }
+.pref-under   { color: var(--down, #2361b8); }
+.pref-neutral { color: var(--muted, #62707f); }
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #3d55c4); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+details.pe-embed { border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "\25B8"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "\25BE"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+  header h1 { font-size: 24px; }
+}
+
+
+/* ==== 위젯 정본 [1] ==== */
+/* ---- 등락 색 (KR 관례: 상승 빨강 / 하락 파랑) ----
+   타일·표의 증감 숫자(수익률·YoY·전기 대비 등)에 필수 적용. 본문 문장은 강조 필요 시만.
+   리포트 :root 토큰 블록에 --up/--down 을 추가할 것:
+     라이트: --up: #b52f2f; --down: #2361b8;  /  다크: --up: #ff7676; --down: #5aa2f7; (v1.12.0 토큰)
+   경고·리스크 라벨(note·chip)은 방향이 아니라 상태이므로 기존 --hot 을 유지한다.
+   주의: .tile .delta 처럼 더 구체적인 셀렉터가 색을 정의하는 자리에서는 이 클래스가
+   지므로, 리포트 CSS 에 `.tile .val.up, .tile .delta.up { color: var(--up); }` 식의
+   같은 자리 오버라이드를 함께 추가할 것. */
+.up { color: var(--up, #b52f2f); font-weight: 600; }
+.down { color: var(--down, #2361b8); font-weight: 600; }
+
+/* ---- 근거 팝업 (evidence popup) ---- */
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 650; color: var(--accent);
+  border: 1px solid var(--border); border-radius: 99px; padding: 1px 7px; line-height: 1.4;
+  background: var(--card); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { border-color: var(--accent); }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; font-variant-numeric: normal; letter-spacing: normal; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop a:hover { text-decoration: underline; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+
+/* ---- PE 밴드 드롭다운 ---- */
+details.pe-embed { border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+details.pe-embed summary { cursor: pointer; padding: 14px 20px; list-style: none;
+  display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+details.pe-embed summary::-webkit-details-marker { display: none; }
+details.pe-embed summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.pe-embed[open] summary::before { content: "▾"; }
+details.pe-embed .peb-t { font-weight: 650; font-size: 14px; }
+details.pe-embed .peb-s { font-size: 12px; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+details.pe-embed .inner { padding: 0 20px 18px; }
+
+/* [1c] 영문 요약 드롭다운 (.en-abstract) — pe-embed 계열, 기본 접힘 */
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+  margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none;
+  display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+
+/* ---- 차트 공통 (create-pe-chart 와 동일 — 리포트에 이미 있으면 중복 추가 금지) ---- */
+.chart-box { position: relative; }
+.chart-box svg { display: block; width: 100%; height: auto; }
+.gridline { stroke: var(--grid); stroke-width: 1; }
+.axisline { stroke: var(--axis); stroke-width: 1; }
+.ticktext { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandline { stroke: var(--axis); stroke-width: 1; fill: none; }
+.bandlbl { font-size: 10.5px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.bandfill { fill: var(--accent); }
+.price-line { stroke: var(--accent); stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.area-wash { fill: var(--accent); opacity: 0.10; }
+.end-dot { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
+.peak-dot { fill: var(--hot); stroke: var(--card); stroke-width: 2; }
+.anno { font-size: 11px; fill: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+.anno.hot { fill: var(--hot); }
+.avgline { stroke: var(--muted); stroke-width: 1; }
+/* 이벤트 주석·구간 음영 (차트 중심 강화) */
+.evtline { stroke: var(--axis); stroke-width: 1; stroke-dasharray: 3 3; }
+.evtlbl { font-size: 10.5px; fill: var(--muted); font-weight: 650; }
+.evtlbl.up { fill: var(--up, #b52f2f); }
+.evtlbl.down { fill: var(--down, #2361b8); }
+.evtdot { fill: var(--card); stroke: var(--axis); stroke-width: 1.5; }
+.evtdot.up { stroke: var(--up, #b52f2f); }
+.evtdot.down { stroke: var(--down, #2361b8); }
+.regime { fill: var(--ink); opacity: 0.045; }
+.regimelbl { font-size: 10px; fill: var(--muted); font-weight: 600; letter-spacing: 0.06em; }
+.end-halo { fill: var(--accent); opacity: 0.16; }
+.crosshair { stroke: var(--axis); stroke-width: 1; visibility: hidden; }
+.hoverdot { fill: var(--accent); stroke: var(--card); stroke-width: 2; visibility: hidden; }
+.tooltip { position: absolute; pointer-events: none; visibility: hidden; background: var(--tip-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 11px; font-size: 12px; min-width: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10); z-index: 5; }
+.tooltip .tdate { color: var(--muted); font-size: 11px; margin-bottom: 3px; font-variant-numeric: tabular-nums; }
+.tooltip .trow { display: flex; align-items: center; gap: 7px; line-height: 1.5; }
+.tooltip .tkey { width: 12px; height: 0; border-top: 2px solid var(--accent); flex: none; }
+.tooltip .tkey.none { border-top-color: transparent; }
+.tooltip .tval { font-weight: 650; font-variant-numeric: tabular-nums; }
+.tooltip .tlbl { color: var(--ink-2); font-size: 11.5px; }
+
+/* ---- 모바일: 차트는 통째로 축소하지 않고 가로 스크롤 (라벨 가독성 유지) ----
+   전제: 페이지에 viewport meta 가 있어야 한다 — 아티팩트는 래퍼가, GitHub Pages 는
+   publish.py 가 자동 보강한다. */
+@media (max-width: 720px) {
+  .chart-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-box svg { min-width: 720px; }
+}
+
+/* ==== 위젯 정본 [1b] ==== */
+/* 데이터 모노스페이스 — 타일 값·콜아웃 숫자·peb summary 스탯 */
+.mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; }
+
+/* 콜 furniture 타일 파스텔 4색 (메인과 동일) */
+.tile:nth-child(1) { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+.tile:nth-child(2) { background: var(--tile2-bg); border-color: var(--tile2-bd); }
+.tile:nth-child(3) { background: var(--tile3-bg); border-color: var(--tile3-bd); }
+.tile:nth-child(4) { background: var(--tile4-bg); border-color: var(--tile4-bd); }
+
+/* ① Key Takeaways — 30초 요약층. 헤더 타일·고지 바로 아래, 3~4개 항목 */
+.kt { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px;
+  background: var(--accent-bg); padding: 18px 22px 14px; }
+.kt .kt-lbl { font-size: 11px; letter-spacing: 0.16em; font-weight: 750; color: var(--accent); margin-bottom: 8px; }
+.kt ol { margin: 0; padding-left: 20px; }
+.kt li { margin-bottom: 7px; color: var(--ink-2); font-size: 14.5px; }
+.kt li strong { color: var(--ink); }
+
+/* ①' What's Changed 박스 (.wc — .kt 변형, 후속 발간 전용) — 같은 종목 후속 발간
+   (신규·--amend 모두)에서만 KT 바로 아래에 등장. 콜·Base 상승여력·핵심 추정·전작
+   이후 주가의 old→new 델타 4행 고정. 표가 아니라 flex 행(.wc-row)이라 표 3유형
+   규칙(피어=차트/판정=tbl-judge/나열=tbl-data)과 무관한 별개 컴포넌트다.
+   소급 없음 — 기존 발간분에 되돌아가 추가하지 않는다. 마크업 예시는 [1b] 참조.
+   출처: docs/superpowers/specs/2026-07-22-whats-changed-riskreward-design.md ① */
+.wc { border: 1px solid var(--border); border-left: 4px solid var(--accent); background: var(--accent-bg);
+  border-radius: 0 12px 12px 0; padding: 14px 18px 12px; }
+.wc .wc-head { font-size: 11px; letter-spacing: 0.14em; font-weight: 750; color: var(--accent); margin-bottom: 10px; }
+.wc .wc-head a { color: var(--accent); font-weight: 650; letter-spacing: 0; }
+.wc .wc-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+  padding: 6px 0; border-top: 1px solid var(--border); font-size: 13.5px; }
+.wc .wc-row:first-of-type { border-top: 0; }
+.wc .wc-lbl { flex: 0 0 118px; font-size: 12px; color: var(--muted); font-weight: 650; }
+.wc .wc-val { font-variant-numeric: tabular-nums; color: var(--ink); font-weight: 650; }
+.wc .wc-old { color: var(--muted); font-weight: 500; }
+.wc .wc-arrow { color: var(--muted); font-weight: 400; padding: 0 2px; }
+.wc .wc-why { font-size: 12px; color: var(--ink-2); flex-basis: 100%; padding-left: 128px; }
+.wc .wc-keep { display: inline-block; background: var(--card); border: 1px solid var(--border-2);
+  color: var(--ink-2); border-radius: 999px; padding: 0 8px; font-size: 11px; font-weight: 700; margin-left: 4px; }
+@media (max-width: 640px) {
+  .wc .wc-lbl { flex-basis: 100%; }
+  .wc .wc-why { padding-left: 0; }
+}
+
+/* ② 스티키 미니 목차 — KT 아래 한 번. 섹션 카드에 id(s01…)와 scroll-margin 필요 */
+.toc { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  margin: 0 -24px; padding: 10px 24px; border-bottom: 1px solid var(--border);
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+.toc::-webkit-scrollbar { display: none; }
+.toc a { flex: none; font-size: 12px; font-weight: 650; color: var(--ink-2); text-decoration: none;
+  border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px; background: var(--card); white-space: nowrap; }
+.toc a:hover { border-color: var(--accent); color: var(--accent); }
+[id] { scroll-margin-top: 64px; }
+
+/* ③ 섹션 헤더(번호 배지+구분선) · 데크(1줄 결론) · 콜아웃(킬러 스탯) · fine(참고 가라앉힘) */
+.card h2 { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; border-bottom: 2px solid var(--ink);
+  font-size: 19px; font-weight: 750; }
+.card h2 .idx { flex: none; width: 28px; height: 28px; border-radius: 8px; background: var(--accent);
+  color: var(--accent-ink); font-size: 13px; font-weight: 750; display: inline-flex; align-items: center;
+  justify-content: center; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.card .deck { font-size: 14.5px; color: var(--ink-2); font-weight: 600; margin: 12px 0 14px; max-width: 76ch; }
+.callout { margin: 18px 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--accent); }
+.callout .co-num { font-size: 30px; font-weight: 750; color: var(--ink); letter-spacing: -0.01em;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
+.callout .co-lbl { font-size: 13px; color: var(--muted); margin-top: 2px; max-width: 70ch; }
+.callout .co-lbl strong { color: var(--ink-2); }
+.fine { font-size: 11.5px; color: var(--muted); line-height: 1.6; margin: 10px 0 0; max-width: 88ch; }
+/* 표 헤더 배경 (메인과 동일) */
+th { background: var(--thead-bg); }
+
+/* ---- 모바일 가독성 스케일 (2026-07-20) — 휴대폰 폭에서만 확대 ---- */
+@media (max-width: 640px) {
+  body { font-size: 16px; line-height: 1.72; }
+  .desc, .card .deck { font-size: 14.5px; }
+  .fine { font-size: 12.5px; }
+  .lbl, .caption, figcaption, small { font-size: 13px; }
+  section, .card { margin-top: 40px; }
+  .wrap, main, .container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ===== 표 3유형 (2026-07-20) ===== */
+/* 데이터 나열표: 가로스크롤 래퍼 + 힌트 */
+.tbl-data { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--border); border-radius: 8px; }
+.tbl-data > table { white-space: nowrap; margin: 0; }
+.tbl-data::after { content: "← 옆으로 넘겨 나머지 열 보기"; display: none; font-size: 11px; color: var(--muted); padding: 4px 8px; }
+@media (max-width: 640px) { .tbl-data.scrollable::after { display: block; } }
+
+/* 판정표: 좁은 화면에서 행→카드 */
+@media (max-width: 640px) {
+  .tbl-judge, .tbl-judge tbody, .tbl-judge tr, .tbl-judge td { display: block; width: 100%; }
+  .tbl-judge thead { display: none; }
+  .tbl-judge tr { border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; margin: 0 0 10px; }
+  .tbl-judge tr.self { background: var(--tile1-bg); border-color: var(--tile1-bd); }
+  .tbl-judge td { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border: 0; border-top: 1px solid var(--border); text-align: right; }
+  .tbl-judge td:first-child { border-top: 0; }
+  .tbl-judge td::before { content: attr(data-label); color: var(--muted); font-weight: 500; text-align: left; flex: 0 0 auto; }
+  /* 버그 수정 (2026-07-20, 소급 dry-run 중 발견): 값이 긴 자유서술 문단이면
+     라벨 옆 flex 아이템이 min-content(글자 1개 폭)까지 짓눌려 세로로 한 글자씩
+     쌓인다. <span class="v"> 로 감싼 값에 flex-basis:0 성장형 사이징을 줘 정상
+     줄바꿈으로 복구(retrofit_report_mobile.py 의 _wrap_cell_value 가 주입). */
+  .tbl-judge td > .v { flex: 1 1 0%; min-width: 0; }
+}
+
+/* 근거 팝업 트리거 경량화 (위첨자 느낌) */
+.evd > button { font-size: 9.5px; vertical-align: super; opacity: .85; padding: 0 3px; }
+.evd > button:hover, .evd.on > button { opacity: 1; }
+
+/* ===== Risk-Reward 스큐 바 (.skew-bar — scripts/skew_bar.py 산출, 릴리스 예정)
+   Bull/Base/Bear 시나리오의 현재가 대비 상승여력을 가로 SVG 1개로 시각화.
+   콜 furniture 4타일 바로 아래 배치. 색은 tokens 뿐 — 목업(2026-07-22) 그대로. */
+.skew-bar { border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+  padding: 14px 18px 10px; margin: 0; }
+.skew-bar .rr-title { display: block; font-size: 11px; letter-spacing: 0.14em; font-weight: 750;
+  color: var(--muted); }
+.skew-bar svg { display: block; width: 100%; height: auto; margin-top: 2px; }
+.skew-bar .rr-cap { font-size: 12px; color: var(--ink-2); margin: 2px 0 4px; }
+.skew-bar .rr-cap strong { color: var(--ink); }
+@media (max-width: 640px) {
+  /* 축소 렌더 보상: SVG 유저 단위 폰트를 키워 실효 크기를 유지, 가격 괄호는 숨김 */
+  .skew-bar svg .rr-lbl { font-size: 21px; }
+  .skew-bar svg .rr-zero { font-size: 19px; }
+  .skew-bar svg .rr-price { display: none; }
+}
+
+/* ==== 위젯 정본 [2b] ==== */
+.grade { font-weight: 700; white-space: nowrap; }
+.g-full { color: var(--up, #b52f2f); }
+.g-part { color: var(--accent, #2361b8); }
+.g-none { color: var(--down, #2361b8); }
+.g-na   { color: var(--muted, #62707f); }
+.g-unk  { color: var(--muted, #62707f); font-style: italic; }
+
+/* ===== 피어 막대차트 (2026-07-20) ===== */
+.peer-chart .metric { margin: 0 0 20px; }
+.peer-chart .mtitle { font-size: 14px; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+.peer-chart .mhint { font-size: 11.5px; color: var(--muted); margin: 0 0 10px; }
+.peer-chart .brow { display: flex; align-items: center; gap: 8px; margin: 0 0 7px; }
+.peer-chart .blabel { width: 84px; flex: 0 0 84px; font-size: 12.5px; color: var(--ink-2); text-align: right; }
+.peer-chart .blabel.self { color: var(--accent); font-weight: 700; }
+.peer-chart .btrack { flex: 1; height: 20px; background: var(--grid); border-radius: 5px; overflow: hidden; }
+.peer-chart .bfill { height: 100%; border-radius: 5px; background: var(--border-2); }
+.peer-chart .bfill.self { background: var(--accent); }
+.peer-chart .bval { width: 60px; flex: 0 0 60px; font-size: 12.5px; color: var(--ink); font-weight: 600; }
+
+/* ---- 분기 매출 누적 막대 (이 리포트 전용) — 범주 3색은 dataviz validate_palette 통과(라이트 WARN: 아쿠아 대비 2.82 → 직접 라벨·표로 보완) ---- */
+:root { --s-si: #2a78d6; --s-conn: #1baf7a; --s-space: #eb6834; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --s-si: #3987e5; --s-conn: #199e70; --s-space: #d95926; } }
+:root[data-theme="dark"] { --s-si: #3987e5; --s-conn: #199e70; --s-space: #d95926; }
+:root[data-theme="light"] { --s-si: #2a78d6; --s-conn: #1baf7a; --s-space: #eb6834; }
+.rev-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--ink-2); margin: 4px 0 6px; }
+.rev-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.rev-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.rev-legend i.fwd { background: var(--grid); border: 1.5px dashed var(--ink-2); }
+.rev-chart svg { display: block; width: 100%; height: auto; }
+.rev-chart .seg { stroke: var(--card); stroke-width: 2; }
+.rev-chart .seg:hover { opacity: 0.85; }
+.rev-chart .fwd { fill: var(--grid); stroke: var(--ink-2); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.rev-chart .whisk { stroke: var(--ink); stroke-width: 1.5; }
+.rev-chart .tot { font-size: 11.5px; fill: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; }
+.rev-chart .xl { font-size: 11px; fill: var(--muted); }
+.rev-chart .xl.est { font-style: italic; }
+.rev-chart .seglbl { font-size: 10.5px; fill: var(--ink-2); font-weight: 600; }
+@media (max-width: 720px) { .rev-chart { overflow-x: auto; } .rev-chart svg { min-width: 640px; } }
+.wc .wc-val { min-width: 0; }
+.tbl-data.wraptext > table { white-space: normal; }
+.tbl-data.wraptext td:first-child, .tbl-data.wraptext td.num, .tbl-data.wraptext th.num { white-space: nowrap; }
+@media (min-width: 641px) { .tbl-judge th, .tbl-judge td.num { white-space: nowrap; } }
+.note.info { border-left-color: var(--accent); background: var(--accent-bg); }
+.note.info strong { color: var(--ink); }
+@media (max-width: 640px) { .skew-bar svg .rr-lbl { font-size: 17px; } }  /* 세 시나리오가 모두 음수라 라벨이 좌측에 몰림 — 모바일 겹침 방지 */
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-21-spacex-spcx-deep.html">
+<meta property="og:title" content="스페이스X(SPCX) — AI가 벌기 시작했다, 그래도 가격은 2028년을 산다">
+<meta property="og:description" content="3Q 매출 $14.6B(+161%)·1Q27 가이던스 $33~37B로 NTM 매출 추정을 $44B→$142B로 올렸지만, 피어 실측 배수(실효 P/S 7.76배)로는 현재가의 절반($81, −50.2%)만 설명된다 — 비중축소 유지.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-21-spacex-spcx-deep.html">
+<meta name="description" content="3Q 매출 $14.6B(+161%)·1Q27 가이던스 $33~37B로 NTM 매출 추정을 $44B→$142B로 올렸지만, 피어 실측 배수(실효 P/S 7.76배)로는 현재가의 절반($81, −50.2%)만 설명된다 — 비중축소 유지.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-21-spacex-spcx-deep.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+<header>
+  <div class="eyebrow">AI AGENT RESEARCH · 종목 심층 분석 · 2026-10-21</div>
+  <h1>스페이스X(SPCX) — AI가 벌기 시작했다, 그래도 가격은 2028년을 산다</h1>
+  <p class="sub">3분기 매출은 $14.6B로 1년 새 2.6배가 됐고, 회사는 다음 해 1분기 매출을 $33~37B로 제시했다. 하우스는 향후 12개월 매출 추정을 세 배 넘게 올렸다. 그런데도 동종 업체가 실제로 받는 배수를 적용하면 <strong>현재가의 절반만 설명된다</strong>.</p>
+  <p class="sub abstract" style="font-size:12.5px;color:var(--muted);margin-top:6px;">시가총액 $2.21조 · 향후 12개월(NTM) 매출 대비 15.6배 — 엔비디아가 순이익에 매기는 배수(15.6배)와 같은 값을 매출에 매기고 있다. 가격 기준은 2026-10-21 17:26(KST) 미국 프리마켓 체결가 $163.08이다(10/20 정규장 종가 $147.79).</p>
+</header>
+
+<!-- 콜 furniture (rating.py 산출 — 결정론적) -->
+<div class="tiles">
+  <div class="tile">
+    <div class="lbl">선호도</div>
+    <div class="val"><span class="pref pref-under">비중축소</span></div>
+    <div class="delta">Base −50.2% ≤ 0%(상방 소진) · 밸류 밴드는 <strong>신뢰 낮아 판정에서 제외</strong>(상장 91거래일·매출 분모 재설정)</div>
+  </div>
+  <div class="tile">
+    <div class="lbl">현재가 · 밸류 위치</div>
+    <div class="val">$163.08</div>
+    <div class="delta">NTM P/S 15.6배 (상장 후 평균 45.2배) · 백분위 1% — 분모 재설정에 따른 기계적 저점 · 공모가 $135 대비 <span class="up">+20.8%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">Base 상승여력</div>
+    <div class="val down">−50.2%</div>
+    <div class="delta">Bull <span class="down">−18.2%</span> / Bear <span class="down">−67.9%</span></div>
+  </div>
+  <div class="tile">
+    <div class="lbl">시간지평</div>
+    <div class="val">NTM<small> (향후 12개월)</small></div>
+    <div class="delta">다음 이벤트: 10/22(목) 락업 해제 최대 13억 주 · 4Q26 실적(2027년 1월 말~2월 추정)</div>
+  </div>
+</div>
+
+<figure class="skew-bar">
+<div class="rr-title">RISK-REWARD</div>
+<svg viewBox="0 0 720 168" role="img" aria-label="Risk-Reward 스큐 바: 현재가 $163.08를 0%로 두고 Bear −67.9%($52), Base −50.2%($81), Bull −18.2%($133)를 수평축에 표시.">
+<line x1="96" y1="92" x2="624" y2="92" stroke="var(--grid)" stroke-width="2"/>
+<rect x="96.0" y="86" width="528.0" height="12" rx="6" fill="var(--down)" opacity="0.16"/>
+<line x1="96.0" y1="80" x2="96.0" y2="104" stroke="var(--down)" stroke-width="2.5"/>
+<line x1="624.0" y1="52" x2="624.0" y2="126" stroke="var(--ink)" stroke-width="1.5"/>
+<text class="rr-zero" x="624.0" y="146" text-anchor="middle" font-size="12.5" fill="var(--muted)">현재가 0%<tspan class="rr-price"> · $163.08</tspan></text>
+<polygon points="96.0,101 88.5,87 103.5,87" fill="var(--down)"/>
+<circle cx="233.6" cy="92" r="7" fill="var(--accent)" stroke="var(--card)" stroke-width="2.5"/>
+<polygon points="482.5,83 475.0,97 490.0,97" fill="var(--up)"/>
+<text class="rr-lbl" x="96.0" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--down)" font-weight="650">▼ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bear</tspan><tspan fill="var(--down)" font-weight="750"> −67.9%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($52)</tspan></text>
+<text class="rr-lbl" x="233.6" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--accent)" font-weight="650">● </tspan><tspan fill="var(--ink-2)" font-weight="650">Base</tspan><tspan fill="var(--down)" font-weight="750"> −50.2%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($81)</tspan></text>
+<text class="rr-lbl" x="482.5" y="66" text-anchor="middle" font-size="13.5"><tspan fill="var(--up)" font-weight="650">▲ </tspan><tspan fill="var(--ink-2)" font-weight="650">Bull</tspan><tspan fill="var(--down)" font-weight="750"> −18.2%</tspan><tspan class="rr-price" fill="var(--muted)" font-size="12"> ($133)</tspan></text>
+</svg>
+<figcaption class="rr-cap"><strong>읽는 법:</strong> Base 상방 <span class="down">−50.2%</span>과 Bear 하방 <span class="down">−67.9%</span>의 비대칭이 위험-보상 스큐다. 목표주가가 아니라 조건부 환산 범위다.</figcaption>
+</figure>
+
+<div class="note"><strong>고지:</strong> 선호도는 정해진 공식의 산출이며 <strong>목표주가가 아닙니다</strong>. 이 종목은 상장 91거래일(2026-06-12~)이고, 10/20 가이던스로 매출 추정의 분모가 하루 만에 세 배가 돼 밸류에이션 밴드의 백분위가 의미를 잃었습니다. 그래서 공식의 <strong>밸류 신호를 중립 처리하고 시나리오만으로 판정</strong>했습니다(하우스 표준 밴드 신뢰 불가 경로). 시나리오 배수는 동종 업체의 <strong>실측 EV/매출 배수</strong>를 사업부별로 적용한 합산(SOTP)입니다. 이 리포트는 정보 제공 목적이며 매매 권유가 아닙니다.</div>
+
+<div class="kt" id="kt">
+  <div class="kt-lbl">KEY TAKEAWAYS — 30초 요약</div>
+  <ol>
+    <li><strong>콜: 비중축소 유지.</strong> Base 환산가는 <strong>$81(−50.2%)</strong>다. 하우스 NTM 매출 $142B에 동종 업체 실측 배수의 사업부 합산(실효 P/S 7.76배)을 곱한 값이다. Bull조차 <strong>−18.2%</strong>다 — 사업부별 피어 배수 범위 안에서는 현재가의 15.6배가 12개월 안에 설명되지 않는다.</li>
+    <li><strong>실적은 전작의 추정을 크게 넘어섰다.</strong> 3Q26 매출 <strong>$14,575M(<span class="up">YoY +161%</span>)</strong>로 컨센서스를 13~15% 상회했고, 전작 추정 $9.0B보다 62% 많았다. AI 부문(SI)이 매출의 52%를 차지하며 처음 영업흑자($431M)를 냈다. 회사는 <strong>1Q27 매출 $33~37B</strong>를 제시했다 — 가이던스 전 컨센 $22.2B의 1.6배다.</li>
+    <li><strong>리스크는 현금과 물량이다.</strong> 3분기 설비투자 $19.6B는 매출의 134%이고, 4분기에는 $35~40B를 쓴다. 9개월 잉여현금흐름은 −$35.0B다. AI 매출은 소수 고객의 계약(90일 통지로 해지 가능)에 기대고, <strong>10/22(목)에는 최대 13억 주</strong>(발행주식의 9.6%)의 락업이 풀린다.</li>
+    <li><strong>콜을 바꿀 조건은 숫자로 정해져 있다.</strong> Base 환산가가 주가를 넘어야 중립이다. 주가가 $81 이하로 내려오거나, NTM 매출 추정이 $285B 이상으로 오르거나, 그 조합(예: 주가 $120 + NTM 매출 $210B)이 필요하다. 상장 이력이 짧아 밸류 밴드가 성립하지 않는 동안 비중확대는 공식상 나올 수 없다.</li>
+  </ol>
+</div>
+
+<div class="wc" id="whats-changed">
+  <div class="wc-head">WHAT'S CHANGED — 전작 대비 ·
+    <a href="/reports/2026-08-13-spacex-spcx-deep.html">전작: 2026-08-13 14:53 심층 ↗</a></div>
+  <div class="wc-row">
+    <span class="wc-lbl">콜</span>
+    <span class="wc-val"><span class="wc-old">비중축소</span><span class="wc-arrow">→</span>비중축소<span class="wc-keep">유지</span></span>
+    <span class="wc-why">공식 산출 불변 — 두 번 모두 Base ≤ 0%(상방 소진) 경로. 밸류 밴드는 두 번 모두 판정 제외</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">Base 상승여력</span>
+    <span class="wc-val mono"><span class="wc-old">−9.4%</span><span class="wc-arrow">→</span><span class="down">−50.2%</span></span>
+    <span class="wc-why">Bull <span class="up">+47.4%</span>→<span class="down">−18.2%</span>, Bear −51.2%→−67.9%. 매출 추정 상향(+)보다 배수 근거 교체(−)의 효과가 컸다(섹션 02·13)</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">NTM 매출 추정</span>
+    <span class="wc-val mono"><span class="wc-old">$44B</span><span class="wc-arrow">→</span><span class="up">$142B</span></span>
+    <span class="wc-why">매출 3.2배, 주당 $3.34→$10.46(3.1배·주식수 증가 반영). 전작 07의 3Q26E $9.0B는 실적 $14.6B에 62% 못 미쳤다 — 연말 연환산 $100B 목표를 채택하지 않은 것이 원인(섹션 07)</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">전작 이후 주가</span>
+    <span class="wc-val mono">$147.5<span class="wc-arrow">→</span>$163.08 (<span class="up">+10.6%</span>)</span>
+    <span class="wc-why">트랙레코드 기준가(전작 발간 시점) 대비. 현재가는 10/21 미국 프리마켓 체결가</span>
+  </div>
+  <div class="wc-row">
+    <span class="wc-lbl">변경 사유</span>
+    <span class="wc-val" style="font-weight:600;">시나리오 배수를 자체 거래 이력(P/S 25·40·55배)에서 피어 실측 EV/매출의 사업부 합산(5.83·7.76·9.84배)으로 교체했다.</span>
+    <span class="wc-why">전작 방식을 새 매출에 그대로 쓰면 Base는 +157%(공식상 중립)가 된다. 과소 추정된 매출 위에서 형성된 배수를 세 배 커진 매출에 다시 곱하는 이중 계산이라 폐기했다.</span>
+  </div>
+</div>
+
+<details class="en-abstract">
+  <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+  <div class="inner" lang="en">
+    <p><strong>SpaceX (SPCX) — Underweight, unchanged.</strong> Third-quarter revenue of USD 14,575m rose 161% year on year and beat consensus by 13-15%, and management guided first-quarter 2027 revenue to USD 33-37bn, about 1.6 times the USD 22.2bn consensus before the guidance.</p>
+    <p>We raised our next-twelve-month revenue estimate from USD 44bn to USD 142bn, but valuing each segment on measured peer EV/sales multiples gives an effective 7.76 times sales and a base case of USD 81, or 50.2% below USD 163.08. Even the bull case is 18.2% below the current price.</p>
+    <p>The method changed: the previous note used the stock's own trading range (25-55 times sales); applied to the new revenue base it would double count, so we replaced it with peer multiples.</p>
+    <p>Key risks to the call: growth-adjusted, the stock screens cheap against peers; to the downside, quarterly capex of USD 35-40bn, concentrated cloud contracts terminable on 90 days' notice, and a lock-up release of up to 1.3bn shares on 22 October.</p>
+    <p class="ena-note">Figures follow the Korean original.</p>
+  </div>
+</details>
+
+<nav class="toc" aria-label="섹션 이동">
+  <a href="#kt">요약</a><a href="#s01">업종</a><a href="#s02">경로</a><a href="#s03">트리거</a><a href="#s04">스크리닝</a><a href="#s05">PQC</a><a href="#s06">GS 판정</a><a href="#s07">어닝 모델</a><a href="#s08">시나리오</a><a href="#s09">피어</a><a href="#s10">수급</a><a href="#s11">리스크</a><a href="#s12">이벤트</a><a href="#s13">밸류에이션</a>
+</nav>
+
+<div class="note" style="border-left-color:var(--accent);background:transparent;border:1px solid var(--border);border-radius:8px;"><strong>시장 매크로 (2026-10-21 기준)</strong><br>KOSPI 5,552.74 (-3.73%, 10-20 확정치) · KOSDAQ 781.97 (-3.33%, 10-20 확정치)<br>원/달러 1,332.10원 (전일 1,342.40) · 기준금리 3.00%<br>미 10년물 5.15% · 달러지수 121.40 · SPY 769.92$ (+0.11%) — <a href="https://report.devindgkim.net/reports/2026-10-21-us-close-morning-2026-10-21.html">당일 US 시황</a></div>
+<p class="desc" style="margin:-8px 0 0;">이 리포트의 시나리오는 <strong>미 10년물 5.15%</strong> 가정 위에서 계산했다(하우스 매크로 가정 상속). 전작 때(4.70%)보다 0.45%p 높다. 멀리 있는 매출에 가치를 두는 종목일수록 할인율 상승이 배수를 먼저 깎는다.</p>
+
+<!-- 01 업종 지표 -->
+<div class="card" id="s01">
+  <h2><span class="idx">01</span>업종 지표 — AI 컴퓨트는 공급이 수요를 못 따라가고, 돈은 그보다 빨리 나간다</h2>
+  <p class="deck">한 회사 안에 위성통신·발사체·AI 컴퓨트가 있다. 지금 실적을 움직이는 것은 AI 컴퓨트이고, 할인율은 5년 범위의 최상단이다.</p>
+  <p class="desc">부문 지표 3개 + 밸류에이션 환경 1개. 데이터 기준 2026-10-21(각 항목 기준일 병기).</p>
+  <div class="tbl-data wraptext">
+  <table>
+    <thead><tr><th>지표</th><th class="num">실측값 (기준일)</th><th>방향</th><th>읽는 법 / 논지 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>AI 컴퓨트 설비</strong><br><span class="fine">회사 공시</span></td><td class="num"><strong>1.7GW</strong><br>(2026-09-30)</td><td><span class="up">1년 새 2.8배</span></td><td>0.6GW → 1.4GW → 1.7GW. 회사는 연말 2.5~3GW, 2027년 10GW 추가를 제시했다. 설비가 곧 매출 한도다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">SEC · 8-K 부속 보도자료 3Q26 (2026.10.20)</span><span class="evd-sum">SI 부문 기말 설비(nameplate compute) <strong>1.7GW</strong>(2Q26 1.4GW, 3Q25 0.6GW). COLOSSUS II 증설 지속. 회사는 이 지표가 실제 가동률을 뜻하지 않는다고 명시한다.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>AI 인프라 투자 사이클</strong><br><span class="fine">설비투자</span></td><td class="num"><strong>$19.6B</strong> 3Q26<br>4Q 가이던스 $35~40B</td><td><span class="up">분기마다 확대</span></td><td>3분기 설비투자는 매출($14.6B)보다 크다. 4분기에는 두 배가 된다. 비용이 수익화를 앞서는 구간이며, 오라클(연간 $70~95B 계획)도 같은 길을 가고 있다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">TechCrunch · 3Q26 실적 보도 (2026.10.20)</span><span class="evd-sum">CFO 브렛 존슨이 <strong>4분기 설비투자 $35~40B</strong>, 1Q27 매출 $33~37B를 제시. 3분기 설비투자는 $19.6B. 9개월 순손실 $413M이라 연간 흑자는 4분기에 달려 있다.</span><a href="https://techcrunch.com/2026/10/20/spacexs-ai-business-is-beating-expectations/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>스타링크 가입자·ARPU</strong><br><span class="fine">회사 공시</span></td><td class="num"><strong>1,360만 명</strong> · $69/월<br>(2026-09-30)</td><td><span class="up">가입자 +89%</span> · <span class="down">ARPU −17%</span></td><td>1년 새 가입자는 720만 → 1,360만 명이 됐지만 월 ARPU는 $83 → $69로 내렸다. 저가 시장 확대의 대가다. 다만 2분기 대비로는 $66 → $69로 반등했다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">SEC · 8-K 부속 보도자료 3Q26 (2026.10.20)</span><span class="evd-sum">Starlink 소비자 가입자 <strong>13.6M</strong>(2Q26 12.0M, 3Q25 7.2M). 소비자 ARPU <strong>$69</strong>(2Q26 $66, 3Q25 $83). 항공기 탑재 3,800대 이상. 10/8 800MHz 주파수 인수 계약.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>미 10년물 금리</strong><br><span class="fine">FRED DGS10</span></td><td class="num"><strong>5.15%</strong><br>(2026-10-19)</td><td><span class="up">1년 +1.15%p</span></td><td>5년 분포의 98.9% 백분위다. 2027~2028년 매출에 가치를 두는 가격일수록 할인율 부담이 크다.<span class="evd"><button type="button" aria-expanded="false">근거16</button><span class="evd-pop"><span class="evd-src">FRED DGS10 · 하우스 지표 아카이브 (2026.10.19 관측)</span><span class="evd-sum">미 국채 10년물 <strong>5.15%</strong>, 전일 대비 +0.06%p, 전년 대비 +1.15%p. 최근 5년 분포 백분위 98.9%. 일간·개정치 반영.</span><span class="evd-nolink">하우스 경제지표 아카이브 조회값 — 원문 링크 없음</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout">
+    <div class="co-num">15.6배 = 15.6배</div>
+    <div class="co-lbl">스페이스X가 <strong>NTM 매출</strong> 1달러에 매기는 값(P/S)과 엔비디아가 <strong>NTM 순이익</strong> 1달러에 매기는 값(P/E)이 같다. 시장은 스페이스X의 매출을 엔비디아의 이익처럼 사고 있다.</div>
+  </div>
+</div>
+
+<!-- 02 분석 경로 -->
+<div class="card prose" id="s02">
+  <h2><span class="idx">02</span>분석 경로 — 전작의 오류를 고치고, 배수 근거를 바꿨다</h2>
+  <p class="deck">2026-08-13 심층의 후속이다. 콜은 같지만 숫자를 만드는 방법이 두 군데 달라졌고, 그중 하나는 콜의 방향을 바꿀 수 있는 변경이라 영향을 그대로 공개한다.</p>
+  <p><strong>전작이 틀린 것부터.</strong> 전작은 NTM 매출을 $44B로 잡고 3Q26 매출을 $9.0B로 추정했다. 실제 3Q26 매출은 $14.6B였다. 원인은 하나다. 회사가 2분기 실적 콜에서 밝힌 "연말 연환산 매출 $100B" 목표를 8-K 본문에 없다는 이유로 채택하지 않았고, 본문에는 그 금액을 "$100억 달러"로 잘못 옮겼다(실제는 $100B, 1,000억 달러). 회사는 이번 콜에서 이 목표를 다시 확인했다.<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">TradingKey · 3Q26 실적 분석 (2026.10.21)</span><span class="evd-sum">경영진이 1Q27 매출 <strong>$33~37B</strong>를 제시하고 <strong>2026년 말 연환산 매출 $100B</strong> 계획을 재확인. 4분기 설비투자 $35~40B. 10/20 종가 $147.79에서 장후 최고 $161.56(+9.32%).</span><a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262228301-spacex-stock-forecast-q3-revenue-161-percent-200-target-tradingkey" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <div class="note info"><strong style="color:var(--accent);">방법 변경 3가지와 콜 영향</strong><br>
+  ① <strong>매출 추정의 앵커</strong>: 하우스 단독 추정 → 회사의 정량 가이던스(1Q27 $33~37B)와 연말 $100B 목표를 앵커로 채택. 이번 것은 CFO가 분기 매출 범위로 제시한 수치라 성격이 다르다. 콜 방향에는 상향 요인이다.<br>
+  ② <strong>시나리오 배수의 근거</strong>: 상장 후 자체 P/S 범위(25·40·55배) → 동종 업체 실측 EV/매출을 사업부별로 적용한 합산(SOTP). 하우스 표준은 시나리오 배수를 피어 실측으로 잡게 돼 있다. 전작의 배수는 과소 추정된 매출(분모) 위에서 형성된 값이라, 세 배 커진 새 매출에 곱하면 이중 계산이 된다. <strong>콜 영향: 전작 방식을 유지했다면 Base는 40배 × $10.46 = $418(+157%)이고, 밴드 신뢰 불가 규칙 때문에 공식 산출은 중립이었다. 새 방식의 산출은 비중축소다.</strong><br>
+  ③ <strong>P/S → EV/매출</strong>: 순현금 $51.0B를 반영한다. 영향은 주당 $3.8로 작다.<br>
+  밸류 밴드는 두 번 모두 판정에서 제외했다(변경 없음). 상장 91거래일이고, 10/20 가이던스로 매출 분모가 하루 만에 세 배가 돼 백분위가 1%로 기계적으로 떨어졌기 때문이다.</div>
+  <p>검증에 쓴 1차 자료는 SEC 8-K 3Q26 실적(10/20)·424B4 투자설명서(6/12, 락업 일정·클라우드 계약 조건)·10-Q 2Q26(8/4, 수주잔고·고객 집중)·13G 4건·Form 4/144다. 실적 콜의 가이던스와 컨센서스 수치는 보도로 확인했고, 원문을 연 기사만 근거로 달았다. 피어 배수는 토스 시세·SEC XBRL 재무상태표·FMP 컨센서스로 직접 계산했다.</p>
+</div>
+
+<!-- 03 왜 지금인가 -->
+<div class="card prose" id="s03">
+  <h2><span class="idx">03</span>왜 지금인가 — 트리거 3개와 경고 1개</h2>
+  <p class="deck">어제(10/20) 실적과 가이던스가 매출 추정의 크기를 바꿨다. 같은 날 공개된 현금흐름과 내일(10/22) 풀리는 물량은 반대 방향을 가리킨다.</p>
+  <p><strong>트리거 1 — 3분기가 컨센서스를 세 부문 모두에서 넘었다(10/20).</strong> 매출 $14,575M(<span class="up">YoY +161%</span>)으로 LSEG 컨센 $12.72B를 15%, TipRanks 집계 $12.87B를 13% 웃돌았다. 희석 EPS는 $0.35로 컨센 $0.12~0.14의 두 배를 넘었다. 부문별로도 SI $7.56B(컨센 $6.47B)·Connectivity $5.25B($4.92B)·Space $1.77B($1.46B) 모두 상회했다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">TipRanks · 3Q26 실적 vs 추정 (2026.10.20)</span><span class="evd-sum">EPS <strong>$0.35</strong> vs 컨센 $0.14. 매출 $14.6B vs $12.87B. Connectivity $5.2B vs $4.92B, Space $1.8B vs $1.46B, SI $7.6B vs $6.47B. 투자의견 매수 28·중립 5·매도 2, 평균 목표가 $217.50.</span><a href="https://www.tipranks.com/news/spacex-stock-rises-after-smashing-q3-earnings-estimates" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>트리거 2 — 1Q27 매출 가이던스가 컨센서스의 1.6배다.</strong> CFO는 1Q27 매출을 $33~37B로 제시했다. 가이던스 전 LSEG 컨센은 $22.2B였다. 중앙값 $35B는 3Q26 실매출의 2.4배다. 하우스 NTM 매출 추정이 $44B에서 $142B로 바뀐 직접적 이유다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">TIKR · 3Q26 실적 분석 (2026.10.21)</span><span class="evd-sum">매출 $14.6B vs LSEG 컨센 <strong>$12.72B</strong>. 1Q27 매출 가이던스 <strong>$33~37B</strong> vs LSEG 평균 $22.2B(중앙값이 58% 높음). 4분기 매출총이익률은 2분기 수준으로 회귀 예상. 9월 말 수주잔고 $63B, 1년 내 인식 약 $42B.</span><a href="https://www.tikr.com/blog/spacex-q3-earnings-ai-now-brings-in-half-the-revenue-starlink-still-earns-most-of-the-profit" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>트리거 3 — AI 부문이 처음으로 영업이익을 냈다.</strong> SI 부문은 매출 $7,560M(<span class="up">YoY +830%</span>)에 영업이익 $431M을 냈다(전년 −$1,722M). Cursor 인수 관련 주식보상 $1,217M을 빼면 $1,648M이다. 신규 클라우드 서비스 계약 가동과 Cursor 인수(8/14 완료, 기여 매출 $608M)가 성장을 이끌었다. 전작에서 "AI가 이익을 계속 먹는다"는 반대론의 근거였던 부분이 뒤집혔다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">SEC · 8-K 부속 보도자료 3Q26 (2026.10.20)</span><span class="evd-sum">SI 매출 <strong>$7,560M</strong>(2Q26 $2,561M, 3Q25 $813M), 영업이익 <strong>$431M</strong>(Cursor 인수 관련 주식보상 $1,217M 포함), 조정 EBITDA $4,953M. Cursor 인수는 8/14 완료, 내재 지분가치 $60B, 인수 후 기여 매출 $608M.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>경고 1 — 이익의 3분의 1은 영업 밖에서 왔고, 현금은 대규모로 나가고 있다.</strong> 순이익 $4,404M 가운데 $1,613M은 영업외다. 기타수익 $1,025M(관계자 $561M 포함), 법인세 환급 $390M, 순이자수익 $198M이 더해졌다. 9개월 누적으로는 여전히 순손실(−$413M)이다. 같은 9개월 영업현금흐름 $13.1B에 설비투자 $48.1B를 써 잉여현금흐름은 <strong>−$35.0B</strong>다. 그리고 실적 공개 후 두 번째 정규 거래일인 <strong>10/22(목)</strong>, 투자설명서 조항에 따라 최대 13억 주의 매도 제한이 풀린다(섹션 10).<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">SEC · 8-K 부속 보도자료 3Q26 (2026.10.20)</span><span class="evd-sum">3Q26 영업이익 $2,791M, 이자비용 −$675M, 이자수익 $873M, 기타수익 $1,025M(관계자 $561M), 법인세 −$390M(환급) → 순이익 <strong>$4,404M</strong>. 9M26 순손실 −$413M. 9M 영업현금흐름 $13,097M, 설비투자 $48,069M.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+</div>
+
+<!-- 04 기술 스크리닝 -->
+<div class="card" id="s04">
+  <h2><span class="idx">04</span>기술 스크리닝 — 91거래일이 쌓여 이동평균은 읽힌다, 거래는 식었다</h2>
+  <p class="deck">전작 때 판정 불가였던 이동평균이 이제 계산된다. 중기 추세는 위를 향하지만 최근 거래대금은 직전 한 달보다 적다.</p>
+  <p class="desc">기준: 하우스 발굴 1차 필터. 데이터 기준 2026-10-21 17:26(KST) — 마지막 가격은 미국 프리마켓 체결가 $163.08이며, 일봉 91거래일(2026-06-12~)로 계산했다.</p>
+  <table class="tbl-judge">
+    <thead><tr><th>항목</th><th class="num">측정값</th><th>판정</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v">수익률 1주 / 1개월 / 3개월</span></td><td class="num" data-label="측정값"><span class="v"><span class="up">+7.2%</span> / <span class="up">+5.4%</span> / <span class="up">+37.9%</span></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="비고"><span class="v">3개월은 강하지만 1개월은 가이드(+15%)에 못 미친다. 1주 수익률은 실적 후 프리마켓 반응이 대부분이다</span></td></tr>
+      <tr><td data-label="항목"><span class="v">이동평균 배열 (MA20 / MA60)</span></td><td class="num" data-label="측정값"><span class="v">MA20 &gt; MA60</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="비고"><span class="v">60거래일 이력이 생겨 처음 계산 가능해졌다</span></td></tr>
+      <tr><td data-label="항목"><span class="v">상장 후 장중 고가 대비</span></td><td class="num" data-label="측정값"><span class="v"><span class="down">−27.7%</span></span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="비고"><span class="v">가이드(−25% 이내) 바로 밖. 고점은 상장 직후(6월 중순)에 나왔다</span></td></tr>
+      <tr><td data-label="항목"><span class="v">거래대금 배수 (최근 5일 / 이전 20일)</span></td><td class="num" data-label="측정값"><span class="v">0.8배 (일 $11.3B)</span></td><td data-label="판정"><span class="v"><span class="grade g-none">○ 미충족</span></span></td><td data-label="비고"><span class="v">가이드 1.5배 미달. 절대 규모는 크지만 증가세는 아니다</span></td></tr>
+      <tr><td data-label="항목"><span class="v">투자유의·경고</span></td><td class="num" data-label="측정값"><span class="v">0건</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="비고"><span class="v">토스 조회 기준</span></td></tr>
+      <tr><td data-label="항목"><span class="v">상장 후 수익률 (공모가 / 첫날 종가)</span></td><td class="num" data-label="측정값"><span class="v"><span class="up">+20.8%</span> / <span class="up">+1.3%</span></span></td><td data-label="판정"><span class="v"><span class="grade g-na">— 해당없음</span></span></td><td data-label="비고"><span class="v">공모가 $135 · 첫날 종가 $160.95 · 상장 후 최저 종가 $108.27(8/5)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="fine">집계: 충족 2 · 부분 2 · 미충족 1. 기술 지표는 콜에 쓰지 않는다 — 이 종목의 콜은 밸류에이션과 실적 구조에서 나온다.<span class="evd"><button type="button" aria-expanded="false">근거13</button><span class="evd-pop"><span class="evd-src">토스 Open API · fetch_prices.py·screen.py (2026.10.21 17:26 KST)</span><span class="evd-sum">일봉 <strong>91거래일</strong>(2026-06-12~10-21), 종가 $160.95 → $163.08. 1w +7.2% / 1m +5.4% / 3m +37.9%, 장중 고가 대비 −27.7%, MA20&gt;MA60, 거래대금 0.8배(최근 5일 평균 $11,297M/일). 발행주식수 13,572,821,625주.</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+</div>
+
+<!-- 05 PQC -->
+<div class="card prose" id="s05">
+  <h2><span class="idx">05</span>PQC 분석 — 물량은 폭발했고, 판가는 엇갈리고, 비용은 손익과 현금이 다른 말을 한다</h2>
+  <p class="deck">세 축 모두 전작보다 좋아졌다. C(비용)는 미충족에서 부분 충족으로 올라왔지만, 손익계산서의 흑자와 현금흐름표의 대규모 유출이 동시에 존재한다.</p>
+  <p class="desc">P = 판가(ARPU·컴퓨트 단가), Q = 물량(가입자·GW·발사), C = 원가·마진·현금. 판정 등급: ● 충족 / ◐ 부분 충족 / ○ 미충족 / — 해당없음 / ? 확인불가.</p>
+  <table class="tbl-judge">
+    <thead><tr><th>축</th><th>판정</th><th>핵심 근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="축"><span class="v"><strong>P (가격)</strong> — ARPU·컴퓨트 단가</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="핵심 근거"><span class="v">스타링크 월 ARPU는 1년 새 $83 → $69(<span class="down">−17%</span>)로 내렸다. 저가 시장과 저가 요금제가 늘어난 결과다. 2분기 대비로는 $66 → $69(<span class="up">+5%</span>)로 돌아섰다. AI 컴퓨트는 단가가 오르는 쪽이다. 경영진은 단기 계약이 와트당 더 높은 가격으로 갱신되고 있다고 했다. 외부 임대의 기준 단가는 Anthropic 계약(월 $12.5억, GPU 약 32.5만 개, 2029년 5월까지)이다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">SEC · 424B4 투자설명서 (2026.06.12)</span><span class="evd-sum">2026년 5월 Anthropic과 클라우드 서비스 계약. GPU 약 <strong>325,000개</strong> 규모, <strong>월 $1.25B를 2029년 5월까지</strong> 지급(5~6월 램프 기간 할인). 최초 3개월 후 양측 모두 <strong>90일 통지로 해지 가능</strong>.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span><span class="evd"><button type="button" aria-expanded="false">근거19</button><span class="evd-pop"><span class="evd-src">BigGo Finance · 3Q26 실적 콜 요약 (2026.10.20)</span><span class="evd-sum">경영진 발언: 단기 계약이 <strong>와트당 더 높은 가격으로 갱신</strong> 중. 컴퓨트 내부/외부 배분 목표 약 50:50(±10%p). 컴퓨트 회수기간은 현재 가격에서 1년 미만이라는 회사 주장. 스타링크 모바일 월 이용자 2,200만 명.</span><a href="https://finance.biggo.com/news/US_SPCX_2026-10-20" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="축"><span class="v"><strong>Q (물량)</strong> — 가입자·GW·발사</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="핵심 근거"><span class="v">컴퓨트 설비 0.6 → 1.7GW(2.8배), 스타링크 가입자 720만 → 1,360만 명(<span class="up">+89%</span>), 항공기 탑재 3,800대(계약 기준 약 1.2만 대). 발사는 예외다. 3분기 35회로 전년(44회)보다 <span class="down">20% 적다</span>. Starship의 첫 상업 비행(V3 위성 26기)이 이뤄졌지만 발사 횟수는 아직 줄어든 상태다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">Yahoo Finance · 실적 콜 발언 (2026.10.21)</span><span class="evd-sum">그윈 쇼트웰: 스타링크가 <strong>약 12,000대 항공기</strong>와 계약(가용 항공기의 약 4분의 1), 미국 4대 항공사 중 3곳과 계약. 머스크: 2027년 말 연환산 매출 <strong>$500B~1T</strong>(회사 가이던스 아님). SPCX 장후 거래 +9.32%, $161.56.</span><a href="https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-spcx-could-044936565.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="축"><span class="v"><strong>C (비용)</strong> — 원가·마진·현금</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="핵심 근거"><span class="v">손익은 좋아졌다. 전사 영업이익률은 3Q25 −4.9%에서 <span class="up">19.1%</span>로, 조정 EBITDA율은 60.4%로 올랐다. 스타링크 영업이익률은 45.1%로 위성통신 피어 이리디움(20.3%)의 두 배를 넘는다. 현금은 반대다. 설비투자가 매출의 134%이고 9개월 잉여현금흐름은 −$35.0B다. 감가상각은 분기 $3.6B로 1년 새 두 배가 됐다. 지금 쓰는 설비투자가 내년의 감가상각이 된다.</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <div class="co-num">$19.6B &gt; $14.6B</div>
+    <div class="co-lbl">3분기 <strong>설비투자가 매출보다 크다</strong>(134%). 4분기 가이던스($35~40B)는 이 숫자의 두 배다. 이 종목의 손익은 흑자로 돌아섰지만, 현금흐름 기준으로는 아직 투자 회수의 증거가 회사 주장("1년 미만 회수")뿐이다.</div>
+  </div>
+</div>
+
+<!-- 06 Growth Sustainability -->
+<div class="card" id="s06">
+  <h2><span class="idx">06</span>Growth Sustainability — 지속가능성 6항목</h2>
+  <p class="deck">충족 2 · 부분 3 · 확인불가 1. 성장의 크기는 의심할 수 없고, 성장의 질(가동률·지역·이익 구성)은 아직 공시가 답하지 않는다.</p>
+  <p class="desc">판정 등급: ● 충족 / ◐ 부분 충족 / ○ 미충족 / — 해당없음 / ? 확인불가. 제조업 항목(가동률)은 컴퓨트 설비(GW)로 치환해 판정했다.</p>
+  <table class="tbl-judge">
+    <thead><tr><th>#</th><th>항목</th><th>판정</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="#"><span class="v">1</span></td><td data-label="항목"><span class="v">매출 증가와 설비 동행</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">컴퓨트 설비가 1.4 → 1.7GW(+21%)로 늘 때 SI 매출은 +195%(QoQ) 늘었다. 기말 설비 1GW당 분기 SI 매출은 $1.8B → $4.4B로 2.4배가 됐다(하우스 근사). 설비보다 매출이 빨리 커지고 있다.</span></td></tr>
+      <tr><td data-label="#"><span class="v">2</span></td><td data-label="항목"><span class="v">설비투자 후 가동률 상승</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">가동률은 공시되지 않는다. 회사는 설비(nameplate) 지표가 실제 가동을 뜻하지 않는다고 명시한다. 대리 지표인 GW당 매출은 올랐다. (실가동 전력·외부 임대 비중이 공시되면 판정 가능)</span></td></tr>
+      <tr><td data-label="#"><span class="v">3</span></td><td data-label="항목"><span class="v">수주가 매출보다 빠르게 증가</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">수주잔고는 $28.4B(2025년 말) → $47.5B(6월 말) → $63B(9월 말, 콜 발언)로 9개월 새 2.2배다. 다만 3분기만 보면 매출(+87% QoQ)이 잔고(+33% QoQ)보다 빨랐다. 1년 내 인식분 $42B는 하우스 NTM 매출의 30%다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">SEC · 10-Q 2Q26 (2026.08.04)</span><span class="evd-sum">수주잔고 <strong>$47,461M</strong>(6/30), 그중 이연매출 $14,286M. 약 56%가 1년 내, 34%가 1~3년 내 인식 예정. 2Q26 매출 비중: 고객 A <strong>18.3%</strong>(세 부문 전체), 고객 B <strong>19.5%</strong>(AI 부문). 클라우드 계약은 초기 기간 후 90일 통지로 해지 가능.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="#"><span class="v">4</span></td><td data-label="항목"><span class="v">미국향 매출 (미국 수혜)</span></td><td data-label="판정"><span class="v"><span class="grade g-unk">? 확인불가</span></span></td><td data-label="근거"><span class="v">투자설명서와 10-Q에 지역별 매출 표가 없다. 알 수 있는 것은 집중도다. 2분기 매출의 38%가 두 고객(A 18.3%·B 19.5%)에서 나왔고, 회사는 이름을 밝히지 않는다. 스타링크는 164개국에서 판매된다. (연간보고서 10-K의 지역 주석이 나오면 판정 가능)</span></td></tr>
+      <tr><td data-label="#"><span class="v">5</span></td><td data-label="항목"><span class="v">밸류에이션 체계 전환 (리레이팅)</span></td><td data-label="판정"><span class="v"><span class="grade g-part">◐ 부분 충족</span></span></td><td data-label="근거"><span class="v">첫 GAAP 흑자로 P/E 평가의 문이 열렸다. 그러나 순이익의 37%가 영업외이고 9개월은 적자라 아직 이르다. 시장은 이미 이 회사를 발사체 기업이 아니라 AI 인프라 기업으로 가격을 매긴다(섹션 13).</span></td></tr>
+      <tr><td data-label="#"><span class="v">6</span></td><td data-label="항목"><span class="v">산업 TAM 확대 수혜</span></td><td data-label="판정"><span class="v"><span class="grade g-full">● 충족</span></span></td><td data-label="근거"><span class="v">경영진은 컴퓨트 수요가 공급을 넘는 상태가 오래 갈 것이라 했다. 항공 연결은 가용 항공기의 4분의 1과 계약했고, 800MHz 주파수 인수로 모바일 직접 연결까지 넓힌다. 시장 크기는 쟁점이 아니다.</span></td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <div class="co-num">38%</div>
+    <div class="co-lbl">2Q26 매출에서 <strong>이름이 공개되지 않은 두 고객</strong>이 차지한 비중(18.3% + 19.5%). AI 부문 고객 B의 계약은 90일 통지로 해지할 수 있다. 성장의 크기만큼 성장의 집중도도 크다.</div>
+  </div>
+  <p class="fine">집계: 충족 2 · 부분 3 · 확인불가 1 — 전작(충족 3·부분 1·확인불가 2)보다 확인불가가 하나 줄었다(10-Q·실적 자료로 가동 대리지표 확보). 3Q26 10-Q는 아직 제출 전이라, 9월 말 수주잔고 $63B는 콜 발언(보도 경유)이다. 같은 날 재무상태표의 이연매출 $17.5B는 콜 발언과 일치한다.</p>
+</div>
+
+<!-- 07 어닝 모델 -->
+<div class="card" id="s07">
+  <h2><span class="idx">07</span>어닝 모델 — 컴퓨트 GW가 매출을 정하고, 회사 가이던스가 앵커다</h2>
+  <p class="deck">하우스 Base는 회사 가이던스 중앙을 따르고 2027년 증설분은 보수적으로 반영했다. 컨센서스는 아직 가이던스를 따라오지 못했다.</p>
+  <h3>분기 매출 — 부문별 실적과 하우스 추정</h3>
+  <div class="rev-legend" aria-hidden="true"><span><i style="background:var(--s-si)"></i>SI(AI)</span><span><i style="background:var(--s-conn)"></i>Connectivity(스타링크)</span><span><i style="background:var(--s-space)"></i>Space</span><span><i class="fwd"></i>추정·가이던스(부문 미분해)</span></div><div class="rev-chart"><svg viewBox="0 0 980 340" role="img" aria-label="스페이스X 분기 매출 누적 막대: 1Q25 $4.1B에서 3Q26 $14.6B, 4Q26 하우스 추정 $24.0B, 1Q27 회사 가이던스 $33~37B"><line class="gridline" x1="56" x2="964" y1="300.0" y2="300.0"/><text class="ticktext" x="48" y="304.0" text-anchor="end">$0B</text><line class="gridline" x1="56" x2="964" y1="231.5" y2="231.5"/><text class="ticktext" x="48" y="235.5" text-anchor="end">$10B</text><line class="gridline" x1="56" x2="964" y1="163.0" y2="163.0"/><text class="ticktext" x="48" y="167.0" text-anchor="end">$20B</text><line class="gridline" x1="56" x2="964" y1="94.5" y2="94.5"/><text class="ticktext" x="48" y="98.5" text-anchor="end">$30B</text><line class="gridline" x1="56" x2="964" y1="26.0" y2="26.0"/><text class="ticktext" x="48" y="30.0" text-anchor="end">$40B</text><line class="axisline" x1="56" x2="964" y1="300.0" y2="300.0"/><rect class="seg" x="79.4" y="294.1" width="54" height="5.9" rx="2" fill="var(--s-space)"><title>1Q25 Space $865M</title></rect><rect class="seg" x="79.4" y="277.1" width="54" height="17.0" rx="2" fill="var(--s-conn)"><title>1Q25 Connectivity $2,475M</title></rect><rect class="seg" x="79.4" y="272.1" width="54" height="5.0" rx="2" fill="var(--s-si)"><title>1Q25 SI(AI) $727M</title></rect><text class="tot" x="106.4" y="266.1" text-anchor="middle">$4.1B</text><text class="xl" x="106.4" y="318" text-anchor="middle">1Q25</text><rect class="seg" x="180.3" y="294.9" width="54" height="5.1" rx="2" fill="var(--s-space)"><title>2Q25 Space $746M</title></rect><rect class="seg" x="180.3" y="277.2" width="54" height="17.7" rx="2" fill="var(--s-conn)"><title>2Q25 Connectivity $2,588M</title></rect><rect class="seg" x="180.3" y="272.1" width="54" height="5.0" rx="2" fill="var(--s-si)"><title>2Q25 SI(AI) $737M</title></rect><text class="tot" x="207.3" y="266.1" text-anchor="middle">$4.1B</text><text class="xl" x="207.3" y="318" text-anchor="middle">2Q25</text><rect class="seg" x="281.2" y="288.6" width="54" height="11.4" rx="2" fill="var(--s-space)"><title>3Q25 Space $1,666M</title></rect><rect class="seg" x="281.2" y="267.4" width="54" height="21.2" rx="2" fill="var(--s-conn)"><title>3Q25 Connectivity $3,097M</title></rect><rect class="seg" x="281.2" y="261.8" width="54" height="5.6" rx="2" fill="var(--s-si)"><title>3Q25 SI(AI) $813M</title></rect><text class="tot" x="308.2" y="255.8" text-anchor="middle">$5.6B</text><text class="xl" x="308.2" y="318" text-anchor="middle">3Q25</text><rect class="seg" x="382.1" y="294.5" width="54" height="5.5" rx="2" fill="var(--s-space)"><title>4Q25 Space $809M</title></rect><rect class="seg" x="382.1" y="272.3" width="54" height="22.1" rx="2" fill="var(--s-conn)"><title>4Q25 Connectivity $3,228M</title></rect><rect class="seg" x="382.1" y="266.0" width="54" height="6.3" rx="2" fill="var(--s-si)"><title>4Q25 SI(AI) $923M</title></rect><text class="tot" x="409.1" y="260.0" text-anchor="middle">$5.0B</text><text class="xl" x="409.1" y="318" text-anchor="middle">4Q25</text><rect class="seg" x="483.0" y="295.8" width="54" height="4.2" rx="2" fill="var(--s-space)"><title>1Q26 Space $619M</title></rect><rect class="seg" x="483.0" y="273.4" width="54" height="22.3" rx="2" fill="var(--s-conn)"><title>1Q26 Connectivity $3,257M</title></rect><rect class="seg" x="483.0" y="267.8" width="54" height="5.6" rx="2" fill="var(--s-si)"><title>1Q26 SI(AI) $818M</title></rect><text class="tot" x="510.0" y="261.8" text-anchor="middle">$4.7B</text><text class="xl" x="510.0" y="318" text-anchor="middle">1Q26</text><rect class="seg" x="583.9" y="293.4" width="54" height="6.6" rx="2" fill="var(--s-space)"><title>2Q26 Space $962M</title></rect><rect class="seg" x="583.9" y="264.0" width="54" height="29.4" rx="2" fill="var(--s-conn)"><title>2Q26 Connectivity $4,291M</title></rect><rect class="seg" x="583.9" y="246.5" width="54" height="17.5" rx="2" fill="var(--s-si)"><title>2Q26 SI(AI) $2,561M</title></rect><text class="tot" x="610.9" y="240.5" text-anchor="middle">$7.8B</text><text class="xl" x="610.9" y="318" text-anchor="middle">2Q26</text><rect class="seg" x="684.8" y="287.9" width="54" height="12.1" rx="2" fill="var(--s-space)"><title>3Q26 Space $1,767M</title></rect><rect class="seg" x="684.8" y="251.9" width="54" height="35.9" rx="2" fill="var(--s-conn)"><title>3Q26 Connectivity $5,248M</title></rect><rect class="seg" x="684.8" y="200.2" width="54" height="51.8" rx="2" fill="var(--s-si)"><title>3Q26 SI(AI) $7,560M</title></rect><text class="tot" x="711.8" y="194.2" text-anchor="middle">$14.6B</text><text class="xl" x="711.8" y="318" text-anchor="middle">3Q26</text><rect class="fwd" x="785.7" y="135.6" width="54" height="164.4" rx="2"><title>4Q26E 하우스 추정 $24.0B</title></rect><text class="tot" x="812.7" y="129.6" text-anchor="middle">≈$24B</text><text class="xl est" x="812.7" y="318" text-anchor="middle">4Q26E</text><text class="xl est" x="812.7" y="332" text-anchor="middle">하우스 추정</text><rect class="fwd" x="886.6" y="60.2" width="54" height="239.8" rx="2"><title>1Q27G 회사 가이던스 $35.0B</title></rect><line class="whisk" x1="913.6" x2="913.6" y1="46.5" y2="74.0"/><line class="whisk" x1="904.6" x2="922.6" y1="74.0" y2="74.0"/><line class="whisk" x1="904.6" x2="922.6" y1="46.5" y2="46.5"/><text class="tot" x="913.6" y="39.5" text-anchor="middle">$33~37B</text><text class="xl est" x="913.6" y="318" text-anchor="middle">1Q27G</text><text class="xl est" x="913.6" y="332" text-anchor="middle">회사 가이던스</text></svg></div><p class="fine" style="margin-top:4px;">막대에 마우스를 올리면 부문별 금액이 보인다. 2025년 분기는 투자설명서·10-Q·8-K에서, 4Q25는 연간(424B4)에서 9개월(8-K)을 빼서 구했다. 1Q27G의 막대는 가이던스 중앙($35B), 수염은 범위다.</p>
+  <div class="tbl-data scrollable" style="margin-top:12px;">
+  <table>
+    <thead><tr><th>분기</th><th class="num">Space</th><th class="num">Connectivity</th><th class="num">SI(AI)</th><th class="num">합계</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td>1Q25A</td><td class="num">$865M</td><td class="num">$2,475M</td><td class="num">$727M</td><td class="num">$4,067M</td><td>확정 (424B4)</td></tr>
+      <tr><td>2Q25A</td><td class="num">$746M</td><td class="num">$2,588M</td><td class="num">$737M</td><td class="num">$4,071M</td><td>확정 (10-Q)</td></tr>
+      <tr><td>3Q25A</td><td class="num">$1,666M</td><td class="num">$3,097M</td><td class="num">$813M</td><td class="num">$5,576M</td><td>확정 (전년 동기)</td></tr>
+      <tr><td>4Q25A</td><td class="num">$809M</td><td class="num">$3,228M</td><td class="num">$923M</td><td class="num">$4,960M</td><td>확정 — FY25(424B4) − 9M25(8-K) 차감</td></tr>
+      <tr><td>1Q26A</td><td class="num">$619M</td><td class="num">$3,257M</td><td class="num">$818M</td><td class="num">$4,694M</td><td>확정 (424B4)</td></tr>
+      <tr><td>2Q26A</td><td class="num">$962M</td><td class="num">$4,291M</td><td class="num">$2,561M</td><td class="num">$7,814M</td><td>확정 (8-K)</td></tr>
+      <tr><td><strong>3Q26A</strong></td><td class="num">$1,767M</td><td class="num">$5,248M</td><td class="num">$7,560M</td><td class="num"><strong>$14,575M</strong></td><td>확정 (8-K) — <span class="up">YoY +161%</span></td></tr>
+      <tr><td>4Q26E</td><td class="num">≈$1.5B</td><td class="num">≈$5.6B</td><td class="num">≈$16.9B</td><td class="num">≈$24.0B</td><td>하우스 — 연말 연환산 $100B 목표와 정합</td></tr>
+      <tr><td>1Q27E</td><td class="num">≈$1.5B</td><td class="num">≈$6.0B</td><td class="num">≈$27.5B</td><td class="num">≈$35.0B</td><td>하우스 = 가이던스 $33~37B 중앙</td></tr>
+      <tr><td>2Q27E</td><td class="num">≈$1.7B</td><td class="num">≈$6.4B</td><td class="num">≈$30.9B</td><td class="num">≈$39.0B</td><td>하우스 — QoQ +11%</td></tr>
+      <tr><td>3Q27E</td><td class="num">≈$1.8B</td><td class="num">≈$6.9B</td><td class="num">≈$35.3B</td><td class="num">≈$44.0B</td><td>하우스 — QoQ +13%</td></tr>
+      <tr><td><strong>NTM 합계</strong></td><td class="num">≈$6.5B</td><td class="num">≈$24.9B</td><td class="num">≈$110.6B</td><td class="num"><strong>≈$142.0B</strong></td><td>밸류에이션 입력값 — 주당 $10.46 (÷13,572.8M주)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">A는 확정(8-K·10-Q·424B4), E는 하우스 추정. 4Q26E는 회사의 "2026년 말 연환산 매출 $100B" 목표에서 잡았다(분기 $25B×4 기준과 12월 월매출×12 기준의 중간). SI는 합계에서 Connectivity(분기 +7%)·Space(1.5~1.8B)를 뺀 잔여다. 2Q~3Q27E는 2027년 10GW 증설 계획 대비 보수적이다 — 경영진이 전력·냉각 장비를 제약 요인으로 꼽았기 때문이다. 외부 임대 단가의 참고점은 Anthropic 계약(월 $12.5억)이다.</p>
+
+  <h3>컨센서스 델타 — 하우스가 컨센과 다르게 보는 지점</h3>
+  <table class="tbl-judge">
+    <thead><tr><th>항목</th><th class="num">하우스</th><th class="num">컨센서스</th><th>델타와 근거</th></tr></thead>
+    <tbody>
+      <tr><td data-label="항목"><span class="v">3Q26 매출 (실적)</span></td><td class="num" data-label="하우스"><span class="v">실적 $14,575M</span></td><td class="num" data-label="컨센서스"><span class="v">$12.72~12.87B</span></td><td data-label="델타와 근거"><span class="v"><span class="up">+13~15%</span> — 실적이 컨센을 넘었다. 전작 하우스 추정($9.0B)은 62% 낮았다.</span></td></tr>
+      <tr><td data-label="항목"><span class="v">3Q26 희석 EPS (실적)</span></td><td class="num" data-label="하우스"><span class="v">실적 $0.35</span></td><td class="num" data-label="컨센서스"><span class="v">$0.12~0.14</span></td><td data-label="델타와 근거"><span class="v"><span class="up">+150% 이상</span> — 단, 순이익의 37%가 영업외(기타수익·법인세 환급)라 반복성이 낮다.</span></td></tr>
+      <tr><td data-label="항목"><span class="v">1Q27 매출</span></td><td class="num" data-label="하우스"><span class="v">$35.0B</span></td><td class="num" data-label="컨센서스"><span class="v">$22.2B (가이던스 전)</span></td><td data-label="델타와 근거"><span class="v"><span class="up">+58%</span> — 하우스는 회사 가이던스 중앙을 그대로 쓴다. 컨센은 아직 갱신 전이다.</span></td></tr>
+      <tr><td data-label="항목"><span class="v">FY27E 매출</span></td><td class="num" data-label="하우스"><span class="v">≈$167B</span></td><td class="num" data-label="컨센서스"><span class="v">≈$100B (9월 보도)</span></td><td data-label="델타와 근거"><span class="v"><span class="up">+67%</span> — 9월 집계는 가이던스 전이다. 가이던스 중앙 × 4만 해도 $140B라 컨센 상향이 예상된다.<span class="evd"><button type="button" aria-expanded="false">근거15</button><span class="evd-pop"><span class="evd-src">Parameter · 2027년 매출 추정 상향 보도 (2026.09.14)</span><span class="evd-sum">애널리스트들의 2027년 매출 추정이 <strong>$100B</strong>로 올라왔다(수개월 전 $70B). AI 부문 2027년 기대 매출 $60B(7월 $38B). 집계처는 명시되지 않았다.</span><a href="https://parameter.io/spacex-spcx-stock-analysts-boost-2027-revenue-projection-to-100b-amid-ai-boom/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></span></td></tr>
+      <tr><td data-label="항목"><span class="v">목표주가 / 환산가</span></td><td class="num" data-label="하우스"><span class="v">Base $81</span></td><td class="num" data-label="컨센서스"><span class="v">평균 $217.50 (35곳)</span></td><td data-label="델타와 근거"><span class="v"><span class="down">−63%</span> — 매출 추정은 하우스가 더 높다. 차이는 배수와 시계다. 컨센 목표가는 2027~2028년 매출에 배수를 매기고, 하우스는 NTM 매출에 피어 실측 배수를 매긴다(섹션 13).</span></td></tr>
+    </tbody>
+  </table>
+  <p class="fine">컨센서스 출처: 3Q 매출 LSEG $12.72B(TIKR 경유)·TipRanks 집계 $12.87B, EPS $0.12(Yahoo)·$0.14(TipRanks), 1Q27 LSEG $22.2B(TIKR), 목표가 TipRanks 35곳(매수 28·중립 5·매도 2 — 실적 전 집계라 갱신될 수 있음). 개별 증권사 목표가(실적 전 보도): 에버코어 $270, 오펜하이머 $280, 번스타인 $248, JP모건 $240, RBC $225, 미즈호 $200, 모건스탠리 $300.</p>
+
+  <h3>다년 추정</h3>
+  <div class="tbl-data scrollable">
+  <table>
+    <thead><tr><th>연도</th><th class="num">매출</th><th class="num">조정 EBITDA</th><th class="num">영업이익</th><th class="num">OPM</th><th class="num">순이익</th><th class="num">EPS(희석)</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td>FY25A</td><td class="num">$18.7B</td><td class="num">$6.6B</td><td class="num"><span class="down">−$2.6B</span></td><td class="num">−13.9%</td><td class="num"><span class="down">−$4.9B</span></td><td class="num">—</td><td>확정 (424B4, xAI·X 합산 기준)</td></tr>
+      <tr><td>FY26E</td><td class="num">≈$51.1B</td><td class="num">≈$26.2B</td><td class="num">≈$6.5B</td><td class="num">≈12.8%</td><td class="num">≈$5.2B</td><td class="num">—</td><td>9M 실적 + 4Q 하우스 추정. 우선주 전환으로 주식수가 바뀌어 연간 EPS는 생략</td></tr>
+      <tr><td>FY27E</td><td class="num">≈$167B</td><td class="num">≈$88.5B</td><td class="num">≈$39B</td><td class="num">≈23%</td><td class="num">≈$34B</td><td class="num">≈$2.5</td><td>하우스 Base — 가정에 매우 민감</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">FY26E: 9M 매출 $27.1B + 4Q $24.0B, 4Q 조정 EBITDA율 53%(회사가 4분기 매출총이익률이 2분기 수준으로 돌아간다고 밝힘), 감가상각 $4.5B·주식보상 $2.4B. FY27E: 조정 EBITDA율 53%, 감가상각 ≈$40B(4분기 설비투자 $35~40B가 이어진다고 볼 때), 주식보상 ≈$9.5B, 순이자 −$1B, 법인세 10%(이월결손금), 희석주식 약 139억 주. FY27E EPS ≈$2.5면 현재가는 FY27E 이익의 약 65배다.</p>
+  <p class="fine"><strong>다음 분기 체크포인트</strong>: ① 4Q26 매출이 $24B(연환산 $100B 목표)에 닿는가 ② 1Q27 가이던스 $33~37B가 유지·상향되는가 ③ 3Q26 10-Q의 고객 집중도 — AI 부문 단일 고객 비중이 2분기 19.5%에서 낮아졌는가 ④ 기말 컴퓨트 2.5~3GW 달성과 4분기 설비투자 $35~40B의 조달 방식(현금·차입·증자).</p>
+</div>
+
+<!-- 08 시나리오 -->
+<div class="card" id="s08">
+  <h2><span class="idx">08</span>시나리오 — 세 시나리오 모두 현재가 아래에 있다</h2>
+  <p class="deck">매출을 가이던스 상단 이상으로 잡고 AI 부문에 엔비디아 배수를 줘도 −18.2%다. 이 비대칭이 비중축소 판정의 실질이다.</p>
+  <table class="tbl-judge">
+    <thead><tr><th>시나리오</th><th>전제 (근거)</th><th class="num">NTM 주당매출</th><th class="num">실효 P/S</th><th class="num">환산가</th><th class="num">현재가 대비</th></tr></thead>
+    <tbody>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bull</strong></span></td><td data-label="전제 (근거)"><span class="v">2027년 컴퓨트 증설이 계획대로 매출이 된다 — NTM 매출 $184B(4Q26 $25B · 1Q27 $37B 가이던스 상단 · 2Q $52B · 3Q $70B). SI 엔비디아 8.5배, 스타링크 이리디움 6.9배, Space 로켓랩 40.0배</span></td><td class="num" data-label="NTM 주당매출"><span class="v">$13.56</span></td><td class="num" data-label="실효 P/S"><span class="v">9.84배</span></td><td class="num" data-label="환산가"><span class="v">$133</span></td><td class="num" data-label="현재가 대비"><span class="v"><span class="down">−18.2%</span></span></td></tr>
+      <tr class="self"><td data-label="시나리오"><span class="v"><strong>Base</strong></span></td><td data-label="전제 (근거)"><span class="v">가이던스 정합 경로 — NTM 매출 $142B(4Q26 $24B · 1Q27 $35B 가이던스 중앙 · 2Q $39B · 3Q $44B). SI 오라클 5.6배(AI 인프라 피어 중앙값), 스타링크 6.9배, Space 40.0배</span></td><td class="num" data-label="NTM 주당매출"><span class="v">$10.46</span></td><td class="num" data-label="실효 P/S"><span class="v">7.76배</span></td><td class="num" data-label="환산가"><span class="v">$81</span></td><td class="num" data-label="현재가 대비"><span class="v"><span class="down">−50.2%</span></span></td></tr>
+      <tr><td data-label="시나리오"><span class="v"><strong>Bear</strong></span></td><td data-label="전제 (근거)"><span class="v">클라우드 계약 해지(90일 통지)·전력 제약으로 2027년 증설분 매출화가 늦어진다 — NTM 매출 $122B(4Q26 $22B · 1Q27 $33B 가이던스 하단 · 2Q $33B · 3Q $34B). SI 코어위브 2.9배, 스타링크 6.9배, Space 40.0배</span></td><td class="num" data-label="NTM 주당매출"><span class="v">$8.99</span></td><td class="num" data-label="실효 P/S"><span class="v">5.83배</span></td><td class="num" data-label="환산가"><span class="v">$52</span></td><td class="num" data-label="현재가 대비"><span class="v"><span class="down">−67.9%</span></span></td></tr>
+    </tbody>
+  </table>
+  <h3>사업부 합산(SOTP) 분해 — Base</h3>
+  <div class="tbl-data wraptext">
+  <table>
+    <thead><tr><th>사업부</th><th class="num">NTM 매출</th><th>배수 근거 (피어 실측)</th><th class="num">EV/매출</th><th class="num">사업부 가치</th><th class="num">비중</th></tr></thead>
+    <tbody>
+      <tr><td>SI (AI 컴퓨트·Grok·Cursor·X)</td><td class="num">$110.6B</td><td>오라클 — AI 인프라 피어 3사(코어위브 2.9·오라클 5.6·엔비디아 8.5) 중앙값</td><td class="num">5.6배</td><td class="num">$619.4B</td><td class="num">59%</td></tr>
+      <tr><td>Connectivity (스타링크)</td><td class="num">$24.9B</td><td>이리디움 — 매출이 있는 상장 위성통신사 중 유일한 비교 대상</td><td class="num">6.9배</td><td class="num">$171.8B</td><td class="num">16%</td></tr>
+      <tr><td>Space (발사·개발)</td><td class="num">$6.5B</td><td>로켓랩 — 상장 발사체 기업</td><td class="num">40.0배</td><td class="num">$260.0B</td><td class="num">25%</td></tr>
+      <tr><td><strong>기업가치(EV)</strong></td><td class="num">$142.0B</td><td>—</td><td class="num">7.40배</td><td class="num"><strong>$1,051.2B</strong></td><td class="num">100%</td></tr>
+      <tr><td>+ 순현금 (9/30)</td><td class="num">—</td><td>현금 $51.3B + 유가증권 $38.6B − 차입·리스 $38.8B</td><td class="num">—</td><td class="num">$51.0B</td><td class="num">—</td></tr>
+      <tr><td><strong>주주가치 ÷ 13,572.8M주</strong></td><td class="num">—</td><td>실효 P/S = $1,102.2B ÷ $142.0B</td><td class="num">7.76배</td><td class="num"><strong>$81.21</strong></td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>민감도 — NTM 주당매출 (실효 P/S 7.76배 고정)</h3>
+  <div class="tbl-data">
+  <table>
+    <thead><tr><th>NTM 주당매출</th><th class="num">$8.89 (−15%)</th><th class="num">$10.46 (기준)</th><th class="num">$12.03 (+15%)</th></tr></thead>
+    <tbody><tr><td>환산가 (현재가 대비)</td><td class="num">$69 (<span class="down">−57.7%</span>)</td><td class="num">$81 (<span class="down">−50.2%</span>)</td><td class="num">$93 (<span class="down">−42.8%</span>)</td></tr></tbody>
+  </table>
+  </div>
+  <p class="prose" style="margin-top:12px;color:var(--ink-2);"><strong>읽는 법:</strong> 배수가 결과를 정한다. Base 배수에서 현재가가 성립하려면 NTM 매출이 <strong>$285B</strong>여야 한다. 하우스 추정의 두 배이고, 머스크가 말한 2027년 말 연환산 $500B~1T가 2028년에 매출로 들어오는 경로와 가깝다. 반대로 매출이 하우스 추정대로면 시장은 Base 배수의 두 배(15.6배)를 주고 있다. Bull은 AI 부문에 엔비디아 배수를 주는데, 엔비디아는 순이익률 50%대의 회사다. Bear는 코어위브 배수인데, 이는 차입으로 GPU를 사서 빌려주는 사업에 시장이 실제로 매기는 값이다. 시나리오 가치는 전제가 실현될 때의 조건부 환산 범위이며 목표주가·예측이 아니다.</p>
+</div>
+
+<!-- 09 피어 비교 -->
+<div class="card" id="s09">
+  <h2><span class="idx">09</span>피어 비교 — 성장률로 보면 싸고, 배수로 보면 비싸다</h2>
+  <p class="deck">스페이스X의 NTM EV/매출 15.2배는 AI 인프라 피어(2.9~8.5배)보다 1.8~5.2배 높다. 그러나 매출 성장률(+343%)은 어떤 피어보다 압도적으로 높다. 두 사실 중 어느 쪽에 무게를 두느냐가 콜과 컨센을 가른다.</p>
+  <div class="peer-chart">
+<div class="metric"><div class="mtitle">EV / 매출 (NTM, 로켓랩·이리디움은 TTM)</div><div class="mhint">낮을수록 매출 대비 저렴 · 스페이스X는 하우스 Base NTM 매출 기준</div>
+<div class="brow"><span class="blabel self">스페이스X</span><div class="btrack"><div class="bfill self" style="width:38%"></div></div><span class="bval mono">15.2배</span></div>
+<div class="brow"><span class="blabel">코어위브</span><div class="btrack"><div class="bfill" style="width:7%"></div></div><span class="bval mono">2.9배</span></div>
+<div class="brow"><span class="blabel">오라클</span><div class="btrack"><div class="bfill" style="width:14%"></div></div><span class="bval mono">5.6배</span></div>
+<div class="brow"><span class="blabel">이리디움</span><div class="btrack"><div class="bfill" style="width:17%"></div></div><span class="bval mono">6.9배</span></div>
+<div class="brow"><span class="blabel">엔비디아</span><div class="btrack"><div class="bfill" style="width:21%"></div></div><span class="bval mono">8.5배</span></div>
+<div class="brow"><span class="blabel">테슬라</span><div class="btrack"><div class="bfill" style="width:31%"></div></div><span class="bval mono">12.5배</span></div>
+<div class="brow"><span class="blabel">로켓랩</span><div class="btrack"><div class="bfill" style="width:99%"></div></div><span class="bval mono">40.0배</span></div>
+<div class="brow"><span class="blabel">팔란티어</span><div class="btrack"><div class="bfill" style="width:100%"></div></div><span class="bval mono">40.5배</span></div>
+</div>
+<div class="metric"><div class="mtitle">매출 성장률 (다음 회계연도 컨센, %)</div><div class="mhint">높을수록 고성장 · 스페이스X는 하우스 NTM ÷ TTM, 로켓랩·이리디움은 컨센 미확보로 제외</div>
+<div class="brow"><span class="blabel self">스페이스X</span><div class="btrack"><div class="bfill self" style="width:100%"></div></div><span class="bval mono">343%</span></div>
+<div class="brow"><span class="blabel">코어위브</span><div class="btrack"><div class="bfill" style="width:29%"></div></div><span class="bval mono">98%</span></div>
+<div class="brow"><span class="blabel">엔비디아</span><div class="btrack"><div class="bfill" style="width:20%"></div></div><span class="bval mono">70%</span></div>
+<div class="brow"><span class="blabel">팔란티어</span><div class="btrack"><div class="bfill" style="width:15%"></div></div><span class="bval mono">50%</span></div>
+<div class="brow"><span class="blabel">오라클</span><div class="btrack"><div class="bfill" style="width:10%"></div></div><span class="bval mono">34%</span></div>
+<div class="brow"><span class="blabel">테슬라</span><div class="btrack"><div class="bfill" style="width:4%"></div></div><span class="bval mono">13%</span></div>
+</div></div>
+  <details style="margin-top:14px;">
+    <summary>피어 원표 — 시가총액·순차입·매출 기준·배수 (2026-10-21 시세)</summary>
+    <div class="inner">
+    <div class="tbl-data wraptext">
+    <table>
+      <thead><tr><th>종목</th><th>역할</th><th class="num">시가총액</th><th class="num">순차입(+)/순현금(−)</th><th class="num">EV</th><th>매출 기준</th><th class="num">EV/매출</th><th class="num">TTM OPM</th></tr></thead>
+      <tbody>
+        <tr><td><strong>스페이스X (SPCX)</strong></td><td>대상</td><td class="num">$2,213.5B</td><td class="num">−$51.0B</td><td class="num">$2,162.4B</td><td>NTM 하우스 Base $142.0B</td><td class="num"><strong>15.2배</strong></td><td class="num">−2.1%</td></tr>
+        <tr><td>코어위브 (CRWV)</td><td>AI 클라우드</td><td class="num">$35.4B</td><td class="num">+$28.6B</td><td class="num">$64.0B</td><td>NTM ≈$21.7B (FY26 가이던스 중앙 $12.5B·FY27 컨센 $23.1~26.5B 블렌드)</td><td class="num">2.9배</td><td class="num">−1.7%</td></tr>
+        <tr><td>오라클 (ORCL)</td><td>클라우드 인프라</td><td class="num">$406.8B</td><td class="num">+$94.4B</td><td class="num">$501.3B</td><td>FY27(5월 결산) 회사 목표 $90B</td><td class="num">5.6배</td><td class="num">31.4%</td></tr>
+        <tr><td>이리디움 (IRDM)</td><td>위성통신</td><td class="num">$4.7B</td><td class="num">+$1.7B</td><td class="num">$6.3B</td><td>TTM $0.92B (EDGAR)</td><td class="num">6.9배</td><td class="num">20.3%</td></tr>
+        <tr><td>엔비디아 (NVDA)</td><td>AI 인프라 1위</td><td class="num">$5,310.0B</td><td class="num">≈0 (1% 미만)</td><td class="num">$5,310.0B</td><td>NTM $623.9B (FMP 컨센 FY27 $409.9B·FY28 $695.2B 블렌드)</td><td class="num">8.5배</td><td class="num">? 집계 오류</td></tr>
+        <tr><td>테슬라 (TSLA)</td><td>참고 — 합병 논의 상대</td><td class="num">$1,509.5B</td><td class="num">−$34.4B</td><td class="num">$1,475.1B</td><td>NTM $117.6B (FMP 컨센 블렌드)</td><td class="num">12.5배</td><td class="num">3.8%</td></tr>
+        <tr><td>로켓랩 (RKLB)</td><td>발사체</td><td class="num">$31.6B</td><td class="num">−$2.3B</td><td class="num">$29.4B</td><td>TTM $0.73B (EDGAR)</td><td class="num">40.0배</td><td class="num">−31.6%</td></tr>
+        <tr><td>팔란티어 (PLTR)</td><td>AI 소프트웨어</td><td class="num">$465.7B</td><td class="num">−$9.4B</td><td class="num">$456.3B</td><td>NTM $11.3B (FMP 컨센 블렌드)</td><td class="num">40.5배</td><td class="num">40.5%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="fine">시가총액 = 토스 Open API 현재가 × 발행주식수(2026-10-21). 순차입 = SEC XBRL 최신 재무상태표(차입·금융리스 − 현금·단기 유가증권). NTM 블렌드 = 다음 회계연도 25% + 그다음 연도 75%(4분기 시작 시점 근사). <strong>왜곡 주석</strong>: 로켓랩·이리디움은 컨센서스 미확보로 TTM 기준이라 NTM 배수보다 높게 나온다. 오라클은 회계연도 기준이라 NTM보다 약간 높다. 코어위브의 FY27 컨센은 집계처에 따라 $21.1~31.0B로 넓어 배수 범위가 2.4~3.4배다. 엔비디아의 EDGAR TTM 손익은 태그 오류(2019~2020년 값 반환)로 OPM을 산출하지 못했다. 스페이스X의 TTM OPM(−2.1%)은 4Q25~3Q26 합산이고, 3Q26 단독은 19.1%다.<span class="evd"><button type="button" aria-expanded="false">근거14</button><span class="evd-pop"><span class="evd-src">하우스 계산 · 피어 EV/매출 (2026.10.21)</span><span class="evd-sum">토스 현재가×발행주식수로 시가총액, SEC XBRL 재무상태표로 순차입을 구했다. 매출: 엔비디아·팔란티어·테슬라는 FMP 컨센서스, 오라클은 회사 FY27 목표(보도), 코어위브는 가이던스·컨센 보도 블렌드, 로켓랩·이리디움은 EDGAR TTM 실측.</span><a href="https://247wallst.com/investing/2026/10/13/coreweave-imploded-20-over-6-months-this-analyst-predicts-it-will-triple-in-price-over-the-coming-year/" target="_blank" rel="noopener">코어위브 컨센 보도 ↗</a> · <a href="https://parameter.io/oracle-orcl-stock-tumbles-in-2026-despite-wall-street-predicting-79-rally/" target="_blank" rel="noopener">오라클 FY27 목표 보도 ↗</a></span></span></p>
+    </div>
+  </details>
+  <p class="prose" style="margin-top:14px;color:var(--ink-2);"><strong>비교의 요지:</strong> 스페이스X는 매출 1달러에 테슬라(12.5배)보다 높은 값을 받는다. 엔비디아(8.5배)의 1.8배, 오라클(5.6배)의 2.7배다. 성장률을 나눠 보면 결과가 뒤집힌다. 배수 ÷ 성장률은 스페이스X 0.04로 엔비디아(0.12)·오라클(0.16)보다 낮다. 다만 스페이스X의 성장에는 클라우드 계약 가동이라는 계단식 점프와 Cursor 인수(비유기 성장)가 섞여 있다. 2027년 이후에도 이 속도가 이어질지는 12개월 안에 확인되지 않는다. 하우스가 성장률 조정 배수를 채택하지 않는 이유다(섹션 11 리스크 1).</p>
+</div>
+
+<!-- 10 수급 -->
+<div class="card prose" id="s10">
+  <h2><span class="idx">10</span>수급 — 지분은 소수에 묶여 있고, 묶음이 단계적으로 풀린다</h2>
+  <p class="deck">내일(10/22) 최대 13억 주, 12/8 최대 8.0억 주, 2027년 6월 머스크 64억 주. 첫 해제 때 주가는 올랐지만, 물량의 크기는 계속 커진다.</p>
+  <h3>5% 이상 지분 (Schedule 13G — 클래스A 기준 지분율)</h3>
+  <div class="tbl-data scrollable">
+  <table>
+    <thead><tr><th>제출자</th><th class="num">주식수</th><th class="num">지분율</th><th>접수일</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td>일론 머스크</td><td class="num">6,418,547,515</td><td class="num">48.4%</td><td>2026-08-13</td><td>클래스B 전환분·옵션 포함 계산. 의결권은 약 82%(투자설명서)</td></tr>
+      <tr><td>Google LLC (알파벳)</td><td class="num">551,189,500</td><td class="num">7.2%</td><td>2026-08-14</td><td>직접 지분</td></tr>
+      <tr><td>안토니오 그라시아스 (Valor)</td><td class="num">503,414,530</td><td class="num">6.5%</td><td>2026-08-11</td><td>이사. 9/11 출자자에게 4,279만 주 현물 분배</td></tr>
+      <tr><td>Founders Fund 계열</td><td class="num">427,306,025</td><td class="num">5.5%</td><td>2026-08-14</td><td>계열 펀드 합산(그룹 지위는 부인)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:12px;">13G 네 건으로 전작의 확인불가가 풀렸다. 머스크를 뺀 세 주체만 클래스A의 19.2%다(머스크의 48.4%는 클래스B 전환분을 분모에 더한 별도 기준).<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">SEC · Schedule 13G 4건 (2026.08.11~08.14)</span><span class="evd-sum">머스크 <strong>6,418,547,515주·48.4%</strong>(8/13), Google LLC 551,189,500주·7.2%(8/14), 그라시아스 503,414,530주·6.5%(8/11), Founders Fund 계열 합산 427,306,025주·5.5%(8/14). 지분율은 7/28 기준 클래스A 7,696,293,669주 대비.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926095936/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">머스크 13G ↗</a> · <a href="https://www.sec.gov/Archives/edgar/data/1181412/000119312526352289/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">Google 13G ↗</a></span></span> 내부자 매도는 아직 작다. 그윈 쇼트웰 사장은 옵션 행사분 34.2만 주(약 $52M)의 매도를 9/22 신고했다(10b5-1 계획). Valor의 9/11 현물 분배 4,279만 주는 출자자 손으로 넘어간 물량이라, 락업과 별개로 매도 가능 물량이 된다.<span class="evd"><button type="button" aria-expanded="false">근거11</button><span class="evd-pop"><span class="evd-src">SEC · Form 4 (2026.09.15, 9.30 정정) · Form 144 (2026.09.22)</span><span class="evd-sum">Valor 계열이 9/11 클래스A <strong>42,790,223주</strong>를 출자자에게 무상 현물 분배(10b5-1 사전 설정), 분배 후 Valor 계열 460,624,307주. 쇼트웰 Form 144: <strong>342,170주</strong>(시가 $51,958,514) 매도 예정, 옵션 행사 취득, 10b5-1 계획 채택일 6/23.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000121390026100186/xslF345X06/ownership.xml" target="_blank" rel="noopener">Form 4 ↗</a> · <a href="https://www.sec.gov/Archives/edgar/data/1181412/000195004726009740/xsl144X01/primary_doc.xml" target="_blank" rel="noopener">Form 144 ↗</a></span></span></p>
+  <h3>락업 해제 일정 (투자설명서 기준 '최대' 물량)</h3>
+  <div class="tbl-data wraptext">
+  <table>
+    <thead><tr><th>해제일</th><th class="num">최대 해제 물량</th><th>조항</th><th>상태</th></tr></thead>
+    <tbody>
+      <tr><td>2026-08-06(목)</td><td class="num">9.115억 주</td><td>첫 실적 공개 후 두 번째 정규 거래일</td><td>해제 — 이후 5거래일 주가 <span class="up">+35%</span>($108.27→$146.15)</td></tr>
+      <tr><td>—</td><td class="num">4.558억 주</td><td>첫 실적일까지 10거래일 중 5일 종가 ≥ 공모가 +30%($175.5)면 추가 해제</td><td>미충족(7/22~8/4 종가 $108~125) → 12/8로 이월</td></tr>
+      <tr><td>8/20 · 9/9 · 9/10 · 9/24 · 10/9</td><td class="num">합계 13.539억 주</td><td>70·90·91·105·120일째 단계 해제</td><td>해제</td></tr>
+      <tr><td><strong>2026-10-22(목)</strong></td><td class="num"><strong>13억 주</strong></td><td>3Q26 실적 공개(10/20 장 마감 후) 후 두 번째 정규 거래일</td><td><strong>내일</strong> — 발행주식의 9.6%, 현재가 기준 약 $212B</td></tr>
+      <tr><td>2026-10-24(토)</td><td class="num">3.284억 주</td><td>135일째 (실제 거래는 10/26(월)부터로 추정)</td><td>예정</td></tr>
+      <tr><td>2026-12-08(화)</td><td class="num">7.976억 주</td><td>180일째 — 추가 해제분 미발동으로 큰 쪽 적용</td><td>예정</td></tr>
+      <tr><td>4Q26 실적 후 ~ 2Q27 실적 후 (2027-03-18·05-17 등)</td><td class="num">합계 약 17.6억 주</td><td>연장 락업(머스크 제외) 6회 단계 해제</td><td>예정</td></tr>
+      <tr><td>2027-06-12(토)</td><td class="num">64억 주</td><td>머스크 전량(366일째, 조기 해제 조항 없음)</td><td>예정</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine" style="margin-top:8px;">'최대' 물량은 매도 제한이 풀리는 상한이며 실제 매도량이 아니다. 주관사(골드만삭스)는 언제든 조기 해제할 수 있다. 10/22 날짜는 "3분기 실적 공개 후 두 번째 정규 거래일" 조항에 10/20 장 마감 후 공개를 대입한 하우스 산정이다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">SEC · 424B4 투자설명서 — Shares Eligible for Future Sale (2026.06.12)</span><span class="evd-sum">"2026년 9월 30일로 끝나는 분기 실적 공개 후 두 번째 정규 거래일: 클래스A <strong>최대 13억 주</strong>(180일 락업 대상의 28%)". 180일째(2026-12-08): 추가 해제분이 미발동이면 최대 7.976억 주. 머스크 전 지분은 366일간 제한, 조기 해제 조항 없음.</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p style="margin-top:12px;"><strong>커버리지는 늘었고 방향은 유지다.</strong> 투자의견 제출 기관은 8월 40곳 → 9월 43곳 → 10월 47곳(강력매수 14·매수 23·중립 7·매도 2·강력매도 1)이다. 매수 비율은 80% → 79% → 79%로 사실상 같다.<span class="evd"><button type="button" aria-expanded="false">근거12</button><span class="evd-pop"><span class="evd-src">Finnhub · recommendation trends (2026.10.21 조회)</span><span class="evd-sum">2026-10: 강력매수 14·매수 23·중립 7·매도 2·강력매도 1(합 <strong>47곳</strong>). 2026-09: 13·21·7·1·1(43곳). 2026-08: 12·20·7·1·0(40곳). 최신월 대비 순매수 비율 변화 ±5%p 이내라 방향 '유지'.</span><span class="evd-nolink">Finnhub API 조회값 — 원문 링크 없음</span></span></span></p>
+  <div class="callout">
+    <div class="co-num">13억 주</div>
+    <div class="co-lbl"><strong>10/22(목)</strong> 매도 제한이 풀리는 최대 물량 — 발행주식의 9.6%, 현재가 기준 약 $212B다. 8월 첫 해제(9.1억 주) 때 주가는 5거래일 +35% 올랐다. 이번엔 실적 서프라이즈 직후라 차익 실현 유인이 더 크다.</div>
+  </div>
+</div>
+
+<!-- 11 반대 논리 -->
+<div class="card prose" id="s11">
+  <h2><span class="idx">11</span>반대 논리 — 무엇이 이 콜을 틀리게 하는가</h2>
+  <p class="deck">이 콜의 최대 약점은 성장률을 배수에 반영하지 않는다는 점이다. 스페이스X가 지금 속도로 2027년을 보내면, 12개월 뒤의 NTM 매출은 하우스 Base의 두 배가 될 수 있다.</p>
+  <div class="note"><strong>콜을 바꿀 조건 (비중축소 → 중립):</strong> Base 환산가가 주가 이상이 되는 것. 관측 가능한 형태로는 ① 주가가 <strong>$81 이하</strong>(현 추정 기준) ② NTM 매출 추정이 <strong>$285B 이상</strong> — 예를 들어 4Q26 실적 때 2Q27 가이던스가 $60B 이상으로 나오고 하반기 증설분 매출화가 확인될 때 ③ 그 조합(예: 주가 $120 + NTM 매출 $210B) ④ AI 인프라 피어(오라클·엔비디아)의 EV/매출이 지금의 두 배로 재평가될 때. <strong>(중립 → 비중확대)</strong>는 상장 이력이 쌓여 밸류 밴드가 성립해야 공식상 가능하다. <strong>(더 강한 비중축소 신호)</strong>: ① AI 부문 주요 고객의 계약 해지 통지 ② 4Q26 매출 $22B 미만 ③ 설비투자 조달을 위한 대규모 증자.</div>
+  <p><strong>리스크 1 — 성장률을 반영하면 싸다(이 콜의 최대 약점).</strong> 배수 ÷ NTM 매출 성장률로 보면 스페이스X(0.04)는 엔비디아(0.12)·오라클(0.16)보다 낮다. 회사가 연말 $100B, 1Q27 연환산 $140B를 실제로 달성하면 시장은 내년 이맘때 2028년 매출로 가격을 매긴다. 증설 곡선이 가파를수록 12개월 피어 배수는 체계적으로 낮은 값을 낸다. 이 경우 Bull(−18.2%)조차 보수적이다. 하우스는 이 가능성을 부정하지 않는다. 다만 성장의 일부가 계약 가동이라는 계단식 점프와 인수(Cursor)이고, 그 속도가 지속된다는 증거는 아직 두 분기뿐이다.</p>
+  <p><strong>리스크 2 — 하우스 매출 경로가 다시 낮을 수 있다.</strong> 전작은 회사 목표를 믿지 않아 매출을 62% 낮게 봤다. 이번 Base도 2027년 10GW 증설 계획을 다 넣지 않았다. 머스크는 2027년 말 연환산 $500B~1T를 말했다(회사 가이던스 아님). Bull 경로($184B)를 넘어 NTM이 $285B에 이르면 Base가 0%를 넘는다 — 콜 전환 조건 ②다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">Euronews · 실적·합병 발언 보도 (2026.10.21)</span><span class="evd-sum">머스크: 2027년 컴퓨트 <strong>10GW 추가</strong>에 "상당히 자신", 2026년 말 2.5~3.0GW 가동 예상. 전력·냉각·전기 설비가 "어느 정도 제약 요인". 테슬라·스페이스X 양사에 독립 이사 특별위원회 설치, 머스크는 이해상충으로 논의 불참, 조건 합의 없음. 합병은 테슬라 발행주식 과반 승인 필요.</span><a href="https://www.euronews.com/2026/10/21/elon-musk-backs-spacex-tesla-merger-as-rocket-firm-turns-profit" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>리스크 3 — AI 매출의 집중과 해지 조항(하방).</strong> 2분기 AI 부문 고객 B가 전사 매출의 19.5%였다. 클라우드 계약은 초기 기간이 지나면 양측 모두 90일 통지로 해지할 수 있다. Anthropic 계약 하나가 연 $15B로 하우스 NTM 매출의 약 11%다. 고객이 자체 인프라로 옮기거나 경쟁 클라우드로 가면 Bear(−67.9%)의 매출 경로가 현실이 된다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">SEC · 10-Q 2Q26 위험요인 (2026.08.04)</span><span class="evd-sum">"AI 인프라 매출의 상당 부분이 소수 고객에 집중". 클라우드 서비스 계약은 월 단위 요금, 초기 기간(통상 수개월) 후 <strong>양측 모두 90일 통지로 해지</strong> 가능. 고객 B는 2Q26 매출의 19.5%(AI 부문).</span><a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>리스크 4 — 설비투자의 자금 조달(하방).</strong> 4분기 설비투자 $35~40B만으로 순현금 $51.0B의 대부분이 소진된다. 4분기 증설분(1.7 → 2.5~3GW)의 단가를 그대로 늘리면 2027년 10GW 추가에는 $300~450B가 든다(하우스 단순 역산). 영업현금으로는 감당이 안 되는 규모라 차입이나 증자가 필요하다. CFO는 영업현금흐름과 투자등급 차입으로 조달한다고 했다. 증자로 가면 주당 가치가 희석되고, 차입으로 가면 이자비용이 이익을 깎는다.<span class="evd"><button type="button" aria-expanded="false">근거17</button><span class="evd-pop"><span class="evd-src">Motley Fool · 3Q26 실적 콜 요점 (2026.10.21)</span><span class="evd-sum">CFO 브렛 존슨: 증설 자금은 <strong>영업현금흐름과 투자등급 차입</strong>으로 조달하며 자본 효율과 투하자본수익률에 집중한다. 컴퓨트 하드웨어의 짧은 회수기간이 초기 배치로 후속 증설을 돕는다는 설명.</span><a href="https://www.fool.com/earnings/takeaways/2026/10/21/space-exploration-technologies-3-key-takeaways-for-long-term-investors/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+  <p><strong>리스크 5 — 락업 물량(하방, 단기).</strong> 10/22 최대 13억 주, 12/8 최대 8.0억 주, 2027년 6월 머스크 64억 주가 차례로 풀린다(섹션 10). 실적 서프라이즈로 주가가 오른 직후라 매도 유인이 크다. 물량 출회가 배수를 압축하면 Base 이하로 가는 시간이 짧아진다.</p>
+  <p><strong>리스크 6 — 지배구조와 관계자 거래.</strong> 머스크의 의결권은 약 82%다. 이사 그라시아스의 Valor와 AI 장비 리스 거래가 있고(6월 말 관련 부채 $13.3B, 회계상 실패한 판매후리스), 3분기 기타수익에는 관계자 관련 $561M이 들어 있다. 테슬라 합병은 특별위원회 단계이고 조건은 정해지지 않았다. 두 회사의 배수 차이(스페이스X 15.2배 vs 테슬라 12.5배)가 교환비율 협상의 쟁점이 될 수 있다.</p>
+</div>
+
+<!-- 12 다음 이벤트 -->
+<div class="card" id="s12">
+  <h2><span class="idx">12</span>다음 확인 이벤트</h2>
+  <p class="deck">가장 가까운 변수는 내일의 락업 해제이고, 방향을 정하는 것은 1월 말~2월의 4분기 실적과 2Q27 가이던스다.</p>
+  <div class="tbl-data wraptext">
+  <table>
+    <thead><tr><th>시점</th><th>이벤트</th><th>확인할 것</th></tr></thead>
+    <tbody>
+      <tr><td><strong>2026-10-22(목)</strong></td><td>락업 해제 — 최대 13억 주</td><td>거래대금 급증 여부, 대주주 매도 공시(Form 4·144). 투자설명서 조항 기준 하우스 산정일</td></tr>
+      <tr><td>2026-10-26(월)</td><td>135일째 해제분 거래 개시(추정) — 최대 3.284억 주</td><td>10/24가 토요일이라 실제 첫 거래일 기준</td></tr>
+      <tr><td>2026년 11월</td><td>Starship 15차 비행 — 부스터·2단 회수 시도</td><td>성공 시 발사 단가 하락 경로 확인(Space 부문), 실패 시 V3 위성 배치 지연(스타링크 용량)</td></tr>
+      <tr><td>2026년 11월 중순(추정)</td><td>3Q26 10-Q 제출</td><td>9월 말 수주잔고 $63B 확인, 고객 A·B 비중, 관계자 기타수익 $561M의 실체, 지역별 매출 공시 여부(06 항목 4)</td></tr>
+      <tr><td>2026-12-08(화)</td><td>180일째 락업 해제 — 최대 7.976억 주</td><td>10/22 해제분의 소화 여부와 겹치는지</td></tr>
+      <tr><td>2026년 말</td><td>컴퓨트 2.5~3GW · 연환산 매출 $100B 목표 시점</td><td>4분기 매출 $24B 안팎이면 하우스 Base 경로 유지</td></tr>
+      <tr><td>2027년 1월 말~2월(추정)</td><td>4Q26 실적 · 2Q27 가이던스 · 연장 락업 3.519억 주(실적 후 두 번째 거래일)</td><td>2Q27 가이던스가 $60B 이상이면 콜 전환 조건 ②에 접근(섹션 11). 4분기 설비투자 조달 방식</td></tr>
+      <tr><td>수시</td><td>테슬라 합병 특별위원회 · AI 대형 계약 공시</td><td>교환비율·일정. 신규 계약이 고객 집중도를 낮추는가</td></tr>
+      <tr><td>2027-06-12(토)</td><td>머스크 지분 64억 주 락업 만료</td><td>머스크의 매도·담보 계획 공시 여부</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="fine">4Q26 실적일은 회사 미발표다. 2분기는 분기 종료 35일 후(8/4), 3분기는 20일 후(10/20)에 발표했고, 4분기는 연간보고서와 함께 나와 1월 말~2월로 추정한다. Finnhub 실적 일정은 비어 있었다.</p>
+</div>
+
+<!-- 13 밸류에이션 -->
+<div class="card prose" id="s13">
+  <h2><span class="idx">13</span>밸류에이션 — 분모는 세 배가 됐고, 배수는 세 분의 일이 됐다</h2>
+  <p class="deck">NTM P/S는 44.1배에서 15.6배로 내려왔다. 그래도 피어 실측 합산(7.76배)의 두 배다. 현재가를 설명하려면 AI 부문에 엔비디아 배수를 주고도 스타링크에 팔란티어 수준(38.6배)을 줘야 한다.</p>
+  <p><strong>리레이팅 분해 — 무엇이 바뀌었나.</strong> 전작 이후 주가는 <span class="up">+10.6%</span>($147.5 → $163.08) 올랐다. 같은 기간 하우스 NTM 주당매출은 $3.34에서 $10.46으로 3.1배가 됐다. 그 결과 P/S는 44.1배에서 15.6배로 65% 압축됐다. 매출이 가격을 따라오고 있다. 전작이 "시장은 2030년을 산다"고 했다면, 지금 시장이 사는 시점은 2028년이다.</p>
+  <p><strong>현재가가 요구하는 것 — 역산.</strong> 시장 기업가치는 $2,162.4B다. AI 부문에 엔비디아 배수(8.5배 × $110.6B = $940B), Space에 로켓랩 배수(40.0배 × $6.5B = $260B)를 주면 스타링크 몫으로 $962B가 남는다. 스타링크 NTM 매출 $24.9B의 <strong>38.6배</strong>다. 이리디움(6.9배)의 다섯 배를 넘고, 팔란티어(40.5배)와 비슷하다. 다르게 보면 Base 배수에서 현재가가 성립하는 NTM 매출은 $285B다.<span class="evd"><button type="button" aria-expanded="false">근거18</button><span class="evd-pop"><span class="evd-src">하우스 계산 · SOTP·역산 (2026.10.21)</span><span class="evd-sum">시가총액 $2,213.5B(13,572.8M주 × $163.08) − 순현금 $51.0B = EV <strong>$2,162.4B</strong>. NTM EV/매출 15.2배, P/S 15.6배, TTM EV/매출 67.5배. SI×8.5배 + Space×40.0배를 빼면 스타링크 몫 $962.3B = 매출의 38.6배. Base 실효 P/S 7.76배로 현재가를 정당화하는 NTM 매출 $285B.</span><span class="evd-nolink">하우스 모델 계산값 — 원문 링크 없음</span></span></span></p>
+  <p><strong>2차 밸류에이션 — 이익 기준.</strong> 하우스 NTM 조정 EBITDA(매출 $142B × 53% = $75.3B) 대비 EV는 <strong>28.7배</strong>다. 엔비디아의 NTM P/E(FMP 컨센 기준 15.6배)보다 높다 — 감가상각과 이자, 세금을 빼기 전 이익인데도 그렇다. FY27E EPS ≈$2.5 기준 P/E는 약 65배다. 설비투자가 매출보다 큰 구간이라 잉여현금흐름 기준 밸류(FCF 수익률)는 음수로 산출 불가다.</p>
+  <p><strong>밴드는 판정에서 뺐다.</strong> 상장 후 91거래일의 P/S 밴드에서 현재 15.6배는 백분위 1%로 '저평가'처럼 보인다. 그러나 이는 10/20 가이던스로 분모(NTM 주당매출)가 하루 만에 $3.34에서 $10.46으로 바뀐 기계적 결과다. 그 이전 배수(32~73배)는 과소 추정된 매출 위에서 계산된 값이라 비교 대상이 아니다. 하우스 공식의 밸류 신호를 중립 처리한 이유다(섹션 02).</p>
+  <p><strong>결론:</strong> 사업은 전작보다 확실히 강하다 — 매출 +161%, AI 부문 흑자 전환, 1Q27 가이던스는 컨센의 1.6배다. 하우스는 매출 추정을 세 배로 올리고 전작의 오류를 인정했다. 그런데도 동종 업체가 실제로 받는 배수로는 현재가의 절반($81)만 설명된다. 나머지 절반은 2027년 증설이 계획대로 매출이 되고, 그 성장이 2028년에도 이어진다는 데 대한 선지급이다. <strong>콜: 비중축소.</strong> 4분기 실적과 2Q27 가이던스가 섹션 11의 전환 조건을 건드리면 콜을 갱신한다.</p>
+
+  <details class="pe-embed" data-peb="SPCX" open>
+    <summary>
+      <span class="peb-t">📊 스페이스X — P/S 밴드 (상장 후 91거래일)</span>
+      <span class="peb-s">현재 15.6배 · 상장 후 평균 45.2배 · 백분위 1% — <strong>분모 재설정으로 판정 제외</strong></span>
+    </summary>
+    <div class="inner">
+      <div class="note"><strong>주의 — 이 차트로 '싸다'고 읽지 마세요:</strong> 가격 이력이 <strong>91거래일</strong>뿐이고, 마지막 날(10/21) NTM 주당매출 추정이 $3.34에서 $10.46으로 바뀌어 배수가 하루 만에 44배대에서 15.6배로 떨어졌습니다. 그 이전 구간의 배수는 사후적으로 과소 추정된 매출 위에서 계산된 값입니다. 순이익이 9개월 누적 적자라 P/E 대신 <strong>P/S(주가 ÷ 주당매출)</strong>를 씁니다. 밴드 8배선은 피어 실측 합산 배수(Base 7.76배)와 가까운 참고선입니다.</div>
+      <p class="desc peb-desc-a">밴드 = 각 시점의 추정 NTM 주당매출 × 배수. 차트 위에 마우스를 올리면 일자별 수치가 표시됩니다.</p>
+      <div class="chart-box peb-a">
+        <svg viewBox="0 0 980 400" role="img" aria-label="주가와 P/S 밴드 차트"></svg>
+        <div class="tooltip"></div>
+      </div>
+      <p class="desc" style="margin-top:16px;">P/S 추이 — 주가 ÷ 추정 NTM 주당매출. 실선 가로줄은 기간 평균.</p>
+      <div class="chart-box peb-b">
+        <svg viewBox="0 0 980 260" role="img" aria-label="P/S 추이 차트"></svg>
+        <div class="tooltip"></div>
+      </div>
+      <div class="tbl-scroll" style="margin-top:16px;">
+      <table>
+        <thead><tr><th>앵커 시점</th><th class="num peb-anchor-head">NTM 주당매출 추정</th><th>근거</th></tr></thead>
+        <tbody class="peb-anchor-rows">
+          <tr><td>'26.6.12</td><td class="num">$2.73</td><td>상장일 — 전작(2026-08-13) 앵커 승계. 당시 알려진 실적과 성장 경로로 본 NTM 주당매출 사후 근사(상장 전 컨센 시계열 미확보)</td></tr>
+          <tr><td>'26.8.4</td><td class="num">$3.34</td><td>2Q26 실적(8-K) 후 전작 하우스 추정 — NTM 매출 $44B ÷ 13,181.8M주. Q2 콜의 &#x27;연말 연환산 매출 $100B&#x27; 목표를 채택하지 않아 사후 과소로 판명(3Q 실매출 $14.6B vs 전작 추정 $9.0B)</td></tr>
+          <tr><td>'26.10.20</td><td class="num">$3.34</td><td>3Q26 실적 발표일(미 장 마감 후 공개) — 종가 시점까지 하우스 추정 불변으로 둠(계단식 반영)</td></tr>
+          <tr><td>'26.10.21</td><td class="num">$10.46</td><td>3Q26 실적·1Q27 매출 가이던스($33~37B) 반영 하우스 Base — NTM(4Q26~3Q27) 매출 $142B ÷ 13,572.8M주</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="fine peb-foot" style="margin-top:12px;">환산 가정: 밴드는 NTM 주당매출 × P/S 배수로 직접 계산했다(이익 환산 단계 없음). 발행주식수 13,572,821,625주(토스, 10/21 기준 — 전작은 13,181,779,945주, Cursor 인수 등으로 증가). 앵커 사이는 선형 보간이며 10/20→10/21은 실적 공개 시점을 반영해 계단식으로 넣었다. 앵커 4개·91거래일이라 추세 판단에 쓸 수 없다.</p>
+    </div>
+  </details>
+</div>
+
+<footer>
+  <p><strong>데이터 소스·근거 목록</strong> (본문 근거N 번호와 일치)</p>
+  <ol>
+    <li>SEC · 스페이스X 8-K 부속 보도자료(EX-99.1) 3Q26 실적 (2026.10.20) — 부문별 매출·영업손익·조정 EBITDA·설비투자·가입자·ARPU·컴퓨트 GW·재무상태표·현금흐름 <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026066482/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC · 424B4 투자설명서 (2026.06.12) — 락업 해제 일정·Anthropic 클라우드 계약 조건·공모가 $135·의결권·FY25 재무 <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026042639/spaceexplorationtechnologi.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC · 10-Q 2Q26 (2026.08.04) — 수주잔고 $47.5B·고객 집중(A 18.3%·B 19.5%)·90일 해지 조항·Valor 관계자 리스 <a href="https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm" target="_blank" rel="noopener">↗</a></li>
+    <li>TechCrunch · 3Q26 실적 보도 (2026.10.20) — 1Q27 매출 가이던스 $33~37B·4분기 설비투자 $35~40B <a href="https://techcrunch.com/2026/10/20/spacexs-ai-business-is-beating-expectations/" target="_blank" rel="noopener">↗</a></li>
+    <li>TIKR · 3Q26 실적 분석 (2026.10.21) — LSEG 컨센 $12.72B·1Q27 컨센 $22.2B·수주잔고 $63B·영업외 이익 분해 <a href="https://www.tikr.com/blog/spacex-q3-earnings-ai-now-brings-in-half-the-revenue-starlink-still-earns-most-of-the-profit" target="_blank" rel="noopener">↗</a></li>
+    <li>TipRanks · 3Q26 실적 vs 추정 (2026.10.20) — 부문별 컨센·EPS 컨센 $0.14·투자의견 분포·평균 목표가 $217.50 <a href="https://www.tipranks.com/news/spacex-stock-rises-after-smashing-q3-earnings-estimates" target="_blank" rel="noopener">↗</a></li>
+    <li>Yahoo Finance · 실적 콜 발언 (2026.10.21) — 머스크 2027년 말 연환산 $500B~1T·항공기 1.2만 대 계약·장후 +9.32% <a href="https://finance.yahoo.com/markets/stocks/articles/elon-musk-says-spcx-could-044936565.html" target="_blank" rel="noopener">↗</a></li>
+    <li>Euronews · 실적·테슬라 합병 발언 (2026.10.21) — 특별위원회·컴퓨트 2.5~3GW·2027년 10GW 추가 <a href="https://www.euronews.com/2026/10/21/elon-musk-backs-spacex-tesla-merger-as-rocket-firm-turns-profit" target="_blank" rel="noopener">↗</a></li>
+    <li>TradingKey · 3Q26 실적 분석 (2026.10.21) — 연말 연환산 매출 $100B 목표 재확인·장후 $161.56 <a href="https://www.tradingkey.com/analysis/stocks/us-stocks/262228301-spacex-stock-forecast-q3-revenue-161-percent-200-target-tradingkey" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC · Schedule 13G 4건 (2026.08.11~08.14) — 머스크·Google LLC·그라시아스·Founders Fund 지분율 <a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926095936/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">↗</a> <a href="https://www.sec.gov/Archives/edgar/data/1181412/000119312526352289/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">↗</a> <a href="https://www.sec.gov/Archives/edgar/data/1181412/000121390026087780/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">↗</a> <a href="https://www.sec.gov/Archives/edgar/data/1181412/000142601226000004/xslSCHEDULE_13G_X02/primary_doc.xml" target="_blank" rel="noopener">↗</a></li>
+    <li>SEC · Form 4 (2026.09.15, 9.30 정정) · Form 144 (2026.09.22) — Valor 현물 분배·쇼트웰 매도 예정 <a href="https://www.sec.gov/Archives/edgar/data/1181412/000121390026100186/xslF345X06/ownership.xml" target="_blank" rel="noopener">↗</a> <a href="https://www.sec.gov/Archives/edgar/data/1181412/000195004726009740/xsl144X01/primary_doc.xml" target="_blank" rel="noopener">↗</a></li>
+    <li>Finnhub · recommendation trends (2026.10.21 조회) — 투자의견 분포·방향 판정 (원문 링크 없음)</li>
+    <li>토스 Open API · fetch_prices.py·screen.py (2026.10.21 17:26 KST) — 91거래일 가격·발행주식수·기술 지표 (원문 링크 없음)</li>
+    <li>하우스 계산 · 피어 EV/매출 — 토스 시세, SEC XBRL 재무상태표, FMP 컨센서스(엔비디아·팔란티어·테슬라), 보도 컨센(코어위브 <a href="https://247wallst.com/investing/2026/10/13/coreweave-imploded-20-over-6-months-this-analyst-predicts-it-will-triple-in-price-over-the-coming-year/" target="_blank" rel="noopener">↗</a>·오라클 <a href="https://parameter.io/oracle-orcl-stock-tumbles-in-2026-despite-wall-street-predicting-79-rally/" target="_blank" rel="noopener">↗</a>)</li>
+    <li>Parameter · 2027년 매출 추정 상향 보도 (2026.09.14) — 컨센 ≈$100B <a href="https://parameter.io/spacex-spcx-stock-analysts-boost-2027-revenue-projection-to-100b-amid-ai-boom/" target="_blank" rel="noopener">↗</a></li>
+    <li>FRED DGS10 · 하우스 경제지표 아카이브 (2026.10.19 관측) — 미 10년물 5.15% (원문 링크 없음)</li>
+    <li>Motley Fool · 3Q26 실적 콜 요점 (2026.10.21) — CFO 자금 조달 발언 <a href="https://www.fool.com/earnings/takeaways/2026/10/21/space-exploration-technologies-3-key-takeaways-for-long-term-investors/" target="_blank" rel="noopener">↗</a></li>
+    <li>하우스 모델 · SOTP·시나리오·역산·P/S 밴드 (2026.10.21 계산, 원문 링크 없음)</li>
+    <li>BigGo Finance · 3Q26 실적 콜 요약 (2026.10.20) — 계약 갱신 단가·내외부 배분·회수기간 주장 <a href="https://finance.biggo.com/news/US_SPCX_2026-10-20" target="_blank" rel="noopener">↗</a></li>
+  </ol>
+  <p style="margin-top:12px;">방법론 및 한계: 이 종목은 <strong>2026-06-12 상장</strong>으로 가격 이력이 91거래일이고, 10/20 가이던스로 매출 추정이 세 배가 돼 밸류에이션 밴드가 성립하지 않는다. 공식의 <strong>밸류 신호를 중립 처리하고 시나리오만으로 판정</strong>했다. 시나리오 배수는 피어 실측 EV/매출을 사업부별로 적용한 합산이며, 스타링크·Space는 비교 가능한 상장 피어가 각각 하나뿐이라 세 시나리오에 같은 배수를 썼다(스타링크에는 보수적, Space에는 관대한 방향). 3Q26 10-Q는 발간 시점에 미제출이라 9월 말 수주잔고·고객 집중도는 콜 발언과 2분기 수치에 의존했다. 지역별 매출은 공시가 없어 확인하지 못했다. 컨센서스 수치는 보도 집계라 집계처마다 다르다. 선호도는 정해진 공식의 산출이며 목표주가가 아니다. 가격 기준은 2026-10-21 17:26(KST) 미국 프리마켓 체결가 $163.08이다.</p>
+  <p>생성: 2026-10-21 · AI AGENT RESEARCH · 이 리포트는 정보 제공 목적이며 <strong>매매 권유가 아닙니다</strong>. 모든 추정치(≈, E 표기)는 추정입니다. 투자 판단과 책임은 투자자 본인에게 있습니다.</p>
+<p style="margin-top:8px;">이해상충 공시: 작성자는 발간 시점에 이 리포트의 분석 대상 종목을 보유하고 있지 않습니다.</p><div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-10-21 17:58 KST</div></footer>
+
+</div>
+
+<script>
+/* ---- 근거 팝업: 클릭 토글, 화면 밖 클램프, 바깥 클릭/Esc/스크롤 시 닫힘 ---- */
+(function () {
+  let open = null;
+  function close() {
+    if (!open) return;
+    open.classList.remove("on");
+    open.querySelector("button").setAttribute("aria-expanded", "false");
+    open = null;
+  }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) {
+      const host = btn.parentElement;
+      if (open === host) { close(); return; }
+      close();
+      open = host;
+      host.classList.add("on");
+      btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect();
+      pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight;
+      const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8);
+      let y = r.bottom + 8;
+      if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px";
+      pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+
+/* ---- PE 밴드 렌더러 ---- */
+function renderPeBand(root, DATA) {
+  const CFG = DATA.cfg, KRW = CFG.currency === "KRW";
+  const fmtP = v => KRW
+    ? (v >= 1e4 ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : v.toLocaleString("ko-KR"))
+    : "$" + v.toLocaleString("en-US", {maximumFractionDigits: 2});
+  const fmtPFull = v => KRW ? fmtP(v) + "원" : fmtP(v);
+  const fmtE = v => KRW
+    ? Math.round(v).toLocaleString("ko-KR") + "원"
+    : "$" + v.toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const fmtTickP = v => v === 0 ? "0" : (KRW ? (v/1e4).toLocaleString("ko-KR", {maximumFractionDigits: 1}) + "만" : "$" + v.toLocaleString("en-US"));
+  const fmtDate = d => { const [y,m,dd] = d.split("-"); return `'${y.slice(2)}.${+m}.${+dd}`; };
+  const shortMD = d => { const [,m,dd] = d.split("-"); return `${+m}/${+dd}`; };
+  const monthTick = d => { const [y,m] = d.split("-"); return `'${y.slice(2)}.${+m}`; };
+
+  const rows = DATA.rows, N = rows.length;
+  const PAD = {l: 56, r: 46, t: 14, b: 30};
+  const xScale = (i, W) => PAD.l + (W - PAD.l - PAD.r) * i / (N - 1);
+  const mIdx = (() => {
+    const idx = []; let prev = "";
+    rows.forEach((r, i) => { const m = r.d.slice(0, 7); if (m !== prev) { idx.push(i); prev = m; } });
+    return idx;
+  })();
+
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    parent.appendChild(e); return e;
+  }
+  function linePath(vals, W, y) {
+    return vals.map((v, i) => (i ? "L" : "M") + xScale(i, W).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  }
+  function xTicks(svg, W, plotB) {
+    mIdx.filter((_, k) => k % 2 === 0).forEach(i =>
+      el("text", {x: xScale(i, W), y: plotB + 18, "text-anchor": "middle", class: "ticktext"}, svg, monthTick(rows[i].d)));
+  }
+  function yGrid(svg, W, y, yMax, tick, fmt) {
+    for (let v = 0; v <= yMax * 1.0001; v += tick) {
+      el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(v), y2: y(v), class: v === 0 ? "axisline" : "gridline"}, svg);
+      el("text", {x: PAD.l - 8, y: y(v) + 3.5, "text-anchor": "end", class: "ticktext"}, svg, fmt(v));
+    }
+  }
+  function hover(box, W, plotB, rowsFn, yFn) {
+    const svg = box.querySelector("svg"), tip = box.querySelector(".tooltip");
+    const cross = el("line", {y1: PAD.t, y2: plotB, class: "crosshair"}, svg);
+    const dot = el("circle", {r: 5, class: "hoverdot"}, svg);
+    const hit = el("rect", {x: PAD.l, y: 0, width: W - PAD.l - PAD.r, height: plotB + PAD.b, fill: "transparent"}, svg);
+    function show(evt) {
+      const rect = svg.getBoundingClientRect();
+      const px = (evt.clientX - rect.left) * W / rect.width;
+      let i = Math.round((px - PAD.l) / (W - PAD.l - PAD.r) * (N - 1));
+      i = Math.max(0, Math.min(N - 1, i));
+      const cx = xScale(i, W);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx);
+      cross.style.visibility = "visible";
+      dot.setAttribute("cx", cx); dot.setAttribute("cy", yFn(i));
+      dot.style.visibility = "visible";
+      tip.replaceChildren();
+      const td = document.createElement("div"); td.className = "tdate";
+      td.textContent = fmtDate(rows[i].d); tip.appendChild(td);
+      rowsFn(i).forEach(([lbl, val, keyed]) => {
+        const tr = document.createElement("div"); tr.className = "trow";
+        const k = document.createElement("span"); k.className = "tkey" + (keyed ? "" : " none"); tr.appendChild(k);
+        const v = document.createElement("span"); v.className = "tval"; v.textContent = val; tr.appendChild(v);
+        const l = document.createElement("span"); l.className = "tlbl"; l.textContent = lbl; tr.appendChild(l);
+        tip.appendChild(tr);
+      });
+      tip.style.visibility = "visible";
+      const bw = box.clientWidth, tw = tip.offsetWidth;
+      let left = cx / W * bw + 14;
+      if (left + tw > bw - 4) left = cx / W * bw - tw - 14;
+      tip.style.left = left + "px";
+      tip.style.top = Math.max(4, yFn(i) / (plotB + PAD.b) * box.clientHeight - tip.offsetHeight - 12) + "px";
+    }
+    function hide() { cross.style.visibility = "hidden"; dot.style.visibility = "hidden"; tip.style.visibility = "hidden"; }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function nearestIdx(d) {
+    const i = rows.findIndex(r => r.d >= d);
+    return i < 0 ? N - 1 : i;
+  }
+  function drawRegimes(svg, W, plotB) {
+    (DATA.regimes || []).forEach(rg => {
+      const x0 = xScale(nearestIdx(rg.from), W), x1 = xScale(nearestIdx(rg.to), W);
+      el("rect", {x: x0, y: PAD.t, width: Math.max(2, x1 - x0), height: plotB - PAD.t, class: "regime"}, svg);
+      el("text", {x: x0 + 6, y: plotB - 8, class: "regimelbl"}, svg, rg.label);
+    });
+  }
+  function drawEvents(svg, W, plotB) {
+    (DATA.events || []).forEach((ev, k) => {
+      const x = xScale(nearestIdx(ev.d), W);
+      const ly = PAD.t + 11 + (k % 2) * 14;
+      el("line", {x1: x, x2: x, y1: ly + 4, y2: plotB, class: "evtline"}, svg);
+      el("circle", {cx: x, cy: plotB, r: 3, class: "evtdot " + (ev.kind || "")}, svg);
+      const flip = x > W - PAD.r - 110;
+      el("text", {x: flip ? x - 6 : x + 6, y: ly, "text-anchor": flip ? "end" : "start",
+        class: "evtlbl " + (ev.kind || "")}, svg, ev.label);
+    });
+  }
+
+  /* 차트 A: 주가 + P/E 밴드 */
+  (function () {
+    const box = root.querySelector(".peb-a"), svg = box.querySelector("svg");
+    const W = 980, H = 400, plotB = H - PAD.b, yMax = CFG.priceMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    const mults = CFG.multiples;
+    drawRegimes(svg, W, plotB);
+    for (let b = 0; b < mults.length - 1; b++) {
+      const top = rows.map(r => r.eps * mults[b + 1]), bot = rows.map(r => r.eps * mults[b]);
+      let dpath = linePath(top, W, y);
+      for (let i = N - 1; i >= 0; i--) dpath += "L" + xScale(i, W).toFixed(1) + " " + y(bot[i]).toFixed(1);
+      el("path", {d: dpath + "Z", class: "bandfill", opacity: 0.035 + b * 0.03}, svg);
+    }
+    yGrid(svg, W, y, yMax, CFG.priceTick, fmtTickP);
+    xTicks(svg, W, plotB);
+    mults.forEach(m => {
+      el("path", {d: linePath(rows.map(r => r.eps * m), W, y), class: "bandline"}, svg);
+      el("text", {x: W - PAD.r + 6, y: y(rows[N-1].eps * m) + 3.5, class: "bandlbl"}, svg, m + "×");
+    });
+    el("path", {d: linePath(rows.map(r => r.c), W, y), class: "price-line"}, svg);
+    let peakI = 0; rows.forEach((r, i) => { if (r.c > rows[peakI].c) peakI = i; });
+    if (peakI !== N - 1) {
+      el("circle", {cx: xScale(peakI, W), cy: y(rows[peakI].c), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(peakI, W), y: y(rows[peakI].c) - 10, "text-anchor": "middle", class: "anno hot"}, svg,
+        "고점 " + fmtPFull(rows[peakI].c) + " (" + shortMD(rows[peakI].d) + ")");
+    }
+    drawEvents(svg, W, plotB);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 10, class: "end-halo"}, svg);
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].c), r: 5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 12, y: y(rows[N-1].c) - 13, "text-anchor": "end", class: "anno"}, svg,
+      "현재 " + fmtPFull(rows[N-1].c));
+    hover(box, W, plotB, i => [
+      ["종가", fmtPFull(rows[i].c), true],
+      ["NTM 주당매출(추정)", fmtE(rows[i].eps), false],
+      ["P/S", rows[i].pe.toFixed(1) + "배", false],
+    ], i => y(rows[i].c));
+  })();
+
+  /* 차트 B: forward P/E 추이 */
+  (function () {
+    const box = root.querySelector(".peb-b"), svg = box.querySelector("svg");
+    const W = 980, H = 260, plotB = H - PAD.b, yMax = CFG.peMax;
+    const y = v => plotB - (plotB - PAD.t) * v / yMax;
+    yGrid(svg, W, y, yMax, CFG.peTick, v => v === 0 ? "0배" : v + "배");
+    xTicks(svg, W, plotB);
+    const area = linePath(rows.map(r => r.pe), W, y) + "L" + xScale(N-1, W) + " " + y(0) + "L" + xScale(0, W) + " " + y(0) + "Z";
+    el("path", {d: area, class: "area-wash"}, svg);
+    el("line", {x1: PAD.l, x2: W - PAD.r, y1: y(DATA.stats.avg), y2: y(DATA.stats.avg), class: "avgline"}, svg);
+    el("text", {x: PAD.l + 6, y: y(DATA.stats.avg) - 5, class: "anno"}, svg, "기간 평균 " + DATA.stats.avg + "배");
+    el("path", {d: linePath(rows.map(r => r.pe), W, y), class: "price-line"}, svg);
+    let maxI = 0; rows.forEach((r, i) => { if (r.pe > rows[maxI].pe) maxI = i; });
+    if (maxI !== N - 1) {
+      el("circle", {cx: xScale(maxI, W), cy: y(rows[maxI].pe), r: 4.5, class: "peak-dot"}, svg);
+      el("text", {x: xScale(maxI, W), y: y(rows[maxI].pe) - 9, "text-anchor": "middle", class: "anno hot"}, svg,
+        rows[maxI].pe.toFixed(1) + "배 (" + shortMD(rows[maxI].d) + ")");
+    }
+    el("circle", {cx: xScale(N-1, W), cy: y(rows[N-1].pe), r: 4.5, class: "end-dot"}, svg);
+    el("text", {x: xScale(N-1, W) - 8, y: y(rows[N-1].pe) - 10, "text-anchor": "end", class: "anno"}, svg, rows[N-1].pe.toFixed(1) + "배");
+    hover(box, W, plotB, i => [
+      ["P/S", rows[i].pe.toFixed(1) + "배", true],
+      ["종가", fmtPFull(rows[i].c), false],
+    ], i => y(rows[i].pe));
+  })();
+
+  /* 앵커 테이블 — 정적 행이 이미 있으면 건드리지 않고, 비어 있을 때만 폴백 렌더 */
+  (function () {
+    root.querySelector(".peb-anchor-head").textContent =
+      DATA.meta.mode === "op_krw" ? "NTM 영업이익 추정" : "NTM 주당매출 추정";
+    const tb = root.querySelector(".peb-anchor-rows");
+    if (tb.querySelector("tr")) return;
+    (DATA.anchors || []).forEach(a => {
+      const tr = document.createElement("tr");
+      [[fmtDate(a.d), false], [a.val, true], [fmtE(a.eps), true], [a.why, false]].forEach(([txt, num]) => {
+        const td = document.createElement("td"); if (num) td.className = "num";
+        td.textContent = txt; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  })();
+}
+
+const PE_DATA = {"SPCX": {"rows": [{"d": "2026-06-12", "c": 160.95, "eps": 2.73, "pe": 59.0}, {"d": "2026-06-15", "c": 192.5, "eps": 2.76, "pe": 69.6}, {"d": "2026-06-16", "c": 201.8, "eps": 2.78, "pe": 72.7}, {"d": "2026-06-17", "c": 191.82, "eps": 2.79, "pe": 68.8}, {"d": "2026-06-18", "c": 185.0, "eps": 2.8, "pe": 66.1}, {"d": "2026-06-22", "c": 154.6, "eps": 2.85, "pe": 54.3}, {"d": "2026-06-23", "c": 156.11, "eps": 2.86, "pe": 54.6}, {"d": "2026-06-24", "c": 154.54, "eps": 2.87, "pe": 53.9}, {"d": "2026-06-25", "c": 153.0, "eps": 2.88, "pe": 53.1}, {"d": "2026-06-26", "c": 153.23, "eps": 2.89, "pe": 53.0}, {"d": "2026-06-29", "c": 164.19, "eps": 2.93, "pe": 56.1}, {"d": "2026-06-30", "c": 170.86, "eps": 2.94, "pe": 58.2}, {"d": "2026-07-01", "c": 157.54, "eps": 2.95, "pe": 53.4}, {"d": "2026-07-02", "c": 162.0, "eps": 2.96, "pe": 54.7}, {"d": "2026-07-06", "c": 160.42, "eps": 3.01, "pe": 53.4}, {"d": "2026-07-07", "c": 149.47, "eps": 3.02, "pe": 49.5}, {"d": "2026-07-08", "c": 148.3, "eps": 3.03, "pe": 49.0}, {"d": "2026-07-09", "c": 152.16, "eps": 3.04, "pe": 50.0}, {"d": "2026-07-10", "c": 145.3, "eps": 3.05, "pe": 47.6}, {"d": "2026-07-13", "c": 139.14, "eps": 3.09, "pe": 45.1}, {"d": "2026-07-14", "c": 136.08, "eps": 3.1, "pe": 43.9}, {"d": "2026-07-15", "c": 135.27, "eps": 3.11, "pe": 43.5}, {"d": "2026-07-16", "c": 131.11, "eps": 3.12, "pe": 42.0}, {"d": "2026-07-17", "c": 123.99, "eps": 3.13, "pe": 39.6}, {"d": "2026-07-20", "c": 119.85, "eps": 3.17, "pe": 37.8}, {"d": "2026-07-21", "c": 123.54, "eps": 3.18, "pe": 38.9}, {"d": "2026-07-22", "c": 115.26, "eps": 3.19, "pe": 36.1}, {"d": "2026-07-23", "c": 118.24, "eps": 3.2, "pe": 36.9}, {"d": "2026-07-24", "c": 115.07, "eps": 3.21, "pe": 35.8}, {"d": "2026-07-27", "c": 113.5, "eps": 3.25, "pe": 34.9}, {"d": "2026-07-28", "c": 116.41, "eps": 3.26, "pe": 35.7}, {"d": "2026-07-29", "c": 112.55, "eps": 3.27, "pe": 34.4}, {"d": "2026-07-30", "c": 112.2, "eps": 3.28, "pe": 34.2}, {"d": "2026-07-31", "c": 108.37, "eps": 3.29, "pe": 32.9}, {"d": "2026-08-03", "c": 114.53, "eps": 3.33, "pe": 34.4}, {"d": "2026-08-04", "c": 125.33, "eps": 3.34, "pe": 37.5}, {"d": "2026-08-05", "c": 108.27, "eps": 3.34, "pe": 32.4}, {"d": "2026-08-06", "c": 114.92, "eps": 3.34, "pe": 34.4}, {"d": "2026-08-07", "c": 133.11, "eps": 3.34, "pe": 39.9}, {"d": "2026-08-10", "c": 138.74, "eps": 3.34, "pe": 41.5}, {"d": "2026-08-11", "c": 133.29, "eps": 3.34, "pe": 39.9}, {"d": "2026-08-12", "c": 146.15, "eps": 3.34, "pe": 43.8}, {"d": "2026-08-13", "c": 141.29, "eps": 3.34, "pe": 42.3}, {"d": "2026-08-14", "c": 140.0, "eps": 3.34, "pe": 41.9}, {"d": "2026-08-17", "c": 146.23, "eps": 3.34, "pe": 43.8}, {"d": "2026-08-18", "c": 143.34, "eps": 3.34, "pe": 42.9}, {"d": "2026-08-19", "c": 139.65, "eps": 3.34, "pe": 41.8}, {"d": "2026-08-20", "c": 134.0, "eps": 3.34, "pe": 40.1}, {"d": "2026-08-21", "c": 136.97, "eps": 3.34, "pe": 41.0}, {"d": "2026-08-24", "c": 135.0, "eps": 3.34, "pe": 40.4}, {"d": "2026-08-25", "c": 137.95, "eps": 3.34, "pe": 41.3}, {"d": "2026-08-26", "c": 139.63, "eps": 3.34, "pe": 41.8}, {"d": "2026-08-27", "c": 140.87, "eps": 3.34, "pe": 42.2}, {"d": "2026-08-28", "c": 141.5, "eps": 3.34, "pe": 42.4}, {"d": "2026-08-31", "c": 143.69, "eps": 3.34, "pe": 43.0}, {"d": "2026-09-01", "c": 142.23, "eps": 3.34, "pe": 42.6}, {"d": "2026-09-02", "c": 140.71, "eps": 3.34, "pe": 42.1}, {"d": "2026-09-03", "c": 149.74, "eps": 3.34, "pe": 44.8}, {"d": "2026-09-04", "c": 147.95, "eps": 3.34, "pe": 44.3}, {"d": "2026-09-08", "c": 153.47, "eps": 3.34, "pe": 45.9}, {"d": "2026-09-09", "c": 147.55, "eps": 3.34, "pe": 44.2}, {"d": "2026-09-10", "c": 148.18, "eps": 3.34, "pe": 44.4}, {"d": "2026-09-11", "c": 151.21, "eps": 3.34, "pe": 45.3}, {"d": "2026-09-14", "c": 148.15, "eps": 3.34, "pe": 44.4}, {"d": "2026-09-15", "c": 143.49, "eps": 3.34, "pe": 43.0}, {"d": "2026-09-16", "c": 150.88, "eps": 3.34, "pe": 45.2}, {"d": "2026-09-17", "c": 154.81, "eps": 3.34, "pe": 46.4}, {"d": "2026-09-18", "c": 152.71, "eps": 3.34, "pe": 45.7}, {"d": "2026-09-21", "c": 151.85, "eps": 3.34, "pe": 45.5}, {"d": "2026-09-22", "c": 154.72, "eps": 3.34, "pe": 46.3}, {"d": "2026-09-23", "c": 148.36, "eps": 3.34, "pe": 44.4}, {"d": "2026-09-24", "c": 148.03, "eps": 3.34, "pe": 44.3}, {"d": "2026-09-25", "c": 148.68, "eps": 3.34, "pe": 44.5}, {"d": "2026-09-28", "c": 145.47, "eps": 3.34, "pe": 43.6}, {"d": "2026-09-29", "c": 149.24, "eps": 3.34, "pe": 44.7}, {"d": "2026-09-30", "c": 150.86, "eps": 3.34, "pe": 45.2}, {"d": "2026-10-01", "c": 148.07, "eps": 3.34, "pe": 44.3}, {"d": "2026-10-02", "c": 158.96, "eps": 3.34, "pe": 47.6}, {"d": "2026-10-05", "c": 171.09, "eps": 3.34, "pe": 51.2}, {"d": "2026-10-06", "c": 171.92, "eps": 3.34, "pe": 51.5}, {"d": "2026-10-07", "c": 167.6, "eps": 3.34, "pe": 50.2}, {"d": "2026-10-08", "c": 160.57, "eps": 3.34, "pe": 48.1}, {"d": "2026-10-09", "c": 162.57, "eps": 3.34, "pe": 48.7}, {"d": "2026-10-12", "c": 163.42, "eps": 3.34, "pe": 48.9}, {"d": "2026-10-13", "c": 156.54, "eps": 3.34, "pe": 46.9}, {"d": "2026-10-14", "c": 152.16, "eps": 3.34, "pe": 45.6}, {"d": "2026-10-15", "c": 148.62, "eps": 3.34, "pe": 44.5}, {"d": "2026-10-16", "c": 146.03, "eps": 3.34, "pe": 43.7}, {"d": "2026-10-19", "c": 147.96, "eps": 3.34, "pe": 44.3}, {"d": "2026-10-20", "c": 147.79, "eps": 3.34, "pe": 44.2}, {"d": "2026-10-21", "c": 163.08, "eps": 10.46, "pe": 15.6}], "stats": {"avg": 45.2, "min": 15.6, "max": 72.7, "min_day": "2026-10-21", "max_day": "2026-06-16", "cur": 15.6, "cur_eps": 10.46, "cur_price": 163.08, "percentile": 1}, "stats_1y": null, "events": [{"d": "2026-06-12", "label": "상장(공모가 $135)", "kind": "neutral"}, {"d": "2026-08-06", "label": "1차 락업 해제 9.1억 주", "kind": "neutral"}, {"d": "2026-10-20", "label": "3Q 매출 $14.6B·1Q27 가이던스", "kind": "up"}], "regimes": [], "cfg": {"currency": "USD", "multiples": [8, 15, 30, 45], "priceMax": 500, "priceTick": 100, "peMax": 120, "peTick": 30, "epsMax": 12.5, "epsTick": 2.5}, "anchors": [{"d": "2026-06-12", "val": "$2.73", "eps": 2.73, "why": "상장일 — 전작(2026-08-13) 앵커 승계. 당시 알려진 실적과 성장 경로로 본 NTM 주당매출 사후 근사(상장 전 컨센 시계열 미확보)"}, {"d": "2026-08-04", "val": "$3.34", "eps": 3.34, "why": "2Q26 실적(8-K) 후 전작 하우스 추정 — NTM 매출 $44B ÷ 13,181.8M주. Q2 콜의 '연말 연환산 매출 $100B' 목표를 채택하지 않아 사후 과소로 판명(3Q 실매출 $14.6B vs 전작 추정 $9.0B)"}, {"d": "2026-10-20", "val": "$3.34", "eps": 3.34, "why": "3Q26 실적 발표일(미 장 마감 후 공개) — 종가 시점까지 하우스 추정 불변으로 둠(계단식 반영)"}, {"d": "2026-10-21", "val": "$10.46", "eps": 10.46, "why": "3Q26 실적·1Q27 매출 가이던스($33~37B) 반영 하우스 Base — NTM(4Q26~3Q27) 매출 $142B ÷ 13,572.8M주"}], "meta": {"symbol": "SPCX", "name": "스페이스X", "shares": 13572821625, "mode": "eps", "conv": null, "conv_basis": null, "conv_role": null, "range": ["2026-06-12", "2026-10-21"]}}};
+document.querySelectorAll("details.pe-embed").forEach(d => {
+  const data = PE_DATA[d.dataset.peb];
+  try {
+    if (data && data.rows && data.rows.length) {
+      renderPeBand(d, data);
+    } else {
+      const inner = d.querySelector(".inner");
+      if (inner) inner.innerHTML =
+        '<div class="note"><strong>데이터 미수록:</strong> 이 종목의 PE 밴드 데이터가 리포트에 포함되지 않았습니다. 본문 서술을 참고하세요.</div>';
+    }
+  } catch (err) {
+    console.error("pe-embed 렌더 실패:", d.dataset.peb, err);
+  }
+});
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
