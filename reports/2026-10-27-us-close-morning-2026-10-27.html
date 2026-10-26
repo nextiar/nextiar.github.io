@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 앤트로픽 IPO가 되살린 AI 트레이드, 반도체 급반등 속 커뮤니케이션만 하락</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 14px; }
+.en-abstract summary { cursor: pointer; font-size: 12.5px; font-weight: 650; color: var(--accent); padding: 11px 0; list-style: none; }
+.en-abstract summary::-webkit-details-marker { display: none; }
+.en-abstract summary::before { content: "▸ "; }
+.en-abstract[open] summary::before { content: "▾ "; }
+.en-abstract .en-body { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; padding: 0 0 13px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-27-us-close-morning-2026-10-27.html">
+<meta property="og:title" content="US 마감 시황 — 앤트로픽 IPO가 되살린 AI 트레이드, 반도체 급반등 속 커뮤니케이션만 하락">
+<meta property="og:description" content="간밤 뉴욕은 앤트로픽 IPO·유가 하락에 3대 지수 동반 상승, 마이크론·SOXX +3% 반도체가 주도했고 커뮤니케이션만 하락 — 어제 7개월 최저로 밀린 국내 증시엔 &#x27;삼전닉스 슈퍼위크&#x27; 앞 메모리 반등 read-through가 관전.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-27-us-close-morning-2026-10-27.html">
+<meta name="description" content="간밤 뉴욕은 앤트로픽 IPO·유가 하락에 3대 지수 동반 상승, 마이크론·SOXX +3% 반도체가 주도했고 커뮤니케이션만 하락 — 어제 7개월 최저로 밀린 국내 증시엔 &#x27;삼전닉스 슈퍼위크&#x27; 앞 메모리 반등 read-through가 관전.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-27-us-close-morning-2026-10-27.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 앤트로픽 IPO가 되살린 AI 트레이드, <span class="up">반도체 급반등</span> 속 <span class="down">커뮤니케이션만 하락</span></h1>
+  <p class="sub">2026년 10월 27일(화) 국내 장 시작 전 기준 · 전일 미 증시(10/26 월 마감) 반영. 간밤 뉴욕 3대 지수는 <strong>동반 상승</strong>했다 — <strong>앤트로픽의 IPO(S-1) 제출</strong>이 AI 인프라 수요 기대를 재점화했고, <strong>유가 하락</strong>(이란·사우디 외교)이 심리를 보탰다. 반도체가 반등을 주도해 <strong>SOXX <span class="up">+3%</span>·마이크론 <span class="up">+3%</span>·엔비디아 <span class="up">+2.4%</span></strong>가 올랐지만, 지수 이면에선 <strong>커뮤니케이션서비스만 <span class="down">−1.42%</span></strong>로 홀로 내렸다. 오늘 국내 장은 <strong>'삼전닉스 슈퍼위크'(삼성전자·SK하이닉스 실적) 직전</strong>인데다, 어제(10/26) 코스피가 7개월 만의 최저로 밀린 터라 <strong>간밤 미 메모리 강세가 반등 read-through가 되느냐</strong>가 핵심이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-10-27 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-10-27 오전).</strong> 원/달러 <strong>1,324.30원</strong>(전일 1,324.60 → 소폭 원화 강세) · 미 국채 10년물 ≈4.99%(10/26 마감 보도) · 한국 기준금리 3.00% · 달러지수 121.32(10/23 FRED) · WTI $101.76·브렌트 $115.81(유가 하락). <strong>FOMC 금리 결정(10/28 현지)</strong>과 <strong>빅테크 실적(MSFT·GOOGL·AMZN)</strong>을 코앞에 둔 '이벤트 대기' 장세였다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">리스크 온 · AI 재점화</span></h2>
+  <p class="lead">미 지수·섹터는 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (10/26 마감)</div><div class="val up">리스크 온</div><div class="delta">3대 지수 동반 상승 · 앤트로픽 IPO가 방아쇠</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,676.77</div><div class="delta up">▲ +0.70%</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">26,169.38</div><div class="delta up">▲ +0.82% · 반도체 주도</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val up">메모리 read-through</div><div class="delta">마이크론 +3%·BofA 낙관 → 삼성·하이닉스</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 동반 상승</strong>(S&amp;P <span class="up">+0.70%</span>·나스닥 <span class="up">+0.82%</span>·다우 <span class="up">+0.28%</span>) — <strong>앤트로픽의 IPO 신청</strong>이 AI 인프라 수요 기대를 되살렸고, <strong>유가 하락</strong>(이란·사우디 외교)이 가세했다.</div>
+    <div class="tldr-item">② 반도체가 주도했다 — <strong>SOXX <span class="up">+3%</span>·마이크론 <span class="up">+3%</span>·엔비디아 <span class="up">+2.4%</span>·브로드컴 <span class="up">+2.3%</span>·AMD <span class="up">+2.8%</span></strong>. 다만 칩은 <strong>여전히 베어마켓</strong>(SOXX 고점 대비 ≈−25%·월간 −13%)이고, <strong>커뮤니케이션서비스만 <span class="down">−1.42%</span></strong>(버라이즌 실적·메타 증자)로 홀로 내렸다.</div>
+    <div class="tldr-item">③ 오늘 국내 장은 <strong>'삼전닉스 슈퍼위크' 직전</strong> — 어제(10/26) 코스피가 <strong>7개월 최저(5,469.47)</strong>·코스닥 <span class="down">−3.26%</span>로 급락한 뒤라, 간밤 미 <strong>메모리 강세·BofA 낙관 노트</strong>가 반등 read-through가 될지가 방향을 가른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <div class="en-body">
+      Wall Street closed higher Monday (Oct 26), with the S&amp;P 500 +0.70% to 7,676.77, the Nasdaq +0.82% to 26,169.38 and the Dow +0.28% to 52,361.58, as Anthropic's IPO (S-1) filing reignited the AI-infrastructure trade and easing oil prices (Iran–Saudi diplomacy) added support. Semiconductors led the advance — SOXX +~3%, Micron +3%, Nvidia +2.4%, Broadcom +2.3%, AMD +2.8% — helped by a bullish BofA memory note flagging tighter supply in 2027–2028, though the chip group remains in a bear market (SOXX ~25% off its high, −13% this month). Beneath the index, Information Technology led (+1.50%) while Communication Services was the sole decliner (−1.42%) on Verizon's results and Meta's ~$95bn equity raise. Treasury yields were little changed (10y ≈4.99%, 2y ≈4.71%) ahead of Wednesday's FOMC decision, where a hold at 4% is heavily priced. For Korea, this follows a 7-month-low KOSPI close (5,469.47) and a −3.26% KOSDAQ drop on Oct 26, so the overnight memory strength is the key read-through into the Samsung/SK hynix earnings "super week." Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 앤트로픽 IPO가 되살린 AI 트레이드</h2>
+  <p class="lead">지난주 하락을 딛고 <strong>AI 수요 기대가 재점화</strong>된 하루였다. 섹터는 <strong>정보기술이 +1.50%</strong>로 앞장섰고(반도체·광통신 주도), <strong>커뮤니케이션서비스만 −1.42%</strong>로 유일하게 내렸다. FOMC·빅테크 실적을 앞둔 '대기' 심리 속의 선별적 상승.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">10/26 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,676.77</td><td class="num"><span class="up">+0.70%</span></td><td>정보기술 주도, 광범위 상승</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">26,169.38</td><td class="num"><span class="up">+0.82%</span></td><td>반도체·AI주 반등</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,361.58</td><td class="num"><span class="up">+0.28%</span></td><td>+146.42p</td></tr>
+      <tr><td>정보기술 (XLK)</td><td class="num"><span class="up">+1.50%</span></td><td class="num">1위 섹터</td><td>반도체·광통신(루멘텀·코히런트) 견인<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">S&amp;P500 섹터 등락 · chartrow (2026-10-26)</span><span class="evd-sum">당일 <strong>정보기술 +1.50%로 최고</strong>, <strong>커뮤니케이션서비스 −1.42%로 최저</strong>. IT는 앤트로픽 S-1 이후 AI 인프라 수요 기대로 반도체·광통신(루멘텀 LITE·코히런트 COHR)이 주도. 연초 이후로는 에너지 +54.6%·IT +29.6%·커뮤니케이션 −5.6%.</span><a href="https://chartrow.com/sp500/sector-performance" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>커뮤니케이션서비스</td><td class="num"><span class="down">−1.42%</span></td><td class="num">유일 하락</td><td>버라이즌 실적·메타 ≈$95B 증자</td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈4.99%</td><td class="num">보합</td><td>FOMC 대기 · 2년물 ≈4.71%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 상승의 방아쇠는 <strong>앤트로픽의 IPO 신청(S-1 공개)</strong>이었다. 'Claude' 개발사가 공개 상장을 공식화하며, 투자자들은 침체됐던 테크·AI 트레이드에 새 동력이 붙을 것으로 베팅했다 — S-1에 담긴 <strong>6개월(6월 말 기준) 매출 162.9억 달러(전년 동기 대비 +1,304%)</strong>가 AI 인프라 수요의 가속을 뒷받침했다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">앤트로픽 IPO·AI 랠리 · TheStreet / Yahoo Finance (2026-10-26)</span><span class="evd-sum">앤트로픽이 <strong>IPO(S-1)를 공식 제출</strong>, AI 인프라 수요 기대를 재점화. 보도된 S-1 상 <strong>6개월 매출 162.9억 달러(+1,304% YoY)</strong>. 지난주 하락을 딛고 지수가 반등했고, 이번 주 MSFT·GOOGL·AMZN 등 빅테크 실적과 FOMC를 앞둔 대기 심리가 공존.</span><a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>유가·지정학.</strong> 유가는 6개월 고점에서 물러섰다 — <strong>WTI <span class="down">−$1.51</span>→$101.76·브렌트 <span class="down">−91센트</span>→$115.81</strong>. 사우디 국방장관의 이란 방문 등 <strong>이란·사우디 외교</strong>와 "즉각적 군사행동은 없다"는 신호가 공급 차질 우려를 덜었다(다만 월간으로는 여전히 +12%).<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">유가 하락 · Business Recorder (2026-10-26)</span><span class="evd-sum">이란 전쟁 긴장 완화 기대에 유가가 6개월 고점에서 하락. <strong>브렌트 −91c→$115.81·WTI −$1.51→$101.76</strong>. 사우디-이란 외교 접촉과 즉각적 군사행동 배제 신호가 공급 우려를 완화(월간으로는 +12%).</span><a href="https://www.brecorder.com/news/40445943/oil-drops-from-near-six-month-highs-on-hopes-iran-war-hostilities-to-ease" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 유가 진정은 물가·심리 양쪽에 우호적이다.</p>
+      <p><strong>금리·FOMC.</strong> 국채금리는 <strong>거의 변동 없이</strong>(10년물 ≈4.99%·2년물 ≈4.71%) FOMC를 대기했다. <strong>이틀 회의는 현지 10/28(수) 결정</strong>이며, 시장은 <strong>90% 이상 동결(4.00%)</strong>을 반영한다(한계적으로 25bp 인상 가능성을 보는 소수 의견 존재).<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">국채금리·FOMC 프리뷰 · CNBC / Admiral Markets (2026-10-26)</span><span class="evd-sum">국채금리는 FOMC·주간 지표 대기 속 보합(10년물 ≈4.99%·2년물 ≈4.709%). <strong>FOMC는 현지 10/28(수) 14:00 ET 결정</strong>. 시장 가격은 <strong>동결(4.00%) 90%+</strong>를 반영, 소수는 25bp 인상 전망.</span><a href="https://www.cnbc.com/2026/10/26/us-treasury-yields-investors-feds-interest-rate-decision-.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>국내 직결 섹터 — 반도체(메모리·로직·장비) 다이버전스 <span class="chip cool h2-chip">메모리 반등</span></h2>
+  <p class="lead">이날의 핵심은 <strong>반도체 반등</strong>이고, 그 안에서도 하위 섹터를 갈라 봐야 한다. 지수 레벨에선 <strong>SOXX <span class="up">+3%</span></strong>로 일괄 강세였지만, 메모리·로직·장비의 성격과 '우리 커버 연결'은 각각 다르다. 간밤 미 메모리 강세는 <strong>어제(10/26) 급락한 삼성전자·SK하이닉스</strong>에 직접 read-through가 된다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>구분 (간밤 미국)</th><th class="num">방향</th><th>성격</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="up">+3%</span></td><td>메모리(DRAM·HBM·NAND)</td><td>SK하이닉스(10/20 심층)·삼성전자 센티먼트 직결 — BofA "메모리 2027~28 공급 타이트" 낙관<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">마이크론·메모리 · Fool / TradingKey (2026-10-26)</span><span class="evd-sum">반도체 일괄 반등 속 <strong>마이크론 +3%(종가 기준 +3.23%)</strong>. BofA(비벡 아리아)가 경영진 미팅 뒤 <strong>"메모리 공급은 2027~2028년 더 타이트"</strong>하다며 매수·목표가 $1,550 유지, 메모리를 "AI의 가장 중요한 축"으로 지목. 다만 지난주엔 공급과잉·수요 우려로 메모리가 되밀렸다(칩은 베어마켓).</span><a href="https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-midday-oct-26-tech-sector-rallies-on-anthropic-ipo-filing-and-cooling-oil-prices/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="up">+2.4%</span></td><td>AI 로직·GPU</td><td>엔비디아 심층 커버 — AI 인프라 수요 재점화의 중심</td></tr>
+      <tr><td><strong>브로드컴</strong> (AVGO)</td><td class="num"><span class="up">+2.3%</span></td><td>AI 로직·커스텀 ASIC</td><td>브로드컴 심층 커버 — 커스텀 가속기 수요 수혜</td></tr>
+      <tr><td>AMD</td><td class="num"><span class="up">+2.8%</span></td><td>AI 로직·CPU/GPU</td><td>로직 전반 심리 개선</td></tr>
+      <tr><td>SOXX (반도체 ETF)</td><td class="num"><span class="up">≈+3%</span></td><td>섹터 지수</td><td>장비 개별 등락은 매체별 확인 부족 — 지수 레벨로 갈음<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">데이터 정직성 · 장비 섹터</span><span class="evd-sum">간밤 <strong>SOXX가 약 +3%</strong>로 반도체 일괄 강세였으나, 램리서치·어플라이드·ASML 등 <strong>개별 장비주 등락은 이번 세션 보도에서 방향이 명확히 확인되지 않아</strong> 수치를 적지 않는다. 광통신(루멘텀·코히런트)이 IT 섹터 상승을 함께 견인.</span><span class="evd-nolink">※ 개별 장비주 수치는 교차 확인 전까지 미표기(지어내지 않음).</span></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 마이크론·엔비디아·브로드컴·AMD 방향은 다수 매체가 일치했다. <strong>개별 장비주(램리서치·AMAT 등)는 이번 세션 방향 보도가 불명확</strong>해 수치를 적지 않고 SOXX 지수 레벨로 갈음했다 — 불명확한 수치는 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>메모리 vs 로직 vs 장비.</strong> ① <strong>메모리</strong>는 BofA의 "2027~28년 공급 타이트" 노트가 마이크론을 <span class="up">+3%</span> 끌어올리며 반등을 주도했다 — HBM·DRAM·NAND의 장기 공급 계약과 데이터센터 믹스 개선이 근거다. ② <strong>로직/AI</strong>는 엔비디아·브로드컴·AMD가 앤트로픽發 AI 인프라 기대에 2%대 올랐다. ③ <strong>장비</strong>는 개별 수치 확인이 어려워 SOXX 지수(+3%)로만 본다. 핵심은 "반도체 일괄 강세"처럼 보여도 <strong>메모리의 반등 근거(공급 타이트)와 로직의 반등 근거(AI 수요)가 서로 다르다</strong>는 점이다.</p>
+      <p><strong>왜 국내에 중요한가.</strong> 어제(10/26) 국내 증시는 실적 경계·외국인 매도로 <strong>코스피가 7개월 최저</strong>로 밀렸고 코스닥도 <span class="down">−3.26%</span> 급락했는데, 바로 그날 밤 미국에서는 <strong>메모리(마이크론)가 BofA 낙관 노트로 반등</strong>했다. 어제 국내에서 짓눌린 메모리 센티먼트와 간밤 미 메모리 강세가 <strong>정반대 방향</strong>이라, 오늘 삼성전자·SK하이닉스가 어느 쪽을 따라가느냐가 '삼전닉스 슈퍼위크'(실적 발표 주간)의 출발 톤을 좌우한다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·유가</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정치 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,324.30원</td><td class="num">1,324.60원</td><td>10/26 · ECOS <span class="down">(원화 강세 0.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>10/24 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (10/26 마감 보도)</strong></td><td class="num">≈4.99%</td><td class="num">보합</td><td>10/26 · 마감 보도</td></tr>
+      <tr><td>미 10년물 (FRED 확정)</td><td class="num">5.00%</td><td class="num">—</td><td>10/23 · FRED DGS10(확정 T+1 시차)</td></tr>
+      <tr><td>미 2년물 (10/26 보도)</td><td class="num">≈4.71%</td><td class="num">—</td><td>10/26 · 마감 보도</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">121.32</td><td class="num">—</td><td>10/23 · FRED DTWEXBGS</td></tr>
+      <tr><td>WTI / 브렌트</td><td class="num">$101.76 / $115.81</td><td class="num"><span class="down">−$1.51 / −91c</span></td><td>10/26 · 마감 보도(유가 하락)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>미 10년물이 표에 두 값</strong>으로 보인다 — 10/23 FRED 확정치(5.00%)와 10/26 마감 보도치(≈4.99%). 시황 해석엔 간밤(10/26) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 환율은 원/달러가 소폭 원화 강세로 외국인 수급엔 미세하게 우호적이며, 유가 하락은 물가·심리에 긍정적이다. <strong>달러지수·일부 지표는 FRED 확정이 10/23 자</strong>로 스테일한 점을 감안해 읽는다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(10/27) 국내 장 시사점 <span class="chip h2-chip">실적·FOMC 대기</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 어제(10/26) 코스피가 <strong>7개월 최저(5,469.47)</strong>·코스닥 <span class="down">−3.26%</span>로 급락한 직후, 간밤 미 <strong>메모리(마이크론 <span class="up">+3%</span>)·반도체(SOXX <span class="up">+3%</span>)가 BofA 낙관·앤트로픽 IPO에 반등</strong>해, <strong>'삼전닉스 슈퍼위크'(삼성전자·SK하이닉스 실적 주간)</strong>의 출발 톤을 간밤 미 메모리 강세가 얼마나 되살리느냐가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 어제 <strong>국제유가·실적 경계감과 외국인 매도</strong>로 코스피가 5,500선을 내주고 7개월 만의 최저로 밀렸고, 코스닥은 <span class="down">−3.26%</span> 급락했다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">KR 마감 · 뉴스 아카이브 (2026-10-26)</span><span class="evd-sum">10/26 코스피 <strong>5,469.47로 7개월 만 최저</strong>(5,500선 붕괴), 외국인 매도 주도. 코스닥 <strong>−3.26% 급락</strong>. 국제유가·실적 경계감이 배경. 연합인포맥스·YTN·뉴닉 등 다수 매체 수치 일치.</span><span class="evd-nolink">※ 뉴스 아카이브(연합인포맥스·YTN 등) 집계 — 수치는 매체 간 일치분만 표기.</span></span></span> 반면 간밤 미국에서는 메모리가 반등했으니, <strong>국내 약세와 미 강세가 엇갈린 상태</strong>에서 국내 장이 열린다. 참고로 KRX 확정 지수(10/23 기준 코스피 5,550.30)는 보도 종가보다 하루 이상 시차가 있어, 어제 종가는 <strong>마감 보도치(5,469.47)</strong>로 읽는다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 마이크론 <span class="up">+3%</span>·BofA 메모리 낙관을 얼마나 반영하는지(개장 갭·초반 거래대금), ② 실적 발표(삼성·하이닉스) 전 외국인 순매도가 완화되는지, ③ 엔비디아·브로드컴發 <strong>AI 로직 강세</strong>가 국내 설계·부품으로 선별 확산되는지, ④ 현지 <strong>10/28 FOMC 결정</strong>과 <strong>MSFT·GOOGL·AMZN 빅테크 실적</strong>을 앞둔 대기 심리가 위험선호를 유지시키는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 앤트로픽 IPO(S-1)·AI 랠리, 6개월 매출 162.9억 달러(+1,304%) — <a href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026">TheStreet</a>, <a href="https://finance.yahoo.com/markets/live/stock-market-today-monday-october-26-dow-sp-500-nasdaq-101153035.html">Yahoo Finance</a></span>
+  <span>근거2 마이크론 +3%·BofA "메모리 2027~28 공급 타이트"(목표가 $1,550) — <a href="https://www.fool.com/coverage/stock-market-today/2026/10/26/stock-market-midday-oct-26-tech-sector-rallies-on-anthropic-ipo-filing-and-cooling-oil-prices/">Motley Fool</a>, <a href="https://www.tradingkey.com/news/market-movers/262239734-market-movers-mu-20261026">TradingKey</a></span>
+  <span>근거3 S&amp;P500 섹터: IT +1.50%·커뮤니케이션 −1.42% — <a href="https://chartrow.com/sp500/sector-performance">chartrow</a></span>
+  <span>근거4 국채금리 보합·FOMC 10/28 결정·동결 90%+ — <a href="https://www.cnbc.com/2026/10/26/us-treasury-yields-investors-feds-interest-rate-decision-.html">CNBC</a>, <a href="https://admiralmarkets.com/analytics/traders-blog/fed-rate-decision-october-2026">Admiral Markets</a></span>
+  <span>근거5 유가 하락(WTI $101.76·브렌트 $115.81)·이란-사우디 외교 — <a href="https://www.brecorder.com/news/40445943/oil-drops-from-near-six-month-highs-on-hopes-iran-war-hostilities-to-ease">Business Recorder</a></span>
+  <span>근거6 SOXX ≈+3%·장비 개별 수치 미표기(데이터 정직성) — 공개 마감 보도 종합</span>
+  <span>근거7 코스피 10/26 5,469.47(7개월 최저)·코스닥 −3.26% — 뉴스 아카이브(연합인포맥스·YTN·뉴닉 등 일치)</span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수). 2026-10-27 오전 조회 기준(전일 10/26 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-10-27 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
