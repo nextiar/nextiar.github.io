@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — SK하이닉스 역대급 실적·100조 주주환원에 '6000피' 복귀, 반도체가 지수를 끌어올렸다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-28-kr-close-2026-10-28.html">
+<meta property="og:title" content="코스피 마감 시황 — SK하이닉스 역대급 실적·100조 주주환원에 &#x27;6000피&#x27; 복귀, 반도체가 지수를 끌어올렸다">
+<meta property="og:description" content="코스피 +6.63% 폭등해 6,012.44로 10거래일 만에 6000선 회복 — SK하이닉스 분기 사상 최대 실적·100조 주주환원에 반도체 투톱이 9~10%대 급등, 외국인·기관 쌍끌이 매수.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-28-kr-close-2026-10-28.html">
+<meta name="description" content="코스피 +6.63% 폭등해 6,012.44로 10거래일 만에 6000선 회복 — SK하이닉스 분기 사상 최대 실적·100조 주주환원에 반도체 투톱이 9~10%대 급등, 외국인·기관 쌍끌이 매수.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-28-kr-close-2026-10-28.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 마감 시황 심층 (KOSPI/KOSDAQ Close)</div>
+  <h1>코스피 마감 시황 — SK하이닉스 역대급 실적·100조 주주환원에 <span class="up">'6000피' 복귀</span>, 반도체가 지수를 끌어올렸다</h1>
+  <p class="sub">2026년 10월 28일(수) 국내 증시 마감 기준. 코스피가 <strong><span class="up">+6.63%</span> 폭등한 6,012.44</strong>로 마감하며 10거래일 만에 6000선을 되찾았다. 방아쇠는 장 시작 전 나온 <strong>SK하이닉스의 분기 사상 최대 실적과 연간 약 100조원 주주환원 계획</strong>이었고, AI 수익성(피크아웃) 우려가 걷히며 <strong>삼성전자·SK하이닉스가 9~10%대 폭등</strong>해 지수를 통째로 끌어올렸다. 외국인·기관은 쌍끌이 매수, 개인은 대량 매도로 맞섰다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 작성·발간 2026-10-28 16:00 KST · 평일 마감 시황 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,322.60원</strong>(전일 1,324.30 → 원화 소폭 강세, 외국인 수급 우호 · 10-27 ECOS 확정) · 한국 기준금리 <strong>3.00%</strong>(10-25) · 미 국채 10년물 5.00%(10-26 FRED) · 달러지수 121.32(10-23). 간밤 미 증시(10-27 화)는 메타발 강세장과 AI 투자 낙관이 이어졌고, 아시아 증시도 SK하이닉스 실적에 동반 급등했다. <strong>Fed(FOMC) 결과 발표를 앞둔</strong> 국면이다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">반도체發 폭등 · 6000선 복귀</span></h2>
+  <p class="lead">당일 지수 레벨은 <strong>공개 마감 보도 기준</strong>(KRX Open API 확정치는 익일 반영)이며, 토스 ETF 프록시(KODEX 200)로 방향을 교차확인했다. 전일(10-27) 지수는 KRX 확정치를 썼다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (10-28 마감 · 보도)</div><div class="val up">6,012.44</div><div class="delta up">▲ +374.10p · +6.63%</div></div>
+    <div class="tile"><div class="lbl">코스닥 (10-28 마감 · 보도)</div><div class="val up">771.28</div><div class="delta up">▲ +27.45p · +3.69%</div></div>
+    <div class="tile"><div class="lbl">KODEX 200 프록시</div><div class="val up">95,650</div><div class="delta up">▲ +7.58% · 지수 방향 교차확인</div></div>
+    <div class="tile"><div class="lbl">수급 (코스피 · 보도)</div><div class="val up">외국인·기관 쌍끌이</div><div class="delta">외국인 +0.82조 · 기관 +0.96조 / 개인 −1.8조</div></div>
+    <div class="tile"><div class="lbl">원/달러 (10-27 ECOS)</div><div class="val down">1,322.6</div><div class="delta down">▼ 전일 1,324.3 · 원화 강세</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피가 <strong><span class="up">+6.63%</span> 폭등한 6,012.44</strong>로 마감해 10거래일 만에 6000선을 회복했고, 코스닥도 <strong><span class="up">+3.69%</span></strong> 올라 771.28로 동반 강세였다.</div>
+    <div class="tldr-item">② 방아쇠는 <strong>SK하이닉스의 분기 사상 최대 실적과 연간 약 100조원 주주환원 계획</strong> — AI 수익성 우려가 걷히며 <strong>삼성전자 <span class="up">+9%</span>·SK하이닉스 <span class="up">+10%</span>대</strong> 반도체가 지수를 통째로 끌어올렸다.</div>
+    <div class="tldr-item">③ <strong>외국인·기관이 합산 약 1조7,766억원 쌍끌이 매수</strong>로 지수를 밀었고 개인은 1.8조원을 순매도했다. 이틀 연속 매수 사이드카가 발동됐다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>KOSPI +6.63% to 6,012.44; KOSDAQ +3.69% to 771.28.</strong> The benchmark reclaimed the 6,000 mark for the first time in ten sessions, led almost entirely by semiconductors.</p>
+      <p>The trigger was SK Hynix's record quarterly results and a roughly KRW 100tn annual shareholder-return plan announced before the open, which dispelled lingering "AI peak-out" fears. SK Hynix rose about 10% and Samsung Electronics about 9%, dragging the whole index higher.</p>
+      <p>Foreign and institutional investors bought a combined ~KRW 1.78tn, while retail investors sold ~KRW 1.8tn. A buy-side sidecar was triggered for a second straight session. The won firmed slightly to 1,322.6 per dollar, supporting foreign flows.</p>
+      <p>Watch next: the pending FOMC decision, whether the index holds 6,000, and whether the foreign/institution bid persists against heavy retail selling.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 반도체가 홀로 지수를 들어올린 하루</h2>
+  <p class="lead">코스피는 장중 한때 6,003까지 올라선 뒤 상승폭을 키워 <strong>+374.10p(+6.63%)</strong>로 마감했다. 상승의 거의 전부가 <strong>반도체 두 대장주</strong>에서 나왔고, 코스닥은 반도체 소부장으로 온기가 번지며 3%대 강세를 보였다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">10-28 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong></td><td class="num">6,012.44</td><td class="num"><span class="up">+6.63%</span></td><td>+374.10p · 10거래일 만 6000선 회복<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴스1 · 마감 보도 (2026-10-28)</span><span class="evd-sum">코스피 <strong>6,012.44</strong>(+374.10p, <strong>+6.63%</strong>) 마감, 코스닥 <strong>771.28</strong>(+27.45p, <strong>+3.69%</strong>). 반도체주 급등에 지수가 6000선을 10거래일 만에 돌파.</span><a href="https://www.news1.kr/finance/market-exr/6335076" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥</strong></td><td class="num">771.28</td><td class="num"><span class="up">+3.69%</span></td><td>+27.45p · 반도체 소부장 온기</td></tr>
+      <tr><td>코스피 (전일 10-27 · KRX 확정)</td><td class="num">5,638.34</td><td class="num"><span class="up">+3.09%</span></td><td>직전 거래일 확정치(macro_snapshot)</td></tr>
+      <tr><td>코스닥 (전일 10-27 · KRX 확정)</td><td class="num">743.83</td><td class="num"><span class="up">+2.29%</span></td><td>직전 거래일 확정치(macro_snapshot)</td></tr>
+      <tr><td>KODEX 200 (프록시)</td><td class="num">95,650</td><td class="num"><span class="up">+7.58%</span></td><td>당일 지수 방향 교차확인(토스 실시간)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이날 코스피 상승폭(+6.63%)은 좀처럼 보기 드문 급등이었고, 사실상 <strong>반도체 단일 테마</strong>가 지수를 통째로 끌어올렸다. 시가총액 1·2위인 삼성전자(+9%대)·SK하이닉스(+10%대)가 함께 폭등하면 지수 기여가 압도적이기 때문이다. <strong>AI 수익성(피크아웃) 우려로 눌려 있던 반도체가 실적으로 반격했다</strong>는 점에서, 최근 조정의 성격을 뒤집는 하루였다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">블록미디어 · 마감시황 (2026-10-28)</span><span class="evd-sum">코스피가 <strong>반도체주 폭등에 6%대 급등</strong>하며 6000선 회복. "AI 피크아웃 우려를 실적이 깼다"는 평가와 함께 반도체가 지수 상승을 주도했고, 이틀 연속 매수 사이드카가 발동.</span><a href="https://www.blockmedia.co.kr/archives/1157530" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>업종.</strong> 반도체(삼성전자·SK하이닉스·<strong>삼성전기 <span class="up">+8.7%</span></strong>·한미반도체)가 주도했고, 방산·조선·기계(한화에어로스페이스·두산에너빌리티)와 금융(신한지주)도 거래대금 상위에서 동반 강세를 보였다. 코스닥에서는 반도체 소부장으로 매수세가 확산됐다. 전반적으로 <strong>경기민감·성장 쪽에 폭넓게 온기</strong>가 돌았다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 & 특징주 — 외국인·기관 '쌍끌이', 주인공은 SK하이닉스</h2>
+  <p class="lead">코스피에서 <strong>외국인과 기관이 나란히 조 단위로 순매수</strong>하며 지수를 밀어올렸고, 개인은 급등을 차익실현 기회로 보고 대량 매도했다. KRX Open API 는 투자자별 수급을 당일 제공하지 않아, 아래 순매수액은 <strong>공개 마감 보도 기준</strong>이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자 (코스피)</th><th class="num">당일 순매수</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="up">+약 8,158억</span></td><td>반도체 대형주 집중 매수<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">위키트리/산경투데이 · 수급 보도 (2026-10-28)</span><span class="evd-sum">코스피에서 외국인 <strong>+약 8,158억원</strong>·기관 <strong>+약 9,608억원</strong>(합산 <strong>약 1조7,766억원</strong>) 순매수, 개인은 <strong>약 1.8조원</strong> 순매도. 외국인·기관 쌍끌이 매수가 지수를 견인.</span><a href="https://www.wikitree.co.kr/articles/1169921" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="up">+약 9,608억</span></td><td>외국인·기관 합산 약 1조7,766억</td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="down">−약 1.8조</span></td><td>급등에 차익실현 대량 매도</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="tbl-scroll" style="margin-top:14px">
+  <table>
+    <thead><tr><th>특징주</th><th class="num">종가</th><th class="num">등락</th><th>코멘트</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,488,000</td><td class="num"><span class="up">+약 11%</span></td><td>분기 사상 최대 실적 + 100조 주주환원 (거래대금 1위)<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">뉴스핌·아시아경제 · 실적 보도 (2026-10-28)</span><span class="evd-sum">SK하이닉스 3분기 매출 <strong>104조6,155억원</strong>·영업이익 <strong>83조3,338억원</strong>(분기 사상 최대)을 발표. 연간 약 <strong>100조원</strong> 주주환원(현금배당 30조+·자사주 매입·소각 60조+) 계획과 3분기 주당 <strong>2만원</strong> 배당(일반 1만+특별 1만)을 함께 제시. ※ 수치는 회사 발표 보도 기준.</span><a href="https://www.newspim.com/news/view/20261028000155" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">242,000</td><td class="num"><span class="up">+약 9%</span></td><td>24만원선 재탈환, 반도체 동반 강세<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">뉴시스 · 핫스탁 (2026-10-28)</span><span class="evd-sum">삼성전자가 <strong>24만원선을 재탈환</strong>하며 9%대 급등, SK하이닉스는 사상 최대 실적에 함께 폭등. 반도체 투톱이 코스피 급등을 견인.</span><a href="https://www.newsis.com/view/NISX20261028_0003844121" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>삼성전기 (009150)</td><td class="num">1,306,000</td><td class="num"><span class="up">+8.7%</span></td><td>반도체·부품 온기 확산 (토스 실시간)</td></tr>
+      <tr><td>한미반도체 (042700)</td><td class="num">202,500</td><td class="num"><span class="up">+5.8%</span></td><td>HBM 밸류체인 수혜 (토스 실시간)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 투자자별 순매수액과 지수 종가는 <strong>공개 마감 보도 기준</strong>이다(KRX Open API 는 수급·당일 확정 지수를 제공하지 않아 DART 대량보유가 주 신호 — 당일 신규 공시는 없었다). 특징주 종가·등락률은 <strong>토스 실시간 조회(16:00경)</strong>와 보도를 교차확인했고, 삼성전자·SK하이닉스는 9%·10%대라는 방향·대략 폭이 다수 매체에서 일치했다. <strong>SK하이닉스 실적 수치는 회사 발표를 전한 보도 기준</strong>으로, 정식 공시(DART)로 확정 전까지는 보도치임을 밝힌다. 매체별로 방향이 엇갈리는 개별 종목 수치는 싣지 않았다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원화 강세·간밤 미국 잔영 <span class="chip cool h2-chip">리스크 온 · FOMC 대기</span></h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,322.6원</td><td class="num">1,324.3원</td><td>10-27 · ECOS <span class="down">(원화 강세 1.7원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>10-25 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">5.00%</td><td class="num">—</td><td>10-26 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">121.32</td><td class="num">—</td><td>10-23 · FRED DTWEXBGS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>원/달러.</strong> 환율이 1,322.6원으로 전일(1,324.3원)보다 소폭 내려(<span class="down">원화 강세</span>) 외국인 수급에 우호적인 방향이었다. 실제로 외국인이 반도체 대형주를 집중 매수하며 지수를 밀어올린 흐름과 맞닿는다. (ECOS 확정치는 10-27 기준으로, 당일 장중 환율과는 시차가 있다.)<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">토스 macro_snapshot (ECOS·FRED)</span><span class="evd-sum">원/달러 <strong>1,322.6원</strong>(전일 1,324.3, 10-27 ECOS) · 기준금리 <strong>3.00%</strong>(10-25) · 미 10년물 <strong>5.00%</strong>(10-26 FRED) · 달러지수 121.32(10-23).</span><span class="evd-nolink">토스 Open API 조회값 — 원문 링크 없음</span></span></span></p>
+      <p><strong>간밤 미국·아시아 잔영.</strong> 간밤 미 증시(10-27 화)는 <strong>메타발 강세장</strong>과 AI 투자 낙관이 이어지며 위험선호가 유지됐고(SPY 프록시 769.85$, 보합권), 이 흐름에 SK하이닉스 실적 호재가 더해지며 <strong>아시아 증시가 동반 급등</strong>했다. 다만 시장은 <strong>Fed(FOMC) 결과 발표를 앞두고</strong> 있어, 간밤의 낙관이 통화정책 이벤트를 통과할 수 있을지가 다음 변수다. 미 10년물이 5%대로 높은 점은 밸류에이션엔 여전히 부담 요인이다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">토스 Open API(SPY 프록시) + 공개 보도 (2026-10-28)</span><span class="evd-sum">간밤 미 증시는 메타발 강세장 연동으로 상승, 아시아 증시는 SK하이닉스 실적 호조에 동반 급등. Fed 결정을 앞두고 AI 투자 낙관론이 확산됐다는 보도. SPY 프록시 769.85$(+0.02%).</span><span class="evd-nolink">토스 Open API 조회값·공개 보도 종합 — 직접 원문 링크 없음</span></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(10-29 목) 관전 포인트 <span class="chip h2-chip">6000선 안착 시험</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 반도체 실적이 'AI 피크아웃' 우려를 깨며 6000선을 되찾았지만, <strong>하루 +6.6% 급등 뒤의 변동성·개인의 대량 매도·FOMC 이벤트</strong>가 남아 있어 '안착'을 확인해야 하는 국면이다.</p>
+      <p><strong>체크포인트.</strong></p>
+      <p>① <strong>Fed(FOMC) 결과</strong> — 통화정책 발표가 간밤의 AI 투자 낙관과 위험선호를 그대로 통과시키는지. 미 10년물이 5%대로 높아 금리 코멘트 민감도가 크다. (<a href="/calendar.html">/calendar.html</a> 참고)</p>
+      <p>② <strong>6000선 안착</strong> — 10거래일 만의 회복이라 추격 매수가 다음 날에도 이어지는지, 아니면 급등 다음 날 특유의 되돌림이 나오는지가 관건이다.</p>
+      <p>③ <strong>외국인·기관 vs 개인 수급 공방</strong> — 외국인·기관이 약 1조7,766억 쌍끌이로 밀었지만 개인이 1.8조를 던졌다. 쌍끌이 매수가 지속되는지, 개인 매도가 소화되는지가 방향을 가른다.</p>
+      <p>④ <strong>반도체 모멘텀 확산</strong> — SK하이닉스發 온기가 삼성전자·소부장을 넘어 다른 업종으로 번지는지, 아니면 '반도체 단독 장세'에 머무는지. 반도체가 지수를 홀로 들어올린 만큼 쏠림의 반대 위험도 함께 본다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 시황은 2026-10-28 장 마감 직후(16:00) 조회 기준으로, 당일 지수·수급·개별 종목 수치는 공개 마감 보도와 토스 실시간 조회를 교차확인한 것이다. KRX Open API 확정 지수와 투자자별 수급은 익일 반영되므로 수치가 소폭 조정될 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 6,012.44(+6.63%)·코스닥 771.28(+3.69%) 마감 — <a href="https://www.news1.kr/finance/market-exr/6335076">뉴스1</a>, <a href="https://view.asiae.co.kr/article/2026102815333646435">아시아경제</a></span>
+  <span>근거2 SK하이닉스 3Q 매출 104.6조·영업익 83.3조·100조 주주환원·주당 2만원 배당(회사 발표 보도 기준) — <a href="https://www.newspim.com/news/view/20261028000155">뉴스핌</a>, <a href="https://view.asiae.co.kr/article/2026102809175010814">아시아경제</a></span>
+  <span>근거3 반도체주 폭등·AI 피크아웃 우려 해소·이틀 연속 매수 사이드카 — <a href="https://www.blockmedia.co.kr/archives/1157530">블록미디어</a></span>
+  <span>근거4 외국인 +약 8,158억·기관 +약 9,608억(합산 약 1조7,766억)·개인 −약 1.8조 순매수/매도 — <a href="https://www.wikitree.co.kr/articles/1169921">위키트리</a>, <a href="https://www.sankyungtoday.com/news/articleView.html?idxno=63886">산경투데이</a></span>
+  <span>근거5 삼성전자 24만원선 재탈환·반도체 투톱 동반 급등 — <a href="https://www.newsis.com/view/NISX20261028_0003844121">뉴시스</a></span>
+  <span>근거6 원/달러 1,322.6·기준금리 3.00%·미 10년물 5.00%·달러지수 121.32 — 토스 macro_snapshot(한국은행 ECOS·미 FRED)</span>
+  <span>근거7 간밤 미국·아시아 증시 동반 강세·Fed 결정 대기 — 토스 Open API(SPY 프록시)·공개 보도 종합</span>
+  </div>
+  데이터 출처: 토스증권 Open API(실시간 시세·시장 랭킹·ETF 프록시·SPY), 공개 마감 보도(뉴스1·아시아경제·뉴시스·위키트리·산경투데이·블록미디어·뉴스핌), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수). 2026-10-28 16:00 KST 마감 직후 조회 기준. 당일 지수·수급은 보도 기준이며 KRX 확정치는 익일 반영된다(전일 10-27 지수만 KRX 확정치). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-10-28 16:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-10-28 16:06 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
