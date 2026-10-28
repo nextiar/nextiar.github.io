@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 개장 점검 — 하이닉스 '분기 100조' 실적·앤트로픽 훈풍에 갭업 출발, 반도체가 지수를 끌어올린다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { border: 1px solid var(--border); border-radius: 10px; background: var(--card);
+  padding: 4px 16px; margin: 0 0 16px; font-size: 13px; }
+.en-abstract summary { cursor: pointer; font-size: 12px; font-weight: 650; color: var(--accent);
+  padding: 8px 0; letter-spacing: 0.01em; }
+.en-abstract[open] summary { margin-bottom: 4px; }
+.en-abstract p { margin: 0 0 10px; color: var(--ink-2); line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-28-kr-open-2026-10-28.html">
+<meta property="og:title" content="코스피 개장 점검 — 하이닉스 &#x27;분기 100조&#x27; 실적·앤트로픽 훈풍에 갭업 출발, 반도체가 지수를 끌어올린다">
+<meta property="og:description" content="코스피가 간밤 뉴욕 AI·반도체 훈풍과 SK하이닉스 분기 100조 실적·34조 주주환원에 강한 갭업으로 출발했다 — 외국인 수급 지속과 과열 되돌림이 관건.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-28-kr-open-2026-10-28.html">
+<meta name="description" content="코스피가 간밤 뉴욕 AI·반도체 훈풍과 SK하이닉스 분기 100조 실적·34조 주주환원에 강한 갭업으로 출발했다 — 외국인 수급 지속과 과열 되돌림이 관건.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-28-kr-open-2026-10-28.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 국내 개장 점검 심층 (KR Open Check)</div>
+  <h1>코스피 개장 점검 — 하이닉스 '분기 100조' 실적·앤트로픽 훈풍에 <span class="up">갭업 출발</span>, 반도체가 지수를 끌어올린다</h1>
+  <p class="sub">2026년 10월 28일(수) 09:30 기준 개장 30분 점검 · 전일 미 증시(10/27 화 마감)와 당일 개장 흐름 반영. 코스피는 <strong><span class="up">강한 갭업</span>으로 출발</strong>했다 — 간밤 뉴욕의 AI·반도체 훈풍(앤트로픽 상장 신청·메타 증자 흥행)에 더해 개장 전 <strong>SK하이닉스가 3분기 '분기 매출 100조 돌파' 실적과 대규모 주주환원</strong>을 내놓으며 반도체 대형주가 지수를 밀어올렸다. 오늘 개장의 관전 포인트는 <strong>이 갭업을 외국인 수급이 실제로 떠받치는지, 그리고 전일(+3.09%)에 이은 과열이 되돌림 없이 이어지는지</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-10-28 09:30 KST · 평일 09:30 개장 점검 슬롯</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>⏱ 09:30 기준 장중 수치 고지.</strong> 본 리포트의 지수·종목 등락은 <strong>10/28 09:30 KST 조회 기준의 장중 값</strong>이다(토스 실시간 시세·ETF 프록시). KRX 지수 확정치는 익일 반영되므로, 당일 지수 레벨·등락은 ETF 프록시(KODEX 200 등)로 표기하고 전일·과거 지수는 KRX 확정치를 쓴다. <strong>오늘 16:00 마감 시황에서 확정치로 갱신</strong>한다.</div>
+
+<div class="note cool" style="margin-top:12px">
+  <strong>매크로 스냅샷 (2026-10-28 오전 조회).</strong> 원/달러 <strong>1,322.60원</strong>(전일 1,324.30 → 원화 소폭 강세, 10/27 ECOS) · 한국 기준금리 3.00%(10/25 ECOS) · 미 국채 10년물 5.00%(10/26 FRED DGS10) · 달러지수 121.32(10/23 FRED). 원화 강세 방향은 외국인 수급에 우호적이다.</div>
+
+<div class="note cool tldr" style="margin-top:12px">
+  <strong class="tldr-h">세 줄 요약</strong>
+  <div class="tldr-item">① 코스피는 전일 대비 <strong><span class="up">+2.23%</span> 오른 5,763.85로 출발</strong>(09:01 보도)해 09:30경 프록시 기준 <strong><span class="up">+3.8%대</span></strong>까지 상승폭을 넓혔다 — 코스닥도 <span class="up">+1.76%</span>(756.90)로 동반 갭업.</div>
+  <div class="tldr-item">② 방아쇠는 ⒜ 간밤 뉴욕의 <strong>AI·반도체 훈풍</strong>(나스닥 <span class="up">+1.18%</span>·필라델피아 반도체 <span class="up">+3.60%</span>)과 ⒝ 개장 전 <strong>SK하이닉스의 3분기 '분기 매출 104.6조·영업익 83.3조' 실적과 34조 규모 주주환원</strong>이다.</div>
+  <div class="tldr-item">③ 거래대금은 <strong>SK하이닉스·삼성전자·삼성전기 등 반도체 대형주</strong>가 압도적으로 주도한다. 다만 전일(+3.09%)에 이은 연속 급등이라, <strong>외국인 순매수의 실제 지속 여부와 과열 되돌림</strong>이 오늘의 변수다.</div>
+</div>
+
+<details class="en-abstract">
+  <summary>English summary (3-sentence abstract)</summary>
+  <p>The KOSPI gapped sharply higher at the open, rising +2.23% to 5,763.85 at 09:01 and widening to roughly +3.8% (ETF proxy) by 09:30, while the KOSDAQ opened +1.76% at 756.90. Two catalysts drove the move: an overnight AI/semiconductor rally in New York (Nasdaq +1.18%, Philadelphia Semiconductor Index +3.60% on Anthropic's IPO filing and Meta's capital raise) and, before the Seoul open, SK Hynix's record Q3 results — quarterly revenue of KRW 104.6tn and operating profit of KRW 83.3tn — paired with a ~KRW 34tn shareholder-return package. Trading value is dominated by large-cap semiconductors (SK Hynix, Samsung Electronics, Samsung Electro-Mechanics); the key watch items are whether foreign buying actually sustains the gap and whether this second straight surge (after +3.09% the prior session) avoids a pullback. All figures are 09:30 KST intraday snapshots to be finalized in the 16:00 close report. Figures follow the Korean original.</p>
+</details>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">강한 갭업 · 반도체 주도</span></h2>
+  <p class="lead">당일 지수 레벨·등락은 토스 ETF 프록시(KODEX 200 등, "프록시" 표기), 전일 지수는 KRX 확정치 기준. 개장 지수는 공개 개장 보도(09:01) 기준이며 09:30 조회 시점엔 상승폭이 더 벌어졌다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">개장 갭 방향 (09:30)</div><div class="val up">강한 갭업</div><div class="delta">반도체 실적·간밤 뉴욕이 쌍끌이</div></div>
+    <div class="tile"><div class="lbl">코스피 (개장 09:01)</div><div class="val up">5,763.85</div><div class="delta up">▲ +2.23% · 09:30경 +3.8%대(프록시)</div></div>
+    <div class="tile"><div class="lbl">코스닥 (개장 09:01)</div><div class="val up">756.90</div><div class="delta up">▲ +1.76% · +13.07p</div></div>
+    <div class="tile"><div class="lbl">원/달러 · 간밤 뉴욕</div><div class="val up">1,322.6<small>원</small></div><div class="delta">원화 강세 · 나스닥 +1.18%</div></div>
+  </div>
+  <div class="note cool" style="margin-top:16px">
+    <strong>갭 방향 읽기.</strong> 전일(10/27) 코스피가 이미 <span class="up">+3.09%</span> 급등(장중 매수 사이드카 발동)한 데 이어, 오늘도 <strong>갭업으로 출발</strong>했다. 코스피 200 프록시(KODEX 200)가 09:30경 <span class="up">+3.87%</span>, 레버리지(KODEX 레버리지)가 <span class="up">+7.55%</span>로 지수 상승을 2배로 증폭 반영 중이다. 코스닥(+1.76%)은 코스피(+2.23%)보다 상승폭이 작아, <strong>대형 반도체 쏠림이 뚜렷</strong>한 출발이다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 → 개장 연결 — 뉴욕 AI 훈풍 + 하이닉스 '분기 100조' 실적의 번역</h2>
+  <p class="lead">간밤 뉴욕 마감의 상세는 <strong>오늘 06:00 발간한 <a href="/reports/2026-10-28-us-close-morning-2026-10-28.html">US 마감 시황 리포트</a></strong>에 정리돼 있다 — 여기서는 중복 서술 대신 <strong>"그게 오늘 국내 개장에 어떻게 번역됐는가"</strong>에 집중한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 뉴욕 (10/27 화 마감)</th><th class="num">등락</th><th>오늘 국내 개장에의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num"><span class="up">+1.18%</span></td><td>AI·빅테크 위험선호 → 반도체·성장주 갭업 출발<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴욕증시 10/27 마감 · 아주경제/뉴스핌 (2026-10-28)</span><span class="evd-sum">다우 <strong>52,377.57(+0.03%)</strong>, S&amp;P500 <strong>7,722.60(+0.60%)</strong>, 나스닥 <strong>26,477.81(+1.18%)</strong>. AI 반도체 훈풍 지속으로 이틀 연속 상승. 앤트로픽 나스닥 상장 신청·대규모 자금조달, 메타 유상증자 흥행이 촉매.</span><a href="https://www.ajunews.com/view/20261028065216695" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>필라델피아 반도체(SOX)</strong></td><td class="num"><span class="up">+3.60%</span></td><td>3거래일 연속 강세 → 삼성전자·SK하이닉스 직접 read-through</td></tr>
+      <tr><td>브로드컴 (AVGO)</td><td class="num"><span class="up">+4%</span></td><td>AI 칩 수요 지속 신호 → 국내 AI·반도체 밸류체인 심리 지지</td></tr>
+      <tr><td><strong>SK하이닉스 3분기 실적</strong> (개장 전 공시)</td><td class="num"><span class="up">깜짝 실적</span></td><td>매출 104.6조·영업익 83.3조·주주환원 34조 → 반도체 랠리에 국내發 기름<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">SK하이닉스 3분기 실적·주주환원 · ZDNet/글로벌이코노믹 (2026-10-28)</span><span class="evd-sum">연결 3분기 매출 <strong>104조 6,155억</strong>(사상 첫 100조 돌파), 영업익 <strong>83조 3,338억</strong>(영업이익률 ≈80%), 순이익 39조 7,756억. 전분기比 매출 +32%·영업익 +38%. HBM4 출하 본격화·서버용 DDR5가 견인. 주주환원: 현금배당 14조+자사주 매입 20조(10조 소각), 주당 2만원(기본 1만+특별 1만).</span><a href="https://zdnet.co.kr/view/?no=20261028080340" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>연결 고리.</strong> 간밤 뉴욕의 상승은 <strong>지수(다우 +0.03%)보다 AI·반도체(나스닥 +1.18%, SOX +3.60%)에 집중</strong>된 형태였다 — 앤트로픽의 나스닥 상장 신청과 메타의 유상증자 흥행이 "AI 투자 사이클은 계속된다"는 서사를 재점화했다. 이 심리가 KST 아침 국내 반도체 대형주로 그대로 전이됐다.</p>
+      <p><strong>국내發 증폭.</strong> 여기에 개장 전 <strong>SK하이닉스의 3분기 실적</strong>이 기름을 부었다 — 분기 매출이 사상 처음 <strong>100조 원</strong>을 넘고 영업이익률이 80%에 달한 데다, <strong>현금배당 14조 + 자사주 매입 20조(그중 10조 소각)</strong>의 대규모 주주환원까지 겹쳤다. 간밤 미국發 반도체 훈풍과 국내 대장주의 실적 서프라이즈가 같은 날 아침 겹치면서, 개장과 동시에 지수가 위로 벌어진 구조다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>30분 흐름 심층 — 거래대금은 반도체 대형주가 싹쓸이</h2>
+  <p class="lead">개장 직후 거래대금 상위는 <strong>SK하이닉스·삼성전자·삼성전기·SK스퀘어</strong> 등 반도체·IT 대형주와 지수 ETF가 장악했다. 아래는 토스 실시간 거래대금 랭킹(09:30 KST 조회) 기준. 등락은 장중 값이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>순위 · 종목</th><th class="num">현재가(장중)</th><th class="num">등락</th><th class="num">거래대금</th></tr></thead>
+    <tbody>
+      <tr><td>1 · <strong>SK하이닉스</strong></td><td class="num">1,380,000</td><td class="num"><span class="up">+2.9%</span></td><td class="num">1조 1,993억</td></tr>
+      <tr><td>2 · <strong>삼성전자</strong></td><td class="num">233,500</td><td class="num"><span class="up">+5.18%</span></td><td class="num">7,961억</td></tr>
+      <tr><td>3 · <strong>삼성전기</strong></td><td class="num">1,251,000</td><td class="num"><span class="up">+4.16%</span></td><td class="num">3,720억</td></tr>
+      <tr><td>4 · KODEX 레버리지</td><td class="num">75,240</td><td class="num"><span class="up">+7.55%</span></td><td class="num">2,686억</td></tr>
+      <tr><td>5 · KODEX 200</td><td class="num">92,350</td><td class="num"><span class="up">+3.87%</span></td><td class="num">2,445억</td></tr>
+      <tr><td>6 · KODEX 인버스</td><td class="num">1,167</td><td class="num"><span class="down">−3.71%</span></td><td class="num">2,295억</td></tr>
+      <tr><td>9 · 삼성전자우</td><td class="num">183,300</td><td class="num"><span class="up">+7.13%</span></td><td class="num">1,789억</td></tr>
+      <tr><td>10 · SK스퀘어</td><td class="num">863,000</td><td class="num"><span class="up">+4.22%</span></td><td class="num">1,774억</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>주도 업종 — 반도체 일변도.</strong> 거래대금 1·2위를 <strong>SK하이닉스(1.2조)·삼성전자(8천억)</strong>가 차지했고, 3위 삼성전기·10위 SK스퀘어까지 더하면 상위권이 <strong>반도체·IT 대형주로 도배</strong>됐다. 삼성전자(<span class="up">+5.18%</span>)가 실적을 낸 SK하이닉스(<span class="up">+2.9%</span>)보다 오히려 상승률이 높은 점이 눈에 띈다 — 하이닉스는 호실적이 상당 부분 선반영된 반면, 삼성전자·삼성전기로 <strong>온기가 확산</strong>되는 초기 신호로 읽힌다. 삼성전자우(<span class="up">+7.13%</span>)의 강세는 배당·주주환원 기대가 우선주에 먼저 반영된 모습이다.</p>
+      <p><strong>급등락 폭 — 쏠림 속 양방 베팅.</strong> 개장 직후 토스 실시간 급등 랭킹에는 <strong>상한가(+29%대) 근접 종목이 다수</strong> 잡히며 투심 과열을 보여준다(대부분 중소형주라 개별 종목은 교차검증 전까지 특정하지 않는다). 반대로 거래대금 상위에 <strong>KODEX 인버스(<span class="down">−3.71%</span>)</strong>가 6위, <strong>인버스2X 레버리지(<span class="down">−6.73%</span>)</strong>가 7위로 동반 진입해, 급등을 되돌림으로 보는 <strong>하락 베팅 수요도 함께 활발</strong>하다.</p>
+      <p><strong>장중 이벤트 — 오늘은 사이드카 미발동.</strong> 전일(10/27) 오전엔 코스피200 선물이 <span class="up">+5.05%</span> 급등해 <strong>매수 사이드카</strong>(프로그램 매수호가 효력정지 5분)가 발동됐다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">코스피 매수 사이드카 · 서울경제/헤럴드 (2026-10-27)</span><span class="evd-sum"><strong>10/27</strong> 오전 10시 13분경 코스피200 선물이 기준가 대비 5% 이상(+5.05%, 893.02) 급등해 매수 사이드카 발동. 당일 코스피는 +3.09% 마감. <strong>10/28 개장 30분 내 추가 사이드카 발동 보도는 확인되지 않음.</strong></span><a href="https://biz.heraldcorp.com/article/10915860" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 오늘 개장 30분 구간에서는 <strong>추가 사이드카 발동이 확인되지 않았다</strong> — 갭업은 컸으나 선물 급변동에 따른 프로그램 정지 수준은 아직 아니다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 — 외국인 방향이 관건 <span class="chip cool h2-chip">초기·확정 아님</span></h2>
+  <p class="lead">장 초반 수급 총액은 <strong>초기 보도치로 확정이 아니다</strong>(KRX 확정 수급은 익일 반영). 방향이 엇갈리는 종목별 수치는 지어내지 않고, 매체 보도를 "초기 신호"로만 인용한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>초기 신호 (09:30 전후 보도)</th><th>내용</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>지수 전반 수급</strong></td><td>개인 <span class="up">+640억</span>·외국인 <span class="up">+369억</span> 순매수(09:08 보도)<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">개장 수급 초기 보도 · 뉴스핌 개장시황 (2026-10-28)</span><span class="evd-sum">09:08 전후 코스피에서 개인 약 640억·외국인 약 369억 순매수로 출발. <strong>장 초반 수치로 확정이 아니며</strong> 분 단위로 바뀐다. 전일(10/27)엔 "외국인 매도 정점 통과" 진단도 제기.</span><a href="https://www.newspim.com/news/view/20261028000108" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>외국인이 매수로 출발한 점은 우호적 — 단 극초반 수치</td></tr>
+      <tr><td><strong>종목별 외국인</strong></td><td>"삼성 사고 SK 팔았다"는 엇갈림 보도<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">하이닉스 실적 앞 외국인 엇갈림 · 파이낸셜뉴스 (2026-10-28)</span><span class="evd-sum">하이닉스 실적 발표를 앞두고 외국인이 <strong>삼성전자는 매수·SK하이닉스는 매도</strong>로 엇갈렸다는 보도. 호재 선반영 차익실현 성격일 수 있어, 종목별 순매수 총액은 확정 전까지 본문에 수치로 싣지 않는다.</span><a href="https://www.fnnews.com/news/202610280701003884" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td>하이닉스 호재 선반영 차익실현 가능성 — 확정 아님</td></tr>
+      <tr><td><strong>레버리지/인버스 쏠림</strong></td><td>KODEX 레버리지 <span class="up">+7.55%</span> 거래대금 4위 · 인버스 <span class="down">−3.71%</span> 6위</td><td>방향성 베팅 양방 활발, 상승 베팅이 우위</td></tr>
+      <tr><td><strong>전일 수급 연속성</strong></td><td>10/27 코스피 <span class="up">+3.09%</span>·매수 사이드카 발동 후 재차 갭업</td><td>반등 모멘텀 연속 — 과열 되돌림은 경계</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 장 초반 외국인·기관·개인 순매수 총액은 <strong>분 단위로 요동치는 초기 보도치</strong>이며 KRX 확정 수급은 익일 반영된다. 매체별로 방향이 엇갈리는 <strong>종목별 순매수 수치는 싣지 않았다</strong>(삼성전자 매수·SK하이닉스 매도 보도는 '초기 엇갈림'으로만 표기). 확정 수급은 오늘 16:00 마감 시황에서 갱신한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3개 <span class="chip h2-chip">관찰 중심</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 관찰 레벨 — 코스피 5,800선·하이닉스 선반영 확인.</strong> 코스피는 개장 +2.23%(5,763.85)에서 09:30경 프록시로 <span class="up">+3.8%대</span>까지 올라 <strong>5,800선 회복 시도</strong> 중이다. 이 레벨을 장중 지켜내는지, 특히 <strong>실적을 낸 SK하이닉스(<span class="up">+2.9%</span>)가 삼성전자(<span class="up">+5.18%</span>)보다 상승률이 낮은 '선반영' 구도</strong>가 유지되는지 본다 — 하이닉스가 상승분을 반납하면 지수 과열 되돌림의 신호일 수 있다.</p>
+      <p><strong>② 예정 이벤트 — 오늘 발표 소화 + FOMC 경계.</strong> 개장 전 SK하이닉스 실적은 이미 공시됐고, 이제 시장은 <strong>간밤 뉴욕이 경계하던 FOMC(미 연준 회의)</strong>를 다음 분기점으로 본다. 국내외 예정 지표·실적 일정은 <strong><a href="/calendar.html">이벤트 캘린더(/calendar.html)</a></strong>에서 확인한다 — 반도체 밸류체인(삼성전기·소부장)으로 온기가 번지는지, 오후 실적 발표 종목이 추가 모멘텀을 주는지가 관건.</p>
+      <p><strong>③ 전환 신호 — 외국인 지속 매수 vs 과열 되돌림.</strong> 오늘의 방향을 가를 전환 신호는 두 가지다. ⒜ <strong>외국인이 극초반 순매수(+369억)를 오전 내내 유지</strong>하며 "매도 정점 통과" 진단<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">"외국인 매도 정점 통과" 진단 · 마켓인 (2026-10-28)</span><span class="evd-sum">"코스피, 팔지 말고 사라 — 외국인 매도는 정점 지났다"는 증권가 진단. 원화 강세(원/달러 1,322원대)도 외국인 수급에 우호적 방향. 다만 진단은 전망이며 실제 수급은 장중 확인 필요.</span><a href="https://www.newspim.com/news/view/20261028000108" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>이 실제 수급으로 확인되면 상승 지속, ⒝ 반대로 <strong>전일(+3.09%)·금일 연속 급등의 차익실현</strong>이 레버리지·인버스 거래대금 동반 급증(현재 4·6·7위)으로 표면화되면 오전 중 변동성 확대에 대비한다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 <strong>10/28 09:30 KST 조회 기준의 개장 30분 점검</strong>으로, 지수·종목 등락은 장중 값이며 개장 후 실제 흐름은 바뀔 수 있다. 수급 총액·종목별 외국인 수치는 초기 보도치이고 KRX 확정치는 익일 반영된다. 확정 수치는 <strong>오늘 16:00 마감 시황</strong>에서 갱신한다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 뉴욕 10/27 마감: 다우 52,377.57(+0.03%)·S&amp;P500 7,722.60(+0.60%)·나스닥 26,477.81(+1.18%)·SOX +3.60% — <a href="https://www.ajunews.com/view/20261028065216695">아주경제</a>, <a href="https://www.newspim.com/news/view/20261027000296">뉴스핌</a></span>
+  <span>근거2 SK하이닉스 3분기 매출 104.6조·영업익 83.3조·주주환원 34조(배당 14조+자사주 20조) — <a href="https://zdnet.co.kr/view/?no=20261028080340">ZDNet Korea</a>, <a href="https://www.g-enews.com/article/Industry/2026/10/20261028084200530427fa31d75c_1">글로벌이코노믹</a></span>
+  <span>근거3 10/27 코스피 매수 사이드카 발동(선물 +5.05%)·당일 +3.09% 마감 — <a href="https://biz.heraldcorp.com/article/10915860">헤럴드경제</a></span>
+  <span>근거4 개장 수급 초기 보도(개인 +640억·외국인 +369억, 09:08) — <a href="https://www.newspim.com/news/view/20261028000108">뉴스핌 개장시황</a></span>
+  <span>근거5 외국인 종목별 엇갈림(삼성 매수·SK 매도) — <a href="https://www.fnnews.com/news/202610280701003884">파이낸셜뉴스</a></span>
+  <span>근거6 "외국인 매도 정점 통과" 진단 — <a href="https://www.newspim.com/news/view/20261028000108">뉴스핌</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(ETF 프록시·실시간 거래대금·급등락 랭킹), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX(전일 지수 확정치), 공개 개장·마감 보도. <strong>2026-10-28 09:30 KST 조회 기준</strong> — 지수·종목 등락은 장중 값이며 16:00 마감 시황에서 확정치로 갱신. 간밤 미 마감 상세는 <a href="/reports/2026-10-28-us-close-morning-2026-10-28.html">당일 US 마감 시황 리포트</a> 참조. <strong>작성·발간: 2026-10-28 09:30 KST(평일 개장 점검 슬롯)</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
