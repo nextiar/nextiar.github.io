@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>한국 증시 주간 시황 — 코스피 수요일 6,000 돌파 뒤 '검은 금요일' 급락, 주간은 +3.3% 지켰지만 코스닥·반도체는 약세</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin: 16px 0 0; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-10-31-kr-weekly-2026-10-31.html">
+<meta property="og:title" content="한국 증시 주간 시황 — 코스피 수요일 6,000 돌파 뒤 &#x27;검은 금요일&#x27; 급락, 주간은 +3.3% 지켰지만 코스닥·반도체는 약세">
+<meta property="og:description" content="코스피는 수요일 6,012까지 급등했다 금요일 미 빅테크 실적 쇼크로 3.48% 급락, 주간 +3.3%를 지켰으나 외국인 1.6조 순매도·반도체 약세로 코스닥은 주간 하락했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-10-31-kr-weekly-2026-10-31.html">
+<meta name="description" content="코스피는 수요일 6,012까지 급등했다 금요일 미 빅테크 실적 쇼크로 3.48% 급락, 주간 +3.3%를 지켰으나 외국인 1.6조 순매도·반도체 약세로 코스닥은 주간 하락했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-10-31-kr-weekly-2026-10-31.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 주간 시황 총정리 (KR Weekly Wrap)</div>
+  <h1>한국 증시 주간 시황 — 코스피 수요일 6,000 돌파 뒤 '검은 금요일' 급락, 주간은 <span class="up">+3.3%</span> 지켰지만 <span class="down">코스닥·반도체는 약세</span></h1>
+  <p class="sub">2026년 10월 31일(토) 작성 · 지난 한 주(10/26 월 ~ 10/30 금) 국내 증시 총정리. 이번 주 코스피는 월요일 약세로 출발했다 화·수 강하게 되올라 <strong>수요일 장중 6,000을 터치하며 6,012.44로 사상 최고권에 마감</strong>했지만, 목·금 조정 끝에 <strong>금요일 미 빅테크(알파벳·아마존·인텔) 실적 쇼크로 <span class="down">3.48% 급락</span>·매도 사이드카</strong>까지 발동하며 한 주를 마쳤다. 지수는 <strong>주간 <span class="up">+3.3%</span></strong>를 지켰으나 반도체·코스닥은 외국인 매도에 밀렸다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-10-31 09:00 KST · 토요일 주간 총정리 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-10-31 오전).</strong> 원/달러 <strong>1,335.30원</strong>(전일 1,336.30 → 소폭 원화 강세, ECOS 10/30) · 한국 기준금리 3.00%(ECOS 10/28) · 미 국채 10년물 <strong>4.98%</strong>(FRED 10/29, 수십 년래 최고권) · 달러지수 121.32(FRED 10/23). 금리는 높은 레벨을 유지했고, 원화 강세는 수출주 실적엔 역풍이라는 글로벌 IB 경계론도 겹쳤다.</div>
+
+<section>
+  <h2><span class="idx">1</span>한 주 한눈에 <span class="chip h2-chip">극단적 진폭 · 금요일 급락</span></h2>
+  <p class="lead">지수 확정치는 공개 마감 보도(뉴스1·이투데이·연합 등) 기준, 매크로는 한국은행 ECOS·미 FRED·토스증권 Open API 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">KOSPI (주간)</div><div class="val up">5,730.74</div><div class="delta up">▲ 주간 +3.25% (5,550.30 → 5,730.74)</div></div>
+    <div class="tile"><div class="lbl">KOSDAQ (주간)</div><div class="val down">724.38</div><div class="delta down">▼ 주간 약 −3.6%</div></div>
+    <div class="tile"><div class="lbl">금요일(10/30) 코스피</div><div class="val down">−3.48%</div><div class="delta">매도 사이드카 발동 · 외국인 1.62조 순매도</div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val">1,335.30</div><div class="delta down">전일 比 −1.0원 (원화 강세)</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 한 주의 궤적은 <strong>V자 뒤 급반락</strong>이었다 — 월요일 약세(<span class="down">−1.46%</span>)로 출발해 화(<span class="up">+3.09%</span>)·수(<span class="up">+6.63%</span>) 폭등으로 <strong>코스피가 수요일 6,012.44, 6,000선에 처음 올라섰다</strong>가, 목·금 되돌림으로 반납했다.</div>
+    <div class="tldr-item">② 결정타는 <strong>금요일(10/30) '검은 금요일'</strong>이었다 — 미 빅테크 실적 실망·AI 설비투자 수익성 우려가 번지며 코스피가 <span class="down">−3.48%</span> 급락, 오전 <strong>매도 사이드카</strong>가 발동했고 <strong>외국인이 코스피에서만 1.62조원을 순매도</strong>했다.</div>
+    <div class="tldr-item">③ 그럼에도 주 중반 급등 덕에 <strong>코스피는 주간 <span class="up">+3.25%</span></strong>로 플러스를 지킨 반면, <strong>코스닥은 약 <span class="down">−3.6%</span></strong>·반도체 투톱(삼성전자·SK하이닉스)은 금요일 각각 <span class="down">−3.0%·−7.1%</span> 급락하며 지수와 체감이 갈렸다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>Korea weekly wrap (Oct 26–30, 2026).</strong> The KOSPI traced a V-shape and then snapped back: after a soft Monday (−1.46%) it surged Tuesday (+3.09%) and Wednesday (+6.63%) to close at 6,012.44 — its first finish above 6,000 — before giving much of it back.</p>
+      <p>Friday was the "Black Friday": US big-tech earnings disappointment and fresh doubts over AI capex returns drove the KOSPI down 3.48%, triggering a sell-side sidecar in the morning as foreigners dumped a net KRW 1.62tn on the main board.</p>
+      <p>Thanks to the mid-week spike the KOSPI still finished the week +3.25%, while the KOSDAQ fell about −3.6% and the two chip leaders (Samsung Electronics −3.0%, SK hynix −7.1% on Friday) lagged the headline index.</p>
+      <p>Next week hinges on whether the AI-capex de-rating in US tech persists, whether foreign selling in chips abates, and on a US 10-year yield near 4.98% plus a firmer won that pressures exporter earnings.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>주간 지수·업종 승자/패자</h2>
+  <p class="lead">일별 확정 종가로 본 한 주. 코스피는 수요일 6,012.44까지 올랐다 금요일 5,730.74로 내려앉았고, 코스닥은 더 약했다. 주간 순변동은 <strong>코스피 <span class="up">+3.25%</span> / 코스닥 약 <span class="down">−3.6%</span></strong>로, 지수(대형주)와 중소형주의 체감이 갈렸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>거래일</th><th class="num">KOSPI 종가</th><th class="num">등락</th><th class="num">KOSDAQ 종가</th><th class="num">등락</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td>10/23 (금·전주말)</td><td class="num">5,550.30</td><td class="num"><span class="up">+0.30%</span></td><td class="num">≈751.7 *</td><td class="num">—</td><td>주간 비교 기준선</td></tr>
+      <tr><td><strong>10/26 (월)</strong></td><td class="num">5,469.47</td><td class="num"><span class="down">−1.46%</span></td><td class="num">727.21</td><td class="num"><span class="down">−3.26%</span></td><td>약세 출발, 기관 코스닥 순매도</td></tr>
+      <tr><td><strong>10/27 (화)</strong></td><td class="num">5,638.34</td><td class="num"><span class="up">+3.09%</span></td><td class="num">743.83</td><td class="num"><span class="up">+2.29%</span></td><td>반발 매수 반등</td></tr>
+      <tr><td><strong>10/28 (수)</strong></td><td class="num">6,012.44</td><td class="num"><span class="up">+6.63%</span></td><td class="num">771.28</td><td class="num"><span class="up">+3.69%</span></td><td>코스피 6,000선 첫 마감<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">뉴스핌 · 코스피 10/28 마감 (2026-10-28)</span><span class="evd-sum">10/28 코스피 <strong>+6.6% 급등해 6,000선 탈환</strong>, 종가 <strong>6,012.44</strong>. 10거래일 만에 장중 6,000을 다시 터치한 뒤 사상 최고권에 마감.</span><a href="https://www.newspim.com/news/view/20261028001423" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>10/29 (목)</strong></td><td class="num">5,937.66</td><td class="num"><span class="down">−1.24%</span></td><td class="num">753.23</td><td class="num"><span class="down">−2.34%</span></td><td>상승 뒤 차익실현, 하락 종목 다수<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">뉴스1 · 10/29 마감 (2026-10-29)</span><span class="evd-sum">10/29 코스피 74.78p(<strong>−1.24%</strong>) 내린 <strong>5,937.66</strong>, 코스닥 18.05p(<strong>−2.34%</strong>) 내린 <strong>753.23</strong>. 하이닉스가 버텨도 하락 종목이 상승의 7배에 달하며 체감은 약세.</span><a href="https://www.news1.kr/finance/market-exr/6336637" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>10/30 (금)</strong></td><td class="num">5,730.74</td><td class="num"><span class="down">−3.48%</span></td><td class="num">724.38</td><td class="num"><span class="down">−3.83%</span></td><td>검은 금요일 · 매도 사이드카<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">이투데이 · 코스피 10/30 마감 (2026-10-30)</span><span class="evd-sum">10/30 코스피 206.92p(<strong>−3.48%</strong>) 내린 <strong>5,730.74</strong>, 코스닥 <strong>−3.83%</strong> 724.38. 오전 10시4분55초 미니 코스피200 선물 5.12% 하락이 1분 지속돼 <strong>매도 사이드카</strong> 발동.</span><a href="https://www.etoday.co.kr/news/view/2642400" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>주간 순변동</strong></td><td class="num"><strong>—</strong></td><td class="num"><span class="up">+3.25%</span></td><td class="num"><strong>—</strong></td><td class="num"><span class="down">약 −3.6%</span></td><td>중반 급등이 금요일 급락을 상쇄</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> * 코스닥 10/23 종가(≈751.7)는 공개 확정치를 직접 확인하지 못해 <strong>10/26 등락률(−3.26%)로 역산</strong>한 추정치다 — 코스닥 주간 변동(약 −3.6%)도 이 추정에 기반하므로 "약"으로 표기한다. 코스피 주간 변동은 확정 종가(5,550.30→5,730.74)로 계산했다. <strong>업종 단위 주간 등락률은 매체별 확정 집계가 엇갈려</strong> 숫자로 싣지 않고, 아래 본문에서 방향만 정리한다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>승자 — 지수를 끌어올린 쪽.</strong> 주간 플러스는 전적으로 <strong>수요일(+6.63%)의 대형주 동반 급등</strong>에서 나왔다. 코스피가 6,000선을 처음 밟은 날로, 반도체·대형 성장주 전반이 위험선호 회복에 올라탔다. 다만 이 상승분은 목·금에 상당 부분 반납돼, "강했던 섹터"보다 "덜 밀린 섹터"가 주간 수익률을 지킨 구도에 가깝다.</p>
+      <p><strong>패자 — 반도체·중소형주.</strong> 한 주의 약한 고리는 <strong>반도체 투톱과 코스닥</strong>이었다. 금요일 <strong>SK하이닉스 <span class="down">−7.08%</span>(종가 141만 8,000원)·삼성전자 <span class="down">−3.02%</span>(22만 5,000원)</strong>로 동반 급락하며 지수를 끌어내렸고<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">서울경제·파이낸셜포스트 · 10/30 마감 (2026-10-30)</span><span class="evd-sum">10/30 반도체 투톱 동반 하락 — <strong>SK하이닉스 −7.08%(141만 8,000원)·삼성전자 −3.02%(22만 5,000원)</strong>. 미 빅테크 AI 수익성 우려 재확산이 직격. (토스 실시간 시세는 장중 스냅샷이라 종가와 소폭 차이가 있어 공개 마감 보도치를 채택.)</span><a href="https://www.seoul.co.kr/news/economy/securities/2026/10/30/20261030500055" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>, 코스닥은 한 주 내내 대형주 대비 열위를 보이며 주간 하락으로 마쳤다. 삼성전자·SK하이닉스는 시황 맥락으로 언급한 것이며 투자의견이 아니다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>주간 수급 흐름 — 외국인 '팔자'가 금요일에 폭발</h2>
+  <p class="lead">한 주 수급의 색채는 <strong>외국인 순매도, 특히 금요일 집중</strong>이었다. 주 중반 반등 국면에선 기관·연기금이 받쳤지만, 금요일 외국인 매도 규모가 압도하며 지수를 눌렀다. (KRX Open API 는 투자자별 수급을 익일·제한 제공해, 아래는 공개 마감 보도 기준이다.)</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시장 · 시점</th><th class="num">외국인</th><th class="num">기관</th><th class="num">개인</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피 (10/30 금)</strong></td><td class="num"><span class="down">−1.62조</span></td><td class="num"><span class="up">+7,420억</span></td><td class="num"><span class="up">+6,270억</span></td><td>외국인 매도가 사이드카 유발<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">아시아경제·이투데이 · 10/30 수급 (2026-10-30)</span><span class="evd-sum">10/30 코스피 <strong>외국인 1조 6,230억원 순매도</strong>, 기관 7,420억·개인 6,270억 순매수. 외국인 대량 매도가 지수 하락과 매도 사이드카를 주도.</span><a href="https://view.asiae.co.kr/article/2026103016084854064" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥 (10/30 금)</strong></td><td class="num"><span class="down">−260억</span></td><td class="num"><span class="down">−1,360억</span></td><td class="num"><span class="up">+1,640억</span></td><td>외국인·기관 동반 매도, 개인 방어</td></tr>
+      <tr><td>연기금 (10/30 금)</td><td class="num" colspan="3"><span class="up">삼성전자·SK하이닉스 약 +5,270억 순매수</span></td><td>'검은 금요일'에 큰손 저가매수 등판<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">뉴스핌 · 10/30 연기금 수급 (2026-10-30)</span><span class="evd-sum">10/30 급락장에서 <strong>연기금이 삼성전자·SK하이닉스를 약 5,270억원 순매수</strong>하며 반도체 투톱의 낙폭을 일부 완충. 외국인 매도와 방향이 엇갈림.</span><a href="https://www.newspim.com/news/view/20261030001262" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>주간 흐름 해석.</strong> 수급의 핵심은 <strong>외국인의 방향 전환이 금요일에 집중됐다</strong>는 점이다. 월요일 코스닥에서 기관이 먼저 발을 뺐고(기관 약 1,279억 순매도), 화·수 급반등 국면에선 위험선호 회복으로 매수세가 돌아왔지만, 목요일부터 차익실현이 시작돼 <strong>금요일 외국인 1.62조원 순매도</strong>로 폭발했다. 같은 날 기관·개인은 순매수로 맞섰고 <strong>연기금은 반도체 투톱을 약 5,270억원 저가매수</strong>하며 큰손의 시각차를 드러냈다.</p>
+      <p><strong>리스크 신호.</strong> 급락과 함께 <strong>고점에 몰린 ELS(주가연계증권) 조기상환 불발</strong> 우려가 부각됐다 — 녹색경제신문 등은 약 3.5조원 규모가 상환 기준을 밑돌 수 있다고 전했다. 지수 변동성이 커진 국면에서 파생·구조화 상품발 수급 왜곡 가능성은 다음 주에도 관찰 포인트다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>한 주의 사건 타임라인 — 지표·정책·실적</h2>
+  <p class="lead">요일별로 무엇이 지수를 움직였는지 정리한다. 이번 주 내러티브는 사실상 <strong>'미 빅테크 실적 → AI 설비투자 수익성 논쟁 → 반도체 수급'</strong> 한 축으로 수렴했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>요일</th><th>사건</th><th>시장 영향</th></tr></thead>
+    <tbody>
+      <tr><td><strong>월 10/26</strong></td><td>약세 출발, 코스닥 −3.26% 선조정 · 기관 순매도</td><td><span class="down">위험 회피</span> — 주 초반 숨 고르기</td></tr>
+      <tr><td><strong>화 10/27</strong></td><td>반발 매수 유입, 코스피 +3.09%·코스닥 +2.29%</td><td><span class="up">반등</span> — 낙폭 과대 인식</td></tr>
+      <tr><td><strong>수 10/28</strong></td><td><strong>코스피 +6.63% 폭등, 6,012.44로 6,000선 첫 마감</strong></td><td><span class="up">사상 최고권</span> — 대형주 동반 급등</td></tr>
+      <tr><td><strong>목 10/29</strong></td><td>차익실현·간밤 미 기술주 경계, 코스피 −1.24%</td><td><span class="down">되돌림</span> — 하락 종목이 상승의 7배</td></tr>
+      <tr><td><strong>금 10/30</strong></td><td><strong>미 빅테크(알파벳·아마존·인텔) 실적 쇼크</strong> → 코스피 −3.48%·매도 사이드카·외국인 1.62조 순매도</td><td><span class="down">검은 금요일</span> — 반도체 급락 주도</td></tr>
+      <tr><td>금 밤 (간밤 미국)</td><td>나스닥 <span class="down">−2.86%</span>·인텔 <span class="down">−29%</span>·필라델피아 반도체 <span class="down">−7.2%</span></td><td><span class="down">AI 투자 회의론</span> — 다음 주로 이월<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">연합뉴스 · 뉴욕증시 10/30 마감 (2026-10-31 KST)</span><span class="evd-sum">10/30(금) 뉴욕증시 AI 투자 우려에 일제 하락 — <strong>나스닥 −2.86%</strong>, <strong>인텔 약 −29% 급락</strong>, 아마존·인텔 실적 실망이 전방위 기술주 매도로 번짐. 필라델피아 반도체 −7.20%.</span><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5PRlZwUXBMUGVHclo2UXBiWURuS0FaU2UtVzhaTGhoTi1DQnJOeHU3NW9qNlBGVm9NT2QzVEZHZ0xtUzJvaUJxZl9PQWV4RUJpZm1UanRESG1SZlU?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>매크로 배경.</strong> 금요일 급락엔 실적 이슈뿐 아니라 <strong>미 10년물 4.98%(FRED 10/29)의 금리 부담</strong>과 <strong>원화 강세에 따른 수출주 실적 우려</strong>가 겹쳤다 — 글로벌 IB 일부는 원화 강세를 이유로 코스피 목표치를 하향 조정했다고 보도됐다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">서울경제TV·연합인포맥스 · 10/31 (2026-10-31)</span><span class="evd-sum">"원화 강세에 실적 악화 우려"로 <strong>글로벌 IB가 코스피 목표치를 하향</strong>했고, 미 국채 10년물이 수십 년래 최고 수준에 올라 금리 부담이 증시를 눌렀다는 보도. (정확한 IB별 목표치 수치는 매체 간 상충해 본문에 숫자로 싣지 않음.)</span><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5CY213eHpOVmZ3NURLODdCaUlTczlCVWlqUEl4cFlidHoyZ0lRMzZGMHpIY1ZDN0ZLd0Q4UUl1RHJjVldZeHg5Q1pMVlBGc2ZMLWY3c3lzVThRVzI4bHE5SkxJSWw?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 주 관전 포인트 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 금요일 간밤 뉴욕이 <span class="down">나스닥 −2.86%·인텔 −29%</span>로 더 밀린 채 마감해, 다음 주 국내 장은 <strong>'AI 설비투자 수익성 논쟁'의 후폭풍을 반도체 수급이 얼마나 흡수하느냐</strong>로 문을 연다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>외국인 매도 지속 여부</strong> — 금요일 1.62조 순매도가 일회성 디레버리징인지, 추세적 이탈인지가 지수 방향을 가른다. ② <strong>반도체 투톱 바닥 확인</strong> — SK하이닉스·삼성전자가 간밤 필라델피아 반도체 <span class="down">−7.2%</span>를 어느 정도 반영하는지, 연기금 저가매수가 이어지는지. ③ <strong>금리·환율</strong> — 미 10년물 4.98% 고착과 원화 강세(1,335원대)가 수출주 실적·외국인 수급에 주는 압력. ④ <strong>파생 리스크</strong> — 고점 ELS 조기상환 불발(약 3.5조) 등 구조화 상품발 수급 왜곡. ⑤ <strong>국내 실적 시즌 후반</strong>과 예정 이벤트는 <a href="/calendar.html">이벤트 캘린더</a>에서 확인.</p>
+      <p><strong>관찰 레벨.</strong> 코스피는 금요일 장중 5,600선까지 밀렸다 5,730.74로 마감했다 — <strong>5,700선 지지</strong> 여부가 1차 분기점이고, 반등 시엔 수요일 급등으로 열어둔 <strong>5,900~6,000선 회복</strong>이 과제다. 코스닥은 720선 전후의 지지가 관건이다. (지지·저항 레벨은 관찰용 기준이며 특정 종목·시점 매매 권유가 아니다.)</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 리포트는 2026-10-31(토) 오전 조회 기준으로 지난 한 주(10/26~10/30) 국내 증시를 정리한 것이다. 지수 확정치는 공개 마감 보도, 매크로는 ECOS·FRED·토스 Open API 기준이며 소스별 기준일을 표기했다. 개별 종목(삼성전자·SK하이닉스 등)은 시황 맥락 언급으로 투자의견 콜이 아니며(트랙레코드 미기록), 본 리포트는 커버 종목을 선언하지 않는다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거2 코스피 10/28 +6.63% 6,012.44 6,000선 첫 마감 — <a href="https://www.newspim.com/news/view/20261028001423">뉴스핌</a></span>
+  <span>근거3 코스피 10/30 −3.48% 5,730.74·매도 사이드카 발동 — <a href="https://www.etoday.co.kr/news/view/2642400">이투데이</a></span>
+  <span>근거4 10/30 외국인 코스피 1.62조 순매도·기관 7,420억·개인 6,270억 — <a href="https://view.asiae.co.kr/article/2026103016084854064">아시아경제</a>, <a href="https://www.etoday.co.kr/news/view/2642270">이투데이</a></span>
+  <span>근거5 10/30 SK하이닉스 −7.08%(141.8만)·삼성전자 −3.02%(22.5만) — <a href="https://www.seoul.co.kr/news/economy/securities/2026/10/30/20261030500055">서울경제</a>, <a href="https://www.financialpost.co.kr/news/articleView.html?idxno=283687">파이낸셜포스트</a></span>
+  <span>근거6 10/30 연기금 삼성전자·SK하이닉스 약 5,270억 순매수 — <a href="https://www.newspim.com/news/view/20261030001262">뉴스핌</a></span>
+  <span>근거7 간밤 뉴욕 나스닥 −2.86%·인텔 −29%·필라델피아 반도체 −7.2% — <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5PRlZwUXBMUGVHclo2UXBiWURuS0FaU2UtVzhaTGhoTi1DQnJOeHU3NW9qNlBGVm9NT2QzVEZHZ0xtUzJvaUJxZl9PQWV4RUJpZm1UanRESG1SZlU?oc=5">연합뉴스</a></span>
+  <span>근거8 원화 강세에 글로벌 IB 코스피 목표 하향·금리 부담 — <a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5CY213eHpOVmZ3NURLODdCaUlTczlCVWlqUEl4cFlidHoyZ0lRMzZGMHpIY1ZDN0ZLd0Q4UUl1RHJjVldZeHg5Q1pMVlBGc2ZMLWY3c3lzVThRVzI4bHE5SkxJSWw?oc=5">서울경제TV</a></span>
+  <span>근거9 코스피 10/29 −1.24% 5,937.66·코스닥 −2.34% 753.23 — <a href="https://www.news1.kr/finance/market-exr/6336637">뉴스1</a></span>
+  </div>
+  데이터 출처: 공개 마감 보도(뉴스1·이투데이·아시아경제·뉴스핌·서울경제·연합뉴스 등), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 토스증권 Open API(ETF 프록시·시세). 지수 일별 확정치는 각 매체 마감 보도, 매크로는 소스별 확정 시점(기준일)을 표기했다. 코스닥 10/23 종가(≈751.7)는 10/26 등락률 역산 추정치다. <strong>작성·발간: 2026-10-31 09:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다. <strong>정보용이며 투자 권유가 아님.</strong>
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
