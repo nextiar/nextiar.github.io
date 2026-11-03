@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 반도체 반등이 떠받친 혼조장, '메모리값'에 눌린 애플이 다우를 끌어내렸다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+.en-abstract { margin: 14px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 16px; }
+.en-abstract > summary { cursor: pointer; list-style: none; padding: 12px 0; font-size: 12.5px; font-weight: 650; color: var(--accent); }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract[open] > summary { border-bottom: 1px solid var(--grid); }
+.en-abstract .en-body { padding: 12px 0 14px; font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-04-us-close-morning-2026-11-04.html">
+<meta property="og:title" content="US 마감 시황 — 반도체 반등이 떠받친 혼조장, &#x27;메모리값&#x27;에 눌린 애플이 다우를 끌어내렸다">
+<meta property="og:description" content="간밤 뉴욕은 반도체 반등에 나스닥 +0.83% 상승했으나 애플이 메모리 원가 마진 압박으로 하락해 다우는 −0.38% — 애플을 누른 메모리값이 삼성·SK하이닉스 슈퍼사이클의 거울상.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-04-us-close-morning-2026-11-04.html">
+<meta name="description" content="간밤 뉴욕은 반도체 반등에 나스닥 +0.83% 상승했으나 애플이 메모리 원가 마진 압박으로 하락해 다우는 −0.38% — 애플을 누른 메모리값이 삼성·SK하이닉스 슈퍼사이클의 거울상.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-04-us-close-morning-2026-11-04.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 반도체 반등이 떠받친 혼조장, <span class="up">'메모리값' 부담</span>에 눌린 애플이 다우를 끌어내렸다</h1>
+  <p class="sub">2026년 11월 4일(수) 국내 장 시작 전 기준 · 전일 미 증시(11/3 화 마감) 반영. 간밤 뉴욕은 <strong>혼조</strong>였다 — 전일 흔들렸던 <strong>반도체가 일제히 반등</strong>하며 <strong>나스닥 <span class="up">+0.83%</span>·S&amp;P <span class="up">+0.37%</span></strong>를 끌어올렸지만, <strong>애플이 '메모리 원가'에 눌린 마진 가이던스로 하락</strong>해 <strong>다우는 <span class="down">−0.38%</span></strong>로 홀로 밀렸다. 오늘 국내 장의 관전 포인트는 <strong>애플 마진을 짓누른 그 '메모리 원가 급등'이 거꾸로 수혜가 되는 삼성전자·SK하이닉스</strong>의 AI 메모리 슈퍼사이클 내러티브가 이어지느냐다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-04 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-11-04 오전).</strong> 원/달러 <strong>1,341.00원</strong>(전일 1,337.20 → 원화 소폭 약세, 외국인 수급엔 부담) · 미 국채 10년물 <strong>≈4.95%</strong>(11/3 마감 보도, 강한 제조업 지표에 상승) · 한국 기준금리 3.00% · 달러지수 121.67. 간밤 미 위험선호는 반도체 중심으로 선별적으로 살아났다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip cool h2-chip">반도체 반등 · 애플이 다우 압박</span></h2>
+  <p class="lead">미 지수·금리는 공개 마감 보도, 환율·한국 지표는 한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (11/3 마감)</div><div class="val up">선별적 리스크 온</div><div class="delta">반도체 반등이 나스닥·S&amp;P 견인</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val up">25,372.01</div><div class="delta up">▲ +0.83% · 칩 반등 주도</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val up">7,568.93</div><div class="delta up">▲ +0.37% · 11개 중 7개 섹터 상승</div></div>
+    <div class="tile"><div class="lbl">다우 산업</div><div class="val down">51,787.04</div><div class="delta down">▼ −0.38% · 애플이 끌어내림</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>혼조</strong> — 전일 흔들렸던 <strong>반도체(엔비디아·AMD·브로드컴·마이크론·인텔)가 일제히 반등</strong>하며 나스닥 <span class="up">+0.83%</span>·S&amp;P <span class="up">+0.37%</span>를 끌어올렸고, S&amp;P 11개 섹터 중 7개가 상승(기술 주도, 소재·필수소비재 부진).</div>
+    <div class="tldr-item">② 다우(<span class="down">−0.38%</span>)를 홀로 누른 건 <strong>애플</strong>이었다 — 홀리데이 분기 매출 가이던스(<span class="up">+7~10%</span>)는 컨센을 웃돌았지만, <strong>'메모리 원가 상승'으로 총이익률 가이던스가 45~46%</strong>(컨센 46.3% 하회)로 낮아졌고 중국 매출이 기대를 밑돌며 <span class="down">2%대</span> 하락.</div>
+    <div class="tldr-item">③ 국내 직결 포인트: 애플 마진을 짓누른 <strong>바로 그 '메모리 원가 급등'</strong>이 <strong>삼성전자·SK하이닉스가 올라탄 AI 메모리 슈퍼사이클의 거울상</strong>이다 — 오늘 국내 장은 이 메모리 강세 내러티브가 지수를 떠받치느냐가 관전 포인트.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3-min read)</summary>
+    <div class="en-body">
+      Wall Street closed mixed on Tue Nov 3, 2026. The Nasdaq Composite rose <strong>+0.83%</strong> to 25,372.01 and the S&amp;P 500 gained <strong>+0.37%</strong> to 7,568.93, led by a broad semiconductor rebound (Nvidia, AMD, Broadcom, Micron, Intel), with 7 of 11 S&amp;P sectors higher; materials and consumer staples lagged. The Dow fell <strong>−0.38%</strong> to 51,787.04, dragged almost single-handedly by <strong>Apple (≈−2%)</strong>, whose holiday-quarter revenue guide (+7–10%) beat but whose gross-margin guide of 45–46% missed on rising <strong>memory costs</strong>, alongside softer-than-expected Greater China revenue. The 10-year Treasury yield firmed to ≈4.95% after an unusually strong October ISM Manufacturing print (55.5); September JOLTS showed little change in openings. The key read-through for Korea: the very memory-cost surge squeezing Apple is the flip side of the AI-memory supercycle lifting Samsung Electronics and SK hynix. <strong>This is informational and not investment advice. Figures follow the Korean original.</strong>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 반도체가 지수를 떠받치고, 애플이 다우를 눌렀다</h2>
+  <p class="lead">위험선호는 반도체를 중심으로 선별적으로 살아났다. S&amp;P 11개 섹터 중 <strong>7개가 상승</strong>(기술 주도)했고 소재·필수소비재가 부진했다. 지수 혼조의 축은 <strong>반도체 반등(나스닥 ↑) vs 애플 하락(다우 ↓)</strong>이었다. 미 10년물은 전일 강한 제조업 지표의 여운에 <span class="up">상승</span>했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">11/3 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">25,372.01</td><td class="num"><span class="up">+0.83%</span></td><td>+207.65p · 반도체 반등이 견인<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">11/3 미 증시 마감 · Yahoo Finance (2026-11-03)</span><span class="evd-sum">11/3 마감: 나스닥 <strong>+0.83%</strong> 25,372.01, S&amp;P500 <strong>+0.37%</strong> 7,568.93, 다우 <strong>−0.38%</strong> 51,787.04. 전일 흔들렸던 칩이 반등하며 기술주 주도, 애플은 실적 후 하락. 미 10년물 ≈4.95%(+6bp 안팎).</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,568.93</td><td class="num"><span class="up">+0.37%</span></td><td>+27.53p · 11개 중 7개 섹터 상승</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">51,787.04</td><td class="num"><span class="down">−0.38%</span></td><td>−196.94p · 애플이 끌어내림</td></tr>
+      <tr><td>미 10년물 (11/3 마감 보도)</td><td class="num"><span class="up">≈4.95%</span></td><td class="num">+6bp 안팎</td><td>강한 제조업 지표 여운에 상승</td></tr>
+      <tr><td>10월 ISM 제조업 PMI</td><td class="num"><span class="up">55.5</span></td><td class="num">예상 54.5</td><td>11/2 발표 · 4년여來 2위, 생산 59.0(2021.11 이후 최고)<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">10월 ISM 제조업 PMI · ISM 보도자료 (2026-11-02)</span><span class="evd-sum">10월 ISM 제조업 PMI <strong>55.5</strong>(9월 54.5, 컨센 54.5 상회), <strong>10개월 연속 확장</strong>. 생산지수 <strong>59.0</strong>(2021.11 이후 최고), 신규주문 55.5, 고용 52.4. 제조업 호조는 금리 상방 압력으로 작용.</span><a href="https://www.morningstar.com/news/pr-newswire/20261102la86073/manufacturing-pmi-at-555-october-2026-ism-manufacturing-pmi-report" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>9월 JOLTS 구인건수</td><td class="num">거의 변화 없음</td><td class="num">—</td><td>11/3 발표 · "저고용·저해고" 기조 지속</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 지수 혼조의 축은 명확했다 — <strong>반도체 반등이 나스닥·S&amp;P를 끌어올리고, 애플이 다우를 눌렀다</strong>. 전일(11/2) 출렁였던 반도체가 <strong>엔비디아·AMD·브로드컴·마이크론·인텔을 중심으로 일제히 반등</strong>하며 기술 섹터를 1%대로 밀어올렸고, S&amp;P 11개 섹터 중 7개가 상승했다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">반도체 반등 · StockTitan (2026-11-03)</span><span class="evd-sum">11/3 장중 기술 섹터 <strong>+1.4%</strong>로 11개 섹터 중 선두. <strong>AMD·브로드컴·마이크론·엔비디아·인텔이 각각 약 3~4%</strong> 반등(장중 보도치). 반면 소재·필수소비재 등 6개 섹터는 하락. 애플은 <strong>−2.63%</strong>로 약 1,300억 달러 시총 증발.</span><a href="https://www.stocktitan.net/articles/stock-market-today-live-november-3-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>매크로 배경.</strong> 금리가 걸림돌이었다. 전일(11/2) 발표된 <strong>10월 ISM 제조업 PMI가 55.5</strong>로 예상(54.5)을 크게 웃돌며 4년여 만의 2위, 생산지수는 59.0으로 2021년 11월 이후 최고를 찍었다. 제조업 경기가 예상보다 뜨겁다는 신호에 <strong>미 10년물이 ≈4.95%로 상승</strong>해 금리 부담이 되살아났다. 다만 11/3 발표된 <strong>9월 JOLTS 구인건수는 거의 변화가 없어</strong> "저고용·저해고" 노동시장 기조가 이어졌다. 또한 이날은 <strong>미 중간선거일</strong>로, 결과 대기 심리가 상단을 제한했다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>국내 직결 — 반도체 반등을 '메모리·로직·장비'로 갈라 본다</h2>
+  <p class="lead">간밤 반도체는 '한 덩어리 반등'으로 보였지만, 국내와 직결되는 축은 하위 섹터마다 성격이 다르다. <strong>메모리·로직·장비</strong>로 갈라 보고, 우리 증시(삼성전자·SK하이닉스)와 연결한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>하위 섹터</th><th>간밤 미국 (11/3)</th><th>드라이버</th><th>국내 직결 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>메모리</strong> (DRAM·HBM)</td><td><span class="up">반등</span> · 마이크론</td><td>AI 메모리 공급부족 슈퍼사이클 — 품절·HBM 가격 급등</td><td><strong>삼성전자·SK하이닉스 직격 수혜 축</strong> — read-through 가장 강함<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">AI 메모리 슈퍼사이클 · UPI (2026-11-02)</span><span class="evd-sum">삼성·SK하이닉스·마이크론이 AI 메모리 증설 가속. 삼성 HBM 점유율 2분기 <strong>약 33%</strong>(1분기 21%), HBM4 매출 3분기 3배 전망. 삼성 DS부문 올해 capex <strong>76.8조원</strong>(+61.7%). 3사 모두 2027~2028년 물량 '품절' 보도, HBM 가격 최대 +150%.</span><a href="https://www.upi.com/Top_News/World-News/2026/11/02/samsung-sk-hynix-micron-ai-chips/9561793657408/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>로직·가속기</strong></td><td><span class="up">반등</span> · 엔비디아·AMD·브로드컴</td><td>AI 가속기·GPU 수요 지속, 전일 낙폭 되돌림</td><td>국내 AI 밸류체인·팹리스 심리에 우호적(로직 쪽)</td></tr>
+      <tr><td><strong>장비</strong></td><td><span class="up">반등</span> · 인텔 등</td><td>메모리 슈퍼사이클發 대규모 capex 기대</td><td>삼성 76.8조 capex는 국내 소재·부품·장비 밸류체인 수혜 방향</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>장중 공개 보도치(약 3~4% 반등)</strong>로, 매체별 확정 종가 수치는 엇갈려 <strong>정확한 종가 %는 표기하지 않았다</strong>(지어내지 않음 — 토스 실시간 시세로 교차확인 권장). 필라델피아 반도체지수(SOX)의 정확한 종가도 매체 간 상충해 레벨 수치는 생략했다. 반도체가 '반등'했다는 <strong>방향</strong>은 다수 매체가 일치했다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가 — 애플 마진과 메모리의 '거울상'.</strong> 간밤 가장 상징적인 장면은 <strong>애플의 홀리데이 분기 총이익률 가이던스(45~46%)가 컨센(46.3%)을 밑돈 이유가 '메모리 원가 상승'</strong>이었다는 점이다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">애플 FY4Q26 실적·가이던스 · indmoney / Yahoo Finance (2026-11-02~03)</span><span class="evd-sum">애플 FY4Q26 매출 <strong>1,145억 달러(+12%)</strong>·EPS 2.10달러로 서프라이즈, 그러나 12월 분기 <strong>총이익률 가이던스 45~46%</strong>로 컨센(46.3%) 하회 — <strong>메모리 원가 상승</strong>이 원인으로 지목. 중화권 매출 <strong>175.4억 달러(+21%)</strong>는 기대(185.8억)를 하회. 12월 매출 가이던스 <strong>+7~10%</strong>는 컨센(+6.1%) 상회. 주가는 실적 후 하락.</span><a href="https://www.indmoney.com/blog/us-stocks/apple-stock-q4-earnings-analysis-why-aapl-fell" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 즉 글로벌 최대 세트 업체의 마진을 깎아먹은 <strong>메모리값 급등</strong>은, 반대편에서 보면 <strong>삼성전자·SK하이닉스가 올라탄 AI 메모리 슈퍼사이클</strong>의 직접 증거다. 삼성은 2분기 HBM 점유율을 약 33%까지 끌어올렸고, 3사 모두 2027~2028년 물량이 사실상 '품절' 상태로 HBM 가격이 가파르게 오르고 있다. "반도체를 한 덩어리로 보지 말라"는 원칙대로, <strong>세트(수요자) vs 메모리(공급자)</strong>의 손익이 갈리는 국면이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·환율·국내 지표</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·매크로 브리핑(미 금리·달러지수·미 ETF) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,341.00원</td><td class="num">1,337.20원</td><td>11/4 · ECOS <span class="up">(원화 약세 3.8원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 10년물 (11/3 마감 보도)</strong></td><td class="num"><span class="up">≈4.95%</span></td><td class="num">+6bp 안팎</td><td>11/3 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td>미 10년물 (브리핑 스냅샷)</td><td class="num">4.94%</td><td class="num">—</td><td>11/4 · 매크로 브리핑</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">121.67</td><td class="num">—</td><td>11/4 · 매크로 브리핑</td></tr>
+      <tr><td>KOSPI (직전 거래일 확정)</td><td class="num">5,859.08</td><td class="num"><span class="up">+2.24%</span></td><td>11/2 확정 · ECOS/KRX</td></tr>
+      <tr><td>SPY (토스, 보조 프록시)</td><td class="num">754.35$</td><td class="num"><span class="up">+0.30%</span></td><td>11/4 조회 · 현물 지수와 세션 차 가능</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 미 10년물은 표에 <strong>두 값</strong>으로 보인다 — 11/3 마감 보도치(≈4.95%, 강한 ISM 여운에 상승)와 매크로 브리핑 스냅샷(4.94%). 시황 해석엔 간밤 보도치를, 추세엔 브리핑 스냅샷을 쓴다(FRED 일일 확정은 하루 시차). 환율은 원화가 소폭 <strong>약세(1,337.2→1,341.0)</strong>로, 외국인 수급엔 다소 부담 방향이다. KOSPI는 직전 거래일(11/2) 확정치 기준이며, 오늘은 간밤 반도체 반등을 반영해 개장한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(11/4) 국내 장 시사점 <span class="chip cool h2-chip">메모리 내러티브 점검</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>반도체 반등(나스닥 <span class="up">+0.83%</span>)</strong>으로 심리가 살아났고, 특히 <strong>애플 마진을 짓누른 '메모리 원가 급등'이 삼성전자·SK하이닉스엔 수혜의 거울상</strong>이어서, 오늘 국내 장은 <strong>메모리 슈퍼사이클 내러티브의 지속</strong>이 지수를 떠받치느냐가 핵심이다.</p>
+      <p><strong>맥락.</strong> 최근 한국 증시는 AI 메모리 슈퍼사이클을 등에 업고 KOSPI가 직전 거래일(11/2) <span class="up">+2.24%</span>로 5,800선 중반까지 올라선 강세 국면이다. 간밤 미국에서 ① 반도체가 일제히 반등하고 ② 애플 실적이 '메모리 원가 상승'을 마진 하향의 이유로 지목한 것은, 메모리 공급자(삼성·하이닉스)에게는 <strong>수요·가격 양쪽을 확인해 주는 신호</strong>다. 다만 강한 ISM에 미 10년물이 ≈4.95%로 올라 금리 부담이 되살아났고, 원화가 소폭 약세로 돌아선 점은 외국인 수급에 역풍이 될 수 있다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 미 반도체 반등과 '메모리 원가 강세' 서사를 얼마나 반영하는지(개장 갭·초반 거래대금), ② 로직·장비(엔비디아·브로드컴·장비주) 강세가 국내 AI 밸류체인·소부장으로 선별 확산되는지, ③ 미 10년물 ≈4.95% 상승과 원화 약세가 <strong>외국인 순매수 흐름</strong>을 꺾는지, ④ 전일 치러진 <strong>미 중간선거</strong> 결과가 위험선호에 주는 방향성.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주의 정확한 종가 등락은 매체별로 엇갈려 방향만 표기했으며, 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 11/3 미 증시 마감(나스닥 +0.83%·S&amp;P +0.37%·다우 −0.38%)·10년물 ≈4.95% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html">Yahoo Finance</a></span>
+  <span>근거2 반도체 반등(기술 +1.4%·AMD·브로드컴·마이크론·엔비디아·인텔 약 3~4%)·애플 −2.63% — <a href="https://www.stocktitan.net/articles/stock-market-today-live-november-3-2026">StockTitan</a></span>
+  <span>근거3 애플 FY4Q26 실적·12월 분기 마진 가이던스 45~46%(메모리 원가)·중화권 매출 하회 — <a href="https://www.indmoney.com/blog/us-stocks/apple-stock-q4-earnings-analysis-why-aapl-fell">indmoney</a>, <a href="https://finance.yahoo.com/markets/stocks/articles/apple-q4-earnings-beat-estimates-150000550.html">Yahoo Finance</a></span>
+  <span>근거4 10월 ISM 제조업 PMI 55.5(생산 59.0, 2021.11 이후 최고) — <a href="https://www.morningstar.com/news/pr-newswire/20261102la86073/manufacturing-pmi-at-555-october-2026-ism-manufacturing-pmi-report">ISM/Morningstar</a></span>
+  <span>근거5 AI 메모리 슈퍼사이클(삼성 HBM 33%·DS capex 76.8조·3사 품절·HBM 가격 +150%) — <a href="https://www.upi.com/Top_News/World-News/2026/11/02/samsung-sk-hynix-micron-ai-chips/9561793657408/">UPI</a></span>
+  </div>
+  데이터 출처: 매크로 브리핑(토스증권 Open API·미 ETF·미 10년물·달러지수), 미 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), ISM 보도자료. 2026-11-04 오전 조회 기준(전일 11/3 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-04 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
