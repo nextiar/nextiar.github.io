@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 블루웨이브 쇼크, 반도체發 폭락에 코스피 −5.28%·양대 사이드카</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin: 16px 0 0; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 8px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-05-kr-close-2026-11-05.html">
+<meta property="og:title" content="코스피 마감 시황 — 블루웨이브 쇼크, 반도체發 폭락에 코스피 −5.28%·양대 사이드카">
+<meta property="og:description" content="미 중간선거 블루웨이브發 AI 데이터센터 규제 공포가 반도체를 직격, 코스피 −5.28%(5,383.80)·코스닥 −5.11%(678.41) 동반 폭락하고 양대 시장 매도 사이드카가 발동됐다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-05-kr-close-2026-11-05.html">
+<meta name="description" content="미 중간선거 블루웨이브發 AI 데이터센터 규제 공포가 반도체를 직격, 코스피 −5.28%(5,383.80)·코스닥 −5.11%(678.41) 동반 폭락하고 양대 시장 매도 사이드카가 발동됐다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-05-kr-close-2026-11-05.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 마감 시황 심층 (KR Market Close)</div>
+  <h1>코스피 마감 시황 — 블루웨이브 쇼크, 반도체發 폭락에 코스피 <span class="down">−5.28%</span>·양대 <span class="down">사이드카</span></h1>
+  <p class="sub">2026년 11월 5일(목) 국내 장 마감 기준. 코스피는 전일 대비 <strong><span class="down">−5.28%</span> 내린 5,383.80</strong>, 코스닥은 <strong><span class="down">−5.11%</span> 내린 678.41</strong>로 <strong>동반 폭락</strong>했다. 미국 중간선거(11/3)에서 민주당이 상·하원을 장악한 <strong>'블루웨이브'</strong> 이후 AI 데이터센터 규제 우려가 번지며 간밤 필라델피아 반도체지수가 급락했고, 그 충격이 <strong>삼성전자·SK하이닉스 등 반도체 대형주 급락</strong>으로 전이됐다. 외국인이 하루 <strong>3조원 넘게 순매도</strong>하며 양대 시장에 <strong>매도 사이드카</strong>가 동반 발동됐다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-05 16:00 KST · 평일 마감 자동 발간 슬롯</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,341.2원</strong>(11-04 ECOS 확정 · 당일 리스크오프에 원화 약세 압력) · 한국 기준금리 <strong>3.00%</strong>(11-02) · 미 국채 10년물 <strong>4.91%</strong>(11-02 FRED) · 달러지수 121.67(10-30). 간밤 미 증시는 지수 레벨은 소폭 하락(SPY −0.18%)에 그쳤으나 <strong>반도체 섹터가 홀로 3% 넘게 급락</strong>한 것이 국내 장을 짓눌렀다. <em>데이터 기준일은 각 소스별 확정 시점.</em></div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">리스크 오프 · 반도체 폭락</span></h2>
+  <p class="lead">당일 지수 종가는 공개 마감 보도(서울파이낸스·위키트리 등), 지수 프록시는 토스증권 Open API(KODEX 200 ETF)로 교차확인했다. KRX Open API 확정치는 익일(T+1) 반영이라 당일 지수는 보도·프록시 기준이다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">KOSPI (11/5 종가)</div><div class="val down">5,383.80</div><div class="delta down">▼ −5.28% · −300.00p<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 마감 · 서울파이낸스 (2026-11-05)</span><span class="evd-sum">코스피 <strong>300.00p(−5.28%) 내린 5,383.80</strong>에 마감. 외국인 대규모 순매도로 장중 5,400선까지 밀렸고 오전 10시16분 <strong>매도 사이드카</strong> 발동.</span><a href="https://www.seoulfn.com/news/articleView.html?idxno=642028" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">KOSDAQ (11/5 종가)</div><div class="val down">678.41</div><div class="delta down">▼ −5.11% · −36.54p<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">코스닥 마감 · 위키트리/뉴스핌 (2026-11-05)</span><span class="evd-sum">코스닥 <strong>36.54p(−5.11%) 내린 678.41</strong>. 오후 2시27분경 <strong>매도 사이드카</strong> 발동 — 양대 시장 동반 발동은 지난 10/15 이후 처음.</span><a href="https://www.wikitree.co.kr/articles/1172180" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div></div>
+    <div class="tile"><div class="lbl">수급 — 외국인 (KOSPI)</div><div class="val down">−3.4조</div><div class="delta">개인 +2.27조·기관 +0.85조 (15:35 잠정)</div></div>
+    <div class="tile"><div class="lbl">간밤 美 반도체</div><div class="val down">필반 −3%+</div><div class="delta down">블루웨이브發 데이터센터 규제 공포</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피 <strong><span class="down">−5.28%</span>(5,383.80)</strong>·코스닥 <strong><span class="down">−5.11%</span>(678.41)</strong> 동반 폭락. 양대 시장 모두 장중 <strong>매도 사이드카</strong>가 발동된, 10/15 이후 최대 충격의 하루였다.</div>
+    <div class="tldr-item">② 방아쇠는 <strong>미 중간선거 블루웨이브</strong> — 민주당이 상·하원을 장악하자 <strong>AI 데이터센터 규제 강화</strong> 우려가 번졌고, 간밤 필라델피아 반도체지수가 <span class="down">−3%+</span> 급락하며 <strong>삼성전자·SK하이닉스</strong>로 그대로 전이됐다.</div>
+    <div class="tldr-item">③ 수급은 <strong>외국인 홀로 3조원 넘게 순매도</strong>, 개인·기관은 받았다. 반도체 단일 섹터 쏠림이 지수 전체를 끌어내린 전형적 패닉 세션이었다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>KOSPI −5.28% to 5,383.80; KOSDAQ −5.11% to 678.41.</strong> Both boards triggered sell-side circuit breakers (sidecars) intraday — the first simultaneous trigger since Oct 15 — in a classic risk-off, chip-led panic session.</p>
+      <p>The trigger was the US midterm "blue wave": a Democratic sweep of both chambers stoked fears of tighter AI data-center regulation, sending the Philadelphia Semiconductor Index down more than 3% overnight and dragging Samsung Electronics and SK hynix sharply lower.</p>
+      <p>Foreign investors sold over KRW 3tn on the KOSPI (preliminary, ~15:35), while retail (≈+KRW 2.27tn) and institutions (≈+KRW 0.85tn) absorbed the selling. A single-sector shock in semiconductors pulled the whole index down.</p>
+      <p>Watch next session: whether overnight US chips stabilize, whether foreign selling abates, and how the won behaves under risk-off pressure.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 반도체가 지수 전체를 끌어내렸다</h2>
+  <p class="lead">지수 종가는 공개 마감 보도, 당일 지수 프록시는 토스 KODEX 200 ETF(069500) 종가로 교차확인. 반도체·전기전자가 낙폭을 주도했고, 통신·일부 방어주만 상대적으로 선방했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 프록시</th><th class="num">11/5 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>KOSPI</strong></td><td class="num">5,383.80</td><td class="num"><span class="down">−5.28%</span></td><td>−300.00p · 매도 사이드카(10:16)</td></tr>
+      <tr><td><strong>KOSDAQ</strong></td><td class="num">678.41</td><td class="num"><span class="down">−5.11%</span></td><td>−36.54p · 매도 사이드카(14:27경)</td></tr>
+      <tr><td>KODEX 200 (프록시)</td><td class="num">84,610</td><td class="num"><span class="down">−5.69%</span></td><td>전일 89,715 · 토스 Open API(당일 ETF 종가)</td></tr>
+      <tr><td>전일 KOSPI (참고)</td><td class="num">5,683.80</td><td class="num"><span class="up">+0.62%</span></td><td>11-04 KRX 확정치</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>구조.</strong> 이날 하락은 <strong>반도체·전기전자 단일 테마</strong>가 주도했다. 거래대금 상위는 삼성전자·SK하이닉스·삼성전기·삼성SDI 등 대형 전자주가 싹쓸이했고, 모두 큰 폭으로 내렸다. 코스피 시가총액 1·2위가 동시에 급락하니 지수 하방이 증폭됐다. 반면 KT&G(<span class="up">+1.71%</span>) 같은 방어주는 소폭 상승하며 상대적 피난처 역할을 했다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">거래대금 상위 · 토스 Open API 시장 랭킹 (2026-11-05 마감)</span><span class="evd-sum">거래대금 1~6위가 <strong>삼성전자·SK하이닉스·삼성전기·KODEX 200·삼성물산·삼성SDI</strong>로 전자·반도체 쏠림. 7위 KT&G만 <strong>+1.7%</strong> 상승, 나머지는 −5~−13%대 하락. 전기장비·전자장비 섹터가 급락을 주도.</span><span class="evd-nolink">토스증권 Open API market_rankings(MARKET_TRADING_AMOUNT, KR) 조회값 — 공개 링크 없음</span></span></span></p>
+      <p><strong>변동성.</strong> 급락 종목 상위는 2배 레버리지 반도체·코스닥 ETN들이 하루 <span class="down">−20%대</span>로 무너졌고, 급등 상위는 소형·우선주가 상한가에 몰렸다 — 패닉 국면 특유의 쏠림 신호다. 매체별로 등락률이 엇갈리는 개별 소형주 수치는 본문에 싣지 않았다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 외국인 3조+ 순매도, 반도체 대형주 직격</h2>
+  <p class="lead">투자자별 순매수는 <strong>오후 3시35분 잠정치</strong>(공개 보도)다. KRX Open API 는 투자자별 수급을 제공하지 않아 확정치는 익일 반영되며, 보완 신호로 DART 5%룰 지분 공시 변동을 함께 본다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자</th><th class="num">KOSPI 순매수(잠정)</th><th>방향</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="down">−3조4,242억</span></td><td>대규모 순매도 — 지수 하락 견인<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">투자자별 수급 · 싱글리스트/파이낸셜뉴스 (2026-11-05 15:35)</span><span class="evd-sum">오후 3시35분 기준 유가증권시장에서 외국인 <strong>3조4,242억원 순매도</strong>, 개인 <strong>2조2,721억원 순매수</strong>, 기관 <strong>8,456억원 순매수</strong>. 잠정치로 마감 확정과 차이가 날 수 있다.</span><a href="https://www.slist.kr/news/articleView.html?idxno=779324" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="up">+2조2,721억</span></td><td>순매수 — 저가 매수 대응</td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="up">+8,456억</span></td><td>순매수 — 외국인 매물 일부 흡수</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>특징주 — 반도체·전기전자 대형주</h3>
+    <div class="prose">
+      <p>외국인 순매도 상위에 <strong>SK하이닉스·삼성전자·삼성전기</strong>가 나란히 올랐다. 당일 등락률은 토스 실시간 랭킹(마감 직전)과 언론 종가 보도 사이에 소폭 차이가 있어 <strong>범위로 표기</strong>한다 — 지어낸 단일 수치를 쓰지 않는다.</p>
+    </div>
+    <div class="tbl-scroll" style="margin-top:6px">
+    <table>
+      <thead><tr><th>종목</th><th class="num">당일 등락(범위)</th><th>메모</th></tr></thead>
+      <tbody>
+        <tr><td><strong>삼성전자</strong> (005930)</td><td class="num"><span class="down">−6.7% ~ −7.6%</span></td><td>20만원대 초반 · 토스 랭킹 −6.65%(203,500원)/언론 종가 −7.57%(201,500원)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">반도체주 낙폭 · 서울신문/디지털데일리 (2026-11-05)</span><span class="evd-sum">간밤 미 반도체 급락 여파로 <strong>삼성전자 약 −7%대·SK하이닉스 약 −9%대</strong> 급락 마감. 삼성전기는 15% 이상, SK스퀘어는 약 10% 하락. 토스 실시간 랭킹과 언론 종가는 측정 시점 차로 소폭 다르다.</span><a href="https://www.ddaily.co.kr/page/view/2026110510250093676" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+        <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num"><span class="down">−9.0% ~ −9.5%</span></td><td>126만~127만원 · 토스 −9.02%/언론 −9.46%</td></tr>
+        <tr><td><strong>삼성전기</strong> (009150)</td><td class="num"><span class="down">−13% ~ −15%</span></td><td>전장·부품 동반 급락 · 낙폭 최상위권</td></tr>
+        <tr><td>KT&amp;G (033780)</td><td class="num"><span class="up">+1.7%</span></td><td>방어주 상대 선방(토스 랭킹)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="prose" style="margin-top:10px">
+      <p><strong>대주주 지분 신호(DART 5%룰).</strong> 삼성전자 최대주주 삼성물산의 지분율은 <strong>19.69%로 변동 없음</strong>(최근 5%룰 공시 10-30)이라, 스마트머니 차원의 구조적 매집·처분 신호는 관측되지 않았다 — 이번 급락은 지분 변동이 아니라 <strong>외국인 패시브·투심 이탈</strong> 성격에 가깝다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">삼성전자 대주주 지분 · DART 5%룰 (2026-10-30)</span><span class="evd-sum">삼성물산 지분율 <strong>19.69%</strong>(직전 대비 0%p) — 5%룰 지분 공시 기준. 최근 수개월 변화 없음. KRX 수급 미제공분을 보완하는 신호.</span><a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030000716" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 간밤 미국의 잔영과 금리·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·토스 Open API(미 ETF) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>해 스테일 여부가 보이도록 한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,341.2원</td><td class="num">1,341.0원</td><td>11-04 · ECOS(당일 리스크오프에 약세 압력)</td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>11-02 · ECOS</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">4.91%</td><td class="num">—</td><td>11-02 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">121.67</td><td class="num">—</td><td>10-30 · FRED DTWEXBGS</td></tr>
+      <tr><td>SPY (S&amp;P500 ETF)</td><td class="num">765.45$</td><td class="num"><span class="down">−0.18%</span></td><td>11-04 · 토스 Open API</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>간밤 미국.</strong> 핵심은 <strong>지수와 섹터의 괴리</strong>였다. 11/3 중간선거에서 민주당이 상·하원을 모두 장악하는 <strong>'블루웨이브(블루 쓰나미)'</strong>가 확정되자,<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 중간선거 결과 · YTN/파이낸셜뉴스 (2026-11-04)</span><span class="evd-sum">민주당이 중간선거에서 상·하원을 모두 장악(CNN 집계 상원 54-43, 하원 231-139 안팎). 간발의 '블루 웨이브'를 넘어 '블루 쓰나미'로 평가. 텍사스·조지아 등 데이터센터 밀집 지역에서도 민주당이 승리.</span><a href="https://www.fnnews.com/news/202611041528597206" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 텍사스·오하이오 등 데이터센터 밀집 지역의 <strong>전력·용수·환경 규제 강화</strong> 전망이 부상했다. 간밤 뉴욕에서 지수는 소폭 하락(SPY <span class="down">−0.18%</span>)에 그쳤지만, <strong>필라델피아 반도체지수가 3% 넘게 급락</strong>하고 코어위브(<span class="down">−9.9%</span>)·일부 AI 인프라주가 폭락하며 섹터 공포가 집중됐다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">AI 인프라 규제 공포·반도체 급락 · 뉴스1/핀포인트 (2026-11-04)</span><span class="evd-sum">텍사스 데이터센터 신규 건설 중단 우려로 <strong>필라델피아 반도체지수 −3%+</strong>. 엔비디아 약세 전환, 코어위브 <strong>−9.9%</strong> 등 AI 인프라주 급락. 신규 데이터센터 인허가 잠정 중단·지연 우려가 방아쇠.</span><a href="https://www.news1.kr/world/usa-canada/6343525" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>국내 전이.</strong> 이 섹터 집중 충격이 국내 시총 1·2위 <strong>삼성전자·SK하이닉스</strong>로 그대로 옮겨붙었다. "지수는 버텨도 반도체는 무너진" 간밤 미국의 구도가, 반도체 비중이 큰 한국 지수에서는 <strong>지수 전체의 폭락</strong>으로 증폭된 셈이다. 금리·환율 자체는 급변이 없었고(10년물 4.91%·원달러 1,341원대), 이번 하락은 <strong>매크로가 아니라 AI·반도체 밸류·규제 리스크</strong>가 주도한 성격이 뚜렷하다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(다음 거래일) 관전 포인트 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 블루웨이브發 AI 데이터센터 규제 공포가 반도체를 직격한 하루였던 만큼, 다음 거래일의 방향은 <strong>간밤 미 반도체가 추가 하락하는지 안정되는지</strong>와 <strong>외국인 순매도가 진정되는지</strong>에 달렸다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>간밤 뉴욕 반도체(필라델피아 반도체지수·엔비디아·마이크론)</strong> 추가 낙폭 여부 — 데이터센터 규제 우려의 구체화 정도가 관건. ② <strong>외국인 순매수 전환</strong> 신호(개장 초반 거래대금·방향) — 오늘 −3조원대 매도가 일회성 패닉인지 추세인지. ③ <strong>삼성전자·SK하이닉스의 기술적 지지선</strong> 테스트와 반발 매수 강도. ④ <strong>원/달러</strong>가 리스크오프 속 추가 약세로 가는지(외국인 추가 이탈 압력) — 1,340원대 상단 돌파 여부. ⑤ 양대 시장 <strong>사이드카 재발동</strong> 가능성 등 장중 변동성 관리.</p>
+      <p><strong>맥락.</strong> 이번 급락은 지분 변동이나 금리 급변이 아니라 <strong>정책 리스크(AI 규제)에 따른 섹터 심리 충격</strong>이 본질이다. 규제 우려가 구체적 입법·행정으로 이어질지는 시간이 필요한 사안이라, 단기적으로는 <strong>미 반도체 변동성에 연동된 높은 진폭</strong>이 이어질 수 있다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 시황은 11/5 국내 장 마감 기준으로 당일 지수·수급·내러티브를 정리한 것이다. 투자자별 순매수는 15:35 잠정치이며 KRX 확정치는 익일 반영된다. 개별 종목 등락은 토스 실시간 랭킹과 공개 마감 보도를 교차확인했고, 방향이 엇갈리는 수치는 범위로 표기하거나 제외했다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 −5.28%(5,383.80)·매도 사이드카 — <a href="https://www.seoulfn.com/news/articleView.html?idxno=642028">서울파이낸스</a>, <a href="https://www.sentv.co.kr/article/view/sentv202611050202">서울경제TV</a></span>
+  <span>근거2 미 중간선거 블루웨이브(민주당 상·하원 장악) — <a href="https://www.fnnews.com/news/202611041528597206">파이낸셜뉴스</a>, <a href="https://www.ytn.co.kr/_ln/0104_202611042010032224">YTN</a></span>
+  <span>근거3 AI 인프라 규제 공포·필라델피아 반도체 −3%+·코어위브 −9.9% — <a href="https://www.news1.kr/world/usa-canada/6343525">뉴스1</a>, <a href="https://www.pinpointnews.co.kr/news/articleView.html?idxno=501377">핀포인트뉴스</a></span>
+  <span>근거4 외국인 −3조4,242억·개인 +2조2,721억·기관 +8,456억(15:35 잠정) — <a href="https://www.slist.kr/news/articleView.html?idxno=779324">싱글리스트</a>, <a href="https://www.fnnews.com/news/202611051448316164">파이낸셜뉴스</a></span>
+  <span>근거5 삼성전자 −7%대·SK하이닉스 −9%대·삼성전기 −15%대 급락 — <a href="https://www.ddaily.co.kr/page/view/2026110510250093676">디지털데일리</a>, <a href="https://www.seoul.co.kr/news/economy/securities/2026/11/05/20261105500015">서울신문</a></span>
+  <span>근거6 코스닥 −5.11%(678.41)·사이드카 — <a href="https://www.wikitree.co.kr/articles/1172180">위키트리</a>, <a href="https://www.newspim.com/news/view/20261105001088">뉴스핌</a></span>
+  <span>근거7 거래대금 상위 전자·반도체 쏠림 — 토스증권 Open API market_rankings(공개 링크 없음)</span>
+  <span>근거8 삼성전자 대주주 삼성물산 지분율 19.69%(변동 없음) — <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030000716">DART</a></span>
+  </div>
+  데이터 출처: 공개 마감 보도(코스피·코스닥 종가·수급·특징주), 토스증권 Open API(미 ETF·당일 지수 프록시·거래대금 랭킹), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), DART(대주주 지분 공시). 2026-11-05 국내 장 마감 기준. 지수 확정치(KRX)는 익일 반영되며 당일 지수는 보도·프록시 기준, 투자자별 수급은 15:35 잠정치다. 각 지표의 데이터 기준일을 표기했다. <strong>작성·발간: 2026-11-05 16:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
