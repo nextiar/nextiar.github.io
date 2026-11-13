@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 엔비디아 CEO 사임이 AI칩 랠리를 되돌렸다, 그런데 진짜 복병은 PPI 6.5%·국채 5% 돌파</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card);
+  margin: 16px 0 0; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none;
+  display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-14-us-close-morning-2026-11-14.html">
+<meta property="og:title" content="US 마감 시황 — 엔비디아 CEO 사임이 AI칩 랠리를 되돌렸다, 그런데 진짜 복병은 PPI 6.5%·국채 5% 돌파">
+<meta property="og:description" content="엔비디아 CEO 사임발 AI칩 되돌림으로 지수 하락, 그러나 10월 PPI 연 6.5퍼센트·미 국채 5퍼센트 돌파가 더 큰 복병 — 오늘 국내 메모리 전이가 관건">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-14-us-close-morning-2026-11-14.html">
+<meta name="description" content="엔비디아 CEO 사임발 AI칩 되돌림으로 지수 하락, 그러나 10월 PPI 연 6.5퍼센트·미 국채 5퍼센트 돌파가 더 큰 복병 — 오늘 국내 메모리 전이가 관건">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-14-us-close-morning-2026-11-14.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 엔비디아 CEO 사임이 AI칩 랠리를 되돌렸다, 그런데 진짜 복병은 <span class="down">PPI 6.5%·국채 5% 돌파</span></h1>
+  <p class="sub">2026년 11월 14일(토) 국내 장 전 기준 · 전일 미 증시(11/13 금 마감) 반영. 간밤 뉴욕은 <strong>다우만 <span class="up">강보합</span>, S&amp;P·나스닥은 <span class="down">하락</span></strong>으로 엇갈렸다 — <strong>엔비디아 CEO 젠슨 황의 전격 사임</strong>이 주중 달아올랐던 AI·반도체 랠리를 되돌리며 <strong>AMD <span class="down">약 −9%</span>·브로드컴 <span class="down">−6%</span></strong> 등 칩주가 무너졌다. 그러나 지수 이면의 더 큰 변수는 <strong>10월 PPI 연 <span class="down">+6.5%</span>(약 4년 만의 최고)</strong>와 이에 따른 <strong>미 10년물의 5% 돌파</strong>, 그리고 <strong>12월 Fed 인상 베팅</strong>이다. 오늘 국내 장은 이 <strong>AI칩 되돌림과 금리 급등이 삼성전자·SK하이닉스 메모리 밸류체인으로 어떻게 전이되느냐</strong>가 관건이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-14 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-11-14 오전).</strong> 원/달러 <strong>1,332.40원</strong>(전일 1,336.70 → 원화 강세 4.3원, 수급엔 소폭 우호) · 미 국채 10년물 <strong>4.98%</strong>(FRED 확정) / 11/13 마감 보도 <strong>≈5.13%</strong>(장중 5.17% 터치) · 달러지수 121.88 · 한국 기준금리 3.00% · SPY 754.37$(−0.36%). 간밤 위험선호는 <strong>금리 급등 + 엔비디아發 AI 불확실성</strong>에 눌렸다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · 금리·AI 이중 압력</span></h2>
+  <p class="lead">미 지수·종목은 공개 마감 보도 기준, 금리·환율은 미 FRED·한국은행 ECOS·마감 보도 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (11/13 금 마감)</div><div class="val down">리스크 오프</div><div class="delta">AI칩 되돌림 + 국채 5% 돌파</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,561.67</div><div class="delta down">▼ −0.40% · −30.73p</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">25,136.27</div><div class="delta down">▼ −0.91% · 칩주 주도 하락</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">메모리 전이</div><div class="delta">엔비디아·마이크론發 → 삼성·하이닉스 심리</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>다우 <span class="up">+0.10%</span>·S&amp;P <span class="down">−0.40%</span>·나스닥 <span class="down">−0.91%</span></strong>로 엇갈렸다 — <strong>엔비디아 CEO 젠슨 황의 사임</strong>으로 주중 달아올랐던 AI·반도체 쪽이 급격히 식으며 지수를 눌렀다. 다만 세 지수 모두 <strong>주간 단위로는 플러스</strong>를 지켰다.</div>
+    <div class="tldr-item">② 칩주 내부는 <strong>로직·GPU</strong>가 직격탄이었다 — <strong>AMD <span class="down">약 −9%</span>(장중 −10%대)·브로드컴 <span class="down">−6%</span>·인텔 <span class="down">−5%</span>·엔비디아 <span class="down">−4%</span></strong>. 메모리(마이크론 <span class="down">−3.96%</span>)는 상대적으로 덜 빠졌지만 같은 방향이었고, 반도체 ETF(SMH)는 <span class="down">−5.3%</span>.</div>
+    <div class="tldr-item">③ 그러나 더 큰 매크로 복병은 <strong>10월 PPI 연 <span class="down">+6.5%</span>(약 4년 최고)</strong>다 — 10년물이 <strong>5%를 뚫고</strong> 12월 Fed <strong>인상</strong> 베팅(100% 반영)이 굳어지면서, 고밸류 성장·반도체에 구조적 할인 압력으로 작용한다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>US close, Fri Nov 13, 2026.</strong> The Dow edged up +0.10% to 52,347.55 while the S&amp;P 500 fell −0.40% (7,561.67) and the Nasdaq Composite dropped −0.91% (25,136.27), as the abrupt resignation of Nvidia CEO Jensen Huang unwound the week's AI-chip rally. All three indexes still finished the week higher.</p>
+      <p>Logic/GPU names led the slide — AMD −9% (−10%+ intraday), Broadcom −6%, Intel −5%, Nvidia −4% — and the VanEck Semiconductor ETF lost 5.3%; memory (Micron −3.96%) fell less but in the same direction.</p>
+      <p>The bigger macro story was October PPI at +6.5% year over year, the highest in about four years. The 10-year Treasury yield pushed above 5%, and markets fully price a December Fed hike, pressuring high-multiple growth and semis.</p>
+      <p>Next watch: how Korea's memory complex (Samsung, SK hynix) absorbs the Nvidia/Micron read-through, and whether 5% US yields drive a hawkish repricing. Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 엔비디아 사임이 끈 AI 랠리, 금리가 지른 불</h2>
+  <p class="lead">주중 SanDisk·마이크론 등이 두 자릿수 급등하며 달아올랐던 AI·스토리지 랠리가 <strong>금요일 엔비디아 CEO 사임 소식에 급반전</strong>했다. 트레이더들은 "엔비디아를 피해 경쟁 칩으로 몰려갔던 주중 포지션"을 되감았고, 동시에 뜨거운 PPI가 금리를 밀어올렸다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">11/13 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,347.55</td><td class="num"><span class="up">+0.10%</span></td><td>+50.46p · 경기방어·에너지가 지지</td></tr>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,561.67</td><td class="num"><span class="down">−0.40%</span></td><td>−30.73p · 11개 섹터 중 다수 하락</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">25,136.27</td><td class="num"><span class="down">−0.91%</span></td><td>−229.82p · 칩·빅테크 주도 하락<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">11/13 미 마감 · Yahoo Finance 라이브 (2026-11-13)</span><span class="evd-sum">다우 <strong>52,347.55(+0.10%)</strong>, S&amp;P 500 <strong>7,561.67(−0.40%)</strong>, 나스닥 종합 <strong>25,136.27(−0.91%)</strong>. 엔비디아 CEO 사임發 칩 매도로 하락했으나 세 지수 모두 주간으로는 상승 마감.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>나스닥 100</td><td class="num"><span class="down">−1.7%</span></td><td class="num">≈−488p</td><td>로직·GPU 집중 하락</td></tr>
+      <tr><td>10월 PPI (헤드라인)</td><td class="num"><span class="down">+0.3% m/m</span></td><td class="num">예상 +0.4%</td><td>연율 <span class="down">+6.5%</span> — 약 4년 최고<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">10월 PPI · CNBC (2026-11-13)</span><span class="evd-sum">10월 PPI 월간 <strong>+0.3%</strong>(예상 +0.4%)로 소폭 하회했으나 연율 <strong>+6.5%</strong>로 2022년 11월 이후 최고. 근원 +0.3%(부합), 상품지수 +10.2%로 2022년 10월 이후 최대 상승. 12월 인상 압력 지속.</span><a href="https://www.cnbc.com/2026/11/13/ppi-inflation-report-october-2026.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈5.13%</td><td class="num">장중 5.17%</td><td>10월 이후 최고 · 5% 돌파<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">미 국채 금리 · CNBC (2026-11-13)</span><span class="evd-sum">10년물 <strong>5.1%대</strong>(장중 5.17% 터치)로 10월 이후 최고. 30년물 ≈5.46%, 2년물 ≈4.85%로 소폭 하락. PPI 서프라이즈에 12월 인상 베팅 강화.</span><a href="https://www.cnbc.com/2026/11/13/treasury-yields-fed-rates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 이날은 두 힘이 겹쳤다. 첫째는 <strong>엔비디아 CEO 젠슨 황의 전격 사임</strong>이다 — 사임 배경 보도가 돌면서 엔비디아는 <span class="down">−4%</span>, 시가총액이 <strong>4조 달러 아래</strong>로 내려갔고 CFO 콜레트 크레스가 임시 CEO를 맡았다.<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">엔비디아 CEO 사임 · Yahoo Finance (2026-11-13)</span><span class="evd-sum">젠슨 황이 CEO직에서 사임, CFO <strong>콜레트 크레스</strong>가 임시 CEO 선임. 엔비디아는 금요일 약 <strong>−4%</strong>, 주간 <strong>약 −12%</strong>, 시총 <strong>4조 달러 하회</strong>. 리더십 공백이 AI 투자 사이클 서사에 불확실성.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 둘째는 <strong>물가·금리</strong>다. 10월 PPI가 월간으론 예상을 소폭 밑돌았지만 <strong>연율 +6.5%</strong>로 약 4년 만의 최고를 찍었고, 상품물가가 +10.2%나 뛰며 Fed <strong>인상</strong> 쪽으로 베팅이 쏠렸다.</p>
+      <p><strong>섹터.</strong> 금리 급등 국면답게 <strong>에너지가 상대적으로 버텼고</strong>, <strong>기술·커뮤니케이션서비스·소재·산업재</strong>가 지수를 눌렀다. 다우가 강보합을 지킨 건 경기방어·가치주 비중 덕이다. (섹터별 정확한 등락률은 매체 간 집계 시점이 엇갈려 <strong>방향만</strong> 표기한다 — 아래 '데이터 정직성' 참고.)</p>
+    </div>
+  </div>
+  <div class="note cool" style="margin-top:4px">
+    <strong>맥락.</strong> 불과 이틀 전인 <strong>11/11</strong>엔 칩·스토리지가 지수를 끌어올려 SPY <span class="up">+1.32%</span>·기술 ETF(XLK) <span class="up">+3.20%</span>, SanDisk·Arm·마이크론이 각각 <span class="up">+12%</span> 넘게 급등했다. 간밤 하락의 상당 부분은 <strong>그 주중 과열 포지션의 되돌림</strong> 성격이다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 다이버전스 — 로직·GPU가 직격, 메모리는 상대적 선방 <span class="chip h2-chip">국내 직결</span></h2>
+  <p class="lead">국내와 직결되는 반도체를 <strong>로직/GPU · 메모리 · 장비</strong>로 갈라 본다. 이날은 "반도체 일괄 급락"이 아니라 <strong>엔비디아를 중심에 둔 로직·GPU가 가장 크게 빠지고 메모리는 덜 빠지는</strong> 구도였다. 다만 방향은 모두 아래쪽이었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 / 지표 (간밤 미국)</th><th class="num">방향</th><th>구분</th><th>우리 커버 연결</th></tr></thead>
+    <tbody>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="down">−4%</span></td><td>로직·GPU</td><td>엔비디아 심층 리포트 커버 — 리더십 공백이 AI 서사 핵심 변수</td></tr>
+      <tr><td><strong>AMD</strong></td><td class="num"><span class="down">약 −9%</span></td><td>로직·GPU</td><td>장중 −10%대, 시총 약 $100B 증발(장중)<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">칩 매도 · Yahoo Finance / Benzinga (2026-11-13)</span><span class="evd-sum">트레이더들이 주중 "엔비디아 회피→경쟁 칩" 포지션을 되감으며 <strong>AMD 약 −9%</strong>(장중 −10.5%, 시총 약 $100B 증발), 브로드컴 −6%, 인텔 −5%. 반도체 ETF(SMH) −5.3%.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>브로드컴</strong> (AVGO)</td><td class="num"><span class="down">−6%</span></td><td>로직·커스텀</td><td>AI 커스텀 칩 — 로직 투자 심리 바로미터</td></tr>
+      <tr><td>인텔 (INTC)</td><td class="num"><span class="down">−5%</span></td><td>로직·파운드리</td><td>—</td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="down">−3.96%</span></td><td>메모리(DRAM/HBM)</td><td>마이크론 심층 리포트 커버 — 삼성·하이닉스 read-through 1순위<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">마이크론·메모리 · Yahoo Finance (2026-11-13)</span><span class="evd-sum">마이크론 <strong>−3.96%</strong>($766.83)로 엔비디아 CEO 사임에 메모리주 동반 하락(매체별 −3.96~−4.91%). SanDisk·SK하이닉스도 하락. "AI 빌드아웃 공급자"로 묶여 엔비디아 고객의 주문 둔화 우려에 민감.</span><a href="https://finance.yahoo.com/markets/stocks/articles/micron-stocks-fall-3-96-175931806.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>SanDisk · SK하이닉스(ADR)</td><td class="num"><span class="down">하락</span></td><td>메모리/스토리지</td><td>SK하이닉스 심층 리포트 커버 — 간밤 ADR 약세</td></tr>
+      <tr><td><strong>반도체 ETF</strong> (SMH)</td><td class="num"><span class="down">−5.3%</span></td><td>섹터 전반</td><td>장비 개별 수치는 미확인 — ETF로 섹터 강도 가늠</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 칩주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 엔비디아·AMD·브로드컴·마이크론 방향은 다수 매체가 일치했다. <strong>마이크론은 −3.96~−4.91%</strong>로 보도 폭이 있어 종가 기준(−3.96%)만 표기했고, 반도체 <strong>장비(ASML·램리서치·AMAT) 개별 등락은 신뢰할 보도를 확인하지 못해 수치를 넣지 않았다</strong> — SMH −5.3%로 섹터 강도만 대신한다. 섹터 지수 등락률도 매체 간 집계 시점이 달라 방향만 표기했다. <strong>불명확한 수치는 지어내지 않는다.</strong>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가 — 국내 연결.</strong> 핵심은 두 겹의 read-through다. ① <strong>로직·GPU 되돌림</strong>: 엔비디아 리더십 공백과 AMD −9%는 "AI 투자 사이클 서사"에 균열을 내, HBM·고부가 메모리에 베팅해온 <strong>삼성전자·SK하이닉스 심리</strong>에 직접 전이된다. ② <strong>메모리는 상대적 선방</strong>: 마이크론이 로직보다 덜 빠진 건, 메모리 사이클 자체의 수요 훼손이라기보다 '엔비디아 고객 주문 둔화 우려'에 묶인 동반 하락 성격이 크다. 즉 <strong>"반도체를 한 덩어리로 보지 말라"</strong>는 우리 커버 리포트들의 결론과 맞닿는다 — 오늘 국내 장에서도 메모리(삼성·하이닉스)와 장비·로직 밸류체인을 구분해 볼 필요가 있다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 + 11/13 마감 보도 기준. <strong>데이터 기준일을 함께 표기</strong>한다 — 소스별 확정 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,332.40원</td><td class="num">1,336.70원</td><td>11/14 · ECOS <span class="down">(원화 강세 4.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">4.98%</td><td class="num">—</td><td>FRED DGS10 (확정은 T+1)</td></tr>
+      <tr><td>미 10년물 (11/13 마감 보도)</td><td class="num">≈5.13%</td><td class="num">장중 5.17%</td><td>11/13 · CNBC(5% 돌파)</td></tr>
+      <tr><td>미 2년물 / 30년물 (보도)</td><td class="num">≈4.85% / 5.46%</td><td class="num">—</td><td>11/13 · 마감 보도</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">121.88</td><td class="num">—</td><td>FRED DTWEXBGS</td></tr>
+      <tr><td>비트코인</td><td class="num"><span class="down">&lt;$70,000</span></td><td class="num">−4%</td><td>11/13 · 약 3개월 만에 7만 달러 하회</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — FRED 확정치(4.98%)와 11/13 마감 보도치(≈5.13%, 장중 5.17%). 시황 해석엔 간밤(11/13) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 이번 국면의 특이점은 <strong>Fed가 인하가 아니라 인상 쪽</strong>이라는 점이다 — 10월 PPI 연 +6.5% 서프라이즈에 시장은 <strong>12월 9일 FOMC 인상을 100% 반영</strong>(0.25%p 86%·0.50%p 14%)하고 있다. 금리 상단이 뚫리면 고밸류 성장·반도체엔 밸류에이션 할인 압력이다. 환율은 간밤 소폭 원화 강세지만, 매파 Fed·달러 강세와 줄다리기 중이라 방향 확정은 이르다.</div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(11/14) 국내 장 시사점 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 <strong>엔비디아 CEO 사임發 AI칩 되돌림</strong>과 <strong>PPI 6.5%·국채 5% 돌파</strong>라는 두 악재가 겹쳤다 — 오늘 국내 장은 이 충격을 <strong>삼성전자·SK하이닉스 메모리 밸류체인이 얼마나 흡수하느냐</strong>, 그리고 <strong>금리 급등이 고밸류 성장주 할인으로 번지느냐</strong>가 방향을 가른다.</p>
+      <p><strong>맥락.</strong> 주중(11/11) 칩·스토리지 랠리로 과열됐던 포지션이 금요일 한 번에 되감겼다. 로직·GPU(엔비디아·AMD·브로드컴)가 직격탄을 맞았고 메모리(마이크론 <span class="down">−3.96%</span>)는 상대적으로 덜 빠졌지만 방향은 같았다. 국내 메모리 대장주는 <strong>이 되돌림의 전이 강도</strong>와 <strong>엔비디아 리더십 공백이라는 질적 불확실성</strong>을 동시에 가격에 반영해야 한다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 엔비디아·마이크론 약세를 얼마나 반영하는지(개장 갭·초반 거래대금), ② <strong>국채 5% 돌파·12월 Fed 인상 100% 반영</strong>이 고밸류 반도체·성장주에 주는 할인 압력, ③ 원/달러 — 간밤 소폭 원화 강세 vs 매파 Fed·달러지수 121.88의 줄다리기에서 <strong>외국인 수급</strong>이 어느 쪽에 붙는지, ④ 엔비디아 <strong>CFO 대행 체제</strong>가 AI 투자 사이클·HBM 수요 서사에 주는 불확실성이 선반영되는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(토요일 오전) 조회 기준으로, 간밤 미 증시 마감(11/13 금)·매크로 스냅샷을 정리한 것이다. 개별 칩주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 토요일은 국내 증시 휴장이므로, 다음 국내 정규장(11/16 월) 개장 시 시차 반영에 유의한다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 11/13 마감 다우 +0.10%·S&amp;P −0.40%·나스닥 −0.91%(주간은 상승) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html">Yahoo Finance</a></span>
+  <span>근거2 10월 PPI 월 +0.3%(예상 +0.4%)·연 +6.5%(약 4년 최고)·상품 +10.2% — <a href="https://www.cnbc.com/2026/11/13/ppi-inflation-report-october-2026.html">CNBC</a></span>
+  <span>근거3 미 10년물 5%대(장중 5.17%)·30년 5.46%·2년 4.85% — <a href="https://www.cnbc.com/2026/11/13/treasury-yields-fed-rates.html">CNBC</a></span>
+  <span>근거4 엔비디아 CEO 젠슨 황 사임·CFO 크레스 대행·시총 4조$ 하회 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html">Yahoo Finance</a></span>
+  <span>근거5 AMD 약 −9%(장중 −10.5%)·브로드컴 −6%·인텔 −5%·SMH −5.3% — <a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-november-13-dow-sp-500-nasdaq-nvidia-ppi-141451558.html">Yahoo Finance</a>, <a href="https://www.benzinga.com/markets/equities/26/11/63259862/stock-market-today-amd-nvidia-chip-selloff-cisco-modine-november-13">Benzinga</a></span>
+  <span>근거6 마이크론 −3.96%($766.83)·메모리 동반 하락(SanDisk·SK하이닉스) — <a href="https://finance.yahoo.com/markets/stocks/articles/micron-stocks-fall-3-96-175931806.html">Yahoo Finance</a></span>
+  </div>
+  데이터 출처: 미 증시 마감 공개 보도(Yahoo Finance·CNBC·Benzinga), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 토스증권 Open API(SPY 프록시). 2026-11-14 오전 조회 기준(전일 11/13 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-14 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
