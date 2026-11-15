@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>주간 시황 — 4주 연속 하락 끊은 반등 주간, 그러나 인플레 재점화·10년물 5% 돌파에 금요일 되돌림</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 0 0 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 14px; font-size: 13px; }
+.en-abstract > summary { cursor: pointer; padding: 11px 2px; font-size: 12px; font-weight: 650; color: var(--ink-2); letter-spacing: 0.02em; list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract[open] > summary { border-bottom: 1px solid var(--grid); margin-bottom: 10px; }
+.en-abstract p { margin: 0 0 10px; color: var(--ink-2); line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-16-weekly-wrap-2026-11-16.html">
+<meta property="og:title" content="주간 시황 — 4주 연속 하락 끊은 반등 주간, 그러나 인플레 재점화·10년물 5% 돌파에 금요일 되돌림">
+<meta property="og:description" content="전주 11/9~11/13 미 지수는 주간 반등(S&amp;P500 +2.5%)했으나 10월 PPI 재점화·10년물 5% 돌파·엔비디아 CEO 사임에 목·금 되돌림, 코스피는 반도체 랠리로 주간 +4.6% 선방.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-16-weekly-wrap-2026-11-16.html">
+<meta name="description" content="전주 11/9~11/13 미 지수는 주간 반등(S&amp;P500 +2.5%)했으나 10월 PPI 재점화·10년물 5% 돌파·엔비디아 CEO 사임에 목·금 되돌림, 코스피는 반도체 랠리로 주간 +4.6% 선방.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-16-weekly-wrap-2026-11-16.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 주간 시황 정리 (Weekly Wrap)</div>
+  <h1>주간 시황 — 4주 연속 하락 끊은 반등 주간, 그러나 <span class="down">인플레 재점화·10년물 5% 돌파</span>에 금요일 되돌림</h1>
+  <p class="sub">2026년 11월 16일(월) 국내 장 시작 전 기준 · 전주(11/9~11/13) 미국·한국 증시와 매크로 정리. 지난 한 주 뉴욕은 <strong>S&amp;P 500이 5주 만에 주간 <span class="up">+2.5%</span></strong> 반등하며 4주 연속 하락을 끊었고, 코스피는 반도체 랠리로 <strong>주간 <span class="up">+4.6%</span></strong>를 기록했다. 그러나 주 후반엔 <strong>10월 생산자물가(PPI)가 2022년 이후 최고</strong>로 재점화하고 <strong>미 10년물이 5% 위로</strong> 튀면서, 여기에 <strong>젠슨 황 엔비디아 CEO 사임</strong>이 겹쳐 목·금 AI 거래가 되돌려졌다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-16 (월) KST · 월요일 주간 정리 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-11-16 오전, 데이터 기준일 11/13).</strong> 원/달러 <strong>1,332.4원</strong>(전일 1,336.7 → 원화 강세) · 미 국채 10년물 <strong>5.10%</strong>(FRED) / <strong>≈5.15%</strong>(11/13 마감 보도) · 한국 기준금리 <strong>3.00%</strong> · 달러지수 121.88 · SPY 754.37$. 한 주 내내 <strong>금리 상단이 위험자산의 발목</strong>을 잡는 국면이었다.</div>
+
+<section>
+  <h2><span class="idx">1</span>한 주 한눈에 <span class="chip cool h2-chip">반등 후 되돌림 · 금리가 상단</span></h2>
+  <p class="lead">주간 등락 타일. 지수·환율은 공개 마감 보도 및 매크로 스냅샷(토스증권 Open API·FRED·ECOS) 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">전주(11/9~11/13) 한 주</div><div class="val up">반등 주간</div><div class="delta">5주 만의 주간 상승 · 그러나 목·금 되돌림</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500 (주간)</div><div class="val up">7,561.67</div><div class="delta up">▲ +2.51% · 4주 연속 하락 중단</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합 (주간)</div><div class="val up">+2.3%</div><div class="delta up">▲ 주간 반등 · 금요일 −0.91%</div></div>
+    <div class="tile"><div class="lbl">KOSPI (주간)</div><div class="val up">5,290.53</div><div class="delta up">▲ +4.56% (+230.84p)</div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val down">1,332.4원</div><div class="delta down">원화 강세 (전일 1,336.7)</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 지난 한 주 뉴욕은 <strong>S&amp;P 500 주간 <span class="up">+2.51%</span>(종가 7,561.67)</strong>로 4주 연속 하락을 끊었다 — 주 초 AI 실적 안도와 저가 매수로 반등했으나, 주 후반 금리 급등에 상승폭을 일부 반납했다.</div>
+    <div class="tldr-item">② 복병은 <strong>인플레 재점화</strong>였다 — 10월 PPI가 전년비 <strong><span class="up">+6.5%</span>로 2022년 11월 이후 최고</strong>를 찍고, 미 10년물이 한 주 만에 약 30bp 뛰며 <strong>5% 위(≈5.15%)</strong>로 올라섰다. '금리 인하'가 아니라 '추가 인상' 논쟁이 가격에 반영됐다.</div>
+    <div class="tldr-item">③ 여기에 <strong>젠슨 황 엔비디아 CEO 사임(11/12)</strong>이라는 돌발 악재가 겹치며 목·금 AI 거래가 되돌려졌다. 반면 <strong>코스피는 반도체 반등으로 주간 <span class="up">+4.56%</span></strong>(삼성전자 +9.2%·SK하이닉스 +7.4%)로 한 주를 선방했다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>Summary in English ▾</summary>
+    <p>In the week of Nov 9–13, 2026, the S&amp;P 500 rose <strong>+2.51%</strong> to 7,561.67 — its first weekly gain in five weeks — as an early-week relief rally on AI-earnings optimism outweighed a late-week pullback. The dominant macro story was <strong>re-accelerating inflation</strong>: October PPI jumped <strong>+6.5% year over year</strong> (highest since November 2022), and the 10-year Treasury yield climbed about 30bp to roughly <strong>5.15%</strong>, its steepest weekly rise since April 2025, as the market shifted toward pricing a Fed rate <em>hike</em>. A shock resignation of Nvidia CEO Jensen Huang on Nov 12 triggered an AI-trade rotation that pressured tech on Thursday and Friday. Korea bucked the fade: the KOSPI gained <strong>+4.56%</strong> on a chip rebound (Samsung +9.2%, SK hynix +7.4%), though foreign selling capped the advance late in the week. Next week's catalysts: Nvidia earnings (Nov 17) and the FOMC minutes (Nov 18). Figures follow the Korean original.</p>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>주간 지수·매크로 요약 — 주초→주말</h2>
+  <p class="lead">미 지수는 주간 등락과 금요일 종가(공개 마감 보도) 기준, 한국은 주간 등락과 11/13 종가. <strong>개별 수치가 매체별로 엇갈린 항목은 제외하거나 범위로 표기</strong>했다 — 지어내지 않는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">주말 값</th><th class="num">주간 등락</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,561.67</td><td class="num"><span class="up">+2.51%</span></td><td>5주 만의 주간 상승 · 금요일 −0.40%<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">미 증시 주간 마감 · 마감 보도 (2026-11-13)</span><span class="evd-sum">S&amp;P 500은 한 주 <strong>+2.51%</strong> 올라 종가 <strong>7,561.67</strong>, 4주 연속 하락을 끊고 <strong>5주 만에 첫 주간 상승</strong>. 다만 금요일엔 −0.40%(−30.73p)로 상승폭 일부 반납.</span><a href="https://cappnotes.substack.com/p/closing-look-friday-november-13-2026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">—</td><td class="num"><span class="up">≈+2.3%</span></td><td>빅테크 주간 반등 · 금요일 −0.91%(AI 되돌림)</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">52,347.55</td><td class="num"><span class="up">+2.07%</span></td><td>주간 반등 동참</td></tr>
+      <tr><td>러셀 2000</td><td class="num">2,790.49</td><td class="num"><span class="up">+1.32%</span></td><td>소형주는 상대적 부진</td></tr>
+      <tr><td><strong>KOSPI</strong></td><td class="num">5,290.53</td><td class="num"><span class="up">+4.56%</span></td><td>+230.84p · 반도체 랠리 주도<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">KOSPI 주간 마감 · BusinessToday (2026-11-15)</span><span class="evd-sum">코스피는 한 주 <strong>+230.84p(+4.56%)</strong> 상승해 5,290.53 마감. 중간 반도체 랠리가 엔비디아 리더십 혼란·미 금리 우려발 매도를 상쇄. 주간 <strong>삼성전자 +9.17%·SK하이닉스 +7.42%</strong>.</span><a href="https://www.businesstoday.com.my/2026/11/15/south-koreas-kospi-rebounds-230-84-points-for-week-despite-late-tech-selloff/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>KOSDAQ</td><td class="num">699.66</td><td class="num"><span class="up">+0.45%</span></td><td>11/13 종가(매크로 스냅샷 기준)</td></tr>
+      <tr><td><strong>미 10년물</strong></td><td class="num">≈5.15%</td><td class="num"><span class="up">약 +30bp</span></td><td>2025년 4월 이후 최대 주간 상승<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">미 국채 금리 급등 · mlq.ai (2026-11-13)</span><span class="evd-sum">미 10년물이 한 주 약 <strong>30bp</strong> 뛰어 <strong>5.15%</strong>로 마감, <strong>2025년 4월 이후 가장 가파른 주간 상승</strong>. 같은 기간 금은 1년래 저점 부근으로 하락.</span><a href="https://mlq.ai/news/treasury-yields-head-for-their-steepest-weekly-jump-since-april-2025-as-gold-sinks-toward-a-one-year-low/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>원/달러</td><td class="num">1,332.4원</td><td class="num"><span class="down">원화 강세</span></td><td>전일 1,336.7 → 소폭 강세(ECOS)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 나스닥 종합의 정확한 주말 종가는 매체별 편차가 있어 <strong>주간 등락(≈+2.3%)만</strong> 표기했다(나스닥100 기준으로는 더 큰 상승). S&amp;P 금요일 종가도 일부 매체가 7,517로 보도했으나 <strong>다수 매체가 일치한 7,561.67</strong>을 채택했다. 금리는 FRED 확정치(T+1 시차)와 마감 보도치를 구분해 표기했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>한 주의 사건 타임라인 — 요일별</h2>
+  <p class="lead">지난 한 주를 움직인 핵심은 ① 10월 CPI·PPI 인플레 지표, ② 금리 급등, ③ 엔비디아 리더십 충격이었다. 미 채권시장은 <strong>11/11(수) 재향군인의 날</strong>에 휴장(증시는 개장)했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>날짜(현지)</th><th>핵심 이벤트</th><th>시장 반응</th></tr></thead>
+    <tbody>
+      <tr><td><strong>11/9 (월)</strong></td><td>주초 AI 실적 안도·저가 매수 유입. 코스피는 엔비디아 불확실성에 약세 출발(−0.81%, 5,018.85)</td><td><span class="up">미 반등 시동</span> / <span class="down">KR 약세</span></td></tr>
+      <tr><td><strong>11/10 (화)</strong></td><td><strong>10월 CPI</strong> 발표 — 헤드라인 <strong>+0.4% MoM</strong>(9월 +0.6%에서 둔화), 근원 <strong>+0.3%</strong><span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">10월 CPI·PPI · CNBC (2026-11-10/13)</span><span class="evd-sum">10월 CPI 헤드라인 <strong>+0.4% MoM</strong>(9월 +0.6%에서 둔화)·근원 +0.3%. 이어 10월 PPI는 MoM +0.3%, <strong>전년비 +6.5%</strong>로 <strong>2022년 11월 이후 최고</strong>(근원 4.9%). 도매물가의 광범위·끈적한 상승이 Fed 인상 기대를 자극.</span><a href="https://www.cnbc.com/2026/11/13/ppi-inflation-report-october-2026.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td><td><span class="up">위험선호 지속</span> · 월~수 반등</td></tr>
+      <tr><td><strong>11/11 (수)</strong></td><td>재향군인의 날 — <strong>미 채권시장 휴장</strong>(증시 개장). 코스피 2일 랠리로 5,300대 중반까지 상승</td><td><span class="up">KR 랠리 정점 부근</span></td></tr>
+      <tr><td><strong>11/12 (목)</strong></td><td><strong>젠슨 황 엔비디아 CEO 전격 사임</strong>(즉시 발효), 콜레트 크레스 CFO 임시 CEO. 이사회 후임 물색 착수<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">엔비디아 CEO 교체 · CNBC/Bloomberg (2026-11-12)</span><span class="evd-sum">젠슨 황이 <strong>11/12 엔비디아 CEO·이사직에서 사임</strong>(즉시 발효), <strong>콜레트 크레스 CFO가 임시 CEO</strong>. 이사회는 내·외부 후보를 포함한 영구 CEO 물색에 착수(Arm CEO 르네 하스 접촉 보도). AI 거래 전반에 리더십 불확실성이 번짐.</span><a href="https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span>. 채권시장 재개장 후 금리 급등</td><td><span class="down">AI·기술주 되돌림 시작</span></td></tr>
+      <tr><td><strong>11/13 (금)</strong></td><td><strong>10월 PPI +6.5% YoY</strong>(2022년 이후 최고) 발표. 10년물 5.15%로 상승. 코스피는 장중 5,504까지 올랐다가 외국인 매도로 되돌림(−0.98%, 5,290.53)</td><td><span class="down">미 S&amp;P −0.40%·나스닥 −0.91%</span> / <span class="down">KR 후반 매도</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>한 주의 구조.</strong> 월~수는 <strong>안도 반등</strong>(AI 실적 낙관·저가 매수), 목~금은 <strong>되돌림</strong>이었다. 되돌림의 방아쇠는 둘 — <strong>인플레 재점화로 인한 금리 급등</strong>과 <strong>엔비디아 리더십 공백</strong>이다. 특히 10년물이 5% 선을 다시 뚫은 것이 밸류에이션이 높은 성장주·AI 거래에 직접 부담을 줬다. 시장의 금리 내러티브가 '인하 기대'에서 '추가 인상 우려'로 이동한 한 주였다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>승자와 패자 — 섹터·테마</h2>
+  <p class="lead">방향이 명확하고 복수 매체가 일치한 것만 담았다. 개별 종목의 주간 등락률은 출처가 확인된 수치(삼성전자·SK하이닉스)만 표기한다.</p>
+  <div class="grid tiles">
+    <div class="tile"><div class="lbl">🔺 승자 — 한국 반도체</div><div class="val up">삼성전자 +9.2%</div><div class="delta up">SK하이닉스 +7.4% · 코스피 견인</div></div>
+    <div class="tile"><div class="lbl">🔻 패자 — AI·기술(미)</div><div class="val down">엔비디아 급락</div><div class="delta down">CEO 사임→AI 거래 되돌림</div></div>
+    <div class="tile"><div class="lbl">🔻 패자 — 채권·금</div><div class="val down">금 1년래 저점</div><div class="delta down">금리 급등에 안전자산도 약세</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>승자: 한국 반도체.</strong> 미국이 AI 리더십 충격으로 흔들린 한 주에, 역설적으로 <strong>코스피는 반도체 반등으로 주간 <span class="up">+4.56%</span></strong>를 기록했다. 삼성전자 <span class="up">+9.17%</span>·SK하이닉스 <span class="up">+7.42%</span>(주간)가 지수를 끌어올렸다. 다만 주 후반 <strong>외국인이 전기·전자·반도체 중심으로 순매도</strong>로 돌아서며 금요일 상승분을 반납한 점은 경계 요인이다.</p>
+      <p><strong>패자: 미 AI·기술.</strong> <strong>엔비디아 CEO 사임</strong>이라는 돌발 변수에 AI 거래가 회전(rotation)하며 목·금 기술주가 눌렸다. 엔비디아의 11/17 실적이 <strong>창업자 황 없이 처음 발표</strong>되는 터라, 리더십 공백과 실적 불확실성이 동시에 테마 심리를 짓눌렀다.</p>
+      <p><strong>패자: 채권·금.</strong> 인플레 재점화로 금리가 급등하자 국채 가격이 떨어졌고, 통상 안전자산인 <strong>금마저 1년래 저점 부근</strong>으로 밀렸다. '금리 상단이 모든 자산의 발목'인 전형적 국면이었다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 미국 개별 종목·세부 섹터의 주간 등락률은 매체별 편차가 커 <strong>수치를 특정하지 않고 방향만</strong> 기술했다. 삼성전자·SK하이닉스 주간 등락률은 단일 출처(BusinessToday)가 명시한 값으로, 토스 실시간 시세로 교차확인을 권한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 주(11/17~11/21) 관전 포인트 <span class="chip h2-chip">이벤트 집중</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 다음 주는 <strong>엔비디아 실적(11/17)</strong>과 <strong>FOMC 의사록(11/18)</strong>이라는 두 대형 이벤트가 겹치는, 올가을 최대 분수령이다.</p>
+      <p><strong>① 엔비디아 실적 (11/17 장 마감 후).</strong> 황 사임 이후 <strong>처음 발표되는 실적</strong>이다. 시장은 FY3Q27 매출 90% 안팎 고성장을 기대하지만, 관심은 숫자보다 <strong>후임 CEO 탐색·AI 자본지출 지속성</strong>에 쏠린다. 옵션시장은 실적 발표 후 <strong>±8~9%</strong> 변동을 반영 중이라, 코스피 반도체(삼성·하이닉스)에도 직접적 read-through가 된다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">다음 주 일정 · FXStreet/CMC (2026-11-13)</span><span class="evd-sum">11/17 <strong>엔비디아 실적</strong>(마감 후)·소매판매, 11/18 <strong>FOMC 10월 의사록</strong>(14:00 ET), 11/19 신규 실업수당. 엔비디아는 황 없이 첫 실적, 주요 동반 실적은 홈디포·월마트·디즈니. 의사록에선 10월 동결 배경과 향후 경로 단서가 관건.</span><a href="https://www.fxstreet.com/analysis/week-ahead-fed-minutes-inflation-data-and-nvidia-earnings-to-guide-investors-202611131033" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>② FOMC 의사록 (11/18 14:00 ET).</strong> 10월 회의에서 <strong>왜 인상하지 않았는지</strong>, 그리고 향후 경로의 단서가 담긴다. PPI 재점화·10년물 5% 돌파로 시장 일각이 <strong>추가 인상(일부는 50bp)</strong>까지 가격에 반영하기 시작한 만큼, 의사록의 매파/비둘기 톤이 금리와 위험자산의 방향을 가른다.</p>
+      <p><strong>③ 지표·기타.</strong> 11/17 소매판매·산업생산, 11/19 신규 실업수당. 동반 실적은 홈디포·월마트·디즈니 등 소비 바로미터. <strong>국내</strong>는 간밤 미 AI·금리 흐름과 외국인 수급(전기·전자 매도 지속 여부)이 반도체 변동성을 좌우한다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 전주(11/9~11/13) 미국·한국 증시와 매크로를 국내 장 시작 전(월요일 오전)에 정리한 것이다. 지수·지표는 공개 마감 보도 및 매크로 스냅샷에 기반하며, 개별 종목 수치는 매체별 편차가 있어 방향이 명확한 것만 담았다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 S&amp;P 500 주간 +2.51%(7,561.67)·5주 만의 상승·금요일 −0.40% — <a href="https://cappnotes.substack.com/p/closing-look-friday-november-13-2026">Capp Notes</a>, <a href="https://myweeklystock.substack.com/p/weekly-market-recap-nov-9-13-this">My Weekly Stock</a></span>
+  <span>근거2 미 10년물 ≈5.15%·주간 약 +30bp(2025년 4월 이후 최대)·금 1년래 저점 — <a href="https://mlq.ai/news/treasury-yields-head-for-their-steepest-weekly-jump-since-april-2025-as-gold-sinks-toward-a-one-year-low/">mlq.ai</a></span>
+  <span>근거3 10월 CPI +0.4% MoM·PPI +6.5% YoY(2022년 이후 최고) — <a href="https://www.cnbc.com/2026/11/13/ppi-inflation-report-october-2026.html">CNBC PPI</a>, <a href="https://www.cnbc.com/2026/11/09/october-cpi-report-2026-inflation.html">CNBC CPI</a></span>
+  <span>근거4 KOSPI 주간 +4.56%(+230.84p)·삼성전자 +9.17%·SK하이닉스 +7.42% — <a href="https://www.businesstoday.com.my/2026/11/15/south-koreas-kospi-rebounds-230-84-points-for-week-despite-late-tech-selloff/">BusinessToday</a></span>
+  <span>근거5 젠슨 황 엔비디아 CEO 사임(11/12)·크레스 임시 CEO·후임 물색 — <a href="https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html">CNBC</a>, <a href="https://www.bloomberg.com/news/articles/2026-11-12/nvidia-drama-triggers-difficult-search-for-huang-s-successor">Bloomberg</a></span>
+  <span>근거6 다음 주 일정(엔비디아 11/17·FOMC 의사록 11/18·소매판매) — <a href="https://www.fxstreet.com/analysis/week-ahead-fed-minutes-inflation-data-and-nvidia-earnings-to-guide-investors-202611131033">FXStreet</a>, <a href="https://www.cmcmarkets.com/en-ie/news-and-analysis/the-week-ahead-fed-minutes-japan-cpi-nvidia-earnings">CMC Markets</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·지수·시세), 미 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수). 2026-11-16 오전 조회 기준(데이터 기준일 11/13, 전주 11/9~11/13 미·한 증시 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-16 (월) KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
