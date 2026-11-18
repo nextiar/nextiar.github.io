@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 엔비디아 실적에 하루 만에 5천선 재탈환, 다만 기관 홀로 끌어올린 반등</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇰🇷</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 14px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 16px; }
+.en-abstract > summary { cursor: pointer; font-size: 12px; font-weight: 650; color: var(--accent); padding: 11px 0; list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract[open] > summary { border-bottom: 1px solid var(--grid); }
+.en-abstract .en-body { font-size: 12.5px; color: var(--ink-2); line-height: 1.7; padding: 12px 0 14px; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-18-kr-close-2026-11-18.html">
+<meta property="og:title" content="코스피 마감 시황 — 엔비디아 실적에 하루 만에 5천선 재탈환, 다만 기관 홀로 끌어올린 반등">
+<meta property="og:description" content="엔비디아 어닝 서프라이즈에 코스피 +1.99%(5,067.44)·코스닥 +1.96%(662.81)로 하루 만에 5천선 재탈환, 그러나 반등은 기관 순매수 단독이고 외국인은 매도 우위.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-18-kr-close-2026-11-18.html">
+<meta name="description" content="엔비디아 어닝 서프라이즈에 코스피 +1.99%(5,067.44)·코스닥 +1.96%(662.81)로 하루 만에 5천선 재탈환, 그러나 반등은 기관 순매수 단독이고 외국인은 매도 우위.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-18-kr-close-2026-11-18.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 마감 시황 심층 (KR Market Close)</div>
+  <h1>코스피 마감 시황 — 엔비디아 실적에 하루 만에 <span class="up">5천선 재탈환</span>, 다만 <span class="down">기관 홀로</span> 끌어올린 반등</h1>
+  <p class="sub">2026년 11월 18일(수) 국내 장 마감 기준. 코스피는 <strong>5,067.44(<span class="up">+1.99%</span>)</strong>로 전일 무너졌던 5,000선을 하루 만에 되찾았고 코스닥도 <strong>662.81(<span class="up">+1.96%</span>)</strong>로 반등했다. 간밤(11/17 화) 미 증시는 엔비디아 실적 경계에 3대 지수가 하락 마감했으나, <strong>장 마감 후 엔비디아가 어닝 서프라이즈·강한 가이던스</strong>를 내놓으며 시간외 급등 → 오늘 국내 <strong>삼성전자·SK하이닉스 등 반도체 대형주 반등</strong>을 이끌었다. 다만 지수를 끌어올린 건 <strong>기관 순매수</strong>였고 외국인은 장중 매도 우위로 돌아섰다는 보도가 다수다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-18 KST · 평일 16:00 국내 마감 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,335.00원</strong>(전일 1,333.70 → 원화 1.3원 약세, 11/17 ECOS) · 한국 기준금리 <strong>3.00%</strong>(11/15 ECOS) · 미 국채 10년물 <strong>5.15%</strong>(11/13 FRED) · 달러지수 <strong>122.65</strong>(11/13 FRED). 간밤 미 위험선호는 약했으나, 장 마감 후 엔비디아 실적이 반도체 심리를 되살렸다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">반도체 반등 · 5천선 회복</span></h2>
+  <p class="lead">지수는 당일 마감 보도 기준(KRX 확정치는 익일 반영 — 전일 11/17 수치는 KRX 확정). 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다. 종목 수치는 토스증권 Open API 종가 기준.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">코스피 (11/18 마감)</div><div class="val up">5,067.44</div><div class="delta up">▲ +1.99% (+98.96p) · 하루 만에 5천선 회복</div></div>
+    <div class="tile"><div class="lbl">코스닥 (11/18 마감)</div><div class="val up">662.81</div><div class="delta up">▲ +1.96% (+12.75p)</div></div>
+    <div class="tile"><div class="lbl">수급 (코스피)</div><div class="val up">기관 주도</div><div class="delta">기관 순매수 · 외국인·개인은 순매도 보도 우세</div></div>
+    <div class="tile"><div class="lbl">원/달러</div><div class="val down">1,335.00원</div><div class="delta">전일 1,333.70 → 원화 1.3원 약세</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피는 <strong>5,067.44(<span class="up">+1.99%</span>)</strong>로 전일 깨졌던 <strong>5,000선을 하루 만에 재탈환</strong>, 코스닥은 <strong>662.81(<span class="up">+1.96%</span>)</strong>로 동반 반등했다.<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 11/18 마감 · 연합인포맥스 (2026-11-18)</span><span class="evd-sum">엔비디아 호실적에 코스피가 <strong>1.99% 오른 5,067.44</strong>로 하루 만에 5,000선을 회복. 코스닥도 <strong>662.81(+1.96%)</strong> 마감.</span><a href="https://www.sentv.co.kr/article/view/sentv202611180177" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+    <div class="tldr-item">② 상승의 방아쇠는 <strong>간밤 장 마감 후 발표된 엔비디아 실적(어닝 서프라이즈·강한 가이던스)</strong>으로, 오늘 <strong>SK하이닉스 <span class="up">+4.7%</span>·삼성전기 <span class="up">+6.9%</span>·삼성전자 <span class="up">+2.2%</span></strong> 등 반도체 대형주가 지수를 견인했다.</div>
+    <div class="tldr-item">③ 다만 반등을 끌어올린 주체는 <strong>기관 순매수</strong>였고, 외국인은 장 초반 매수 후 <strong>매도 우위로 전환</strong>했다는 보도가 다수여서, 반등의 지속력은 외국인 복귀 여부에 달렸다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3–5 sentences)</summary>
+    <div class="en-body">
+      On Nov 18, 2026, the KOSPI rose <strong>+1.99% to 5,067.44</strong>, reclaiming the 5,000 mark it had lost the previous session, while the KOSDAQ gained <strong>+1.96% to 662.81</strong>. The rebound was triggered by <strong>Nvidia's after-hours earnings beat and strong guidance</strong> (reported post-close in the U.S. on Nov 17), which lifted Korean chip large-caps — SK Hynix (+4.7%), Samsung Electro-Mechanics (+6.9%), and Samsung Electronics (+2.2%). However, the advance was led by <strong>institutional net buying</strong>, while foreign investors reportedly turned net sellers intraday, leaving the durability of the bounce dependent on a return of foreign flows. The won weakened slightly to 1,335.00 per dollar. Tomorrow (Nov 19) the market opens one hour late (10:00 KST) due to the national college entrance exam. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 요약 — 반도체가 끌고 5천선 위로</h2>
+  <p class="lead">전일(11/17) KRX 확정치 대비 오늘(11/18) 마감 보도치를 나란히 둔다. 오늘 반등은 반도체·전기전자가 주도했고, 신규 상장주·코스닥 일부 부진주가 이면의 약한 투심을 드러냈다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">11/18 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong></td><td class="num">5,067.44</td><td class="num"><span class="up">+1.99%</span></td><td>+98.96p · 하루 만에 5천선 회복<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 11/18 마감 · 연합인포맥스 (2026-11-18)</span><span class="evd-sum">엔비디아 호실적에 코스피가 <strong>1.99% 오른 5,067.44</strong>로 5,000선 회복. 장중 상승폭은 중국향 반도체 공급 불확실성 등으로 제한.</span><a href="https://www.sentv.co.kr/article/view/sentv202611180177" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥</strong></td><td class="num">662.81</td><td class="num"><span class="up">+1.96%</span></td><td>+12.75p · 기관 순매수 주도<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">코스닥 11/18 마감 · 서울경제·머니투데이 (2026-11-18)</span><span class="evd-sum">코스닥은 <strong>12.75p(+1.96%) 오른 662.81</strong> 마감. 기관이 순매수로 지수를 끌어올렸고, 장 초반 순매수하던 외국인이 매도 우위로 돌아서며 상승폭은 축소.</span><a href="https://m.sedaily.com/article/20116005" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>코스피 (11/17 KRX 확정)</td><td class="num">4,968.48</td><td class="num"><span class="down">−2.59%</span></td><td>전일 5천선 붕괴 — 오늘 되돌림의 기저</td></tr>
+      <tr><td>코스닥 (11/17 KRX 확정)</td><td class="num">650.06</td><td class="num"><span class="down">−2.34%</span></td><td>전일 동반 하락</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>주도 업종.</strong> 반등은 <strong>반도체·전기전자</strong>가 이끌었다. 토스증권 Open API 종가 기준 거래대금 상위에서 <strong>SK하이닉스 <span class="up">+4.73%</span>(115.0만원)·삼성전기 <span class="up">+6.89%</span>·삼성전자 <span class="up">+2.2%</span></strong>가 나란히 상위를 차지했고, <strong>현대차 <span class="up">+3.28%</span>·LG <span class="up">+3.67%</span>·두산 <span class="up">+9.05%</span></strong> 등 대형 가치·지주·전력 관련주도 동반 상승했다. 간밤 엔비디아 실적이 'AI 투자 사이클 지속' 우려를 일부 덜어주면서 한국 메모리·부품주로 심리가 번진 흐름이다.</p>
+      <p><strong>이면의 약한 투심.</strong> 지수 상승과 달리 신규 상장주 <strong>에이엘로봇은 코스닥 상장 첫날 <span class="down">−24%</span></strong>로 급락했고, 최근 일주일 새 <strong>IPO 철회가 3곳</strong> 잇따르는 등 공모·중소형 투심은 여전히 취약하다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">신규상장·IPO 동향 · 연합뉴스·매일일보 (2026-11-18)</span><span class="evd-sum">에이엘로봇이 코스닥 <strong>상장 첫날 24% 하락</strong>. 증시 불안에 <strong>IPO 철회가 일주일 새 3곳</strong> 발생 — 지수 반등과 별개로 공모·중소형 투심은 약세.</span><a href="https://www.m-i.kr/news/articleView.html?idxno=2020274" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 지수 레벨의 반등이 시장 전반의 위험선호 회복으로 보긴 이르다는 신호다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 오늘(11/18) 지수는 <strong>마감 보도 기준</strong>이다 — KRX Open API 확정치는 익일(11/19) 반영되므로 당일 수치는 공개 마감 보도를, 전일(11/17) 지수는 KRX 확정치를 썼다. 개별 종목 등락률은 <strong>토스증권 Open API 종가</strong> 기준이며, 매체별로 방향이 엇갈리는 수치는 본문에서 제외했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 기관 홀로 끌어올린 반등 <span class="chip under h2-chip">외국인 매도 우위</span></h2>
+  <p class="lead">오늘 반등의 핵심 특징은 <strong>수급 주체의 불균형</strong>이다. 코스피·코스닥 모두 <strong>기관 순매수</strong>가 지수를 끌어올렸고, 외국인은 장 초반 매수 후 매도 우위로 돌아섰다는 보도가 다수다. 매체별로 순매수 총액 수치가 엇갈려 방향만 표기한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시장 · 주체</th><th class="num">방향(보도)</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피 — 기관</strong></td><td class="num"><span class="up">순매수</span></td><td>지수 반등 주도<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">코스피 수급 · 뉴스핌·디지털타임스 (2026-11-18)</span><span class="evd-sum">기관 매수세가 코스피 5,000선 탈환을 주도. 외국인은 장중 매도 우위로 전환했다는 보도가 다수 — 다만 외국인 방향·금액은 매체별로 엇갈려(일부는 외국인 매수 보도) 총액은 명시하지 않는다.</span><a href="https://www.newspim.com/news/view/20261118001065" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>코스피 — 외국인</td><td class="num"><span class="down">매도 우위(다수 보도)</span></td><td>장 초반 매수 → 매도 전환 · 매체 간 방향 엇갈림</td></tr>
+      <tr><td>코스피 — 개인</td><td class="num"><span class="down">순매도 우세</span></td><td>지수 반등에 차익 실현 성격</td></tr>
+      <tr><td><strong>코스닥 — 기관</strong></td><td class="num"><span class="up">순매수</span></td><td>지수 상승 주도<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">코스닥 수급 · 서울경제 (2026-11-18)</span><span class="evd-sum">코스닥은 기관 순매수가 상승을 주도. 장 초반 순매수하던 외국인이 매도 우위로 돌아서며 상승폭이 줄었고 개인도 순매도. 금액 수치는 매체별로 차이가 있어 방향만 표기.</span><a href="https://m.sedaily.com/article/20116005" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>코스닥 — 외국인·개인</td><td class="num"><span class="down">순매도</span></td><td>외국인 차익 실현 · 개인 매도</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>대량지분(5%룰) 신호.</strong> 삼성전자 DART 5%룰 지분 공시에서 최근 유의미한 지분율 증감은 확인되지 않았다(삼성물산 지분율 19.69%로 변동 0%p, 계약 변경 공시). 즉 오늘 반도체 반등은 지배주주 지분 이동이 아닌 <strong>기관의 장중 순매수</strong>에서 비롯됐다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">DART 5%룰 지분 공시 · fund_flows(005930) (2026-10)</span><span class="evd-sum">KRX Open API는 투자자별 수급 미제공 — DART 5%룰로 대체. 삼성전자 최근 5%룰 지분 공시는 삼성물산 지분율 <strong>19.69%(증감 0%p)</strong>로, 스마트머니 지분 이동 신호는 포착되지 않음.</span><span class="evd-nolink">※ 요약은 DART 전자공시 기준, 종목별 원문은 dart.fss.or.kr 참조</span></span></span></div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 전일 5천선을 깬 하락은 <strong>외국인·기관 동반 매도</strong>에서 비롯됐는데, 오늘 반등은 <strong>기관 단독</strong>으로 이뤄졌다. 반등을 밀어올린 엔비디아 실적 모멘텀은 외부 촉매라 하루짜리 이벤트일 수 있고, <strong>외국인이 순매수로 돌아서지 않으면</strong> 5천선 위에서의 추가 상승 동력은 제한적이다. 원/달러가 1,335원으로 소폭 오른(원화 약세) 점도 외국인 자금 유입에는 부담 요인이다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원/달러·간밤 미국 잔영</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>데이터 기준일을 함께 표기</strong>해 소스별 확정 시점(스테일 여부)이 보이도록 한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,335.00원</td><td class="num">1,333.70원</td><td>11/17 · ECOS <span class="down">(원화 약세 1.3원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>11/15 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">5.15%</td><td class="num">—</td><td>11/13 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">122.65</td><td class="num">—</td><td>11/13 · FRED DTWEXBGS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>간밤 미국(11/17 화 마감).</strong> 뉴욕 3대 지수는 <strong>동반 하락</strong> 마감했다 — 다우 <span class="down">−1.64%</span>(50,759.42)·S&amp;P 500 <span class="down">−1.03%</span>(7,340.53)·나스닥 <span class="down">−0.74%</span>로, 나스닥은 약 <strong>7개월 만의 최저</strong>를 기록했다. 장 마감 전까지 시장은 <strong>엔비디아 실적 발표를 앞둔 경계감</strong>에 반도체를 팔았고, 엔비디아 정규장도 <span class="down">−0.5%</span>로 마쳤다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">미 증시 11/17 마감 · Yahoo Finance (2026-11-17)</span><span class="evd-sum">다우 <strong>−848.75p(−1.64%) 50,759.42</strong>, S&amp;P 500 <strong>−1.03% 7,340.53</strong>, 나스닥 <strong>−0.74%</strong>(약 7개월 최저). 엔비디아 실적 경계에 반도체 매도 — 엔비디아 정규장 −0.5%.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>잔영 → 오늘 국내.</strong> 반전은 <strong>장 마감 후</strong>에 나왔다. 엔비디아가 시장 예상을 웃도는 실적과 강한 가이던스를 내놓으며 <strong>시간외 거래에서 급등</strong>했고, 이 흐름이 아시아로 넘어와 오늘 한국 반도체 대형주 반등의 직접 촉매가 됐다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">엔비디아 실적 서프라이즈 · CNBC·Yahoo (2026-11-17)</span><span class="evd-sum">엔비디아가 <strong>예상을 웃도는 실적·강한 가이던스</strong>를 발표, 시간외 급등. AI 인프라 수요에 대한 안도감으로 반도체 동종주가 시간외에서 동반 상승 — 아시아 반도체 반등으로 연결.</span><a href="https://www.cnbc.com/2026/11/17/stock-market-today-live-updates.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 다만 '중국향 반도체 공급 불확실성' 등은 장중 상승폭을 제한하는 요인으로 함께 지적됐다.</p>
+    </div>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>실적 시즌 맥락.</strong> 3분기 실적 집계가 마무리되며 <strong>코스피 상장사 영업이익이 전년비 <span class="up">+264%</span></strong> 급증(삼성전자·SK하이닉스가 증가분의 83%를 견인), 매출은 처음으로 1,000조원을 돌파했다. 반면 <strong>코스닥은 3분기 순손실 1조2,875억원</strong>(상장사 10곳 중 6곳 적자)으로 양극화가 뚜렷하다 — 지수 반등이 '반도체 중심'일 수밖에 없는 구조적 배경이다.<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">3분기 실적 결산 · 뉴시스·이데일리·조선비즈 (2026-11-18)</span><span class="evd-sum">코스피 3Q 영업익 <strong>+264%</strong>(삼전·하이닉스가 83% 견인), 매출 첫 1,000조 돌파. 코스닥은 3Q <strong>순손실 1조2,875억원</strong>, 10곳 중 6곳 적자 — 반도체 쏠림·실적 양극화.</span><a href="https://biz.chosun.com/stock/market_trend/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(11/19 목) 관전 포인트 <span class="chip h2-chip">수능일 10시 개장</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 오늘 반등이 엔비디아發 하루짜리 이벤트에 그칠지, 추세로 이어질지는 <strong>외국인 수급 복귀</strong>와 <strong>간밤 미 정규장의 엔비디아 실제 반응</strong>에 달렸다 — 그리고 내일은 <strong>수능일이라 증시가 1시간 늦게(10:00~16:30) 열린다.</strong></p>
+      <p><strong>체크포인트.</strong> ① <strong>수능일 거래 일정</strong> — 11/19(목)은 대학수학능력시험일로 국내 증시가 <strong>오전 10시 개장·오후 4시 30분 마감</strong>한다(개장 1시간 지연).<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">수능일 증시 일정 · KBS (2026-11-18)</span><span class="evd-sum">수능일(11/19)엔 증시가 <strong>1시간 늦게 개장</strong> — 오전 10시~오후 4시 30분 운영.</span><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1SaDFWZFE1LUFaODdtZURWUUZycXdYb1lTTEFzdHdQcE03QmI0Nk5DUldYNXVfakI5VUQ3d2VtdDB0Qk8xUkNoUndMdGxyNlRqZFFRQWtXcTBxaEU?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> ② <strong>엔비디아 정규장 소화</strong> — 시간외 급등이 간밤 미 정규장(11/18)에서 실제 상승으로 확정됐는지, 변동성이 되돌려졌는지. ③ <strong>외국인 수급</strong> — 오늘 기관이 홀로 끌어올린 만큼, 외국인이 순매수로 가세해야 5천선 위 안착이 가능하다. ④ <strong>원/달러 1,335원 선</strong> — 원화 약세가 이어지면 외국인 자금 유입에 부담.</p>
+      <p><strong>맥락.</strong> 전일(11/17) 코스피는 'AI가 악재가 됐다'는 평가 속에 <strong>9개월 만에 5천선을 내줬고</strong>(−2.59%), 오늘 엔비디아 실적으로 단번에 되돌렸다. 변동성이 큰 국면에서 외부 촉매 하나에 하루 100p 안팎을 오르내리는 장세인 만큼, <strong>수급의 질(외국인 복귀 여부)</strong>을 추세 판단의 기준으로 두는 편이 안전하다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 마감(16:00대) 조회 기준으로, 오늘(11/18) 마감 보도·수급 보도·매크로 스냅샷을 정리한 것이다. 당일 지수는 마감 보도치(KRX 확정은 T+1), 개별 종목 등락은 토스증권 Open API 종가 기준이다. 개별 종목은 시황 맥락으로 언급했을 뿐 투자의견 콜이 아니며, 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 11/18 +1.99% 5,067.44·코스닥 +1.96% 662.81 — <a href="https://www.sentv.co.kr/article/view/sentv202611180177">서울경제TV</a>, <a href="https://www.newspim.com/news/view/20261118001065">뉴스핌</a></span>
+  <span>근거2 엔비디아 실적 서프라이즈·강한 가이던스·시간외 급등 — <a href="https://www.cnbc.com/2026/11/17/stock-market-today-live-updates.html">CNBC</a></span>
+  <span>근거3 미 증시 11/17 마감(다우 −1.64%·S&amp;P −1.03%·나스닥 −0.74%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-17-dow-sp-500-nasdaq-nvidia-earnings-retail-sales-143848454.html">Yahoo Finance</a></span>
+  <span>근거4 코스피 수급 — 기관 순매수 주도, 외국인 방향 엇갈림 — <a href="https://www.newspim.com/news/view/20261118001065">뉴스핌</a>, <a href="https://www.dt.co.kr/article/12095959">디지털타임스</a></span>
+  <span>근거5 코스닥 662.81 +1.96%·기관 순매수 — <a href="https://m.sedaily.com/article/20116005">서울경제</a></span>
+  <span>근거6 삼성전자 DART 5%룰 지분 공시(삼성물산 지분율 19.69%) — toss-research fund_flows(005930)</span>
+  <span>근거7 에이엘로봇 상장 첫날 −24%·IPO 철회 3곳 — <a href="https://www.m-i.kr/news/articleView.html?idxno=2020274">매일일보</a></span>
+  <span>근거8 코스피 3Q 영업익 +264%·코스닥 순손실 1.29조 — <a href="https://biz.chosun.com/stock/market_trend/">조선비즈</a></span>
+  <span>근거9 수능일(11/19) 증시 10시 개장 — <a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1SaDFWZFE1LUFaODdtZURWUUZycXdYb1lTTEFzdHdQcE03QmI0Nk5DUldYNXVfakI5VUQ3d2VtdDB0Qk8xUkNoUndMdGxyNlRqZFFRQWtXcTBxaEU?oc=5">KBS</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(시세·랭킹·fund_flows), 공개 마감 보도(코스피·코스닥 당일 지수·수급), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX Open API(전일 확정 지수). 2026-11-18 오후(국내 마감) 조회 기준. 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-18 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
