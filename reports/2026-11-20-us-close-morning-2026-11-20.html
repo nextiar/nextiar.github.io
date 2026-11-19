@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>US 마감 시황 — 앤트로픽 상장 잔칫날에 3대 지수 2% 급락, AI 트레이드 피로가 반도체를 때렸다</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { border: 1px solid var(--border); border-radius: 10px; background: var(--card);
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.en-abstract summary { cursor: pointer; font-weight: 650; color: var(--ink-2); font-size: 12px; letter-spacing: 0.02em; }
+.en-abstract[open] summary { margin-bottom: 8px; }
+.en-abstract p { margin: 0; line-height: 1.6; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-20-us-close-morning-2026-11-20.html">
+<meta property="og:title" content="US 마감 시황 — 앤트로픽 상장 잔칫날에 3대 지수 2% 급락, AI 트레이드 피로가 반도체를 때렸다">
+<meta property="og:description" content="간밤 뉴욕은 앤트로픽 역대급 IPO 데뷔에도 3대 지수가 2%대 급락했고, 엔비디아가 실적 beat에도 밀리며 AI 트레이드 피로가 반도체를 주도 하락시켰다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-20-us-close-morning-2026-11-20.html">
+<meta name="description" content="간밤 뉴욕은 앤트로픽 역대급 IPO 데뷔에도 3대 지수가 2%대 급락했고, 엔비디아가 실적 beat에도 밀리며 AI 트레이드 피로가 반도체를 주도 하락시켰다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-20-us-close-morning-2026-11-20.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · US 마감 시황 심층 (US Close Wrap)</div>
+  <h1>US 마감 시황 — 앤트로픽 상장 잔칫날에 <span class="down">3대 지수 2% 급락</span>, AI 트레이드 피로가 반도체를 때렸다</h1>
+  <p class="sub">2026년 11월 20일(금) 국내 장 시작 전 기준 · 전일 미 증시(11/19 목 마감) 반영. 간밤 뉴욕 3대 지수는 <strong><span class="down">2% 안팎 동반 급락</span></strong>했다 — 앤트로픽(ANT)이 "역대 최대 IPO"로 화려하게 데뷔했지만, 정작 돈은 기존 AI·빅테크에서 빠져나가며 <strong>S&amp;P500이 닷새 넘게 연속 하락</strong>했다. 반도체는 <strong>엔비디아 <span class="down">−3.75%</span>·AMD <span class="down">−8%대</span></strong>로 다시 매물을 맞았다. 오늘 국내 장의 최대 변수는 이 <strong>AI 트레이드 피로가 삼성전자·SK하이닉스 등 국내 반도체로 얼마나 전이되느냐</strong>다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-20 06:00 KST · 화~토 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (2026-11-20 오전).</strong> 원/달러 <strong>1,331.1원</strong>(전일 1,338.8 → 원화 강세, 외국인 수급에 우호) · 미 국채 10년물 ≈5.085%(11/19 마감 보도) · 한국 기준금리 3.00% · 달러지수 122.65. 간밤 미 위험선호는 꺾였고, 반도체는 종목별 악재까지 겹쳤다.</div>
+
+<section>
+  <h2><span class="idx">1</span>간밤 뉴욕 한눈에 <span class="chip h2-chip">리스크 오프 · AI 트레이드 피로</span></h2>
+  <p class="lead">미 지수는 토스증권 Open API 및 공개 마감 보도, 금리·환율은 미 FRED·한국은행 ECOS 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">간밤 뉴욕 (11/19 마감)</div><div class="val down">리스크 오프</div><div class="delta">3대 지수 2%대 동반 급락 · AI 차익실현</div></div>
+    <div class="tile"><div class="lbl">S&amp;P 500</div><div class="val down">7,175.83</div><div class="delta down">▼ −2.02% · 5일+ 연속 하락</div></div>
+    <div class="tile"><div class="lbl">나스닥 종합</div><div class="val down">23,879.20</div><div class="delta down">▼ −2.25% · 반도체 주도 하락</div></div>
+    <div class="tile"><div class="lbl">오늘 국내 장 관전</div><div class="val down">엔비디아 −3.75%</div><div class="delta">AI 트레이드 피로 → 삼성·하이닉스 압력</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 간밤 뉴욕은 <strong>3대 지수 2%대 동반 급락</strong> — 다우 <span class="down">−2.19%</span>·S&amp;P500 <span class="down">−2.02%</span>·나스닥 <span class="down">−2.25%</span>. 역대급 규모라던 <strong>앤트로픽 IPO 데뷔</strong>가 오히려 기존 AI·빅테크에서 자금을 빨아들이며 매물을 키웠다.</div>
+    <div class="tldr-item">② 반도체는 <strong>엔비디아 <span class="down">−3.75%</span>·마이크론 <span class="down">−2.97%</span>·AMD <span class="down">−8%대</span></strong>로 하락 주도. 특히 <strong>AMD는 숏셀러(헌터브룩)의 중국 수출 의혹 리포트</strong>라는 개별 악재가 더해졌다. 필라델피아 반도체지수(SOX)는 10월 초 대비 약 −25%.</div>
+    <div class="tldr-item">③ 매크로는 <strong>신규 실업수당 청구 20.3만 건</strong>(컨센 ≈19.7만 상회)·<strong>10년물 ≈5.09%</strong>로 금리가 다시 꿈틀. 오늘 국내 장은 <strong>간밤 AI·반도체 차익실현이 삼성·하이닉스로 전이되는지</strong>가 방향을 가른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3-sentence abstract)</summary>
+    <p>Wall Street sold off sharply on Thu, Nov 19, 2026, with the Dow −2.19% (49,097.06), the S&amp;P 500 −2.02% (7,175.83) for a fifth-plus straight loss, and the Nasdaq −2.25% (23,879.20), as Anthropic's record IPO debut drained liquidity from incumbent AI and big-tech names rather than lifting them. Chips led the decline — Nvidia −3.75%, Micron −2.97% and AMD roughly −8% (hit by a short-seller's China-export allegations) — while the SOX index sits about 25% below its early-October peak. With jobless claims at 203K (above the ~197K consensus) and the 10-year yield back near 5.09%, the key risk for Korea's Friday session is whether AI-trade fatigue spills into Samsung Electronics and SK Hynix; the won firmed to 1,331.1/USD, a mild offset for foreign flows. This is for information only and not investment advice. Figures follow the Korean original.</p>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 뉴욕 마감 — 'IPO 잔칫날'에 되레 빠진 지수</h2>
+  <p class="lead">앤트로픽(ANT)이 <strong>공모가 83달러 대비 개장 +34%</strong>로 화려하게 데뷔했지만, 기존 AI·빅테크에서 차익실현이 몰리며 지수는 종일 흘렀다. 섹터는 <strong>11개 중 대부분이 하락</strong>해 광범위한 리스크 오프였고, 반도체·기술이 낙폭을 주도했다. 지수 레벨에선 이견 없는 하락 하루.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">11/19 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,175.83</td><td class="num"><span class="down">−2.02%</span></td><td>−147.80p · 5일+ 연속 하락<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">11/19 미 마감 · Yahoo Finance 라이브 (2026-11-19)</span><span class="evd-sum">11/19(목) 종가 다우 <strong>49,097.06(−2.19%, −1,101.11p)</strong>·S&amp;P500 <strong>7,175.83(−2.02%, −147.80p)</strong>·나스닥 <strong>23,879.20(−2.25%, −550.69p)</strong>. 장중 다우는 1,100p 넘게 빠졌고, 앤트로픽 IPO에도 지수는 하락 마감.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">23,879.20</td><td class="num"><span class="down">−2.25%</span></td><td>−550.69p · 반도체·빅테크 주도 하락</td></tr>
+      <tr><td><strong>다우 산업</strong></td><td class="num">49,097.06</td><td class="num"><span class="down">−2.19%</span></td><td>−1,101.11p</td></tr>
+      <tr><td>앤트로픽 (ANT) IPO</td><td class="num"><span class="up">데뷔 강세</span></td><td class="num">개장 +34%</td><td>공모가 83달러 → 개장 +34%, 종가 약 +17% 부근(매체별 차이)<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">앤트로픽 IPO 데뷔 · 마감 보도 (2026-11-19)</span><span class="evd-sum">앤트로픽(ANT)은 <strong>공모가 83달러</strong>에서 <strong>개장 +34%(약 111.50달러)</strong>로 출발해 "역대 최대 IPO"로 소개됨. 이후 상승분을 상당 반납해 <strong>종가 약 +17% 부근</strong>으로 마감(종가 상승률은 매체별로 +17~+27%로 엇갈려 보수적으로 표기). 신규 상장이 기존 AI·빅테크 자금을 흡수하며 지수엔 되레 부담.</span><a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>신규 실업수당 청구</td><td class="num">20.3만</td><td class="num">컨센 ≈19.7만</td><td>소폭 상회(노동시장 완만한 둔화)<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">미 주간 실업수당 청구 (주간 11/14 기준, 2026-11-19 발표)</span><span class="evd-sum">11/14 주간 신규 청구 <strong>20.3만 건</strong>으로 컨센서스(≈19.7~19.8만)를 소폭 상회. 계속수당은 비교적 큰 폭으로 증가. 같은 날 필라델피아 연은 제조업지수는 +6.3. 노동시장이 급랭은 아니나 완만히 식는 그림.</span><a href="https://1trader.com/en/us-claims-2026-11-19/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>미 국채 10년물</td><td class="num">≈5.085%</td><td class="num">+≈2bp</td><td>연준 10월 의사록 소화하며 상승</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>해석.</strong> 하락의 구조는 '악재 하나'가 아니라 <strong>AI 트레이드 피로의 누적</strong>이다. 엔비디아가 이번 주 실적에서 <strong>분기 매출 1,158억 달러(전년 +103%)·EPS 2.68달러(컨센 2.47달러 상회)</strong>로 어닝 서프라이즈를 내고 가이던스까지 올렸는데도,<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">엔비디아 3분기(FY) 실적 · 공시/마감 보도 (2026-11)</span><span class="evd-sum">엔비디아 분기 매출 <strong>약 1,158억 달러(전년 대비 +103%)</strong>, 비GAAP EPS <strong>2.68달러</strong>(컨센 2.47달러 상회), 차기 연도 매출 성장률 가이던스 상향. 실적은 명백한 'beat'였으나 주가는 '소문에 사서 뉴스에 파는' 전형으로 약세 전환. 창업자 젠슨 황의 CEO 이탈 이슈도 투자심리 불안 요인으로 거론.</span><a href="https://finance.yahoo.com/technology/live/nvidia-earnings-live-nvidia-to-report-q3-results-after-the-bell-with-colette-kress-to-host-first-call-as-interim-ceo-202616349.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 주가는 '뉴스에 파는' 흐름으로 돌아섰다. 여기에 앤트로픽 상장이 신규 AI 수급을 흡수했고, 10월 연준 의사록을 소화하며 <strong>국채금리가 다시 오른 것</strong>이 밸류에이션 부담을 키웠다.</p>
+      <p><strong>수급.</strong> 앤트로픽 데뷔는 성공적이었지만 <strong>'제로섬'</strong>으로 작동했다 — 새 AI 대장주로 돈이 쏠리는 대신 엔비디아·브로드컴·마이크론이 장중 상승분을 모두 반납했다. 광범위하게 11개 섹터 중 대다수가 하락했고, 방어적 색채도 약해 전형적인 '리스크 오프' 하루였다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>반도체 내부 — 메모리·로직·장비 다이버전스 <span class="chip under h2-chip">국내 직결</span></h2>
+  <p class="lead">이날의 핵심은 반도체 <strong>내부</strong>에 있다. 지수를 끌어내린 주범이 반도체였지만, 같은 '칩'이라도 <strong>로직(엔비디아·AMD) vs 메모리(마이크론) vs 장비</strong>의 낙폭과 성격이 달랐다. 하나의 '반도체 급락'이 아니라 하위 섹터별로 색이 갈리는 국면이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 (간밤 미국)</th><th class="num">방향</th><th>성격</th><th>국내 read-through</th></tr></thead>
+    <tbody>
+      <tr><td><strong>엔비디아</strong> (NVDA)</td><td class="num"><span class="down">−3.75%</span></td><td>AI 로직(GPU)</td><td>실적 beat에도 '뉴스에 파는' 흐름 — AI 밸류 피로의 바로미터<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">11/19 반도체 급락 · 마감 보도 (2026-11-19)</span><span class="evd-sum">11/19 엔비디아 <strong>−3.75%</strong>·마이크론 <strong>−2.97%</strong>·AMD <strong>−8%대</strong>(보도별 −7~−10%). 앤트로픽 데뷔 후 엔비디아·브로드컴·마이크론이 장중 상승분 반납. SOX(필라델피아 반도체지수)는 10월 초 대비 약 −25%. 젠슨 황 CEO 이탈·AI 자금조달 우려가 심리 불안 요인.</span><a href="https://finance.yahoo.com/markets/article/nvidia-broadcom-micron-stocks-decline-as-anthropic-goes-public-170845481.html" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>AMD</strong> (AMD)</td><td class="num"><span class="down">−8%대</span></td><td>AI 로직(GPU/CPU)</td><td>헌터브룩 숏 리포트(중국 수출 의혹)라는 <strong>개별 악재</strong> — 섹터 전체 신호로 과대해석 금물<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">AMD 숏 리포트 · 마감 보도 (2026-11-19)</span><span class="evd-sum">AMD는 숏셀러 <strong>헌터브룩 캐피털</strong>이 숏 포지션을 공개하며 <strong>미국 수출통제 위반·중국 관련 의혹</strong>을 제기해 급락(보도별 −7~−10%, 시총 약 1,000억 달러 증발 보도). 이는 종목 고유 이슈로, 메모리·장비 전반의 펀더멘털과는 구분해 읽어야 한다.</span><a href="https://cryptobriefing.com/amd-loses-100-billion-china-chip-report/" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>마이크론</strong> (MU)</td><td class="num"><span class="down">−2.97%</span></td><td>메모리(DRAM/HBM)</td><td>상대적 낙폭은 로직보다 작음 — 삼성전자·SK하이닉스에 직접 심리 read-through</td></tr>
+      <tr><td>브로드컴 (AVGO)</td><td class="num"><span class="down">상승분 반납</span></td><td>AI 로직·네트워킹</td><td>장중 강세 되돌림 — AI 수급 로테이션의 전형</td></tr>
+      <tr><td>필라델피아 반도체(SOX)</td><td class="num"><span class="down">10월比 −25%</span></td><td>섹터 지수</td><td>장비 포함 섹터 전반 조정 — 밸류체인 변동성 확대</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 간밤 개별 반도체주 등락은 <strong>공개 마감 보도 기준</strong>이며(토스 실시간 시세로 교차확인 권장), 엔비디아(−3.75%)·마이크론(−2.97%) 수치는 복수 매체가 일치했다. AMD 낙폭은 보도별로 <strong>−7~−10%</strong>로 범위가 벌어져 '−8%대'로 표기했고, 숏 리포트의 의혹 자체는 <strong>미확인 주장</strong>임을 명시한다. 앤트로픽 '종가 상승률'도 매체별로 +17~+27%로 엇갈려 보수적 수치만 적었다 — 불명확한 값은 지어내지 않는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 중요한가.</strong> 국내 증시의 체력은 여전히 <strong>메모리·HBM 사이클</strong>에 달려 있다. 간밤 신호를 한 겹 벗겨 보면, ① <strong>메모리(마이크론 −2.97%)의 낙폭은 로직(엔비디아 −3.75%·AMD −8%대)보다 얕았고</strong>, ② AMD 급락은 <strong>종목 고유의 숏 리포트 악재</strong>지 메모리 수요 둔화가 아니다. 즉 "반도체가 다 무너졌다"가 아니라 <strong>AI 밸류에이션·수급 피로 + 일부 종목 악재</strong>의 조합으로 읽는 것이 정확하다. 다만 엔비디아가 실적 beat에도 밀렸다는 사실은, 오늘 삼성전자·SK하이닉스에 <strong>부정적 심리 read-through</strong>로 작동할 수 있다 — HBM 수요의 펀더멘털(엔비디아 가이던스 상향)은 중립 이상이지만, '좋은 실적도 안 산다'는 분위기가 단기 수급을 누를 수 있다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 스냅샷 — 금리·물가·환율</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수)·KRX(국내 지수)·통계청 KOSIS(국내 실물) 실측 기준. <strong>데이터 기준일을 함께 표기</strong >한다 — 소스별 확정치 시점이 달라, 스테일 여부가 보이도록 하는 것이 원칙이다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,331.1원</td><td class="num">1,338.8원</td><td>11/19 · ECOS <span class="down">(원화 강세 7.7원)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>11/17 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">5.10%</td><td class="num">5.12%</td><td>11/17 · FRED DGS10</td></tr>
+      <tr><td>미 10년물 (11/19 마감 보도)</td><td class="num">≈5.085%</td><td class="num">+≈2bp</td><td>11/19 · 마감 보도(FRED 확정은 T+1)</td></tr>
+      <tr><td>미 2년물 / 30년물 (마감 보도)</td><td class="num">≈4.826% / 5.426%</td><td class="num">소폭 상승</td><td>11/19 · 마감 보도</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">122.65</td><td class="num">122.54</td><td>11/13 · FRED DTWEXBGS</td></tr>
+      <tr><td>KOSPI / KOSDAQ (직전 확정)</td><td class="num"><span class="up">5,067.44 / 662.81</span></td><td class="num"><span class="up">+1.99% / +1.96%</span></td><td>11/18 · KRX Open API</td></tr>
+      <tr><td>국내 CPI / 산업생산 (YoY)</td><td class="num">+2.82% / +1.09%</td><td class="num">—</td><td>CPI 202610 · 생산 202609 · KOSIS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> FRED 일일 시계열은 확정에 하루 정도 시차가 있어 <strong>10년물이 표에 두 값</strong>으로 보인다 — 11/17 확정치(5.10%)와 11/19 마감 보도치(≈5.085%). 시황 해석엔 간밤(11/19) 보도치를, 매크로 추세엔 FRED 확정치를 쓴다. 달러지수(122.65)는 FRED DTWEXBGS 특성상 기준일(11/13)이 다소 앞서 있어 참고용이다. 환율은 원화가 7.7원 강세로 돌아 외국인 수급엔 우호적 방향이지만, 간밤 미 증시 리스크 오프가 이를 상쇄할 수 있다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘(11/20) 국내 장 시사점 <span class="chip h2-chip">변동성 경계</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 간밤 뉴욕은 앤트로픽 IPO 잔칫날에 되레 <strong>3대 지수 2%대 급락</strong>하고 <strong>엔비디아가 실적 beat에도 밀렸다</strong> — 전일(11/18) 반등했던 삼성전자·SK하이닉스가 이 'AI 트레이드 피로'를 얼마나 따라가느냐가 오늘의 핵심이다.</p>
+      <p><strong>맥락.</strong> 국내 증시는 11/18 <strong>KOSPI <span class="up">+1.99%</span>(5,067)·KOSDAQ <span class="up">+1.96%</span></strong>로 강하게 올라 있었다(11/18 확정치). 그 다음 밤인 11/19 뉴욕이 급락하고 반도체가 주도했으므로, 오늘(금) 국내 장은 <strong>간밤 약세를 되돌리는 갭다운 압력</strong>으로 출발할 공산이 크다. 다만 간밤 하락의 성격은 수요 쇼크가 아니라 <strong>① AI 밸류에이션·수급 피로 ② AMD 등 일부 종목 고유 악재 ③ 금리 반등</strong>의 조합이고, 메모리(마이크론)의 낙폭은 로직보다 얕았다는 점은 과도한 공포를 제어하는 요인이다.</p>
+      <p><strong>체크포인트.</strong> ① 삼성전자·SK하이닉스가 간밤 엔비디아 −3.75%·마이크론 −2.97%를 얼마나 반영하는지(개장 갭·초반 거래대금), ② 엔비디아 <strong>가이던스 상향(HBM 수요)</strong>이라는 펀더멘털 긍정 신호가 메모리주 저가 매수로 연결되는지, ③ 원/달러 원화 강세(1,331원)에도 간밤 리스크 오프로 <strong>외국인이 순매도로 돌지</strong>, ④ 다시 오른 미 10년물(≈5.09%)과 '좋은 실적도 안 산다'는 분위기가 성장주 전반을 계속 누르는지.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 브리핑은 국내 장 시작 전(오전 6시대) 조회 기준으로, 간밤 미 증시 마감·매크로 스냅샷을 정리한 것이다. 개별 반도체주 등락은 공개 마감 보도에 기반하며 개장 후 실제 흐름은 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 11/19 미 마감 다우 49,097.06(−2.19%)·S&amp;P500 7,175.83(−2.02%)·나스닥 23,879.20(−2.25%) — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html">Yahoo Finance</a></span>
+  <span>근거2 앤트로픽 IPO 공모가 83달러·개장 +34%·종가 약 +17% 부근 — <a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-19-dow-sp-500-nasdaq-anthropic-ipo-live-141306032.html">Yahoo Finance</a>, <a href="https://eurasiabusinessnews.com/2026/11/19/stock-market-today-november-19-2026-dow-sinks-1084-points-nasdaq-drops-2-2-after-anthropic-debut/">Eurasia Business News</a></span>
+  <span>근거3 신규 실업수당 청구 20.3만(컨센 ≈19.7만)·필라델피아 연은 +6.3 — <a href="https://1trader.com/en/us-claims-2026-11-19/">1Trader</a>, <a href="https://www.actionforex.com/live-comments/661471-us-initial-claims-stay-subdued-at-203k-as-continuing-claims-rise-sharply/">ActionForex</a></span>
+  <span>근거4 엔비디아 매출 1,158억(+103%)·EPS 2.68달러(컨센 2.47 상회)·가이던스 상향 — <a href="https://finance.yahoo.com/technology/live/nvidia-earnings-live-nvidia-to-report-q3-results-after-the-bell-with-colette-kress-to-host-first-call-as-interim-ceo-202616349.html">Yahoo Finance</a></span>
+  <span>근거5 11/19 엔비디아 −3.75%·마이크론 −2.97%·AMD −8%대·SOX 10월比 −25% — <a href="https://finance.yahoo.com/markets/article/nvidia-broadcom-micron-stocks-decline-as-anthropic-goes-public-170845481.html">Yahoo Finance</a></span>
+  <span>근거6 AMD 급락 — 헌터브룩 숏 리포트(중국 수출 의혹, 미확인 주장) — <a href="https://cryptobriefing.com/amd-loses-100-billion-china-chip-report/">Crypto Briefing</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(미 ETF·시세), 미 마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX Open API(국내 지수), 통계청 KOSIS(국내 CPI·산업생산). 2026-11-20 오전 조회 기준(전일 11/19 미 증시 마감 반영). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-20 06:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
