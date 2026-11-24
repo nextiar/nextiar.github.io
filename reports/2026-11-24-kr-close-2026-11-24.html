@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>코스피 마감 시황 — 젠슨 황 복귀 한 방에 '5천피' 탈환, 3영업일 만의 급반등</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+details.en-abstract { border: 1px solid var(--border); border-radius: 12px; background: var(--card); margin-top: 16px; }
+details.en-abstract summary { cursor: pointer; padding: 12px 18px; list-style: none; display: flex; align-items: center; gap: 9px; }
+details.en-abstract summary::-webkit-details-marker { display: none; }
+details.en-abstract summary::before { content: "▸"; color: var(--muted); font-size: 13px; }
+details.en-abstract[open] summary::before { content: "▾"; }
+details.en-abstract .ena-t { font-weight: 650; font-size: 13.5px; }
+details.en-abstract .ena-s { font-size: 11.5px; color: var(--muted); font-weight: 600; margin-left: auto; }
+details.en-abstract .inner { padding: 0 18px 14px; }
+details.en-abstract .inner p { margin: 0 0 10px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+details.en-abstract .inner p:last-child { margin-bottom: 0; }
+details.en-abstract .inner strong { color: var(--ink); }
+details.en-abstract .ena-note { font-size: 11.5px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-24-kr-close-2026-11-24.html">
+<meta property="og:title" content="코스피 마감 시황 — 젠슨 황 복귀 한 방에 &#x27;5천피&#x27; 탈환, 3영업일 만의 급반등">
+<meta property="og:description" content="젠슨 황 엔비디아 CEO 복귀 소식에 코스피가 +6.32% 급등해 5006.03으로 하루 만에 5천선을 회복했고, 외국인·기관이 동반 순매수로 전환했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-24-kr-close-2026-11-24.html">
+<meta name="description" content="젠슨 황 엔비디아 CEO 복귀 소식에 코스피가 +6.32% 급등해 5006.03으로 하루 만에 5천선을 회복했고, 외국인·기관이 동반 순매수로 전환했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-24-kr-close-2026-11-24.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 마감 시황 심층 (KR Market Close)</div>
+  <h1>코스피 마감 시황 — 젠슨 황 복귀 한 방에 <span class="up">'5천피' 탈환</span>, 3영업일 만의 급반등</h1>
+  <p class="sub">2026년 11월 24일(화) 장 마감 기준. 코스피는 <strong>젠슨 황 엔비디아 CEO의 경영 복귀</strong> 소식에 <strong><span class="up">+6.32%</span> 급등해 5006.03으로 '5천피'를 하루 만에 탈환</strong>했다. 전날 매도 사이드카가 발동했던 시장에 이날은 <strong>매수 사이드카</strong>가 걸렸고, <strong>반도체·2차전지·로봇</strong>이 동반 폭등했다. <strong>외국인·기관이 함께 순매수</strong>로 돌아 지수를 끌어올렸다. 관건은 이 반등이 '한 사람의 뉴스'에 기댄 하루인지, 수급 전환의 시작인지다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-24 16:00 KST · 평일 마감 자동 발간 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,337.3원</strong>(11-23 ECOS 확정 · 전일 1,330.8 → 당시 원화 약세, 이날 위험선호 회복으로 강세 전환 압력) · 한국 기준금리 3.00%(11-21 ECOS) · 미 국채 10년물 5.04%(11-19 FRED) · 달러지수 122.65(11-13 FRED). 지수 종가(코스피 5006.03·코스닥 665.88)는 <strong>당일 마감 공개 보도 기준</strong>이며, KRX Open API 확정치는 T+1(익일) 반영이라 전일(11-23) 확정치만 아래에 병기한다.</div>
+
+<section>
+  <h2><span class="idx">1</span>오늘 마감 한눈에 <span class="chip h2-chip">급반등 · 매수 사이드카</span></h2>
+  <p class="lead">지수 종가·수급은 당일 공개 마감 보도, 매크로는 한국은행 ECOS·미 FRED, 거래대금 상위는 토스증권 Open API(16:00 조회) 기준. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">오늘 국내 (11/24 마감)</div><div class="val up">리스크 온</div><div class="delta">3영업일 만의 급반등 · 매수 사이드카 발동</div></div>
+    <div class="tile"><div class="lbl">코스피</div><div class="val up">5,006.03</div><div class="delta up">▲ +6.32% (+297.49p) · 5천피 회복</div></div>
+    <div class="tile"><div class="lbl">코스닥</div><div class="val up">665.88</div><div class="delta up">▲ +4.79% (+30.43p)</div></div>
+    <div class="tile"><div class="lbl">수급 (코스피)</div><div class="val up">외인·기관 매수</div><div class="delta">외국인 +0.73조 · 기관 +0.87조 / 개인 −2.04조</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 코스피가 <strong><span class="up">+6.32%</span> 급등해 5006.03으로 '5천피'를 하루 만에 탈환</strong>했다 — <strong>젠슨 황 엔비디아 CEO의 경영 복귀</strong>(11-23 이사회 승인)로 AI·반도체 투심이 되살아나며, 전날 매도 사이드카가 걸렸던 자리에 이날은 <strong>매수 사이드카</strong>가 발동했다.</div>
+    <div class="tldr-item">② 수급은 <strong>외국인(+7,255억)·기관(+8,692억)이 동반 순매수</strong>로 전환해 개인 순매도(−2조430억)를 압도했다. 외국인은 <strong>현물에 더해 선물도 1만 계약 순매수</strong>해 방향성에 무게가 실렸다.</div>
+    <div class="tldr-item">③ 다만 이번 반등이 <strong>'한 사람의 복귀 뉴스'에 과도하게 의존</strong>했다는 경계론이 함께 나온다 — 올해 사이드카가 101번(2002년 이후 최대)이나 발동할 만큼 변동성이 극단적인 국면이라, 수급 전환의 <strong>지속성 확인</strong>이 다음 거래일의 핵심이다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary><span class="ena-t">🌐 English Summary</span><span class="ena-s">EN brief</span></summary>
+    <div class="inner" lang="en">
+      <p><strong>Risk-on rebound.</strong> The KOSPI surged <strong>+6.32% to 5,006.03</strong>, reclaiming the 5,000 mark in a single session after a three-day slide, while the KOSDAQ jumped +4.79% to 665.88. The trigger was news that Jensen Huang returned as NVIDIA CEO (board approval on Nov 23), which revived AI and semiconductor sentiment across Asia; a buy-side sidecar was triggered after a sell-side sidecar had hit the day before.</p>
+      <p>Foreign investors (net +KRW 0.73tn) and institutions (net +KRW 0.87tn) both turned buyers, overwhelming retail selling (−KRW 2.04tn); foreigners also net-bought roughly 10,000 index futures contracts. Semiconductors, secondary batteries and robotics led the advance.</p>
+      <p>Key risk: the rally leaned heavily on a single piece of news, and with sidecars triggered 101 times this year (most since 2002), the durability of the foreign/institutional flow shift is the main question into the next session, alongside December FOMC expectations and a thin US Thanksgiving week.</p>
+      <p class="ena-note">Figures follow the Korean original.</p>
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>지수·업종 마감 — 반도체가 끌고, 2차전지·로봇이 밀고</h2>
+  <p class="lead">코스피·코스닥 모두 장중 매수 사이드카가 발동할 만큼 개장부터 급등 출발했다. 지수를 끌어올린 축은 <strong>삼성전자·SK하이닉스 등 반도체 대형주</strong>였고, 코스닥에서는 기계·장비·2차전지·로봇 관련주가 폭을 넓혔다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지수 / 지표</th><th class="num">11/24 종가</th><th class="num">전일 대비</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피</strong></td><td class="num">5,006.03</td><td class="num"><span class="up">+6.32%</span></td><td>+297.49p · 하루 만에 5천선 회복<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">코스피 마감 · 뉴스1/아주경제 (2026-11-24)</span><span class="evd-sum">코스피 <strong>297.49p(+6.32%) 오른 5006.03 마감</strong>. 젠슨 황 복귀 소식에 3영업일 만에 반등하며 '5천피' 탈환.</span><a href="https://www.ajunews.com/view/20261124153358653" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스닥</strong></td><td class="num">665.88</td><td class="num"><span class="up">+4.79%</span></td><td>+30.43p<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스닥 마감 · 아시아경제 (2026-11-24)</span><span class="evd-sum">코스닥 <strong>30.43p(+4.79%) 오른 665.88 마감</strong>. 기계·장비, 운송장비·부품, 금융, 전기·전자 업종이 동반 강세.</span><a href="https://view.asiae.co.kr/article/2026112415391950437" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>코스피 (전일 확정)</td><td class="num">4,708.54</td><td class="num"><span class="down">−3.31%</span></td><td>11-23 · KRX 확정치(macro_snapshot)</td></tr>
+      <tr><td>코스닥 (전일 확정)</td><td class="num">635.45</td><td class="num"><span class="down">−1.58%</span></td><td>11-23 · KRX 확정치(macro_snapshot)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>주도 업종.</strong> 코스닥 기준 <strong>기계·장비 <span class="up">+8.33%</span>·운송장비 및 부품 <span class="up">+8.24%</span>·금융 <span class="up">+7.40%</span>·전기·전자 <span class="up">+6.97%</span>·제조 <span class="up">+5.76%</span></strong>가 상위였다. 시가총액 상위에서는 <strong>반도체·2차전지·로봇 관련주</strong>가 특히 강했다 — 간밤 아시아 전반(한국·대만·일본)에서 반도체주가 동반 폭등했고, 중국 증시(상하이 +1%·선전 +2%)도 같은 재료에 반응했다.<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">업종·주도주 · 지크서/뉴시스 (2026-11-24)</span><span class="evd-sum">젠슨 황 복귀 훈풍에 <strong>반도체주 급등</strong>으로 코스피 5000선 탈환. 코스닥 업종별 상승률 상위는 기계·장비(+8.33%)·운송장비·부품(+8.24%)·금융(+7.40%)·전기전자(+6.97%). 시총 상위에서 2차전지·로봇·반도체주가 강세.</span><a href="https://www.ziksir.com/news/articleView.html?idxno=154518" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>해석.</strong> 전날까지의 하락이 'AI 밸류에이션 거품' 불안에서 비롯됐다면, 이날의 반등은 그 불안의 상징이던 엔비디아 리더십 공백이 해소됐다는 한 가지 재료가 투심을 통째로 되돌린 하루였다. 지수 상승폭(+6.32%)이 전일 낙폭(−3.31%)을 크게 웃돌아 <strong>낙폭을 모두 되돌리고도 남는 V자</strong>가 나왔다는 점에서, 방향보다 <strong>변동성의 크기</strong> 자체가 이 시장의 성격을 말해준다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>수급 — 외국인·기관 동반 매수 전환, 거래대금은 반도체 대형주에 집중</h2>
+  <p class="lead">전날까지 지수를 눌렀던 외국인·기관이 이날 함께 순매수로 돌아선 것이 반등의 뼈대다. 거래대금 상위 역시 삼성전자·SK하이닉스 등 반도체 대형주에 쏠렸고, 지수형 인버스 ETF만 큰 폭으로 하락해 방향이 명확했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자 (코스피)</th><th class="num">순매수</th><th>메모</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="up">+7,255억</span></td><td>현물 순매수 + 선물 약 1만 계약 순매수<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">투자자별 수급 · 오피니언뉴스/연합인포맥스 (2026-11-24)</span><span class="evd-sum">코스피에서 <strong>외국인 +7,255억·기관 +8,692억 순매수</strong>, 개인 −2조430억 순매도. 외국인은 지수 급등 속에서 <strong>선물도 1만 계약 순매수</strong>해 방향성에 무게.</span><a href="http://www.opinionnews.co.kr/news/articleView.html?idxno=147437" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="up">+8,692억</span></td><td>외국인과 동반 매수로 지수 견인</td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="down">−2조430억</span></td><td>급등 구간에서 차익실현성 순매도</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 투자자별 순매수 금액은 당일 공개 마감 보도 기준이며, KRX Open API는 투자자별 수급을 제공하지 않아(확정치는 T+1) 교차검증 대상이다. 토스 <code>fund_flows</code>의 수급 신호는 종목별 DART 5%룰 대량보유로 대체되며, 본 시황에는 지수 전체 수급만 싣는다 — 개별 종목의 미확인 수급 수치는 넣지 않았다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>거래대금 상위 (토스증권 Open API · 11/24 16:00 조회)</h3>
+    <div class="tbl-scroll">
+    <table>
+      <thead><tr><th>종목</th><th class="num">종가(원)</th><th class="num">등락률</th><th>성격</th></tr></thead>
+      <tbody>
+        <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,161,000</td><td class="num"><span class="up">약 +7.0%</span></td><td>HBM·메모리 대장, 거래대금 1위</td></tr>
+        <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">190,300</td><td class="num"><span class="up">+7.2%</span></td><td>반도체 대형주, 거래대금 2위</td></tr>
+        <tr><td><strong>삼성SDI</strong> (006400)</td><td class="num">449,000</td><td class="num"><span class="up">+13.4%</span></td><td>2차전지 — 상승폭 최상위권</td></tr>
+        <tr><td><strong>삼성전기</strong> (009150)</td><td class="num">860,000</td><td class="num"><span class="up">+10.5%</span></td><td>전기·전자 부품</td></tr>
+        <tr><td><strong>한화에어로스페이스</strong> (012450)</td><td class="num">628,000</td><td class="num"><span class="up">+9.2%</span></td><td>방산·엔진</td></tr>
+        <tr><td>KODEX 200선물인버스2X (252670)</td><td class="num">121</td><td class="num"><span class="down">−13.6%</span></td><td>지수 하락 베팅 — 급등장에 홀로 급락</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="prose" style="margin-top:12px">
+      <p><strong>읽는 법.</strong> 거래대금 최상위가 <strong>SK하이닉스·삼성전자</strong>로, 지수 급등의 거래가 반도체 대형주에 집중됐음을 보여준다. 삼성SDI(+13.4%)·삼성전기(+10.5%)처럼 <strong>2차전지·부품</strong>의 상승폭이 지수보다 컸고, 반대로 지수 하락에 베팅하는 <strong>인버스 ETF만 −13.6%</strong>로 급락해 이날 쏠림의 방향이 명확했다. (등락률은 토스 16:00 조회값으로, 공개 마감 확정치와 소폭 차이가 날 수 있다.)</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>매크로 — 원/달러·금리와 간밤 미국 잔영</h2>
+  <p class="lead">한국은행 ECOS(기준금리·원/달러)·미 FRED(미 금리·달러지수) 실측 기준. <strong>소스별 확정 기준일을 함께 표기</strong>해 스테일 여부가 보이도록 한다. 이날 반등의 방아쇠는 전적으로 <strong>간밤 미국發 AI·반도체 투심 회복</strong>이었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>지표</th><th class="num">값</th><th class="num">직전</th><th>기준일 · 출처</th></tr></thead>
+    <tbody>
+      <tr><td><strong>원/달러</strong></td><td class="num">1,337.3원</td><td class="num">1,330.8원</td><td>11-23 · ECOS <span class="down">(직전 대비 원화 약세)</span></td></tr>
+      <tr><td><strong>한국 기준금리</strong></td><td class="num">3.00%</td><td class="num">동결</td><td>11-21 · ECOS</td></tr>
+      <tr><td><strong>미 10년물 (FRED 확정)</strong></td><td class="num">5.04%</td><td class="num">—</td><td>11-19 · FRED DGS10</td></tr>
+      <tr><td><strong>달러지수</strong></td><td class="num">122.65</td><td class="num">—</td><td>11-13 · FRED DTWEXBGS</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note cool" style="margin-top:14px">
+    <strong>읽는 법.</strong> 원/달러는 11-23 확정 기준 1,337.3원으로 직전 대비 원화가 약세였으나, 이날 위험선호가 되살아나며 <strong>원화 강세(외국인 수급 우호) 방향으로 압력</strong>이 작용했을 가능성이 크다(당일 확정 환율은 익일 ECOS 반영). 미 10년물·달러지수는 FRED 확정 시점이 각각 다르니 추세 판단용으로만 쓴다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>간밤 미국 잔영.</strong> 직전 미 증시 세션(11-23 월)에서 <strong>엔비디아 이사회가 젠슨 황의 CEO 복귀를 만장일치 승인</strong>(사임 발표 11일 만)하면서 나스닥을 비롯한 미 기술주가 폭등했고, 그 흐름이 이날 아시아로 그대로 번졌다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">간밤 미국·아시아 동반 급등 · 뉴시스/한겨레 (2026-11-24)</span><span class="evd-sum">젠슨 황 복귀에 간밤 나스닥 급등, 이날 <strong>한국·대만·일본 반도체주 동반 폭등</strong>. 중국 상하이 +1%·선전 +2%. 단, "시장이 한 사람의 복귀에 이토록 의존하는 것은 충격적"이라는 경계론도 제기.</span><a href="https://www.hani.co.kr" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> 즉 이날 국내 반등은 국내 고유 재료가 아니라 <strong>간밤 미국發 리더십 리스크 해소</strong>를 번역한 결과다. 그만큼 미국 쪽 재료가 식으면 되돌림 위험도 함께 커진다.</p>
+      <p><strong>경계 신호.</strong> 변동성이 구조적으로 커졌다 — 올해 들어 사이드카가 <strong>101번</strong> 발동해 2002년 이후 최대를 기록했다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">사이드카 101번 · 연합뉴스 (2026-11-24)</span><span class="evd-sum">'널뛰기 장세'에 <strong>올해만 사이드카 101번 발동 — 2002년 이후 최대</strong>. 하루 ±6% 안팎의 급등락이 반복되는 극단적 변동성 국면임을 시사.</span><a href="https://www.yna.co.kr" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> '5천피 회복'이라는 숫자보다, 하루 만에 지수가 6% 넘게 출렁이는 환경 자체가 리스크 관리의 1순위다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>내일(다음 거래일) 관전 포인트 <span class="chip h2-chip">지속성 확인</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 이날 반등이 <strong>'젠슨 황 복귀'라는 단일 재료에 기댄 하루</strong>였던 만큼, 다음 거래일의 초점은 <strong>외국인·기관의 동반 매수가 이어지는지(수급 전환의 지속성)</strong>와 <strong>미국 쪽 AI 투심이 식지 않는지</strong>다.</p>
+      <p><strong>체크포인트.</strong> ① <strong>외국인·기관 순매수 연속성</strong> — 이날 전환이 하루짜리인지, 추세인지. 특히 외국인 선물 1만 계약 순매수가 유지되는지. ② <strong>삼성전자·SK하이닉스 등 반도체 대형주</strong>가 상승분을 지키는지(고점 차익실현 vs 추가 매수). ③ <strong>12월 FOMC 기대</strong> — 연준이 미 증시 불안에 '구원투수'로 등판(금리 인하)할지에 대한 보도가 이어지고 있다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">12월 FOMC 기대 · 연합인포맥스 (2026-11-24)</span><span class="evd-sum">미 증시 불안 속에 <strong>연준이 12월 FOMC에서 구원투수로 등판</strong>(금리 인하)할지가 쟁점. 통화정책 기대가 글로벌 위험자산 방향의 변수.</span><a href="https://news.einfomax.co.kr" target="_blank" rel="noopener">원문 보기 ↗</a></span></span> ④ <strong>미 추수감사절 주간</strong> — 11-26(목) 뉴욕 증시 휴장, 11-27(금) 단축 거래로 <strong>거래가 얇아져</strong> 변동성이 증폭되기 쉽다. ⑤ 원/달러 방향(위험선호 지속 시 원화 강세 → 외국인 수급 우호).</p>
+      <p><strong>한 발 물러서서.</strong> 전날 −3.3%, 당일 +6.3%처럼 하루 단위로 지수가 크게 뒤집히는 국면에서는 <strong>방향 베팅보다 포지션 크기·분할 대응</strong>이 유효하다. '5천피 회복'은 심리적 분기점이지만, 사이드카가 올해만 101번 걸린 시장이라는 사실을 함께 기억할 필요가 있다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 시황은 11-24 장 마감(16:00) 기준으로, 지수 종가·수급은 당일 공개 마감 보도, 거래대금은 토스 16:00 조회, 매크로는 소스별 확정 기준일을 표기했다. 개별 종목은 시황 맥락으로 언급했을 뿐 투자의견이 아니며, 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 코스피 +6.32%(+297.49p) 5006.03 마감 — <a href="https://www.ajunews.com/view/20261124153358653">아주경제</a>, <a href="https://www.ebn.co.kr/news/articleView.html?idxno=1732850">EBN</a></span>
+  <span>근거2 코스닥 +4.79%(+30.43p) 665.88 마감 — <a href="https://view.asiae.co.kr/article/2026112415391950437">아시아경제</a></span>
+  <span>근거3 반도체·2차전지·로봇 주도·코스닥 업종별 상승률 — <a href="https://www.ziksir.com/news/articleView.html?idxno=154518">지크서</a></span>
+  <span>근거4 외국인 +7,255억·기관 +8,692억 순매수, 개인 −2조430억 순매도, 외국인 선물 1만 계약 순매수 — <a href="http://www.opinionnews.co.kr/news/articleView.html?idxno=147437">오피니언뉴스</a></span>
+  <span>근거5 젠슨 황 복귀·아시아 반도체주 동반 폭등·과도 의존 경계론 — <a href="https://www.hani.co.kr">한겨레</a>, 뉴시스</span>
+  <span>근거6 올해 사이드카 101번(2002년 이후 최대) — <a href="https://www.yna.co.kr">연합뉴스</a></span>
+  <span>근거7 12월 FOMC 연준 구원투수 등판 여부 — <a href="https://news.einfomax.co.kr">연합인포맥스</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(거래대금 상위·시세, 16:00 조회), 당일 국내 증시 마감 공개 보도(지수·수급), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), KRX Open API(전일 지수 확정치). 각 지표는 소스별 확정 기준일을 표기했다 — 지수 종가·투자자별 수급은 당일 보도 기준(KRX 확정치는 T+1 반영). <strong>작성·발간: 2026-11-24 16:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다. <strong>정보용이며 투자 권유가 아님.</strong>
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
