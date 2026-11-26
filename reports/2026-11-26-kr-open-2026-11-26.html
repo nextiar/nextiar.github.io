@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>한국 증시 개장 점검 — 6% 폭락 하루 만에 반발 매수로 반등 출발, 외국인은 여전히 '팔자'</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+.en-abstract { margin: 14px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 0 16px; }
+.en-abstract > summary { cursor: pointer; padding: 12px 0; font-size: 12.5px; font-weight: 650; color: var(--ink-2); list-style: none; }
+.en-abstract > summary::-webkit-details-marker { display: none; }
+.en-abstract > summary::before { content: "▸ "; color: var(--accent); }
+.en-abstract[open] > summary::before { content: "▾ "; }
+.en-abstract .en-body { padding: 0 0 14px; font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-26-kr-open-2026-11-26.html">
+<meta property="og:title" content="한국 증시 개장 점검 — 6% 폭락 하루 만에 반발 매수로 반등 출발, 그러나 외국인은 여전히 &#x27;팔자&#x27;">
+<meta property="og:description" content="전일 외국인 1.9조 투매로 −6.16% 폭락한 코스피가 반발 매수로 +1.01% 반등 출발했으나 장 초반 외국인·기관은 여전히 순매도 — 반등 지속은 외국인 수급 전환에 달렸다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-26-kr-open-2026-11-26.html">
+<meta name="description" content="전일 외국인 1.9조 투매로 −6.16% 폭락한 코스피가 반발 매수로 +1.01% 반등 출발했으나 장 초반 외국인·기관은 여전히 순매도 — 반등 지속은 외국인 수급 전환에 달렸다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-26-kr-open-2026-11-26.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 개장 점검 심층 (KR Open Check)</div>
+  <h1>한국 증시 개장 점검 — 6% 폭락 하루 만에 반발 매수로 <span class="up">반등 출발</span>, 그러나 외국인은 여전히 <span class="down">'팔자'</span></h1>
+  <p class="sub">2026년 11월 26일(목) 오전 9시 30분 기준 · 개장 30분 흐름 점검. 어제(11/25) 외국인 <strong>1.9조 투매</strong>로 코스피가 <strong><span class="down">−6.16%</span> 폭락(장 초반 매도 사이드카)</strong>한 충격 다음 날, 오늘 개장은 <strong>반발 저가매수</strong>로 코스피 <strong><span class="up">+1.01%</span>(4,745.10)</strong>·코스닥 <strong><span class="up">+1.20%</span>(658.46)</strong> 반등 출발했다. 간밤 뉴욕이 장중 급락을 대부분 만회(나스닥 −4.6%→−0.62%)한 것이 심리를 지지했으나, <strong>장 초반 외국인·기관은 여전히 순매도</strong>다. 오늘은 '반발이냐 추세 전환이냐'를 가르는 날이다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp">📝 작성·발간 2026-11-26 09:30 KST · 평일 개장 점검 슬롯</span>
+</header>
+
+<div class="note" style="margin-top:20px">
+  <strong>⏱ 09:30 기준 장중 수치 — 마감 시황(16:00)에서 확정치로 갱신.</strong> 본 리포트의 지수·종목 등락은 <strong>2026-11-26 09:30 KST 조회</strong>한 개장 보도치·토스증권 실시간 시세다. 당일 지수 확정치는 KRX가 익일 반영하므로, 절대 레벨은 개장 보도치와 토스 ETF 프록시를 병기한다. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>).
+</div>
+
+<div class="note cool" style="margin-top:12px">
+  <strong>매크로 스냅샷.</strong> 원/달러 <strong>1,343.6원</strong>(전일 1,346.6 → 원화 강세 3원, 외국인 수급엔 우호적 · 11/25 ECOS 종가 기준, 당일 장중치 아님) · 한국 기준금리 3.00% · 미 10년물 4.92%(11/23 FRED) · 달러지수 123.6(11/20 FRED). 어제 미 증시(11/25 마감)는 혼조 — 다우 <span class="up">+0.33%</span>·S&amp;P500 <span class="down">−0.25%</span>·나스닥 <span class="down">−0.62%</span>, SPY 716.70$(−0.29%).
+</div>
+
+<section>
+  <h2><span class="idx">1</span>개장 30분 한눈에 <span class="chip h2-chip">반등 출발 · 외인 매도 지속</span></h2>
+  <p class="lead">지수는 개장 보도치(연합뉴스 09:01 개장)와 토스증권 실시간 ETF 프록시를 병기한다. 갭 방향은 <strong>상승 갭</strong> — 전일 폭락의 되돌림이다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">갭 방향 (개장)</div><div class="val up">상승 반등</div><div class="delta">전일 −6.16% 폭락의 반발 매수</div></div>
+    <div class="tile"><div class="lbl">코스피 (09:01 개장)</div><div class="val up">4,745.10</div><div class="delta up">▲ +1.01% · +47.59p</div></div>
+    <div class="tile"><div class="lbl">코스닥 (09:01 개장)</div><div class="val up">658.46</div><div class="delta up">▲ +1.20% · +7.82p</div></div>
+    <div class="tile"><div class="lbl">장 초반 외국인</div><div class="val down">순매도</div><div class="delta down">−618억 (개인 +642억 방어)</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 어제(11/25) <strong>외국인 1.9조 순매도</strong>로 코스피가 <strong><span class="down">−6.16%</span>(−308.52p) 폭락</strong>하며 09:08 매도 사이드카까지 발동한 뒤, 오늘 개장은 <strong>반발 저가매수</strong>로 코스피 <span class="up">+1.01%</span>·코스닥 <span class="up">+1.20%</span> 반등 출발했다.</div>
+    <div class="tldr-item">② 간밤 뉴욕은 <strong>롤러코스터</strong> — 나스닥이 장중 <span class="down">−4.6%</span>까지 밀렸다 <span class="down">−0.62%</span>로 낙폭 대부분을 만회했고, 이 '만회'가 국내 저가매수 심리를 지지했다. 다만 <strong>AI 수익성·메모리 공급과잉 논쟁</strong>은 미해소다.</div>
+    <div class="tldr-item">③ <strong>반도체가 반등 주도</strong>(SK하이닉스 <span class="up">+5.8%</span>·삼성전자 <span class="up">+3.0%</span>·삼성전기 <span class="up">+7.8%</span>, 레버리지 ETF 급등). 그러나 <strong>장 초반 외국인·기관은 여전히 순매도</strong> — 외국인 매도 전환 여부가 반등 지속의 열쇠다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary (3-sentence abstract)</summary>
+    <div class="en-body">
+      A day after a brutal <strong>−6.16%</strong> KOSPI crash (foreigners dumping ₩1.9tn, a sell-side sidecar at 09:08), Korean stocks opened higher on bargain-hunting — KOSPI <strong>+1.01%</strong> at 4,745.10 and KOSDAQ <strong>+1.20%</strong> at 658.46. The rebound leaned on an overnight Wall Street recovery (Nasdaq clawed back from −4.6% intraday to close −0.62%) and on semiconductors leading the bounce (SK Hynix +5.8%, Samsung Electronics +3.0%). But in the first 30 minutes foreigners and institutions were still net sellers (−₩61.8bn and −₩11.6bn) while retail absorbed the supply (+₩64.2bn), so whether this is a dead-cat bounce or a genuine turn hinges on a flip in foreign flows. Leverage ETFs surged and inverse products fell, signalling crowded rebound positioning. Figures are intraday as of 09:30 KST and follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>간밤 → 개장 연결 — 뉴욕의 '낙폭 만회'를 어떻게 번역했나</h2>
+  <p class="lead">간밤 미 증시 마감은 오늘 06:00 US 시황 리포트에서 상세히 다뤘다 — <a href="/reports/2026-11-26-us-close-morning-2026-11-26.html">US 마감 시황(11/25 세션) →</a>. 여기서는 중복 서술 대신 <strong>"오늘 국내 개장에의 번역"</strong>에 집중한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>간밤 뉴욕 (11/25 마감)</th><th class="num">종가</th><th class="num">전일 대비</th><th>개장에의 번역</th></tr></thead>
+    <tbody>
+      <tr><td><strong>다우 산업</strong></td><td class="num">50,182.95</td><td class="num"><span class="up">+0.33%</span></td><td>+164.25p · 경기방어·가치주 지지<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">뉴욕증시 11/25 마감 · 이투데이/서플 (2026-11-25)</span><span class="evd-sum">다우 <strong>+0.33%</strong>(50,182.95)·S&amp;P500 <strong>−0.25%</strong>(7,182.78)·나스닥 <strong>−0.62%</strong>(23,585.80) 혼조 마감. 나스닥은 장중 <strong>−4.6%</strong>, S&amp;P는 −3.2%까지 밀렸다 대부분 만회. 엔비디아 −4%, AI 인프라 투자·자본비용 우려 재부각, 관세·인플레 지표가 변동성 키움.</span><a href="https://www.etoday.co.kr/news/view/2653045" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>S&amp;P 500</strong></td><td class="num">7,182.78</td><td class="num"><span class="down">−0.25%</span></td><td>장중 −3.2%→만회, 지수 레벨은 소폭 하락</td></tr>
+      <tr><td><strong>나스닥 종합</strong></td><td class="num">23,585.80</td><td class="num"><span class="down">−0.62%</span></td><td>장중 <span class="down">−4.6%</span>→만회(롤러코스터)가 국내 심리 지지</td></tr>
+      <tr><td>엔비디아 (NVDA)</td><td class="num"><span class="down">≈−4%</span></td><td class="num">—</td><td>AI 회계·청문회 불확실성 지속 → 국내 반도체엔 양날</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>왜 반등으로 번역됐나.</strong> 어제 국내 폭락의 방아쇠가 <strong>미 AI·반도체 약세의 전이</strong>였던 만큼, 간밤 뉴욕이 장중 급락을 <strong>대부분 만회</strong>한 사실 자체가 "최악은 지났을 수 있다"는 <strong>안도 심리</strong>로 작용했다. 여기에 전일 <span class="down">−6%대</span> 급락으로 밸류에이션이 눌린 반도체 대형주에 <strong>반발 저가매수</strong>가 유입되며 상승 갭을 만들었다.<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">코스피 11/26 개장시황 · 브릿지경제/MTN (2026-11-26)</span><span class="evd-sum">전날 6% 넘게 급락한 코스피가 장 초반 <strong>4,700선 회복</strong>. 전일 급락 반발 매수세 유입 + 미 증시가 장중 낙폭 대부분 만회하며 투자심리 일부 개선으로 풀이. 코스피 1.01%(+47.59p) 오른 4,745.10 개장.</span><a href="https://www.viva100.com/article/20261126500247" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>그러나 양날이다.</strong> 간밤 <strong>엔비디아 −4%</strong>와 'AI 수익성·메모리 공급과잉' 논쟁이 풀리지 않은 점은 여전히 국내 삼성전자·SK하이닉스에 부담으로 남는다. 즉 오늘의 반등은 <strong>불확실성의 해소가 아니라 과매도 되돌림</strong> 성격이 짙어, 외국인 수급이 돌지 않으면 되돌림이 짧게 끝날 수 있다. <strong>오늘 밤 미국은 추수감사절 휴장</strong>이라 해외발 변수 공백 속에 <strong>국내 수급이 홀로 방향을 정하는 하루</strong>라는 점도 변수다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>30분 흐름 심층 — 반도체·레버리지가 끌고, 인버스는 급락</h2>
+  <p class="lead">거래대금 상위·등락은 토스증권 실시간 시세(09:30 조회). 전일 폭락의 진앙이던 <strong>반도체 대형주가 그대로 반등을 주도</strong>했고, 반등 베팅이 몰리며 <strong>레버리지 ETF가 급등·인버스 ETF가 급락</strong>했다. 09:08 매도 사이드카가 걸렸던 어제와 달리, 오늘 개장 30분엔 사이드카·서킷브레이커 발동 보도는 없었다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>종목 / ETF (09:30 실시간)</th><th class="num">현재가</th><th class="num">등락률</th><th>성격 · 거래대금(개장 누적)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SK하이닉스</strong> (000660)</td><td class="num">1,090,000</td><td class="num"><span class="up">+5.82%</span></td><td>반등 주도 · 거래대금 1위 ≈1.0조<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">토스증권 Open API · 거래대금 랭킹 (2026-11-26 09:30 실시간)</span><span class="evd-sum">거래대금 1위 SK하이닉스 <strong>+5.82%</strong>(1,090,000원)·2위 삼성전자 <strong>+3.04%</strong>(175,900원)·5위 삼성전기 <strong>+7.81%</strong>(814,000원). 전일 각각 −11.05%·−9.87% 급락분의 일부 회복. 보도상 삼성전자 "2%대"·SK하이닉스 "5%대"와 방향 일치.</span><span class="evd-nolink">출처: 토스증권 Open API(실시간 시세) — 외부 링크 없음</span></span></span></td></tr>
+      <tr><td><strong>삼성전자</strong> (005930)</td><td class="num">175,900</td><td class="num"><span class="up">+3.04%</span></td><td>반도체 대형주 · 거래대금 2위 ≈7,272억 (전일 −9.87%)</td></tr>
+      <tr><td><strong>삼성전기</strong> (009150)</td><td class="num">814,000</td><td class="num"><span class="up">+7.81%</span></td><td>AI 기판·부품 · 거래대금 5위 ≈2,539억</td></tr>
+      <tr><td>KODEX 레버리지 (122630)</td><td class="num">47,750</td><td class="num"><span class="up">+5.10%</span></td><td>코스피 2배 · 거래대금 3위 ≈2,732억</td></tr>
+      <tr><td>KODEX 코스닥150레버리지 (233740)</td><td class="num">4,055</td><td class="num"><span class="up">+8.27%</span></td><td>코스닥 2배 · 반등 베팅 쏠림</td></tr>
+      <tr><td>KODEX 200선물인버스2X (252670)</td><td class="num">131</td><td class="num"><span class="down">−5.07%</span></td><td>곱버스 · 거래대금 4위 ≈2,724억(청산·신규 혼재)</td></tr>
+      <tr><td>KODEX 인버스 (114800)</td><td class="num">1,391</td><td class="num"><span class="down">−2.31%</span></td><td>단순 인버스 · 거래대금 7위</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 급등락 상위는 대부분 <strong>소형·테마주의 상한가권 등락</strong>(예: 대주전자재료 <span class="up">+20.7%</span> 등)으로 지수 내러티브와 연결이 약해 본문에선 제외했다 — 지수 방향은 반도체 대형주·레버리지 ETF가 설명한다. 개별 종목 수치가 <strong>매체별로 엇갈리는 경우</strong>(일부 보도의 반등률 차이)는 싣지 않았다. 지수 절대 레벨은 KRX 확정치가 익일 반영되므로 개장 보도치·프록시를 병기한다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>수급 초기 신호 — 개인이 받치고, 외국인은 여전히 '팔자'</h2>
+  <p class="lead">장 초반 투자자별 순매수는 <strong>보도 인용(정직 표기)</strong>이며 확정 총액은 마감 후 집계된다. 어제 폭락의 핵심이 외국인 투매였던 만큼, <strong>외국인 방향의 연속성</strong>이 오늘 반등의 진위를 가린다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>투자자</th><th class="num">어제(11/25) 확정</th><th class="num">오늘 장 초반(보도)</th><th>해석</th></tr></thead>
+    <tbody>
+      <tr><td><strong>외국인</strong></td><td class="num"><span class="down">−1조8,993억</span></td><td class="num"><span class="down">−618억</span></td><td>매도 지속 — 규모는 급감했으나 방향 미전환<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">장 초반 수급 · 디지털타임스/서울신문 (2026-11-26)</span><span class="evd-sum">장 초반 <strong>개인 +642억 순매수</strong>, <strong>외국인 −618억·기관 −116억 순매도</strong>. 삼성·하이닉스 강세에도 외국인·기관 동반 매도로 반등 탄력 제한. 전일(11/25)은 외국인 <strong>−1.9조</strong>, 개인 +1.42조·기관 +6,000억.</span><a href="https://www.dt.co.kr/article/12097330" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>개인</strong></td><td class="num"><span class="up">+1조4,224억</span></td><td class="num"><span class="up">+642억</span></td><td>이틀 연속 저가매수 방어("개미가 받았다")</td></tr>
+      <tr><td><strong>기관</strong></td><td class="num"><span class="up">+6,000억</span></td><td class="num"><span class="down">−116억</span></td><td>전일 순매수 → 오늘 초반 소폭 매도 전환</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>연속성 진단.</strong> 어제 코스피를 무너뜨린 건 <strong>외국인 1.9조 순매도</strong>였고, 오늘도 <strong>장 초반 −618억으로 방향이 아직 '팔자'</strong>다. 규모가 크게 줄어든 점은 긍정적이나, "<strong>출렁일수록 외국인이 더 판다</strong>"는 악순환 경계 보도가 나올 만큼 추세적 매도가 꺾였다고 보긴 이르다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">외국인 매도 악순환 경계 · KB Think (2026-11-26)</span><span class="evd-sum">"[롤러코스피] 출렁일수록 외국인 더 판다…매도 부르는 위험한 악순환" — 변동성 확대 국면에서 외국인의 추세적 순매도가 반등 탄력을 제약한다는 지적. 반등 지속엔 외국인 수급 전환이 선결 조건.</span><a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1ZOWd2aGNhbnhPMDMzT1NuNEx6VkdHZWhPQWs0bFdvRWxOTkYwVkVQQ0FQdEpqN1lFbWs5ckJRbGt4RV9ZaUxWbTg1UmVLZk1nRHFWY0N6a2V1ZUNYWjZTSVlNWW1VMmFMYi1iSWZueDJwQQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>포지셔닝 쏠림.</strong> <strong>레버리지 ETF 급등(코스닥150레버리지 <span class="up">+8.3%</span>)·인버스 ETF 급락(곱버스 <span class="down">−5.1%</span>)</strong>은 개인 자금이 <strong>반등에 베팅</strong>하고 있음을 보여준다. 단기 되돌림을 노린 쏠림은 반등이 멈추면 되레 변동성을 키울 수 있어, 거래대금·외국인 방향과 함께 봐야 한다. 한편 <strong>증시안정펀드 10조원 확대 논의·자사주 1일 취득 한도 완화</strong> 등 정책 버팀목이 거론되는 점은 하단을 지지하는 재료다.<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">정책 버팀목 · 한국경제/연합뉴스 (2026-11-26)</span><span class="evd-sum">10조원대 증안펀드 확대 논의(코스피200·코스닥150 투입 유력), 급락장에 <strong>자사주 1일 취득 한도 완화</strong>로 증시 버팀목 모색. 효과는 수급 전환 확인 전까지 제한적이라는 평가 병존.</span><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5GUmZFUzFXLUJHZWtuNVp3eVJxOWJXdVJiQmp4dWNlZFFBY2NUSnlZYWppLU11MzBIVUN3cjAzR3BOekV4dmNORUVWYldqb1RqOHc2Sy0tdGdvQQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>오늘의 대응 포인트 3개 <span class="chip cool h2-chip">관찰 · 확인</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>① 외국인 수급의 '플러스 전환' 레벨.</strong> 오늘 반등의 진위는 <strong>외국인 순매도(−618억)가 플러스로 도느냐</strong>에 달렸다. 순매수 전환 시 반등 신뢰가 올라가고, 반대로 매도 규모가 다시 불어나면 <strong>데드캣 바운스</strong> 경계. 관찰 레벨은 전일 종가 기준 <strong>삼성전자 17만원·SK하이닉스 103만원</strong> 지지 유지 여부와, 코스피 <strong>4,700선</strong> 회복 지속 여부.</p>
+      <p><strong>② 오늘 밤 미국 휴장 — 해외발 변수 공백.</strong> 오늘(11/26)은 <strong>미 추수감사절 휴장</strong>으로 간밤 변동성 공백이 생겨, 내일 국내 장까지 <strong>국내 수급이 홀로 방향을 정한다</strong>(11/27 미국은 반장). 그 사이 예정 지표·실적·정책 이벤트는 <a href="/calendar.html">이벤트 캘린더 →</a>에서 확인한다 — 해외 촉매가 비는 구간일수록 국내 수급·정책 뉴스의 영향이 커진다.</p>
+      <p><strong>③ 전환 신호 — 레버리지 쏠림의 양면.</strong> <strong>코스닥150레버리지 +8.3%·곱버스 −5.1%</strong>는 반등 베팅 쏠림으로, 추세 전환의 초기 신호일 수도 있지만 <strong>단기 과열·되돌림 리스크</strong>이기도 하다. 확인 지표는 (ⓐ) 반도체 대형주 상승률의 <strong>장중 유지</strong> 여부, (ⓑ) 거래대금이 상승에 실리는지(허매수 아닌지), (ⓒ) 증안펀드·자사주 완화 등 <strong>정책 집행</strong> 가시화 여부. 세 가지가 함께 확인될 때 반등의 지속성이 높아진다.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 점검은 <strong>개장 30분(09:30 조회)</strong>의 장중 스냅샷이다 — 지수·종목 수치는 마감 시황(16:00)에서 확정치로 갱신된다. 장 초반 투자자별 순매수는 보도 인용치로 마감 집계와 다를 수 있으며, 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 뉴욕증시 11/25 혼조 마감(다우 +0.33%·S&amp;P −0.25%·나스닥 −0.62%, 장중 −4.6% 만회) — <a href="https://www.etoday.co.kr/news/view/2653045">이투데이</a>, <a href="https://supple.kr/news/cmwwosjcdr2rxkwp8rjek2zpn">서플</a></span>
+  <span>근거2 코스피 11/26 개장 +1.01% 4,745.10·4,700선 회복 — <a href="https://www.viva100.com/article/20261126500247">브릿지경제</a>, <a href="https://news.mtn.co.kr/article/2026112609161840457">머니투데이방송</a></span>
+  <span>근거3 거래대금·등락 실시간(SK하이닉스 +5.82%·삼성전자 +3.04%·삼성전기 +7.81%) — 토스증권 Open API(2026-11-26 09:30 실시간)</span>
+  <span>근거4 장 초반 수급(개인 +642억·외국인 −618억·기관 −116억) / 전일 외국인 −1.9조 — <a href="https://www.dt.co.kr/article/12097330">디지털타임스</a>, <a href="https://www.seoul.co.kr/news/economy/securities/2026/11/26/20261126500019">서울신문</a>, <a href="https://www.issueon.co.kr/news/articleView.html?idxno=14495">이슈온</a></span>
+  <span>근거5 외국인 매도 악순환 경계 — <a href="https://news.google.com/rss/articles/CBMickFVX3lxTE1ZOWd2aGNhbnhPMDMzT1NuNEx6VkdHZWhPQWs0bFdvRWxOTkYwVkVQQ0FQdEpqN1lFbWs5ckJRbGt4RV9ZaUxWbTg1UmVLZk1nRHFWY0N6a2V1ZUNYWjZTSVlNWW1VMmFMYi1iSWZueDJwQQ?oc=5">KB Think</a></span>
+  <span>근거6 증안펀드 10조 확대·자사주 1일 취득 한도 완화 — <a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5GUmZFUzFXLUJHZWtuNVp3eVJxOWJXdVJiQmp4dWNlZFFBY2NUSnlZYWppLU11MzBIVUN3cjAzR3BOekV4dmNORUVWYldqb1RqOHc2Sy0tdGdvQQ?oc=5">한국경제</a>, <a href="https://www.youthdaily.co.kr/news/article.html?no=230320">청년일보(전일 삼성·하이닉스 급락)</a></span>
+  </div>
+  데이터 출처: 토스증권 Open API(실시간 시세·거래대금 랭킹·매크로 스냅샷), 국내 개장·마감 공개 보도, 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), build_briefing(미 ETF). <strong>2026-11-26 09:30 KST 조회 기준</strong> — 개장 30분 장중 수치이며, 당일 지수 확정치는 KRX가 익일 반영한다(절대 레벨은 개장 보도치·프록시 병기). 각 지표의 기준일을 본문에 표기했다. <strong>작성·발간: 2026-11-26 09:30 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+<div class="nx-pubstamp" style="margin-top:8px;font-variant-numeric:tabular-nums;">📝 작성·발간: 2026-11-26 09:37 KST</div></footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
