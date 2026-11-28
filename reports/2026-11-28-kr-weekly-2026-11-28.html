@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="report-symbols" content="">
+<title>한국 증시 주간 총정리 (11/23~11/27) — 롤러코스터 한 주, 증안펀드 기대·외국인 귀환으로 코스피 5000 재도전</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌏</text></svg>">
+<style>
+:root {
+  --page: #f9f9f7; --card: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --accent: #2a78d6;
+  --hot: #d03b3b; --hot-bg: rgba(208,59,59,0.09);
+  --border: rgba(11,11,11,0.10); --tip-bg: rgba(252,252,251,0.97);
+  --up: #d03b3b; --down: #2a78d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0d0d0d; --card: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --accent: #3987e5;
+    --hot: #e66767; --hot-bg: rgba(230,103,103,0.13);
+    --border: rgba(255,255,255,0.10); --tip-bg: rgba(26,26,25,0.97);
+    --up: #e66767; --down: #3987e5;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1020px; margin: 0 auto; padding: 40px 22px 64px; }
+.eyebrow { font-size: 11px; letter-spacing: 0.14em; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+header h1 { font-size: 27px; line-height: 1.3; margin: 8px 0 10px; letter-spacing: -0.01em; }
+header .sub { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+header .stamp { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; border: 1px solid var(--border); border-radius: 99px; padding: 3px 12px; }
+section { margin-top: 52px; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center;
+  gap: 11px; margin: 0 0 4px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+h2 .idx { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 8px;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; flex: none; }
+h2 .h2-chip { margin-left: auto; }
+.lead { color: var(--ink-2); font-size: 13.5px; margin: 14px 0 16px; }
+.grid { display: grid; gap: 12px; }
+.tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin-top: 18px; }
+.tile { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 15px 17px 13px; }
+.tile.lead-tile { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.tile .lbl { font-size: 11.5px; color: var(--muted); }
+.tile .val { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .val small { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.tile .val.up { color: var(--up); } .tile .val.down { color: var(--down); }
+.tile .delta { font-size: 11.5px; color: var(--ink-2); margin-top: 3px; font-variant-numeric: tabular-nums; }
+.tile .delta.up { color: var(--up); font-weight: 600; } .tile .delta.down { color: var(--down); font-weight: 600; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--hot-bg); color: var(--hot);
+  font-size: 11px; font-weight: 650; border-radius: 99px; padding: 2px 10px; }
+.chip.cool { background: rgba(42,120,214,0.10); color: var(--accent); }
+.chip.under { background: rgba(42,120,214,0.12); color: var(--down); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px 16px; }
+.card + .card { margin-top: 14px; }
+.card h3 { margin: 0 0 8px; font-size: 15px; }
+.prose p { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { color: var(--ink); }
+.up { color: var(--up); font-weight: 600; }
+.down { color: var(--down); font-weight: 600; }
+.note { border-left: 3px solid var(--hot); background: var(--hot-bg); border-radius: 0 8px 8px 0;
+  padding: 10px 14px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 16px; }
+.note strong { color: var(--hot); }
+.note.cool { border-left-color: var(--accent); background: rgba(42,120,214,0.08); }
+.note.cool strong { color: var(--accent); }
+.note.tldr .tldr-h { display:block; margin-bottom:7px; }
+.note.tldr .tldr-item { display:block; margin-top:7px; text-indent:-1.15em; padding-left:1.15em; }
+.note.tldr .tldr-item:first-of-type { margin-top:0; }
+.en-abstract { margin: 14px 0 0; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+.en-abstract summary { cursor: pointer; padding: 11px 15px; font-size: 12.5px; font-weight: 650; color: var(--ink-2); list-style: none; }
+.en-abstract summary::-webkit-details-marker { display: none; }
+.en-abstract summary::before { content: "▸ "; color: var(--accent); }
+.en-abstract[open] summary::before { content: "▾ "; }
+.en-abstract .en-body { padding: 0 15px 14px; font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+.tbl-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11.5px; letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--axis); padding: 7px 10px; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td { border-bottom: 1px solid var(--grid); padding: 8px 10px; font-variant-numeric: tabular-nums; color: var(--ink-2); vertical-align: top; }
+td strong { color: var(--ink); font-weight: 650; }
+.evd { display: inline-block; line-height: 1; vertical-align: baseline; }
+.evd > button { all: unset; cursor: pointer; font-size: 10px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 99px; padding: 1px 6px; line-height: 1.4;
+  background: rgba(42,120,214,0.08); white-space: nowrap; }
+.evd > button:hover, .evd.on > button { background: var(--accent); color: #fff; }
+.evd-pop { display: none; position: fixed; z-index: 30; width: min(340px, calc(100vw - 24px));
+  background: var(--tip-bg); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18); padding: 12px 14px; font-size: 12.5px; line-height: 1.6;
+  text-align: left; font-weight: 400; }
+.evd.on .evd-pop { display: block; }
+.evd-pop .evd-src { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+.evd-pop .evd-sum { display: block; color: var(--ink-2); margin-bottom: 8px; }
+.evd-pop .evd-sum strong { color: var(--ink); }
+.evd-pop a { color: var(--accent); font-weight: 650; font-size: 12px; text-decoration: none; }
+.evd-pop .evd-nolink { font-size: 11px; color: var(--muted); }
+footer { color: var(--muted); font-size: 12px; line-height: 1.7; border-top: 1px solid var(--grid); padding-top: 18px; margin-top: 48px; }
+footer a { color: var(--accent); text-decoration: none; }
+footer .srclist span { display: block; margin-bottom: 3px; }
+</style>
+<link rel="canonical" href="https://report.devindgkim.net/reports/2026-11-28-kr-weekly-2026-11-28.html">
+<meta property="og:title" content="한국 증시 주간 총정리 — 하루에 ±6% 널뛴 롤러코스터 한 주, 증안펀드 기대·외국인 귀환으로 금요일 급반등">
+<meta property="og:description" content="지난 한 주(11/23~11/27) 코스피 +0.94%·코스닥 +9.80%로 마감했으나 하루 ±6% 널뛰는 극단적 변동성 끝에, 증안펀드 확대 기대와 외국인 귀환으로 금요일 급반등했다.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI AGENT RESEARCH">
+<meta property="og:url" content="https://report.devindgkim.net/reports/2026-11-28-kr-weekly-2026-11-28.html">
+<meta name="description" content="지난 한 주(11/23~11/27) 코스피 +0.94%·코스닥 +9.80%로 마감했으나 하루 ±6% 널뛰는 극단적 변동성 끝에, 증안펀드 확대 기대와 외국인 귀환으로 금요일 급반등했다.">
+<meta property="og:image" content="https://report.devindgkim.net/og/2026-11-28-kr-weekly-2026-11-28.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<div class="wrap">
+<div class="report-home" style="margin:0 0 -8px;"><a href="/" aria-label="홈으로" title="홈으로" style="color:var(--accent);display:inline-flex;padding:2px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a></div>
+
+<header>
+  <div class="eyebrow">개인용 투자 리서치 · 한국 증시 주간 총정리 (KR Weekly Wrap)</div>
+  <h1>한국 증시 주간 총정리 — 하루에 ±6% 널뛴 롤러코스터 한 주, <span class="up">증안펀드 기대·외국인 귀환</span>으로 금요일 급반등</h1>
+  <p class="sub">2026년 11월 28일(토) 작성 · 지난 한 주(11/23 월~11/27 금) 국내 증시 정리. 한 주의 결론만 보면 <strong>코스피 <span class="up">+0.94%</span>·코스닥 <span class="up">+9.80%</span></strong>로 둘 다 올랐지만, 속을 열면 월 <span class="down">−3.31%</span> → 화 <span class="up">+6.32%</span> → 수 <span class="down">−6.16%</span> → 금 <span class="up">+4.34%</span>로 <strong>하루 등락폭이 극단적으로 벌어진 변동성 장세</strong>였다. 주 후반 <strong>증권시장안정펀드(증안펀드) 확대 기대</strong>와 <strong>외국인 귀환</strong>, 간밤 미 반도체 반등이 겹치며 코스피는 다시 5000선 재도전 발판을 마련했다. <strong>정보용이며 매매 권유가 아니다.</strong></p>
+  <span class="stamp nx-pubstamp">📝 작성·발간 2026-11-28 09:00 KST · 토요일 주간 총정리 슬롯</span>
+</header>
+
+<div class="note cool" style="margin-top:20px">
+  <strong>매크로 스냅샷 (데이터 기준일 표기).</strong> 원/달러 <strong>1,342.70원</strong>(11-27 ECOS, 전일 1,343.90 → 원화 소폭 강세) · 한국 기준금리 <strong>3.25%</strong>(11-26 금통위 <span class="up">+0.25%p 인상</span>) · 미 10년물 4.91%(11-24 FRED 확정) · 달러지수 123.6(11-20 FRED). 지수는 KRX 확정치(KOSPI 4,915.68·KOSDAQ 708.99, 11-27 종가), 주간 등락은 전주 금요일(11-20) 확정 종가 대비로 계산했다.</div>
+
+<section>
+  <h2><span class="idx">1</span>한 주 한눈에 <span class="chip h2-chip">결과는 소폭 상승 · 과정은 극단적 변동성</span></h2>
+  <p class="lead">지수·환율은 KRX Open API 확정치와 한국은행 ECOS 기준. 주간 등락률은 전주 금요일(11-20) 종가 → 이번 주 금요일(11-27) 종가. 등락 색은 국내 관례(상승 <span class="up">빨강</span>·하락 <span class="down">파랑</span>)를 따른다.</p>
+  <div class="grid tiles">
+    <div class="tile lead-tile"><div class="lbl">KOSPI (11-27 종가)</div><div class="val up">4,915.68</div><div class="delta up">주간 ▲ +0.94% (+45.72p)</div></div>
+    <div class="tile"><div class="lbl">KOSDAQ (11-27 종가)</div><div class="val up">708.99</div><div class="delta up">주간 ▲ +9.80% (+63.31p)</div></div>
+    <div class="tile"><div class="lbl">원/달러 (11-27)</div><div class="val up">1,342.7<small>원</small></div><div class="delta up">전일 1,343.9 · 원화 소폭 강세</div></div>
+    <div class="tile"><div class="lbl">주중 코스피 변동폭</div><div class="val down">4,697~5,006</div><div class="delta">하루 최대 ±6%대 널뛰기</div></div>
+  </div>
+  <div class="note cool tldr" style="margin-top:16px">
+    <strong class="tldr-h">세 줄 요약</strong>
+    <div class="tldr-item">① 한 주 전체로는 <strong>코스피 <span class="up">+0.94%</span>·코스닥 <span class="up">+9.80%</span></strong> 상승이지만, 과정은 <strong>월 급락 → 화 급등 → 수 급락 → 금 급등</strong>으로 하루 등락폭이 ±6%대까지 벌어진 극단적 변동성 장세였다.</div>
+    <div class="tldr-item">② 반전의 방아쇠는 <strong>증권시장안정펀드(증안펀드) 확대 기대</strong>였다 — 금융위가 11/29·30 회의에서 10조원 규모 증액을 논의한다는 소식에 금요일 <strong>외국인이 코스피를 약 1.1조원 순매수</strong>하며 코스피 <span class="up">+4.34%</span>·코스닥 <span class="up">+8.13%</span> 급등.</div>
+    <div class="tldr-item">③ 변수는 둘이다 — <strong>11/26 한국은행의 깜짝 금리 인상(3.00→3.25%)</strong>이라는 긴축 재료와, 간밤 미 반도체 반등의 지속성. 다음 주는 <strong>증안펀드 실제 집행 규모</strong>가 반등의 진위를 가른다.</div>
+  </div>
+  <details class="en-abstract">
+    <summary>English summary</summary>
+    <div class="en-body">
+      Korean equities ended the week of Nov 23–27 higher — KOSPI <strong>+0.94%</strong> to 4,915.68 and KOSDAQ <strong>+9.80%</strong> to 708.99 — but the path was a rollercoaster, swinging from −3.31% Monday to +6.32% Tuesday, −6.16% Wednesday and +4.34% Friday as AI-valuation jitters and a US semiconductor sell-off whipsawed sentiment. The turn came late in the week on expectations that regulators will expand the Securities Market Stabilization Fund (meetings set for Nov 29–30), drawing foreign investors back with roughly ₩1.1tn of net KOSPI buying on Friday. The Bank of Korea surprised with a 25bp hike to 3.25% on Nov 26, adding a tightening crosscurrent. Next week hinges on the actual size of the stabilization fund and whether the overnight US chip rebound holds. The won firmed slightly to 1,342.7/USD. Figures follow the Korean original.
+    </div>
+  </details>
+</section>
+
+<section>
+  <h2><span class="idx">2</span>주간 지수·업종 승자/패자 — 성장주(코스닥) 압승, 대형주는 금요일 반등으로 만회</h2>
+  <p class="lead">요일별로 보면 지수가 얼마나 널뛰었는지가 한눈에 보인다. 주 초반 미 반도체발 급락으로 두 지수 모두 밀렸다가, 주 후반 저가매수·증안펀드 기대·외국인 귀환으로 되돌림에 성공했다. 특히 <strong>코스닥이 코스피를 큰 폭으로 아웃퍼폼</strong>했다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>거래일</th><th class="num">KOSPI</th><th class="num">등락</th><th class="num">KOSDAQ</th><th class="num">등락</th><th>그날의 주된 재료</th></tr></thead>
+    <tbody>
+      <tr><td>11-20 (금, 전주)</td><td class="num">4,869.96</td><td class="num"><span class="down">−5.21%</span></td><td class="num">645.68</td><td class="num"><span class="down">−5.71%</span></td><td>AI 수익성 우려·미 반도체 급락, 양 시장 매도 사이드카·10개월래 최저권<span class="evd"><button type="button" aria-expanded="false">근거1</button><span class="evd-pop"><span class="evd-src">11-20 코스피 −5.21%·사이드카 · SHOW N/중앙이코노미 (2026-11-20)</span><span class="evd-sum">11-20 코스피 <strong>4,869.96(−5.21%, −267.93p)</strong>, 1월 20일 이후 최저. AI 투자 수익성 우려·미 반도체주 급락 여파로 장중 5%+ 급락, 코스피·코스닥 <strong>동시 매도 사이드카</strong> 발동. 코스닥은 <strong>−5.71%</strong>.</span><a href="https://www.shown.co.kr/news/articleView.html?idxno=14526" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>11-23 (월)</strong></td><td class="num">4,708.54</td><td class="num"><span class="down">−3.31%</span></td><td class="num">635.45</td><td class="num"><span class="down">−1.58%</span></td><td>간밤 미 기술주 약세 잔영 지속, 투매 경계</td></tr>
+      <tr><td><strong>11-24 (화)</strong></td><td class="num">5,006.03</td><td class="num"><span class="up">+6.32%</span></td><td class="num">—</td><td class="num">—</td><td>저가매수 유입·장중 5,000선 회복(코스닥 당일 확정치 미확인 — 배제)</td></tr>
+      <tr><td><strong>11-25 (수)</strong></td><td class="num">4,697.51</td><td class="num"><span class="down">−6.16%</span></td><td class="num">650.64</td><td class="num"><span class="down">−2.29%</span></td><td>재차 변동성 확대, AI·반도체 불안 재부각<span class="evd"><button type="button" aria-expanded="false">근거2</button><span class="evd-pop"><span class="evd-src">11-25 하락 마감 · 뉴스핌 (2026-11-25)</span><span class="evd-sum">11-25 코스피 <strong>4,697.51(−6.16%)</strong>, 코스닥 <strong>650.64(−2.29%)</strong>로 재차 급락. 주 초반 반등 시도가 하루 만에 꺾이며 변동성이 극대화됐다.</span><a href="https://www.newspim.com/news/view/20261125001110" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>11-26 (목)</strong></td><td class="num">4,711.21</td><td class="num"><span class="up">+0.29%</span></td><td class="num">655.71</td><td class="num"><span class="up">+0.78%</span></td><td>한국은행 기준금리 3.25% 인상(+0.25%p)에도 지수 소폭 반등<span class="evd"><button type="button" aria-expanded="false">근거3</button><span class="evd-pop"><span class="evd-src">11-26 코스피 4,711.21 · 서울신문 (2026-11-26)</span><span class="evd-sum">11-26 코스피 <strong>4,711.21(+0.29%)</strong>, 하루 만에 반등했으나 장중 상승폭 상당분을 반납. 같은 날 한국은행 금통위가 기준금리를 인상(아래 근거4).</span><a href="https://www.seoul.co.kr/news/economy/securities/2026/11/26/20261126500256" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>11-27 (금)</strong></td><td class="num"><strong>4,915.68</strong></td><td class="num"><span class="up">+4.34%</span></td><td class="num"><strong>708.99</strong></td><td class="num"><span class="up">+8.13%</span></td><td>증안펀드 확대 기대·외국인 귀환·간밤 미 반도체 반등 → 동반 급등<span class="evd"><button type="button" aria-expanded="false">근거4</button><span class="evd-pop"><span class="evd-src">11-27 코스피 +4.34%·코스닥 +8.13% · 네이트/머니투데이 (2026-11-27)</span><span class="evd-sum">증안펀드 증액 기대에 외국인·기관이 양 시장 순매수. 코스피 <strong>4,915.68(+4.34%, +204.47p)</strong>, 코스닥 <strong>708.99(+8.13%, +53.28p)</strong>. 외국인 코스피 약 1.13조·코스닥 약 3,074억 순매수.</span><a href="https://m.news.nate.com/view/20261127n21341" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 요일별 지수는 KRX 확정치·공개 마감 보도 기준이다. <strong>11-24(화) 코스닥 종가는 매체별로 확정 수치가 엇갈려 본문에서 배제</strong>했다(코스피는 5,006.03로 다수 일치). 개별 종목의 <strong>주간</strong> 등락률은 매체·소스별로 방향이 엇갈리는 경우가 있어 지어내지 않고, 아래는 출처가 명확한 금요일(11-27) 기준 수치만 싣는다.
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>승자 — 성장주·코스닥.</strong> 한 주 성적표에서 <strong>코스닥 <span class="up">+9.80%</span></strong>는 코스피 <span class="up">+0.94%</span>를 압도했다. 금요일 하루만 코스닥이 <span class="up">+8.13%</span> 폭등했는데, 증안펀드가 유동성과 중소형·성장주 심리를 직접 겨냥한다는 기대가 바이오·2차전지 등 코스닥 주도 업종에 집중적으로 반영된 결과다. 코스닥150 프록시(KODEX 코스닥150)는 금요일 하루 <span class="up">+9.9%</span> 거래대금이 터지며 하루 거래량이 1억 주를 넘겼다(프록시·토스 시세).</p>
+      <p><strong>대형 반도체 — 늦게 반등.</strong> 주간 내내 삼성전자·SK하이닉스는 간밤 미 메모리·AI 밸류 논쟁에 끌려다녔으나, <strong>금요일 외국인 귀환과 함께 반등</strong>했다 — 11-27 기준 <strong>SK하이닉스 <span class="up">+5.5%</span>·삼성전자 <span class="up">+4.7%</span></strong>(토스 랭킹, 금요일 일간 등락). 두 종목은 이번 주 코스피 거래대금 1·2위로, 지수 방향을 그대로 좌우했다.<span class="evd"><button type="button" aria-expanded="false">근거5</button><span class="evd-pop"><span class="evd-src">11-27 대형 반도체 반등 · 토스증권 Open API 랭킹 (2026-11-27)</span><span class="evd-sum">토스 주간 거래대금 랭킹에서 SK하이닉스(000660)·삼성전자(005930)가 1·2위. 금요일 일간 등락률 <strong>각각 +5.5%·+4.7%</strong>. 주간 누적 등락은 소스별로 엇갈려 배제, 금요일 확정 일간치만 표기.</span><span class="evd-nolink">토스 실시간 시세 — 외부 링크 없음(교차확인 권장)</span></span></span></p>
+      <p><strong>패자 — 주 전체를 끌어내린 간밤 미국.</strong> 역설적으로 이번 주 최대의 '패자'는 특정 업종이 아니라 <strong>주 초·중반의 간밤 미 증시</strong>였다. 월요일과 수요일의 급락은 모두 뉴욕 기술·반도체주 약세의 전이였고, 국내 수급이 이를 증폭했다. 금요일 반등으로 상당 부분 복구했으나, 한 주 내내 "미국이 기침하면 한국이 몸살을 앓는" 구조가 반복됐다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">3</span>주간 수급 흐름 — 외국인의 '귀환'이 주 후반을 바꿨다</h2>
+  <p class="lead">KRX Open API 는 투자자별 순매수 확정치를 익일 반영하므로 <strong>주간 누적 순매수 총액은 확정 전</strong>이다. 아래는 공개 마감 보도가 일치하는 금요일(11-27) 기준 수치와 방향성만 싣는다 — 미확인 총액은 지어내지 않는다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>시장 / 주체</th><th class="num">11-27 순매수</th><th>성격</th></tr></thead>
+    <tbody>
+      <tr><td><strong>코스피 · 외국인</strong></td><td class="num"><span class="up">+약 1조 1,300억</span></td><td>주 후반 '귀환'의 핵심 — 증안펀드 기대·원화 강세가 유인<span class="evd"><button type="button" aria-expanded="false">근거6</button><span class="evd-pop"><span class="evd-src">11-27 투자자별 순매수 · 머니투데이/네이트 (2026-11-27)</span><span class="evd-sum">11-27 코스피에서 외국인 <strong>약 1조 1,300억</strong>·기관 <strong>약 2,372억</strong> 순매수. 코스닥에서 외국인 <strong>약 3,074억</strong>·기관 <strong>약 5,868억</strong> 순매수. 금요일 급등의 수급 배경.</span><a href="https://m.news.nate.com/view/20261127n21341" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>코스피 · 기관</strong></td><td class="num"><span class="up">+약 2,372억</span></td><td>외국인과 동반 매수 — 투매 국면 종료 신호</td></tr>
+      <tr><td><strong>코스닥 · 외국인</strong></td><td class="num"><span class="up">+약 3,074억</span></td><td>성장주 반등의 연료</td></tr>
+      <tr><td><strong>코스닥 · 기관</strong></td><td class="num"><span class="up">+약 5,868억</span></td><td>코스닥에선 기관이 외국인보다 더 공격적</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="prose">
+      <p><strong>흐름의 해석.</strong> 한 주의 수급 서사는 <strong>"투매 → 관망 → 외국인 귀환"</strong>으로 요약된다. 월~수요일엔 간밤 미국 약세에 개인마저 "일단 팔자"로 돌아서며 낙폭이 깊어졌으나, 금요일 <strong>증안펀드 확대 기대가 외국인·기관을 동시에 매수로 돌려세웠다.</strong> 한 증권사는 "유동성에 숨통이 트였다"고 평가했다.<span class="evd"><button type="button" aria-expanded="false">근거7</button><span class="evd-pop"><span class="evd-src">외국인 매수·유동성 평가 · 조세일보 (2026-11-28)</span><span class="evd-sum">외국인 매수 전환에 증시가 반등하자 "유동성에 숨통이 트였다"는 증권가 평가. 다만 반등의 지속성은 증안펀드 실제 집행과 미 반도체주 흐름 확인이 필요하다는 단서.</span><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBOQXNyR0I1YlFWYnBPU0dzVEJHSElRRXRibzZmd3dJb3hjeU11cTVVYU9PeC1WanR0TkNZVzFiSzVHbVhLdkcxMktxM0gwekJwemMtUkhGdl80a0JPNG1Z?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></p>
+      <p><strong>단서.</strong> 다만 금요일 하루의 수급 전환이 <strong>추세로 굳어졌다고 보기엔 이르다.</strong> 개인은 반등 구간에서 차익실현(매도) 성향을 보였고, 외국인 매수의 상당 부분이 증안펀드라는 <strong>정책 기대</strong>에 기댄 것이어서, 실제 집행 규모가 기대를 밑돌면 되돌림 위험이 있다.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">4</span>한 주의 사건 타임라인 — 지표·정책·실적</h2>
+  <p class="lead">이번 주를 움직인 재료는 크게 셋이다 — ① 간밤 미 증시(특히 반도체·AI주)의 급등락, ② <strong>한국은행의 깜짝 금리 인상</strong>, ③ 주 후반 터진 <strong>증안펀드 확대 기대</strong>. 아래 타임라인으로 정리한다.</p>
+  <div class="tbl-scroll">
+  <table>
+    <thead><tr><th>일자</th><th>사건</th><th>영향</th></tr></thead>
+    <tbody>
+      <tr><td>11-23 (월)</td><td>간밤 미 기술·반도체주 약세 잔영</td><td>코스피 <span class="down">−3.31%</span>·코스닥 <span class="down">−1.58%</span>, 전주 사이드카 충격 연장</td></tr>
+      <tr><td>11-24 (화)</td><td>저가매수 유입, 장중 코스피 5,000선 회복</td><td>코스피 <span class="up">+6.32%</span> 급반등 — 그러나 하루짜리</td></tr>
+      <tr><td>11-25 (수)</td><td>AI·반도체 밸류 불안 재부각</td><td>코스피 <span class="down">−6.16%</span>·코스닥 <span class="down">−2.29%</span> 재급락</td></tr>
+      <tr><td><strong>11-26 (목)</strong></td><td><strong>한국은행 금통위, 기준금리 3.00→3.25% 인상(+0.25%p)</strong></td><td>성장·물가 전망상 긴축 — 금융위원 5명 찬성, 2명(황건일·이수형) 동결 소수의견. 지수는 <span class="up">+0.29%</span>로 선반영 속 소폭 반등<span class="evd"><button type="button" aria-expanded="false">근거8</button><span class="evd-pop"><span class="evd-src">통화정책방향 · 한국은행 (2026-11-26)</span><span class="evd-sum">금통위가 기준금리를 <strong>3.00%→3.25%로 0.25%p 인상</strong>. 성장세 강화·물가 목표 상회 전망·금융안정 리스크를 근거로 제시. 금통위원 <strong>5명 찬성, 2명(황건일·이수형) 동결</strong> 의견.</span><a href="https://www.bok.or.kr/portal/bbs/P0000559/view.do?depth=200690&menuNo=200690&nttId=11067084&programType=newsData&relate=Y" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td><strong>11-27 (금)</strong></td><td><strong>증안펀드 확대 기대 + 외국인 귀환 + 간밤 미 반도체 반등</strong></td><td>코스피 <span class="up">+4.34%</span>·코스닥 <span class="up">+8.13%</span> 동반 급등. 금융위 11/29 투자관리위·11/30 긴급점검회의에서 10조원 규모 증액 논의 예정<span class="evd"><button type="button" aria-expanded="false">근거9</button><span class="evd-pop"><span class="evd-src">증안펀드 확대 기대 · 비즈워치/머니투데이 (2026-11-27)</span><span class="evd-sum">금융위가 <strong>11/29 증안펀드 투자관리위</strong>·<strong>11/30 시장안정 긴급점검회의</strong>를 열어 증안펀드 가동·확대를 논의. 시장은 기존 <strong>10조원 규모의 증액</strong>을 기대. 이 기대가 금요일 급등의 방아쇠.</span><a href="https://news.bizwatch.co.kr/article/market/2026/11/27/0026" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+      <tr><td>11-27 밤 (미국)</td><td>뉴욕증시 AI주 저가매수 반등, 필라델피아 반도체지수 급등</td><td>나스닥 <span class="up">+2.31%</span>, 필라델피아 반도체 <span class="up">+4.69%</span>, S&amp;P500 주간 <span class="up">+5.6%</span> — 다음 주 개장에 우호적<span class="evd"><button type="button" aria-expanded="false">근거10</button><span class="evd-pop"><span class="evd-src">뉴욕증시 반등 · 연합뉴스/뉴스핌 (2026-11-28)</span><span class="evd-sum">추수감사절 휴장 후 뉴욕증시가 AI주 저가매수에 반등 — 나스닥 <strong>+2.31%</strong>, 필라델피아 반도체지수 <strong>+4.69%</strong>, S&amp;P500 주간 <strong>+5.6%</strong>. 다만 엔비디아는 '중국 밀반입 의혹' 보도로 약세(개별 등락은 매체별 상충 — 수치 배제).</span><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ITHBzUVVyQmRWbld0Wng5QWs4d1J1NkFqTnFTdlQzTFEtbUoyLW9wQ3hXeGZhWHpqSGUwOGFpUU5USVB5ak5lcGJ5czQ4QUxqWVdBcU9zbUZkM0ZLR252YQ?oc=5" target="_blank" rel="noopener">원문 보기 ↗</a></span></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note" style="margin-top:14px">
+    <strong>데이터 정직성.</strong> 엔비디아 등 간밤 개별 미 종목의 등락은 매체별로 방향·수치가 엇갈려(일부 하락 보도) <strong>구체 수치를 싣지 않았다.</strong> 지수·반도체지수 등 다수 매체가 일치하는 수치만 표기했다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="idx">5</span>다음 주(12/1~12/5) 관전 포인트 <span class="chip h2-chip">증안펀드가 진위를 가른다</span></h2>
+  <div class="card">
+    <div class="prose">
+      <p><strong>한 문장.</strong> 금요일 급반등이 <strong>'정책 기대발 하루짜리'인지, 추세 전환의 시작인지</strong>는 다음 주 초 증안펀드의 <strong>실제 집행 규모</strong>와 간밤 미 반도체 반등의 지속성이 결정한다.</p>
+      <p><strong>① 증안펀드 — 최대 변수.</strong> 금융위가 <strong>11/29(일) 증안펀드 투자관리위원회</strong>에 이어 <strong>11/30(월) 시장안정 긴급점검회의</strong>를 연다. 시장은 기존 10조원 규모의 증액을 기대하고 있어, <strong>월요일 개장은 이 결과에 크게 반응</strong>할 가능성이 높다. 기대에 부합하거나 상회하면 반등 연장, 밑돌면 '소문에 사서 뉴스에 파는' 되돌림 위험.</p>
+      <p><strong>② 미 반도체·AI주 지속성.</strong> 간밤(11-27) 뉴욕 반도체지수가 <span class="up">+4.69%</span> 반등했지만, 한 주 내내 국내 변동성의 진원은 미 기술주였다. <strong>엔비디아 관련 '중국 밀반입 의혹'</strong> 등 개별 노이즈가 남아 있어, 주 초 미국장에서 반등이 이어지는지 확인이 필요하다 — 삼성전자·SK하이닉스의 방향이 여기에 직결된다.</p>
+      <p><strong>③ 금리 인상 후폭풍.</strong> 11/26 한국은행의 <strong>기준금리 3.25% 인상</strong>은 성장주·코스닥에 시차를 두고 부담이 될 수 있는 긴축 재료다. 이번 주엔 증안펀드 기대에 가려졌으나, 다음 주 변동성이 재확대되면 긴축 우려가 다시 수면 위로 올라올 수 있다.</p>
+      <p><strong>④ 외국인 수급·원화.</strong> 금요일 외국인 순매수(코스피 약 1.1조)가 <strong>며칠 더 이어지는지</strong>가 추세 판단의 핵심이다. 원/달러가 1,342원대로 소폭 강세(원화 강세)를 유지하면 외국인 수급에 우호적이다 — 환율 방향을 매일 체크할 대상.</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:16px">
+    <strong>주의.</strong> 본 리포트는 2026-11-28(토) 오전 조회 기준으로 지난 한 주 국내 증시를 정리한 것이다. 지수는 KRX 확정치, 수급·개별 종목 수치는 공개 마감 보도와 토스 시세에 기반하며 익일 확정치와 다를 수 있다. 특정 종목의 매수·매도를 권유하지 않는다.
+  </div>
+</section>
+
+<footer>
+  <strong>출처 — 본문의 근거N 팝업과 번호가 같다.</strong>
+  <div class="srclist">
+  <span>근거1 11-20 코스피 −5.21%·사이드카·10개월래 최저 — <a href="https://www.shown.co.kr/news/articleView.html?idxno=14526">SHOW N</a>, <a href="https://www.joongangenews.com/news/articleView.html?idxno=565916">중앙이코노미뉴스</a></span>
+  <span>근거2 11-25 코스피 −6.16%·코스닥 −2.29% 재급락 — <a href="https://www.newspim.com/news/view/20261125001110">뉴스핌</a></span>
+  <span>근거3 11-26 코스피 4,711.21(+0.29%) 반등 — <a href="https://www.seoul.co.kr/news/economy/securities/2026/11/26/20261126500256">서울신문</a></span>
+  <span>근거4·6 11-27 코스피 +4.34%·코스닥 +8.13%·투자자별 순매수 — <a href="https://m.news.nate.com/view/20261127n21341">네이트/충청투데이</a>, <a href="https://www.mt.co.kr/index.php/stock/2026/11/27/2026112715454286871">머니투데이</a></span>
+  <span>근거5 11-27 SK하이닉스 +5.5%·삼성전자 +4.7%(금요일 일간) — 토스증권 Open API 랭킹(외부 링크 없음)</span>
+  <span>근거7 외국인 매수·"유동성 숨통" 평가 — <a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBOQXNyR0I1YlFWYnBPU0dzVEJHSElRRXRibzZmd3dJb3hjeU11cTVVYU9PeC1WanR0TkNZVzFiSzVHbVhLdkcxMktxM0gwekJwemMtUkhGdl80a0JPNG1Z?oc=5">조세일보</a></span>
+  <span>근거8 한국은행 기준금리 3.00→3.25% 인상(+0.25%p, 5:2) — <a href="https://www.bok.or.kr/portal/bbs/P0000559/view.do?depth=200690&menuNo=200690&nttId=11067084&programType=newsData&relate=Y">한국은행 통화정책방향(2026.11.26)</a></span>
+  <span>근거9 증안펀드 확대 기대·11/29·30 회의 — <a href="https://news.bizwatch.co.kr/article/market/2026/11/27/0026">비즈워치</a>, <a href="https://www.mt.co.kr/amp/stock/2026/11/27/2026112716085591513">머니투데이</a></span>
+  <span>근거10 11-27 밤 뉴욕증시 반등·필라델피아 반도체 +4.69% — <a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ITHBzUVVyQmRWbld0Wng5QWs4d1J1NkFqTnFTdlQzTFEtbUoyLW9wQ3hXeGZhWHpqSGUwOGFpUU5USVB5ak5lcGJ5czQ4QUxqWVdBcU9zbUZkM0ZLR252YQ?oc=5">연합뉴스</a>, <a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1WTmpwc3V4WFpsUWJsV3IxUnJhV2Y3NGRDbUtoU09zczM0MURVdGRNeURoSUZWX0d1X0tiNDVDQ0pESVBhdmljbW9NRzVNRDJ5bFBGcE1kb05fa3d5?oc=5">뉴스핌</a></span>
+  </div>
+  데이터 출처: KRX Open API(지수 확정치), 토스증권 Open API(시세·랭킹), 한국은행 ECOS(기준금리·원/달러), 미 FRED(미 10년물·달러지수), 공개 마감 보도(요일별 지수·수급·간밤 미국). 2026-11-28 오전 조회 기준(지난 한 주 11/23~11/27 정리). 각 지표는 소스별 확정 시점(기준일)을 표기했다. <strong>작성·발간: 2026-11-28 09:00 KST</strong>.<br>
+  본 자료는 개인 학습·정보 제공용이며 특정 종목의 매수·매도를 권유하지 않는다. 투자 판단과 그 결과의 책임은 투자자 본인에게 있다.
+</footer>
+
+</div>
+<script>
+(function () {
+  let open = null;
+  function close() { if (!open) return; open.classList.remove("on"); open.querySelector("button").setAttribute("aria-expanded", "false"); open = null; }
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".evd > button");
+    if (btn) { const host = btn.parentElement; if (open === host) { close(); return; } close(); open = host; host.classList.add("on"); btn.setAttribute("aria-expanded", "true");
+      const pop = host.querySelector(".evd-pop"), r = btn.getBoundingClientRect(); pop.style.left = "0px"; pop.style.top = "0px";
+      const pw = pop.offsetWidth, ph = pop.offsetHeight; const x = Math.min(Math.max(8, r.left), window.innerWidth - pw - 8); let y = r.bottom + 8; if (y + ph > window.innerHeight - 8) y = r.top - ph - 8;
+      pop.style.left = x + "px"; pop.style.top = Math.max(8, y) + "px";
+    } else if (!e.target.closest(".evd-pop")) close();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  window.addEventListener("scroll", close, true);
+})();
+</script>
+<script data-goatcounter="https://nextiar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
